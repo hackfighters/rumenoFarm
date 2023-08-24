@@ -86,7 +86,6 @@ const Home = () => {
       </div>
       <About />
       <Products />
-      <Prdtest />
     </>
   );
 };
