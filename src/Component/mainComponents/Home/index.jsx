@@ -10,7 +10,7 @@ import Products from "../Products/index";
 import Prdtest from "../Products/test";
 import Select from "../../Common/Select";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+// import i18next from "i18next";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -27,10 +27,10 @@ const Home = () => {
             <div className="col-lg-6" data-aos="fade-right">
               <h1 className="text-light mt-5 caro-text pt-5">
                 {/* <Select onChange={(e) => handleChangen(e)} /> */}
-                {t("welcome")} <span className="caroText">Veterinary</span>
+                {t("welcome")} <span className="caroText">{t("rumeno")}</span>
               </h1>
               <p className="text-light h4">
-                Solve all your Farming problems with Rumeno
+               {t("hometitle")}
               </p>
             </div>
             <div className="col-lg-6" data-aos="fade-left" data-aos-delay="50">
