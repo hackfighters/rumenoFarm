@@ -1,9 +1,17 @@
 import React from "react";
-import PrdCard1 from "../../Common/Select/productCowData";
-import PrdCard2 from "../../Common/Select/productGoatData";
-import PrdCard3 from "../../Common/Select/productSheepData";
+// import PrdCard1 from "../../Common/Select/productCowData";
+// import PrdCard2 from "../../Common/Select/productGoatData";
+// import PrdCard3 from "../../Common/Select/productSheepData";
 
 // import PrdCard1 from "../../Common/Select/productData";
+
+import PrdCard1 from "../../Common/Select/productCowData";
+import PrdCard2 from "../../Common/Select/productGoatData";
+
+import PrdCard3 from "../../Common/Select/productSheepData";
+
+
+
 
 
 
