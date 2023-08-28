@@ -1,23 +1,28 @@
-// import React from "react";
-// import Prdimg1 from "../../../assets/img/prod-img/Digesto-Plus.jpg";
+// import { useState } from 'react';
+// import Button from 'react-bootstrap/Button';
+// import Modal from 'react-bootstrap/Modal';
 
-// const prd = () => {
-//   const imageSizes = [
-    
-//       {name: "digesto"},
-//       {price: "07"},
-//       {img: "./abtimg1"}
-   
-//   ];
+// function Example() {
+//   const [lgShow, setLgShow] = useState(false);
+
 //   return (
 //     <>
-//       <div className="prd">
-//         {imageSizes.map((user) => (
-//           <div className="user">{user.img}</div>
-//         ))}
-//       </div>
+//       <Button onClick={() => setLgShow(true)}>Large modal</Button>
+//       <Modal
+//         size="lg"
+//         show={lgShow}
+//         onHide={() => setLgShow(false)}
+//         aria-labelledby="example-modal-sizes-title-lg"
+//       >
+//         <Modal.Header>
+//           <Modal.Title id="example-modal-sizes-title-lg">
+//             Large Modal
+//           </Modal.Title>
+//         </Modal.Header>
+//         <Modal.Body>...</Modal.Body>
+//       </Modal>
 //     </>
 //   );
-// };
+// }
 
-// export default prd;
+// export default Example;

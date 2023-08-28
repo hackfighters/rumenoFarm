@@ -4,13 +4,14 @@ import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 import Navbar from "../Navbar/index";
-import Lang from "../../language";
+// import Lang from "../../language";
 import About from "../About";
 import Products from "../Products/index";
-import Prdtest from "../Products/test";
-import Select from "../../Common/Select";
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
+import Test from "../Products/test";
+// import i18next from "i18next";
+
+
 
 const Home = () => {
   const { t } = useTranslation();
@@ -85,7 +86,8 @@ const Home = () => {
         </div>
       </div>
       <About />
-      <Products />
+      <Products/>
+      {/* <Test/> */}
     </>
   );
 };

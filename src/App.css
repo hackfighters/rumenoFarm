@@ -318,3 +318,10 @@
     left: -100%;
   }
 }
+
+
+/* ---------- Modal Css----------------- */
+.modal-text{
+  overflow-y: scroll;
+  height: 425px;
+}
