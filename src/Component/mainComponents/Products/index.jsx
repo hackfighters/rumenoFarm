@@ -1,21 +1,7 @@
 import React from "react";
-// import PrdCard1 from "../../Common/Select/productCowData";
-// import PrdCard2 from "../../Common/Select/productGoatData";
-// import PrdCard3 from "../../Common/Select/productSheepData";
-
-// import PrdCard1 from "../../Common/Select/productData";
-
 import PrdCard1 from "../../Common/Select/productCowData";
 import PrdCard2 from "../../Common/Select/productGoatData";
-
 import PrdCard3 from "../../Common/Select/productSheepData";
-
-
-
-
-
-
-
 
 const products = () => {
   return (
@@ -80,23 +66,22 @@ const products = () => {
           <div className="tab-content">
             <div id="tab-1" className="tab-pane fade show p-0 active">
               <div className="row g-4">
-                <PrdCard1/>
+                <PrdCard1 />
               </div>
             </div>
             <div id="tab-2" className="tab-pane fade show p-0">
               <div className="row g-4">
-                <PrdCard2/>
+                <PrdCard2 />
               </div>
             </div>
             <div id="tab-3" className="tab-pane fade show p-0">
               <div className="row g-4">
-                <PrdCard3/>
+                <PrdCard3 />
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </>
   );
 };
