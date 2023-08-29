@@ -4,27 +4,21 @@ import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 import Navbar from "../Navbar/index";
-// import Lang from "../../language";
 import About from "../About";
 import Products from "../Products/index";
 import { useTranslation } from "react-i18next";
-// import i18next from "i18next";
 
 const Home = () => {
   const { t } = useTranslation();
-  // const handleChangen = (e) => {
-  //   i18next.changeLanguage(e.target.value);
-  // };
+ 
   return (
     <>
       <div className="home-backgroundColor ">
         <Navbar />
-        {/* <Test/> */}
         <div className="container pt-5">
           <div className="row pt-5 mt-5">
             <div className="col-lg-6" data-aos="fade-right">
               <h1 className="text-light mt-5 caro-text pt-5">
-                {/* <Select onChange={(e) => handleChangen(e)} /> */}
                 {t("welcome")} <span className="caroText">{t("rumeno")}</span>
               </h1>
               <p className="text-light h4">
@@ -84,7 +78,6 @@ const Home = () => {
       </div>
       <About />
       <Products/>
-      {/* <Test/> */}
     </>
   );
 };

@@ -72,9 +72,7 @@ const PrdCard3 = () => {
           <div class="product-item">
             <div class="position-relative bg-light overflow-hidden">
               <img class="img-fluid w-100" src={card3.img} alt="" />
-              {/* <div class="bg-success text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-                        New
-                      </div> */}
+             
             </div>
             <div class="text-center p-4">
               <a class="d-block h4 mb-2 fw-bold text-decoration-none">
