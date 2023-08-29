@@ -43,13 +43,13 @@ const Home = () => {
                 >
                   <div className="carousel-inner">
                     <div className="carousel-item active">
-                      <img className="w-100" src={caroimg1} alt="Image" />
+                      <img className="w-100" src={caroimg1} alt="" />
                     </div>
                     <div className="carousel-item">
-                      <img className="w-100" src={caroimg2} alt="Image" />
+                      <img className="w-100" src={caroimg2} alt="" />
                     </div>
                     <div className="carousel-item">
-                      <img className="w-100" src={caroimg3} alt="Image" />
+                      <img className="w-100" src={caroimg3} alt="" />
                     </div>
                   </div>
                   <button
