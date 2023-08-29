@@ -18,7 +18,6 @@ const products = () => {
                 data-wow-delay="0.1s"
                 style={{ maxWidth: "500px" }}
               >
-                {/* <h1 className="display-5 mb-3">Our Products</h1> */}
                 <p>Rumeno Products for Animals</p>
               </div>
             </div>
