@@ -11,6 +11,66 @@ import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
 
 
 const PrdCard2 = () => {
+  const PrdData1 = [
+    {
+      name: "Tanaav Mukti",
+      price: "₹7:00",
+      oldprice: "₹10:00",
+      img: Prdimg1,
+      txt1: "Tanav Mukti:",
+      txt2: "The Advanced Supplement for Animal Stress Relief, Energy Boosting, and Immunity Enhancement",
+      txt3: " Bringing home a new animal or transporting one can be an exciting but stressful experience for both you and your animal. The change in environment, routine, and diet can trigger stress, anxiety, and weakened immunity in animals. That's why it's crucial to give them the right kind of support to help them adjust and thrive in their new surroundings. And this is where Tanav Mukti comes in as the ultimate stress reliever, energy booster, and immunity enhancer for animals.",
+      txt4: "What is Tanav Mukti?",
+      txt5: "Tanav Mukti is an advanced supplement designed to provide holistic support for animals' overall wellbeing. It is made with a blend of natural ingredients that work synergistically to reduce stress, boost energy, and enhance immunity in animals. Tanav Mukti is a highly effective supplement that can be used for different animal species, including goats, sheeps, cattle, dogs, cats, horses, birds, and livestock.",
+      txt6: "Benefits of Tanav Mukti",
+      txt7: "Stress Relief: Tanav Mukti helps animals cope with stress and anxiety related to changes in environment, routine, or diet. It promotes relaxation, calmness, and a sense of well-being, which can help your animal adjust to its new surroundings more easily.",
+      txt8: "Energy Boost: Tanav Mukti is also an excellent energy booster that provides animals with the necessary nutrients and vitamins to stay active and healthy. It improves endurance, strength, and vitality, allowing animals to perform at their best.",
+      txt9: "Immunity Enhancement: Tanav Mukti contains powerful antioxidants and immune-boosting compounds that help animals fight off infections and diseases. It strengthens their immune system, making them less susceptible to common illnesses and health issues.",
+      txt10:
+        "Easy to Use: Tanav Mukti comes in an easy-to-administer powder form, that can be easily mixed with food or water. It's also safe for animals of all ages, breeds, and sizes.",
+      txt11: "Why choose Tanav Mukti?",
+      txt12:
+        "Tanav Mukti is a reliable and effective solution for animal stress relief, energy boosting, and immunity enhancement. It's made with high-quality natural ingredients that are safe and gentle on animals' bodies. Moreover, Tanav Mukti is formulated by animal experts who understand the unique needs and challenges of animals. With Tanav Mukti, you can be assured that your animal is getting the best possible support for their overall health and wellbeing.",
+      txt13: "Conclusion",
+      txt14:
+        "In summary, Tanav Mukti is an advanced supplement that provides comprehensive support for animals' stress relief, energy boosting, and immunity enhancement. It's made with natural ingredients and is safe and easy to administer. Whether you have a new purchased animal or a transported one, Tanav Mukti can help them adjust and thrive in their new surroundings. So, give your furry friend the best possible care and support with Tanav Mukti.",
+    },
+    {
+      name: "Neonato",
+      price: "₹5:00",
+      oldprice: "₹8:00",
+      img: Prdimg2,
+      name2: "test 2",
+    },
+    {
+      name: "Energico",
+      price: "₹5:00",
+      oldprice: "₹8:00",
+      img: Prdimg3,
+      name2: "test",
+    },
+    {
+      name: "Digesto Plus",
+      price: "₹5:00",
+      oldprice: "₹8:00",
+      img: Prdimg4,
+      name2: "test",
+    },
+    {
+      name: "Micro-Flora",
+      price: "₹5:00",
+      oldprice: "₹8:00",
+      img: Prdimg5,
+      name2: "test",
+    },
+    {
+      name: "Rumenovita",
+      price: "₹5:00",
+      oldprice: "₹8:00",
+      img: Prdimg6,
+      name2: "test",
+    },
+  ];
   const PrdData2 = [
     {
       name: "Feeding Nipple",

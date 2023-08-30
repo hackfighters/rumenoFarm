@@ -7,6 +7,7 @@ import Navbar from "../Navbar/index";
 import About from "../About";
 import Products from "../Products/index";
 import { useTranslation } from "react-i18next";
+import Footer from "../Footer";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -78,6 +79,7 @@ const Home = () => {
       </div>
       <About />
       <Products/>
+      <Footer/>
     </>
   );
 };
