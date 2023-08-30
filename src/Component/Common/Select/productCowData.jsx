@@ -8,7 +8,6 @@ import Prdimg4 from "../../../assets/img/prod-img/prdcom-4.jpg";
 import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
 import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
 
-
 const PrdCard1 = () => {
   const PrdData1 = [
     {
@@ -77,14 +76,89 @@ const PrdCard1 = () => {
   return PrdData1.map((card1, i) => {
     return (
       <>
-        <div
+          <div className="col-lg-4">
+            <div className="card profile-two">
+              <div className="card-image profile-img--two">
+                <img
+                  src={card1.img}
+                  alt=""
+                />
+              </div>
+
+              <ul className="social-icons">
+                <li>
+                  <a  onClick={() => setModalId(`modal${i}`)}>
+                    <i className="fa fa-eye fab"></i>
+                  </a>
+                    <Modal
+                  show={modalId === `modal${i}`}
+                  onHide={handleClose}
+                  aria-labelledby={`${card1.name2}ModalLabel`}
+                  centered
+                  size="xl"
+                >
+                  <Modal.Header id={`${card1.name2}ModalLabel`} closeButton>
+                    <Modal.Title id="example-modal-sizes-title-lg">
+                    </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-lg-5">
+                          <img src={card1.img} />
+                        </div>
+                        <div className="col-lg-6 modal-txt">
+                          <h5 className="fw-bolder">{card1.txt1}</h5>
+                          <p>{card1.txt2}</p>
+                          <p>{card1.txt3}</p>
+                          <h5 className="fw-bolder">{card1.txt4}</h5>
+                          <p>{card1.txt5}</p>
+                          <h5 className="fw-bolder">{card1.txt6}</h5>
+                          <p>{card1.txt7}</p>
+                          <p>{card1.txt8}</p>
+                          <p>{card1.txt9}</p>
+                          <p>{card1.txt10}</p>
+                          <h5 className="fw-bolder">{card1.txt11}</h5>
+                          <p>{card1.txt12}</p>
+                          <h5 className="fw-bolder">{card1.txt13}</h5>
+                          <p>{card1.txt14}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Modal.Body>
+                </Modal>
+                </li>
+                <li>
+                  <a href="">
+                    <i className="fa-brands fa-youtube fab"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i className="fa fa-shopping-bag fab"></i>
+                  </a>
+                </li>
+              </ul>
+
+              <div className="details jane">
+                <h2 >
+                  {card1.name}
+                  <span className="job-title d-block">{card1.price}</span>
+                </h2>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        {/* <div
           className="col-xl-4 col-lg-4 col-md-6 wow fadeInUp"
           data-wow-delay="0.3s"
         >
           <div className="product-item pdt-card pdt-card-img">
             <div className="position-relative bg-light overflow-hidden pdt-card-image pdt-card-img2">
               <img className="img-fluid w-100 " src={card1.img} alt="" />
-              
             </div>
             <div className="text-center p-0 pdt-detl pdt-card-txt">
               <a className="d-block h4 mb-2 fw-bold text-decoration-none">
@@ -105,9 +179,7 @@ const PrdCard1 = () => {
                 </a>
               </small>
               <small className="w-50 text-center d-flex justify-content-center py-2 pdt-card-button-txt">
-                <a
-                  className="text-body justify-content-center"
-                >
+                <a className="text-body justify-content-center">
                   <i className="fa-brands fa-youtube text-primary "></i>
                 </a>
               </small>
@@ -121,33 +193,31 @@ const PrdCard1 = () => {
                   aria-labelledby={`${card1.name2}ModalLabel`}
                   centered
                   size="xl"
-                  
                 >
                   <Modal.Header id={`${card1.name2}ModalLabel`} closeButton>
                     <Modal.Title id="example-modal-sizes-title-lg">
-                      {/* Large Modal{card1.name2} */}
                     </Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <div classNameName="container">
-                      <div classNameName="row">
-                        <div classNameName="col-lg-6">
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-lg-6">
                           <img src={card1.img} />
                         </div>
-                        <div classNameName="col-lg-6 modal-txt">
-                          <h5 classNameName="fw-bolder">{card1.txt1}</h5>
+                        <div className="col-lg-6 modal-txt">
+                          <h5 className="fw-bolder">{card1.txt1}</h5>
                           <p>{card1.txt2}</p>
                           <p>{card1.txt3}</p>
-                          <h5 classNameName="fw-bolder">{card1.txt4}</h5>
+                          <h5 className="fw-bolder">{card1.txt4}</h5>
                           <p>{card1.txt5}</p>
-                          <h5 classNameName="fw-bolder">{card1.txt6}</h5>
+                          <h5 className="fw-bolder">{card1.txt6}</h5>
                           <p>{card1.txt7}</p>
                           <p>{card1.txt8}</p>
                           <p>{card1.txt9}</p>
                           <p>{card1.txt10}</p>
-                          <h5 classNameName="fw-bolder">{card1.txt11}</h5>
+                          <h5 className="fw-bolder">{card1.txt11}</h5>
                           <p>{card1.txt12}</p>
-                          <h5 classNameName="fw-bolder">{card1.txt13}</h5>
+                          <h5 className="fw-bolder">{card1.txt13}</h5>
                           <p>{card1.txt14}</p>
                         </div>
                       </div>
@@ -157,9 +227,7 @@ const PrdCard1 = () => {
               </small>
             </div>
           </div>
-        </div>
-
-       
+        </div> */}
       </>
     );
   });
