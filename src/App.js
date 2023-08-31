@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -30,16 +29,16 @@ function App() {
       /**
    * Easy event listener function
    */
-  const on = (type, el, listener, all = false) => {
-    let selectEl = select(el, all)
-    if (selectEl) {
-      if (all) {
-        selectEl.forEach(e => e.addEventListener(type, listener))
-      } else {
-        selectEl.addEventListener(type, listener)
-      }
-    }
-  }
+  // const on = (type, el, listener, all = false) => {
+  //   let selectEl = select(el, all)
+  //   if (selectEl) {
+  //     if (all) {
+  //       selectEl.forEach(e => e.addEventListener(type, listener))
+  //     } else {
+  //       selectEl.addEventListener(type, listener)
+  //     }
+  //   }
+  // }
   /**
    * Easy on scroll event listener 
    */
@@ -70,17 +69,17 @@ function App() {
     /**
      * Scrolls to an element with header offset
      */
-    const scrollto = (el) => {
+    // const scrollto = (el) => {
       
-      let header = select('#header')
-      let offset = header.offsetHeight
+    //   let header = select('#header')
+    //   let offset = header.offsetHeight
   
-      let elementPos = select(el).offsetTop
-      window.scrollTo({
-        top: elementPos - offset,
-        behavior: 'smooth'
-      })
-    }
+    //   let elementPos = select(el).offsetTop
+    //   window.scrollTo({
+    //     top: elementPos - offset,
+    //     behavior: 'smooth'
+    //   })
+    // }
   
     /**
      * Toggle .header-scrolled class to #header when page is scrolled

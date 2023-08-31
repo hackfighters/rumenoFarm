@@ -30,17 +30,25 @@ const Lang = () => {
 
       <section className="container-fluid context">
         <div className=" row justify-content-center ">
-          <div className=" lang-box col-lg-6 d-flex justify-content-around py-3">
+          <div className=" lang-box col-lg-5 d-flex justify-content-around py-3">
+            <div className="row">
+              <div className="col-lg-6">
             <div className="lang-img lang-box1">
               <img className="" src={lgimg} alt="" />
             </div>
-            <hr className="lang-box-hr" />
+              </div>
+              <div className="col-lg-6">
+
             <div className="lang-box2 ">
             <Select onChange={(e) => handleChangen(e)} />
+              <div className="lang-link">
               <Link to="/home">
-              <button>Sumit</button>
+              <button className="btn-grad-bt">Sumit</button>
               </Link>
+              </div>
               
+            </div>
+              </div>
             </div>
           </div>
         </div>
