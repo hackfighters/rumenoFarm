@@ -36,7 +36,7 @@ const products = () => {
                     data-bs-toggle="pill"
                     href="#tab-1"
                   >
-                    Vegetable
+                    Cow
                   </a>
                 </li>
                 <li className="nav-item me-2" id="profile-tab">
@@ -46,7 +46,7 @@ const products = () => {
                     data-bs-toggle="pill"
                     href="#tab-2"
                   >
-                    Fruits
+                    Goat
                   </a>
                 </li>
                 <li className="nav-item me-0" id="contact-tab">
@@ -56,7 +56,7 @@ const products = () => {
                     data-bs-toggle="pill"
                     href="#tab-3"
                   >
-                    Fresh
+                    Sheep
                   </a>
                 </li>
               </ul>
