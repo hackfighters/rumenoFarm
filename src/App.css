@@ -475,10 +475,6 @@
 /* --------New Css for Cards --------------*/
 
 .card {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 350px; */
   height: 450px !important;
   transform: translate(-50%, -50%);
   border-radius: 16px;
@@ -532,7 +528,6 @@ font-weight: 600 !important;
   background: #fff;
   font-size: 23px;
   color: #333;
-  font-weight: bold;
   margin: 0 6px;
   transition: 0.4s;
   transform: translateY(200px);
@@ -559,22 +554,6 @@ font-weight: 600 !important;
   transform: rotateY(360deg);
   color: #fff;
 }
-
-/* .card:hover li:nth-child(1) a {
-  transition-delay: 0.1s;
-}
-
-.card:hover li:nth-child(2) a {
-  transition-delay: 0.2s;
-}
-
-.card:hover li:nth-child(3) a {
-  transition-delay: 0.3s;
-}
-
-.card:hover li:nth-child(4) a {
-  transition-delay: 0.4s;
-} */
 
 /**** Personal Details ****/
 .details {
@@ -623,11 +602,6 @@ font-weight: 600 !important;
 .card:hover .jane {
   bottom: 0;
   left: 0;
-  transition-delay: 0.5s;
+  transition-delay: 0.1s;
   opacity: 1;
 }
-
-
-/* font-family: var(--fa-style-family,"Font Awesome 6 Free") !important;
-font-weight: var(--fa-style,900);
-font-weight: 600; */

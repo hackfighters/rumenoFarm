@@ -40,9 +40,9 @@ const Footer = () => {
             </div>
             <div>
             <ul className="list-unstyled d-flex justify-content-center footer-li">
-              <li><i class="fa-brands fa-youtube mx-2 fs-3"></i></li>
-              <li><i class="fa-brands fa-youtube mx-2 fs-3"></i></li>
-              <li><i class="fa-brands fa-youtube mx-2 fs-3"></i></li>
+              <li><i class="fa-brands fa-facebook mx-2 fs-3"></i></li>
+              <li><i class="fa-brands fa-instagram mx-2 fs-3"></i></li>
+              <li><i class="fa-brands fa-twitter mx-2 fs-3"></i></li>
               <li><i class="fa-brands fa-youtube mx-2 fs-3"></i></li>
             </ul>
             </div>
