@@ -8,13 +8,17 @@ import About from "../About";
 import Products from "../Products/index";
 import { useTranslation } from "react-i18next";
 import Footer from "../Footer";
+import Training from "../Training";
+
+
 
 const Home = () => {
+
   const { t } = useTranslation();
  
   return (
     <>
-      <div className="home-backgroundColor ">
+      <div className="home-backgroundColor">
         <Navbar />
         <div className="container pt-5">
           <div className="row pt-5 mt-5">
@@ -79,6 +83,7 @@ const Home = () => {
       </div>
       <About />
       <Products/>
+      <Training/>
       <Footer/>
     </>
   );
