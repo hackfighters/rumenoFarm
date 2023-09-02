@@ -7,8 +7,6 @@
 }
 .home-backgroundColor {
   background-image: linear-gradient(to bottom right ,#2EB62C,#57C84D, #83D475 , #beed53 ,#57C84D ,#2EB62C);
-
-  height: 100vh;
 }
 .nav-text small {
   display: flex;  
@@ -20,7 +18,7 @@
 }
 .carousel-item img {
   height: 400px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* About */
@@ -1082,16 +1080,32 @@ input[type="radio"]
 .nav-pills-custom .nav-link.active::before {
     opacity: 1;
 }
-
+.footer-img {
+  width: 50% !important;
+}
   /* --------------------------------------------- */
 
 
   /* ----------------- media Query css-------------- */
 
   @media only screen and (min-width: 320px) and (max-width: 768px) {
-    
-    .contact-info{
-      display: block !important;
+
+    #header{
+      top: 105px;
     }
-    
+    .contact-info{
+      display: flex !important;
+    }
+    .contact-info .cnt {
+      justify-content: center !important;
+      text-align: center !important;
+    }   
+    .header-txt .caro-text{
+      padding: 0px !important;
+      margin: 0px !important;
+    }
+    .footer-img{
+      width: 50% !important;
+    }
+
     }

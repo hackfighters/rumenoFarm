@@ -6,8 +6,8 @@ const Footer = () => {
     <>
       <div className="container-fluid footer">
         <div className="row pt-4">
-          <div className="col-lg-3">
-            <img className="w-100" src={logo} alt="" />
+          <div className="col-lg-3 text-center">
+            <img className="footer-img" src={logo} alt="" />
           </div>
           <div className="col-lg-2 pt-4">
             <div className="d-flex justify-content-center pb-2">
