@@ -3,10 +3,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./assets/css/mainPageCss/style.css";
 import "./assets/css/mainPageCss/bootstrap.min.css";
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 import Lang from './Component/language/index'
 import Home from "./Component/mainComponents/Home/index";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import Services from "./Component/mainComponents/Service";
 
 function App() {
    useEffect(() => {
@@ -111,6 +115,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Lang />} />
         <Route path="/home" element={<Home />} />        
+        <Route path="/services" element={<Services />} />        
       </Routes>
     </>
   );

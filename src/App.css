@@ -1029,3 +1029,69 @@ input[type="radio"]
 }
 
   /* ------------------------ Select end =------------------------------ */
+
+
+ .nav-btn {
+    background-image: linear-gradient(315deg, #81ca6b 0%, #dbffd0 74%);
+    border: 0px;
+    padding: 4px 22px 4px 5px !important;
+    margin: 0px 6px !important;
+  }
+  /* ------------------service css---------------- */
+  .service-head{
+    background-image: linear-gradient(to bottom right ,#2EB62C,#57C84D, #83D475 , #beed53 ,#57C84D ,#2EB62C);
+    color: white;
+  }
+
+  .srvc-consl img.img-fluid.w-100 {
+    height: 320px;
+    object-fit: initial;
+}
+
+
+  /* ---------------Training css---------------- */
+
+  .nav-pills-custom .nav-link {
+    color: #aaa;
+    background: #fff;
+    position: relative;
+}
+
+.nav-pills-custom .nav-link.active {
+    color: #45b649;
+    background: #fff;
+}
+
+
+/* Add indicator arrow for the active tab */
+@media (min-width: 992px) {
+    .nav-pills-custom .nav-link::before {
+        content: '';
+        display: block;
+        border-top: 8px solid transparent;
+        border-left: 10px solid #fff;
+        border-bottom: 8px solid transparent;
+        position: absolute;
+        top: 50%;
+        right: -10px;
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+}
+
+.nav-pills-custom .nav-link.active::before {
+    opacity: 1;
+}
+
+  /* --------------------------------------------- */
+
+
+  /* ----------------- media Query css-------------- */
+
+  @media only screen and (min-width: 320px) and (max-width: 768px) {
+    
+    .contact-info{
+      display: block !important;
+    }
+    
+    }
