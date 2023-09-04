@@ -1246,16 +1246,35 @@ nav ul li a:hover {
   vertical-align: middle;
   white-space: nowrap;
 }
+.login {
+  background: white;
+  width: 320px;
+  position: fixed;
+  border-radius: 3px;
+  right: 155px;
+  top: 110px;
+  z-index: 999;
+}
 
-.shopping-cart-c {
+.cartdetail {
   background: white;
   width: 320px;
   position: fixed;
   border-radius: 3px;
   right: 40px;
-  top: 65px;
+  top: 120px;
   z-index: 999;
 }
+.cartadmin {
+  background: white;
+  width: 320px;
+  position: fixed;
+  border-radius: 3px;
+  right: 265px;
+  top: 120px;
+  z-index: 999;
+}
+
 
 .shopping-cart-c .shopping-cart-header-c {
   border-bottom: 1px solid #E8E8E8;
@@ -1267,7 +1286,9 @@ nav ul li a:hover {
 }
 
 .shopping-cart-c .shopping-cart-items-c {
-  padding-top: 20px;
+  overflow-y: scroll;
+  height: 145px;
+
 }
 
 .shopping-cart-c .shopping-cart-items-c li {
@@ -1335,4 +1356,7 @@ nav ul li a:hover {
   content: "";
   display: table;
   clear: both;
+}
+.service-bg{
+  background-image: linear-gradient(315deg, #81ca6b 0%, #dbffd0 74%) !important;
 }

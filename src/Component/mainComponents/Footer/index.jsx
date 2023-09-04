@@ -1,9 +1,68 @@
 import React from "react";
 import logo from "../../../assets/img/newlogo.png";
+import footcaro1 from "../../../assets/img/New folder/footcaro1.png"
+import footcaro2 from "../../../assets/img/New folder/footcaro2.png"
+import footcaro3 from "../../../assets/img/New folder/footcaro3.png"
+import footcaro4 from "../../../assets/img/New folder/footcaro4.png"
 
 const Footer = () => {
   return (
     <>
+    <div className="container bg-primary">
+      <div className="row">
+        <div className="col-sm-9">
+          <h2>
+          An ISO 9001:2015 recognized by International Accredited Forum Certified Company
+          </h2>
+        </div>
+        <div className="col-sm-3">
+        <div
+                  id="header-carousel"
+                  class="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <div className="carousel-inner">
+                    <div className="carousel-item active">
+                      <img className="w-100" src={footcaro1} alt="#" />
+                    </div>
+                    <div className="carousel-item">
+                      <img className="w-100" src={footcaro2} alt="#" />
+                    </div>
+                    <div className="carousel-item">
+                      <img className="w-100" src={footcaro3} alt="#" />
+                    </div>
+                    <div className="carousel-item">
+                      <img className="w-100" src={footcaro4} alt="#" />
+                    </div>
+                  </div>
+                  <button
+                    className="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#header-carousel"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      className="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    className="carousel-control-next"
+                    type="button"
+                    data-bs-target="#header-carousel"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      className="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="visually-hidden">Next</span>
+                  </button>
+                </div>
+        </div>
+      </div>
+    </div>
       <div className="container-fluid footer">
         <div className="row pt-4">
           <div className="col-lg-3 text-center">
