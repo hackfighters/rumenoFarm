@@ -3,10 +3,12 @@ import srvcimg1 from "../../../assets/img/service-img/srvc-img1.jpg";
 import srvcimg2 from "../../../assets/img/service-img/srvc-img2.jpg";
 import srvcimg3 from "../../../assets/img/service-img/srvc-img3.jpg";
 import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 const Services = () => {
   return (
     <>
+    <Navbar/>
       <section className="container-fluid p-0">
         <div
           class="section-header text-center mx-auto mb-5 wow fadeInUp"
