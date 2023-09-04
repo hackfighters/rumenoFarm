@@ -3,11 +3,11 @@ import lgimg from "../../assets/img/logo.jpg";
 import "../../assets/css/lang.css";
 import { Link } from "react-router-dom";
 import Select from "../Common/Select";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
 const Lang = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
   };
