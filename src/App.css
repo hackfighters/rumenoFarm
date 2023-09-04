@@ -76,7 +76,7 @@
   margin-right: 1rem !important;
 }
 .card-gutters > .col,
-.card-gutters > [class*="col-"] {
+.card-gutters >{
   padding-right: 4px;
   padding-left: 4px;
 }
@@ -145,10 +145,10 @@
 }
 
 #topbar {
-  /* height: 44px; */
   font-size: 14px;
   transition: all 0.5s;
   z-index: 996;
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 #topbar.topbar-scrolled {
@@ -1085,6 +1085,90 @@ input[type="radio"]
 }
   /* --------------------------------------------- */
 
+  .cart {
+    display: flex;
+    display: -webkit-flex;
+    margin-left: 64px;
+    position: relative;
+    z-index: 2;
+}
+.cart-info table {
+  font-size: 14px;
+  color: #077915;
+  text-align: right;
+}
+.cart-info table td {
+  padding: 0 4px;
+  line-height: 16px;
+}
+.cart-icon {
+  margin-left: 16px;
+  z-index: 2;
+  position: relative;
+}
+.cart-preview.active {
+  z-index: 2;
+  display: block;
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 360px;
+  height: 388px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+}
+.cart-preview {
+  display: none;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.cart-preview:after, .cart-preview:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+.cart-preview:before {
+  top: -9px;
+  right: 8px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ccc;
+}
+
+.cart-preview:after {
+  top: -7px;
+  right: 9px;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #fff;
+}
+.cart-preview:after, .cart-preview:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+.action-block {
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  padding: 16px;
+  width: 100%;
+}
+.action-block button.disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+.action-block button {
+  background: #fc7710;
+  display: block;
+  width: 100%;
+}
+
 
   /* ----------------- media Query css-------------- */
 
@@ -1109,3 +1193,146 @@ input[type="radio"]
     }
 
     }
+
+
+/* ------------------------------ */
+/* 
+.lighter-text {
+  color: var(--light-text);
+}
+
+.main-color-text {
+  color: var(--main-color);
+}
+
+nav {
+  padding: 20px 0 40px 0;
+  background: #F8F8F8;
+  font-size: 16px;
+} */
+
+/* nav .navbar-left {
+  float: left;
+}
+
+nav .navbar-right {
+  float: right;
+}
+
+nav ul li {
+  display: inline;
+  padding-left: 20px;
+} */
+/* 
+nav ul li a {
+  color: #777777;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: black;
+} */
+
+
+.badge-cart {
+  background-color: var(--main-color);
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.shopping-cart-c {
+  background: white;
+  width: 320px;
+  position: fixed;
+  border-radius: 3px;
+  right: 40px;
+  top: 65px;
+  z-index: 999;
+}
+
+.shopping-cart-c .shopping-cart-header-c {
+  border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 15px;
+}
+
+.shopping-cart-c .shopping-cart-total-c {
+  float: right;
+}
+
+.shopping-cart-c .shopping-cart-items-c {
+  padding-top: 20px;
+}
+
+.shopping-cart-c .shopping-cart-items-c li {
+  margin-bottom: 18px;
+}
+
+.shopping-cart-c .shopping-cart-items-c img {
+  float: left;
+  margin-right: 12px;
+}
+
+.shopping-cart-c .shopping-cart-items-c .item-name {
+  display: block;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.shopping-cart-c .shopping-cart-items-c .item-price {
+  color: var(--main-color);
+  margin-right: 8px;
+}
+
+.shopping-cart-c .shopping-cart-items-c .item-quantity {
+  color: var(--light-text);
+}
+
+.shopping-cart-c:after {
+  bottom: 100%;
+  left: 89%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: white;
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+.cart-icon {
+  color: #515783;
+  font-size: 24px;
+  margin-right: 7px;
+  float: left;
+}
+
+.button-c {
+  background: var(--main-color);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 3px;
+  font-size: 16px;
+  margin: 25px 0 15px 0;
+}
+
+.button-c:hover {
+  background: lighten(var(--main-color), 3%);
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
