@@ -9,7 +9,7 @@ const Services = () => {
   return (
     <>
     <Navbar/>
-      <section className="container-fluid p-0">
+      <section className="container-fluid p-0 service-bg mt-5 pt-5">
         <div
           class="section-header text-center mx-auto mb-5 wow fadeInUp"
           data-wow-delay="0.1s"
@@ -108,7 +108,7 @@ const Services = () => {
           </div>
         </div>
       </section>
-      <div className="container-fluid srvc-consl-txt p-0">
+      <div className="container-fluid srvc-consl-txt p-0 service-bg">
         <div className="row justify-content-center py-5">
           <div className="col-lg-11">
             <h3>Dairy Consultation</h3>
