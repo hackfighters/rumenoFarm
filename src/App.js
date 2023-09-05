@@ -1,11 +1,9 @@
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import "./assets/css/mainPageCss/style.css";
-import "./assets/css/mainPageCss/bootstrap.min.css";
-// Bootstrap Bundle JS
+// import "./assets/css/mainPageCss/style.css";
+// import "./assets/css/mainPageCss/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-
 import Lang from './Component/language/index'
 import Home from "./Component/mainComponents/Home/index";
 import { Routes, Route } from "react-router-dom";
@@ -19,9 +17,6 @@ function App() {
 
 
 
-    /**
-   * Easy selector helper function
-   */
     const select = (el, all = false) => {
       el = el.trim()
       if (all) {
@@ -30,29 +25,12 @@ function App() {
         return document.querySelector(el)
       }
     }
-      /**
-   * Easy event listener function
-   */
-  // const on = (type, el, listener, all = false) => {
-  //   let selectEl = select(el, all)
-  //   if (selectEl) {
-  //     if (all) {
-  //       selectEl.forEach(e => e.addEventListener(type, listener))
-  //     } else {
-  //       selectEl.addEventListener(type, listener)
-  //     }
-  //   }
-  // }
-  /**
-   * Easy on scroll event listener 
-   */
+   
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
   }
 
-    /**
-   * Navbar links active state on scroll
-   */
+   
     let navbarlinks = select('#navbar .scrollto', true)
     const navbarlinksActive = () => {
       let position = window.scrollY + 200
@@ -70,24 +48,7 @@ function App() {
     window.addEventListener('load', navbarlinksActive)
     onscroll(document, navbarlinksActive)
   
-    /**
-     * Scrolls to an element with header offset
-     */
-    // const scrollto = (el) => {
-      
-    //   let header = select('#header')
-    //   let offset = header.offsetHeight
   
-    //   let elementPos = select(el).offsetTop
-    //   window.scrollTo({
-    //     top: elementPos - offset,
-    //     behavior: 'smooth'
-    //   })
-    // }
-  
-    /**
-     * Toggle .header-scrolled class to #header when page is scrolled
-     */
     let selectHeader = select('#header')
     let selectTopbar = select('#topbar')
     if (selectHeader) {
