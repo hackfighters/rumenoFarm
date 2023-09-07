@@ -7,6 +7,9 @@ import Prdimg3 from "../../../assets/img/prod-img/prdcom-3.jpg";
 import Prdimg4 from "../../../assets/img/prod-img/prdcom-4.jpg";
 import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
 import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 const PrdCard1 = ({name, price }) => {
   
@@ -152,7 +155,7 @@ const PrdCard1 = ({name, price }) => {
               <ul className="social-icons p-0">
                 <li>
                   <a href="#/"  onClick={() => setModalId(`modal${i}`)}>
-                    <i className="fa fa-eye fab"></i>
+                  <FontAwesomeIcon icon={faEye} style={{color: "green",}} />
                   </a>
                     <Modal
                   show={modalId === `modal${i}`}
@@ -193,12 +196,12 @@ const PrdCard1 = ({name, price }) => {
                 </li>
                 <li>
                   <a href="# ">
-                    <i className="fa-brands fa-youtube fab"></i>
+                  <FontAwesomeIcon icon={faYoutube} style={{color: "green",}} />
                   </a>
                 </li>
                 <li>
                   <a href="# " >
-                    <i className="fa fa-shopping-bag fab"></i>
+                  <FontAwesomeIcon icon={faCartShopping}  style={{color: "green",}}/>
                   </a>
                  
                 </li>

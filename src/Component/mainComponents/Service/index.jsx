@@ -8,22 +8,20 @@ import Navbar from "../Navbar";
 const Services = () => {
   return (
     <>
-    <Navbar/>
-      <section className="container-fluid p-0 service-bg mt-5 pt-5">
+      <Navbar />
+      <section className="container-fluid p-0 service-bg pt-5 overflow-hidden">
         <div
-          class="section-header text-center mx-auto mb-5 wow fadeInUp"
+          class="section-header text-center mx-auto mb-3 wow fadeInUp pt-5"
           data-wow-delay="0.1s"
           style={{ maxWidth: "500px" }}
         >
-          <h1 class="display-5 mb-3">Our Services</h1>
+          <h1 class="display-5 mb-3 pt-3">Our Services</h1>
         </div>
-        <div className="col-lg-12 mb-5 pb-3">
-          <h1 className="display-5  py-2 px-4 service-head">
-            Our Veterinary Team
-          </h1>
+        <div className="col-lg-12">
+          <h2 className="  py-2 px-4 service-head">Our Veterinary Team</h2>
         </div>
         <div className="container">
-          <div className="row my-5">
+          <div className="row my-3">
             <div className="col-lg-7">
               <h1 class="display-5 mb-4 mt-4">Dr. Hari Audh Tiwari</h1>
               <p class="mb-4 fs-5 text-danger">
@@ -46,7 +44,7 @@ const Services = () => {
               <img className="w-75" src={srvcimg1} alt="" />
             </div>
           </div>
-          <div className="row my-5">
+          <div className="row my-3">
             <div className="col-lg-5">
               <img className="w-75" src={srvcimg2} alt="" />
             </div>
@@ -70,10 +68,10 @@ const Services = () => {
             </div>
           </div>
         </div>
-        <div className="col-lg-12 mb-5 pb-3">
-          <h1 className="display-5  py-2 px-4 service-head">
+        <div className="col-lg-12 my-5">
+          <h2 className=" py-2 px-4 service-head">
             Our Consulting Team Members
-          </h1>
+          </h2>
         </div>
 
         <div className="container">
@@ -108,8 +106,8 @@ const Services = () => {
           </div>
         </div>
       </section>
-      <div className="container-fluid srvc-consl-txt p-0 service-bg">
-        <div className="row justify-content-center py-5">
+      <div className="container-fluid srvc-consl-txt p-0 service-bg overflow-hidden">
+        <div className="row justify-content-center py-4">
           <div className="col-lg-11">
             <h3>Dairy Consultation</h3>
             <p>
@@ -145,8 +143,7 @@ const Services = () => {
               following management consultations.{" "}
             </p>
 
-            <div className="d-flex justify-content-between"> 
-              <div>
+              <div className="d-flex justify-content-center">
               <ul>
                 <li>Business Road Map</li>
                 <li>Business Model</li>
@@ -158,9 +155,8 @@ const Services = () => {
                 <li>Health Management</li>
                 <li>Feed Planning</li>
               </ul>
-              </div>
-             <div>
-             <ul>
+
+              <ul>
                 <li>Nutrition Management</li>
                 <li>Products Quality Management</li>
                 <li>Flock Management</li>
@@ -171,8 +167,6 @@ const Services = () => {
                 <li>BioSecurity Management</li>
                 <li>Risk Management</li>
               </ul>
-             </div>
-             <div>
 
               <ul>
                 <li>Integrated Farming Management</li>
@@ -183,35 +177,67 @@ const Services = () => {
                 <li>Farm Data Management</li>
                 <li>IT Enable Services</li>
               </ul>
-             </div>
-            </div>
+              </div>
           </div>
         </div>
-        <div className="col-lg-12 mb-5 pb-3">
-          <h1 className="display-5  py-2 px-4 service-head">
-          Business Start-up Support
-          </h1>
+        <div className="col-lg-12 mb-3">
+          <h2 className=" py-2 px-4  service-head">Business Start-up Support</h2>
         </div>
         <div className="row justify-content-center">
-            <div className="col-lg-11">
-                <p>
-                Livestock farming is not new in this era it has been in prevalence since ages however the new era Livestock farming is based on strong scientific methods, innovative farming techniques, management, analyzing and calculation methods. livestock farming business in India is very promising. Let’s dig deep and find out how you will start when you are a complete beginner in livestock farming. Besides, A proper raising technique can save your time and money. 
-
-                </p>
-                <p>As with any livestock farming business, you must have a proper business plan in your hand. You must decide the breed, with how many animals you will start, accommodation, feeding, health issues, etc. Accordingly, you will need to get the financial calculations with ROI. Return on investment is the most important factor because on that basis you will need to assess the financial investment. </p>
-                <p>Starting up a new business is not easy without having any expert's support. It is full of risk in the competitive market. So this is therefore, it is advised to take the support from us we already working on the advance technology. ZamZam Ruminant Farmtech has a team of great experienced professional who are expert in the ruminant livestock farming for many many years. Our main aim is to bring the profit for the new start up by helping to organize the Farming management by sharing farming techniques, business model, Business Income and Outcome, Marketing, ROI etc.  </p>
-                <p>You must have proper skill and knowledge about livestock farming, before starting the business. If you are not aware of the skills, it is advised to contact us for training. </p>
-                <h5>We generally conduct training sessions and workshops for the following small business entrepreneurs.</h5>
-                <ul>
-                    <li>Goat Farming </li>
-                    <li>Sheep Farming</li>
-                    <li>Cattle Dairy Farming</li>
-                </ul>
-                <p>Please contact us by filling up the below given form so that one of our expert will give you a call to understand your need in detail.</p>
-            </div>
+          <div className="col-lg-11">
+            <p>
+              Livestock farming is not new in this era it has been in prevalence
+              since ages however the new era Livestock farming is based on
+              strong scientific methods, innovative farming techniques,
+              management, analyzing and calculation methods. livestock farming
+              business in India is very promising. Let’s dig deep and find out
+              how you will start when you are a complete beginner in livestock
+              farming. Besides, A proper raising technique can save your time
+              and money.
+            </p>
+            <p>
+              As with any livestock farming business, you must have a proper
+              business plan in your hand. You must decide the breed, with how
+              many animals you will start, accommodation, feeding, health
+              issues, etc. Accordingly, you will need to get the financial
+              calculations with ROI. Return on investment is the most important
+              factor because on that basis you will need to assess the financial
+              investment.{" "}
+            </p>
+            <p>
+              Starting up a new business is not easy without having any expert's
+              support. It is full of risk in the competitive market. So this is
+              therefore, it is advised to take the support from us we already
+              working on the advance technology. ZamZam Ruminant Farmtech has a
+              team of great experienced professional who are expert in the
+              ruminant livestock farming for many many years. Our main aim is to
+              bring the profit for the new start up by helping to organize the
+              Farming management by sharing farming techniques, business model,
+              Business Income and Outcome, Marketing, ROI etc.{" "}
+            </p>
+            <p>
+              You must have proper skill and knowledge about livestock farming,
+              before starting the business. If you are not aware of the skills,
+              it is advised to contact us for training.{" "}
+            </p>
+            <h5>
+              We generally conduct training sessions and workshops for the
+              following small business entrepreneurs.
+            </h5>
+            <ul>
+              <li>Goat Farming </li>
+              <li>Sheep Farming</li>
+              <li>Cattle Dairy Farming</li>
+            </ul>
+            <p>
+              Please contact us by filling up the below given form so that one
+              of our expert will give you a call to understand your need in
+              detail.
+            </p>
+          </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

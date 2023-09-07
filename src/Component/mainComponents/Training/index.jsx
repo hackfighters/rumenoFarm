@@ -3,7 +3,7 @@ import React from "react";
 const Training = () => {
   return (
     <>
-      <section class="py-5 header">
+      <section id="training" class="py-5 sect-training header">
         <div class="container py-4">
           <div class="row">
             <div class="col-md-3">

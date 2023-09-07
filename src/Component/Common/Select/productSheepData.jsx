@@ -1,5 +1,8 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 
 import Prdimg1 from "../../../assets/img/prod-img/prdcom-1.jpg";
@@ -194,7 +197,7 @@ const PrdCard3 = () => {
               <ul className="social-icons p-0">
                 <li>
                   <a href="#/"  onClick={() => setModalId(`modal${i}`)}>
-                    <i className="fa fa-eye fab"></i>
+                  <FontAwesomeIcon icon={faEye} style={{color: "green",}} />
                   </a>
                     <Modal
                   show={modalId === `modal${i}`}
@@ -234,14 +237,15 @@ const PrdCard3 = () => {
                 </Modal>
                 </li>
                 <li>
-                  <a href="#/">
-                    <i className="fa-brands fa-youtube fab"></i>
+                  <a href="# ">
+                  <FontAwesomeIcon icon={faYoutube} style={{color: "green",}} />
                   </a>
                 </li>
                 <li>
-                  <a href="#/">
-                    <i className="fa fa-shopping-bag fab"></i>
+                  <a href="# " >
+                  <FontAwesomeIcon icon={faCartShopping}  style={{color: "green",}}/>
                   </a>
+                 
                 </li>
               </ul>
 
