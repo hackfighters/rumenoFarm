@@ -10,8 +10,6 @@ import { useTranslation } from "react-i18next";
 import Footer from "../Footer";
 import Training from "../Training";
 
-
-
 const Home = () => {
 
   const { t } = useTranslation();
@@ -39,6 +37,8 @@ const Home = () => {
                   id="header-carousel"
                   class="carousel slide"
                   data-bs-ride="carousel"
+                  data-ride="carousel" 
+                  data-interval="50"
                 >
                   <div className="carousel-inner">
                     <div className="carousel-item active">
@@ -82,6 +82,7 @@ const Home = () => {
         </div>
       </div>
       <About />
+      {/* <ProductPage/> */}
       <Products/>
       <Training/>
       <Footer/>

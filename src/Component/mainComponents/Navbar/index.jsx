@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../assets/img/lv-bgr.png";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
+
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -23,7 +27,7 @@ const Navbar = () => {
 
     const loginButton = document.getElementById("login");
     loginButton.addEventListener("click", handleLoginToggle);
-    
+
     const adminButton = document.getElementById("admin");
     adminButton.addEventListener("click", handleadminToggle);
 
@@ -55,31 +59,31 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container sect-topbar position-absolute">
         <div className="row">
           <div id="topbar" className="col-sm-12 d-flex align-items-center ">
             <div className="container">
               <div className="contact-info row">
                 <div className="col-sm-4 d-flex cnt align-items-center">
-                  <i className="fa-solid fa-location-dot mx-2"></i>
+                <FontAwesomeIcon icon={faLocationDot} className="me-2" style={{color: "#f5f5f5",}} />
                   <span className="text-white">
                     598 Lala Mahaveer Prasad Rd, Sadar Bazar, Lucknow, Uttar
                     Pradesh 226002
                   </span>
                 </div>
                 <div className="col-sm-3 d-flex cnt align-items-center">
-                  <i className="fa-solid fa-envelope mx-2"></i>
+                <FontAwesomeIcon icon={faEnvelope} className="me-2" style={{color: "#f0f0f0",}} />
                   <span className="text-white">
                     {" "}
                     rumeno.farmotech@gamil.com
                   </span>
                 </div>
                 <div className="col-sm-3 d-flex cnt align-items-center">
-                  <i className="fa-regular fa-clock mx-2"></i>
+                <FontAwesomeIcon icon={faClock} className="me-2" style={{color: "#fafcff",}} />
                   <span className="text-white  ">Time 9:00am - 8:00pm</span>
                 </div>
                 <div className="col-sm-2 d-flex cnt align-items-center">
-                  <i className="fa-solid fa-phone mx-2"></i>
+                <FontAwesomeIcon icon={faPhone} className="me-2" style={{color: "#f1f4f8",}} />
                   <span className="text-white  ">+91 7355043892</span>
                 </div>
               </div>
@@ -114,9 +118,9 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="#/">
+                <Link className="nav-link text-light" to="/products">
                     Products
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/services" className="nav-link text-light">
@@ -124,7 +128,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="#/">
+                  <a className="nav-link text-light" href="#training" >
                     Training
                   </a>
                 </li>
@@ -141,7 +145,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <a href="#/" id="login">
-                    <i className="fs-5 fa fa-shopping-cart"></i>
+                  <FontAwesomeIcon icon={faCartShopping} style={{color: "#f0f2f5",}} />
                     <span className="badge-cart">3</span>
                   </a>
                 </li>
@@ -154,7 +158,7 @@ const Navbar = () => {
         <div className="container-cart ">
           <div className="shopping-cart-c login pt-2 pb-4 px-3">
             <div class="mb-2 d-flex justify-content-end">
-              <button class="btn close-button btn-primary" onClick={closeCart}>
+              <button class="btn close-button btn-light" onClick={closeCart}>
                 X
               </button>
             </div>
@@ -204,7 +208,7 @@ const Navbar = () => {
         <div className="container-cart ">
           <div className="shopping-cart-c cartdetail pt-2 pb-4 px-3">
             <div class="mb-2 d-flex justify-content-end">
-              <button class="btn close-button btn-primary" onClick={closeLogin}>
+              <button class="btn close-button btn-light" onClick={closeLogin}>
                 X
               </button>
             </div>
@@ -230,42 +234,46 @@ const Navbar = () => {
       )}
       {isadminOpen && (
         <div className="container-cart ">
-        <div className="shopping-cart-c cartadmin pt-2 pb-4 px-3">
-          <div class="mb-2 d-flex justify-content-end">
-            <button class="btn close-button btn-primary" onClick={closeadmin}>
-              X
-            </button>
-          </div>
-          <div className="shopping-cart-header-c border-0">
-            <div className="row">
-              <form>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">User Name</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter Username"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Password"
-                  />
-                </div>
-                <button type="submit" class="btn btn-primary">
-                  Submit
-                </button>
-              </form>
+          <div className="shopping-cart-c cartadmin pt-2 pb-4 px-3">
+            <div class="mb-2 d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn close-button btn-light"
+                onClick={closeadmin}
+              >
+                X
+              </button>
+            </div>
+            <div className="shopping-cart-header-c border-0">
+              <div className="row">
+                <form>
+                  <div class="form-group mb-2">
+                    <label for="exampleInputEmail1">User Name</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter Username"
+                    />
+                  </div>
+                  <div class="form-group mb-2">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Password"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-2">
+                    Submit
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       )}
 
       {/* <!-- Modal --> */}
