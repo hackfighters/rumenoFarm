@@ -9,7 +9,7 @@ import Home from "./Component/mainComponents/Home/index";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Services from "./Component/mainComponents/Service";
-import ProductPage from "./Component/mainComponents/Products/product";
+import ProductPage from "./Component/mainComponents/Products/index";
 
 function App() {
    useEffect(() => {
@@ -71,6 +71,7 @@ function App() {
     }
 
   }, []);
+  
   return (
     <>
      

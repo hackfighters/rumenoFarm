@@ -5,15 +5,17 @@ import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 import Navbar from "../Navbar/index";
 import About from "../About";
-import Products from "../Products/index";
 import { useTranslation } from "react-i18next";
 import Footer from "../Footer";
 import Training from "../Training";
+import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
+import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
+import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-
   const { t } = useTranslation();
- 
+
   return (
     <>
       <div className="home-backgroundColor overflow-hidden">
@@ -24,9 +26,7 @@ const Home = () => {
               <h1 className="text-light mt-5 caro-text pt-5">
                 {t("welcome")} <span className="caroText">{t("rumeno")}</span>
               </h1>
-              <p className="text-light h4">
-               {t("hometitle")}
-              </p>
+              <p className="text-light h4">{t("hometitle")}</p>
             </div>
             <div className="col-lg-6" data-aos="fade-left" data-aos-delay="50">
               <div
@@ -37,7 +37,7 @@ const Home = () => {
                   id="header-carousel"
                   class="carousel slide"
                   data-bs-ride="carousel"
-                  data-ride="carousel" 
+                  data-ride="carousel"
                   data-interval="50"
                 >
                   <div className="carousel-inner">
@@ -82,10 +82,83 @@ const Home = () => {
         </div>
       </div>
       <About />
-      {/* <ProductPage/> */}
-      <Products/>
-      <Training/>
-      <Footer/>
+      <div className="container">
+        <div className="text-center">
+          <h1 className="display-5 mb-3 mt-3">Our Products</h1>
+        </div>
+        <div className="row g-0 gx-5 align-items-end">
+          <div className="col-lg-6">
+            <div
+              className="section-header text-start mb-3 wow fadeInUp"
+              data-wow-delay="0.1s"
+              style={{ maxWidth: "500px" }}
+            >
+              <p>Rumeno Products for Animals</p>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-4">
+            <div className="card-box py-4">
+              <div className="card1">
+                <img src={Prdimg5} alt="Loading" className="card-img" />
+                <div className="card-body">
+                  <h1 className="card-title">NYC</h1>
+                  <p className="card-sub-title">new your city</p>
+                  <p className="card-sub-title">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum
+                    dolor sit amet.
+                  </p>
+                  <Link to="/products">
+                    <button className="card-btn">See More</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="card-box py-4">
+              <div className="card1">
+                <img src={Prdimg6} alt="Loading" className="card-img" />
+                <div className="card-body">
+                  <h1 className="card-title">NYC</h1>
+                  <p className="card-sub-title">new your city</p>
+                  <p className="card-sub-title">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum
+                    dolor sit amet.
+                  </p>
+                  <Link to="/products">
+                    <button className="card-btn">See More</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="card-box py-4">
+              <div className="card1">
+                <img src={Prdimg8} alt="Loading" className="card-img" />
+                <div className="card-body">
+                  <h1 className="card-title">NYC</h1>
+                  <p className="card-sub-title">new your city</p>
+                  <p className="card-sub-title">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum
+                    dolor sit amet.
+                  </p>
+                  <Link to="/products">
+                    <button className="card-btn">See More</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Training />
+      <Footer />
     </>
   );
 };

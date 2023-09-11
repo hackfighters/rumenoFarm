@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import logo from "../../../assets/img/lv-bgr.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
-
-const Navbar = () => {
+const Navbar = ({ cart , count }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isadminOpen, setIsadminOpen] = useState(false);
@@ -57,6 +60,12 @@ const Navbar = () => {
     setIsadminOpen(false);
   };
 
+  const [CART, setCART] = useState([]);
+
+  useEffect(() => {
+    setCART(cart);
+  }, [cart]);
+
   return (
     <>
       <div className="container sect-topbar position-absolute">
@@ -65,25 +74,38 @@ const Navbar = () => {
             <div className="container">
               <div className="contact-info row">
                 <div className="col-sm-4 d-flex cnt align-items-center">
-                <FontAwesomeIcon icon={faLocationDot} className="me-2" style={{color: "#f5f5f5",}} />
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    className="me-2"
+                    style={{ color: "#f5f5f5" }}
+                  />
                   <span className="text-white">
                     598 Lala Mahaveer Prasad Rd, Sadar Bazar, Lucknow, Uttar
                     Pradesh 226002
                   </span>
                 </div>
                 <div className="col-sm-3 d-flex cnt align-items-center">
-                <FontAwesomeIcon icon={faEnvelope} className="me-2" style={{color: "#f0f0f0",}} />
-                  <span className="text-white">
-                    {" "}
-                    rumeno.farmotech@gamil.com
-                  </span>
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="me-2"
+                    style={{ color: "#f0f0f0" }}
+                  />
+                  <span className="text-white">rumeno.farmotech@gamil.com</span>
                 </div>
                 <div className="col-sm-3 d-flex cnt align-items-center">
-                <FontAwesomeIcon icon={faClock} className="me-2" style={{color: "#fafcff",}} />
+                  <FontAwesomeIcon
+                    icon={faClock}
+                    className="me-2"
+                    style={{ color: "#fafcff" }}
+                  />
                   <span className="text-white  ">Time 9:00am - 8:00pm</span>
                 </div>
                 <div className="col-sm-2 d-flex cnt align-items-center">
-                <FontAwesomeIcon icon={faPhone} className="me-2" style={{color: "#f1f4f8",}} />
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    className="me-2"
+                    style={{ color: "#f1f4f8" }}
+                  />
                   <span className="text-white  ">+91 7355043892</span>
                 </div>
               </div>
@@ -118,7 +140,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                <Link className="nav-link text-light" to="/products">
+                  <Link className="nav-link text-light" to="/products">
                     Products
                   </Link>
                 </li>
@@ -128,7 +150,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="#training" >
+                  <a className="nav-link text-light" href="#training">
                     Training
                   </a>
                 </li>
@@ -145,8 +167,11 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <a href="#/" id="login">
-                  <FontAwesomeIcon icon={faCartShopping} style={{color: "#f0f2f5",}} />
-                    <span className="badge-cart">3</span>
+                    <FontAwesomeIcon
+                      icon={faCartShopping}
+                      style={{ color: "#f0f2f5" }}
+                    />
+                    <span className="badge-cart">{count}</span>
                   </a>
                 </li>
               </ul>
@@ -214,18 +239,22 @@ const Navbar = () => {
             </div>
             <div className="shopping-cart-header-c border p-2 d-flex align-itmes-center justify-content-between">
               <i className="fa fa-shopping-cart cart-icon"></i>
-              <span className="badge-cart">3</span>
+              <span className="badge-cart"></span>
               <div className="shopping-cart-total-c">
                 <span className="lighter-text">Total:</span>
                 <span className="main-color-text">$2,229.97</span>
               </div>
             </div>
-            <ul className="shopping-cart-items-c p-3 list-unstyled">
-              <li className="clearfix">product 1 </li>
-              <li className="clearfix">product 2 </li>
-              <li className="clearfix">product 3 </li>
-              <li className="clearfix">product 4 </li>
-            </ul>
+            {CART?.map((cartItem, cartindex) => {
+              return (
+                <div>
+                  <div>
+                    <img src={cartItem.img} width={40} />
+                  </div>
+                  <div>{cartItem.name}</div>
+                </div>
+              );
+            })}
             <a href="#/" type="button" className="btn btn-primary button w-100">
               Checkout
             </a>

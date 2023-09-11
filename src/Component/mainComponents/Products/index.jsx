@@ -1,83 +1,117 @@
-import React from "react";
-import PrdCard1 from "../../Common/Select/productCowData";
-import PrdCard2 from "../../Common/Select/productGoatData";
-import PrdCard3 from "../../Common/Select/productSheepData";
+import React, { useState } from "react";
+import Navbar from "../Navbar";
+import Prdimg1 from "../../../assets/img/prod-img/prdcom-1.jpg";
+import Prdimg2 from "../../../assets/img/prod-img/prdcom-2.jpg";
+import Prdimg3 from "../../../assets/img/prod-img/prdcom-3.jpg";
+import Prdimg4 from "../../../assets/img/prod-img/prdcom-4.jpg";
+import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
+import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
+import Prdimg7 from "../../../assets/img/prod-img/prdGS-1.jpg";
+import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
 
-const products = () => {
+
+const Products = () => {
+  const data = [
+    {
+      id:1,
+      name: "Tanaav Mukti",
+      price: 2000,
+      img: Prdimg1,
+    },
+    {
+      id:2,
+      name: "Neonato",
+      price: 2000,
+      img: Prdimg2,
+    },
+    {
+      id:3,
+      name: "Energico",
+      price: 2000,
+      img: Prdimg3,
+    },
+    {
+      id:4,
+      name: "Digesto Plus",
+      price: 2000,
+      img: Prdimg4,
+    },
+    {
+      id:5,
+      name: "Micro-Flora",
+      price: 2000,
+      img: Prdimg5,
+    },
+    {
+      id:6,
+      name: "Rumenovita",
+      price: 2000,
+      img: Prdimg6,
+    },
+    {
+      id:7,
+      name: "Feeding Nipple",
+      price: 2000,
+      img: Prdimg7,
+    },
+    {
+      id:8,
+      name: "Pro-Lac",
+      price: 2000,
+      img: Prdimg8,
+    },
+  ];
+
+  const [cart, setCart] = useState([])
+
+  console.log(cart)
+
+  const addToCart = (data) => {
+    setCart([...cart, { ...data, quantity: 1 }])
+  }
+
+
   return (
     <>
-      <div className="container-xxl py-5" id="myTab" role="tablist">
-        <div className="container">
-          <div className="mb-5 text-center">
+      <div>
+        <Navbar cart={cart} count={cart.length}/>
+        <div className="container p-11">
+          <div className="text-center">
             <h1 className="display-5 mb-3">Our Products</h1>
           </div>
-          <div className="row g-0 gx-5 align-items-end">
-            <div className="col-lg-6">
-              <div
-                className="section-header text-start mb-5 wow fadeInUp"
-                data-wow-delay="0.1s"
-                style={{ maxWidth: "500px" }}
-              >
-                <p>Rumeno Products for Animals</p>
-              </div>
-            </div>
-            <div
-              className="col-lg-6 text-start text-lg-end wow slideInRight"
-              data-wow-delay="0.1s"
-            >
-              <ul
-                className="nav nav-pills d-inline-flex justify-content-end mb-5"
-                id="home-tab"
-              >
-                <li className="nav-item me-2" id="home-tab">
-                  <a
-                    className="btn btn-outline-success
-                     border-2 active w-100"
-                    data-bs-toggle="pill"
-                    href="#tab-1"
-                  >
-                    Cow
-                  </a>
-                </li>
-                <li className="nav-item me-2" id="profile-tab">
-                  <a
-                    className="btn btn-outline-success
-                     border-2 w-100"
-                    data-bs-toggle="pill"
-                    href="#tab-2"
-                  >
-                    Goat
-                  </a>
-                </li>
-                <li className="nav-item me-0" id="contact-tab">
-                  <a
-                    className="btn btn-outline-success
-                     border-2 w-100"
-                    data-bs-toggle="pill"
-                    href="#tab-3"
-                  >
-                    Sheep
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="tab-content">
-            <div id="tab-1" className="tab-pane fade show p-0 active">
-              <div className="row g-4">
-                <PrdCard1 />
-              </div>
-            </div>
-            <div id="tab-2" className="tab-pane fade show p-0">
-              <div className="row g-4">
-                <PrdCard2 />
-              </div>
-            </div>
-            <div id="tab-3" className="tab-pane fade show p-0">
-              <div className="row g-4">
-                <PrdCard3 />
-              </div>
-            </div>
+          <div className="row">
+            {data.map((user, i) => {
+              return (
+                <>
+                  <div className="col-lg-4">
+                    <div className="card-box py-4">
+                      <div className="card1">
+                        <img
+                          src={user.img}
+                          alt="Loading"
+                          className="card-img"
+                        />
+                        <div className="card-body-products">
+                          <h1 className="card-title-products">{user.name}</h1>
+                          <p className="card-sub-title-products">Rs. {user.price} /-</p>
+                          <div className="d-flex justify-content-between pt-3">
+                            <div>
+                              <button className="card-btn">View button</button>
+                            </div>
+                            <div>
+                              <button className="card-btn" onClick={() => addToCart(user)}>Add to Card</button>
+                            </div>
+                          </div>
+                          <div className="pt-3">
+                            <button className="card-btn">You tube</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -85,4 +119,4 @@ const products = () => {
   );
 };
 
-export default products;
+export default Products;
