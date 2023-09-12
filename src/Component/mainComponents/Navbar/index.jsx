@@ -19,22 +19,6 @@ const Navbar = ({ cart, count }) => {
   const [signup, setSignup] = useState(false);
   const [CART, setCART] = useState([]);
 
-  const [users, setUsers] = useState([])
-
-  const fetchUserData = () => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setUsers(data)
-      })
-  }
-
-  useEffect(() => {
-    fetchUserData()
-  }, [])
-
 
   useEffect(() => {
     setCART(cart);
@@ -42,15 +26,6 @@ const Navbar = ({ cart, count }) => {
 
   return (
     <>
-    <div>
-      {users.length > 0 && (
-        <ul>
-          {users.map(user => (
-            <li key={user.id}>{user.name}</li>
-          ))}
-        </ul>
-      )}
-    </div>
       <div className="container sect-topbar position-absolute">
         <div className="row">
           <div id="topbar" className="col-sm-12 d-flex align-items-center ">
@@ -73,7 +48,7 @@ const Navbar = ({ cart, count }) => {
                     className="me-2"
                     style={{ color: "#f0f0f0" }}
                   />
-                  <span className="text-white">rumeno.farmotech@gamil.com</span>
+                  <span className="text-white">rumeno.farmotech@gmail.com</span>
                 </div>
                 <div className="col-sm-3 d-flex cnt align-items-center">
                   <FontAwesomeIcon
@@ -118,29 +93,29 @@ const Navbar = ({ cart, count }) => {
             >
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
                 <li className="nav-item active">
-                  <Link className="nav-link text-light" to="/home">
+                  <Link className="nav-link text-light px-0" to="/home">
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-light" to="/products">
+                  <Link className="nav-link text-light px-0" to="/products">
                     Products
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/services" className="nav-link text-light">
+                  <Link to="/services" className="nav-link text-light px-0">
                     Services
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="#training">
+                  <Link className="nav-link text-light px-0" href="#training">
                     Training
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-light" href="#/">
+                  <Link className="nav-link text-light px-0" href="#/">
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
@@ -149,13 +124,13 @@ const Navbar = ({ cart, count }) => {
                   <button className="btn btn-success w-100 my-2" onClick={() => setLoginShow(true)}>Login</button>
                 </li>
                 <li className="nav-item">
-                  <a href="#/" id="login" onClick={() => setLgShow(true)}>
+                  <Link href="#/" id="login" className="px-0" onClick={() => setLgShow(true)}>
                     <FontAwesomeIcon
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
                     />
                     <span className="badge-cart">{count}</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -204,7 +179,7 @@ const Navbar = ({ cart, count }) => {
             <h4 className="mx-2">$ 7000</h4>
           </div>
         </div>
-        <div className="justify-content-end d-flex mx-5 cart-model">
+        <div className="justify-content-end d-flex px-5 cart-model">
           <button type="button" className="btn btn-success my-3">PAYMENT</button>
         </div>
       </Modal>

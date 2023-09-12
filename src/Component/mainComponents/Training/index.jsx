@@ -24,7 +24,7 @@ const Training = () => {
                 >
                   <i class="fa fa-user-circle-o mr-2"></i>
                   <span class="font-weight-bold small text-uppercase">
-                    Foat-Farming-Training
+                    Goat-Farming-Training
                   </span>
                 </a>
 

@@ -8,14 +8,14 @@ import Navbar from "../Navbar";
 const Services = () => {
   return (
     <>
-      <Navbar />
+      <Navbar className="text-dark" />
       <section className="container-fluid p-0 service-bg pt-5 overflow-hidden">
         <div
           class="section-header text-center mx-auto mb-3 wow fadeInUp pt-5"
           data-wow-delay="0.1s"
           style={{ maxWidth: "500px" }}
         >
-          <h1 class="display-5 mb-3 pt-3">Our Services</h1>
+          <h1 class="display-5 mb-3 pt-5 mt-3">Our Services</h1>
         </div>
         <div className="col-lg-12">
           <h2 className="  py-2 px-4 service-head">Our Veterinary Team</h2>
@@ -45,7 +45,7 @@ const Services = () => {
             </div>
           </div>
           <div className="row my-3">
-            <div className="col-lg-5">
+            <div className="col-lg-5 text-center">
               <img className="w-75" src={srvcimg2} alt="" />
             </div>
             <div className="col-lg-7">
@@ -109,8 +109,8 @@ const Services = () => {
       <div className="container-fluid srvc-consl-txt p-0 service-bg overflow-hidden">
         <div className="row justify-content-center py-4">
           <div className="col-lg-11">
-            <h3>Dairy Consultation</h3>
-            <p>
+            <h3 className="px-2">Dairy Consultation</h3>
+            <p className="px-2">
               Ruminant Herd Management is an important factor for Dairy farms
               that maintain long-term high production. They need to successfully
               manage several key factors: nutrition, reproduction, comfort, and
@@ -120,8 +120,8 @@ const Services = () => {
               utilization of the latest dairy farm training and technology make
               it possible.
             </p>
-            <h3>Goat and Sheep Consultation</h3>
-            <p>
+            <h3 className="px-2"> Goat and Sheep Consultation</h3>
+            <p className="px-2">
               Goat is a multi-use animal which is commonly reared for the meat
               (chevon). In the different parts of the world, goat is raised for
               the meat, milk, wool and leather. Goat is also called “the poor
@@ -143,7 +143,8 @@ const Services = () => {
               following management consultations.{" "}
             </p>
 
-              <div className="d-flex justify-content-center">
+              <div className="justify-content-center service-ul">
+              <div>
               <ul>
                 <li>Business Road Map</li>
                 <li>Business Model</li>
@@ -155,7 +156,9 @@ const Services = () => {
                 <li>Health Management</li>
                 <li>Feed Planning</li>
               </ul>
+              </div>
 
+              <div>
               <ul>
                 <li>Nutrition Management</li>
                 <li>Products Quality Management</li>
@@ -167,7 +170,9 @@ const Services = () => {
                 <li>BioSecurity Management</li>
                 <li>Risk Management</li>
               </ul>
+              </div>
 
+              <div>
               <ul>
                 <li>Integrated Farming Management</li>
                 <li>Manure Management</li>
@@ -178,6 +183,7 @@ const Services = () => {
                 <li>IT Enable Services</li>
               </ul>
               </div>
+              </div>
           </div>
         </div>
         <div className="col-lg-12 mb-3">
@@ -185,7 +191,7 @@ const Services = () => {
         </div>
         <div className="row justify-content-center">
           <div className="col-lg-11">
-            <p>
+            <p className="px-2">
               Livestock farming is not new in this era it has been in prevalence
               since ages however the new era Livestock farming is based on
               strong scientific methods, innovative farming techniques,
@@ -195,7 +201,7 @@ const Services = () => {
               farming. Besides, A proper raising technique can save your time
               and money.
             </p>
-            <p>
+            <p className="px-2">
               As with any livestock farming business, you must have a proper
               business plan in your hand. You must decide the breed, with how
               many animals you will start, accommodation, feeding, health
@@ -204,7 +210,7 @@ const Services = () => {
               factor because on that basis you will need to assess the financial
               investment.{" "}
             </p>
-            <p>
+            <p className="px-2">
               Starting up a new business is not easy without having any expert's
               support. It is full of risk in the competitive market. So this is
               therefore, it is advised to take the support from us we already
@@ -215,12 +221,12 @@ const Services = () => {
               Farming management by sharing farming techniques, business model,
               Business Income and Outcome, Marketing, ROI etc.{" "}
             </p>
-            <p>
+            <p className="px-2">
               You must have proper skill and knowledge about livestock farming,
               before starting the business. If you are not aware of the skills,
               it is advised to contact us for training.{" "}
             </p>
-            <h5>
+            <h5 className="px-2">
               We generally conduct training sessions and workshops for the
               following small business entrepreneurs.
             </h5>
@@ -229,7 +235,7 @@ const Services = () => {
               <li>Sheep Farming</li>
               <li>Cattle Dairy Farming</li>
             </ul>
-            <p>
+            <p  className="px-2">
               Please contact us by filling up the below given form so that one
               of our expert will give you a call to understand your need in
               detail.

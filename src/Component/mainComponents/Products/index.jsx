@@ -76,7 +76,7 @@ const Products = () => {
       <div>
         <Navbar cart={cart} count={cart.length}/>
         <div className="container p-11">
-          <div className="text-center">
+          <div className="text-center pt-4">
             <h1 className="display-5 mb-3">Our Products</h1>
           </div>
           <div className="row">

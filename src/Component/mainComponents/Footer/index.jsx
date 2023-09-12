@@ -25,7 +25,7 @@ const Footer = () => {
               id="arouselExampleSlidesOnly"
               class="carousel slide d-flex justify-content-center align-items-center"
               data-ride="carousel"
-              data-interval="1000"
+              data-interval="50"
             >
               <div class="carousel-inner">
                 <div class="carousel-item justify-content-center h-100  active">
@@ -90,10 +90,10 @@ const Footer = () => {
               </li>
               <li>
               <FontAwesomeIcon icon={faEnvelope} className="me-2" style={{color: "white",}} />
-                rumeno.farmotech@gamil.com
+                rumeno.farmotech@gmail.com
               </li>
               <li>
-                <FontAwesomeIcon icon={faPhone} className="me-2" style={{color:"white"}}/>+91 73550438
+                <FontAwesomeIcon icon={faPhone} className="me-2" style={{color:"white"}}/>+91 7355043892
               </li>
             </ul>
           </div>

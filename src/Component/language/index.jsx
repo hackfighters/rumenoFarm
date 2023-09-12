@@ -43,7 +43,7 @@ const Lang = () => {
             <Select onChange={(e) => handleChangen(e)} />
               <div className="lang-link">
               <Link to="/home">
-              <button className="btn-grad-bt">Sumit</button>
+              <button className="btn-grad-bt">Submit</button>
               </Link>
               </div>
               

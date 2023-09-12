@@ -1,5 +1,7 @@
 import React from "react";
 import '../../../../src/'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Select = (props) => {
   return (
@@ -15,13 +17,12 @@ const Select = (props) => {
         <div id="app-cover">
           <div id="select-box" onChange={props.onChange}>
             <input type="checkbox" id="options-view-button" />
-            <div id="select-button" class="brd d-flex align-items-center">
+            <div id="select-button" class="brd d-flex align-items-center justify-content-between">
               <div id="selected-value">
-                <span>Select a platform</span>
+                <span>Select a Language</span>
               </div>
-              <div id="chevrons">
-                <i class="fas fa-chevron-up"></i>
-                <i class="fas fa-chevron-down"></i>
+              <div>
+              <FontAwesomeIcon icon={faChevronDown} />
               </div>
             </div>
             <div id="options">

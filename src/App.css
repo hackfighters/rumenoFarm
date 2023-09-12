@@ -1218,7 +1218,14 @@ input[type="radio"] {
   .footer-img {
     width: 50% !important;
   }
+  .service-ul{
+    display: block !important;
+  }
 }
+.service-ul{
+  display: flex;
+}
+
 
 .badge-cart {
   background-color: var(--main-color);
@@ -1678,10 +1685,23 @@ body {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
+ .lang-box1{
+  justify-content: center ;
+  display: flex;
+ }
   .lang-img img {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: auto;
   }
+  .lang-box2 {
+    margin: 0 auto;
+  }
+  .lang-link {
+    position: absolute;
+    right: 100px;
+    bottom: 50px;
+    top: unset;
+}
 }
 
 .footer-header {

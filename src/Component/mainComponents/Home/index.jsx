@@ -17,12 +17,12 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <><section className="container-fluid overflow-hidden p-0">
       <div className="home-backgroundColor overflow-hidden">
         <Navbar />
         <div className="container  pt-5">
           <div className="row header-txt pt-5 mt-5">
-            <div className="col-lg-6" data-aos="fade-right">
+            <div className="col-lg-6 pt-5" data-aos="fade-right">
               <h1 className="text-light mt-5 caro-text pt-5">
                 {t("welcome")} <span className="caroText">{t("rumeno")}</span>
               </h1>
@@ -159,6 +159,7 @@ const Home = () => {
       </div>
       <Training />
       <Footer />
+      </section>
     </>
   );
 };
