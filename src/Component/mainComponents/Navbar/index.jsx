@@ -2,65 +2,39 @@ import React, { useEffect, useState } from "react";
 import logo from "../../../assets/img/lv-bgr.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from 'react-bootstrap/Modal';
 import {
   faCartShopping,
+  faCircleMinus,
+  faCirclePlus,
   faLocationDot,
   faPhone,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
-const Navbar = ({ cart , count }) => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isadminOpen, setIsadminOpen] = useState(false);
+const Navbar = ({ cart, count }) => {
+  const [lgShow, setLgShow] = useState(false);
+  const [LoginShow, setLoginShow] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const [CART, setCART] = useState([]);
+
+  const [users, setUsers] = useState([])
+
+  const fetchUserData = () => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setUsers(data)
+      })
+  }
 
   useEffect(() => {
-    const handleCartToggle = () => {
-      setIsCartOpen((prevIsCartOpen) => !prevIsCartOpen);
-    };
-    const handleLoginToggle = () => {
-      setIsLoginOpen((prevIsLoginOpen) => !prevIsLoginOpen);
-    };
-    const handleadminToggle = () => {
-      setIsadminOpen((prevIsadminOpen) => !prevIsadminOpen);
-    };
+    fetchUserData()
+  }, [])
 
-    const cartButton = document.getElementById("cart");
-    cartButton.addEventListener("click", handleCartToggle);
-
-    const loginButton = document.getElementById("login");
-    loginButton.addEventListener("click", handleLoginToggle);
-
-    const adminButton = document.getElementById("admin");
-    adminButton.addEventListener("click", handleadminToggle);
-
-    const handleScroll = () => {
-      setIsCartOpen(false);
-      setIsLoginOpen(false);
-      setIsadminOpen(false);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      cartButton.removeEventListener("click", handleCartToggle);
-      loginButton.removeEventListener("click", handleLoginToggle);
-      adminButton.removeEventListener("click", handleadminToggle);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const closeCart = () => {
-    setIsCartOpen(false);
-  };
-  const closeLogin = () => {
-    setIsLoginOpen(false);
-  };
-  const closeadmin = () => {
-    setIsadminOpen(false);
-  };
-
-  const [CART, setCART] = useState([]);
 
   useEffect(() => {
     setCART(cart);
@@ -68,6 +42,15 @@ const Navbar = ({ cart , count }) => {
 
   return (
     <>
+    <div>
+      {users.length > 0 && (
+        <ul>
+          {users.map(user => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
       <div className="container sect-topbar position-absolute">
         <div className="row">
           <div id="topbar" className="col-sm-12 d-flex align-items-center ">
@@ -163,10 +146,10 @@ const Navbar = ({ cart , count }) => {
                   <button className="btn btn-success w-100 my-2">Admin</button>
                 </li>
                 <li className="nav-item" id="cart">
-                  <button className="btn btn-success w-100 my-2">Login</button>
+                  <button className="btn btn-success w-100 my-2" onClick={() => setLoginShow(true)}>Login</button>
                 </li>
                 <li className="nav-item">
-                  <a href="#/" id="login">
+                  <a href="#/" id="login" onClick={() => setLgShow(true)}>
                     <FontAwesomeIcon
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
@@ -179,214 +162,184 @@ const Navbar = ({ cart , count }) => {
           </div>
         </div>
       </div>
-      {isCartOpen && (
-        <div className="container-cart ">
-          <div className="shopping-cart-c login pt-2 pb-4 px-3">
-            <div class="mb-2 d-flex justify-content-end">
-              <button class="btn close-button btn-light" onClick={closeCart}>
-                X
-              </button>
-            </div>
-            <div className="shopping-cart-header-c border-0">
-              <div className="row">
-                <form>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">User Name</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter Username"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Submit
-                  </button>
-                  <div className="text-center mt-3">
-                    <h6>
-                      not have an account ?{" "}
-                      <Link
-                        data-toggle="modal"
-                        data-target="#exampleModalCenter"
-                      >
-                        Create Account
-                      </Link>
-                    </h6>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      {isLoginOpen && (
-        <div className="container-cart ">
-          <div className="shopping-cart-c cartdetail pt-2 pb-4 px-3">
-            <div class="mb-2 d-flex justify-content-end">
-              <button class="btn close-button btn-light" onClick={closeLogin}>
-                X
-              </button>
-            </div>
-            <div className="shopping-cart-header-c border p-2 d-flex align-itmes-center justify-content-between">
-              <i className="fa fa-shopping-cart cart-icon"></i>
-              <span className="badge-cart"></span>
-              <div className="shopping-cart-total-c">
-                <span className="lighter-text">Total:</span>
-                <span className="main-color-text">$2,229.97</span>
-              </div>
-            </div>
-            {CART?.map((cartItem, cartindex) => {
-              return (
-                <div>
-                  <div>
-                    <img src={cartItem.img} width={40} />
-                  </div>
-                  <div>{cartItem.name}</div>
-                </div>
-              );
-            })}
-            <a href="#/" type="button" className="btn btn-primary button w-100">
-              Checkout
-            </a>
-          </div>
-        </div>
-      )}
-      {isadminOpen && (
-        <div className="container-cart ">
-          <div className="shopping-cart-c cartadmin pt-2 pb-4 px-3">
-            <div class="mb-2 d-flex justify-content-end">
-              <button
-                type="button"
-                class="btn close-button btn-light"
-                onClick={closeadmin}
-              >
-                X
-              </button>
-            </div>
-            <div className="shopping-cart-header-c border-0">
-              <div className="row">
-                <form>
-                  <div class="form-group mb-2">
-                    <label for="exampleInputEmail1">User Name</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      aria-describedby="emailHelp"
-                      placeholder="Enter Username"
-                    />
-                  </div>
-                  <div class="form-group mb-2">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary mt-2">
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* <!-- Modal --> */}
-      <div
-        class="modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
+      {/* model-for-cart */}
+      <Modal className="cart-model-sect"
+        size="lg"
+        show={lgShow}
+        onHide={() => setLgShow(false)}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
       >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                Create Account
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">First Name</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter First Name"
-                  />
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-lg">
+            Shopping Cart
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="cart-model-body">
+          {CART?.map((cartItem, cartindex) => {
+            return (
+              <div className="row mb-4 cart-model">
+
+                <div className="col-sm-3 cart-model-img">
+                  <img className="mx-3" src={cartItem.img} alt="" />
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Mobile Number</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter Number"
-                  />
+                <div className="col-sm-3 d-flex align-items-center justify-content-center">
+                  <h4>{cartItem.name}</h4>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email Address</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter Email Address"
-                  />
+                <div className="col-sm-3  d-flex align-items-center justify-content-around ">
+                  <FontAwesomeIcon icon={faCirclePlus} type="button" className="text-primary h4 m-0" />
+                  <h6 className="m-0">7</h6>
+                  <FontAwesomeIcon icon={faCircleMinus} type="button" className="text-primary h4 m-0" />
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="exampleInputPassword1"
-                    placeholder="Password"
-                  />
+                <div className="col-sm-3 d-flex align-items-center justify-content-center ">
+                  <FontAwesomeIcon type="button" className="text-danger" icon={faTrash} />
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Submit
-              </button>
-            </div>
+              </div>
+            );
+          })}
+        </Modal.Body>
+        <div className="row border-top border-bottom justify-content-end mx-5 py-1">
+          <div className="col-sm-12 d-flex align-items-center justify-content-between">
+            <h4 className="mx-2">TOTAL</h4>
+            <h4 className="mx-2">$ 7000</h4>
           </div>
         </div>
-      </div>
+        <div className="justify-content-end d-flex mx-5 cart-model">
+          <button type="button" className="btn btn-success my-3">PAYMENT</button>
+        </div>
+      </Modal>
+      {/* model-for-login */}
+      <Modal className=""
+        size="lg"
+        show={LoginShow}
+        onHide={() => setLoginShow(false)}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body className="p-0">
+          <div className="container">
+
+
+
+            <div class="row">
+              <div class="col-lg-6 py-4">
+                <div class="">
+
+                  <div class="text-center">
+                    <img src={logo} className="w-25" alt="logo" />
+                    <h4 class="mt-1 mb-3 pb-1">RUMENO</h4>
+                  </div>
+
+                  <form>
+                    <p className="mb-3">Please login to your account</p>
+
+                    <div class="form-outline  mb-3">
+                      <label class="form-label mx-2" for="form2Example11">Username</label>
+                      <input type="email" id="form2Example11" class="form-control"
+                        placeholder="Phone number or email address" />
+                    </div>
+
+                    <div class="form-outline mb-3">
+                      <label class="form-label mx-2" for="form2Example22">Password</label>
+                      <input type="password" id="form2Example22" class="form-control"
+                        placeholder="Password" />
+                    </div>
+
+                    <div class="text-center pt-1  pb-1">
+                      <button class="btn btn-primary border-0 gradient-custom-2 mb-3 w-75" type="button">Log
+                        in</button>
+                      <a class="text-muted d-block mb-4" href="#!">Forgot password?</a>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 me-2">Don't have an account?</p>
+                      <button type="button" class="btn btn-outline-danger" onClick={() => setSignup(true)}>Create new</button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <div class="text-white text-center px-2">
+                  <h4 class="mb-4">WELCOME TO RUMENO</h4>
+                  <p class="small mb-0">Rumeno Farmotech is a nutrition and feed supplement technologies company offers a wide range of products, including Probiotics, milk replacer, Macro & Micro Minerals, Multi Vitamins, Enzymes, Amino Acids, feed additives, premixes, concentrates, and specialty products for livestock, poultry, and aquaculture.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </Modal.Body>
+
+      </Modal>
+      {/* sign up  */}
+      <Modal className="p-3 " 
+        size="lg"
+        show={signup}
+        onHide={() => setSignup(false)}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-lg">
+            Sign Up
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="model-registr">
+          <form className="container">
+            <div class="form-row row d-flex">
+              <div class="form-group col-lg-6 my-2">
+                <label className="my-2" for="">First Name</label>
+                <input type="text" class="form-control" id="" placeholder="First Name" />
+              </div>
+              <div class="form-group col-lg-6 my-2">
+                <label className="my-2" for="">Last Name</label>
+                <input type="text" class="form-control" id="" placeholder="Last Name" />
+              </div>
+              <div class="form-group col-lg-12 my-2">
+                <label className="my-2" for="">Mobile No</label>
+                <input type="text" class="form-control" id="" placeholder="Mobile No" />
+              </div>
+              <div class="form-group col-lg-12 my-2">
+                <label className="my-2" for=""> Email</label>
+                <input type="email" class="form-control" id="" placeholder="Email" />
+              </div>
+              <div class="form-group col-lg-12 my-2">
+                <label className="my-2" for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="" placeholder="1234 Main St" />
+              </div>
+              <div class="form-group col-lg-12 my-2">
+                <label className="my-2" for="inputAddress">Password</label>
+                <input type="password" class="form-control" id="" placeholder="password" />
+              </div>
+            </div>
+            <div className="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary my-4">Sign in</button>
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
+      {/* Admin MOdel */}
+      <Modal className="p-3 " 
+        size="lg"
+        show={signup}
+        onHide={() => setSignup(false)}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-lg">
+           
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="">
+          
+        </Modal.Body>
+      </Modal>
+
     </>
   );
 };

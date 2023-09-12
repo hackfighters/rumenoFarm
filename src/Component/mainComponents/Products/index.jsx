@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar";
 import Prdimg1 from "../../../assets/img/prod-img/prdcom-1.jpg";
-import Prdimg2 from "../../../assets/img/prod-img/prdcom-2.jpg";
+import Prdimg2 from "../../../assets/img/prod-img/prdcom-2.png";
 import Prdimg3 from "../../../assets/img/prod-img/prdcom-3.jpg";
 import Prdimg4 from "../../../assets/img/prod-img/prdcom-4.jpg";
 import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";

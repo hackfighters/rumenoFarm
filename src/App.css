@@ -2127,3 +2127,26 @@ html {
 .card-sub-title-products{
   font-size: 25px;
 }
+
+/* ----------- Prd Model Css----------------- */
+.cart-model-sect .modal-content{
+height: 650px !important;
+border-radius: 25px;
+}
+.cart-model-body{
+  height: 650px;
+  overflow-y: scroll;
+}
+.cart-model-img img {
+  width: 125px;
+}
+.cart-model button{
+  border-radius: 25px;
+}
+
+.gradient-custom-2 {
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  } 
+  .model-registr{
+    background-image: linear-gradient(333deg, #81ca6b 0%, #dbffd0 74%);
+      }
