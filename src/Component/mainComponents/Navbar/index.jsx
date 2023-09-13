@@ -12,13 +12,24 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import MyModal from "../../Common/Select/signLoginModal";
 
 const Navbar = ({ cart, count }) => {
   const [lgShow, setLgShow] = useState(false);
-  const [LoginShow, setLoginShow] = useState(false);
+  // const [LoginShow, setLoginShow] = useState(false);
   const [signup, setSignup] = useState(false);
   const [CART, setCART] = useState([]);
 
+
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     setCART(cart);
@@ -121,7 +132,8 @@ const Navbar = ({ cart, count }) => {
                   <button className="btn btn-success w-100 my-2">Admin</button>
                 </li>
                 <li className="nav-item" id="cart">
-                  <button className="btn btn-success w-100 my-2" onClick={() => setLoginShow(true)}>Login</button>
+                  <button className="btn btn-success w-100 my-2" type="button" onClick={openModal}>Login</button>
+                  <MyModal showModal={showModal} closeModal={closeModal} />
                 </li>
                 <li className="nav-item">
                   <Link href="#/" id="login" className="px-0" onClick={() => setLgShow(true)}>
@@ -184,7 +196,7 @@ const Navbar = ({ cart, count }) => {
         </div>
       </Modal>
       {/* model-for-login */}
-      <Modal className=""
+      {/* <Modal className=""
         size="lg"
         show={LoginShow}
         onHide={() => setLoginShow(false)}
@@ -249,9 +261,9 @@ const Navbar = ({ cart, count }) => {
 
         </Modal.Body>
 
-      </Modal>
+      </Modal> */}
       {/* sign up  */}
-      <Modal className="p-3 " 
+      <Modal className="p-3 "
         size="lg"
         show={signup}
         onHide={() => setSignup(false)}
@@ -292,13 +304,13 @@ const Navbar = ({ cart, count }) => {
               </div>
             </div>
             <div className="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary my-4">Sign in</button>
+              <button type="submit" class="btn btn-primary my-4">Sign in</button>
             </div>
           </form>
         </Modal.Body>
       </Modal>
       {/* Admin MOdel */}
-      <Modal className="p-3 " 
+      <Modal className="p-3 "
         size="lg"
         show={signup}
         onHide={() => setSignup(false)}
@@ -307,11 +319,11 @@ const Navbar = ({ cart, count }) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
-           
+
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="">
-          
+
         </Modal.Body>
       </Modal>
 

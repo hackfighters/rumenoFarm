@@ -78,6 +78,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            <div className="training-sect">
+              <h5>TRAINING</h5>
+            </div>
           </div>
         </div>
       </div>
