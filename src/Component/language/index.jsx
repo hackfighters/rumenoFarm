@@ -33,21 +33,20 @@ const Lang = () => {
           <div className=" lang-box col-lg-5 d-flex justify-content-around py-3">
             <div className="row">
               <div className="col-lg-6">
-            <div className="lang-img lang-box1">
-              <img className="" src={lgimg} alt="" />
-            </div>
+                <div className="lang-img lang-box1">
+                  <img className="" src={lgimg} alt="" />
+                </div>
               </div>
               <div className="col-lg-6">
 
-            <div className="lang-box2 ">
-            <Select onChange={(e) => handleChangen(e)} />
-              <div className="lang-link">
-              <Link to="/home">
-              <button className="btn-grad-bt">Submit</button>
-              </Link>
-              </div>
-              
-            </div>
+                <div className="lang-box2 ">
+                  <Select onChange={(e) => handleChangen(e)} />
+                  <div className="lang-link">
+                    <Link to="/home">
+                      <button className="btn-grad-bt">Submit</button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

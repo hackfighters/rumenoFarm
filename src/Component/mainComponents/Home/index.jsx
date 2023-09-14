@@ -79,7 +79,7 @@ const Home = () => {
               </div>
             </div>
             <div className="training-sect">
-              <button className="btn btn-success ">TRAINING</button>
+              <button className="btn btn-success btn--shockwave is-active">TRAINING</button>
             </div>
           </div>
         </div>
@@ -160,7 +160,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Training />
+      <Training  />
       <Footer />
       </section>
     </>

@@ -1,16 +1,26 @@
 import React from "react";
 import '../../../../src/'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Select = (props) => {
+
   return (
     <>
+      <div className="input-group">
+        <div className="input-group-prepend">
+        </div>
+        <select className="custom-select w-100  border rounded p-2" id="inputGroupSelect01" onChange={props.onChange}>
+          <option selected>Choose...</option>
+          <option value={"en"} className="option option1">English</option>
+          <option value={"hi"} className="option option2">Hindi</option>
+        </select>
+      </div>
 
-        <div id="app-cover">
+      {/* <div id="app-cover">
           <div id="select-box" onChange={props.onChange}>
             <input type="checkbox" id="options-view-button" />
-            <div id="select-button" class="brd d-flex align-items-center justify-content-between">
+            <div id="select-button" className="brd d-flex align-items-center justify-content-between">
               <div id="selected-value">
                 <span>Select a Language</span>
               </div>
@@ -19,42 +29,42 @@ const Select = (props) => {
               </div>
             </div>
             <div id="options">
-              <div class="option">
+              <div className="option">
                 <input
-                  class="s-c top"
+                  className="s-c top"
                   type="radio"
                   name="platform"
                   value={"en"}
                 />
                 <input
-                  class="s-c bottom"
+                  className="s-c bottom"
                   type="radio"
                   name="platform"
                 />
-                <i class="fab fa-codepen"></i>
-                <span class="label">English</span>
-                <span class="opt-val"> English</span>
+                <i className="fab fa-codepen"></i>
+                <span className="label">English</span>
+                <span className="opt-val"> English</span>
               </div>
-              <div class="option">
+              <div className="option">
                 <input
-                  class="s-c top"
+                  className="s-c top"
                   type="radio"
                   name="platform"
                   value={"hi"}
                 />
                 <input
-                  class="s-c bottom"
+                  className="s-c bottom"
                   type="radio"
                   name="platform"
                 />
-                <i class="fab fa-dribbble"></i>
-                <span class="label">Hindi</span>
-                <span class="opt-val"> Hindi</span>
+                <i className="fab fa-dribbble"></i>
+                <span className="label">Hindi</span>
+                <span className="opt-val"> Hindi</span>
               </div>
               <div id="option-bg"></div>
             </div>
           </div>
-        </div>
+        </div> */}
     </>
   );
 };

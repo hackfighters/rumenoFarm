@@ -20,20 +20,25 @@ import i18next from "i18next";
 
 const Navbar = ({ cart, count }) => {
   const [lgShow, setLgShow] = useState(false);
-  // const [LoginShow, setLoginShow] = useState(false);
   const [signup, setSignup] = useState(false);
   const [CART, setCART] = useState([]);
+  const [showSelect, setShowSelect] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const toggleSelect = () => {
+    setShowSelect(!showSelect);
+  };
+
 
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
+    setSelectedOption(e.target.value);
+    setShowSelect(false);
   };
 
 
   const [showModal, setShowModal] = useState(false);
-  const [Active, setActive] = useState(false);
-  const toggleVisibility = () => {
-    setActive(!Active);
-  };
+ 
 
   const openModal = () => {
     setShowModal(true);
@@ -89,9 +94,9 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-white  ">+91 7355043892</span>
                 </div>
-                <div className="col-sm-1 d-flex align-items-center justify-content-center">
-                <FontAwesomeIcon type="button" onClick={toggleVisibility} className="m-0 h4 text-white" icon={faLanguage} />
-                {setActive ?(<Select onChange={(e) => handleChangen(e)} />):(null)}
+                <div className="col-sm-1 d-flex align-items-center  nav-lang-switch">
+                <FontAwesomeIcon type="button" onClick={toggleSelect} className=" m-0 h4 text-white" icon={faLanguage} />
+                {showSelect &&(<Select className="" value={selectedOption} onChange={(e) => handleChangen(e)}/>)}
                 </div>
               </div>
             </div>
