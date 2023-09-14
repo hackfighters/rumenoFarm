@@ -7,21 +7,38 @@ import {
   faCartShopping,
   faCircleMinus,
   faCirclePlus,
+  faLanguage,
   faLocationDot,
   faPhone,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import MyModal from "../../Common/Select/signLoginModal";
+import Select from "../../Common/Select/index";
+import i18next from "i18next";
+
 
 const Navbar = ({ cart, count }) => {
   const [lgShow, setLgShow] = useState(false);
-  // const [LoginShow, setLoginShow] = useState(false);
   const [signup, setSignup] = useState(false);
   const [CART, setCART] = useState([]);
+  const [showSelect, setShowSelect] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const toggleSelect = () => {
+    setShowSelect(!showSelect);
+  };
+
+
+  const handleChangen = (e) => {
+    i18next.changeLanguage(e.target.value);
+    setSelectedOption(e.target.value);
+    setShowSelect(false);
+  };
 
 
   const [showModal, setShowModal] = useState(false);
+ 
 
   const openModal = () => {
     setShowModal(true);
@@ -61,7 +78,7 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-white">rumeno.farmotech@gmail.com</span>
                 </div>
-                <div className="col-sm-3 d-flex cnt align-items-center">
+                <div className="col-sm-2 d-flex cnt align-items-center">
                   <FontAwesomeIcon
                     icon={faClock}
                     className="me-2"
@@ -76,6 +93,10 @@ const Navbar = ({ cart, count }) => {
                     style={{ color: "#f1f4f8" }}
                   />
                   <span className="text-white  ">+91 7355043892</span>
+                </div>
+                <div className="col-sm-1 d-flex align-items-center  nav-lang-switch">
+                <FontAwesomeIcon type="button" onClick={toggleSelect} className=" m-0 h4 text-white" icon={faLanguage} />
+                {showSelect &&(<Select className="" value={selectedOption} onChange={(e) => handleChangen(e)}/>)}
                 </div>
               </div>
             </div>
