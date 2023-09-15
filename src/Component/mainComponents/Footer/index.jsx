@@ -1,12 +1,14 @@
 import React from "react";
 import logo from "../../../assets/img/newlogo.png";
-import footcaro1 from "../../../assets/img/New folder/footcaro1.png";
-import footcaro2 from "../../../assets/img/New folder/footcaro2.png";
-import footcaro3 from "../../../assets/img/New folder/footcaro3.png";
-import footcaro4 from "../../../assets/img/New folder/footcaro4.png";
+// import Carousel from 'react-bootstrap/Carousel' 
+// import footcaro1 from "../../../assets/img/New folder/footcaro1.png";
+// import footcaro2 from "../../../assets/img/New folder/footcaro2.png";
+// import footcaro3 from "../../../assets/img/New folder/footcaro3.png";
+// import footcaro4 from "../../../assets/img/New folder/footcaro4.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faWhatsapp, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLocationCrosshairs, faPhone } from "@fortawesome/free-solid-svg-icons";
+import CarouselFadeExample from "../../Common/Select/carousel";
 
 const Footer = () => {
   return (
@@ -21,6 +23,8 @@ const Footer = () => {
             </h2>
           </div>
           <div className="col-sm-2 ">
+            <CarouselFadeExample/>
+            {/* <Carousel>
             <div
               id="arouselExampleSlidesOnly"
               class="carousel slide d-flex justify-content-center align-items-center"
@@ -58,6 +62,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
+          </Carousel> */}
           </div>
         </div>
       </div>

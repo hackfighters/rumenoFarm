@@ -24,14 +24,6 @@
   align-items: baseline;
 }
 
-.carousel-item {
-  height: 400px;
-}
-
-.carousel-item img {
-  height: 400px;
-  object-fit: contain;
-}
 
 /* About */
 
@@ -1079,7 +1071,7 @@ input[type="radio"] {
     content: "";
     display: block;
     border-top: 8px solid transparent;
-    border-left: 10px solid #fff;
+    border-left: 10px solid #0d6efd;
     border-bottom: 8px solid transparent;
     position: absolute;
     top: 50%;
@@ -1198,7 +1190,7 @@ input[type="radio"] {
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   #header {
-    top: 105px;
+    top: 130px;
   }
 
   .contact-info {
@@ -1702,6 +1694,28 @@ body {
     bottom: 50px;
     top: unset;
 }
+.nav-lang-switch{
+  justify-content: center;
+  display: block !important;
+}
+.service-bg  .product-sect{
+  padding-top: 25% !important;
+}
+.product-sect{
+  padding-top: 50% !important;
+}
+.logo {
+  max-width: 50%;
+  height: auto;
+}
+.nav-lang-switch select {
+  position: unset !important;
+}
+.nav-lang-switch-icons{
+  width: 100%;
+}
+
+
 }
 
 .footer-header {
@@ -2211,6 +2225,7 @@ border-radius: 25px;
   }
 }
 
+
 @keyframes shockwave {
   0% {
     transform: scale(1);
@@ -2226,17 +2241,6 @@ border-radius: 25px;
 
 
 
-.btn {
-  width: var(--spacing-base) * 4;
-  line-height: var(--spacing-base) * 4;
-  border-radius: 50%;
-  margin: var(--spacing-base);
-  font-size: 0.8rem;
-  border: none;
-  padding: 0;
-  position: relative;
-  outline: none;
-}
 
 .btn--shockwave.is-active {
   animation: shockwaveJump 1s ease-out infinite;
@@ -2264,9 +2268,23 @@ border-radius: 25px;
   animation: shockwave 1s .5s ease-out infinite;
 }
 
+.nav-lang-switch {
+  display: flex;
+}
 
 .nav-lang-switch select{
   position: relative;
   top: 37px;
   right: 40px;
+}
+
+/* .carousel-control-prev , .carousel-control-next , .carousel-indicators{
+  display: none !important;
+} */
+
+.common-carousel .carousel-control-prev ,.common-carousel .carousel-control-next ,.common-carousel .carousel-indicators{
+  display: none;
+}
+.header-sect{
+  height: 100vh;
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import srvcimg1 from "../../../assets/img/service-img/srvc-img1.jpg";
-import srvcimg2 from "../../../assets/img/service-img/srvc-img2.jpg";
 import srvcimg3 from "../../../assets/img/service-img/srvc-img3.jpg";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -44,29 +43,6 @@ const Services = () => {
               <img className="w-75" src={srvcimg1} alt="" />
             </div>
           </div>
-          <div className="row my-3">
-            <div className="col-lg-5 text-center">
-              <img className="w-75" src={srvcimg2} alt="" />
-            </div>
-            <div className="col-lg-7">
-              <h1 class="display-5 mb-4 mt-5">Dr. Ibne Ali</h1>
-              <p class="mb-4 fs-5 text-danger">
-                Chief Consultant Nutritional Science and Managements
-              </p>
-              <p>
-                <i class="fa fa-check text-primary me-3"></i>ICAR's JRF exam for
-                M.V.Sc. All India Rank 3 in Animal Science
-              </p>
-              <p>
-                <i class="fa fa-check text-primary me-3"></i>M.V.Sc. from IVRI
-                Izatnagar, Bareilly
-              </p>
-              <p>
-                <i class="fa fa-check text-primary me-3"></i>B.V.Sc. & A.H. from
-                College of Veterinary Science, Pant Nagar, Udham Singh Nagar
-              </p>
-            </div>
-          </div>
         </div>
         <div className="col-lg-12 my-5">
           <h2 className=" py-2 px-4 service-head">
@@ -75,22 +51,13 @@ const Services = () => {
         </div>
 
         <div className="container">
-          <div className="row srvc-consl">
+          <div className="row srvc-consl justify-content-evenly my-3">
             <div class="col-lg-4 col-md-6">
               <img className="img-fluid w-100" src={srvcimg1} alt="" />
               <div class="bg-light p-4 text-center">
                 <h3 className="text-danger">Dr. H A Tiwari</h3>
                 <p class="d-block h5 lh-base mb-4" href="">
                   Chief Consultant Medical Science Managements
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <img className="img-fluid w-100" src={srvcimg2} alt="" />
-              <div class="bg-light p-4 text-center">
-                <h3 className="text-danger">Dr. Ibne Ali</h3>
-                <p class="d-block h5 lh-base mb-4" href="">
-                  Chief Consultant Nutritional Science and Managements
                 </p>
               </div>
             </div>

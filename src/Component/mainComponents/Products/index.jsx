@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar";
 import Prdimg1 from "../../../assets/img/prod-img/prdcom-1.jpg";
-import Prdimg2 from "../../../assets/img/prod-img/prdcom-2.png";
+import Prdimg2 from "../../../assets/img/prod-img/prdcofm-2.png";
 import Prdimg3 from "../../../assets/img/prod-img/prdcom-3.jpg";
 import Prdimg4 from "../../../assets/img/prod-img/prdcom-4.jpg";
 import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
@@ -9,6 +9,7 @@ import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
 import Prdimg7 from "../../../assets/img/prod-img/prdGS-1.jpg";
 import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
 import MyModal from "../../Common/Select/signLoginModal";
+import Footer from "../Footer";
 
 const Products = () => {
   const data = [
@@ -81,8 +82,7 @@ const Products = () => {
       setCart([...cart, { ...data, quantity: 1 }]);
     } else {
       openModal();
-      // <MyModal showModal={showModal} closeModal={closeModal} />
-      // alert("Value does not match the given value!");
+      
     }
   };
 
@@ -90,7 +90,7 @@ const Products = () => {
     <>
       <div>
         <Navbar cart={cart} count={cart.length} />
-        <div className="container p-11">
+        <div className="container p-11 product-sect">
           <div className="text-center pt-4">
             <h1 className="display-5 mb-3">Our Products</h1>
           </div>
@@ -133,6 +133,7 @@ const Products = () => {
           </div>
         </div>
       </div>
+      <Footer/>
       <MyModal showModal={showModal} closeModal={closeModal} />
     </>
   );

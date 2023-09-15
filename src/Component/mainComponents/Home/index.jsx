@@ -20,7 +20,7 @@ const Home = () => {
     <><section className="container-fluid overflow-hidden p-0">
       <div className="home-backgroundColor overflow-hidden">
         <Navbar />
-        <div className="container  pt-5">
+        <div className="container header-sect  pt-5">
           <div className="row header-txt pt-5 mt-5">
             <div className="col-lg-6 pt-5" data-aos="fade-right">
               <h1 className="text-light mt-5 caro-text pt-5">
@@ -33,12 +33,10 @@ const Home = () => {
                 class="container-fluid p-0 mb-5 wow fadeIn"
                 data-wow-delay="0.1s"
               >
-                <div
-                  id="header-carousel"
+                <div id="header-carousel"
                   class="carousel slide"
                   data-bs-ride="carousel"
                   data-ride="carousel"
-                  data-interval="50"
                 >
                   <div className="carousel-inner">
                     <div className="carousel-item active">
@@ -78,9 +76,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            <a href="#training">
             <div className="training-sect">
-              <button className="btn btn-success btn--shockwave is-active">TRAINING</button>
+              <button className="btn  btn-success  btn--shockwave is-active">TRAINING</button>
             </div>
+            </a>
           </div>
         </div>
       </div>
