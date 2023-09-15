@@ -70,7 +70,7 @@ const Navbar = ({ cart, count }) => {
                     Pradesh 226002
                   </span>
                 </div>
-                <div className="col-sm-3 d-flex cnt align-items-center">
+                <div className="col-sm-2 d-flex cnt justify-content-center align-items-center">
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     className="me-2"
@@ -78,7 +78,7 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-white">rumeno.farmotech@gmail.com</span>
                 </div>
-                <div className="col-sm-2 d-flex cnt align-items-center">
+                <div className="col-sm-2 d-flex cnt justify-content-end align-items-center">
                   <FontAwesomeIcon
                     icon={faClock}
                     className="me-2"
@@ -94,8 +94,8 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-white  ">+91 7355043892</span>
                 </div>
-                <div className="col-sm-1 d-flex align-items-center  nav-lang-switch">
-                <FontAwesomeIcon type="button" onClick={toggleSelect} className=" m-0 h4 text-white" icon={faLanguage} />
+                <div className="col-sm-2 align-items-center  nav-lang-switch">
+                <FontAwesomeIcon type="button" onClick={toggleSelect} className="nav-lang-switch-icons m-0 h4 text-white" icon={faLanguage} />
                 {showSelect &&(<Select className="" value={selectedOption} onChange={(e) => handleChangen(e)}/>)}
                 </div>
               </div>
@@ -137,11 +137,6 @@ const Navbar = ({ cart, count }) => {
                 <li className="nav-item">
                   <Link to="/services" className="nav-link text-light px-0">
                     Services
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-light px-0" href="#training">
-                    Training
                   </Link>
                 </li>
                 <li className="nav-item">

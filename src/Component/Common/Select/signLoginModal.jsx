@@ -16,7 +16,7 @@ const MyModal = ({ showModal, closeModal }) => {
       centered
       size="lg"
     >
-      <Modal.Header closeButton>
+      <Modal.Header className="border-0" closeButton>
       </Modal.Header>
       <Modal.Body>
         <div className="container">
@@ -24,7 +24,7 @@ const MyModal = ({ showModal, closeModal }) => {
 
 
           <div class="row">
-            <div class="col-lg-6 py-4">
+            <div class="col-lg-6">
 
               {isContent1Visible ? (
               <div class="">
@@ -66,13 +66,9 @@ const MyModal = ({ showModal, closeModal }) => {
                 (<div>
                   <form className="container">
                     <div class="form-row row d-flex">
-                      <div class="form-group col-lg-6 my-2">
-                        <label className="my-2" for="">First Name</label>
-                        <input type="text" class="form-control" id="" placeholder="First Name" />
-                      </div>
-                      <div class="form-group col-lg-6 my-2">
-                        <label className="my-2" for="">Last Name</label>
-                        <input type="text" class="form-control" id="" placeholder="Last Name" />
+                      <div class="form-group col-lg-12 my-2">
+                        <label className="my-2" for="">Full Name</label>
+                        <input type="text" class="form-control" id="" placeholder="Enter Name" />
                       </div>
                       <div class="form-group col-lg-12 my-2">
                         <label className="my-2" for="">Mobile No</label>
@@ -83,12 +79,32 @@ const MyModal = ({ showModal, closeModal }) => {
                         <input type="email" class="form-control" id="" placeholder="Email" />
                       </div>
                       <div class="form-group col-lg-12 my-2">
-                        <label className="my-2" for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="" placeholder="1234 Main St" />
-                      </div>
-                      <div class="form-group col-lg-12 my-2">
                         <label className="my-2" for="inputAddress">Password</label>
                         <input type="password" class="form-control" id="" placeholder="password" />
+                      </div>
+                      <div class="form-group col-lg-6 my-2">
+                         <label className="my-1" for="inputAddress">State</label>
+                    <select class="select w-100 p-2 border rounded">
+                      <option value="1">State</option>
+                      <option value="2">Option 1</option>
+                      <option value="3">Option 2</option>
+                      <option value="4">Option 3</option>
+                    </select>
+
+                  </div>
+                  <div class="form-group col-lg-6 my-2">
+                         <label className="my-1" for="inputAddress">City</label>
+                    <select class="select w-100 p-2 border rounded">
+                      <option value="1">City</option>
+                      <option value="2">Option 1</option>
+                      <option value="3">Option 2</option>
+                      <option value="4">Option 3</option>
+                    </select>
+
+                  </div>
+                      <div class="form-group col-lg-12 my-2">
+                        <label className="my-2" for="inputAddress">Address</label>
+                        <input type="text" class="form-control" id="" placeholder="1234 Main St" />
                       </div>
                     </div>
                     <div className="d-flex justify-content-center">
