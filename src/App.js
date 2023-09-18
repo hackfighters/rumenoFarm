@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import Services from "./Component/mainComponents/Service";
 import ProductPage from "./Component/mainComponents/Products/index";
+import ContactUs from "./Component/mainComponents/ContactUs";
 
 
 function App() {
@@ -85,6 +86,7 @@ function App() {
         <Route path="/home" element={<Home />} />        
         <Route path="/services" element={<Services />} />        
         <Route path="/products" element={<ProductPage />} />        
+        <Route path="/contactus" element={<ContactUs />} />        
       </Routes>
     </>
   );

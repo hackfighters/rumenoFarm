@@ -112,6 +112,7 @@ const Products = () => {
                       <div className="d-flex justify-content-between pt-3">
                         <div>
                           <button className="card-btn">View button</button>
+                          
                         </div>
                         <div>
                           <button

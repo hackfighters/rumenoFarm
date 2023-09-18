@@ -12,6 +12,7 @@ import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
 import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
 import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
 import { Link } from "react-router-dom";
+import FooterTop from "../Footer/footer-top";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -161,6 +162,7 @@ const Home = () => {
         </div>
       </div>
       <Training  />
+      <FooterTop/>
       <Footer />
       </section>
     </>
