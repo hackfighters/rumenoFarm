@@ -1714,6 +1714,18 @@ body {
 .nav-lang-switch-icons{
   width: 100%;
 }
+.contact_info_sec{
+  width: unset !important;
+    position: unset !important;
+    border-radius: unset !important;
+    padding: 15px !important;
+}
+.contact_field {
+  margin-top: 24%;
+}
+.contact-sect {
+  padding-top: 18% !important;
+}
 
 
 }
@@ -2287,4 +2299,124 @@ border-radius: 25px;
 }
 .header-sect{
   height: 100vh;
+}
+
+/* ---------------------contactus css------------------- */
+
+
+.contact-sect{
+  padding-top: 10%;
+  background-color: whitesmoke;
+}
+
+
+.right_conatct_social_icon {
+  background: linear-gradient(to top right, #1325e8 -5%, #8f10b7 100%);
+}
+
+
+.contact_inner {
+  position: relative;
+  box-shadow: 12px 20px 44px #cccc;
+  background-color: white;
+}
+
+.right_conatct_social_icon {
+  height: 100%;
+}
+
+.contact_field h3 {
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+.contact_field p {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.contact_field .form-control {
+  border-radius: 0px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.contact_field .form-control:focus {
+  box-shadow: none;
+  outline: none;
+  border-bottom: 2px solid #1325e8;
+}
+
+.contact_field .form-control::placeholder {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.contact_info_sec {
+  position: absolute;
+  background-color: #2d2d2d;
+  right: 1px;
+  top: 18%;
+  width: 340px;
+  padding: 40px;
+  border-radius: 25px 0 0 25px;
+}
+
+.contact_info_sec h4 {
+  letter-spacing: 1px;
+}
+
+
+.info_single span {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+button.contact_form_submit {
+  background: linear-gradient(to top right, #1325e8 -5%, #8f10b7 100%);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  width: 100%;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.socil_item_inner li {
+  list-style: none;
+}
+
+.socil_item_inner li a {
+  color: #fff;
+  margin: 0px 15px;
+  font-size: 14px;
+}
+
+.socil_item_inner {
+  padding-bottom: 10px;
+}
+
+.map_sec {
+  padding: 50px 0px;
+}
+
+.map_inner h4,
+.map_inner p {
+  color: #000;
+  text-align: center;
+}
+
+.map_inner p {
+  font-size: 13px;
+}
+.map_inner {
+  height: 400px;
+  object-fit: contain;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.map_bind {
+  margin-top: 50px;
+  border-radius: 30px;
+  overflow: hidden;
 }
