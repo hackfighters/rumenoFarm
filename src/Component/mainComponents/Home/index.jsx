@@ -13,6 +13,7 @@ import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
 import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
 import { Link } from "react-router-dom";
 import FooterTop from "../Footer/footer-top";
+// import FetchData from "../../Common/Select/apicomponent";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -78,9 +79,9 @@ const Home = () => {
               </div>
             </div>
             <a href="#training">
-            <div className="training-sect">
-              <button className="btn  btn-success  btn--shockwave is-active">TRAINING</button>
-            </div>
+              <div className="training-sect">
+                <button className="btn  btn-success  btn--shockwave is-active">TRAINING</button>
+              </div>
             </a>
           </div>
         </div>
@@ -161,10 +162,11 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Training  />
-      <FooterTop/>
+      {/* <FetchData /> */}
+      <Training />
+      <FooterTop />
       <Footer />
-      </section>
+    </section>
     </>
   );
 };
