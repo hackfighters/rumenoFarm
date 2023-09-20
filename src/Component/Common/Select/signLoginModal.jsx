@@ -21,13 +21,13 @@ const MyModal = ({ showModal, closeModal }) => {
     });
     var requestOptions = {
       method: "POST",
-      mode: "no-cors",
-      headers: myHeaders,
+      mode: "cors",
+      headers: {"Content-Type":"application/json"},
       body: data,
       redirect: "follow",
     };
     fetch(
-      "https://3c5b-2401-4900-1ca3-6c2b-2127-a0aa-b62c-fe8e.ngrok.io/rumeno_login",
+      "http://192.168.1.5:5000/rumeno_login",
       requestOptions
     )
       .then((response) => response.text())
@@ -200,7 +200,7 @@ const MyModal = ({ showModal, closeModal }) => {
                     <div className="d-flex justify-content-center">
                       <button
                         type="submit"
-                        className="btn btn-primary my-4"
+                        className="btn text-white border-0 gradient-custom-2 my-3 w-75"
                         onClick={toggleVisibility}
                       >
                         Sign in

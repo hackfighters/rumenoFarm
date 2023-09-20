@@ -266,7 +266,7 @@
 .navbar a:hover,
 .navbar .active,
 .navbar li:hover > a {
-  color: #d9ba85;
+  color: #ded9d0;
 }
 
 .navbar .dropdown ul {
@@ -487,9 +487,7 @@
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
   transform: scale(1.1);
-  font-size: large;
   color: white;
-  font-weight: 400;
 }
 
 .footer-text {
@@ -795,7 +793,7 @@
 .s-c.bottom {
   bottom: 0;
 }
-
+/* 
 input[type="radio"] {
   position: absolute;
   right: 0;
@@ -805,7 +803,7 @@ input[type="radio"] {
   margin: 0;
   opacity: 0;
   cursor: pointer;
-}
+} */
 
 .s-c:hover ~ i {
   color: #fff;
@@ -1726,6 +1724,9 @@ body {
 .contact-sect {
   padding-top: 18% !important;
 }
+.home-backgroundColor.overflow-hidden {
+  height: 700px;
+}
 
 
 }
@@ -1746,7 +1747,7 @@ body {
   filter: drop-shadow(2px 5px 13px black);
 }
 
-.service-bg {
+.service-bg , .service-form{
   background-image: linear-gradient(315deg, #81ca6b 0%, #dbffd0 74%);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -2419,4 +2420,8 @@ button.contact_form_submit {
   margin-top: 50px;
   border-radius: 30px;
   overflow: hidden;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
+  color: greenyellow !important;
 }
