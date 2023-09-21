@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../assets/img/lv-bgr.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from 'react-bootstrap/Modal';
 import {
@@ -19,15 +19,27 @@ import i18next from "i18next";
 
 
 const Navbar = ({ cart, count }) => {
-
-
-
+  const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const [signup, setSignup] = useState(false);
   const [CART, setCART] = useState([]);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
+  
 
+  const username = "admin";
+  const password = "password"
+  
+  
+  useEffect(() => {
+    if (username === "admin" && password === "password") {
+      setshowlogin(true);
+    } else {
+      setshowlogin(false);
+    }
+  }, []);
+  
+  
   const toggleSelect = () => {
     setShowSelect(!showSelect);
   };
@@ -57,12 +69,12 @@ const Navbar = ({ cart, count }) => {
 
   return (
     <>
-      <div className="container sect-topbar position-absolute">
+      <div className="container-fluid sect-topbar position-absolute">
         <div className="row">
           <div id="topbar" className="col-sm-12 d-flex align-items-center ">
-            <div className="container">
-              <div className="contact-info row">
-                <div className="col-sm-4 d-flex cnt align-items-center">
+            <div className="container-fluid">
+              <div className="contact-info row justify-content-center">
+                <div className="col-sm-3 d-flex cnt align-items-center">
                   <FontAwesomeIcon
                     icon={faLocationDot}
                     className="me-2"
@@ -89,7 +101,7 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-dark  ">Time 9:00am - 8:00pm</span>
                 </div>
-                <div className="col-sm-2 d-flex cnt align-items-center">
+                <div className="col-sm-2 d-flex cnt align-items-center justify-content-center">
                   <FontAwesomeIcon
                     icon={faPhone}
                     className="me-2"
@@ -127,33 +139,42 @@ const Navbar = ({ cart, count }) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
-                <li className="nav-item active">
-                  <Link className="nav-link text-light px-0" to="/home">
-                    Home
-                  </Link>
-                </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-light px-0" to="/products">
-                    Products
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/services" className="nav-link text-light px-0">
-                    Services
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/contactus" className="nav-link text-light px-0" href="#/">
-                    Contact Us
-                  </Link>
-                </li>
-                <li className="nav-item" id="admin">
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              exact
+              to="/home"
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" activeClassName="active" to="/products">
+              Products
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/Services"
+            >
+              Services
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/contactus"
+            >
+              Contact Us
+            </NavLink>
+          </li>
+                {/* <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
-                </li>
-                <li className="nav-item" id="cart">
-                  <button className="btn btn-success w-100 my-2" type="button" onClick={openModal}>Login</button>
-                  <MyModal showModal={showModal} closeModal={closeModal} />
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link href="#/" id="login" className="px-0" onClick={() => setLgShow(true)}>
                     <FontAwesomeIcon
@@ -163,6 +184,13 @@ const Navbar = ({ cart, count }) => {
                     <span className="badge-cart">{count}</span>
                   </Link>
                 </li>
+                <li className="nav-item" id="cart">
+                  <button className="btn btn-success w-100 my-2" type="button" onClick={openModal}>Login</button>
+                  <MyModal showModal={showModal} closeModal={closeModal} />
+                </li>
+                {showlogin ?(<li>
+                  <h4 typeof="button" className="text-danger bg-light m-0 p-1 rounded-circle">HV</h4>
+                </li>): null}
               </ul>
             </div>
           </div>

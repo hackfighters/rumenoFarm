@@ -3,6 +3,7 @@ import srvcimg1 from "../../../assets/img/service-img/srvc-img1.jpg";
 import srvcimg3 from "../../../assets/img/service-img/srvc-img3.jpg";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
+import FeedBackForm from "../../Common/Select/googleform";
 
 const Services = () => {
   return (
@@ -24,7 +25,7 @@ const Services = () => {
             <div className="col-lg-7">
               <h1 class="display-5 mb-4 mt-4">Dr. Hari Audh Tiwari</h1>
               <p class="mb-4 fs-5 text-danger">
-                Chief Consultant Medical Science Managements
+                Chief Consultant Medical Science Management
               </p>
               <p>
                 <i class="fa fa-check text-primary me-3"></i>Chief Vetrinary
@@ -57,7 +58,7 @@ const Services = () => {
               <div class="bg-light p-4 text-center">
                 <h3 className="text-danger">Dr. H A Tiwari</h3>
                 <p class="d-block h5 lh-base mb-4" href="">
-                  Chief Consultant Medical Science Managements
+                  (Chief Consultant Medical Science Management)
                 </p>
               </div>
             </div>
@@ -66,7 +67,7 @@ const Services = () => {
               <div class="bg-light p-4 text-center">
                 <h3 className="text-danger">Mohammed Rizwan</h3>
                 <p class="d-block h5 lh-base mb-4" href="">
-                  Founder & CEO Market and Products Management
+                  (Founder & CEO Market and Products Management)
                 </p>
               </div>
             </div>
@@ -210,6 +211,8 @@ const Services = () => {
           </div>
         </div>
       </div>
+      <FeedBackForm/>
+
       <Footer />
     </>
   );
