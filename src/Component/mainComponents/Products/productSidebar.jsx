@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Prdcom from "../../../assets/img/prod-img/prdcom-1.jpg";
+import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
+
 import ReactStars from "react-rating-stars-component";
 
 const ProductSidebar = () => {
@@ -14,8 +16,10 @@ const ProductSidebar = () => {
       name: "Tanaav Mukti",
       price: 700,
       description:"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: Prdcom,
+      img: Prdcoms,
     },
+    
+    
   ];
   // State
   const [animal, setAnimal] = useState(true);

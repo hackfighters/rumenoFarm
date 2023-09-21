@@ -3,9 +3,17 @@ import React from "react";
 const Training = () => {
   return (
     <>
-      <section id="training" class="py-5 sect-training header">
-        <div class="container py-4">
-          <div class="row">
+      <section id="training" class="py-4 sect-training header">
+        <div class="container">
+          <div className="d-flex ">
+              <span className="label-title">Training</span>
+              <div>
+                <div className="about-line-large"></div>
+                <div className="about-line-small"></div>
+              </div>
+            </div>
+      
+          <div class="row  py-4">
             <div class="col-md-3">
               <div
                 class="nav flex-column nav-pills nav-pills-custom"

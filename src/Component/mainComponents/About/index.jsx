@@ -12,15 +12,21 @@ const About = () => {
     <>
       <div className="container-fluid abt-sect  py-5 overflow-hidden">
         <div className="row justify-content-evenly my-5">
-          <div className="col-lg-5 mb-6 mb-lg-0"
+          <div
+            className="col-lg-5 mb-6 mb-lg-0"
             data-aos-delay="1"
             data-aos-duration="1500"
             data-aos="fade-right"
           >
-            <span className="label-title mb-3">About</span>
-            <h2 className="abt-sect-txt1 mb-3">
-             {t("abouttitle")}
-            </h2>
+            <div className="d-flex mb-3">
+              <span className="label-title">About</span>
+              <div>
+                <div className="about-line-large"></div>
+                <div className="about-line-small"></div>
+              </div>
+            </div>
+
+            <h2 className="abt-sect-txt1 mb-3">{t("abouttitle")}</h2>
             <p className="par">
               {t("aboutparagraph")}
               <br />
@@ -122,9 +128,7 @@ const About = () => {
             </div>
           </div>
           <div className="col-lg-11">
-          <p className="par">
-          {t("aboutparagraph2")}
-          </p>
+            <p className="par">{t("aboutparagraph2")}</p>
           </div>
         </div>
       </div>
