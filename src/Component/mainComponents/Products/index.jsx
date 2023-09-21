@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../Navbar";
 import ProductSidebar from "./productSidebar";
+import Footer from "../Footer";
 
 const Products = () => {
   return (
@@ -12,6 +13,8 @@ const Products = () => {
         
         <ProductSidebar/>
       </div>
+      <Footer/>
+
     </>
   );
 };

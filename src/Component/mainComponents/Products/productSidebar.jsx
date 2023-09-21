@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import Prdcom from "../../../assets/img/prod-img/prdcom-1.jpg";
+import ReactStars from "react-rating-stars-component";
 
 const ProductSidebar = () => {
   const Data = [
     {
       name: "Tanaav Mukti",
-      price: "₹7:00",
-      oldprice: "₹10:00",
+      price: 700,
+      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       img: Prdcom,
     },
     {
       name: "Tanaav Mukti",
-      price: "₹7:00",
-      oldprice: "₹10:00",
+      price: 700,
+      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       img: Prdcom,
     },
   ];
   // State
   const [animal, setAnimal] = useState(true);
   const [farmhouse, setFarmHouse] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   //   Function
   const onHandleChangefarmhouse = () => {
@@ -29,6 +31,20 @@ const ProductSidebar = () => {
     setAnimal(true);
     setFarmHouse(false);
   };
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+  console.log("quantity",quantity)
+
+  
   return (
     <>
       <div className="container-fluid mt-4">
@@ -61,26 +77,62 @@ const ProductSidebar = () => {
               <hr />
             </div>
           </div>
-          {animal && (
-            <div className="col py-1">
-              {Data.map((s) => (
-                <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
-                  <div className="d-flex">
-                    <div className="p-2">
-                      <img src={s.img} alt="Loading" width={200} />
-                    </div>
-                    <div className="p-2">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Doloribus fugiat dicta laborum quos rerum corporis esse
-                      beatae dignissimos enim in distinctio, voluptate
-                      temporibus fuga perspiciatis nesciunt commodi repellat
-                      sint suscipit.
+          <div className="col-md-10">
+            {animal && (
+              <>
+                {Data.map((s) => (
+                  <div className="col py-1">
+                    <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
+                      <div className="d-flex">
+                        <div className="p-2">
+                          <img src={s.img} alt="Loading" width={200} />
+                        </div>
+                        <div className="p-2 ps-5">
+                          <div className="fs-3 ">{s.name}</div>
+                          <div className="fs-4 mt-2">{s.price} Rs /-</div>
+                          <div className="mt-2">{s.description}</div>
+                          <div className="mt-2">
+                            <ReactStars
+                              count={5}
+                              onChange={ratingChanged}
+                              size={24}
+                              isHalf={true}
+                              emptyIcon={<i className="far fa-star"></i>}
+                              halfIcon={<i className="fa fa-star-half-alt"></i>}
+                              fullIcon={<i className="fa fa-star"></i>}
+                              activeColor="#ffd700"
+                            />
+                          </div>
+
+                          <div className="mt-2">
+                            <div class="quantity-container">
+                              <div class="quantity-button" id="decrease" onClick={decreaseQuantity}>
+                                -
+                              </div>
+                              <input
+                                type="text"
+                                class="quantity-input"
+                                value={quantity}
+                                readonly
+                              />
+                              <div class="quantity-button" id="increase" onClick={increaseQuantity}>
+                                +
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-3 w-50">
+                            <button className="btn btn-success w-100 my-2">
+                              Add to Cart
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </>
+            )}
+          </div>
           {farmhouse && (
             <div className="col py-1">
               <div className="bg-light h-50 rounded text-dark bg-opacity-75 p-2">
