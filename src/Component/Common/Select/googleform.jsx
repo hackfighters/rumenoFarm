@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const FeedBackForm = () => {
-  const handleSubmit = (event) => {
+const handleSubmit = (event) => {
     event.preventDefault();
 
     // Get form values
@@ -28,7 +28,7 @@ const FeedBackForm = () => {
     console.log("Other:", other);
     console.log("Need:", need);
   };
-
+ 
   return (
     <section className="service-form container-fluid ">
       <div className="row py-5 justify-content-center">
