@@ -1,7 +1,9 @@
 import React from 'react';
+
+// Third party GoogleMap
 import GoogleMapReact from 'google-map-react';
 
-const MapComp = () => {
+const GoogleMap = () => {
   return (
     <div className="h-100">
       <GoogleMapReact 
@@ -13,4 +15,4 @@ const MapComp = () => {
   );
 }
 
-export default MapComp;
+export default GoogleMap;

@@ -6,13 +6,12 @@ const Training = () => {
       <section id="training" class="py-4 sect-training header">
         <div class="container">
           <div className="d-flex ">
-              <span className="label-title">Training</span>
-              <div>
-                <div className="about-line-large"></div>
-                <div className="about-line-small"></div>
-              </div>
+            <span className="label-title">Training</span>
+            <div>
+              <div className="about-line-large"></div>
+              <div className="about-line-small"></div>
             </div>
-      
+          </div>
           <div class="row  py-4">
             <div class="col-md-3">
               <div
@@ -35,7 +34,6 @@ const Training = () => {
                     Goat-Farming-Training
                   </span>
                 </a>
-
                 <a
                   class="nav-link mb-3 p-3 shadow"
                   id="v-pills-profile-tab"
@@ -50,7 +48,6 @@ const Training = () => {
                     Advance Farmhouse Training
                   </span>
                 </a>
-
                 <a
                   class="nav-link mb-3 p-3 shadow"
                   id="v-pills-messages-tab"
@@ -65,7 +62,6 @@ const Training = () => {
                     Pro-Training for Commercial Goat Farming
                   </span>
                 </a>
-
                 <a
                   class="nav-link mb-3 p-3 shadow"
                   id="v-pills-settings-tab"
@@ -82,7 +78,6 @@ const Training = () => {
                 </a>
               </div>
             </div>
-
             <div class="col-md-9">
               <div class="tab-content" id="v-pills-tabContent">
                 <div
@@ -94,7 +89,7 @@ const Training = () => {
                   <h4 class="font-italic mb-4">Personal information</h4>
                   <h4>
                     Ongoing Online and Offline Livestock Public Training and
-                    Interaction Information{" "}
+                    Interaction Information
                   </h4>
                   <h5>#Training Program on Rearing of Goats for 30 days</h5>
                   <p>
@@ -184,7 +179,6 @@ const Training = () => {
                     want to join the training program.
                   </p>
                 </div>
-
                 <div
                   class="tab-pane fade shadow rounded bg-white p-5"
                   id="v-pills-profile"
@@ -244,7 +238,7 @@ const Training = () => {
                     surveys and marketing of the brand and products in the
                     market. We help our clients to develop their informative
                     website and social networking for marketing and selling
-                    their products.{" "}
+                    their products.
                   </p>
                   <p>
                     Commercial Business starts right from the selecting the
@@ -273,7 +267,7 @@ const Training = () => {
                       <li>Surveys Methods</li>
                       <li>
                         Using Excel for day to day calculation and keeping
-                        records{" "}
+                        records
                       </li>
                       <li>
                         Analytical tools and methods for analyzing performance

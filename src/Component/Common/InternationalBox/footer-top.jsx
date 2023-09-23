@@ -1,11 +1,13 @@
 import React from "react";
-import CarouselFadeExample from "../../Common/Select/carousel";
 
+// Common Component
 
-const FooterTop = ()=>{
-    return (
-        <>
-        <section className="section-footer-head">
+import CarouselFadeExample from "../Carousel/carousel";
+
+const FooterTop = () => {
+  return (
+    <>
+      <section className="section-footer-head">
         <div className="container bg-primary footer-header rounded">
           <div className="row py-4 justify-content-evenly">
             <div className="col-sm-9 d-flex align-items-center">
@@ -20,8 +22,8 @@ const FooterTop = ()=>{
           </div>
         </div>
       </section>
-        </>
-    )
+    </>
+  );
 };
 
 export default FooterTop;

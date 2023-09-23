@@ -1,7 +1,4 @@
 import React from "react";
-import '../../../../src/'
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Select = (props) => {
 

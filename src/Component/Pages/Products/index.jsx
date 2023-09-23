@@ -1,7 +1,9 @@
 import React from "react";
-import Navbar from "../Navbar";
+
+// Common Component
+import Navbar from "../../Common/Navbar/index";
+import Footer from "../../Common/Footer";
 import ProductSidebar from "./productSidebar";
-import Footer from "../Footer";
 
 const Products = () => {
   return (
@@ -10,11 +12,9 @@ const Products = () => {
       <div className="our-product-img"></div>
       <div className="container-fluid abt-sect py-4">
         <div className="text-center fs-2">Our Product</div>
-        
-        <ProductSidebar/>
+        <ProductSidebar />
       </div>
-      <Footer/>
-
+      <Footer />
     </>
   );
 };
