@@ -1,26 +1,28 @@
 import React, { useState } from "react";
+import ReactStars from "react-rating-stars-component";
+
+// Common Component
 import Prdcom from "../../../assets/img/prod-img/prdcom-1.jpg";
 import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
 
-import ReactStars from "react-rating-stars-component";
-
 const ProductSidebar = () => {
+
+  // I will delete this comment after connecting the Api
   const Data = [
     {
       name: "Tanaav Mukti",
       price: 700,
-      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       img: Prdcom,
     },
     {
       name: "Tanaav Mukti",
       price: 700,
-      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       img: Prdcoms,
     },
-    
-    
   ];
+  
   // State
   const [animal, setAnimal] = useState(true);
   const [farmhouse, setFarmHouse] = useState(false);
@@ -46,9 +48,9 @@ const ProductSidebar = () => {
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
   };
-  console.log("quantity",quantity)
 
-  
+  // console.log("quantity", quantity);
+
   return (
     <>
       <div className="container-fluid mt-4">
@@ -110,7 +112,11 @@ const ProductSidebar = () => {
 
                           <div className="mt-2">
                             <div class="quantity-container">
-                              <div class="quantity-button" id="decrease" onClick={decreaseQuantity}>
+                              <div
+                                class="quantity-button"
+                                id="decrease"
+                                onClick={decreaseQuantity}
+                              >
                                 -
                               </div>
                               <input
@@ -119,7 +125,11 @@ const ProductSidebar = () => {
                                 value={quantity}
                                 readonly
                               />
-                              <div class="quantity-button" id="increase" onClick={increaseQuantity}>
+                              <div
+                                class="quantity-button"
+                                id="increase"
+                                onClick={increaseQuantity}
+                              >
                                 +
                               </div>
                             </div>

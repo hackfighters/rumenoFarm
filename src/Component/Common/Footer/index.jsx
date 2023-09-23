@@ -1,8 +1,12 @@
 import React from "react";
-import logo from "../../../assets/img/newlogo.png";
+
+// Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faInstagram, faWhatsapp, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faLocationCrosshairs, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {faFacebook,faInstagram,faWhatsapp, faYoutube,} from "@fortawesome/free-brands-svg-icons";
+import {faEnvelope,faLocationCrosshairs,faPhone,} from "@fortawesome/free-solid-svg-icons";
+
+// Image
+import logo from "../../../assets/img/newlogo.png";
 
 const Footer = () => {
   return (
@@ -29,16 +33,29 @@ const Footer = () => {
             <h5 className="pb-2 text-center">Address</h5>
             <ul className="list-unstyled">
               <li>
-                <FontAwesomeIcon icon={faLocationCrosshairs} className="me-2" style={{ color: "white", }} />
+                <FontAwesomeIcon
+                  icon={faLocationCrosshairs}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
                 598 Lala Mahaveer Prasad Rd, Sadar Bazar, Lucknow, Uttar Pradesh
                 226002
               </li>
               <li>
-                <FontAwesomeIcon icon={faEnvelope} className="me-2" style={{ color: "white", }} />
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
                 rumeno.farmotech@gmail.com
               </li>
               <li>
-                <FontAwesomeIcon icon={faPhone} className="me-2" style={{ color: "white" }} />+91 7355043892
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
+                +91 7355043892
               </li>
             </ul>
           </div>
@@ -53,16 +70,32 @@ const Footer = () => {
             <div>
               <ul className="list-unstyled d-flex justify-content-center footer-li">
                 <li>
-                  <FontAwesomeIcon icon={faFacebook} className="mx-2 fs-3" style={{ color: "white", }} />
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    className="mx-2 fs-3"
+                    style={{ color: "white" }}
+                  />
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faWhatsapp} className="mx-2 fs-3" style={{ color: "white", }} />
+                  <FontAwesomeIcon
+                    icon={faWhatsapp}
+                    className="mx-2 fs-3"
+                    style={{ color: "white" }}
+                  />
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faYoutube} className="mx-2 fs-3" style={{ color: "white", }} />
+                  <FontAwesomeIcon
+                    icon={faYoutube}
+                    className="mx-2 fs-3"
+                    style={{ color: "white" }}
+                  />
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faInstagram} className="mx-2 fs-3" style={{ color: "white", }} />
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    className="mx-2 fs-3"
+                    style={{ color: "white" }}
+                  />
                 </li>
               </ul>
             </div>

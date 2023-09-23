@@ -1,9 +1,13 @@
 import React from "react";
+
+// Common Component
+import Footer from "../../Common/Footer";
+import Navbar from "../../Common/Navbar/index";
+import FeedBackForm from "../../Common/Gooogleform/googleform";
+
+// Image
 import srvcimg1 from "../../../assets/img/service-img/srvc-img1.jpg";
 import srvcimg3 from "../../../assets/img/service-img/srvc-img3.jpg";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
-import FeedBackForm from "../../Common/Select/googleform";
 
 const Services = () => {
   return (
@@ -37,7 +41,7 @@ const Services = () => {
               </p>
               <p>
                 <i class="fa fa-check text-primary me-3"></i>B.V.Sc. & A.H. from
-                College of Veterinary Science, Pant Nagar, Udham Singh Nagar{" "}
+                College of Veterinary Science, Pant Nagar, Udham Singh Nagar
               </p>
             </div>
             <div className="col-lg-5 text-center">
@@ -50,7 +54,6 @@ const Services = () => {
             Our Consulting Team Members
           </h2>
         </div>
-
         <div className="container">
           <div className="row srvc-consl justify-content-evenly my-3">
             <div class="col-lg-4 col-md-6">
@@ -108,54 +111,53 @@ const Services = () => {
               special skills, scientific methods and management are required. It
               is advised to work with the experienced and professional people
               for the higher output so ZamZam is here to help to grow in the
-              following management consultations.{" "}
+              following management consultations.
             </p>
-
-              <div className="justify-content-center service-ul">
+            <div className="justify-content-center service-ul">
               <div>
-              <ul>
-                <li>Business Road Map</li>
-                <li>Business Model</li>
-                <li>Business Development</li>
-                <li>Shed Design</li>
-                <li>Animal Performance Management</li>
-                <li>Disease Management</li>
-                <li>Kid Growth Management</li>
-                <li>Health Management</li>
-                <li>Feed Planning</li>
-              </ul>
+                <ul>
+                  <li>Business Road Map</li>
+                  <li>Business Model</li>
+                  <li>Business Development</li>
+                  <li>Shed Design</li>
+                  <li>Animal Performance Management</li>
+                  <li>Disease Management</li>
+                  <li>Kid Growth Management</li>
+                  <li>Health Management</li>
+                  <li>Feed Planning</li>
+                </ul>
               </div>
-
               <div>
-              <ul>
-                <li>Nutrition Management</li>
-                <li>Products Quality Management</li>
-                <li>Flock Management</li>
-                <li>Farm and Dairy Equipment Management</li>
-                <li>Business Relationship Management</li>
-                <li>Breeding and Reproduction Management</li>
-                <li>Artificial Insemination</li>
-                <li>BioSecurity Management</li>
-                <li>Risk Management</li>
-              </ul>
+                <ul>
+                  <li>Nutrition Management</li>
+                  <li>Products Quality Management</li>
+                  <li>Flock Management</li>
+                  <li>Farm and Dairy Equipment Management</li>
+                  <li>Business Relationship Management</li>
+                  <li>Breeding and Reproduction Management</li>
+                  <li>Artificial Insemination</li>
+                  <li>BioSecurity Management</li>
+                  <li>Risk Management</li>
+                </ul>
               </div>
-
               <div>
-              <ul>
-                <li>Integrated Farming Management</li>
-                <li>Manure Management</li>
-                <li>New Animals Management</li>
-                <li>Goat Trading Management</li>
-                <li>Marketing Management</li>
-                <li>Farm Data Management</li>
-                <li>IT Enable Services</li>
-              </ul>
+                <ul>
+                  <li>Integrated Farming Management</li>
+                  <li>Manure Management</li>
+                  <li>New Animals Management</li>
+                  <li>Goat Trading Management</li>
+                  <li>Marketing Management</li>
+                  <li>Farm Data Management</li>
+                  <li>IT Enable Services</li>
+                </ul>
               </div>
-              </div>
+            </div>
           </div>
         </div>
         <div className="col-lg-12 mb-3">
-          <h2 className=" py-2 px-4  service-head">Business Start-up Support</h2>
+          <h2 className=" py-2 px-4  service-head">
+            Business Start-up Support
+          </h2>
         </div>
         <div className="row justify-content-center">
           <div className="col-lg-11">
@@ -176,7 +178,7 @@ const Services = () => {
               issues, etc. Accordingly, you will need to get the financial
               calculations with ROI. Return on investment is the most important
               factor because on that basis you will need to assess the financial
-              investment.{" "}
+              investment.
             </p>
             <p className="px-2">
               Starting up a new business is not easy without having any expert's
@@ -187,12 +189,12 @@ const Services = () => {
               ruminant livestock farming for many many years. Our main aim is to
               bring the profit for the new start up by helping to organize the
               Farming management by sharing farming techniques, business model,
-              Business Income and Outcome, Marketing, ROI etc.{" "}
+              Business Income and Outcome, Marketing, ROI etc.
             </p>
             <p className="px-2">
               You must have proper skill and knowledge about livestock farming,
               before starting the business. If you are not aware of the skills,
-              it is advised to contact us for training.{" "}
+              it is advised to contact us for training.
             </p>
             <h5 className="px-2">
               We generally conduct training sessions and workshops for the
@@ -203,7 +205,7 @@ const Services = () => {
               <li>Sheep Farming</li>
               <li>Cattle Dairy Farming</li>
             </ul>
-            <p  className="px-2">
+            <p className="px-2">
               Please contact us by filling up the below given form so that one
               of our expert will give you a call to understand your need in
               detail.
@@ -211,8 +213,7 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <FeedBackForm/>
-
+      <FeedBackForm />
       <Footer />
     </>
   );

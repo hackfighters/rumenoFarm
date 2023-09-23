@@ -1,9 +1,13 @@
 import React from "react";
+
+// Third party i18next
+import { useTranslation } from "react-i18next";
+
+// Image
 import abtimg1 from "../../../assets/img/about-img/about-1.jpg";
 import abtimg2 from "../../../assets/img/about-img/about-2.jpg";
 import abtimg3 from "../../../assets/img/about-img/about-3.jpg";
 import abtimg4 from "../../../assets/img/about-img/about-4.jpg";
-import { useTranslation } from "react-i18next";
 
 const About = () => {
   const { t } = useTranslation();

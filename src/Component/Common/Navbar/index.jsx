@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import logo from "../../../assets/img/lv-bgr.png";
 import { Link, NavLink } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+
+// Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Modal from 'react-bootstrap/Modal';
 import {
   faCartShopping,
   faCircleMinus,
@@ -13,24 +14,35 @@ import {
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import MyModal from "../../Common/Select/signLoginModal";
-import Select from "../../Common/Select/index";
+
+// Third party i18next
 import i18next from "i18next";
 
+// Common Component
+import Login from "../../Common/Modal/Login";
+import Registration  from "../../Common/Modal/Registion";
+
+import Select from "../../Common/Select/index";
+
+// Image
+import logo from "../../../assets/img/lv-bgr.png";
 
 const Navbar = ({ cart, count }) => {
+  
+  // State
   const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
-  const [signup, setSignup] = useState(false);
   const [CART, setCART] = useState([]);
   const [showSelect, setShowSelect] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
-  
+  const [selectedOption, setSelectedOption] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
+
 
   const username = "admin";
-  const password = "password"
-  
-  
+  const password = "password";
+
+  // Function
   useEffect(() => {
     if (username === "admin" && password === "password") {
       setshowlogin(true);
@@ -38,22 +50,16 @@ const Navbar = ({ cart, count }) => {
       setshowlogin(false);
     }
   }, []);
-  
-  
+
   const toggleSelect = () => {
     setShowSelect(!showSelect);
   };
-
 
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
     setSelectedOption(e.target.value);
     setShowSelect(false);
   };
-
-
-  const [showModal, setShowModal] = useState(false);
- 
 
   const openModal = () => {
     setShowModal(true);
@@ -62,6 +68,15 @@ const Navbar = ({ cart, count }) => {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  const openRegistration = () => {
+    setShowRegistrtionModal(true)
+    setShowModal(false);
+  }
+
+  const closeRegistrationModal = () => {
+    setShowRegistrtionModal(false)
+  }
 
   useEffect(() => {
     setCART(cart);
@@ -110,8 +125,19 @@ const Navbar = ({ cart, count }) => {
                   <span className="text-dark  ">+91 7355043892</span>
                 </div>
                 <div className="col-sm-2 align-items-center  nav-lang-switch">
-                <FontAwesomeIcon type="button" onClick={toggleSelect} className="nav-lang-switch-icons m-0 h4 text-white" icon={faLanguage} />
-                {showSelect &&(<Select className="" value={selectedOption} onChange={(e) => handleChangen(e)}/>)}
+                  <FontAwesomeIcon
+                    type="button"
+                    onClick={toggleSelect}
+                    className="nav-lang-switch-icons m-0 h4 text-white"
+                    icon={faLanguage}
+                  />
+                  {showSelect && (
+                    <Select
+                      className=""
+                      value={selectedOption}
+                      onChange={(e) => handleChangen(e)}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -140,43 +166,52 @@ const Navbar = ({ cart, count }) => {
             >
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
                 <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              exact
-              to="/home"
-            >
-              Home
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" activeClassName="active" to="/products">
-              Products
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/Services"
-            >
-              Services
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/contactus"
-            >
-              Contact Us
-            </NavLink>
-          </li>
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    exact
+                    to="/home"
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/products"
+                  >
+                    Products
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/Services"
+                  >
+                    Services
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/contactus"
+                  >
+                    Contact Us
+                  </NavLink>
+                </li>
                 {/* <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
                 </li> */}
                 <li className="nav-item">
-                  <Link href="#/" id="login" className="px-0" onClick={() => setLgShow(true)}>
+                  <Link
+                    href="#/"
+                    id="login"
+                    className="px-0"
+                    onClick={() => setLgShow(true)}
+                  >
                     <FontAwesomeIcon
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
@@ -185,19 +220,34 @@ const Navbar = ({ cart, count }) => {
                   </Link>
                 </li>
                 <li className="nav-item" id="cart">
-                  <button className="btn btn-success w-100 my-2" type="button" onClick={openModal}>Login</button>
-                  <MyModal showModal={showModal} closeModal={closeModal} />
+                  <button
+                    className="btn btn-success w-100 my-2"
+                    type="button"
+                    onClick={openModal}
+                  >
+                    Login
+                  </button>
+                  <Login showModal={showModal} closeModal={closeModal} openRegistrationModal={openRegistration}/>
+                  <Registration showModal={showRegistrationModal} closeModal={closeRegistrationModal} />
                 </li>
-                {showlogin ?(<li>
-                  <h4 typeof="button" className="text-danger bg-light m-0 p-1 rounded-circle">HV</h4>
-                </li>): null}
+                {showlogin ? (
+                  <li>
+                    <h4
+                      typeof="button"
+                      className="text-danger bg-light m-0 p-1 rounded-circle"
+                    >
+                      HV
+                    </h4>
+                  </li>
+                ) : null}
               </ul>
             </div>
           </div>
         </div>
       </div>
       {/* model-for-cart */}
-      <Modal className="cart-model-sect"
+      <Modal
+        className="cart-model-sect"
         size="lg"
         show={lgShow}
         onHide={() => setLgShow(false)}
@@ -213,7 +263,6 @@ const Navbar = ({ cart, count }) => {
           {CART?.map((cartItem, cartindex) => {
             return (
               <div className="row mb-4 cart-model">
-
                 <div className="col-sm-3 cart-model-img">
                   <img className="mx-3" src={cartItem.img} alt="" />
                 </div>
@@ -221,12 +270,24 @@ const Navbar = ({ cart, count }) => {
                   <h4>{cartItem.name}</h4>
                 </div>
                 <div className="col-sm-3  d-flex align-items-center justify-content-around ">
-                  <FontAwesomeIcon icon={faCirclePlus} type="button" className="text-primary h4 m-0" />
+                  <FontAwesomeIcon
+                    icon={faCirclePlus}
+                    type="button"
+                    className="text-primary h4 m-0"
+                  />
                   <h6 className="m-0">7</h6>
-                  <FontAwesomeIcon icon={faCircleMinus} type="button" className="text-primary h4 m-0" />
+                  <FontAwesomeIcon
+                    icon={faCircleMinus}
+                    type="button"
+                    className="text-primary h4 m-0"
+                  />
                 </div>
                 <div className="col-sm-3 d-flex align-items-center justify-content-center ">
-                  <FontAwesomeIcon type="button" className="text-danger" icon={faTrash} />
+                  <FontAwesomeIcon
+                    type="button"
+                    className="text-danger"
+                    icon={faTrash}
+                  />
                 </div>
               </div>
             );
@@ -239,73 +300,11 @@ const Navbar = ({ cart, count }) => {
           </div>
         </div>
         <div className="justify-content-end d-flex px-5 cart-model">
-          <button type="button" className="btn btn-success my-3">PAYMENT</button>
+          <button type="button" className="btn btn-success my-3">
+            PAYMENT
+          </button>
         </div>
       </Modal>
-      <Modal className="p-3 "
-        size="lg"
-        show={signup}
-        onHide={() => setSignup(false)}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">
-            Sign Up
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="model-registr">
-          <form className="container">
-            <div class="form-row row d-flex">
-              <div class="form-group col-lg-6 my-2">
-                <label className="my-2" for="">First Name</label>
-                <input type="text" class="form-control" id="" placeholder="First Name" />
-              </div>
-              <div class="form-group col-lg-6 my-2">
-                <label className="my-2" for="">Last Name</label>
-                <input type="text" class="form-control" id="" placeholder="Last Name" />
-              </div>
-              <div class="form-group col-lg-12 my-2">
-                <label className="my-2" for="">Mobile No</label>
-                <input type="text" class="form-control" id="" placeholder="Mobile No" />
-              </div>
-              <div class="form-group col-lg-12 my-2">
-                <label className="my-2" for=""> Email</label>
-                <input type="email" class="form-control" id="" placeholder="Email" />
-              </div>
-              <div class="form-group col-lg-12 my-2">
-                <label className="my-2" for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="" placeholder="1234 Main St" />
-              </div>
-              <div class="form-group col-lg-12 my-2">
-                <label className="my-2" for="inputAddress">Password</label>
-                <input type="password" class="form-control" id="" placeholder="password" />
-              </div>
-            </div>
-            <div className="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary my-4">Sign in</button>
-            </div>
-          </form>
-        </Modal.Body>
-      </Modal>
-      {/* Admin MOdel */}
-      <Modal className="p-3 "
-        size="lg"
-        show={signup}
-        onHide={() => setSignup(false)}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="example-modal-sizes-title-lg">
-
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="">
-
-        </Modal.Body>
-      </Modal>
-
     </>
   );
 };

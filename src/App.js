@@ -4,10 +4,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
 import Lang from "./Component/language/index";
-import Home from "./Component/mainComponents/Home/index";
-import Services from "./Component/mainComponents/Service";
-import ProductPage from "./Component/mainComponents/Products/index";
-import ContactUs from "./Component/mainComponents/ContactUs";
+import Home from "./Component/Pages/Home/index";
+import Services from "./Component/Pages/Service";
+import ProductPage from "./Component/Pages/Products/index";
+import ContactUs from "./Component/Pages/ContactUs";
 
 const App = () => {
   const location = useLocation();

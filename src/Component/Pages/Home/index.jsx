@@ -1,21 +1,22 @@
 import React from "react";
-
-import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
-import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
-import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
-import Navbar from "../Navbar/index";
-import About from "../About";
 import { useTranslation } from "react-i18next";
-import Footer from "../Footer";
-import Training from "../Training";
+import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
+
+// Common Component
+import Navbar from "../../Common/Navbar/index";
+import About from "../../Common/About";
+import Footer from "../../Common/Footer";
+import Training from "../../Common/Training";
+import FooterTop from "../../Common/InternationalBox/footer-top";
+
+// Image
 import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
 import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
 import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
-import { Link } from "react-router-dom";
-import FooterTop from "../Footer/footer-top";
-import Carousel from "react-bootstrap/Carousel";
-
-// import FetchData from "../../Common/Select/apicomponent";
+import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
+import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
+import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -141,7 +142,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* <FetchData /> */}
         <Training />
         <FooterTop />
         <Footer />
