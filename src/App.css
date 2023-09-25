@@ -13,7 +13,7 @@
   background-color: #FBCEB1 !important;
 }
 .nav-link:focus, .nav-link:hover {
-  color: #013220 !important;
+  color: greenyellow !important;
 }
 .home-backgroundColor {
   background-image: linear-gradient(
@@ -1746,6 +1746,9 @@ body {
   .contact-sect {
     padding-top: 18% !important;
   }
+  .product-sect .prd-btn{
+    width: 100% !important;
+  }
 }
 .contact_field {
   margin-top: 24%;
@@ -2452,23 +2455,16 @@ button.contact_form_submit {
   background-image: url(./assets/img/prod-img/Rumeno\ Health\ Roadmap.png);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   height: 100vh;
+
 }
 
 .sildar:hover {
-  background-image: linear-gradient(
-    to bottom right,
-    #2eb62c,
-    #57c84d,
-    #83d475,
-    #beed53,
-    #57c84d,
-    #2eb62c
-  );
-  width: 160px;
-  border-radius: 0px 20px 20px 0px;
-  padding-left: 10px;
+  background-color: yellowgreen;
+  padding: 4px 10px !important;
 }
+
 .quantity-container {
     display: flex;
     align-items: center;
@@ -2490,4 +2486,72 @@ button.contact_form_submit {
   }
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
   color: greenyellow !important;
+}
+
+
+.product-sect{
+  height: 600px;
+  overflow-y: scroll;
+}
+
+
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+              7px 7px 20px 0px rgba(0,0,0,.1),
+              4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.btn-11 {
+  background:linear-gradient(0deg, rgb(76 245 32) 0%, rgb(133 240 109) 100%);
+  color: #fff;
+  overflow: hidden;
+}
+
+.btn-11:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-11:before {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #fff;
+  animation: shiny-btn1 3s ease-in-out infinite;
+}
+
+.btn-11:hover {
+  opacity: .7;
+}
+
+.btn-11:active {
+  box-shadow: 4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+              inset -4px -4px 6px 0 rgba(255,255,255,.2),
+              inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+@keyframes shiny-btn1 {
+  0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+  80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+  81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+  100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
 }
