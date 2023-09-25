@@ -2237,8 +2237,9 @@ html {
   right: 5%;
   z-index: 999;
   margin-top: 13px;
-  width: 7%;
+  width: auto;
   border-radius: 55px;
+  bottom: 20px;
 }
 /* ------------------------------------------------------------------- */
 
@@ -2554,4 +2555,25 @@ button.contact_form_submit {
   80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
   81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
   100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+}
+
+
+@media only screen and (min-width: 768px){
+  #header{
+    top:111px;
+  }
+  .logo {
+    max-width: 32%;
+    height: auto;
+  }
+}
+@media only screen and (min-width: 1024px){
+  #header{
+    top:70px;
+  } 
+}
+@media only screen and (min-width: 1360px){
+  #header{
+    top:47px;
+  } 
 }
