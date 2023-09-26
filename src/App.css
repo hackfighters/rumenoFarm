@@ -1016,9 +1016,7 @@ input[type="radio"] {
   text-decoration: none;
 }
 
-.lang-link {
-  
-}
+
 
 .btn-grad-bt {
   background-image: linear-gradient(
@@ -1705,7 +1703,7 @@ body {
     display: flex;
   }
   .lang-img img {
-    width: 50%;
+    width: 100%;
     height: auto;
   }
   .lang-box2 {
@@ -1902,34 +1900,11 @@ html {
   color: blue !important;
 }
 
-/* .menu__item:hover{
-  color: var(--color-2) 
-
-} */
 .menu__item.active.nav-header:hover {
-  /* flex-grow: 2.7 ; */
   color: red !important;
 }
 
-.menu__item.active .menu__icon {
-  /* transform: translate3d(-95% , 0, 0) ; */
-}
-/* 
-.menu__item.active::before {
 
-    transform: scale(1) ;
-
-} */
-
-.menu__item.active::after {
-  /* transform: translate3d(6.3em , 0, 0) scaleX(1) ;
-    transition: transform var(--duration) var(--cubic) ; */
-}
-
-.menu__text.active {
-  /* transform: translate3d(0 , 0, 0) ;
-    transition: transform calc(var(--duration) / 1.5) ; */
-}
 
 .icon {
   --duration-icon: 1s;
@@ -2560,6 +2535,11 @@ button.contact_form_submit {
   100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
 }
 
+@media only screen and (min-width: 320px){
+  .lang-box{
+    width: 75% !important;
+  }
+}
 
 @media only screen and (min-width: 768px){
   #header{
@@ -2568,6 +2548,9 @@ button.contact_form_submit {
   .logo {
     max-width: 25%;
     height: auto;
+  }
+  .lang-box{
+    width: 45% !important;
   }
 }
 @media only screen and (min-width: 1024px){

@@ -39,7 +39,7 @@ const Language = () => {
                 </div>
               </div>
               <div className="col-lg-6">
-                <div className="lang-box2 ">
+                <div className="lang-box2 my-2">
                   <Select onChange={(e) => handleChangen(e)} />
                   <div className="lang-link">
                     <Link to="/home">
