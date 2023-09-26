@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 // Third party i18next
 import i18next from "i18next";
+
 // Common Component
 import Select from "../Common/Select";
+
 // Image
 import lgimg from "../../assets/img/logo.jpg";
+
 const Language = () => {
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
@@ -38,9 +42,9 @@ const Language = () => {
               <div className="col-lg-6">
                 <div className="lang-box2 ">
                   <Select onChange={(e) => handleChangen(e)} />
-                  <div className="lang-link">
+                  <div className="lang-link d-flex justify-content-center">
                     <Link to="/home">
-                      <button className="btn-grad-bt gradient-custom-2">Submit</button>
+                      <button className="btn-grad-bt">Submit</button>
                     </Link>
                   </div>
                 </div>
@@ -52,4 +56,5 @@ const Language = () => {
     </>
   );
 };
+
 export default Language;

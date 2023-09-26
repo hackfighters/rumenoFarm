@@ -14,7 +14,7 @@ const About = () => {
 
   return (
     <>
-      <div className="container-fluid abt-sect py-5 overflow-hidden">
+      <div className="container-fluid abt-sect  py-5 overflow-hidden">
         <div className="row justify-content-evenly my-5">
           <div
             className="col-lg-5 mb-6 mb-lg-0"
@@ -131,8 +131,8 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-12 ">
-            <p className="par mx-4">{t("aboutparagraph2")}</p>
+          <div className="col-lg-11">
+            <p className="par">{t("aboutparagraph2")}</p>
           </div>
         </div>
       </div>
