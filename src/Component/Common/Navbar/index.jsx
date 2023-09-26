@@ -221,11 +221,11 @@ const Navbar = ({ cart, count }) => {
                 </li>
                 <li className="nav-item" id="cart">
                   <button
-                    className="btn btn-success w-100 my-2"
+                    className="custom-btn btn-11 border-0"   
                     type="button"
                     onClick={openModal}
                   >
-                    Login
+                    Login<div class="dot"></div>
                   </button>
                   <Login showModal={showModal} closeModal={closeModal} openRegistrationModal={openRegistration}/>
                   <Registration showModal={showRegistrationModal} closeModal={closeRegistrationModal} />
