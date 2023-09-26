@@ -221,7 +221,7 @@ const Navbar = ({ cart, count }) => {
                 </li>
                 <li className="nav-item" id="cart">
                   <button
-                    className="custom-btn btn-11 border-0"   
+                    className="custom-btn btn-11 border-0 my-2"   
                     type="button"
                     onClick={openModal}
                   >
@@ -234,7 +234,7 @@ const Navbar = ({ cart, count }) => {
                   <li>
                     <h4
                       typeof="button"
-                      className="text-danger bg-light m-0 p-1 rounded-circle"
+                      className="text-danger bg-light m-0 p-1 rounded-circle my-2"
                     >
                       HV
                     </h4>
