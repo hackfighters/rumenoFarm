@@ -14,13 +14,13 @@
   /* background-color: var(--bs-nav-pills-link-active-bg); */
   background-color: #FBCEB1 !important;
 }
-
+/* 
 .nav-link:focus,
 .nav-link:hover {
   color: #013220 !important;
-}
+} */
 
-.home-backgroundColor {
+/* .home-backgroundColor {
   background-image: linear-gradient(to bottom right,
       #2eb62c,
       #57c84d,
@@ -28,7 +28,7 @@
       #beed53,
       #57c84d,
       #2eb62c);
-}
+} */
 
 .nav-text small {
   display: flex;
