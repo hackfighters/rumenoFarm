@@ -1701,7 +1701,7 @@ body {
     display: flex;
   }
   .lang-img img {
-    width: 50%;
+    width: 100%;
     height: auto;
   }
   .lang-box2 {
@@ -2561,6 +2561,14 @@ button.contact_form_submit {
   .logo {
     max-width: 25%;
     height: auto;
+  }
+  .lang-box{
+    width: 45% !important;
+  }
+}
+@media only screen and (max-width: 768px){
+  .lang-box{
+    width: 75% !important;
   }
 }
 @media only screen and (min-width: 1024px){
