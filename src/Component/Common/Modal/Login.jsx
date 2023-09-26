@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
 // Image
 import logo from "../../../../src/assets/img/lv-bgr.png";
 
-const Login = ({ showModal, closeModal,openRegistrationModal }) => {
+const Login = ({ showModal, closeModal, openRegistrationModal }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  console.log(username);
+  console.log(password);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    console.log("username:", username);
+    console.log("password:", password);
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var data = JSON.stringify({
+      username: "himanshu",
+      password: "12345678",
+    });
+    var requestOptions = {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: data,
+      redirect: "follow",
+    };
+    fetch("http://192.168.1.2:5000/rumeno_login", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  };
   return (
     <>
       <Modal
@@ -25,7 +53,7 @@ const Login = ({ showModal, closeModal,openRegistrationModal }) => {
                   <img src={logo} className="w-25" alt="logo" />
                   <h4 className="mt-1 mb-3 pb-1">RUMENO</h4>
                 </div>
-                <form>
+                <form onSubmit={handleLogin}>
                   <p className="mb-3">Please login to your account</p>
 
                   <div className="form-outline  mb-3">
@@ -37,6 +65,8 @@ const Login = ({ showModal, closeModal,openRegistrationModal }) => {
                       id="username"
                       className="form-control"
                       placeholder="Phone number or email address"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
 
@@ -49,6 +79,8 @@ const Login = ({ showModal, closeModal,openRegistrationModal }) => {
                       id="password"
                       className="form-control"
                       placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
 
@@ -66,11 +98,14 @@ const Login = ({ showModal, closeModal,openRegistrationModal }) => {
 
                   <div className="d-flex align-items-center justify-content-center pb-4">
                     <p className="mb-0 me-2">Don't have an account?</p>
-                    <button type="button" className="btn btn-outline-danger" onClick={openRegistrationModal}>
+                    <button
+                      type="button"
+                      className="btn btn-outline-danger"
+                      onClick={openRegistrationModal}
+                    >
                       Create new
                     </button>
                   </div>
-
                 </form>
               </div>
               <div className="col-lg-6 d-flex align-items-center gradient-custom-2">

@@ -43,22 +43,22 @@ const Home = () => {
                   class="container-fluid p-0 mb-5 wow fadeIn"
                   data-wow-delay="0.1s"
                 >
-                  <Carousel interval={2000}>
+                  <Carousel interval={1000}>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg1} alt="#" />
+                      <img className="w-100" src={caroimg1} alt="Loading" />
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg2} alt="#" />
+                      <img className="w-100" src={caroimg2} alt="Loading" />
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg3} alt="#" />
+                      <img className="w-100" src={caroimg3} alt="Loading" />
                     </Carousel.Item>
                   </Carousel>
                 </div>
               </div>
               <a href="#training">
                 <div className="training-sect">
-                  <button className="btn  btn-success  btn--shockwave is-active">
+                  <button className="btn btn-success btn--shockwave is-active">
                     TRAINING
                   </button>
                 </div>
