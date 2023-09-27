@@ -29,6 +29,7 @@ import humanconsumable1 from "../../../assets/img/prod-img/HyegoatMilkpowder.jpg
 import humanconsumable2 from "../../../assets/img/prod-img/farmfreshmilk.jpg";
 import humanconsumable3 from "../../../assets/img/prod-img/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/prod-img/Barbarigoat.jpg";
+import ViewModal from "../../Common/PopModal";
 
 const ProductSidebar = () => {
   const Data = [
@@ -144,6 +145,9 @@ const ProductSidebar = () => {
   const [rumenoamazon, setrumenoamazon] = useState(false);
   const [humanconsumable, sethumanconsumable] = useState(false);
   const [goatforsale, setgoatforsale] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedImg, setSelectedImg] = useState("");
+  const [selecteddes, setSelecteddes] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
@@ -209,6 +213,16 @@ const ProductSidebar = () => {
   const Farmequip = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
   // const Rumenoamazon = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
   // const Goatforsale = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
+
+  const openModal = (img , description) => {
+    setSelectedImg(img , description);
+    setSelecteddes(description);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -356,7 +370,9 @@ const ProductSidebar = () => {
                           type="button"
                           icon={faEye}
                           beat
+                          onClick={() =>openModal(s.img , s.description)}
                         />
+                        <ViewModal img={selectedImg} p={selecteddes} showModal={showModal} closeModal={closeModal}/>
                         <div className="prd-btn w-50">
                           <button className="btn btn-success w-100 my-2">
                             Add to Cart
@@ -426,7 +442,9 @@ const ProductSidebar = () => {
                           type="button"
                           icon={faEye}
                           beat
+                          onClick={openModal}
                         />
+                        <ViewModal showModal={showModal} closeModal={closeModal}/>
                         <div className="w-50">
                           <button className="btn btn-success w-100 my-2">
                             Add to Cart
@@ -494,7 +512,9 @@ const ProductSidebar = () => {
                           type="button"
                           icon={faEye}
                           beat
+                          onClick={openModal}
                         />
+                        <ViewModal showModal={showModal} closeModal={closeModal}/>
                         <div className="w-50">
                           <button className="btn btn-success w-100 my-2">
                             Add to Cart
@@ -562,7 +582,9 @@ const ProductSidebar = () => {
                           type="button"
                           icon={faEye}
                           beat
+                          onClick={openModal}
                         />
+                        <ViewModal showModal={showModal} closeModal={closeModal}/>
                         <div className="w-50">
                           <button className="btn btn-success w-100 my-2">
                             Add to Cart
@@ -630,7 +652,9 @@ const ProductSidebar = () => {
                           type="button"
                           icon={faEye}
                           beat
+                          onClick={openModal}
                         />
+                        <ViewModal showModal={showModal} closeModal={closeModal}/>
                         <div className="w-50">
                           <button className="btn btn-success w-100 my-2">
                             Add to Cart
@@ -698,7 +722,9 @@ const ProductSidebar = () => {
                           type="button"
                           icon={faEye}
                           beat
+                          onClick={openModal}
                         />
+                        <ViewModal showModal={showModal} closeModal={closeModal}/>
                         <div className="w-50">
                           <button className="btn btn-success w-100 my-2">
                             Add to Cart
