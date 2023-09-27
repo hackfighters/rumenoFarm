@@ -2431,10 +2431,16 @@ button.contact_form_submit {
   height: 100vh;
 
 }
+.sildar,.span{
+  color: #000;
+}
 
 .sildar:hover {
   background-color: yellowgreen;
-  padding: 4px 10px !important;
+  padding: 7px 10px !important;
+  margin: 9px 0px !important;
+  border-radius: 0px 20px;
+  color: #fff;
 }
 
 .quantity-container {
@@ -2556,3 +2562,10 @@ button.contact_form_submit {
     top:47px;
   } 
 }
+/* 
+.viewmodal .modal-content{
+  max-width: 67%;
+}
+.viewmodal .modal-dialog{
+  width: 100%;
+} */
