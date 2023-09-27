@@ -1071,8 +1071,39 @@ input[type="radio"] {
   height: 320px;
   object-fit: initial;
 }
-
-/* ---------------Training css---------------- */
+.services-line-largeleft{
+  background-color: #013220;
+    width: 74px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 19px;
+    /* margin-left: 10px;*/
+}
+.services-line-smallleft{
+  background-color: #013220;
+    width: 50px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.services-line-largeright{
+  background-color: #013220;
+    width: 74px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 19px;
+    /* margin-left: 10px;*/
+}
+.services-line-smallright{
+  background-color: #013220;
+    width: 50px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+  /* ---------------Training css---------------- */
 
 .nav-pills-custom .nav-link {
   color: #aaa;
@@ -2483,7 +2514,7 @@ button.contact_form_submit {
   padding: 10px 25px;
   font-family: 'Lato', sans-serif;
   font-weight: 500;
-  background: transparent;
+  /* background: transparent; */
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -2495,8 +2526,6 @@ button.contact_form_submit {
 }
 
 .btn-11 {
-  background:linear-gradient(0deg, rgb(76 245 32) 0%, rgb(133 240 109) 100%);
-  color: #fff;
   overflow: hidden;
 }
 
@@ -2563,3 +2592,4 @@ button.contact_form_submit {
     top:47px;
   } 
 }
+

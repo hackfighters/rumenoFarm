@@ -1,10 +1,10 @@
 import Carousel from "react-bootstrap/Carousel";
 
 // Image
-import footcaro1 from "../../../assets/img/New folder/footcaro1.png";
-import footcaro2 from "../../../assets/img/New folder/footcaro2.png";
-import footcaro3 from "../../../assets/img/New folder/footcaro3.png";
-import footcaro4 from "../../../assets/img/New folder/footcaro4.png";
+import footcaro1 from "../../../assets/img/Footcaro/footcaro1.png";
+import footcaro2 from "../../../assets/img/Footcaro/footcaro2.png";
+import footcaro3 from "../../../assets/img/Footcaro/footcaro3.png";
+import footcaro4 from "../../../assets/img/Footcaro/footcaro4.png";
 
 function CarouselFadeExample() {
   return (

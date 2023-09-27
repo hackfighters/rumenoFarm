@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Prdcom from "../../../assets/img/prod-img/prdcom-1.jpg";
-import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
 import ReactStars from "react-rating-stars-component";
 import ReactPaginate from "react-paginate";
+
+// Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEye,
@@ -14,6 +14,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faAmazon, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
+// Common Component
+import ViewModal from "../../Common/PopModal";
+
+// Image
+import TannavImg from "../../../assets/img/OurProduct/rumenovita backgrond.jpg";
+import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
 import farmimg1 from "../../../assets/img/prod-img/floor-burner.jpg";
 import farmimg2 from "../../../assets/img/prod-img/farm-floor.jpg";
 import rumenoamazon1 from "../../../assets/img/prod-img/Castrator.jpg";
@@ -29,15 +35,16 @@ import humanconsumable1 from "../../../assets/img/prod-img/HyegoatMilkpowder.jpg
 import humanconsumable2 from "../../../assets/img/prod-img/farmfreshmilk.jpg";
 import humanconsumable3 from "../../../assets/img/prod-img/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/prod-img/Barbarigoat.jpg";
-import ViewModal from "../../Common/PopModal";
 
 const ProductSidebar = () => {
+
+// I will delete this Comment after connecting the api
   const Data = [
     {
       name: "Tanaav Mukti",
       price: 700,
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: Prdcom,
+      img: TannavImg,
     },
     {
       name: "Tanaav Mukti",
@@ -214,8 +221,8 @@ const ProductSidebar = () => {
   // const Rumenoamazon = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
   // const Goatforsale = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
 
-  const openModal = (img , description) => {
-    setSelectedImg(img , description);
+  const openModal = (img, description) => {
+    setSelectedImg(img, description);
     setSelecteddes(description);
     setShowModal(true);
   };
@@ -370,12 +377,17 @@ const ProductSidebar = () => {
                           type="button"
                           icon={faEye}
                           beat
-                          onClick={() =>openModal(s.img , s.description)}
+                          onClick={() => openModal(s.img, s.description)}
                         />
-                        <ViewModal img={selectedImg} p={selecteddes} showModal={showModal} closeModal={closeModal}/>
+                        <ViewModal
+                          img={selectedImg}
+                          p={selecteddes}
+                          showModal={showModal}
+                          closeModal={closeModal}
+                        />
                         <div className="prd-btn w-50">
-                          <button className="btn btn-success w-100 my-2">
-                            Add to Cart
+                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
+                            ADD TO CART
                           </button>
                         </div>
                       </div>
@@ -444,10 +456,13 @@ const ProductSidebar = () => {
                           beat
                           onClick={openModal}
                         />
-                        <ViewModal showModal={showModal} closeModal={closeModal}/>
+                        <ViewModal
+                          showModal={showModal}
+                          closeModal={closeModal}
+                        />
                         <div className="w-50">
-                          <button className="btn btn-success w-100 my-2">
-                            Add to Cart
+                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
+                            ADD TO CART
                           </button>
                         </div>
                       </div>
@@ -514,10 +529,13 @@ const ProductSidebar = () => {
                           beat
                           onClick={openModal}
                         />
-                        <ViewModal showModal={showModal} closeModal={closeModal}/>
+                        <ViewModal
+                          showModal={showModal}
+                          closeModal={closeModal}
+                        />
                         <div className="w-50">
-                          <button className="btn btn-success w-100 my-2">
-                            Add to Cart
+                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
+                            ADD TO CART
                           </button>
                         </div>
                       </div>
@@ -584,10 +602,13 @@ const ProductSidebar = () => {
                           beat
                           onClick={openModal}
                         />
-                        <ViewModal showModal={showModal} closeModal={closeModal}/>
+                        <ViewModal
+                          showModal={showModal}
+                          closeModal={closeModal}
+                        />
                         <div className="w-50">
-                          <button className="btn btn-success w-100 my-2">
-                            Add to Cart
+                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
+                            ADD TO CART
                           </button>
                         </div>
                       </div>
@@ -654,10 +675,13 @@ const ProductSidebar = () => {
                           beat
                           onClick={openModal}
                         />
-                        <ViewModal showModal={showModal} closeModal={closeModal}/>
+                        <ViewModal
+                          showModal={showModal}
+                          closeModal={closeModal}
+                        />
                         <div className="w-50">
-                          <button className="btn btn-success w-100 my-2">
-                            Add to Cart
+                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
+                            ADD TO CART
                           </button>
                         </div>
                       </div>
@@ -724,10 +748,13 @@ const ProductSidebar = () => {
                           beat
                           onClick={openModal}
                         />
-                        <ViewModal showModal={showModal} closeModal={closeModal}/>
+                        <ViewModal
+                          showModal={showModal}
+                          closeModal={closeModal}
+                        />
                         <div className="w-50">
-                          <button className="btn btn-success w-100 my-2">
-                            Add to Cart
+                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
+                            ADD TO CART
                           </button>
                         </div>
                       </div>

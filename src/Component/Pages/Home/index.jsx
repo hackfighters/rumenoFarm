@@ -9,14 +9,17 @@ import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
 import FooterTop from "../../Common/InternationalBox/footer-top";
 // Image
-import Prdimg4 from "../../../assets/img/prod-img/prdcom-4.jpg";
-import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
+import Prdimg4 from "../../../assets/img/OurProduct/rumeno minromix.jpg";
+import Prdimg5 from "../../../assets/img/OurProduct/micro floratane.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 const Home = () => {
   const { t } = useTranslation();
   const Data = [
+
+    // I will delete this Comment after connecting the api
+
     {
       heading:"NTC",
       title:"new your city",
@@ -84,7 +87,6 @@ const Home = () => {
         <About />
         <div className="container">
           <div className="text-center">
-            {/* <h1 className="display-5 mb-3 mt-3">Our Products</h1> */}
             <div className="d-flex my-3">
               <span className="label-title">Our Products</span>
               <div>
@@ -110,14 +112,14 @@ const Home = () => {
               <div className="card-box py-4">
                 <div className="card1">
                   <img src={index.img} alt="Loading" className="card-img" />
-                  <div className="card-body">
+                  <div className="card-body h-100">
                     <h1 className="card-title">{index.heading}</h1>
                     <p className="card-sub-title">{index.title}</p>
                     <p className="card-sub-title">
                       {index.desp}
                     </p>
                     <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-2 w-50">See More</button>
+                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">See More</button>
                     </Link>
                   </div>
                 </div>

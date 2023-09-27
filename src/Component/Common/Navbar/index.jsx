@@ -219,7 +219,7 @@ const Navbar = ({ cart, count }) => {
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
-                  <button className="btn text-white border-0 gradient-custom-2 my-2 w-100" onClick={openModal}>Login</button>
+                  <button className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11" onClick={openModal}>Login</button>
                     {/* <ToastContainer /> */}
                   </div>
 
