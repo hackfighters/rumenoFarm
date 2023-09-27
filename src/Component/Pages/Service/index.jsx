@@ -17,9 +17,18 @@ const Services = () => {
         <div
           class="section-header text-center mx-auto mb-3 wow fadeInUp pt-5"
           data-wow-delay="0.1s"
-          style={{ maxWidth: "500px" }}
         >
-          <h1 class="display-5 mb-3 pt-5 mt-3">Our Services</h1>
+          <div className="d-flex justify-content-center pt-5">
+            <div className="mx-2">
+              <div className="services-line-largeleft"></div>
+              <div className="services-line-smallleft"></div>
+            </div>
+            <span className="label-title">Our Services</span>
+            <div className="mx-2">
+              <div className="services-line-largeright"></div>
+              <div className="services-line-smallright"></div>
+            </div>
+          </div>
         </div>
         <div className="col-lg-12">
           <h2 className="  py-2 px-4 service-head">Our Veterinary Team</h2>

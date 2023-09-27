@@ -87,6 +87,7 @@
 
 .par {
   color: #999999;
+  font-size: 16px;
 }
 
 .card-gutters {
@@ -279,6 +280,9 @@
   font-size: 14px;
 }
 
+.logo-width{
+  width: 140px;
+}
 .navbar a i {
   font-size: 12px;
   line-height: 0;
@@ -1067,8 +1071,39 @@ input[type="radio"] {
   height: 320px;
   object-fit: initial;
 }
-
-/* ---------------Training css---------------- */
+.services-line-largeleft{
+  background-color: #013220;
+    width: 74px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 19px;
+    /* margin-left: 10px;*/
+}
+.services-line-smallleft{
+  background-color: #013220;
+    width: 50px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.services-line-largeright{
+  background-color: #013220;
+    width: 74px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 19px;
+    /* margin-left: 10px;*/
+}
+.services-line-smallright{
+  background-color: #013220;
+    width: 50px;
+    height: 3px;
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+  /* ---------------Training css---------------- */
 
 .nav-pills-custom .nav-link {
   color: #aaa;
@@ -2195,7 +2230,7 @@ html {
 }
 
 .gradient-custom-2 {
-  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  background: linear-gradient(to right, #87CEEB, #d8363a, #dd3675, #b44593);
 }
 .model-registr {
   background-image: linear-gradient(333deg, #81ca6b 0%, #dbffd0 74%);
@@ -2311,7 +2346,8 @@ html {
 }
 
 .right_conatct_social_icon {
-  background: linear-gradient(to top right, #1325e8 -5%, #8f10b7 100%);
+  background-image: linear-gradient(to right, #87CEEB, #d8363a, #dd3675, #ee7724);
+
 }
 
 .contact_inner {
@@ -2371,12 +2407,14 @@ html {
 }
 
 button.contact_form_submit {
-  background: linear-gradient(to top right, #1325e8 -5%, #8f10b7 100%);
+  background: linear-gradient(to right, #87CEEB, #d8363a, #dd3675, #ee7724);
   border: none;
+  border-radius: 10px;
   color: #fff;
   padding: 10px 15px;
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   letter-spacing: 2px;
 }
 
@@ -2476,7 +2514,7 @@ button.contact_form_submit {
   padding: 10px 25px;
   font-family: 'Lato', sans-serif;
   font-weight: 500;
-  background: transparent;
+  /* background: transparent; */
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -2488,8 +2526,6 @@ button.contact_form_submit {
 }
 
 .btn-11 {
-  background:linear-gradient(0deg, rgb(76 245 32) 0%, rgb(133 240 109) 100%);
-  color: #fff;
   overflow: hidden;
 }
 
@@ -2556,3 +2592,4 @@ button.contact_form_submit {
     top:47px;
   } 
 }
+
