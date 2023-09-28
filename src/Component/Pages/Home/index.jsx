@@ -2,25 +2,43 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
-
 // Common Component
 import Navbar from "../../Common/Navbar/index";
 import About from "../../Common/About";
 import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
 import FooterTop from "../../Common/InternationalBox/footer-top";
-
 // Image
-import Prdimg6 from "../../../assets/img/prod-img/prdcom-6.jpg";
-import Prdimg5 from "../../../assets/img/prod-img/prdcom-5.jpg";
-import Prdimg8 from "../../../assets/img/prod-img/prdGS-2.jpg";
+import Prdimg4 from "../../../assets/img/OurProduct/rumeno minromix.jpg";
+import Prdimg5 from "../../../assets/img/OurProduct/micro floratane.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
-
 const Home = () => {
   const { t } = useTranslation();
+  const Data = [
 
+    // I will delete this Comment after connecting the api
+
+    {
+      heading:"NTC",
+      title:"new your city",
+      desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      img:Prdimg5
+    },
+    {
+      heading:"NTC",
+      title:"new your city",
+      desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      img:Prdimg4
+    },
+    {
+      heading:"NTC",
+      title:"new your city",
+      desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      img:Prdimg5
+    }
+  ]
   return (
     <>
       <section className="container-fluid overflow-hidden p-0">
@@ -43,22 +61,22 @@ const Home = () => {
                   class="container-fluid p-0 mb-5 wow fadeIn"
                   data-wow-delay="0.1s"
                 >
-                  <Carousel interval={1000}>
+                  <Carousel interval={2000}>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg1} alt="Loading" />
+                      <img className="w-100" src={caroimg1} alt="#" />
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg2} alt="Loading" />
+                      <img className="w-100" src={caroimg2} alt="#" />
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg3} alt="Loading" />
+                      <img className="w-100" src={caroimg3} alt="#" />
                     </Carousel.Item>
                   </Carousel>
                 </div>
               </div>
               <a href="#training">
                 <div className="training-sect">
-                  <button className="btn btn-success btn--shockwave is-active">
+                  <button className="btn  btn-success  btn--shockwave is-active">
                     TRAINING
                   </button>
                 </div>
@@ -69,7 +87,13 @@ const Home = () => {
         <About />
         <div className="container">
           <div className="text-center">
-            <h1 className="display-5 mb-3 mt-3">Our Products</h1>
+            <div className="d-flex my-3">
+              <span className="label-title">Our Products</span>
+              <div>
+                <div className="about-line-large"></div>
+                <div className="about-line-small"></div>
+              </div>
+            </div>
           </div>
           <div className="row g-0 gx-5 align-items-end">
             <div className="col-lg-6">
@@ -83,63 +107,25 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-4">
+            {Data.map((index) => (
+              <div className="col-lg-4">
               <div className="card-box py-4">
                 <div className="card1">
-                  <img src={Prdimg5} alt="Loading" className="card-img" />
-                  <div className="card-body">
-                    <h1 className="card-title">NYC</h1>
-                    <p className="card-sub-title">new your city</p>
+                  <img src={index.img} alt="Loading" className="card-img" />
+                  <div className="card-body h-100">
+                    <h1 className="card-title">{index.heading}</h1>
+                    <p className="card-sub-title">{index.title}</p>
                     <p className="card-sub-title">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet.
+                      {index.desp}
                     </p>
                     <Link to="/products">
-                      <button className="card-btn">See More</button>
+                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">See More</button>
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              <div className="card-box py-4">
-                <div className="card1">
-                  <img src={Prdimg6} alt="Loading" className="card-img" />
-                  <div className="card-body">
-                    <h1 className="card-title">NYC</h1>
-                    <p className="card-sub-title">new your city</p>
-                    <p className="card-sub-title">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet.
-                    </p>
-                    <Link to="/products">
-                      <button className="card-btn">See More</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="card-box py-4">
-                <div className="card1">
-                  <img src={Prdimg8} alt="Loading" className="card-img" />
-                  <div className="card-body">
-                    <h1 className="card-title">NYC</h1>
-                    <p className="card-sub-title">new your city</p>
-                    <p className="card-sub-title">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet.
-                    </p>
-                    <Link to="/products">
-                      <button className="card-btn">See More</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <Training />
@@ -149,5 +135,4 @@ const Home = () => {
     </>
   );
 };
-
 export default Home;

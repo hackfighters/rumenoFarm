@@ -3,36 +3,36 @@ import Modal from "react-bootstrap/Modal";
 
 // Image
 import logo from "../../../../src/assets/img/lv-bgr.png";
+import axios from "axios";
 
 const Login = ({ showModal, closeModal, openRegistrationModal }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  
+  // State
+  const [login, setLogin] = useState({
+    username:'',
+    password:'',
+  });
 
-  console.log(username);
-  console.log(password);
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log("username:", username);
-    console.log("password:", password);
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    var data = JSON.stringify({
-      username: "himanshu",
-      password: "12345678",
+  // Function
+  const loginHandleChange = (e) => {
+    const { name, value } = e.target;
+    setLogin({
+      ...login,
+      [name]: value,
     });
-    var requestOptions = {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: data,
-      redirect: "follow",
-    };
-    fetch("http://192.168.1.2:5000/rumeno_login", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
   };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log(login);
+    try {
+      const response = await axios.post('http://192.168.1.4:5000/rumeno_register', login);
+      console.log('Login successful:', response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   return (
     <>
       <Modal
@@ -55,32 +55,30 @@ const Login = ({ showModal, closeModal, openRegistrationModal }) => {
                 </div>
                 <form onSubmit={handleLogin}>
                   <p className="mb-3">Please login to your account</p>
-
                   <div className="form-outline  mb-3">
                     <label className="form-label mx-2" for="form2Example11">
                       Username
                     </label>
                     <input
                       type="email"
-                      id="username"
+                      name="username"
                       className="form-control"
                       placeholder="Phone number or email address"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
+                      onChange={loginHandleChange}
+                      value={login.username}
                     />
                   </div>
-
                   <div className="form-outline mb-3">
                     <label className="form-label mx-2" for="form2Example22">
                       Password
                     </label>
                     <input
                       type="password"
-                      id="password"
+                      name="password"
                       className="form-control"
                       placeholder="Password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={loginHandleChange}
+                      value={login.password}
                     />
                   </div>
 

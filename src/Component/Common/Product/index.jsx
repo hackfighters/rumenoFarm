@@ -40,7 +40,7 @@ const ProductItem = ({img,name,price,description}) => {
     };
 
   return (
-    <div className="col-md-10 product-sect p-3">
+    // <div className="col-md-10 product-sect p-3">
         <div className="col py-1">
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
@@ -108,7 +108,7 @@ const ProductItem = ({img,name,price,description}) => {
               closeModal={closeModal}
             />
             <div className="prd-btn w-50">
-              <button className="btn btn-success w-100 my-2">
+              <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
                 Add to Cart
               </button>
             </div>
@@ -116,7 +116,7 @@ const ProductItem = ({img,name,price,description}) => {
         </div>
       </div>
     </div>
-    </div>
+    // </div>
   );
 };
 
