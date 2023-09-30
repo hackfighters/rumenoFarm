@@ -1728,6 +1728,12 @@ body {
   }
 }
 
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+  .sildar svg{
+    margin: 0px 0px 0px 12px !important;
+  }
+}
+
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .lang-box1 {
     justify-content: center;
@@ -2469,10 +2475,17 @@ button.contact_form_submit {
   height: 100vh;
 
 }
-
-.sildar:hover {
+.sildar,.span{
+  color: #000;
+}
+.sildar div {
+  transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease, color 0.3s ease;
+}
+.sildar div:hover {
   background-color: yellowgreen;
-  padding: 4px 10px !important;
+  padding: 7px 10px !important;
+  border-radius: 0px 20px;
+  color: #fff;
 }
 
 .quantity-container {
@@ -2592,4 +2605,10 @@ button.contact_form_submit {
     top:47px;
   } 
 }
-
+/* 
+.viewmodal .modal-content{
+  max-width: 67%;
+}
+.viewmodal .modal-dialog{
+  width: 100%;
+} */

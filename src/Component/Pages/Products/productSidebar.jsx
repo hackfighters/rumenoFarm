@@ -1,25 +1,19 @@
 import React, { useState } from "react";
-import ReactStars from "react-rating-stars-component";
 import ReactPaginate from "react-paginate";
-
-// Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEye,
   faHouse,
   faPerson,
   faScaleUnbalancedFlip,
   faTractor,
   faWheatAwn,
 } from "@fortawesome/free-solid-svg-icons";
-import { faAmazon, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faAmazon } from "@fortawesome/free-brands-svg-icons";
 
-// Common Component
-import ViewModal from "../../Common/PopModal";
-
-// Image
+// import images
 import TannavImg from "../../../assets/img/OurProduct/rumenovita backgrond.jpg";
 import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
+import ProductItem from "../../Common/Product";
 import farmimg1 from "../../../assets/img/prod-img/floor-burner.jpg";
 import farmimg2 from "../../../assets/img/prod-img/farm-floor.jpg";
 import rumenoamazon1 from "../../../assets/img/prod-img/Castrator.jpg";
@@ -37,8 +31,6 @@ import humanconsumable3 from "../../../assets/img/prod-img/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/prod-img/Barbarigoat.jpg";
 
 const ProductSidebar = () => {
-
-// I will delete this Comment after connecting the api
   const Data = [
     {
       name: "Tanaav Mukti",
@@ -71,7 +63,7 @@ const ProductSidebar = () => {
       img: Prdcoms,
     },
   ];
-  // farm equipment
+
   const FarmEquipment = [
     {
       name: "Farm House Floor Burner",
@@ -88,127 +80,30 @@ const ProductSidebar = () => {
       img: farmimg2,
     },
   ];
+
   const RumenoAmazon = [
-    {
-      name: "Castrator",
-      img: rumenoamazon1,
-    },
-    {
-      name: "Goat Hoof Cutter",
-      img: rumenoamazon2,
-    },
-    {
-      name: "Goat Nipple ",
-      img: rumenoamazon3,
-    },
-    {
-      name: "Automatic Water Bowl ",
-      img: rumenoamazon4,
-    },
-    {
-      name: "Animal Ear Tagging ",
-      img: rumenoamazon5,
-    },
-    {
-      name: "Large Platform Weighing Machine ",
-      img: rumenoamazon6,
-    },
-    {
-      name: "Hanging Weighing Scale",
-      img: rumenoamazon7,
-    },
-    {
-      name: "Infrared Thermometer",
-      img: rumenoamazon8,
-    },
-    {
-      name: "Green House Net",
-      img: rumenoamazon9,
-    },
-  ];
-  const HumanConsumable = [
-    {
-      name: "Rumeno Goat Milk Powder",
-      img: humanconsumable1,
-    },
-    {
-      name: "Rumeno Farm Goat Fresh Milk",
-      img: humanconsumable2,
-    },
-    {
-      name: "Goat Milk Cream Soap",
-      img: humanconsumable3,
-    },
-  ];
-  const GoatForSale = [
-    {
-      name: "Goat",
-      img: goatforsale1,
-    },
+    { name: "Castrator", img: rumenoamazon1 },
+    { name: "Goat Hoof Cutter", img: rumenoamazon2 },
+    { name: "Goat Nipple", img: rumenoamazon3 },
+    { name: "Automatic Water Bowl", img: rumenoamazon4 },
+    { name: "Animal Ear Tagging", img: rumenoamazon5 },
+    { name: "Large Platform Weighing Machine", img: rumenoamazon6 },
+    { name: "Hanging Weighing Scale", img: rumenoamazon7 },
+    { name: "Infrared Thermometer", img: rumenoamazon8 },
+    { name: "Green House Net", img: rumenoamazon9 },
   ];
 
-  const [animal, setAnimal] = useState(true);
-  const [farmhouseequip, setfarmhouseequip] = useState(false);
-  const [rumenoamazon, setrumenoamazon] = useState(false);
-  const [humanconsumable, sethumanconsumable] = useState(false);
-  const [goatforsale, setgoatforsale] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [selectedImg, setSelectedImg] = useState("");
-  const [selecteddes, setSelecteddes] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const HumanConsumable = [
+    { name: "Rumeno Goat Milk Powder", img: humanconsumable1 },
+    { name: "Rumeno Farm Goat Fresh Milk", img: humanconsumable2 },
+    { name: "Goat Milk Cream Soap", img: humanconsumable3 },
+  ];
+
+  const GoatForSale = [{ name: "Goat", img: goatforsale1 }];
+
+  const [category, setCategory] = useState("animal");
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
-
-  const onHandleChangefarmhouseequip = () => {
-    setfarmhouseequip(true);
-    setAnimal(false);
-    setrumenoamazon(false);
-    sethumanconsumable(false);
-    setgoatforsale(false);
-  };
-
-  const onHandleChangeanimal = () => {
-    setAnimal(true);
-    setfarmhouseequip(false);
-    setrumenoamazon(false);
-    sethumanconsumable(false);
-    setgoatforsale(false);
-  };
-  const onHandleChangerunemoamazon = () => {
-    setrumenoamazon(true);
-    setAnimal(false);
-    setfarmhouseequip(false);
-    sethumanconsumable(false);
-    setgoatforsale(false);
-  };
-  const onHandleChangehumanconsumable = () => {
-    sethumanconsumable(true);
-    setrumenoamazon(false);
-    setAnimal(false);
-    setfarmhouseequip(false);
-    setgoatforsale(false);
-  };
-  const onHandleChangegoatforsale = () => {
-    setgoatforsale(true);
-    sethumanconsumable(false);
-    setrumenoamazon(false);
-    setAnimal(false);
-    setfarmhouseequip(false);
-  };
-
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
 
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
@@ -216,575 +111,147 @@ const ProductSidebar = () => {
 
   const indexOfLastItem = (currentPage + 1) * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = Data.slice(indexOfFirstItem, indexOfLastItem);
-  const Farmequip = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
-  // const Rumenoamazon = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
-  // const Goatforsale = FarmEquipment.slice(indexOfFirstItem, indexOfLastItem);
 
-  const openModal = (img, description) => {
-    setSelectedImg(img, description);
-    setSelecteddes(description);
-    setShowModal(true);
+  const categoryItems = {
+    animal: Data,
+    farmhouseequip: FarmEquipment,
+    rumenoamazon: RumenoAmazon,
+    humanconsumable: HumanConsumable,
+    goatforsale: GoatForSale,
   };
 
-  const closeModal = () => {
-    setShowModal(false);
+  const items = categoryItems[category].slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const handleCategoryChange = (category) => {
+    setCategory(category);
+    setCurrentPage(0);
   };
 
   return (
-    <>
-      <div className="container-fluid mt-4">
-        <div className="row flex-nowrap justify-content-center">
-          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded">
-            <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white">
-              <ul
-                className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-                id="menu"
+    <div className="container-fluid mt-4">
+      <div className="row flex-nowrap justify-content-center">
+        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded">
+          <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white w-100">
+            <ul
+              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100"
+              id="menu"
+            >
+              <li
+                className={`nav-item sildar py-1  w-100 ${
+                  category === "animal" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryChange("animal")}
               >
-                <li
-                  className="nav-item sildar my-3 ms-2"
-                  onClick={onHandleChangeanimal}
-                >
-                  <FontAwesomeIcon
-                    className="text-dark h5 mx-2 my-0"
-                    icon={faHouse}
-                  />
-                  <span className="ms-1 d-none d-sm-inline text-dark">
-                    Animal Supplement
-                  </span>
-                </li>
-                <li
-                  className="sildar my-3 ms-2"
-                  onClick={onHandleChangefarmhouseequip}
-                >
-                  <FontAwesomeIcon
-                    className="text-dark h5 mx-2 my-0"
-                    icon={faTractor}
-                  />
-                  <span className="ms-1 d-none d-sm-inline text-dark">
-                    farmhouse Equipment
-                  </span>
-                </li>
-                <li
-                  className="sildar my-3 ms-2"
-                  onClick={onHandleChangerunemoamazon}
-                >
-                  <FontAwesomeIcon
-                    className="text-dark h5 mx-2 my-0"
-                    icon={faAmazon}
-                  />
-                  <span className="ms-1 d-none d-sm-inline text-dark">
-                    Rumeno with Amazon
-                  </span>
-                </li>
-                <li
-                  className="sildar my-3 ms-2"
-                  onClick={onHandleChangehumanconsumable}
-                >
-                  <FontAwesomeIcon
-                    className="text-dark h5 mx-2 my-0"
-                    icon={faPerson}
-                  />
-                  <span className="ms-1 d-none d-sm-inline text-dark">
-                    Human Consumable
-                  </span>
-                </li>
-                <li
-                  className="sildar my-3 ms-2"
-                  onClick={onHandleChangefarmhouseequip}
-                >
-                  <FontAwesomeIcon
-                    className="text-dark h5 mx-2 my-0"
-                    icon={faWheatAwn}
-                  />
-                  <span className="ms-1 d-none d-sm-inline text-dark">
-                    Crop Seeds
-                  </span>
-                </li>
-                <li
-                  className="sildar my-3 ms-2"
-                  onClick={onHandleChangegoatforsale}
-                >
-                  <FontAwesomeIcon
-                    className="text-dark h5 mx-2 my-0"
-                    icon={faScaleUnbalancedFlip}
-                  />
-                  <span className="ms-1 d-none d-sm-inline text-dark">
-                    Goats for Sale
-                  </span>
-                </li>
-              </ul>
-              <hr />
-            </div>
-          </div>
-          <div className="col-md-10 product-sect p-3">
-            {animal &&
-              currentItems.map((s, index) => (
-                <div className="col py-1" key={index}>
-                  <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
-                    <div className="row">
-                      <div className="col-sm-3 p-2">
-                        <img src={s.img} alt="Loading" className="w-100" />
-                      </div>
-                      <div className="col-sm-9 p-2 ps-5">
-                        <div className="fs-3">{s.name}</div>
-                        <div className="fs-4 mt-2">{s.price} Rs /-</div>
-                        <div className="mt-2">{s.description}</div>
-                        <div className="mt-2">
-                          <ReactStars
-                            count={5}
-                            onChange={ratingChanged}
-                            size={24}
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700"
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <div className="quantity-container">
-                            <div
-                              className="quantity-button"
-                              id="decrease"
-                              onClick={decreaseQuantity}
-                            >
-                              -
-                            </div>
-                            <input
-                              type="text"
-                              className="quantity-input"
-                              value={quantity}
-                              readOnly
-                            />
-                            <div
-                              className="quantity-button"
-                              id="increase"
-                              onClick={increaseQuantity}
-                            >
-                              +
-                            </div>
-                          </div>
-                        </div>
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faYoutube}
-                          beat
-                        />
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faEye}
-                          beat
-                          onClick={() => openModal(s.img, s.description)}
-                        />
-                        <ViewModal
-                          img={selectedImg}
-                          p={selecteddes}
-                          showModal={showModal}
-                          closeModal={closeModal}
-                        />
-                        <div className="prd-btn w-50">
-                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
-                            ADD TO CART
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="py-2 px-2 d-flex text-start align-items-center">
+                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faHouse} />
+                <span className="ms-1 d-none d-sm-inline">
+                  Animal Supplement
+                </span>
                 </div>
-              ))}
-            {farmhouseequip &&
-              Farmequip.map((f, index) => (
-                <div className="col py-1" key={index}>
-                  <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
-                    <div className="row">
-                      <div className="col-sm-3 p-2">
-                        <img src={f.img} alt="Loading" className="w-100" />
-                      </div>
-                      <div className="col-sm-9 p-2 ps-5">
-                        <div className="fs-3">{f.name}</div>
-                        <div className="fs-4 mt-2">{f.price}</div>
-                        <div className="mt-2">{f.description}</div>
-                        <div className="mt-2">
-                          <ReactStars
-                            count={5}
-                            onChange={ratingChanged}
-                            size={24}
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700"
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <div className="quantity-container">
-                            <div
-                              className="quantity-button"
-                              id="decrease"
-                              onClick={decreaseQuantity}
-                            >
-                              -
-                            </div>
-                            <input
-                              type="text"
-                              className="quantity-input"
-                              value={quantity}
-                              readOnly
-                            />
-                            <div
-                              className="quantity-button"
-                              id="increase"
-                              onClick={increaseQuantity}
-                            >
-                              +
-                            </div>
-                          </div>
-                        </div>
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faYoutube}
-                          beat
-                        />
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faEye}
-                          beat
-                          onClick={openModal}
-                        />
-                        <ViewModal
-                          showModal={showModal}
-                          closeModal={closeModal}
-                        />
-                        <div className="w-50">
-                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
-                            ADD TO CART
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </li>
+              <li
+                className={`sildar py-1  w-100 ${
+                  category === "farmhouseequip" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryChange("farmhouseequip")}
+              >
+                <div className="py-2 px-2 d-flex text-start align-items-center">
+                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faTractor} />
+                <span className="ms-1 d-none d-sm-inline">
+                  Farmhouse Equipment
+                </span>
                 </div>
-              ))}
-            {rumenoamazon &&
-              RumenoAmazon.map((r, index) => (
-                <div className="col py-1" key={index}>
-                  <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
-                    <div className="row">
-                      <div className="col-sm-3 p-2">
-                        <img src={r.img} alt="Loading" className="w-100" />
-                      </div>
-                      <div className="col-sm-9 p-2 ps-5">
-                        <div className="fs-3">{r.name}</div>
-                        <div className="mt-2">
-                          <ReactStars
-                            count={5}
-                            onChange={ratingChanged}
-                            size={24}
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700"
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <div className="quantity-container">
-                            <div
-                              className="quantity-button"
-                              id="decrease"
-                              onClick={decreaseQuantity}
-                            >
-                              -
-                            </div>
-                            <input
-                              type="text"
-                              className="quantity-input"
-                              value={quantity}
-                              readOnly
-                            />
-                            <div
-                              className="quantity-button"
-                              id="increase"
-                              onClick={increaseQuantity}
-                            >
-                              +
-                            </div>
-                          </div>
-                        </div>
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faYoutube}
-                          beat
-                        />
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faEye}
-                          beat
-                          onClick={openModal}
-                        />
-                        <ViewModal
-                          showModal={showModal}
-                          closeModal={closeModal}
-                        />
-                        <div className="w-50">
-                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
-                            ADD TO CART
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </li>
+              <li
+                className={`sildar py-1  w-100 ${
+                  category === "rumenoamazon" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryChange("rumenoamazon")}
+              >
+                <div className="py-2 px-2 d-flex text-start align-items-center">
+                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faAmazon} />
+                <span className="ms-1 d-none d-sm-inline">
+                  Rumeno with Amazon
+                </span>
                 </div>
-              ))}
-            {humanconsumable &&
-              HumanConsumable.map((r, index) => (
-                <div className="col py-1" key={index}>
-                  <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
-                    <div className="row">
-                      <div className="col-sm-3 p-2">
-                        <img src={r.img} alt="Loading" width={200} />
-                      </div>
-                      <div className="col-sm-9 p-2 ps-5">
-                        <div className="fs-3">{r.name}</div>
-                        <div className="mt-2">
-                          <ReactStars
-                            count={5}
-                            onChange={ratingChanged}
-                            size={24}
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700"
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <div className="quantity-container">
-                            <div
-                              className="quantity-button"
-                              id="decrease"
-                              onClick={decreaseQuantity}
-                            >
-                              -
-                            </div>
-                            <input
-                              type="text"
-                              className="quantity-input"
-                              value={quantity}
-                              readOnly
-                            />
-                            <div
-                              className="quantity-button"
-                              id="increase"
-                              onClick={increaseQuantity}
-                            >
-                              +
-                            </div>
-                          </div>
-                        </div>
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faYoutube}
-                          beat
-                        />
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faEye}
-                          beat
-                          onClick={openModal}
-                        />
-                        <ViewModal
-                          showModal={showModal}
-                          closeModal={closeModal}
-                        />
-                        <div className="w-50">
-                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
-                            ADD TO CART
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </li>
+              <li
+                className={`sildar py-1  w-100 ${
+                  category === "humanconsumable" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryChange("humanconsumable")}
+              >
+                <div className="py-2 px-2 d-flex text-start align-items-center">
+                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faPerson} />
+                <span className="ms-1 d-none d-sm-inline">
+                  Human Consumable
+                </span>
                 </div>
-              ))}
-            {humanconsumable &&
-              HumanConsumable.map((r, index) => (
-                <div className="col py-1" key={index}>
-                  <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
-                    <div className="row">
-                      <div className="col-sm-3 p-2">
-                        <img src={r.img} alt="Loading" width={200} />
-                      </div>
-                      <div className="col-sm-9 p-2 ps-5">
-                        <div className="fs-3">{r.name}</div>
-                        <div className="mt-2">
-                          <ReactStars
-                            count={5}
-                            onChange={ratingChanged}
-                            size={24}
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700"
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <div className="quantity-container">
-                            <div
-                              className="quantity-button"
-                              id="decrease"
-                              onClick={decreaseQuantity}
-                            >
-                              -
-                            </div>
-                            <input
-                              type="text"
-                              className="quantity-input"
-                              value={quantity}
-                              readOnly
-                            />
-                            <div
-                              className="quantity-button"
-                              id="increase"
-                              onClick={increaseQuantity}
-                            >
-                              +
-                            </div>
-                          </div>
-                        </div>
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faYoutube}
-                          beat
-                        />
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faEye}
-                          beat
-                          onClick={openModal}
-                        />
-                        <ViewModal
-                          showModal={showModal}
-                          closeModal={closeModal}
-                        />
-                        <div className="w-50">
-                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
-                            ADD TO CART
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </li>
+              <li
+                className={`sildar py-1  w-100 ${
+                  category === "goatforsale" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryChange("goatforsale")}
+              >
+                <div className="py-2 px-2 d-flex text-start align-items-center">
+                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faWheatAwn} />
+                <span className="ms-1 d-none d-sm-inline">Crop Seeds</span>
                 </div>
-              ))}
-            {goatforsale &&
-              GoatForSale.map((r, index) => (
-                <div className="col py-1" key={index}>
-                  <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
-                    <div className="row">
-                      <div className="col-sm-3 p-2">
-                        <img src={r.img} alt="Loading" width={200} />
-                      </div>
-                      <div className="col-sm-9 p-2 ps-5">
-                        <div className="fs-3">{r.name}</div>
-                        <div className="mt-2">
-                          <ReactStars
-                            count={5}
-                            onChange={ratingChanged}
-                            size={24}
-                            isHalf={true}
-                            emptyIcon={<i className="far fa-star"></i>}
-                            halfIcon={<i className="fa fa-star-half-alt"></i>}
-                            fullIcon={<i className="fa fa-star"></i>}
-                            activeColor="#ffd700"
-                          />
-                        </div>
-                        <div className="mt-2">
-                          <div className="quantity-container">
-                            <div
-                              className="quantity-button"
-                              id="decrease"
-                              onClick={decreaseQuantity}
-                            >
-                              -
-                            </div>
-                            <input
-                              type="text"
-                              className="quantity-input"
-                              value={quantity}
-                              readOnly
-                            />
-                            <div
-                              className="quantity-button"
-                              id="increase"
-                              onClick={increaseQuantity}
-                            >
-                              +
-                            </div>
-                          </div>
-                        </div>
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faYoutube}
-                          beat
-                        />
-                        <FontAwesomeIcon
-                          className="mx-2 my-3 h3 text-primary"
-                          type="button"
-                          icon={faEye}
-                          beat
-                          onClick={openModal}
-                        />
-                        <ViewModal
-                          showModal={showModal}
-                          closeModal={closeModal}
-                        />
-                        <div className="w-50">
-                          <button className="btn text-white border-0 gradient-custom-2 my-2 w-75">
-                            ADD TO CART
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+              </li>
+              <li
+                className={`sildar py-1  w-100 ${
+                  category === "goatforsale" ? "active" : ""
+                }`}
+                onClick={() => handleCategoryChange("goatforsale")}
+              >
+                <div className="py-2 px-2 d-flex text-start align-items-center">
+                <FontAwesomeIcon
+                  className="h5 mx-2 my-0"
+                  icon={faScaleUnbalancedFlip}
+                />
+                <span className="ms-1 d-none d-sm-inline">Goats for Sale</span>
                 </div>
-              ))}
-            <ReactPaginate
-              previousLabel={"Previous"}
-              nextLabel={"Next"}
-              breakLabel={"..."}
-              pageCount={Math.ceil(Data.length / itemsPerPage)}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={handlePageChange}
-              containerClassName={"pagination justify-content-center my-5"}
-              activeClassName={"active"}
-              pageClassName={"page-item"}
-              pageLinkClassName={"page-link"}
-              previousClassName={"page-item"}
-              previousLinkClassName={"page-link"}
-              nextClassName={"page-item"}
-              nextLinkClassName={"page-link"}
-              breakClassName={"page-item"}
-              breakLinkClassName={"page-link"}
-            />
+              </li>
+            </ul>
+            <hr />
           </div>
         </div>
+        <div className="col-md-10 product-sect p-3">
+          {items.map((item, index) => (
+            <ProductItem
+              key={index}
+              img={item.img}
+              name={item.name}
+              price={item.price}
+              description={item.description}
+            />
+          ))}
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            breakLabel={"..."}
+            pageCount={Math.ceil(categoryItems[category].length / itemsPerPage)}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={handlePageChange}
+            containerClassName={"pagination justify-content-center my-5"}
+            activeClassName={"active"}
+            pageClassName={"page-item"}
+            pageLinkClassName={"page-link"}
+            previousClassName={"page-item"}
+            previousLinkClassName={"page-link"}
+            nextClassName={"page-item"}
+            nextLinkClassName={"page-link"}
+            breakClassName={"page-item"}
+            breakLinkClassName={"page-link"}
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
