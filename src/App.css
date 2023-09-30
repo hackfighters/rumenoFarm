@@ -2236,7 +2236,9 @@ html {
 }
 
 .gradient-custom-2 {
-  background: linear-gradient(to right, #87CEEB, #d8363a, #dd3675, #b44593);
+  background: linear-gradient(to right, #87CEEB, #dd3675,#dd3675, #ee7724);
+  border: none;
+
 }
 .model-registr {
   background-image: linear-gradient(333deg, #81ca6b 0%, #dbffd0 74%);
@@ -2352,7 +2354,8 @@ html {
 }
 
 .right_conatct_social_icon {
-  background-image: linear-gradient(to right, #87CEEB, #d8363a, #dd3675, #ee7724);
+  background-image: linear-gradient(to right, #87CEEB, #dd3675,#dd3675, #ee7724);
+  border: none;
 
 }
 
@@ -2413,7 +2416,7 @@ html {
 }
 
 button.contact_form_submit {
-  background: linear-gradient(to right, #87CEEB, #d8363a, #dd3675, #ee7724);
+  background: linear-gradient(to right, #87CEEB, #dd3675,#dd3675, #ee7724);
   border: none;
   border-radius: 10px;
   color: #fff;
@@ -2468,12 +2471,11 @@ button.contact_form_submit {
 /* our Products */
 
 .our-product-img {
-  background-image: url(./assets/img/prod-img/Rumeno\ Health\ Roadmap.png);
+  background-image: url(./assets/img/prod-img/Rumeno\ Health\ Roadmap\ \(1\).png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
-
 }
 .sildar,.span{
   color: #000;
@@ -2516,8 +2518,6 @@ button.contact_form_submit {
   height: 600px;
   overflow-y: scroll;
 }
-
-
 
 .custom-btn {
   width: 130px;

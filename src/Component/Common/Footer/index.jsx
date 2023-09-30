@@ -13,7 +13,7 @@ const Footer = () => {
     <>
       <div className="container-fluid footer pt-5">
         <div className="row py-4 text-light">
-          <div className="col-lg-3 text-center">
+          <div className="col-lg-3 text-center" data-aos="zoom-in-down" data-aos-duration="2000">
             <img className="footer-img" src={logo} alt="" />
           </div>
           <div className="col-lg-2 pt-4">
