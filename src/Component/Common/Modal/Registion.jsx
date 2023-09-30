@@ -65,7 +65,7 @@ const Registration = ({ showModal, closeModal }) => {
     } catch (error) {
       console.error('Error:', error);
     }
-
+// 
     // try {
     //   const response = await fetch("http://192.168.1.2:5000/rumeno", {
     //     method: "POST",
@@ -73,7 +73,7 @@ const Registration = ({ showModal, closeModal }) => {
     //     headers: {
     //       "Content-Type": "application/json",
     //     },
-    //     body: JSON.stringify(registration),
+        // body: JSON.stringify(registration),
 
     //   });
 
