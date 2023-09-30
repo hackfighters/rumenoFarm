@@ -7,7 +7,7 @@ import Navbar from "../../Common/Navbar/index";
 import About from "../../Common/About";
 import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
-import FooterTop from "../../Common/InternationalBox/footer-top";
+import FooterTop from "../../Common/CertifiedBox/footer-top";
 // Image
 import Prdimg4 from "../../../assets/img/OurProduct/rumeno minromix.jpg";
 import Prdimg5 from "../../../assets/img/OurProduct/micro floratane.jpg";

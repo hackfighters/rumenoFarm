@@ -50,11 +50,11 @@ const About = () => {
                       src={abtimg1}
                       alt="Loading"
                     />
-                    <span className="hover-effect-container">
+                    {/* <span className="hover-effect-container">
                       <span className="hover-effect-icon">
                         <span className="fa fa-plus hover-effect-icon-inner"></span>
                       </span>
-                    </span>
+                    </span> */}
                   </a>
                 </div>
                 <div
