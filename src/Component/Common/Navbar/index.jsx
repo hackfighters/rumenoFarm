@@ -86,8 +86,8 @@ const Navbar = ({ cart, count }) => {
         <div className="row">
           <div id="topbar" className="col-sm-12 d-flex align-items-center ">
             <div className="container-fluid">
-              <div className="contact-info row justify-content-center">
-                <div className="col-sm-3 d-flex cnt align-items-center">
+              <div className="contact-info row justify-content-between">
+                <div className=" col-lg-3 col-md-3 col-sm-3 d-flex cnt align-items-center">
                   <FontAwesomeIcon
                     icon={faLocationDot}
                     className="me-2"
@@ -98,7 +98,7 @@ const Navbar = ({ cart, count }) => {
                     Pradesh 226002
                   </span>
                 </div>
-                <div className="col-sm-2 d-flex cnt justify-content-center align-items-center">
+                <div className=" col-lg-3 col-md-3 col-sm-3 d-flex cnt justify-content-center align-items-center">
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     className="me-2"
@@ -106,7 +106,7 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-dark">rumeno.farmotech@gmail.com</span>
                 </div>
-                <div className="col-sm-2 d-flex cnt justify-content-end align-items-center">
+                <div className=" col-lg-2 col-md-2 col-sm-2 d-flex cnt justify-content-end align-items-center">
                   <FontAwesomeIcon
                     icon={faClock}
                     className="me-2"
@@ -114,7 +114,7 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-dark  ">Time 9:00am - 8:00pm</span>
                 </div>
-                <div className="col-sm-2 d-flex cnt align-items-center justify-content-center">
+                <div className=" col-lg-2 col-md-2 col-sm-2 d-flex cnt align-items-center justify-content-center">
                   <FontAwesomeIcon
                     icon={faPhone}
                     className="me-2"
@@ -122,7 +122,7 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-dark  ">+91 7355043892</span>
                 </div>
-                <div className="col-sm-2 align-items-center  nav-lang-switch">
+                <div className=" col-lg-2 col-md-2 col-sm-2 align-items-center  nav-lang-switch">
                   <FontAwesomeIcon
                     type="button"
                     onClick={toggleSelect}
