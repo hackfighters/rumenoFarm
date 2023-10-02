@@ -7,7 +7,7 @@ import Navbar from "../../Common/Navbar/index";
 import About from "../../Common/About";
 import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
-import FooterTop from "../../Common/InternationalBox/footer-top";
+import FooterTop from "../../Common/CertifiedBox/footer-top";
 // Image
 import Prdimg4 from "../../../assets/img/OurProduct/rumeno minromix.jpg";
 import Prdimg5 from "../../../assets/img/OurProduct/micro floratane.jpg";
@@ -17,28 +17,27 @@ import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 const Home = () => {
   const { t } = useTranslation();
   const Data = [
-
     // I will delete this Comment after connecting the api
 
     {
-      heading:"NTC",
-      title:"new your city",
+      heading: "NTC",
+      title: "new your city",
       desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
-      img:Prdimg5
+      img: Prdimg5,
     },
     {
-      heading:"NTC",
-      title:"new your city",
+      heading: "NTC",
+      title: "new your city",
       desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
-      img:Prdimg4
+      img: Prdimg4,
     },
     {
-      heading:"NTC",
-      title:"new your city",
+      heading: "NTC",
+      title: "new your city",
       desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
-      img:Prdimg5
-    }
-  ]
+      img: Prdimg5,
+    },
+  ];
   return (
     <>
       <section className="container-fluid overflow-hidden p-0">
@@ -48,9 +47,9 @@ const Home = () => {
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
                 <h1 className="text-light mt-5 caro-text pt-5">
-                  {t("welcome")} <span className="caroText">{t("rumeno")}</span>
+                  {t("v1")} <span className="caroText">{t("v1")}</span>
                 </h1>
-                <p className="text-light h4">{t("hometitle")}</p>
+                <p className="text-light h4">{t("v2")}</p>
               </div>
               <div
                 className="col-lg-6"
@@ -87,7 +86,12 @@ const Home = () => {
         <About />
         <div className="container">
           <div className="text-center">
-            <div className="d-flex my-3">
+            <div
+              className="d-flex my-3"
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+            >
               <span className="label-title">Our Products</span>
               <div>
                 <div className="about-line-large"></div>
@@ -102,29 +106,35 @@ const Home = () => {
                 data-wow-delay="0.1s"
                 style={{ maxWidth: "500px" }}
               >
-                <p>Rumeno Products for Animals</p>
+                <p>{t("v6")}</p>
               </div>
             </div>
           </div>
           <div className="row">
             {Data.map((index) => (
-              <div className="col-lg-4">
-              <div className="card-box py-4">
-                <div className="card1">
-                  <img src={index.img} alt="Loading" className="card-img" />
-                  <div className="card-body h-100">
-                    <h1 className="card-title">{index.heading}</h1>
-                    <p className="card-sub-title">{index.title}</p>
-                    <p className="card-sub-title">
-                      {index.desp}
-                    </p>
-                    <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">See More</button>
-                    </Link>
+              <div
+                className="col-lg-4"
+                data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
+                data-aos-delay="300"
+              >
+                <div className="card-box py-4">
+                  <div className="card1">
+                    <img src={index.img} alt="Loading" className="card-img" />
+                    <div className="card-body h-100">
+                      <h1 className="card-title">{index.heading}</h1>
+                      <p className="card-sub-title">{index.title}</p>
+                      <p className="card-sub-title">{index.desp}</p>
+                      <Link to="/products">
+                        <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
+                          See More
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             ))}
           </div>
         </div>

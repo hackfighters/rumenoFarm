@@ -1,10 +1,15 @@
 import React from "react";
 
-// Common Component
+// Third party i18next
+import { useTranslation } from "react-i18next";
 
+// Common Component
 import CarouselFadeExample from "../Carousel/carousel";
 
 const FooterTop = () => {
+
+  const { t } = useTranslation();
+
   return (
     <>
       <section className="section-footer-head">
@@ -12,8 +17,7 @@ const FooterTop = () => {
           <div className="row py-4 justify-content-evenly">
             <div className="col-sm-9 d-flex align-items-center">
               <h2 className="text-white ms-2">
-                An ISO 9001:2015 recognized by International Accredited Forum
-                Certified Company
+              {t("v71")}
               </h2>
             </div>
             <div className="col-sm-2 ">

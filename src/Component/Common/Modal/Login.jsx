@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
-// Image
-import logo from "../../../../src/assets/img/lv-bgr.png";
+// Third party i18next
+import { useTranslation } from "react-i18next";
+
+// Third party Axios
 import axios from "axios";
 
+// Image
+import logo from "../../../../src/assets/img/lv-bgr.png";
+
 const Login = ({ showModal, closeModal, openRegistrationModal }) => {
-  
+
+  const { t } = useTranslation();
+
   // State
   const [login, setLogin] = useState({
     username:'',
@@ -108,14 +115,9 @@ const Login = ({ showModal, closeModal, openRegistrationModal }) => {
               </div>
               <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div className="text-white text-center px-2">
-                  <h4 className="mb-4">WELCOME TO RUMENO</h4>
+                  <h4 className="mb-4">{t("v133")}</h4>
                   <p className="small mb-0">
-                    Rumeno Farmotech is a nutrition and feed supplement
-                    technologies company offers a wide range of products,
-                    including Probiotics, milk replacer, Macro & Micro Minerals,
-                    Multi Vitamins, Enzymes, Amino Acids, feed additives,
-                    premixes, concentrates, and specialty products for
-                    livestock, poultry, and aquaculture.
+                  {t("v134")}
                   </p>
                 </div>
               </div>
