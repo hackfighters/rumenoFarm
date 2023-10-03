@@ -148,7 +148,7 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faHouse} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Animal Supplement
+                  Animal <div>Supplement</div>
                 </span>
                 </div>
               </li>
@@ -161,7 +161,7 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faTractor} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Farmhouse Equipment
+                  Farmhouse <div>Equipment</div>
                 </span>
                 </div>
               </li>
@@ -174,7 +174,7 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faAmazon} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Rumeno with Amazon
+                  Rumeno<div>with Amazon</div>
                 </span>
                 </div>
               </li>
@@ -187,7 +187,7 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faPerson} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Human Consumable
+                  Human <div>Consumable</div>
                 </span>
                 </div>
               </li>
@@ -199,7 +199,7 @@ const ProductSidebar = () => {
               >
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faWheatAwn} />
-                <span className="ms-1 d-none d-sm-inline">Crop Seeds</span>
+                <span className="ms-1 d-none d-sm-inline">Crop <div>Seeds</div></span>
                 </div>
               </li>
               <li
@@ -213,7 +213,7 @@ const ProductSidebar = () => {
                   className="h5 mx-2 my-0"
                   icon={faScaleUnbalancedFlip}
                 />
-                <span className="ms-1 d-none d-sm-inline">Goats for Sale</span>
+                <span className="ms-1 d-none d-sm-inline">Goats <div>for Sale</div></span>
                 </div>
               </li>
             </ul>
