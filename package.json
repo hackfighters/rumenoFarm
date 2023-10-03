@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/poppins": "^5.0.8",
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
@@ -35,6 +36,7 @@
     "react-dom": "^18.2.0",
     "react-google-forms": "^1.0.3",
     "react-google-forms-hooks": "^1.2.4",
+    "react-google-maps": "^9.4.5",
     "react-i18next": "^13.2.0",
     "react-modal": "^3.16.1",
     "react-paginate": "^8.2.0",
