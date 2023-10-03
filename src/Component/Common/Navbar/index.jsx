@@ -17,6 +17,7 @@ import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
 // Third party i18next
 import i18next from "i18next";
+import { useTranslation } from "react-i18next";
 
 // Common Component
 import Login from "../../Common/Modal/Login";
@@ -28,6 +29,9 @@ import Select from "../../Common/Select/index";
 import logo from "../../../assets/img/lv-bgr.png";
 
 const Navbar = ({ cart, count }) => {
+  const { t } = useTranslation();
+
+  
   // State
   const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -94,8 +98,7 @@ const Navbar = ({ cart, count }) => {
                     style={{ color: "#f5f5f5" }}
                   />
                   <span className="text-dark">
-                    598 Lala Mahaveer Prasad Rd, Sadar Bazar, Lucknow, Uttar
-                    Pradesh 226002
+                  {t("v301")}
                   </span>
                 </div>
                 <div className="col-sm-2 d-flex cnt justify-content-center align-items-center">
@@ -112,7 +115,7 @@ const Navbar = ({ cart, count }) => {
                     className="me-2"
                     style={{ color: "#fafcff" }}
                   />
-                  <span className="text-dark  ">Time 9:00am - 8:00pm</span>
+                  <span className="text-dark  "> {t("v302")} 9:00am - 8:00pm</span>
                 </div>
                 <div className="col-sm-2 d-flex cnt align-items-center justify-content-center">
                   <FontAwesomeIcon
@@ -205,7 +208,6 @@ const Navbar = ({ cart, count }) => {
                 </li> */}
                 <li className="nav-item">
                   <Link
-                    href="#/"
                     id="login"
                     className="px-0"
                     onClick={() => setLgShow(true)}
@@ -219,7 +221,12 @@ const Navbar = ({ cart, count }) => {
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
-                  <button className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11" onClick={openModal}>Login</button>
+                    <button
+                      className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                      onClick={openModal}
+                    >
+                      Login
+                    </button>
                     {/* <ToastContainer /> */}
                   </div>
 
@@ -296,17 +303,21 @@ const Navbar = ({ cart, count }) => {
             );
           })}
         </Modal.Body>
-        <div className="row border-top border-bottom justify-content-end mx-5 py-1">
-          <div className="col-sm-12 d-flex align-items-center justify-content-between">
-            <h4 className="mx-2">TOTAL</h4>
-            <h4 className="mx-2">$ 7000</h4>
-          </div>
-        </div>
-        <div className="justify-content-end d-flex px-5 cart-model">
-          <button type="button" className="btn btn-success my-3">
-            PAYMENT
-          </button>
-        </div>
+        {count === 0 && (
+          <>
+            <div className="row border-top border-bottom justify-content-end mx-5 py-1">
+              <div className="col-sm-12 d-flex align-items-center justify-content-between">
+                <h4 className="mx-2">TOTAL</h4>
+                <h4 className="mx-2">$ 7000</h4>
+              </div>
+            </div>
+            <div className="justify-content-end d-flex px-5 cart-model">
+              <button className="btn gradient-custom-2 border-0 text-white my-3">
+                PAYMENT
+              </button>
+            </div>
+          </>
+        )}
       </Modal>
     </>
   );

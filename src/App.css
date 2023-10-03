@@ -519,7 +519,13 @@
 .footer-text {
   font-size: large;
 }
-
+.footer-page{
+text-decoration: none;
+color: white;
+}
+.footer-page:hover{
+  color: greenyellow !important;
+}
 /* --------New Css for Cards --------------*/
 
 /* .card {
@@ -2192,7 +2198,7 @@ html {
 }
 .card-title {
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 500;
 }
 .card-title-products {
@@ -2470,13 +2476,13 @@ button.contact_form_submit {
 
 /* our Products */
 
-.our-product-img {
+/* .our-product-img {
   background-image: url(./assets/img/prod-img/Rumeno\ Health\ Roadmap\ \(1\).png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
-}
+} */
 .sildar,.span{
   color: #000;
 }
@@ -2605,10 +2611,12 @@ button.contact_form_submit {
     top:47px;
   } 
 }
-/* 
-.viewmodal .modal-content{
-  max-width: 67%;
+.active>.page-link, .page-link.active {
+  z-index: 3;
+  color: black !important;
+  background-color: yellowgreen !important;
+  border-color: yellowgreen !important;
 }
-.viewmodal .modal-dialog{
-  width: 100%;
-} */
+.page-link{
+  color: black !important;
+}
