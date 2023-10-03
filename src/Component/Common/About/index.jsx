@@ -14,7 +14,7 @@ const About = () => {
 
   return (
     <>
-      <div className="container-fluid abt-sect py-5 overflow-hidden">
+      <div className="container-fluid abt-sect py-5 overflow-hidden" id="about">
         <div className="row justify-content-evenly my-5">
           <div
             className="col-lg-5 mb-6 mb-lg-0"

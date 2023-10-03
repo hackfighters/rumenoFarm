@@ -2,19 +2,39 @@ import React from "react";
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFacebook,faInstagram,faWhatsapp, faYoutube,} from "@fortawesome/free-brands-svg-icons";
-import {faEnvelope,faLocationCrosshairs,faPhone,} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faWhatsapp,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faEnvelope,
+  faLocationCrosshairs,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
+
+// Third party i18next
+import { useTranslation } from "react-i18next";
 
 // Image
 import logo from "../../../assets/img/newlogo.png";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
+
   return (
     <>
       <div className="container-fluid footer pt-5">
         <div className="row py-4 text-light">
-          <div className="col-lg-3 text-center" data-aos="zoom-in-down" data-aos-duration="2000">
-            <img className="footer-img" src={logo} alt="" />
+          <div
+            className="col-lg-3 text-center"
+            data-aos="zoom-in-down"
+            data-aos-duration="2000"
+          >
+            <img className="footer-img" src={logo} alt="Loading" />
           </div>
           <div className="col-lg-2 pt-4">
             <div className="d-flex justify-content-center pb-2">
@@ -22,10 +42,31 @@ const Footer = () => {
             </div>
             <div className="d-flex justify-content-center">
               <ul className="list-unstyled footer-li">
-                <li>Home</li>
-                <li>About</li>
-                <li>Products</li>
-                <li>Training</li>
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    exact
+                    to="/home"
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <a href="#about" className="footer-page">About</a>
+                </li>
+                <li>
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/products"
+                  >
+                    Products
+                  </NavLink>
+                </li>
+                <li>
+                  <a href="#training" className="footer-page">Training</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -38,8 +79,7 @@ const Footer = () => {
                   className="me-2"
                   style={{ color: "white" }}
                 />
-                598 Lala Mahaveer Prasad Rd, Sadar Bazar, Lucknow, Uttar Pradesh
-                226002
+                 {t("v301")}
               </li>
               <li>
                 <FontAwesomeIcon
@@ -63,8 +103,7 @@ const Footer = () => {
             <div className="text-center">
               <h5>About Company</h5>
               <p className="footer-text pt-3">
-                Rumeno Farmotech is a nutrition and feed supplement technologies
-                company
+              {t("v303")}
               </p>
             </div>
             <div>

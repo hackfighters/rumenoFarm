@@ -20,21 +20,21 @@ const Home = () => {
     // I will delete this Comment after connecting the api
 
     {
-      heading: "NTC",
-      title: "new your city",
-      desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      heading: t(["v269"]),
+      // title: "new your city",
+      desp: t(["v270"]),
       img: Prdimg5,
     },
     {
-      heading: "NTC",
-      title: "new your city",
-      desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      heading: t(["v271"]),
+      // title: "new your city",
+      desp: t(["v272"]),
       img: Prdimg4,
     },
     {
-      heading: "NTC",
-      title: "new your city",
-      desp: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, saepe! Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+      heading: t(["v273"]),
+      // title: "new your city",
+      desp: t(["v274"]),
       img: Prdimg5,
     },
   ];
@@ -47,7 +47,7 @@ const Home = () => {
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
                 <h1 className="text-light mt-5 caro-text pt-5">
-                  {t("v1")} <span className="caroText">{t("v1")}</span>
+                   <span className="caroText">{t("v1")}</span>
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
@@ -75,7 +75,7 @@ const Home = () => {
               </div>
               <a href="#training">
                 <div className="training-sect">
-                  <button className="btn  btn-success  btn--shockwave is-active">
+                  <button className="btn gradient-custom-2 border-0 text-white btn--shockwave is-active">
                     TRAINING
                   </button>
                 </div>
@@ -123,7 +123,7 @@ const Home = () => {
                   <div className="card1">
                     <img src={index.img} alt="Loading" className="card-img" />
                     <div className="card-body h-100">
-                      <h1 className="card-title">{index.heading}</h1>
+                      <h4 className="card-title">{index.heading}</h4>
                       <p className="card-sub-title">{index.title}</p>
                       <p className="card-sub-title">{index.desp}</p>
                       <Link to="/products">

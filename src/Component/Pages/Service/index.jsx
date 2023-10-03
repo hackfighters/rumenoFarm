@@ -19,7 +19,7 @@ const Services = () => {
   return (
     <>
       <Navbar className="text-dark" />
-      <section className="container-fluid p-0 service-bg pt-5 overflow-hidden">
+      <section className="container-fluid p-0 service-bg pt-4 overflow-hidden">
         <div
           class="section-header text-center mx-auto mb-3 wow fadeInUp pt-5"
           data-wow-delay="0.1s"
@@ -40,7 +40,7 @@ const Services = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="  py-2 px-4 service-head">Our Veterinary Team</h2>
+          <h2 className="  py-2 px-4 service-head">{t("v267")}</h2>
         </div>
         <div className="container">
           <div className="row my-3">
@@ -70,7 +70,7 @@ const Services = () => {
         </div>
         <div className="col-lg-12 my-5">
           <h2 className=" py-2 px-4 service-head">
-            Our Consulting Team Members
+          {t("v268")}
           </h2>
         </div>
         <div className="container">
