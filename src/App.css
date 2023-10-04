@@ -409,6 +409,47 @@ body {
 .footer-text {
   font-size: large;
 }
+.footer-page{
+text-decoration: none;
+color: white;
+}
+.footer-page:hover{
+  color: greenyellow !important;
+}
+/* --------New Css for Cards --------------*/
+
+/* .card {
+  height: 450px !important;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.card .card-image {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #000;
+  transition: 0.5s;
+}
+
+.card:hover img {
+  opacity: 0.4;
+  transition: 0.5s;
+}
+
+.card:hover .card-image {
+  transform: translateY(-100px);
+  transition: all 0.9s;
+} */
+
+/**** Social Icons *****/
 .social-icons {
   position: absolute;
   top: 50%;
@@ -1753,7 +1794,7 @@ html {
 }
 .card-title {
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 500;
 }
 .card-title-products {
@@ -1977,14 +2018,17 @@ button.contact_form_submit {
   border-radius: 30px;
   overflow: hidden;
 }
-.our-product-img {
-  background-image: url("./assets/img/prod-img/rumeno-roadmap.png");
+
+/* our Products */
+
+/* .our-product-img {
+  background-image: url(./assets/img/prod-img/Rumeno\ Health\ Roadmap\ \(1\).png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
-}
-.sildar, .span {
+} */
+.sildar,.span{
   color: #000;
 }
 .sildar div {
@@ -2107,4 +2151,13 @@ button.contact_form_submit {
   #header {
       top: 47px;
  }
+}
+.active>.page-link, .page-link.active {
+  z-index: 3;
+  color: black !important;
+  background-color: yellowgreen !important;
+  border-color: yellowgreen !important;
+}
+.page-link{
+  color: black !important;
 }
