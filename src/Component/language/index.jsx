@@ -42,7 +42,7 @@ const Language = () => {
                 <div className="lang-box2 my-2">
                   <Select onChange={(e) => handleChangen(e)} />
                   <div className="lang-link">
-                    <Link to="/home">
+                    <Link to="/home" className="d-flex justify-content-center" >
                       <button className="btn-grad-bt gradient-custom-2">Submit</button>
                     </Link>
                   </div>

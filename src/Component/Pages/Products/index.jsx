@@ -6,7 +6,7 @@ import Footer from "../../Common/Footer";
 import ProductSidebar from "./productSidebar";
 
 // Image
-import Roadmap from "../../../assets/img/prod-img/Rumeno Health Roadmap (1).png";
+import Roadmap from "../../../assets/img/prod-img/rumeno-roadmap.png";
 
 const Products = () => {
   return (

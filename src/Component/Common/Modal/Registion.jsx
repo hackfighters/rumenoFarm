@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import { useTranslation } from "react-i18next";
+
 
 // Third party Toastify
 // import { ToastContainer, toast } from "react-toastify";
@@ -10,6 +12,7 @@ import logo from "../../../../src/assets/img/lv-bgr.png";
 import axios from "axios";
 
 const Registration = ({ showModal, closeModal }) => {
+  const { t } = useTranslation();
   // const [response, setResponse] = useState(null);
 
   // console.log("response",response)
@@ -129,7 +132,7 @@ const Registration = ({ showModal, closeModal }) => {
                 <form className="container" onSubmit={registrationapi}>
                   <div className="form-row row d-flex">
                     <div className="form-group col-lg-12 my-2">
-                      <label className="my-2">Full Name</label>
+                      <label className="my-2">{t("v311")}</label>
                       <input
                         type="text"
                         className="form-control"
@@ -140,7 +143,7 @@ const Registration = ({ showModal, closeModal }) => {
                       />
                     </div>
                     <div className="form-group col-lg-12 my-2">
-                      <label className="my-2">Mobile No</label>
+                      <label className="my-2">{t("v312")}</label>
                       <input
                         type="mobile"
                         className="form-control"
@@ -151,7 +154,7 @@ const Registration = ({ showModal, closeModal }) => {
                       />
                     </div>
                     <div className="form-group col-lg-12 my-2">
-                      <label className="my-2">Email</label>
+                      <label className="my-2">{t("v313")}</label>
                       <input
                         type="email"
                         className="form-control"
@@ -162,7 +165,7 @@ const Registration = ({ showModal, closeModal }) => {
                       />
                     </div>
                     <div className="form-group col-lg-12 my-2">
-                      <label className="my-2">Password</label>
+                      <label className="my-2">{t("v314")}</label>
                       <input
                         type="password"
                         className="form-control"
@@ -173,7 +176,7 @@ const Registration = ({ showModal, closeModal }) => {
                       />
                     </div>
                     <div className="form-group col-lg-6 my-2">
-                      <label className="my-1">State</label>
+                      <label className="my-1">{t("v315")}</label>
                       <select
                         className="select w-100 p-2 border rounded"
                         name="state"
@@ -187,7 +190,7 @@ const Registration = ({ showModal, closeModal }) => {
                       </select>
                     </div>
                     <div className="form-group col-lg-6 my-2">
-                      <label className="my-1">City</label>
+                      <label className="my-1">{t("v316")}</label>
                       <select
                         className="select w-100 p-2 border rounded"
                         name="city"
@@ -201,7 +204,7 @@ const Registration = ({ showModal, closeModal }) => {
                       </select>
                     </div>
                     <div className="form-group col-lg-12 my-2">
-                      <label className="my-2">Address</label>
+                      <label className="my-2">{t("v317")}</label>
                       <input
                         type="text"
                         className="form-control"
@@ -217,7 +220,7 @@ const Registration = ({ showModal, closeModal }) => {
                       type="submit"
                       className="btn text-white border-0 gradient-custom-2 my-3 w-75"
                     >
-                      Sign in
+                      {t("v318")}
                     </button>
                     {/* <ToastContainer /> */}
                   </div>
@@ -225,14 +228,9 @@ const Registration = ({ showModal, closeModal }) => {
               </div>
               <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div className="text-white text-center px-2">
-                  <h4 className="mb-4">WELCOME TO RUMENO</h4>
+                  <h4 className="mb-4">{t("v133")}</h4>
                   <p className="small mb-0">
-                    Rumeno Farmotech is a nutrition and feed supplement
-                    technologies company offers a wide range of products,
-                    including Probiotics, milk replacer, Macro & Micro Minerals,
-                    Multi Vitamins, Enzymes, Amino Acids, feed additives,
-                    premixes, concentrates, and specialty products for
-                    livestock, poultry, and aquaculture.
+                  {t("v134")}
                   </p>
                 </div>
               </div>

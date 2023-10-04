@@ -61,10 +61,10 @@ const Login = ({ showModal, closeModal, openRegistrationModal }) => {
                   <h4 className="mt-1 mb-3 pb-1">RUMENO</h4>
                 </div>
                 <form onSubmit={handleLogin}>
-                  <p className="mb-3">Please login to your account</p>
+                  <p className="mb-3">{t("v304")}</p>
                   <div className="form-outline  mb-3">
                     <label className="form-label mx-2" for="form2Example11">
-                      Username
+                    {t("v305")}
                     </label>
                     <input
                       type="email"
@@ -77,7 +77,7 @@ const Login = ({ showModal, closeModal, openRegistrationModal }) => {
                   </div>
                   <div className="form-outline mb-3">
                     <label className="form-label mx-2" for="form2Example22">
-                      Password
+                    {t("v306")}
                     </label>
                     <input
                       type="password"
@@ -94,21 +94,21 @@ const Login = ({ showModal, closeModal, openRegistrationModal }) => {
                       className="btn btn-primary border-0 gradient-custom-2 mb-3 w-75"
                       type="submit"
                     >
-                      Log in
+                      {t("v307")}
                     </button>
                     <a className="text-muted d-block mb-4" href="#!">
-                      Forgot password?
+                    {t("v308")}
                     </a>
                   </div>
 
                   <div className="d-flex align-items-center justify-content-center pb-4">
-                    <p className="mb-0 me-2">Don't have an account?</p>
+                    <p className="mb-0 me-2">{t("v309")}</p>
                     <button
                       type="button"
                       className="btn btn-outline-danger"
                       onClick={openRegistrationModal}
                     >
-                      Create new
+                      {t("v310")}
                     </button>
                   </div>
                 </form>
