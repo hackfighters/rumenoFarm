@@ -1,57 +1,48 @@
 import React, { useState } from "react";
 import ViewModal from "../PopModal/index";
 import ReactStars from "react-rating-stars-component";
-import {faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEye} from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
+const ProductItem = ({ img, name, price, description }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
-const ProductItem = ({img,name,price,description}) => {
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
 
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
-    const [showModal, setShowModal] = useState(false);
-    const [quantity, setQuantity] = useState(1);
-  
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
-    const ratingChanged = (newRating) => {
-      console.log(newRating);
-    };
-  
-    const decreaseQuantity = () => {
-      if (quantity > 1) {
-        setQuantity(quantity - 1);
-      }
-    };
-  
-    const increaseQuantity = () => {
-      setQuantity(quantity + 1);
-    };
-  
- 
+  const openModal = () => {
+    setShowModal(true);
+  };
 
-
-  
-    const openModal = () => {
-      setShowModal(true);
-    };
-  
-    const closeModal = () => {
-      setShowModal(false);
-    };
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
-    // <div className="col-md-10 product-sect p-3">
-        <div className="col py-1">
+    <div className="col py-1">
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
-          <div className="col-sm-3 p-2">
+          <div className="col-sm-3 p-4">
             <img src={img} alt="Loading" className="w-100" />
           </div>
-          <div className="col-sm-9 p-2 ps-5">
+          <div className="col-sm-9 px-5 text-center text-lg-start">
             <div className="fs-3">{name}</div>
             <div className="fs-4 mt-2">{price} Rs /-</div>
             <div className="mt-2">{description}</div>
-            <div className="mt-2">
+            <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
               <ReactStars
                 count={5}
                 onChange={ratingChanged}
@@ -63,7 +54,7 @@ const ProductItem = ({img,name,price,description}) => {
                 activeColor="#ffd700"
               />
             </div>
-            <div className="mt-2">
+            <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
               <div className="quantity-container">
                 <div
                   className="quantity-button"
@@ -91,13 +82,11 @@ const ProductItem = ({img,name,price,description}) => {
               className="mx-2 my-3 h3 text-danger"
               type="button"
               icon={faYoutube}
-              beat
             />
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-success"
               type="button"
               icon={faEye}
-              beat
               onClick={openModal}
             />
             <ViewModal
@@ -116,7 +105,6 @@ const ProductItem = ({img,name,price,description}) => {
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 

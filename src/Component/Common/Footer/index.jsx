@@ -45,7 +45,7 @@ const Footer = () => {
                 <li>
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     exact
                     to="/home"
                   >
@@ -58,7 +58,7 @@ const Footer = () => {
                 <li>
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     to="/products"
                   >
                     Products
@@ -77,7 +77,7 @@ const Footer = () => {
                 <FontAwesomeIcon
                   icon={faLocationCrosshairs}
                   className="me-2"
-                  style={{ color: "white" }}
+                  // style={{ color: "white" }}
                 />
                  {t("v301")}
               </li>

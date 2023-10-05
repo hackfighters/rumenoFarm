@@ -27,11 +27,11 @@ import Select from "../../Common/Select/index";
 
 // Image
 import logo from "../../../assets/img/lv-bgr.png";
+import SendOtp from "../Modal/otp";
 
 const Navbar = ({ cart, count }) => {
   const { t } = useTranslation();
 
-  
   // State
   const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -40,6 +40,9 @@ const Navbar = ({ cart, count }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
+  const [showOtp, setShowOpt] = useState(false);
+  
+
 
   const username = "admin";
   const password = "password";
@@ -80,6 +83,14 @@ const Navbar = ({ cart, count }) => {
     setShowRegistrtionModal(false);
   };
 
+  const OpenSendOtp = () => {
+    setShowOpt(true);
+    setShowModal(false);
+  };
+  const CloseSendOtp = () => {
+    setShowOpt(false);
+  };
+
   useEffect(() => {
     setCART(cart);
   }, [cart]);
@@ -88,7 +99,10 @@ const Navbar = ({ cart, count }) => {
     <>
       <div className="container-fluid sect-topbar position-absolute">
         <div className="row">
-          <div id="topbar" className="col-sm-12 d-flex align-items-center px-0 ">
+          <div
+            id="topbar"
+            className="col-sm-12 d-flex align-items-center px-0 "
+          >
             <div className="container-fluid">
               <div className="contact-info row justify-content-between  px-0">
                 <div className="col-sm-3 px-4 d-flex cnt align-items-center">
@@ -97,9 +111,7 @@ const Navbar = ({ cart, count }) => {
                     className="me-2"
                     style={{ color: "#f5f5f5" }}
                   />
-                  <span className="text-dark">
-                  {t("v301")}
-                  </span>
+                  <span className="text-dark">{t("v301")}</span>
                 </div>
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
                   <FontAwesomeIcon
@@ -109,15 +121,18 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-dark">rumeno.farmotech@gmail.com</span>
                 </div>
-                <div className="col-sm-2 px-5  d-flex cnt justify-content-end align-items-center">
+                <div className="col-sm-2 px-sm-5 px-lg-2   d-flex cnt justify-content-end align-items-center">
                   <FontAwesomeIcon
                     icon={faClock}
                     className="me-2"
                     style={{ color: "#fafcff" }}
                   />
-                  <span className="text-dark  "> {t("v302")} 9:00am - 8:00pm</span>
+                  <span className="text-dark  ">
+                    {" "}
+                    {t("v302")} 9:00am - 8:00pm
+                  </span>
                 </div>
-                <div className="col-sm-2 px-2 d-flex cnt align-items-center justify-content-center">
+                <div className="col-lg-2 col-sm-1 px-2 d-flex cnt align-items-center justify-content-center">
                   <FontAwesomeIcon
                     icon={faPhone}
                     className="me-2"
@@ -125,7 +140,7 @@ const Navbar = ({ cart, count }) => {
                   />
                   <span className="text-dark  ">+91 7355043892</span>
                 </div>
-                <div className="col-sm-2  px-2   align-items-center  nav-lang-switch h-100 my-auto">
+                <div className="col-sm-2  px-2   align-items-center  nav-lang-switch h-100 my-auto  justify-content-lg-start  justify-content-sm-center">
                   <FontAwesomeIcon
                     type="button"
                     onClick={toggleSelect}
@@ -169,7 +184,7 @@ const Navbar = ({ cart, count }) => {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     exact
                     to="/home"
                   >
@@ -179,7 +194,7 @@ const Navbar = ({ cart, count }) => {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     to="/products"
                   >
                     Products
@@ -188,7 +203,7 @@ const Navbar = ({ cart, count }) => {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     to="/Services"
                   >
                     Services
@@ -197,7 +212,7 @@ const Navbar = ({ cart, count }) => {
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     to="/contactus"
                   >
                     Contact Us
@@ -234,11 +249,17 @@ const Navbar = ({ cart, count }) => {
                     showModal={showModal}
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
+                    OpenSendOtpModal={OpenSendOtp}
                   />
                   <Registration
                     showModal={showRegistrationModal}
                     closeModal={closeRegistrationModal}
                   />
+                  <SendOtp
+                   showModal={showOtp} 
+                   closeModal={CloseSendOtp}
+                    />
+                    
                 </li>
                 {showlogin ? (
                   <li>

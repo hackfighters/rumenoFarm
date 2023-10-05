@@ -13,20 +13,20 @@ import { faAmazon } from "@fortawesome/free-brands-svg-icons";
 // Third party i18next
 import { useTranslation } from "react-i18next";
 
-// import images
+// Imges
 import TannavImg from "../../../assets/img/OurProduct/rumenovita backgrond.jpg";
 import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
 import ProductItem from "../../Common/Product";
-import farmimg1 from "../../../assets/img/prod-img/floor-burner.jpg";
+import farmimg1 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (3).jpg";
 import farmimg2 from "../../../assets/img/prod-img/farm-floor.jpg";
-import rumenoamazon1 from "../../../assets/img/prod-img/Castrator.jpg";
+import rumenoamazon1 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (7).jpg";
 import rumenoamazon2 from "../../../assets/img/prod-img/GoatHoofCutter.jpg";
-import rumenoamazon3 from "../../../assets/img/prod-img/Nipple.jpg";
+import rumenoamazon3 from "../../../assets/img/OurProduct/1642371191784-PhotoRoom (1).jpg";
 import rumenoamazon4 from "../../../assets/img/prod-img/WaterBowl.jpg";
 import rumenoamazon5 from "../../../assets/img/prod-img/Eartagging.jpg";
-import rumenoamazon6 from "../../../assets/img/prod-img/WeighningMachine.jpg";
+import rumenoamazon6 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (1).jpg";
 import rumenoamazon7 from "../../../assets/img/prod-img/HangingWeighingScale.jpg";
-import rumenoamazon8 from "../../../assets/img/prod-img/InfraredThermometer.jpg";
+import rumenoamazon8 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (6).jpg";
 import rumenoamazon9 from "../../../assets/img/prod-img/GreenHouseMat2.jpg";
 import humanconsumable1 from "../../../assets/img/prod-img/HyegoatMilkpowder.jpg";
 import humanconsumable2 from "../../../assets/img/prod-img/farmfreshmilk.jpg";
@@ -137,7 +137,7 @@ const ProductSidebar = () => {
 
   return (
     <div className="container-fluid mt-4">
-      <div className="row flex-nowrap justify-content-center">
+      <div className="row flex-nowrap justify-content-center ms-0">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded">
           <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white w-100">
             <ul
@@ -150,12 +150,12 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("animal")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faHouse} />
-                <span className="ms-1 d-none d-sm-inline">
-                  {/* Animal <div>Supplement</div> */}
-                  {t("v275")}
-                </span>
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faHouse} />
+                  <span className="m-0 d-none d-sm-inline">
+                    {/* Animal <div>Supplement</div> */}
+                    {t("v275")}
+                  </span>
                 </div>
               </li>
               <li
@@ -164,13 +164,12 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("farmhouseequip")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faTractor} />
-                <span className="ms-1 d-none d-sm-inline">
-                  {/* Farmhouse <div>Equipment</div> */}
-                  {t("v276")}
-
-                </span>
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faTractor} />
+                  <span className="m-0 d-none d-sm-inline">
+                    {/* Farmhouse <div>Equipment</div> */}
+                    {t("v276")}
+                  </span>
                 </div>
               </li>
               <li
@@ -179,13 +178,12 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("rumenoamazon")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faAmazon} />
-                <span className="ms-1 d-none d-sm-inline">
-                  {/* Rumeno<div>with Amazon</div> */}
-                  {t("v277")}
-
-                </span>
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faAmazon} />
+                  <span className="m-0 d-none d-sm-inline">
+                    {/* Rumeno<div>with Amazon</div> */}
+                    {t("v277")}
+                  </span>
                 </div>
               </li>
               <li
@@ -194,13 +192,12 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("humanconsumable")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faPerson} />
-                <span className="ms-1 d-none d-sm-inline">
-                  {/* Human <div>Consumable</div> */}
-                  {t("v278")}
-
-                </span>
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faPerson} />
+                  <span className="m-0 d-none d-sm-inline">
+                    {/* Human <div>Consumable</div> */}
+                    {t("v278")}
+                  </span>
                 </div>
               </li>
               <li
@@ -209,9 +206,12 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("goatforsale")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                <FontAwesomeIcon className="h5 mx-2 my-0" icon={faWheatAwn} />
-                <span className="ms-1 d-none d-sm-inline">Crop <div>Seeds</div></span>
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faWheatAwn} />
+                  <span className="m-0 d-none d-sm-inline">
+                    {/* Crop <div>Seeds</div> */}
+                    {t("v279")}
+                  </span>
                 </div>
               </li>
               <li
@@ -220,15 +220,14 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("goatforsale")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                <FontAwesomeIcon
-                  className="h5 mx-2 my-0"
-                  icon={faScaleUnbalancedFlip}
-                />
-                <span className="ms-1 d-none d-sm-inline">
-                  {/* Goats <div>for Sale</div> */}
-                  {t("v279")}
-
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon
+                    className="h5 m-0 px-lg-2"
+                    icon={faScaleUnbalancedFlip}
+                  />
+                  <span className="m-0 d-none d-sm-inline">
+                    {/* Goats <div>for Sale</div> */}
+                    {t("v300")}
                   </span>
                 </div>
               </li>
@@ -255,7 +254,7 @@ const ProductSidebar = () => {
             pageRangeDisplayed={5}
             onPageChange={handlePageChange}
             containerClassName={"pagination justify-content-center my-5"}
-            activeClassName={"active"}
+            activeclassname={"active"}
             pageClassName={"page-item"}
             pageLinkClassName={"page-link"}
             previousClassName={"page-item"}

@@ -13,7 +13,7 @@ const Products = () => {
     <>
       <Navbar />
       <div className="our-product-img">
-        <img src={Roadmap} alt="Loading" className="w-100 pt-5" />
+        <img src={Roadmap} alt="Loading" className="w-100 mt-5 vh-100 object-fit-fill" />
       </div>
       <div className="container-fluid abt-sect py-3 overflow-hidden">
         {/* <div className="text-center fs-2">Our Product</div> */}
@@ -22,7 +22,7 @@ const Products = () => {
             <div className="services-line-largeleft"></div>
             <div className="services-line-smallleft"></div>
           </div>
-          <span className="label-title">Our Product</span>
+          <span className="label-title text-center">Our Product</span>
           <div className="mx-2">
             <div className="services-line-largeright"></div>
             <div className="services-line-smallright"></div>

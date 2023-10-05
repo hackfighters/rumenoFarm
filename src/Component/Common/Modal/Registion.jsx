@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // Third party Toastify
@@ -63,10 +65,18 @@ const Registration = ({ showModal, closeModal }) => {
     // .catch(error => console.error('Error:', error));
 
     try {
-      const response = await axios.post('http://192.168.1.4:5000/rumeno_register', registration);
+      const response = await axios.post('http://localhost:5000/api/user/register', registration);
       console.log('Registration successful:', response.data);
-    } catch (error) {
+      if("status" === 300){
+        toast.success('successful');
+      }
+      else if("status" === 400){
+        toast.success('successful');
+      }
+
+    }   catch (error) {
       console.error('Error:', error);
+      toast.error('Error 404')
     }
 // 
     // try {
