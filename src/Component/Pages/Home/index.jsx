@@ -11,6 +11,7 @@ import FooterTop from "../../Common/CertifiedBox/footer-top";
 // Image
 import Prdimg4 from "../../../assets/img/OurProduct/rumeno minromix.jpg";
 import Prdimg5 from "../../../assets/img/OurProduct/micro floratane.jpg";
+import Prdimg6 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
@@ -35,7 +36,7 @@ const Home = () => {
       heading: t(["v273"]),
       // title: "new your city",
       desp: t(["v274"]),
-      img: Prdimg5,
+      img: Prdimg6,
     },
   ];
   return (
@@ -43,7 +44,7 @@ const Home = () => {
       <section className="container-fluid overflow-hidden p-0">
         <div className="home-backgroundColor overflow-hidden">
           <Navbar />
-          <div className="container header-sect  pt-5">
+          <div className="container header-sect pt-5">
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
                 <h1 className="text-light mt-5 caro-text pt-5">
@@ -57,18 +58,18 @@ const Home = () => {
                 data-aos-delay="50"
               >
                 <div
-                  class="container-fluid p-0 mb-5 wow fadeIn"
+                  className="container-fluid p-0 mb-5"
                   data-wow-delay="0.1s"
                 >
                   <Carousel interval={2000}>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg1} alt="#" />
+                      <img className="w-100" src={caroimg1} alt="loading" />
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg2} alt="#" />
+                      <img className="w-100" src={caroimg2} alt="loading" />
                     </Carousel.Item>
                     <Carousel.Item>
-                      <img className="w-100" src={caroimg3} alt="#" />
+                      <img className="w-100" src={caroimg3} alt="loading" />
                     </Carousel.Item>
                   </Carousel>
                 </div>
@@ -102,9 +103,7 @@ const Home = () => {
           <div className="row g-0 gx-5 align-items-end">
             <div className="col-lg-6">
               <div
-                className="section-header text-start mb-3 wow fadeInUp"
-                data-wow-delay="0.1s"
-                style={{ maxWidth: "500px" }}
+                className="section-header text-start mb-3"
               >
                 <p>{t("v6")}</p>
               </div>

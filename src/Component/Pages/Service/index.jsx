@@ -18,10 +18,10 @@ const Services = () => {
 
   return (
     <>
-      <Navbar className="text-dark" />
+      <Navbar/>
       <section className="container-fluid p-0 service-bg pt-4 overflow-hidden">
         <div
-          class="section-header text-center mx-auto mb-3 wow fadeInUp pt-5"
+          className="section-header text-center mx-auto mb-3 pt-5"
           data-wow-delay="0.1s"
         >
           <div className="d-flex justify-content-center pt-5"data-aos="fade-right"
@@ -40,25 +40,25 @@ const Services = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="  py-2 px-4 service-head">{t("v267")}</h2>
+          <h2 className="py-2 px-4 service-head">{t("v267")}</h2>
         </div>
         <div className="container">
           <div className="row my-3">
             <div className="col-lg-7"data-aos="fade-right"
             data-aos-offset="300"
             data-aos-easing="ease-in-sine">
-              <h1 class="display-5 mb-4 mt-4">{t("v72")}</h1>
-              <p class="mb-4 fs-5 text-danger">
+              <h1 className="display-5 mb-4 mt-4">{t("v72")}</h1>
+              <p className="mb-4 fs-5 text-danger">
               {t("v73")}
               </p>
               <p>
-                <i class="fa fa-check text-primary me-3"></i>{t("v74")}
+                <i className="fa fa-check text-primary me-3"></i>{t("v74")}
               </p>
               <p>
-                <i class="fa fa-check text-primary me-3"></i>{t("v75")}
+                <i className="fa fa-check text-primary me-3"></i>{t("v75")}
               </p>
               <p>
-                <i class="fa fa-check text-primary me-3"></i>{t("v76")}
+                <i className="fa fa-check text-primary me-3"></i>{t("v76")}
               </p>
             </div>
             <div className="col-lg-5 text-center" data-aos="fade-left"
@@ -75,24 +75,24 @@ const Services = () => {
         </div>
         <div className="container">
           <div className="row srvc-consl justify-content-evenly my-3">
-            <div class="col-lg-4 col-md-6" data-aos="fade-right"
+            <div className="col-lg-4 col-md-6" data-aos="fade-right"
             data-aos-offset="300"
             data-aos-easing="ease-in-sine">
               <img className="img-fluid w-100" src={srvcimg1} alt="Loading" />
-              <div class="bg-light p-4 text-center">
+              <div className="bg-light p-4 text-center">
                 <h3 className="text-danger">{t("v78")}</h3>
-                <p class="d-block h5 lh-base mb-4" href="">
+                <p className="d-block h5 lh-base mb-4">
                 {t("v79")}
                 </p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6" data-aos="fade-left"
+            <div className="col-lg-4 col-md-6" data-aos="fade-left"
             data-aos-offset="300"
             data-aos-easing="ease-in-sine">
               <img className="img-fluid w-100" src={srvcimg3} alt="Loading" />
-              <div class="bg-light p-4 text-center">
+              <div className="bg-light p-4 text-center">
                 <h3 className="text-danger">{t("v80")}</h3>
-                <p class="d-block h5 lh-base mb-4" href="">
+                <p className="d-block h5 lh-base mb-4">
                 {t("v81")}
                 </p>
               </div>
@@ -100,7 +100,7 @@ const Services = () => {
           </div>
         </div>
       </section>
-      <div className="container-fluid srvc-consl-txt p-0 service-bg overflow-hidden">
+      <div className="container-fluid p-0 service-bg overflow-hidden">
         <div className="row justify-content-center py-4">
           <div className="col-lg-11" data-aos="fade-up" data-aos-offset="300"
             data-aos-easing="ease-in-sine">
@@ -154,7 +154,7 @@ const Services = () => {
           </div>
         </div>
         <div className="col-lg-12 mb-3" >
-          <h2 className=" py-2 px-4  service-head">
+          <h2 className="py-2 px-4 service-head">
           {t("v111")}
           </h2>
         </div>

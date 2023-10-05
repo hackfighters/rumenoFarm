@@ -45,7 +45,7 @@ const Footer = () => {
                 <li>
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     exact
                     to="/home"
                   >
@@ -58,7 +58,7 @@ const Footer = () => {
                 <li>
                   <NavLink
                     className="nav-link"
-                    activeClassName="active"
+                    activeclassname="active"
                     to="/products"
                   >
                     Products

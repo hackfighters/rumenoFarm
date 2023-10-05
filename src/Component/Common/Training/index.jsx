@@ -8,8 +8,8 @@ const Training = () => {
 
   return (
     <>
-      <section id="training" class="py-4 sect-training header">
-        <div class="container">
+      <section id="training" className="py-4 sect-training header">
+        <div className="container">
           <div
             className="d-flex"
             data-aos="fade-right"
@@ -22,16 +22,16 @@ const Training = () => {
               <div className="about-line-small"></div>
             </div>
           </div>
-          <div class="row  py-4">
-            <div class="col-md-3">
+          <div className="row  py-4">
+            <div className="col-md-3">
               <div
-                class="nav flex-column nav-pills nav-pills-custom"
+                className="nav flex-column nav-pills nav-pills-custom"
                 id="v-pills-tab"
                 role="tablist"
                 aria-orientation="vertical"
               >
                 <a
-                  class="nav-link mb-3 p-3 shadow active"
+                  className="nav-link mb-3 p-3 shadow active"
                   id="v-pills-home-tab"
                   data-toggle="pill"
                   href="#v-pills-home"
@@ -42,13 +42,13 @@ const Training = () => {
                   data-aos-offset="300"
                   data-aos-easing="ease-in-sine"
                 >
-                  <i class="fa fa-user-circle-o mr-2"></i>
-                  <span class="font-weight-bold small text-uppercase">
+                  <i className="fa fa-user-circle-o mr-2"></i>
+                  <span className="font-weight-bold small text-uppercase">
                     {t("v7")}
                   </span>
                 </a>
                 <a
-                  class="nav-link mb-3 p-3 shadow"
+                  className="nav-link mb-3 p-3 shadow"
                   id="v-pills-profile-tab"
                   data-toggle="pill"
                   href="#v-pills-profile"
@@ -59,13 +59,13 @@ const Training = () => {
                   data-aos-offset="300"
                   data-aos-easing="ease-in-sine"
                 >
-                  <i class="fa fa-calendar-minus-o mr-2"></i>
-                  <span class="font-weight-bold small text-uppercase">
+                  <i className="fa fa-calendar-minus-o mr-2"></i>
+                  <span className="font-weight-bold small text-uppercase">
                     {t("v48")}
                   </span>
                 </a>
                 <a
-                  class="nav-link mb-3 p-3 shadow"
+                  className="nav-link mb-3 p-3 shadow"
                   id="v-pills-messages-tab"
                   data-toggle="pill"
                   href="#v-pills-messages"
@@ -76,13 +76,13 @@ const Training = () => {
                   data-aos-offset="300"
                   data-aos-easing="ease-in-sine"
                 >
-                  <i class="fa fa-star mr-2"></i>
-                  <span class="font-weight-bold small text-uppercase">
+                  <i className="fa fa-star mr-2"></i>
+                  <span className="font-weight-bold small text-uppercase">
                     {t("v51")}
                   </span>
                 </a>
                 <a
-                  class="nav-link mb-3 p-3 shadow"
+                  className="nav-link mb-3 p-3 shadow"
                   id="v-pills-settings-tab"
                   data-toggle="pill"
                   href="#v-pills-settings"
@@ -93,24 +93,24 @@ const Training = () => {
                   data-aos-offset="300"
                   data-aos-easing="ease-in-sine"
                 >
-                  <i class="fa fa-check mr-2"></i>
-                  <span class="font-weight-bold small text-uppercase">
+                  <i className="fa fa-check mr-2"></i>
+                  <span className="font-weight-bold small text-uppercase">
                     {t("v69")}
                   </span>
                 </a>
               </div>
             </div>
-            <div class="col-md-9" data-aos="fade-left"
+            <div className="col-md-9" data-aos="fade-left"
                   data-aos-offset="300"
                   data-aos-easing="ease-in-sine">
-              <div class="tab-content" id="v-pills-tabContent">
+              <div className="tab-content" id="v-pills-tabContent">
                 <div
-                  class="tab-pane fade shadow rounded bg-white show active p-5"
+                  className="tab-pane fade shadow rounded bg-white show active p-5"
                   id="v-pills-home"
                   role="tabpanel"
                   aria-labelledby="v-pills-home-tab"
                 >
-                  <h4 class="font-italic mb-4">{t("v8")}</h4>
+                  <h4 className="font-italic mb-4">{t("v8")}</h4>
                   <h4>{t("v9")}</h4>
                   <h5>{t("v10")}</h5>
                   <p>{t("v11")}</p>
@@ -158,23 +158,23 @@ const Training = () => {
                   <p>{t("v47")}</p>
                 </div>
                 <div
-                  class="tab-pane fade shadow rounded bg-white p-5"
+                  className="tab-pane fade shadow rounded bg-white p-5"
                   id="v-pills-profile"
                   role="tabpanel"
                   aria-labelledby="v-pills-profile-tab"
                 >
-                  <h4 class="font-italic mb-4">{t("v48")}</h4>
+                  <h4 className="font-italic mb-4">{t("v48")}</h4>
                   <p>{t("v49")}</p>
                   <p>{t("v50")}</p>
                 </div>
 
                 <div
-                  class="tab-pane fade shadow rounded bg-white p-5"
+                  className="tab-pane fade shadow rounded bg-white p-5"
                   id="v-pills-messages"
                   role="tabpanel"
                   aria-labelledby="v-pills-messages-tab"
                 >
-                  <h4 class="font-italic mb-4">{t("v51")}</h4>
+                  <h4 className="font-italic mb-4">{t("v51")}</h4>
                   <p>{t("v52")}</p>
                   <p>{t("v53")}</p>
                   <p>{t("v54")}</p>
@@ -202,12 +202,12 @@ const Training = () => {
                 </div>
 
                 <div
-                  class="tab-pane fade shadow rounded bg-white p-5"
+                  className="tab-pane fade shadow rounded bg-white p-5"
                   id="v-pills-settings"
                   role="tabpanel"
                   aria-labelledby="v-pills-settings-tab"
                 >
-                  <h4 class="font-italic mb-4"> {t("v69")}</h4>
+                  <h4 className="font-italic mb-4"> {t("v69")}</h4>
                   <p>{t("v70")}</p>
                 </div>
               </div>

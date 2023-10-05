@@ -1,48 +1,23 @@
-import React, { useState } from "react";
+import React,{useState} from "react";
 import Modal from "react-bootstrap/Modal";
-import {toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-// Third party i18next
 import { useTranslation } from "react-i18next";
 
-// Third party Axios
-import axios from "axios";
-
-// Image
 import logo from "../../../../src/assets/img/lv-bgr.png";
+import Login from "./Login";
 
-const Login = ({ showModal, closeModal, openRegistrationModal, OpenSendOtpModal }) => {
+
+const SetNewPassword = ({ showModal, closeModal }) => {
+
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
 
   const { t } = useTranslation();
 
-  // State
-  const [login, setLogin] = useState({
-    username:'',
-    password:'',
-  });
-
-  // Function
-  const loginHandleChange = (e) => {
-    const { name, value } = e.target;
-    setLogin({
-      ...login,
-      [name]: value,
-    });
-  };
-
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(login);
-    try {
-      const response = await axios.post('http://localhost:5000/api/user/register', login);
-      console.log('Login successful:', response.data);
-      toast.success('successful')
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error('Error 404')
-    }
-  }
+    setShowLoginModal(true);
+    closeModal();
+  };
 
   return (
     <>
@@ -54,7 +29,7 @@ const Login = ({ showModal, closeModal, openRegistrationModal, OpenSendOtpModal 
         size="lg"
       >
         <Modal.Header className="border-0 fs-5 fw-bolder" closeButton>
-          Login :-
+          Create New Password :-
         </Modal.Header>
         <Modal.Body>
           <div className="container">
@@ -64,32 +39,28 @@ const Login = ({ showModal, closeModal, openRegistrationModal, OpenSendOtpModal 
                   <img src={logo} className="w-25" alt="logo" />
                   <h4 className="mt-1 mb-3 pb-1">RUMENO</h4>
                 </div>
-                <form onSubmit={handleLogin}>
-                  <p className="mb-3">{t("v304")}</p>
+                <form  onSubmit={handleSubmit}>
+                  <p className="mb-3">create your new password</p>
                   <div className="form-outline  mb-3">
                     <label className="form-label mx-2" for="form2Example11">
-                    {t("v305")}
+                    Create Password
                     </label>
                     <input
-                      type="email"
-                      name="username"
+                      type="text"
+                      name="newpassword"
                       className="form-control"
-                      placeholder="Phone number or email address"
-                      onChange={loginHandleChange}
-                      value={login.username}
+                      placeholder="Enter Password"
                     />
                   </div>
                   <div className="form-outline mb-3">
                     <label className="form-label mx-2" for="form2Example22">
-                    {t("v306")}
+                    Confirm Password
                     </label>
                     <input
                       type="password"
-                      name="password"
+                      name="confirmpassword"
                       className="form-control"
-                      placeholder="Password"
-                      onChange={loginHandleChange}
-                      value={login.password}
+                      placeholder="Confirm Password"
                     />
                   </div>
 
@@ -97,22 +68,9 @@ const Login = ({ showModal, closeModal, openRegistrationModal, OpenSendOtpModal 
                     <button
                       className="btn btn-primary border-0 gradient-custom-2 mb-3 w-75"
                       type="submit"
+                     
                     >
                       {t("v307")}
-                    </button>
-                    <a className="text-muted d-block mb-4" href="#!" onClick={OpenSendOtpModal}>
-                    {t("v308")}
-                    </a>
-                  </div>
-
-                  <div className="d-flex align-items-center justify-content-center pb-4">
-                    <p className="mb-0 me-2">{t("v309")}</p>
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger"
-                      onClick={openRegistrationModal}
-                    >
-                      {t("v310")}
                     </button>
                   </div>
                 </form>
@@ -129,8 +87,9 @@ const Login = ({ showModal, closeModal, openRegistrationModal, OpenSendOtpModal 
           </div>
         </Modal.Body>
       </Modal>
+      <Login showModal={showLoginModal} closeModal={setShowLoginModal}/>
     </>
   );
 };
 
-export default Login;
+export default SetNewPassword;

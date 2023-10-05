@@ -13,7 +13,7 @@ import Navbar from "../../Common/Navbar/index";
 const ContactUs = () => {
   return (
     <>
-      <Navbar cart={undefined} count={undefined} />
+      <Navbar />
       <section className="contact-sect container-fluid">
         <div className="row justify-content-center py-5">
           <div className="col-sm-10">

@@ -1,47 +1,38 @@
 import React, { useState } from "react";
 import ViewModal from "../PopModal/index";
 import ReactStars from "react-rating-stars-component";
-import {faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEye} from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
+const ProductItem = ({ img, name, price, description }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
-const ProductItem = ({img,name,price,description}) => {
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
 
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
-    const [showModal, setShowModal] = useState(false);
-    const [quantity, setQuantity] = useState(1);
-  
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
-    const ratingChanged = (newRating) => {
-      console.log(newRating);
-    };
-  
-    const decreaseQuantity = () => {
-      if (quantity > 1) {
-        setQuantity(quantity - 1);
-      }
-    };
-  
-    const increaseQuantity = () => {
-      setQuantity(quantity + 1);
-    };
-  
- 
+  const openModal = () => {
+    setShowModal(true);
+  };
 
-
-  
-    const openModal = () => {
-      setShowModal(true);
-    };
-  
-    const closeModal = () => {
-      setShowModal(false);
-    };
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
-    // <div className="col-md-10 product-sect p-3">
-        <div className="col py-1">
+    <div className="col py-1">
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
           <div className="col-sm-3 p-2">
@@ -116,7 +107,6 @@ const ProductItem = ({img,name,price,description}) => {
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 
