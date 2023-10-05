@@ -10,6 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faAmazon } from "@fortawesome/free-brands-svg-icons";
 
+// Third party i18next
+import { useTranslation } from "react-i18next";
+
 // import images
 import TannavImg from "../../../assets/img/OurProduct/rumenovita backgrond.jpg";
 import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
@@ -31,6 +34,8 @@ import humanconsumable3 from "../../../assets/img/prod-img/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/prod-img/Barbarigoat.jpg";
 
 const ProductSidebar = () => {
+  const { t } = useTranslation();
+
   const Data = [
     {
       name: "Tanaav Mukti",
@@ -148,7 +153,8 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faHouse} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Animal <div>Supplement</div>
+                  {/* Animal <div>Supplement</div> */}
+                  {t("v275")}
                 </span>
                 </div>
               </li>
@@ -161,7 +167,9 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faTractor} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Farmhouse <div>Equipment</div>
+                  {/* Farmhouse <div>Equipment</div> */}
+                  {t("v276")}
+
                 </span>
                 </div>
               </li>
@@ -174,7 +182,9 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faAmazon} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Rumeno<div>with Amazon</div>
+                  {/* Rumeno<div>with Amazon</div> */}
+                  {t("v277")}
+
                 </span>
                 </div>
               </li>
@@ -187,7 +197,9 @@ const ProductSidebar = () => {
                 <div className="py-2 px-2 d-flex text-start align-items-center">
                 <FontAwesomeIcon className="h5 mx-2 my-0" icon={faPerson} />
                 <span className="ms-1 d-none d-sm-inline">
-                  Human <div>Consumable</div>
+                  {/* Human <div>Consumable</div> */}
+                  {t("v278")}
+
                 </span>
                 </div>
               </li>
@@ -213,7 +225,11 @@ const ProductSidebar = () => {
                   className="h5 mx-2 my-0"
                   icon={faScaleUnbalancedFlip}
                 />
-                <span className="ms-1 d-none d-sm-inline">Goats <div>for Sale</div></span>
+                <span className="ms-1 d-none d-sm-inline">
+                  {/* Goats <div>for Sale</div> */}
+                  {t("v279")}
+
+                  </span>
                 </div>
               </li>
             </ul>
