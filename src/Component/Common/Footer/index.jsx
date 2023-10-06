@@ -77,7 +77,7 @@ const Footer = () => {
                 <FontAwesomeIcon
                   icon={faLocationCrosshairs}
                   className="me-2"
-                  style={{ color: "white" }}
+                  // style={{ color: "white" }}
                 />
                  {t("v301")}
               </li>

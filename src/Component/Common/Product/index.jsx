@@ -35,14 +35,14 @@ const ProductItem = ({ img, name, price, description }) => {
     <div className="col py-1">
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
-          <div className="col-sm-3 p-2">
+          <div className="col-sm-3 p-4">
             <img src={img} alt="Loading" className="w-100" />
           </div>
-          <div className="col-sm-9 p-2 ps-5">
+          <div className="col-sm-9 px-5 text-center text-lg-start">
             <div className="fs-3">{name}</div>
             <div className="fs-4 mt-2">{price} Rs /-</div>
             <div className="mt-2">{description}</div>
-            <div className="mt-2">
+            <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
               <ReactStars
                 count={5}
                 onChange={ratingChanged}
@@ -54,7 +54,7 @@ const ProductItem = ({ img, name, price, description }) => {
                 activeColor="#ffd700"
               />
             </div>
-            <div className="mt-2">
+            <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
               <div className="quantity-container">
                 <div
                   className="quantity-button"
@@ -82,13 +82,11 @@ const ProductItem = ({ img, name, price, description }) => {
               className="mx-2 my-3 h3 text-primary"
               type="button"
               icon={faYoutube}
-              beat
             />
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-primary"
               type="button"
               icon={faEye}
-              beat
               onClick={openModal}
             />
             <ViewModal

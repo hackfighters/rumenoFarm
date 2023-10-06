@@ -19,7 +19,7 @@ const Services = () => {
   return (
     <>
       <Navbar/>
-      <section className="container-fluid p-0 service-bg pt-4 overflow-hidden">
+      <section className="container-fluid service-bg overflow-hidden">
         <div
           className="section-header text-center mx-auto mb-3 pt-5"
           data-wow-delay="0.1s"

@@ -885,8 +885,13 @@ color: white;
   background: #fff;
   position: relative;
 }
+.nav-pills-custom .nav-link:hover {
+  color: #013220 !important;
+  background: #fff;
+  position: relative;
+}
 .nav-pills-custom .nav-link.active {
-  color: #45b649;
+  color:#013220 !important;
   background: #fff;
 }
 @media (min-width: 992px) {
@@ -1412,7 +1417,7 @@ body {
 }
 @media only screen and (min-width: 320px) and (max-width: 425px) {
   .sildar svg {
-      margin: 0 0 0 12px !important;
+      margin: 0 8px 0 8px !important;
  }
 }
 @media only screen and (min-width: 320px) and (max-width: 768px) {
@@ -2124,6 +2129,9 @@ button.contact_form_submit {
   .lang-box {
       width: 75% !important;
  }
+ .our-product-img img , .service-bg {
+  padding-top: 100px !important;
+}
 }
 @media only screen and (min-width: 450px) and (max-width: 768px) {
   .lang-box {
@@ -2154,10 +2162,11 @@ button.contact_form_submit {
 }
 .active>.page-link, .page-link.active {
   z-index: 3;
-  color: black !important;
+  color: yellowgreen !important;
   background-color: yellowgreen !important;
   border-color: yellowgreen !important;
 }
-.page-link{
-  color: black !important;
+
+.our-product-img img {
+  padding-top: 15px;
 }

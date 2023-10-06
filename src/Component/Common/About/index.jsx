@@ -41,16 +41,15 @@ const About = () => {
                   data-aos-duration="1500"
                   data-aos="fade-up"
                 >
-                  <a
+                  <span
                     className="hover-effect popup-image"
-                    href="assets/img/1.jpeg"
                   >
                     <img
                       className="img-fluid w-100"
                       src={abtimg1}
                       alt="Loading"
                     />
-                  </a>
+                  </span>
                 </div>
                 <div
                   className="col-sm-5 align-self-end mb-2"
@@ -58,9 +57,8 @@ const About = () => {
                   data-aos-duration="1500"
                   data-aos="fade-down"
                 >
-                  <a
+                  <span
                     className="hover-effect  popup-image"
-                    href="assets/img/3.jpeg"
                   >
                     <img
                       className="img-fluid w-100"
@@ -72,7 +70,7 @@ const About = () => {
                         <span className="fa fa-plus hover-effect-icon-inner"></span>
                       </span>
                     </span>
-                  </a>
+                  </span>
                 </div>
                 <div
                   className="col-sm-5 mb-2"
@@ -80,7 +78,7 @@ const About = () => {
                   data-aos-duration="1500"
                   data-aos="fade-right"
                 >
-                  <a
+                  <span
                     className="hover-effect  popup-image"
                     href="/assets/img/4.jpeg"
                   >
@@ -94,7 +92,7 @@ const About = () => {
                         <span className="fa fa-plus hover-effect-icon-inner"></span>
                       </span>
                     </span>
-                  </a>
+                  </span>
                 </div>
                 <div
                   className="col-sm-6 mb-2"
@@ -102,9 +100,8 @@ const About = () => {
                   data-aos-duration="1500"
                   data-aos="fade-left"
                 >
-                  <a
+                  <span
                     className="hover-effect  popup-image"
-                    href="assets/img/1.jpeg"
                   >
                     <img className="img-fluid w-100" src={abtimg4} alt="" />
                     <span className="hover-effect-container">
@@ -112,12 +109,11 @@ const About = () => {
                         <span className="fa fa-plus hover-effect-icon-inner"></span>
                       </span>
                     </span>
-                  </a>
+                  </span>
                 </div>
                 <div className="col-sm-6 mb-2">
-                  <a
+                  <span
                     className="hover-effect  popup-image"
-                    href="/assets/img/2.jpeg"
                   >
                     <img
                       className="img-fluid w-100"
@@ -129,7 +125,7 @@ const About = () => {
                         <span className="fa fa-plus hover-effect-icon-inner"></span>
                       </span>
                     </span>
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>

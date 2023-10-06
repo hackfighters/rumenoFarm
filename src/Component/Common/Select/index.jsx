@@ -11,7 +11,7 @@ const Select = (props) => {
           <option selected>Choose Language</option>
           <option value={"en"} className="option option1">English</option>
           <option value={"hi"} className="option option2">Hindi</option>
-          <option value={"gu"} className="option option2">Gujrati</option>
+          <option value={"gj"} className="option option2">Gujrati</option>
           <option value={"ta"} className="option option2">Tamil</option>
           <option value={"ka"} className="option option2">Kannada</option>
           <option value={"ma"} className="option option2">Marathi</option>

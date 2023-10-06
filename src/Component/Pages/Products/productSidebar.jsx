@@ -137,7 +137,7 @@ const ProductSidebar = () => {
 
   return (
     <div className="container-fluid mt-4">
-      <div className="row flex-nowrap justify-content-center">
+      <div className="row flex-nowrap justify-content-center ms-0">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded">
           <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white w-100">
             <ul
@@ -150,9 +150,9 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("animal")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                  <FontAwesomeIcon className="h5 mx-2 my-0" icon={faHouse} />
-                  <span className="ms-1 d-none d-sm-inline">
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faHouse} />
+                  <span className="m-0 d-none d-sm-inline">
                     {/* Animal <div>Supplement</div> */}
                     {t("v275")}
                   </span>
@@ -164,9 +164,9 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("farmhouseequip")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                  <FontAwesomeIcon className="h5 mx-2 my-0" icon={faTractor} />
-                  <span className="ms-1 d-none d-sm-inline">
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faTractor} />
+                  <span className="m-0 d-none d-sm-inline">
                     {/* Farmhouse <div>Equipment</div> */}
                     {t("v276")}
                   </span>
@@ -178,9 +178,9 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("rumenoamazon")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                  <FontAwesomeIcon className="h5 mx-2 my-0" icon={faAmazon} />
-                  <span className="ms-1 d-none d-sm-inline">
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faAmazon} />
+                  <span className="m-0 d-none d-sm-inline">
                     {/* Rumeno<div>with Amazon</div> */}
                     {t("v277")}
                   </span>
@@ -192,9 +192,9 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("humanconsumable")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                  <FontAwesomeIcon className="h5 mx-2 my-0" icon={faPerson} />
-                  <span className="ms-1 d-none d-sm-inline">
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faPerson} />
+                  <span className="m-0 d-none d-sm-inline">
                     {/* Human <div>Consumable</div> */}
                     {t("v278")}
                   </span>
@@ -206,9 +206,9 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("goatforsale")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
-                  <FontAwesomeIcon className="h5 mx-2 my-0" icon={faWheatAwn} />
-                  <span className="ms-1 d-none d-sm-inline">
+                <div className="py-2 d-flex text-start align-items-center">
+                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faWheatAwn} />
+                  <span className="m-0 d-none d-sm-inline">
                     {/* Crop <div>Seeds</div> */}
                     {t("v279")}
                   </span>
@@ -220,12 +220,12 @@ const ProductSidebar = () => {
                 }`}
                 onClick={() => handleCategoryChange("goatforsale")}
               >
-                <div className="py-2 px-2 d-flex text-start align-items-center">
+                <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon
-                    className="h5 mx-2 my-0"
+                    className="h5 m-0 px-lg-2"
                     icon={faScaleUnbalancedFlip}
                   />
-                  <span className="ms-1 d-none d-sm-inline">
+                  <span className="m-0 d-none d-sm-inline">
                     {/* Goats <div>for Sale</div> */}
                     {t("v300")}
                   </span>
