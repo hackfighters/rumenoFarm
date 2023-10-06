@@ -137,7 +137,7 @@ const ProductSidebar = () => {
 
   return (
     <div className="container-fluid mt-4">
-      <div className="row flex-nowrap justify-content-center ms-0">
+      <div className="row flex-nowrap justify-content-center ms-0 mx-md-4 mx-lg-0">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded">
           <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white w-100">
             <ul
@@ -152,7 +152,7 @@ const ProductSidebar = () => {
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faHouse} />
-                  <span className="m-0 d-none d-sm-inline">
+                  <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {/* Animal <div>Supplement</div> */}
                     {t("v275")}
                   </span>
@@ -166,7 +166,7 @@ const ProductSidebar = () => {
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faTractor} />
-                  <span className="m-0 d-none d-sm-inline">
+                  <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {/* Farmhouse <div>Equipment</div> */}
                     {t("v276")}
                   </span>
@@ -180,7 +180,7 @@ const ProductSidebar = () => {
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faAmazon} />
-                  <span className="m-0 d-none d-sm-inline">
+                  <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {/* Rumeno<div>with Amazon</div> */}
                     {t("v277")}
                   </span>
@@ -194,7 +194,7 @@ const ProductSidebar = () => {
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faPerson} />
-                  <span className="m-0 d-none d-sm-inline">
+                  <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {/* Human <div>Consumable</div> */}
                     {t("v278")}
                   </span>
@@ -208,7 +208,7 @@ const ProductSidebar = () => {
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faWheatAwn} />
-                  <span className="m-0 d-none d-sm-inline">
+                  <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {/* Crop <div>Seeds</div> */}
                     {t("v279")}
                   </span>
@@ -225,7 +225,7 @@ const ProductSidebar = () => {
                     className="h5 m-0 px-lg-2"
                     icon={faScaleUnbalancedFlip}
                   />
-                  <span className="m-0 d-none d-sm-inline">
+                  <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {/* Goats <div>for Sale</div> */}
                     {t("v300")}
                   </span>
