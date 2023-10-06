@@ -141,7 +141,7 @@ body {
   font-family: Poppins !important;
 }
 .caroText {
-  color: #d9ba85;
+  color: rgba(12, 11, 9, 0.6);
 }
 .logo {
   max-width: 27%;

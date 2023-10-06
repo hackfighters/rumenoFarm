@@ -79,12 +79,12 @@ const ProductItem = ({ img, name, price, description }) => {
               </div>
             </div>
             <FontAwesomeIcon
-              className="mx-2 my-3 h3 text-primary"
+              className="mx-2 my-3 h3 text-danger"
               type="button"
               icon={faYoutube}
             />
             <FontAwesomeIcon
-              className="mx-2 my-3 h3 text-primary"
+              className="mx-2 my-3 h3 text-success"
               type="button"
               icon={faEye}
               onClick={openModal}
