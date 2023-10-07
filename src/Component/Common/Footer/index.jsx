@@ -24,7 +24,6 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
   const { t } = useTranslation();
 
-
   return (
     <>
       <div className="container-fluid footer pt-5">
@@ -53,7 +52,9 @@ const Footer = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <a href="#about" className="footer-page">About</a>
+                  <a href="#about" className="footer-page">
+                    About
+                  </a>
                 </li>
                 <li>
                   <NavLink
@@ -65,12 +66,14 @@ const Footer = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <a href="#training" className="footer-page">Training</a>
+                  <a href="#training" className="footer-page">
+                    Training
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="col-lg-3 pt-4">
+          <div className="col-lg-3 pt-4 text-center text-lg-start">
             <h5 className="pb-2 text-center">Address</h5>
             <ul className="list-unstyled">
               <li>
@@ -79,7 +82,7 @@ const Footer = () => {
                   className="me-2"
                   // style={{ color: "white" }}
                 />
-                 {t("v301")}
+                {t("v301")}
               </li>
               <li>
                 <FontAwesomeIcon
@@ -102,9 +105,7 @@ const Footer = () => {
           <div className="col-lg-4 pt-4">
             <div className="text-center">
               <h5>About Company</h5>
-              <p className="footer-text pt-3">
-              {t("v303")}
-              </p>
+              <p className="footer-text pt-3">{t("v303")}</p>
             </div>
             <div>
               <ul className="list-unstyled d-flex justify-content-center footer-li">
