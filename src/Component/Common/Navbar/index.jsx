@@ -26,7 +26,7 @@ import Registration from "../../Common/Modal/Registion";
 import Select from "../../Common/Select/index";
 
 // Image
-import logo from "../../../assets/img/lv-bgr.png";
+import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
 
 const Navbar = ({ cart, count }) => {

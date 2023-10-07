@@ -18,7 +18,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 // Image
-import logo from "../../../assets/img/newlogo.png";
+import logo from "../../../assets/img/Logo/newlogo.png";
 import { NavLink } from "react-router-dom";
 
 const Footer = () => {

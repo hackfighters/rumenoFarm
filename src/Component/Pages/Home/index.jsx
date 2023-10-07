@@ -2,16 +2,18 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
+
 // Common Component
 import Navbar from "../../Common/Navbar/index";
 import About from "../../Common/About";
 import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
 import FooterTop from "../../Common/CertifiedBox/footer-top";
+
 // Image
-import Prdimg4 from "../../../assets/img/OurProduct/rumeno minromix.jpg";
-import Prdimg5 from "../../../assets/img/OurProduct/micro floratane.jpg";
-import Prdimg6 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom.jpg";
+import Prdimg4 from "../../../assets/img/OurProduct/minromix.jpg";
+import Prdimg5 from "../../../assets/img/OurProduct/microfloratane.jpg";
+import Prdimg6 from "../../../assets/img/OurProduct/minromix.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
@@ -22,21 +24,18 @@ const Home = () => {
 
     {
       heading: t(["v269"]),
-      // title: "new your city",
       desp: t(["v270"]),
       img: Prdimg5,
     },
     {
       heading: t(["v271"]),
-      // title: "new your city",
       desp: t(["v272"]),
-      img: Prdimg4,
+      img: Prdimg6,
     },
     {
       heading: t(["v273"]),
-      // title: "new your city",
       desp: t(["v274"]),
-      img: Prdimg6,
+      img: Prdimg4,
     },
   ];
   return (

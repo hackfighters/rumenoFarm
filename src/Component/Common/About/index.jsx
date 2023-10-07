@@ -9,12 +9,8 @@ import abtimg2 from "../../../assets/img/about-img/about-2.jpg";
 import abtimg3 from "../../../assets/img/about-img/about-3.jpg";
 import abtimg4 from "../../../assets/img/about-img/about-4.jpg";
 
-
-
-
-
-
 const About = () => {
+  
   const { t } = useTranslation();
 
   return (
