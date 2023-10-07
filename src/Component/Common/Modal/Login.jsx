@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 // Image
-import logo from "../../../../src/assets/img/lv-bgr.png";
+import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 
 const Login = ({ showModal, closeModal, openRegistrationModal, OpenSendOtpModal }) => {
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
-import logo from "../../../../src/assets/img/lv-bgr.png";
+import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import SetNewPassword from "./newpassword";
 
 const SendOtp = ({ showModal, closeModal }) => {

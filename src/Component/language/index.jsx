@@ -8,7 +8,7 @@ import i18next from "i18next";
 import Select from "../Common/Select";
 
 // Image
-import lgimg from "../../assets/img/logo.jpg";
+import lgimg from "../../assets/img/Logo/logo.jpg";
 const Language = () => {
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);

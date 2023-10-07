@@ -5,12 +5,17 @@ import { faFacebook, faInstagram,faWhatsapp,} from "@fortawesome/free-brands-svg
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faEnvelope, faLocationDot,faPhone,} from "@fortawesome/free-solid-svg-icons";
 
+// Third party i18next
+import { useTranslation } from "react-i18next";
+
 // Common Component
 import Footer from "../../Common/Footer";
 import MapComp from "../../Common/Map/map";
 import Navbar from "../../Common/Navbar/index";
 
 const ContactUs = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Navbar />
@@ -91,8 +96,7 @@ const ContactUs = () => {
                     icon={faLocationDot}
                   />
                   <span className="text-white">
-                    598 Lala Mahaveer Prasad Rd, Sadar Bazar, Lucknow, Uttar
-                    Pradesh 226002
+                  {t("v301")}
                   </span>
                 </div>
               </div>

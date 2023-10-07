@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // import "react-toastify/dist/ReactToastify.css";
 
 // Image
-import logo from "../../../../src/assets/img/lv-bgr.png";
+import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import axios from "axios";
 
 const Registration = ({ showModal, closeModal }) => {

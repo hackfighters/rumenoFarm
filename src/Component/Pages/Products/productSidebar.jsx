@@ -13,59 +13,60 @@ import { faAmazon } from "@fortawesome/free-brands-svg-icons";
 // Third party i18next
 import { useTranslation } from "react-i18next";
 
-// Imges
-import TannavImg from "../../../assets/img/OurProduct/rumenovita backgrond.jpg";
-import Prdcoms from "../../../assets/img/prod-img/prdcom-1.jpg";
+// Common Component
 import ProductItem from "../../Common/Product";
-import farmimg1 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (3).jpg";
-import farmimg2 from "../../../assets/img/prod-img/farm-floor.jpg";
-import rumenoamazon1 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (7).jpg";
-import rumenoamazon2 from "../../../assets/img/prod-img/GoatHoofCutter.jpg";
-import rumenoamazon3 from "../../../assets/img/OurProduct/1642371191784-PhotoRoom (1).jpg";
-import rumenoamazon4 from "../../../assets/img/prod-img/WaterBowl.jpg";
-import rumenoamazon5 from "../../../assets/img/prod-img/Eartagging.jpg";
-import rumenoamazon6 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (1).jpg";
-import rumenoamazon7 from "../../../assets/img/prod-img/HangingWeighingScale.jpg";
-import rumenoamazon8 from "../../../assets/img/OurProduct/1652436131083-PhotoRoom (6).jpg";
-import rumenoamazon9 from "../../../assets/img/prod-img/GreenHouseMat2.jpg";
-import humanconsumable1 from "../../../assets/img/prod-img/HyegoatMilkpowder.jpg";
-import humanconsumable2 from "../../../assets/img/prod-img/farmfreshmilk.jpg";
-import humanconsumable3 from "../../../assets/img/prod-img/goatcreamsoap.jpg";
-import goatforsale1 from "../../../assets/img/prod-img/Barbarigoat.jpg";
+
+// Imges
+import MICROFLORATONE from "../../../assets/img/OurProduct/microfloratane.jpg";
+import farmimg1 from "../../../assets/img/OurProduct/FarmHouse.jpg";
+import farmimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
+import rumenoamazon1 from "../../../assets/img/OurProduct/Castrator.jpg";
+import rumenoamazon2 from "../../../assets/img/OurProduct/GoatHoofCutter.jpg";
+import rumenoamazon3 from "../../../assets/img/OurProduct/GoatNipple.jpg";
+import rumenoamazon4 from "../../../assets/img/OurProduct/WaterBowl.jpg";
+import rumenoamazon5 from "../../../assets/img/OurProduct/AnimalEarTagging.jpg";
+import rumenoamazon6 from "../../../assets/img/OurProduct/WeighingMachine.jpg";
+import rumenoamazon7 from "../../../assets/img/OurProduct/HangingWeighingScale.jpg";
+import rumenoamazon8 from "../../../assets/img/OurProduct/InfraredThermometer.jpg";
+import rumenoamazon9 from "../../../assets/img/OurProduct/GreenHouseMat2.jpg";
+import humanconsumable1 from "../../../assets/img/OurProduct/HyegoatMilkpowder.jpg";
+import humanconsumable2 from "../../../assets/img/OurProduct/farmfreshmilk.jpg";
+import humanconsumable3 from "../../../assets/img/OurProduct/goatcreamsoap.jpg";
+import goatforsale1 from "../../../assets/img/OurProduct/Barbarigoat.jpg";
 
 const ProductSidebar = () => {
   const { t } = useTranslation();
 
   const Data = [
     {
-      name: "Tanaav Mukti",
+      name: t(["v269"]),
       price: 700,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: TannavImg,
+      description: t(["v270"]),
+      img: MICROFLORATONE,
     },
     {
       name: "Tanaav Mukti",
       price: 700,
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: Prdcoms,
+      img: MICROFLORATONE,
     },
     {
       name: "Tanaav Mukti",
       price: 700,
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: Prdcoms,
+      img: MICROFLORATONE,
     },
     {
       name: "Tanaav Mukti",
       price: 700,
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: Prdcoms,
+      img: MICROFLORATONE,
     },
     {
       name: "Tanaav Mukti",
       price: 700,
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: Prdcoms,
+      img: MICROFLORATONE,
     },
   ];
 
@@ -153,7 +154,6 @@ const ProductSidebar = () => {
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faHouse} />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
-                    {/* Animal <div>Supplement</div> */}
                     {t("v275")}
                   </span>
                 </div>
@@ -167,7 +167,6 @@ const ProductSidebar = () => {
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faTractor} />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
-                    {/* Farmhouse <div>Equipment</div> */}
                     {t("v276")}
                   </span>
                 </div>
@@ -181,7 +180,6 @@ const ProductSidebar = () => {
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faAmazon} />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
-                    {/* Rumeno<div>with Amazon</div> */}
                     {t("v277")}
                   </span>
                 </div>
@@ -195,7 +193,6 @@ const ProductSidebar = () => {
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faPerson} />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
-                    {/* Human <div>Consumable</div> */}
                     {t("v278")}
                   </span>
                 </div>
@@ -209,7 +206,6 @@ const ProductSidebar = () => {
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faWheatAwn} />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
-                    {/* Crop <div>Seeds</div> */}
                     {t("v279")}
                   </span>
                 </div>
@@ -226,7 +222,6 @@ const ProductSidebar = () => {
                     icon={faScaleUnbalancedFlip}
                   />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
-                    {/* Goats <div>for Sale</div> */}
                     {t("v300")}
                   </span>
                 </div>
