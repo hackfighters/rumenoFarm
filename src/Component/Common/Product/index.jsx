@@ -5,7 +5,7 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const ProductItem = ({ img, name, price, description }) => {
+const ProductItem = ({ img, name, price, description , text}) => {
   const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -92,7 +92,7 @@ const ProductItem = ({ img, name, price, description }) => {
             <ViewModal
               title={name}
               img={img}
-              description={description}
+              text={text}
               showModal={showModal}
               closeModal={closeModal}
             />
