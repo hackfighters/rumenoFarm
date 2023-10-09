@@ -24,7 +24,7 @@ const Services = () => {
           className="section-header text-center mx-auto mb-3 pt-5"
           data-wow-delay="0.1s"
         >
-          <div className="d-flex justify-content-center pt-5"data-aos="fade-right"
+          <div className="d-flex justify-content-center pt-5 mt-lg-5"data-aos="fade-right"
             data-aos-offset="300"
             data-aos-easing="ease-in-sine"
              >

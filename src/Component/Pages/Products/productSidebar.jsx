@@ -43,12 +43,16 @@ const ProductSidebar = () => {
       price: 700,
       description: t(["v270"]),
       img: MICROFLORATONE,
+      text:"t1"
+      
     },
     {
       name: "Tanaav Mukti",
       price: 700,
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       img: MICROFLORATONE,
+      text:"t2"
+      
     },
     {
       name: "Tanaav Mukti",
@@ -238,7 +242,9 @@ const ProductSidebar = () => {
               name={item.name}
               price={item.price}
               description={item.description}
+              text={item.text}
             />
+            
           ))}
           <ReactPaginate
             previousLabel={"Previous"}
