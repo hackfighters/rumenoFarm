@@ -96,8 +96,8 @@ const ProductItem = ({ img, name, price, description , text}) => {
               showModal={showModal}
               closeModal={closeModal}
             />
-            <div className="prd-btn w-50">
-              <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
+            <div className="prd-btn">
+              <button className="btn text-white border-0 gradient-custom-2 my-4">
                 Add to Cart
               </button>
             </div>

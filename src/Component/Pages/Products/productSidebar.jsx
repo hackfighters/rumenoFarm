@@ -145,7 +145,7 @@ const ProductSidebar = () => {
   return (
     <div className="container-fluid mt-4">
       <div className="row flex-nowrap justify-content-center ms-0 mx-md-4 mx-lg-0">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded">
+        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded h-100">
           <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white w-100">
             <ul
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100"
