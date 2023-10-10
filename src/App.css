@@ -1469,9 +1469,6 @@ color: white;
 .contact_field {
   margin-top: 24%;
 }
-.contact-sect {
-  padding-top: 18% !important;
-}
 .home-backgroundColor.overflow-hidden {
   height: 700px;
 }
@@ -1923,7 +1920,7 @@ html {
   height: 100vh;
 }
 .contact-sect {
-  padding-top: 10%;
+  padding-top: 7%;
   background-color: #f5f5f5;
 }
 .right_conatct_social_icon {
@@ -2155,13 +2152,13 @@ button.contact_form_submit {
       top: 47px;
  }
 }
-.active>.page-link, .page-link.active {
-  z-index: 3;
-  color: yellowgreen !important;
-  background-color: yellowgreen !important;
-  border-color: yellowgreen !important;
-}
 
 .our-product-img img {
   padding-top: 15px;
+}
+
+.pagess li a:focus{
+  background-color: #adff2f !important;
+  color: #fff !important;
+  box-shadow: none !important;
 }
