@@ -1951,7 +1951,9 @@ html {
 .contact_field .form-control:focus {
   box-shadow: none;
   outline: 0;
-  border-bottom: 2px solid #1325e8;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(to right, #87ceeb, #dd3675, #dd3675, #ee7724) 1;
+  border-image-slice: 1;
 }
 .contact_field .form-control::placeholder {
   font-size: 13px;
@@ -2157,7 +2159,7 @@ button.contact_form_submit {
   padding-top: 15px;
 }
 
-.pagess li a:focus{
+.pagination li a:focus{
   background-color: #adff2f !important;
   color: #fff !important;
   box-shadow: none !important;
