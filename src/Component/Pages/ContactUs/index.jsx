@@ -25,8 +25,8 @@ const ContactUs = () => {
             <div className="contact_inner">
               <div className="row justify-content-between">
                 <div className="col-sm-8">
-                  <div className="contact_form_inner row py-4 justify-content-center">
-                    <div className="contact_field col-sm-7 py-5">
+                  <div className="contact_form_inner row  justify-content-center">
+                    <div className="contact_field col-sm-7 pt-1 pb-3">
                       <h3 className="my-2 text-center">Contact Us</h3>
                       <p className="my-3 text-center">
                         Feel Free to contact us any time.
