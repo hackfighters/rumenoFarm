@@ -2158,6 +2158,9 @@ button.contact_form_submit {
 .our-product-img img {
   padding-top: 15px;
 }
+.model-size .modal-dialog{
+  max-width : 90% !important;
+}
 
 .pagination li a:focus{
   background-color: #adff2f !important;

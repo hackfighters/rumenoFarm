@@ -18,6 +18,7 @@ import ProductItem from "../../Common/Product";
 
 // Imges
 import MICROFLORATONE from "../../../assets/img/OurProduct/microfloratane.jpg";
+import Minromin from "../../../assets/img/OurProduct/minromix.jpg";
 import farmimg1 from "../../../assets/img/OurProduct/FarmHouse.jpg";
 import farmimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
 import rumenoamazon1 from "../../../assets/img/OurProduct/Castrator.jpg";
@@ -43,15 +44,16 @@ const ProductSidebar = () => {
       price: 700,
       description: t(["v270"]),
       img: MICROFLORATONE,
-      text:"t1"
-      
+      text:[<>{t(["v255"])}<br></br><br></br>{t(["v256"])}<br></br><br></br>{t(["v257"])}<br></br><br></br>{t(["v258"])}<br></br><br></br>{t(["v259"])}<br></br><br></br>{t(["v260"])}<br></br><br></br>{t(["v261"])}<br></br><br></br>{t(["v262"])}<br></br><br></br>{t(["v263"])}<br></br><br></br></>]
     },
     {
-      name: "Tanaav Mukti",
+      name:t(["v197"]),
       price: 700,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: MICROFLORATONE,
-      text:"t2"
+      description: t(["v272"]),
+      img: Minromin,
+      text:[<>{t(["v198"])}<br></br><br></br>{t(["v199"])}<br></br><br></br>{t(["v200"])}<br></br><br></br>{t(["v201"])}<br></br><br></br>{t(["v202"])}<br></br><br></br>{t(["v260"])}<br></br><br></br>{t(["v261"])}<br></br><br></br>{t(["v262"])}<br></br><br></br>{t(["v263"])}<br></br><br></br></>]
+
+
       
     },
     {
@@ -234,7 +236,7 @@ const ProductSidebar = () => {
             <hr />
           </div>
         </div>
-        <div className="col-md-10 product-sect p-3">
+        <div className="col-md-10 p-3">
           {items.map((item, index) => (
             <ProductItem
               key={index}
