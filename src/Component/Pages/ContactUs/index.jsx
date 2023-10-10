@@ -9,7 +9,7 @@ import {faEnvelope, faLocationDot,faPhone,} from "@fortawesome/free-solid-svg-ic
 import { useTranslation } from "react-i18next";
 
 // Common Component
-import Footer from "../../Common/Footer";
+// import Footer from "../../Common/Footer";
 import MapComp from "../../Common/Map/map";
 import Navbar from "../../Common/Navbar/index";
 
@@ -113,7 +113,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
