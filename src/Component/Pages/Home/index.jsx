@@ -13,7 +13,6 @@ import FooterTop from "../../Common/CertifiedBox/footer-top";
 // Image
 import Prdimg4 from "../../../assets/img/OurProduct/minromix.jpg";
 import Prdimg5 from "../../../assets/img/OurProduct/microfloratane.jpg";
-import Prdimg6 from "../../../assets/img/OurProduct/minromix.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
@@ -30,7 +29,7 @@ const Home = () => {
     {
       heading: t(["v271"]),
       desp: t(["v272"]),
-      img: Prdimg6,
+      img: Prdimg4,
     },
     {
       heading: t(["v273"]),
