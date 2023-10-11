@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ViewModal from "../PopModal/index";
+import ViewModal from "../Modal/PopModal";
 import ReactStars from "react-rating-stars-component";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
