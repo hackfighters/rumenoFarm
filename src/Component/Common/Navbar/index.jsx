@@ -183,7 +183,7 @@ const Navbar = ({ cart, count }) => {
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link"
+                    className="nav-link px-0"
                     activeclassname="active"
                     exact
                     to="/home"
@@ -193,7 +193,7 @@ const Navbar = ({ cart, count }) => {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link"
+                    className="nav-link px-0"
                     activeclassname="active"
                     to="/products"
                   >
@@ -202,7 +202,7 @@ const Navbar = ({ cart, count }) => {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link"
+                    className="nav-link px-0"
                     activeclassname="active"
                     to="/Services"
                   >
@@ -211,7 +211,7 @@ const Navbar = ({ cart, count }) => {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link"
+                    className="nav-link px-0"
                     activeclassname="active"
                     to="/contactus"
                   >
