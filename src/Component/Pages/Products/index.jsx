@@ -6,14 +6,18 @@ import Footer from "../../Common/Footer";
 import ProductSidebar from "./productSidebar";
 
 // Image
-import Roadmap from "../../../assets/img/OurProduct/proimg.png";
+import Roadmap1 from "../../../assets/img/OurProduct/rumeno-roadmap.png";
+import Roadmap2 from "../../../assets/img/OurProduct/proimg.png";
 
 const Products = () => {
   return (
     <>
       <Navbar />
       <div className="our-product-img">
-        <img src={Roadmap} alt="Loading" className="w-100 mt-5 vh-100 object-fit-fill" />
+      <picture>
+      <source srcSet={Roadmap2} className="w-100 mt-5 vh-100 object-fit-fill"  media="(max-width: 320px)" />
+        <img src={Roadmap1} alt="Loading" className="w-100 mt-5 vh-100 object-fit-fill" />
+    </picture>
       </div>
       <div className="container-fluid abt-sect py-3 overflow-hidden">
         {/* <div className="text-center fs-2">Our Product</div> */}
