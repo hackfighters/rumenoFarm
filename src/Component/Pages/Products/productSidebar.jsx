@@ -34,6 +34,8 @@ import humanconsumable1 from "../../../assets/img/OurProduct/HyegoatMilkpowder.j
 import humanconsumable2 from "../../../assets/img/OurProduct/farmfreshmilk.jpg";
 import humanconsumable3 from "../../../assets/img/OurProduct/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/OurProduct/Barbarigoat.jpg";
+import Rumenovita from "../../../assets/img/OurProduct/Rumenovita.jpg";
+
 
 const ProductSidebar = () => {
   const { t } = useTranslation();
@@ -47,20 +49,19 @@ const ProductSidebar = () => {
       text:[<>{t(["v255"])}<br></br><br></br>{t(["v256"])}<br></br><br></br>{t(["v257"])}<br></br><br></br>{t(["v258"])}<br></br><br></br>{t(["v259"])}<br></br><br></br>{t(["v260"])}<br></br><br></br>{t(["v261"])}<br></br><br></br>{t(["v262"])}<br></br><br></br>{t(["v263"])}<br></br><br></br></>]
     },
     {
-      name:t(["v197"]),
+      name:t(["v271"]),
       price: 700,
       description: t(["v272"]),
       img: Minromin,
       text:[<>{t(["v198"])}<br></br><br></br>{t(["v199"])}<br></br><br></br>{t(["v200"])}<br></br><br></br>{t(["v201"])}<br></br><br></br>{t(["v202"])}<br></br><br></br>{t(["v260"])}<br></br><br></br>{t(["v261"])}<br></br><br></br>{t(["v262"])}<br></br><br></br>{t(["v263"])}<br></br><br></br></>]
-
-
-      
     },
     {
-      name: "Tanaav Mukti",
+      name: t(["v273"]),
       price: 700,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: MICROFLORATONE,
+      description: t(["v274"]),
+      img: Rumenovita,
+      text:[<>{t(["v204"])}<br></br><br></br>{t(["v205"])}<br></br><br></br>{t(["v206"])}<br></br><br></br>{t(["v207"])}<br></br><br></br>{t(["v208"])}<br></br><br></br>{t(["v209"])}<br></br><br></br></>]
+
     },
     {
       name: "Tanaav Mukti",

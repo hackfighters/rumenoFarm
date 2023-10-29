@@ -2025,13 +2025,9 @@ button.contact_form_submit {
 
 /* our Products */
 
-/* .our-product-img {
-  background-image: url(./assets/img/prod-img/Rumeno\ Health\ Roadmap\ \(1\).png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-} */
+.img-width{
+  height: 405px !important;
+}
 .sildar,.span{
   color: #000;
 }
