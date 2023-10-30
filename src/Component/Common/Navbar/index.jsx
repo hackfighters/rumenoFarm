@@ -42,9 +42,7 @@ const Navbar = ({ cart, count }) => {
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   
-
-
-  const username = "admin";
+  const username = "admins";
   const password = "password";
 
   // Function
