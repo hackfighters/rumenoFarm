@@ -8,7 +8,9 @@ import Home from "./Component/Pages/Home/index";
 import Services from "./Component/Pages/Service";
 import ProductPage from "./Component/Pages/Products/index";
 import ContactUs from "./Component/Pages/ContactUs";
-
+// Rumeno farm
+// Rumeno
+// Veterinary
 const App = () => {
   const location = useLocation();
 
@@ -45,7 +47,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    
     const navbarlinksActive = () => {
       const position = window.scrollY + 200;
       const navbarlinks = document.querySelectorAll("#navbar .scrollto");
@@ -67,12 +68,14 @@ const App = () => {
     };
     window.scrollTo(0, 0);
 
-
     navbarlinksActive();
   }, [location]);
 
   return (
     <>
+      {/* // Rumeno farm
+// Rumeno
+// Veterinary */}
       <Routes>
         <Route path="/" element={<Lang />} />
         <Route path="/home" element={<Home />} />

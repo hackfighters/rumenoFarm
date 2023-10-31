@@ -17,27 +17,13 @@ import Prdimg6 from "../../../assets/img/OurProduct/Rumenovita.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
+
+// Rumeno farm
+// Rumeno
+// Veterinary
+
 const Home = () => {
   const { t } = useTranslation();
-  // const Data = [
-  //   // I will delete this Comment after connecting the api
-
-  //   {
-  //     heading: t(["v269"]),
-  //     desp: t(["v270"]),
-  //     img: Prdimg5,
-  //   },
-  //   {
-  //     heading: t(["v271"]),
-  //     desp: t(["v272"]),
-  //     img: Prdimg4,
-  //   },
-  //   {
-  //     heading: t(["v273"]),
-  //     desp: t(["v274"]),
-  //     img: Prdimg6,
-  //   },
-  // ];
   return (
     <>
       <section className="container-fluid overflow-hidden p-0">
@@ -56,6 +42,9 @@ const Home = () => {
                 data-aos="fade-left"
                 data-aos-delay="50"
               >
+                {/* // Rumeno farm
+// Rumeno
+// Veterinary */}
                 <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
                   <Carousel interval={2000}>
                     <Carousel.Item>
@@ -150,6 +139,9 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            {/* Rumeno farm  */}
+            {/* Rumeno */}
+            {/* Veterinary */}
             <div
               className="col-lg-4"
               data-aos="flip-left"
@@ -159,7 +151,11 @@ const Home = () => {
             >
               <div className="card-box py-4">
                 <div className="card1 caa">
-                  <img src={Prdimg6} alt="Loading" className="card-img img-width" />
+                  <img
+                    src={Prdimg6}
+                    alt="Loading"
+                    className="card-img img-width"
+                  />
                   <div className="card-body h-100">
                     <h4 className="card-title">{t("v273")}</h4>
                     <p className="card-sub-title"></p>

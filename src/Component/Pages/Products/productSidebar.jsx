@@ -36,7 +36,9 @@ import humanconsumable3 from "../../../assets/img/OurProduct/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/OurProduct/Barbarigoat.jpg";
 import Rumenovita from "../../../assets/img/OurProduct/Rumenovita.jpg";
 
-
+// {/* Rumeno farm  */}
+// {/* Rumeno */}
+// {/* Veterinary */}
 const ProductSidebar = () => {
   const { t } = useTranslation();
 

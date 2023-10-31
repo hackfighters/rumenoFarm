@@ -8,9 +8,10 @@ import abtimg1 from "../../../assets/img/about-img/about-1.jpg";
 import abtimg2 from "../../../assets/img/about-img/about-2.jpg";
 import abtimg3 from "../../../assets/img/about-img/about-3.jpg";
 import abtimg4 from "../../../assets/img/about-img/about-4.jpg";
-
+// {/* Rumeno farm  */}
+// {/* Rumeno */}
+// {/* Veterinary */}
 const About = () => {
-  
   const { t } = useTranslation();
 
   return (
@@ -42,9 +43,7 @@ const About = () => {
                   data-aos-duration="1500"
                   data-aos="fade-up"
                 >
-                  <span
-                    className="hover-effect popup-image"
-                  >
+                  <span className="hover-effect popup-image">
                     <img
                       className="img-fluid w-100"
                       src={abtimg1}
@@ -58,9 +57,7 @@ const About = () => {
                   data-aos-duration="1500"
                   data-aos="fade-down"
                 >
-                  <span
-                    className="hover-effect  popup-image"
-                  >
+                  <span className="hover-effect  popup-image">
                     <img
                       className="img-fluid w-100"
                       src={abtimg2}
@@ -83,6 +80,9 @@ const About = () => {
                     className="hover-effect  popup-image"
                     href="/assets/img/4.jpeg"
                   >
+                    {/* Rumeno farm  */}
+                    {/* Rumeno */}
+                    {/* Veterinary */}
                     <img
                       className="img-fluid w-100"
                       src={abtimg3}
@@ -101,9 +101,7 @@ const About = () => {
                   data-aos-duration="1500"
                   data-aos="fade-left"
                 >
-                  <span
-                    className="hover-effect  popup-image"
-                  >
+                  <span className="hover-effect  popup-image">
                     <img className="img-fluid w-100" src={abtimg4} alt="" />
                     <span className="hover-effect-container">
                       <span className="hover-effect-icon">
@@ -113,14 +111,15 @@ const About = () => {
                   </span>
                 </div>
                 <div className="col-sm-6 mb-2">
-                  <span
-                    className="hover-effect  popup-image"
-                  >
+                  <span className="hover-effect  popup-image">
                     <img
                       className="img-fluid w-100"
                       src="/assets/img/2.jpeg"
                       alt=""
                     />
+                    {/* Rumeno farm  */}
+                    {/* Rumeno */}
+                    {/* Veterinary */}
                     <span className="hover-effect-container">
                       <span className="hover-effect-icon">
                         <span className="fa fa-plus hover-effect-icon-inner"></span>

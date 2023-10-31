@@ -8,7 +8,9 @@ import ProductSidebar from "./productSidebar";
 // Image
 import Roadmap1 from "../../../assets/img/OurProduct/rumeno-roadmap.png";
 import Roadmap2 from "../../../assets/img/OurProduct/proimg.png";
-
+// Rumeno farm
+// Rumeno
+// Veterinary
 const Products = () => {
   return (
     <>
@@ -38,6 +40,9 @@ const Products = () => {
         </div>
         <ProductSidebar />
       </div>
+      {/* Rumeno farm  */}
+      {/* Rumeno */}
+      {/* Veterinary */}
       <Footer />
     </>
   );

@@ -65,7 +65,9 @@ import Punjabi from "../../../assets/Locales/pu/translation.json";
 import Tamil from "../../../assets/Locales/ta/translation.json";
 import Teluge from "../../../assets/Locales/te/translation.json";
 import Urdu from "../../../assets/Locales/ur/translation.json";
-
+// {/* Rumeno farm  */}
+// {/* Rumeno */}
+// {/* Veterinary */}
 const resources = {
   en: {
     translation: English,
@@ -114,6 +116,9 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
+      // {/* Rumeno farm  */}
+      // {/* Rumeno */}
+      // {/* Veterinary */}
     
   });
 

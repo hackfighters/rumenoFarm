@@ -20,7 +20,9 @@ import { useTranslation } from "react-i18next";
 // Image
 import logo from "../../../assets/img/Logo/newlogo.png";
 import { NavLink } from "react-router-dom";
-
+// {/* Rumeno farm  */}
+// {/* Rumeno */}
+// {/* Veterinary */}
 const Footer = () => {
   const { t } = useTranslation();
 
@@ -141,6 +143,9 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        {/* Rumeno farm  */}
+        {/* Rumeno */}
+        {/* Veterinary */}
       </div>
     </>
   );

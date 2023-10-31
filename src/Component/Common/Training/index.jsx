@@ -2,7 +2,15 @@ import React from "react";
 
 // Third party i18next
 import { useTranslation } from "react-i18next";
-
+{
+  /* Rumeno farm  */
+}
+{
+  /* Rumeno */
+}
+{
+  /* Veterinary */
+}
 const Training = () => {
   const { t } = useTranslation();
 
@@ -47,6 +55,9 @@ const Training = () => {
                     {t("v7")}
                   </span>
                 </a>
+                {/* Rumeno farm  */}
+                {/* Rumeno */}
+                {/* Veterinary */}
                 <a
                   className="nav-link mb-3 p-3 shadow"
                   id="v-pills-profile-tab"
@@ -99,10 +110,16 @@ const Training = () => {
                   </span>
                 </a>
               </div>
+              {/* Rumeno farm  */}
+              {/* Rumeno */}
+              {/* Veterinary */}
             </div>
-            <div className="col-md-9" data-aos="fade-left"
-                  data-aos-offset="300"
-                  data-aos-easing="ease-in-sine">
+            <div
+              className="col-md-9"
+              data-aos="fade-left"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+            >
               <div className="tab-content" id="v-pills-tabContent">
                 <div
                   className="tab-pane fade shadow rounded bg-white show active p-5"

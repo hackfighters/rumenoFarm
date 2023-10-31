@@ -77,6 +77,7 @@ const ProductItem = ({ img, name, price, description , text}) => {
                   +
                 </div>
               </div>
+              
             </div>
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-danger"

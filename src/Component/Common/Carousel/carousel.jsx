@@ -5,7 +5,9 @@ import footcaro1 from "../../../assets/img/Footcaro/footcaro1.png";
 import footcaro2 from "../../../assets/img/Footcaro/footcaro2.png";
 import footcaro3 from "../../../assets/img/Footcaro/footcaro3.png";
 import footcaro4 from "../../../assets/img/Footcaro/footcaro4.png";
-
+// {/* Rumeno farm  */}
+// {/* Rumeno */}
+// {/* Veterinary */}
 function CarouselFadeExample() {
   return (
     <Carousel className="common-carousel" interval={1000}>
