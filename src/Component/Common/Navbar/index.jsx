@@ -22,13 +22,20 @@ import { useTranslation } from "react-i18next";
 // Common Component
 import Login from "../../Common/Modal/Login";
 import Registration from "../../Common/Modal/Registion";
-
 import Select from "../../Common/Select/index";
 
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
-
+{
+  /* Rumeno farm  */
+}
+{
+  /* Rumeno */
+}
+{
+  /* Veterinary */
+}
 const Navbar = ({ cart, count }) => {
   const { t } = useTranslation();
 
@@ -41,15 +48,16 @@ const Navbar = ({ cart, count }) => {
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
-  
 
-
-  const username = "admin";
+  const username = "admins";
   const password = "password";
+
+  const user = "admin";
+  const pass = "password";
 
   // Function
   useEffect(() => {
-    if (username === "admin" && password === "password") {
+    if (username === user && password === pass) {
       setshowlogin(true);
     } else {
       setshowlogin(false);
@@ -176,6 +184,9 @@ const Navbar = ({ cart, count }) => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
+            {/* Rumeno farm  */}
+            {/* Rumeno */}
+            {/* Veterinary */}
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -255,11 +266,7 @@ const Navbar = ({ cart, count }) => {
                     showModal={showRegistrationModal}
                     closeModal={closeRegistrationModal}
                   />
-                  <SendOtp
-                   showModal={showOtp} 
-                   closeModal={CloseSendOtp}
-                    />
-                    
+                  <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
                 {showlogin ? (
                   <li>
