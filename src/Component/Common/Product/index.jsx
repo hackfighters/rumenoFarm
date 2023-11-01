@@ -5,7 +5,9 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const ProductItem = ({ img, name, price, description , text}) => {
+const ProductItem = ({ img, name, price, description, text , efficacy , suitable ,tipe ,efficacy1 ,efficacy2}) => {
+
+
   const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -35,13 +37,24 @@ const ProductItem = ({ img, name, price, description , text}) => {
     <div className="col py-1">
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
-          <div className="col-sm-3 p-4">
+          <div className="col-sm-4 p-4">
             <img src={img} alt="Loading" className="w-100" />
           </div>
-          <div className="col-sm-9 px-5 text-center text-lg-start">
+          <div className="col-sm-8 px-5 text-center text-lg-start">
             <div className="fs-3">{name}</div>
-            <div className="fs-4 mt-2">{price} Rs /-</div>
+            <div className="fs-4 mt-2 text-danger">{price}</div>
             <div className="mt-2">{description}</div>
+                <div className="d-flex justify-content-between mt-2">
+                  <div>
+                    <span className="fw-bold">{suitable}</span>
+                    <span>{tipe}</span>
+                  </div>
+                  <div>
+                    <span className="fw-bold">{efficacy}</span>
+                    <span>{efficacy1}</span>
+                    <span>{efficacy2}</span>
+                  </div>
+                </div>
             <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
               <ReactStars
                 count={5}
@@ -77,7 +90,6 @@ const ProductItem = ({ img, name, price, description , text}) => {
                   +
                 </div>
               </div>
-              
             </div>
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-danger"
