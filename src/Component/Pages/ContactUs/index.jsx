@@ -1,9 +1,17 @@
 import React from "react";
 
 // Third party Fortawesome
-import { faFacebook, faInstagram,faWhatsapp,} from "@fortawesome/free-brands-svg-icons";
+import {
+  faFacebook,
+  faInstagram,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEnvelope, faLocationDot,faPhone,} from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 
 // Third party i18next
 import { useTranslation } from "react-i18next";
@@ -12,7 +20,9 @@ import { useTranslation } from "react-i18next";
 import Footer from "../../Common/Footer";
 import MapComp from "../../Common/Map/map";
 import Navbar from "../../Common/Navbar/index";
-
+// {/* Rumeno farm  */}
+// {/* Rumeno */}
+// {/* Veterinary */}
 const ContactUs = () => {
   const { t } = useTranslation();
 
@@ -89,15 +99,16 @@ const ContactUs = () => {
                   />
                   <span className="text-white">rumeno.farmotech@gmail.com</span>
                 </div>
+                {/* Rumeno farm  */}
+                {/* Rumeno */}
+                {/* Veterinary */}
                 <div className="d-flex info_single align-items-center my-4">
                   <FontAwesomeIcon
                     className="text-white mx-2 "
                     type="button"
                     icon={faLocationDot}
                   />
-                  <span className="text-white">
-                  {t("v301")}
-                  </span>
+                  <span className="text-white">{t("v301")}</span>
                 </div>
               </div>
             </div>
@@ -112,6 +123,9 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
+        {/* Rumeno farm  */}
+        {/* Rumeno */}
+        {/* Veterinary */}
       </div>
       <Footer />
     </>
