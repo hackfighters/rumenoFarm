@@ -26,7 +26,6 @@ const Products = () => {
         </picture>
       </div>
       <div className="container-fluid abt-sect py-3 overflow-hidden">
-        {/* <div className="text-center fs-2">Our Product</div> */}
         <div className="d-flex justify-content-center pt-2">
           <div className="mx-2">
             <div className="services-line-largeleft"></div>
