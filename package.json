@@ -37,6 +37,7 @@
     "react-google-forms": "^1.0.3",
     "react-google-forms-hooks": "^1.2.4",
     "react-google-maps": "^9.4.5",
+    "react-helmet": "^6.1.0",
     "react-i18next": "^13.2.0",
     "react-modal": "^3.16.1",
     "react-paginate": "^8.2.0",
