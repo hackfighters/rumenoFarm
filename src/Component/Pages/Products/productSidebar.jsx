@@ -35,6 +35,14 @@ import humanconsumable2 from "../../../assets/img/OurProduct/farmfreshmilk.jpg";
 import humanconsumable3 from "../../../assets/img/OurProduct/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/OurProduct/Barbarigoat.jpg";
 import Rumenovita from "../../../assets/img/OurProduct/Rumenovita.jpg";
+import Neonato from "../../../assets/img/OurProduct/NEONATO.jpg"
+import TanavMukti from "../../../assets/img/OurProduct/Tanaav.jpg"
+import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg"
+import DigestoPlus from "../../../assets/img/OurProduct/Digesto-Plus.jpg"
+import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg"
+import DCox from "../../../assets/img/OurProduct/D-Cox.jpg"
+import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg"
+import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg"
 
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
@@ -45,73 +53,432 @@ const ProductSidebar = () => {
   const Data = [
     {
       name: t(["v269"]),
-      price: 700,
+      price: "Price: 245 INR/Bottle" ,
       description: t(["v270"]),
       img: MICROFLORATONE,
-      text:[<>{t(["v255"])}<br></br><br></br>{t(["v256"])}<br></br><br></br>{t(["v257"])}<br></br><br></br>{t(["v258"])}<br></br><br></br>{t(["v259"])}<br></br><br></br>{t(["v260"])}<br></br><br></br>{t(["v261"])}<br></br><br></br>{t(["v262"])}<br></br><br></br>{t(["v263"])}<br></br><br></br></>]
+      text: [
+        <>
+          {t(["v255"])}
+          <br></br>
+          <br></br>
+          {t(["v256"])}
+          <br></br>
+          <br></br>
+          {t(["v257"])}
+          <br></br>
+          <br></br>
+          {t(["v258"])}
+          <br></br>
+          <br></br>
+          {t(["v259"])}
+          <br></br>
+          <br></br>
+          {t(["v260"])}
+          <br></br>
+          <br></br>
+          {t(["v261"])}
+          <br></br>
+          <br></br>
+          {t(["v262"])}
+          <br></br>
+          <br></br>
+          {t(["v263"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
+      suitable: t(["v337"]),
+      tipe:t(["v339"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v340"]),
+      efficacy2: t(["v341"]),
     },
     {
-      name:t(["v271"]),
-      price: 700,
+      name: t(["v271"]),
+      price: "Price: 285 INR/Piece",
       description: t(["v272"]),
       img: Minromin,
-      text:[<>{t(["v198"])}<br></br><br></br>{t(["v199"])}<br></br><br></br>{t(["v200"])}<br></br><br></br>{t(["v201"])}<br></br><br></br>{t(["v202"])}<br></br><br></br>{t(["v260"])}<br></br><br></br>{t(["v261"])}<br></br><br></br>{t(["v262"])}<br></br><br></br>{t(["v263"])}<br></br><br></br></>]
+      text: [
+        <>
+          {t(["v198"])}
+          <br></br>
+          <br></br>
+          {t(["v199"])}
+          <br></br>
+          <br></br>
+          {t(["v200"])}
+          <br></br>
+          <br></br>
+          {t(["v201"])}
+          <br></br>
+          <br></br>
+          {t(["v202"])}
+          <br></br>
+          <br></br>
+          {t(["v260"])}
+          <br></br>
+          <br></br>
+          {t(["v261"])}
+          <br></br>
+          <br></br>
+          {t(["v262"])}
+          <br></br>
+          <br></br>
+          {t(["v263"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
     },
     {
       name: t(["v273"]),
-      price: 700,
+      price: "Price: 700 INR/Piece",
       description: t(["v274"]),
       img: Rumenovita,
-      text:[<>{t(["v204"])}<br></br><br></br>{t(["v205"])}<br></br><br></br>{t(["v206"])}<br></br><br></br>{t(["v207"])}<br></br><br></br>{t(["v208"])}<br></br><br></br>{t(["v209"])}<br></br><br></br></>]
-
+      text: [
+        <>
+          {t(["v204"])}
+          <br></br>
+          <br></br>
+          {t(["v205"])}
+          <br></br>
+          <br></br>
+          {t(["v206"])}
+          <br></br>
+          <br></br>
+          {t(["v207"])}
+          <br></br>
+          <br></br>
+          {t(["v208"])}
+          <br></br>
+          <br></br>
+          {t(["v209"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
     },
     {
-      name: "Tanaav Mukti",
-      price: 700,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: MICROFLORATONE,
+      name: t(["v149"]),
+      price: "Price: 190 INR/Bottle",
+      description: t(["v150"]),
+      img: Neonato,
+      text: [
+        <>
+          {t(["v150"])}
+          <br></br>
+          <br></br>
+          {t(["v151"])}
+          <br></br>
+          <br></br>
+          {t(["v152"])}
+          <br></br>
+          <br></br>
+          {t(["v153"])}
+          <br></br>
+          <br></br>
+          {t(["v154"])}
+          <br></br>
+          <br></br>
+          {t(["v155"])}
+          <br></br>
+          <br></br>
+          {t(["v156"])}
+          <br></br>
+          <br></br>
+          {t(["v157"])}
+          <br></br>
+          <br></br>
+          {t(["v158"])}
+          <br></br>
+          <br></br>
+          {t(["v159"])}
+          <br></br>
+          <br></br>
+          {t(["v160"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
     },
     {
-      name: "Tanaav Mukti",
-      price: 700,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      img: MICROFLORATONE,
+      name: t(["v135"]),
+      price: "Price: 600 INR/Piece",
+      description: t(["v136"]),
+      img: TanavMukti,
+      text: [
+        <>
+          {t(["v136"])}
+          <br></br>
+          <br></br>
+          {t(["v137"])}
+          <br></br>
+          <br></br>
+          {t(["v138"])}
+          <br></br>
+          <br></br>
+          {t(["v139"])}
+          <br></br>
+          <br></br>
+          {t(["v140"])}
+          <br></br>
+          <br></br>
+          {t(["v141"])}
+          <br></br>
+          <br></br>
+          {t(["v142"])}
+          <br></br>
+          <br></br>
+          {t(["v143"])}
+          <br></br>
+          <br></br>
+          {t(["v144"])}
+          <br></br>
+          <br></br>
+          {t(["v145"])}
+          <br></br>
+          <br></br>
+          {t(["v146"])}
+          <br></br>
+          <br></br>
+          {t(["v147"])}
+          <br></br>
+          <br></br>
+          {t(["v148"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
+    },
+    {
+      name: t(["v161"]),
+      price: "Price: 390 INR/Piece",
+      description: t(["v162"]),
+      img: Energico,
+      text: [
+        <>
+          {t(["v162"])}
+          <br></br>
+          <br></br>
+          {t(["v163"])}
+          <br></br>
+          <br></br>
+          {t(["v164"])}
+          <br></br>
+          <br></br>
+          {t(["v165"])}
+          <br></br>
+          <br></br>
+          {t(["v166"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
+    },
+    {
+      name: t(["v167"]),
+      price: "Price: 180 INR/Piece",
+      description: t(["v168"]),
+      img: DigestoPlus,
+      text: [
+        <>
+          {t(["v168"])}
+          <br></br>
+          <br></br>
+          {t(["v169"])}
+          <br></br>
+          <br></br>
+          {t(["v170"])}
+          <br></br>
+          <br></br>
+          {t(["v171"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
+    },
+    {
+      name: t(["v182"]),
+      price: "Price: 150 INR/Piece",
+      description: t(["v183"]),
+      img: Liverofine,
+      text: [
+        <>
+          {t(["v183"])}
+          <br></br>
+          <br></br>
+          {t(["v184"])}
+          <br></br>
+          <br></br>
+          {t(["v185"])}
+          <br></br>
+          <br></br>
+          {t(["v186"])}
+          <br></br>
+          <br></br>
+          {t(["v187"])}
+          <br></br>
+          <br></br>
+          {t(["v188"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
+    },
+    {
+      name: t(["v189"]),
+      price: "Price: 250 INR/Piece",
+      description: t(["v190"]),
+      img: DCox,
+      text: [
+        <>
+          {t(["v190"])}
+          <br></br>
+          <br></br>
+          {t(["v191"])}
+          <br></br>
+          <br></br>
+          {t(["v192"])}
+          <br></br>
+          <br></br>
+          {t(["v193"])}
+          <br></br>
+          <br></br>
+          {t(["v194"])}
+          <br></br>
+          <br></br>
+          {t(["v195"])}
+          <br></br>
+          <br></br>
+          {t(["v196"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
+    },
+    {
+      name: t(["v210"]),
+      price: "Price: 1300 INR/Piece",
+      description: t(["v211"]),
+      img: RumenoMicroFlora,
+      text: [
+        <>
+          {t(["v212"])}
+          <br></br>
+          <br></br>
+          {t(["v213"])}
+          <br></br>
+          <br></br>
+          {t(["v214"])}
+          <br></br>
+          <br></br>
+          {t(["v215"])}
+          <br></br>
+          <br></br>
+          {t(["v216"])}
+          <br></br>
+          <br></br>
+          {t(["v217"])}
+          <br></br>
+          <br></br>
+          {t(["v218"])}
+          <br></br>
+          <br></br>
+          {t(["v219"])}
+          <br></br>
+          <br></br>
+          {t(["v220"])}
+          <br></br>
+          <br></br>
+          {t(["v221"])}
+          <br></br>
+          <br></br>
+          {t(["v223"])}
+          <br></br>
+          <br></br>
+          {t(["v224"])}
+          <br></br>
+          <br></br>
+          {t(["v225"])}
+          <br></br>
+          <br></br>
+          {t(["v226"])}
+          <br></br>
+          <br></br>
+          {t(["v227"])}
+          <br></br>
+          <br></br>
+          {t(["v228"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
+    },
+    {
+      name: t(["v248"]),
+      price: "Price: 600 INR/Piece",
+      description: t(["v249"]),
+      img: LactoPup,
+      text: [
+        <>
+          {t(["v249"])}
+          <br></br>
+          <br></br>
+          {t(["v250"])}
+          <br></br>
+          <br></br>
+          {t(["v251"])}
+          <br></br>
+          <br></br>
+          {t(["v252"])}
+          <br></br>
+          <br></br>
+          {t(["v253"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
     },
   ];
 
   const FarmEquipment = [
     {
-      name: "Farm House Floor Burner",
-      price: "Rs. 3000 + shipping",
-      description:
-        "Gas fueled Floor Burner is developed for destroying micro bacteria, virus, fungus, hidden parasites, parasites eggs & insect contamination in and around the shed. Flame can be controlled by a knob fitted in the pipe",
+      name: t(["v319"]),
+      price: t(["v320"]),
+      description: t(["v321"]),
       img: farmimg1,
     },
     {
-      name: "Plastic Slatted Floor",
-      price: "Rs. 135 per Square feet + GST + Shipping",
-      description:
-        "Size 1 feet X 2 FeetThickness 8mmArea 2 square feet/pieceLoad Capacity up to 100kg (220lbs)Impact & Wear MediumLife more than 5 years ",
+      name: t(["v322"]),
+      price: t(["v323"]),
+      description: t(["v324"]),
       img: farmimg2,
     },
   ];
 
   const RumenoAmazon = [
-    { name: "Castrator", img: rumenoamazon1 },
-    { name: "Goat Hoof Cutter", img: rumenoamazon2 },
-    { name: "Goat Nipple", img: rumenoamazon3 },
-    { name: "Automatic Water Bowl", img: rumenoamazon4 },
-    { name: "Animal Ear Tagging", img: rumenoamazon5 },
-    { name: "Large Platform Weighing Machine", img: rumenoamazon6 },
-    { name: "Hanging Weighing Scale", img: rumenoamazon7 },
-    { name: "Infrared Thermometer", img: rumenoamazon8 },
-    { name: "Green House Net", img: rumenoamazon9 },
+    { name: t(["v325"]), img: rumenoamazon1 },
+    { name: t(["v326"]), img: rumenoamazon2 },
+    {
+      name: t(["v172"]),
+      img: rumenoamazon3,
+      description: t(["v173"]),
+      price: 700,
+      text:[<>{t(["v173"])}<br></br><br></br>{t(["v174"])}<br></br><br></br>{t(["v175"])}<br></br><br></br>{t(["v176"])}<br></br><br></br>{t(["v180"])}<br></br><br></br>{t(["v181"])}<br></br><br></br></>]
+
+    },
+    { name: t(["v328"]), img: rumenoamazon4 },
+    { name: t(["v329"]), img: rumenoamazon5 },
+    { name: t(["v330"]), img: rumenoamazon6 },
+    { name: t(["v331"]), img: rumenoamazon7 },
+    { name: t(["v332"]), img: rumenoamazon8 },
+    { name: t(["v333"]), img: rumenoamazon9 },
   ];
 
   const HumanConsumable = [
-    { name: "Rumeno Goat Milk Powder", img: humanconsumable1 },
-    { name: "Rumeno Farm Goat Fresh Milk", img: humanconsumable2 },
-    { name: "Goat Milk Cream Soap", img: humanconsumable3 },
+    { name: t(["v334"]), img: humanconsumable1 },
+    { name: t(["v335"]), img: humanconsumable2 },
+    { name: t(["v336"]), img: humanconsumable3 },
   ];
 
   const GoatForSale = [{ name: "Goat", img: goatforsale1 }];
@@ -174,7 +541,10 @@ const ProductSidebar = () => {
                 onClick={() => handleCategoryChange("farmhouseequip")}
               >
                 <div className="py-2 d-flex text-start align-items-center">
-                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faTractor} />
+                  <FontAwesomeIcon
+                    className="h5 m-0 px-lg-2"
+                    icon={faTractor}
+                  />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {t("v276")}
                   </span>
@@ -213,7 +583,10 @@ const ProductSidebar = () => {
                 onClick={() => handleCategoryChange("goatforsale")}
               >
                 <div className="py-2 d-flex text-start align-items-center">
-                  <FontAwesomeIcon className="h5 m-0 px-lg-2" icon={faWheatAwn} />
+                  <FontAwesomeIcon
+                    className="h5 m-0 px-lg-2"
+                    icon={faWheatAwn}
+                  />
                   <span className="m-0 d-none d-sm-inline mx-md-3 ">
                     {t("v279")}
                   </span>
@@ -248,8 +621,12 @@ const ProductSidebar = () => {
               price={item.price}
               description={item.description}
               text={item.text}
+              suitable={item.suitable}
+              tipe={item.tipe}
+              efficacy={item.efficacy}
+              efficacy1={item.efficacy1}
+              efficacy2={item.efficacy2}
             />
-            
           ))}
           <ReactPaginate
             previousLabel={"Previous"}
