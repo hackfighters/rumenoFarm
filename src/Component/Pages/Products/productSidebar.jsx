@@ -127,8 +127,13 @@ const ProductSidebar = () => {
           {t(["v263"])}
           <br></br>
           <br></br>
-        </>,
+        </>
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v342"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v343"]),
+      efficacy2: t(["v344"]),
     },
     {
       name: t(["v273"]),
@@ -157,6 +162,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v345"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v343"]),
+      efficacy2: t(["v341"]),
     },
     {
       name: t(["v149"]),
@@ -200,6 +210,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v339"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v340"]),
+      efficacy2: t(["v346"]),
     },
     {
       name: t(["v135"]),
@@ -249,6 +264,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v342"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v340"]),
+      efficacy2: t(["v347"]),
     },
     {
       name: t(["v161"]),
@@ -274,6 +294,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v342"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v340"]),
+      efficacy2: t(["v346"]),
     },
     {
       name: t(["v167"]),
@@ -296,6 +321,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v345"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v340"]),
+      efficacy2: t(["v348"]),
     },
     {
       name: t(["v182"]),
@@ -324,6 +354,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v345"]),
+      efficacy: t(["v338"]),
+      // efficacy1: t(["v340"]),
+      efficacy2: t(["v344"]),
     },
     {
       name: t(["v189"]),
@@ -355,6 +390,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v342"]),
+      // efficacy: t(["v338"]),
+      // efficacy1: t(["v340"]),
+      // efficacy2: t(["v341"]),
     },
     {
       name: t(["v210"]),
@@ -413,6 +453,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v342"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v343"]),
+      efficacy2: t(["v341"]),
     },
     {
       name: t(["v248"]),
@@ -438,6 +483,11 @@ const ProductSidebar = () => {
           <br></br>
         </>,
       ],
+      suitable: t(["v337"]),
+      tipe:t(["v345"]),
+      efficacy: t(["v338"]),
+      efficacy1: t(["v343"]),
+      efficacy2: t(["v344"]),
     },
   ];
 
