@@ -18,9 +18,7 @@ import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 
-// Rumeno farm
-// Rumeno
-// Veterinary
+
 
 const Home = () => {
   const { t } = useTranslation();
@@ -29,6 +27,7 @@ const Home = () => {
       <section className="container-fluid overflow-hidden p-0">
         <div className="home-backgroundColor overflow-hidden">
           <Navbar />
+          
           <div className="container header-sect pt-5">
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
@@ -37,6 +36,7 @@ const Home = () => {
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
+              
               <div
                 className="col-lg-6"
                 data-aos="fade-left"
@@ -66,7 +66,9 @@ const Home = () => {
                   </button>
                 </div>
               </a>
+              {/* <AddHomeScreen/> */}
             </div>
+           
           </div>
         </div>
         <About />
@@ -173,7 +175,7 @@ const Home = () => {
         </div>
         <Training />
         <FooterTop />
-        <Footer />
+        {/* <Footer /> */}
       </section>
     </>
   );

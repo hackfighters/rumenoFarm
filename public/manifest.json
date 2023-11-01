@@ -1,24 +1,46 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Rumeno",
+  "name": "Rumeno",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logoico.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo395.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo395.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "395x282"
     }
   ],
-  "start_url": ".",
+  "screenshots": [
+    {
+      "src": "logo395.png",
+      "type": "image/png",
+      "sizes": "395x282",
+      "form_factor": "wide"
+    },
+    {
+      "src": "logo395.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "portrait"
+    }
+  ],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "/"
+    }
+  ],
+  "form_factors": ["wide"],
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
