@@ -8,7 +8,9 @@ import Home from "./Component/Pages/Home/index";
 import Services from "./Component/Pages/Service";
 import ProductPage from "./Component/Pages/Products/index";
 import ContactUs from "./Component/Pages/ContactUs";
-
+// Rumeno farm
+// Rumeno
+// Veterinary
 const App = () => {
 
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -117,6 +119,9 @@ const App = () => {
 
   return (
     <>
+      {/* // Rumeno farm
+// Rumeno
+// Veterinary */}
       <Routes>
         <Route path="/" element={<Lang />} />
         <Route path="/home" element={<Home />} />

@@ -1143,8 +1143,7 @@ color: white;
   font-size: 50px;
 }
 .area {
-  background: #4e54c8;
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  background: #4e54c8 !important;
   width: 100%;
   height: 100vh;
 }
@@ -1390,7 +1389,7 @@ color: white;
 .lang-box {
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
   border-radius: 12px;
-  backdrop-filter: brightness(2.7);
+  backdrop-filter: brightness(2.7) !important;
 }
 .lang-box2 {
   width: 100%;
@@ -2035,13 +2034,9 @@ button.contact_form_submit {
 
 /* our Products */
 
-/* .our-product-img {
-  background-image: url(./assets/img/prod-img/Rumeno\ Health\ Roadmap\ \(1\).png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-} */
+.img-width{
+  height: 405px !important;
+}
 .sildar,.span{
   color: #000;
 }
