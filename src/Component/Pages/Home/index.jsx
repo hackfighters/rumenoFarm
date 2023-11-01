@@ -175,7 +175,7 @@ const Home = () => {
         </div>
         <Training />
         <FooterTop />
-        <Footer />
+        {/* <Footer /> */}
       </section>
     </>
   );

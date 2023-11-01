@@ -50,7 +50,7 @@ const App = () => {
         // Clear the deferred prompt variable
         setDeferredPrompt(null);
       }
-    }, 7000);
+    }, 1000);
 
     return () => {
       // Clear the timer when the component unmounts or when the prompt is triggered
