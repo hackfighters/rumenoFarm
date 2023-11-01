@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React , { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -10,6 +10,52 @@ import ProductPage from "./Component/Pages/Products/index";
 import ContactUs from "./Component/Pages/ContactUs";
 
 const App = () => {
+
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event) => {
+      // Prevent Chrome's default popup from appearing
+      event.preventDefault();
+
+      // Save the event for later use
+      setDeferredPrompt(event);
+    };
+
+    // Listen for beforeinstallprompt event
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      // Clean up the event listener when the component unmounts
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Trigger the installation prompt after 7 seconds
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the installation');
+          } else {
+            console.log('User dismissed the installation');
+          }
+        });
+
+        // Clear the deferred prompt variable
+        setDeferredPrompt(null);
+      }
+    }, 7000);
+
+    return () => {
+      // Clear the timer when the component unmounts or when the prompt is triggered
+      clearTimeout(timer);
+    };
+  }, [deferredPrompt]);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -45,7 +91,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    
     const navbarlinksActive = () => {
       const position = window.scrollY + 200;
       const navbarlinks = document.querySelectorAll("#navbar .scrollto");
@@ -66,7 +111,6 @@ const App = () => {
       });
     };
     window.scrollTo(0, 0);
-
 
     navbarlinksActive();
   }, [location]);

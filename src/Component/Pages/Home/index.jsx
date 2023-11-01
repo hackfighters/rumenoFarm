@@ -16,10 +16,11 @@ import Prdimg5 from "../../../assets/img/OurProduct/microfloratane.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
+
+
 const Home = () => {
   const { t } = useTranslation();
   const Data = [
-    // I will delete this Comment after connecting the api
 
     {
       heading: t(["v269"]),
@@ -37,28 +38,28 @@ const Home = () => {
       img: Prdimg4,
     },
   ];
+  
   return (
     <>
       <section className="container-fluid overflow-hidden p-0">
         <div className="home-backgroundColor overflow-hidden">
           <Navbar />
+          
           <div className="container header-sect pt-5">
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
                 <h1 className="text-light mt-5 caro-text pt-5">
-                   <span className="caroText">{t("v1")}</span>
+                  <span className="caroText">{t("v1")}</span>
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
+              
               <div
                 className="col-lg-6"
                 data-aos="fade-left"
                 data-aos-delay="50"
               >
-                <div
-                  className="container-fluid p-0 mb-5"
-                  data-wow-delay="0.1s"
-                >
+                <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
                   <Carousel interval={2000}>
                     <Carousel.Item>
                       <img className="w-100" src={caroimg1} alt="loading" />
@@ -79,7 +80,9 @@ const Home = () => {
                   </button>
                 </div>
               </a>
+              {/* <AddHomeScreen/> */}
             </div>
+           
           </div>
         </div>
         <About />
@@ -100,9 +103,7 @@ const Home = () => {
           </div>
           <div className="row g-0 gx-5 align-items-end">
             <div className="col-lg-6">
-              <div
-                className="section-header text-start mb-3"
-              >
+              <div className="section-header text-start mb-3">
                 <p>{t("v6")}</p>
               </div>
             </div>
