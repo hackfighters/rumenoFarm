@@ -18,9 +18,7 @@ import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 
-// Rumeno farm
-// Rumeno
-// Veterinary
+
 
 const Home = () => {
   const { t } = useTranslation();
