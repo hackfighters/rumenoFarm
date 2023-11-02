@@ -17,6 +17,7 @@ import Prdimg6 from "../../../assets/img/OurProduct/Rumenovita.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
+import AddToHomeScreenButton from "../../Common/AddHomeScreen";
 
 
 
@@ -66,7 +67,7 @@ const Home = () => {
                   </button>
                 </div>
               </a>
-              {/* <AddHomeScreen/> */}
+              <AddToHomeScreenButton/>
             </div>
            
           </div>
