@@ -7,7 +7,7 @@ import ProductSidebar from "./productSidebar";
 
 // Image
 import Roadmap1 from "../../../assets/img/OurProduct/rumeno-roadmap.png";
-import Roadmap2 from "../../../assets/img/OurProduct/proimg.png";
+import Roadmap2 from "../../../assets/img/OurProduct/roadmap_mobile (1).png";
 // Rumeno farm
 // Rumeno
 // Veterinary
