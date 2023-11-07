@@ -224,8 +224,8 @@ const Training = () => {
                   role="tabpanel"
                   aria-labelledby="v-pills-settings-tab"
                 >
-                  <h4 className="font-italic mb-4"> {t("v69")}</h4>
-                  <p>{t("v70")}</p>
+                  <h4 className="font-italic mb-4"> {t("v70")}</h4>
+                  {/* <p>{t("v70")}</p> */}
                 </div>
               </div>
             </div>
