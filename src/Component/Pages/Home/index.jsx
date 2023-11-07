@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Common Component
 import Navbar from "../../Common/Navbar/index";
 import About from "../../Common/About";
-import Footer from "../../Common/Footer";
+// import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
 import FooterTop from "../../Common/CertifiedBox/footer-top";
 
@@ -26,7 +26,7 @@ const Home = () => {
     <>
       <section className="container-fluid overflow-hidden p-0">
         <div className="home-backgroundColor overflow-hidden">
-          <Navbar />
+          <Navbar/>
           
           <div className="container header-sect pt-5">
             <div className="row header-txt pt-5 mt-5">

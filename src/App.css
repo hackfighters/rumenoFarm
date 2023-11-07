@@ -164,7 +164,7 @@ body {
   padding-left: 5px;
   color: #fff;
 }
-#header {
+#header , .header {
   background: rgba(12, 11, 9, 0.6);
   border-bottom: 1px solid rgba(12, 11, 9, 0.6);
   transition: all 0.5s;
@@ -172,12 +172,12 @@ body {
   padding: 5px 0;
   top: 47px;
 }
-#header.header-scrolled {
+#header.header-scrolled ,.header {
   top: 0;
   background: rgba(0, 0, 0, 0.85);
   border-bottom: 1px solid #37332a;
 }
-#header .logo {
+#header .logo , .header .logo {
   font-size: 28px;
   margin: 0;
   padding: 0;
@@ -187,7 +187,7 @@ body {
   text-transform: uppercase;
   font-family: Poppins !important;
 }
-#header .logo a {
+#header .logo a , .header .logo a {
   color: #fff;
 }
 .book-a-table-btn {
@@ -998,7 +998,7 @@ color: white;
 }
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   #header {
-      top: 130px;
+      top: 142px;
  }
   .contact-info {
       display: flex !important;
@@ -1416,6 +1416,13 @@ color: white;
   .sildar svg {
       margin: 0 8px 0 8px !important;
  }
+ .our-product-img video , .mob-nav{
+  display: block !important;
+ }
+ .our-product-img img, .desk-nav{
+  display: none !important;
+ }
+
 }
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .lang-box1 {
@@ -1461,9 +1468,7 @@ color: white;
   .contact_field {
       margin-top: 24%;
  }
-  .contact-sect {
-      padding-top: 42% !important;
- }
+
   .product-sect,.prd-btn {
       width: 100% !important;
  }
@@ -2133,9 +2138,7 @@ button.contact_form_submit {
   .lang-box {
       width: 75% !important;
  }
- .our-product-img img , .service-bg {
-  padding-top: 82px !important;
-}
+
 }
 @media only screen and (min-width: 450px) and (max-width: 768px) {
   .lang-box {
@@ -2177,3 +2180,9 @@ button.contact_form_submit {
   color: #fff !important;
   box-shadow: none !important;
 }
+.our-product-img video , .mob-nav{
+  display: none;
+ }
+ .our-product-img img , .desk-nav{
+  display: block;
+ }

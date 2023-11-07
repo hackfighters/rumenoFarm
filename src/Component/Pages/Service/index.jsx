@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 // Common Component
 import Footer from "../../Common/Footer";
 import Navbar from "../../Common/Navbar/index";
+import ResponsiveNavbar from "../../Common/Navbar/navMob";
+
 import FeedBackForm from "../../Common/Gooogleform/googleform";
 
 // Image
@@ -19,7 +21,12 @@ const Services = () => {
 
   return (
     <>
-      <Navbar />
+     <div className="desk-nav">
+    <Navbar/>
+    </div>
+    <div className="mob-nav">
+<ResponsiveNavbar/>
+    </div>
       <section className="container-fluid service-bg overflow-hidden">
         <div
           className="section-header text-center mx-auto mb-3 pt-5"

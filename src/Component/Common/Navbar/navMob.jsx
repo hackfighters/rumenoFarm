@@ -8,71 +8,56 @@ import {
   faCartShopping,
   faCircleMinus,
   faCirclePlus,
-  faLanguage,
-  faLocationDot,
-  faPhone,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
 // Third party i18next
-import i18next from "i18next";
-import { useTranslation } from "react-i18next";
+// import i18next from "i18next";
+// import { useTranslation } from "react-i18next";
 
 // Common Component
 import Login from "../../Common/Modal/Login";
 import Registration from "../../Common/Modal/Registion";
-import Select from "../../Common/Select/index";
 
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
-{
-  /* Rumeno farm  */
-}
-{
-  /* Rumeno */
-}
-{
-  /* Veterinary */
-}
-const Navbar = ({ cart, count }) => {
-  const { t } = useTranslation();
+// {
+//   /* Rumeno farm  */
+// }
+// {
+//   /* Rumeno */
+// }
+// {
+//   /* Veterinary */
+// }
+const ResponsiveNavbar = ({ cart, count }) => {
+  // const {  } = useTranslation();
 
   // State
-  const [showlogin, setshowlogin] = useState(false);
+  const [showlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const [CART, setCART] = useState([]);
-  const [showSelect, setShowSelect] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
 
-  const username = "admins";
-  const password = "password";
+  // const username = "admins";
+  // const password = "password";
 
-  const user = "admin";
-  const pass = "password";
+  // const user = "admin";
+  // const pass = "password";
 
   // Function
-  useEffect(() => {
-    if (username === username && password === password) {
-      setshowlogin(true);
-    } else {
-      setshowlogin(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (username === username && password === password) {
+  //     setshowlogin(true);
+  //   } else {
+  //     setshowlogin(false);
+  //   }
+  // }, []);
 
-  const toggleSelect = () => {
-    setShowSelect(!showSelect);
-  };
 
-  const handleChangen = (e) => {
-    i18next.changeLanguage(e.target.value);
-    setSelectedOption(e.target.value);
-    setShowSelect(false);
-  };
 
   const openModal = () => {
     setShowModal(true);
@@ -108,67 +93,8 @@ const Navbar = ({ cart, count }) => {
       <div className="container-fluid sect-topbar position-absolute">
         <div className="row">
           <div
-            id="topbar"
-            className="col-sm-12 d-flex align-items-center px-0 "
-          >
-            <div className="container-fluid">
-              <div className="contact-info row justify-content-between  px-0">
-                <div className="col-sm-3 px-4 d-flex cnt align-items-center">
-                  <FontAwesomeIcon
-                    icon={faLocationDot}
-                    className="me-2"
-                    style={{ color: "#f5f5f5" }}
-                  />
-                  <span className="text-dark">{t("v301")}</span>
-                </div>
-                <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className="me-2"
-                    style={{ color: "#f0f0f0" }}
-                  />
-                  <span className="text-dark">rumeno.farmotech@gmail.com</span>
-                </div>
-                <div className="col-sm-2 px-sm-5 px-lg-2   d-flex cnt justify-content-end align-items-center">
-                  <FontAwesomeIcon
-                    icon={faClock}
-                    className="me-2"
-                    style={{ color: "#fafcff" }}
-                  />
-                  <span className="text-dark  ">
-                    {" "}
-                    {t("v302")} 9:00am - 8:00pm
-                  </span>
-                </div>
-                <div className="col-lg-2 col-sm-1 px-2 d-flex cnt align-items-center justify-content-center">
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className="me-2"
-                    style={{ color: "#f1f4f8" }}
-                  />
-                  <span className="text-dark  ">+91 7355043892</span>
-                </div>
-                <div className="col-sm-2  px-2   align-items-center  nav-lang-switch h-100 my-auto  justify-content-lg-start  justify-content-sm-center">
-                  <FontAwesomeIcon
-                    type="button"
-                    onClick={toggleSelect}
-                    className="nav-lang-switch-icons m-0 h4 text-white"
-                    icon={faLanguage}
-                  />
-                  {showSelect && (
-                    <Select
-                      className=""
-                      value={selectedOption}
-                      onChange={(e) => handleChangen(e)}
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            id="header"
-            className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
+            id=""
+            className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top header"
           >
             <a className="logo" href="#/">
               <img className="ps-4 logo" src={logo} alt="" />
@@ -351,4 +277,4 @@ const Navbar = ({ cart, count }) => {
   );
 };
 
-export default Navbar;
+export default ResponsiveNavbar;

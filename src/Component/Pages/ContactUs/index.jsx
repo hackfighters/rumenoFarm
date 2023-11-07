@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import Footer from "../../Common/Footer";
 import MapComp from "../../Common/Map/map";
 import Navbar from "../../Common/Navbar/index";
+import ResponsiveNavbar from "../../Common/Navbar/navMob";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
@@ -28,7 +29,12 @@ const ContactUs = () => {
 
   return (
     <>
-      <Navbar />
+       <div className="desk-nav">
+    <Navbar/>
+    </div>
+    <div className="mob-nav">
+<ResponsiveNavbar/>
+    </div>
       <section className="contact-sect container-fluid">
         <div className="row justify-content-center py-5">
           <div className="col-sm-10">

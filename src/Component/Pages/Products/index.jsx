@@ -7,23 +7,24 @@ import ProductSidebar from "./productSidebar";
 
 // Image
 import Roadmap1 from "../../../assets/img/OurProduct/rumeno-roadmap.png";
-import Roadmap2 from "../../../assets/img/OurProduct/proimg.png";
+import Roadmap3 from "../../../assets/img/roadmap_mobile.mp4";
+import ResponsiveNavbar from "../../Common/Navbar/navMob";
+
 // Rumeno farm
 // Rumeno
 // Veterinary
 const Products = () => {
   return (
     <>
-      <Navbar />
+    <div className="desk-nav">
+    <Navbar/>
+    </div>
+    <div className="mob-nav">
+<ResponsiveNavbar/>
+    </div>
       <div className="our-product-img">
-        <picture>
-          <source media="(min-width:465px)" srcSet={Roadmap1} />
-          <img
-            src={Roadmap2}
-            alt="Loading"
-            className="w-100 mt-5 vh-100 object-fit-fill"
-          />
-        </picture>
+          <img src={Roadmap1} alt="Loading"className="w-100  pt-5 vh-100 object-fit-fill"/>
+          <video autoPlay="true" loop="true" muted className="w-100  pt-5 vh-100 " src={Roadmap3}></video>
       </div>
       <div className="container-fluid abt-sect py-3 overflow-hidden">
         {/* <div className="text-center fs-2">Our Product</div> */}
