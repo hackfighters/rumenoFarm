@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Common Component
 import Navbar from "../../Common/Navbar/index";
 import About from "../../Common/About";
-// import Footer from "../../Common/Footer";
+import Footer from "../../Common/Footer/index";
 import Training from "../../Common/Training";
 import FooterTop from "../../Common/CertifiedBox/footer-top";
 
@@ -18,17 +18,30 @@ import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 
-
-
 const Home = () => {
   const { t } = useTranslation();
   return (
     <>
       <section className="container-fluid overflow-hidden p-0">
+        {/* Veterinary docter online */}
+        {/* Veterinary docter cow / rabbit / new me */}
+        {/* Veterinary docter salary */}
+        {/* Veterinary docter fees */}
+        {/* Veterinary docter course */}
+        {/* Veterinary docter jods */}
+        {/* Veterinary docter kese bane */}
+        {/* Goat farming training */}
         <div className="home-backgroundColor overflow-hidden">
-          <Navbar/>
-          
+          <Navbar />
           <div className="container header-sect pt-5">
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jods */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
                 <h1 className="text-light mt-5 caro-text pt-5">
@@ -36,7 +49,14 @@ const Home = () => {
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
-              
+              {/* Veterinary docter online */}
+              {/* Veterinary docter cow / rabbit / new me */}
+              {/* Veterinary docter salary */}
+              {/* Veterinary docter fees */}
+              {/* Veterinary docter course */}
+              {/* Veterinary docter jods */}
+              {/* Veterinary docter kese bane */}
+              {/* Goat farming training */}
               <div
                 className="col-lg-6"
                 data-aos="fade-left"
@@ -58,6 +78,14 @@ const Home = () => {
                     </Carousel.Item>
                   </Carousel>
                 </div>
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
               </div>
               <a href="#training">
                 <div className="training-sect">
@@ -66,10 +94,16 @@ const Home = () => {
                   </button>
                 </div>
               </a>
-              {/* <AddHomeScreen/> */}
             </div>
-           
           </div>
+          {/* Veterinary docter online */}
+          {/* Veterinary docter cow / rabbit / new me */}
+          {/* Veterinary docter salary */}
+          {/* Veterinary docter fees */}
+          {/* Veterinary docter course */}
+          {/* Veterinary docter jods */}
+          {/* Veterinary docter kese bane */}
+          {/* Goat farming training */}
         </div>
         <About />
         <div className="container">
@@ -87,6 +121,14 @@ const Home = () => {
               </div>
             </div>
           </div>
+          {/* Veterinary docter online */}
+          {/* Veterinary docter cow / rabbit / new me */}
+          {/* Veterinary docter salary */}
+          {/* Veterinary docter fees */}
+          {/* Veterinary docter course */}
+          {/* Veterinary docter jods */}
+          {/* Veterinary docter kese bane */}
+          {/* Goat farming training */}
           <div className="row g-0 gx-5 align-items-end">
             <div className="col-lg-6">
               <div className="section-header text-start mb-3">
@@ -117,6 +159,14 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+              {/* Veterinary docter online */}
+              {/* Veterinary docter cow / rabbit / new me */}
+              {/* Veterinary docter salary */}
+              {/* Veterinary docter fees */}
+              {/* Veterinary docter course */}
+              {/* Veterinary docter jods */}
+              {/* Veterinary docter kese bane */}
+              {/* Goat farming training */}
             </div>
             <div
               className="col-lg-4"
@@ -152,6 +202,14 @@ const Home = () => {
               data-aos-delay="300"
             >
               <div className="card-box py-4">
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <div className="card1 caa">
                   <img
                     src={Prdimg6}
@@ -171,6 +229,14 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jobs */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
           </div>
         </div>
         <Training />

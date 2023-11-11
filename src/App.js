@@ -8,7 +8,6 @@ import Home from "./Component/Pages/Home/index";
 import Services from "./Component/Pages/Service";
 import ProductPage from "./Component/Pages/Products/index";
 import ContactUs from "./Component/Pages/ContactUs";
-import Testapi from "./Component/Common/Modal/test";
 // Rumeno farm
 // Rumeno
 // Veterinary
