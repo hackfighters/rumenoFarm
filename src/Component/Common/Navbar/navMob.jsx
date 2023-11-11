@@ -57,8 +57,6 @@ const ResponsiveNavbar = ({ cart, count }) => {
   //   }
   // }, []);
 
-
-
   const openModal = () => {
     setShowModal(true);
   };
@@ -91,6 +89,14 @@ const ResponsiveNavbar = ({ cart, count }) => {
   return (
     <>
       <div className="container-fluid sect-topbar position-absolute">
+        {/* Veterinary docter online */}
+        {/* Veterinary docter cow / rabbit / new me */}
+        {/* Veterinary docter salary */}
+        {/* Veterinary docter fees */}
+        {/* Veterinary docter course */}
+        {/* Veterinary docter jods */}
+        {/* Veterinary docter kese bane */}
+        {/* Goat farming training */}
         <div className="row">
           <div
             id=""
@@ -99,6 +105,14 @@ const ResponsiveNavbar = ({ cart, count }) => {
             <a className="logo" href="#/">
               <img className="ps-4 logo" src={logo} alt="" />
             </a>
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jods */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
             <button
               className="navbar-toggler bg-secondary"
               type="button"
@@ -109,6 +123,14 @@ const ResponsiveNavbar = ({ cart, count }) => {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon"></span>
+              {/* Veterinary docter online */}
+              {/* Veterinary docter cow / rabbit / new me */}
+              {/* Veterinary docter salary */}
+              {/* Veterinary docter fees */}
+              {/* Veterinary docter course */}
+              {/* Veterinary docter jods */}
+              {/* Veterinary docter kese bane */}
+              {/* Goat farming training */}
             </button>
             {/* Rumeno farm  */}
             {/* Rumeno */}
@@ -117,6 +139,14 @@ const ResponsiveNavbar = ({ cart, count }) => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
+              {/* Veterinary docter online */}
+              {/* Veterinary docter cow / rabbit / new me */}
+              {/* Veterinary docter salary */}
+              {/* Veterinary docter fees */}
+              {/* Veterinary docter course */}
+              {/* Veterinary docter jods */}
+              {/* Veterinary docter kese bane */}
+              {/* Goat farming training */}
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
                 <li className="nav-item">
                   <NavLink
@@ -146,6 +176,14 @@ const ResponsiveNavbar = ({ cart, count }) => {
                     Services
                   </NavLink>
                 </li>
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -179,8 +217,15 @@ const ResponsiveNavbar = ({ cart, count }) => {
                     >
                       Login
                     </button>
-                    {/* <ToastContainer /> */}
                   </div>
+                  {/* Veterinary docter online */}
+                  {/* Veterinary docter cow / rabbit / new me */}
+                  {/* Veterinary docter salary */}
+                  {/* Veterinary docter fees */}
+                  {/* Veterinary docter course */}
+                  {/* Veterinary docter jods */}
+                  {/* Veterinary docter kese bane */}
+                  {/* Goat farming training */}
 
                   <Login
                     showModal={showModal}
@@ -206,6 +251,14 @@ const ResponsiveNavbar = ({ cart, count }) => {
                 ) : null}
               </ul>
             </div>
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jods */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
           </div>
         </div>
       </div>

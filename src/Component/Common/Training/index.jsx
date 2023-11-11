@@ -17,6 +17,14 @@ const Training = () => {
   return (
     <>
       <section id="training" className="py-4 sect-training header">
+        {/* Veterinary docter online */}
+        {/* Veterinary docter cow / rabbit / new me */}
+        {/* Veterinary docter salary */}
+        {/* Veterinary docter fees */}
+        {/* Veterinary docter course */}
+        {/* Veterinary docter jods */}
+        {/* Veterinary docter kese bane */}
+        {/* Goat farming training */}
         <div className="container">
           <div
             className="d-flex"
@@ -25,6 +33,14 @@ const Training = () => {
             data-aos-easing="ease-in-sine"
           >
             <span className="label-title">Training</span>
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jods */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
             <div>
               <div className="about-line-large"></div>
               <div className="about-line-small"></div>
@@ -32,6 +48,14 @@ const Training = () => {
           </div>
           <div className="row  py-4">
             <div className="col-md-3">
+              {/* Veterinary docter online */}
+              {/* Veterinary docter cow / rabbit / new me */}
+              {/* Veterinary docter salary */}
+              {/* Veterinary docter fees */}
+              {/* Veterinary docter course */}
+              {/* Veterinary docter jods */}
+              {/* Veterinary docter kese bane */}
+              {/* Goat farming training */}
               <div
                 className="nav flex-column nav-pills nav-pills-custom"
                 id="v-pills-tab"
@@ -54,6 +78,14 @@ const Training = () => {
                   <span className="font-weight-bold small text-uppercase">
                     {t("v7")}
                   </span>
+                  {/* Veterinary docter online */}
+                  {/* Veterinary docter cow / rabbit / new me */}
+                  {/* Veterinary docter salary */}
+                  {/* Veterinary docter fees */}
+                  {/* Veterinary docter course */}
+                  {/* Veterinary docter jods */}
+                  {/* Veterinary docter kese bane */}
+                  {/* Goat farming training */}
                 </a>
                 {/* Rumeno farm  */}
                 {/* Rumeno */}
@@ -75,6 +107,14 @@ const Training = () => {
                     {t("v48")}
                   </span>
                 </a>
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <a
                   className="nav-link mb-3 p-3 shadow"
                   id="v-pills-messages-tab"
@@ -108,12 +148,28 @@ const Training = () => {
                   <span className="font-weight-bold small text-uppercase">
                     {t("v69")}
                   </span>
+                  {/* Veterinary docter online */}
+                  {/* Veterinary docter cow / rabbit / new me */}
+                  {/* Veterinary docter salary */}
+                  {/* Veterinary docter fees */}
+                  {/* Veterinary docter course */}
+                  {/* Veterinary docter jods */}
+                  {/* Veterinary docter kese bane */}
+                  {/* Goat farming training */}
                 </a>
               </div>
               {/* Rumeno farm  */}
               {/* Rumeno */}
               {/* Veterinary */}
             </div>
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jods */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
             <div
               className="col-md-9"
               data-aos="fade-left"
@@ -153,6 +209,14 @@ const Training = () => {
                       <li>{t("v29")}</li>
                       <li>{t("v30")}</li>
                     </ul>
+                    {/* Veterinary docter online */}
+                    {/* Veterinary docter cow / rabbit / new me */}
+                    {/* Veterinary docter salary */}
+                    {/* Veterinary docter fees */}
+                    {/* Veterinary docter course */}
+                    {/* Veterinary docter jods */}
+                    {/* Veterinary docter kese bane */}
+                    {/* Goat farming training */}
                     <ul className="col-lg-5">
                       <li>{t("v31")}</li>
                       <li>{t("v32")}</li>
@@ -172,6 +236,14 @@ const Training = () => {
                       <li>{t("v46")}</li>
                     </ul>
                   </div>
+                  {/* Veterinary docter online */}
+                  {/* Veterinary docter cow / rabbit / new me */}
+                  {/* Veterinary docter salary */}
+                  {/* Veterinary docter fees */}
+                  {/* Veterinary docter course */}
+                  {/* Veterinary docter jods */}
+                  {/* Veterinary docter kese bane */}
+                  {/* Goat farming training */}
                   <p>{t("v47")}</p>
                 </div>
                 <div
@@ -184,7 +256,14 @@ const Training = () => {
                   <p>{t("v49")}</p>
                   <p>{t("v50")}</p>
                 </div>
-
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <div
                   className="tab-pane fade shadow rounded bg-white p-5"
                   id="v-pills-messages"
@@ -192,6 +271,14 @@ const Training = () => {
                   aria-labelledby="v-pills-messages-tab"
                 >
                   <h4 className="font-italic mb-4">{t("v51")}</h4>
+                  {/* Veterinary docter online */}
+                  {/* Veterinary docter cow / rabbit / new me */}
+                  {/* Veterinary docter salary */}
+                  {/* Veterinary docter fees */}
+                  {/* Veterinary docter course */}
+                  {/* Veterinary docter jods */}
+                  {/* Veterinary docter kese bane */}
+                  {/* Goat farming training */}
                   <p>{t("v52")}</p>
                   <p>{t("v53")}</p>
                   <p>{t("v54")}</p>
@@ -207,6 +294,14 @@ const Training = () => {
                       <li>{t("v61")}</li>
                       <li> {t("v62")}</li>
                     </ul>
+                    {/* Veterinary docter online */}
+                    {/* Veterinary docter cow / rabbit / new me */}
+                    {/* Veterinary docter salary */}
+                    {/* Veterinary docter fees */}
+                    {/* Veterinary docter course */}
+                    {/* Veterinary docter jods */}
+                    {/* Veterinary docter kese bane */}
+                    {/* Goat farming training */}
                     <ul className="col-lg-5">
                       <li> {t("v63")}</li>
                       <li> {t("v64")}</li>
@@ -217,7 +312,14 @@ const Training = () => {
                     </ul>
                   </div>
                 </div>
-
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <div
                   className="tab-pane fade shadow rounded bg-white p-5"
                   id="v-pills-settings"

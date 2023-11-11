@@ -29,6 +29,14 @@ const Footer = () => {
   return (
     <>
       <div className="container-fluid footer pt-5">
+        {/* Veterinary docter online */}
+        {/* Veterinary docter cow / rabbit / new me */}
+        {/* Veterinary docter salary */}
+        {/* Veterinary docter fees */}
+        {/* Veterinary docter course */}
+        {/* Veterinary docter jods */}
+        {/* Veterinary docter kese bane */}
+        {/* Goat farming training */}
         <div className="row py-4 text-light">
           <div
             className="col-lg-3 text-center"
@@ -37,6 +45,14 @@ const Footer = () => {
           >
             <img className="footer-img" src={logo} alt="Loading" />
           </div>
+          {/* Veterinary docter online */}
+          {/* Veterinary docter cow / rabbit / new me */}
+          {/* Veterinary docter salary */}
+          {/* Veterinary docter fees */}
+          {/* Veterinary docter course */}
+          {/* Veterinary docter jods */}
+          {/* Veterinary docter kese bane */}
+          {/* Goat farming training */}
           <div className="col-lg-2 pt-4">
             <div className="d-flex justify-content-center pb-2">
               <h5 className="me-3">Pages</h5>
@@ -53,6 +69,14 @@ const Footer = () => {
                     Home
                   </NavLink>
                 </li>
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <li>
                   <a href="#about" className="footer-page">
                     About
@@ -67,6 +91,14 @@ const Footer = () => {
                     Products
                   </NavLink>
                 </li>
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <li>
                   <a href="#training" className="footer-page">
                     Training
@@ -86,6 +118,14 @@ const Footer = () => {
                 />
                 {t("v301")}
               </li>
+              {/* Veterinary docter online */}
+              {/* Veterinary docter cow / rabbit / new me */}
+              {/* Veterinary docter salary */}
+              {/* Veterinary docter fees */}
+              {/* Veterinary docter course */}
+              {/* Veterinary docter jods */}
+              {/* Veterinary docter kese bane */}
+              {/* Goat farming training */}
               <li>
                 <FontAwesomeIcon
                   icon={faEnvelope}
@@ -103,12 +143,28 @@ const Footer = () => {
                 +91 7355043892
               </li>
             </ul>
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jods */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
           </div>
           <div className="col-lg-4 pt-4">
             <div className="text-center">
               <h5>About Company</h5>
               <p className="footer-text pt-3">{t("v303")}</p>
             </div>
+            {/* Veterinary docter online */}
+            {/* Veterinary docter cow / rabbit / new me */}
+            {/* Veterinary docter salary */}
+            {/* Veterinary docter fees */}
+            {/* Veterinary docter course */}
+            {/* Veterinary docter jods */}
+            {/* Veterinary docter kese bane */}
+            {/* Goat farming training */}
             <div>
               <ul className="list-unstyled d-flex justify-content-center footer-li">
                 <li>
@@ -118,6 +174,14 @@ const Footer = () => {
                     style={{ color: "white" }}
                   />
                 </li>
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <li>
                   <FontAwesomeIcon
                     icon={faWhatsapp}
@@ -132,6 +196,14 @@ const Footer = () => {
                     style={{ color: "white" }}
                   />
                 </li>
+                {/* Veterinary docter online */}
+                {/* Veterinary docter cow / rabbit / new me */}
+                {/* Veterinary docter salary */}
+                {/* Veterinary docter fees */}
+                {/* Veterinary docter course */}
+                {/* Veterinary docter jods */}
+                {/* Veterinary docter kese bane */}
+                {/* Goat farming training */}
                 <li>
                   <FontAwesomeIcon
                     icon={faInstagram}
@@ -142,6 +214,14 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+          {/* Veterinary docter online */}
+          {/* Veterinary docter cow / rabbit / new me */}
+          {/* Veterinary docter salary */}
+          {/* Veterinary docter fees */}
+          {/* Veterinary docter course */}
+          {/* Veterinary docter jods */}
+          {/* Veterinary docter kese bane */}
+          {/* Goat farming training */}
         </div>
         {/* Rumeno farm  */}
         {/* Rumeno */}
