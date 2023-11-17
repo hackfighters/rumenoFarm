@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { UserContext } from '../Modal/logusecont';
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,12 +37,11 @@ import SendOtp from "../Modal/otp";
 {
   /* Veterinary */
 }
-const Navbar = ({ size, cart, setCart, handleChange }) => {
-  console.log("nnmmmmmm", size);
+const Navbar = ({ size, cart, setCart, handleChange}) => {
   const { t } = useTranslation();
-
+  const { loggedInUser } = useContext(UserContext);
   // State
-  const [showlogin, setshowlogin] = useState(false);
+  // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
@@ -56,13 +56,13 @@ const Navbar = ({ size, cart, setCart, handleChange }) => {
   const pass = "password";
 
   // Function
-  useEffect(() => {
-    if (username === username && password === password) {
-      setshowlogin(true);
-    } else {
-      setshowlogin(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (username === username && password === password) {
+  //     setshowlogin(true);
+  //   } else {
+  //     setshowlogin(false);
+  //   }
+  // }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -337,16 +337,15 @@ const Navbar = ({ size, cart, setCart, handleChange }) => {
                   />
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
-                {showlogin ? (
-                  <li>
-                    <h4
-                      typeof="button"
-                      className="text-danger bg-light m-0 p-1 rounded-circle"
-                    >
-                      HV
-                    </h4>
-                  </li>
-                ) : null}
+
+                <li>
+                  {/* {isLoggedIn ? (
+                    <h4  typeof="button"className="text-danger bg-light m-0 p-1 rounded-circle">Login</h4>
+                  ) : (
+                    <p>notLogin</p>
+                  )} */}
+                  {loggedInUser ? `Welcome, ${loggedInUser}` : 'Please login'}
+                </li>
               </ul>
             </div>
             {/* Veterinary docter online */}
@@ -375,62 +374,64 @@ const Navbar = ({ size, cart, setCart, handleChange }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {size == 1 ? (
-            <>
-              {cart?.map((item, cartindex) => {
-                totalPrice += item.amount * item.price;
-                return (
-                  <div className="row mb-4 cart-model" key={cartindex}>
-                    <div className="col-sm-3 cart-model-img">
-                      <img className="mx-3" src={item.img} alt="Loading" />
-                    </div>
-                    <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                      <h4>{item.name}</h4>
-                    </div>
-                    <div className="col-sm-3  d-flex align-items-center justify-content-around ">
-                      <FontAwesomeIcon
-                        icon={faCirclePlus}
-                        type="button"
-                        className="text-primary h4 m-0"
-                        onClick={() => handleChange(item, +1)}
-                      />
-                      <h6 className="m-0">{item.amount}</h6>
-                      <FontAwesomeIcon
-                        icon={faCircleMinus}
-                        type="button"
-                        className="text-primary h4 m-0"
-                        onClick={() => handleChange(item, -1)}
-                      />
-                      <div>{item.price}</div>
-                    </div>
-                    <div className="col-sm-3 d-flex align-items-center justify-content-center ">
-                      <FontAwesomeIcon
-                        type="button"
-                        className="text-danger"
-                        icon={faTrash}
-                        onClick={() => handleRemove(item.id)}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </>
+          {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10    ? (
+             <>
+             {cart?.map((item, cartindex) => {
+               totalPrice += item.amount * item.price;
+               return (
+                 <div className="row mb-4 cart-model" key={cartindex}>
+                   <div className="col-sm-3 cart-model-img">
+                     <img className="mx-3" src={item.img} alt="Loading" />
+                   </div>
+                   <div className="col-sm-3 d-flex align-items-center justify-content-center">
+                     <h4>{item.name}</h4>
+                   </div>
+                   <div className="col-sm-3  d-flex align-items-center justify-content-around ">
+                     <FontAwesomeIcon
+                       icon={faCirclePlus}
+                       type="button"
+                       className="text-primary h4 m-0"
+                       onClick={() => handleChange(item, +1)}
+                     />
+                     <h6 className="m-0">{item.amount}</h6>
+                     <FontAwesomeIcon
+                       icon={faCircleMinus}
+                       type="button"
+                       className="text-primary h4 m-0"
+                       onClick={() => handleChange(item, -1)}
+                     />
+                     <div>{item.price}</div>
+                   </div>
+                   <div className="col-sm-3 d-flex align-items-center justify-content-center ">
+                     <FontAwesomeIcon
+                       type="button"
+                       className="text-danger"
+                       icon={faTrash}
+                       onClick={() => handleRemove(item.id)}
+                     />
+                   </div>
+                 </div>
+               );
+             })}
+           </>
+           
           ) : (
             <>
+            <div>
               <div>
-                <div>
-                  <h3 className="shopping-empty">Your Basket is Empty</h3>
-                </div>
-                <div className="shopping-empt-icon">
-                  <h5>
-                    <FontAwesomeIcon icon={faCartShopping} />
-                  </h5>
-                </div>
+                <h3 className="shopping-empty">Your Basket is Empty</h3>
               </div>
-            </>
+              <div className="shopping-empt-icon">
+                <h5>
+                  <FontAwesomeIcon icon={faCartShopping} />
+                </h5>
+              </div>
+            </div>
+          </>
+           
           )}
         </Modal.Body>
-        {size == 1 ? (
+        {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10 ? (
           <>
             <div className="row border-top border-bottom justify-content-end mx-5 py-1">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">

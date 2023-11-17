@@ -10,56 +10,14 @@ import ProductPage from "./Component/Pages/Products/index";
 import ContactUs from "./Component/Pages/ContactUs";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar from "./Component/Common/Navbar";
+import LoginForm from "./Component/Common/Modal/loginapi";
+import { UserProvider } from './Component/Common/Modal/logusecont';
+
 // Rumeno farm
 // Rumeno
 // Veterinary
 const App = () => {
-
-  // const [deferredPrompt, setDeferredPrompt] = useState(null);
-
-  // useEffect(() => {
-  //   const handleBeforeInstallPrompt = (event) => {
-  //     // Prevent Chrome's default popup from appearing
-  //     event.preventDefault();
-
-  //     // Save the event for later use
-  //     setDeferredPrompt(event);
-  //   };
-
-  //   // Listen for beforeinstallprompt event
-  //   window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-  //   return () => {
-  //     // Clean up the event listener when the component unmounts
-  //     window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-  //   };
-  // }, []);
-
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     // Trigger the installation prompt after 7 seconds
-  //     if (deferredPrompt) {
-  //       deferredPrompt.prompt();
-
-  //       deferredPrompt.userChoice.then((choiceResult) => {
-  //         if (choiceResult.outcome === 'accepted') {
-  //           console.log('User accepted the installation');
-  //         } else {
-  //           console.log('User dismissed the installation');
-  //         }
-  //       });
-
-  //       // Clear the deferred prompt variable
-  //       setDeferredPrompt(null);
-  //     }
-  //   }, 1000);
-
-  //   return () => {
-  //     // Clear the timer when the component unmounts or when the prompt is triggered
-  //     clearTimeout(timer);
-  //   };
-  // }, [deferredPrompt]);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -118,13 +76,16 @@ const App = () => {
 
     navbarlinksActive();
   }, [location]);
+ 
 
   return (
     <>
     <ToastContainer/>
+    
       {/* // Rumeno farm
 // Rumeno
 // Veterinary */}
+<UserProvider>
       <Routes>
         <Route path="/" element={<Lang />} />
         <Route path="/home" element={<Home />} />
@@ -132,6 +93,7 @@ const App = () => {
         <Route path="/products" element={<ProductPage />} />
         <Route path="/contactus" element={<ContactUs />} />
       </Routes>
+</UserProvider>
     </>
   );
 };
