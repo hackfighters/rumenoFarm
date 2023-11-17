@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Common Component
 import Navbar from "../../Common/Navbar/index";
 import About from "../../Common/About";
-import Footer from "../../Common/Footer/index";
+import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
 import FooterTop from "../../Common/CertifiedBox/footer-top";
 
