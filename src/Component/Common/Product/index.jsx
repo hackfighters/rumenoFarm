@@ -5,18 +5,19 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const ProductItem = ({
-  img,
-  name,
-  price,
-  description,
-  text,
-  efficacy,
-  suitable,
-  tipe,
-  efficacy1,
-  efficacy2,
-}) => {
+const ProductItem = ({ item ,handleClick }) => {
+  const {
+    img,
+    name,
+    priceText,
+    description,
+    text,
+    efficacy,
+    suitable,
+    tipe,
+    efficacy1,
+    efficacy2,
+  } = item;
   const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -75,7 +76,7 @@ const ProductItem = ({
             {/* Veterinary docter kese bane */}
             {/* Goat farming training */}
             <div className="fs-3">{name}</div>
-            <div className="fs-4 mt-2 text-danger">{price}</div>
+            <div className="fs-4 mt-2 text-danger">{priceText}</div>
             <div className="mt-2">{description}</div>
             <div className="d-flex justify-content-between mt-2">
               {/* Veterinary docter online */}
@@ -140,46 +141,7 @@ const ProductItem = ({
             {/* Veterinary docter jods */}
             {/* Veterinary docter kese bane */}
             {/* Goat farming training */}
-            <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
-              <div className="quantity-container">
-                <div
-                  className="quantity-button"
-                  id="decrease"
-                  onClick={decreaseQuantity}
-                >
-                  -
-                </div>
-                <input
-                  type="text"
-                  className="quantity-input"
-                  value={quantity}
-                  readOnly
-                />
-                <div
-                  className="quantity-button"
-                  id="increase"
-                  onClick={increaseQuantity}
-                >
-                  +
-                </div>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
-              </div>
-            </div>
+          
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-danger"
               type="button"
@@ -207,7 +169,7 @@ const ProductItem = ({
             {/* Veterinary docter kese bane */}
             {/* Goat farming training */}
             <div className="prd-btn">
-              <button className="btn text-white border-0 gradient-custom-2 my-4">
+              <button className="btn text-white border-0 gradient-custom-2 my-4" onClick={()=>handleClick(item)}>
                 Add to Cart
               </button>
             </div>
