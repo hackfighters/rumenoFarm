@@ -73,7 +73,10 @@ const Products = () => {
         />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar />
+        <ResponsiveNavbar   size={cart.length}
+          cart={cart}
+          setCart={setCart}
+          handleChange={handleChange}/>
       </div>
       <div className="our-product-img">
         <img
