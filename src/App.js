@@ -8,6 +8,8 @@ import Home from "./Component/Pages/Home/index";
 import Services from "./Component/Pages/Service";
 import ProductPage from "./Component/Pages/Products/index";
 import ContactUs from "./Component/Pages/ContactUs";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // Rumeno farm
 // Rumeno
 // Veterinary
@@ -119,6 +121,7 @@ const App = () => {
 
   return (
     <>
+    <ToastContainer/>
       {/* // Rumeno farm
 // Rumeno
 // Veterinary */}
