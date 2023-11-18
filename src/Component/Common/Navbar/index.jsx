@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { UserContext } from '../Modal/logusecont';
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,20 +28,21 @@ import Select from "../../Common/Select/index";
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
-{
-  /* Rumeno farm  */
-}
-{
-  /* Rumeno */
-}
-{
-  /* Veterinary */
-}
+// import loginAPI from "../Modal/loginapi";
+// {
+//   /* Rumeno farm  */
+// }
+// {
+//   /* Rumeno */
+// }
+// {
+//   /* Veterinary */
+// }
 const Navbar = ({ cart, count }) => {
   const { t } = useTranslation();
-
+  const { loggedInUser } = useContext(UserContext);
   // State
-  const [showlogin, setshowlogin] = useState(false);
+  // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const [CART, setCART] = useState([]);
   const [showSelect, setShowSelect] = useState(false);
@@ -48,21 +50,6 @@ const Navbar = ({ cart, count }) => {
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
-
-  const username = "admins";
-  const password = "password";
-
-  const user = "admin";
-  const pass = "password";
-
-  // Function
-  useEffect(() => {
-    if (username === username && password === password) {
-      setshowlogin(true);
-    } else {
-      setshowlogin(false);
-    }
-  }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -268,16 +255,15 @@ const Navbar = ({ cart, count }) => {
                   />
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
-                {showlogin ? (
-                  <li>
-                    <h4
-                      typeof="button"
-                      className="text-danger bg-light m-0 p-1 rounded-circle"
-                    >
-                      HV
-                    </h4>
-                  </li>
-                ) : null}
+
+                <li>
+                  {/* {isLoggedIn ? (
+                    <h4  typeof="button"className="text-danger bg-light m-0 p-1 rounded-circle">Login</h4>
+                  ) : (
+                    <p>notLogin</p>
+                  )} */}
+                  {loggedInUser ? `Welcome, ${loggedInUser}` : 'Please login'}
+                </li>
               </ul>
             </div>
           </div>
