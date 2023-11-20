@@ -1,7 +1,7 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import { UserContext } from '../Modal/logusecont';
+import { UserContext } from "../Modal/logusecont";
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -277,6 +277,15 @@ const Navbar = ({ cart, count }) => {
                     Contact Us
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link px-0"
+                    activeclassname="active"
+                    to="/transaction"
+                  >
+                    Transaction
+                  </NavLink>
+                </li>
                 {/* <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
                 </li> */}
@@ -324,12 +333,14 @@ const Navbar = ({ cart, count }) => {
                 </li>
 
                 <li>
-                  {/* {isLoggedIn ? (
-                    <h4  typeof="button"className="text-danger bg-light m-0 p-1 rounded-circle">Login</h4>
-                  ) : (
-                    <p>notLogin</p>
-                  )} */}
-                  {loggedInUser ? `Welcome, ${loggedInUser}` : 'Please login'}
+                  {loggedInUser ? (
+                    <h4
+                      typeof="button"
+                      className="text-danger bg-light m-0 p-1 rounded-circle"
+                    >
+                      {loggedInUser}
+                    </h4>
+                  ) : null}
                 </li>
               </ul>
             </div>

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import { UserContext } from "../Modal/logusecont";
+
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -33,6 +35,8 @@ import SendOtp from "../Modal/otp";
 // }
 const ResponsiveNavbar = ({ cart, count }) => {
   // const {  } = useTranslation();
+  const { loggedInUser } = useContext(UserContext);
+
 
   // State
   const [showlogin] = useState(false);
@@ -239,16 +243,16 @@ const ResponsiveNavbar = ({ cart, count }) => {
                   />
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
-                {showlogin ? (
-                  <li>
+                <li>
+                  {loggedInUser ? (
                     <h4
                       typeof="button"
                       className="text-danger bg-light m-0 p-1 rounded-circle"
                     >
-                      HV
+                      {loggedInUser}
                     </h4>
-                  </li>
-                ) : null}
+                  ) : null}
+                </li>
               </ul>
             </div>
             {/* Veterinary docter online */}

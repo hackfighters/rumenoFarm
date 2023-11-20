@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import { toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import { UserContext } from './logusecont';
+import Cookies from "js-cookie";
 
 const Login = ({
   showModal,
@@ -28,7 +29,21 @@ const Login = ({
   const [password, setPassword] = useState('');
   const { setLoggedInUser } = useContext(UserContext);
 
+  useEffect(() => {
+    // Check if user is already logged in
+    const storedUser = Cookies.get('loggedInUser');
+    if (storedUser) {
+      setLoggedInUser(storedUser);
+    }
+  }, []);
+    
+
   const handleLogin = async (e) => {
+    const { name, value } = e.target;
+    setLogin({
+      ...login,
+      [name]: value,
+    });
     e.preventDefault();
 
     // Perform API login request
@@ -42,7 +57,12 @@ const Login = ({
 
     if (response.ok) {
       const data = await response.json();
-      setLoggedInUser(data.username);
+      // setLoggedInUser(data.username);
+      // setLoggedInUser(data.username);
+      const firstTwoChars = data.username.substring(0, 2);
+      setLoggedInUser(firstTwoChars);
+      // setLoggedInUser(data.username);
+      Cookies.set('loggedInUser', firstTwoChars);
       console.log(response)
       console.log(data)
     } else {
