@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from "../../Common/Footer";
 import Navbar from "../../Common/Navbar/index";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
-import scanner from "../../../assets/img/scanner1.png"
+import scanner from "../../../assets/img/scanner.png"
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}

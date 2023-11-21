@@ -28,28 +28,41 @@ import Select from "../../Common/Select/index";
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
-// import loginAPI from "../Modal/loginapi";
-// {
-//   /* Rumeno farm  */
-// }
-// {
-//   /* Rumeno */
-// }
-// {
-//   /* Veterinary */
-// }
-const Navbar = ({ cart, count }) => {
+{
+  /* Rumeno farm  */
+}
+{
+  /* Rumeno */
+}
+{
+  /* Veterinary */
+}
+const Navbar = ({ size, cart, setCart, handleChange}) => {
   const { t } = useTranslation();
   const { loggedInUser } = useContext(UserContext);
   // State
   // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
-  const [CART, setCART] = useState([]);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+  var totalPrice = 0;
+  const username = "admins";
+  const password = "password";
+
+  const user = "admin";
+  const pass = "password";
+
+  // Function
+  // useEffect(() => {
+  //   if (username === username && password === password) {
+  //     setshowlogin(true);
+  //   } else {
+  //     setshowlogin(false);
+  //   }
+  // }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -86,9 +99,11 @@ const Navbar = ({ cart, count }) => {
     setShowOpt(false);
   };
 
-  useEffect(() => {
-    setCART(cart);
-  }, [cart]);
+  const handleRemove = (id) => {
+    const arr = cart.filter((item) => item.id !== id);
+    setCart(arr);
+    // handlePrice();
+  };
 
   return (
     <>
@@ -277,15 +292,6 @@ const Navbar = ({ cart, count }) => {
                     Contact Us
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link px-0"
-                    activeclassname="active"
-                    to="/transaction"
-                  >
-                    Transaction
-                  </NavLink>
-                </li>
                 {/* <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
                 </li> */}
@@ -299,7 +305,7 @@ const Navbar = ({ cart, count }) => {
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
                     />
-                    <span className="badge-cart">{count}</span>
+                    <span className="badge-cart">{size}</span>
                   </Link>
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
@@ -370,54 +376,80 @@ const Navbar = ({ cart, count }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {CART?.map((cartItem, cartindex) => {
-            return (
-              <div className="row mb-4 cart-model">
-                <div className="col-sm-3 cart-model-img">
-                  <img className="mx-3" src={cartItem.img} alt="" />
-                </div>
-                <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                  <h4>{cartItem.name}</h4>
-                </div>
-                <div className="col-sm-3  d-flex align-items-center justify-content-around ">
-                  <FontAwesomeIcon
-                    icon={faCirclePlus}
-                    type="button"
-                    className="text-primary h4 m-0"
-                  />
-                  <h6 className="m-0">7</h6>
-                  <FontAwesomeIcon
-                    icon={faCircleMinus}
-                    type="button"
-                    className="text-primary h4 m-0"
-                  />
-                </div>
-                <div className="col-sm-3 d-flex align-items-center justify-content-center ">
-                  <FontAwesomeIcon
-                    type="button"
-                    className="text-danger"
-                    icon={faTrash}
-                  />
-                </div>
+          {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10    ? (
+             <>
+             {cart?.map((item, cartindex) => {
+               totalPrice += item.amount * item.price;
+               return (
+                 <div className="row mb-4 cart-model" key={cartindex}>
+                   <div className="col-sm-3 cart-model-img">
+                     <img className="mx-3" src={item.img} alt="Loading" />
+                   </div>
+                   <div className="col-sm-3 d-flex align-items-center justify-content-center">
+                     <h4>{item.name}</h4>
+                   </div>
+                   <div className="col-sm-3  d-flex align-items-center justify-content-around ">
+                     <FontAwesomeIcon
+                       icon={faCirclePlus}
+                       type="button"
+                       className="text-primary h4 m-0"
+                       onClick={() => handleChange(item, +1)}
+                     />
+                     <h6 className="m-0">{item.amount}</h6>
+                     <FontAwesomeIcon
+                       icon={faCircleMinus}
+                       type="button"
+                       className="text-primary h4 m-0"
+                       onClick={() => handleChange(item, -1)}
+                     />
+                     <div>{item.price}</div>
+                   </div>
+                   <div className="col-sm-3 d-flex align-items-center justify-content-center ">
+                     <FontAwesomeIcon
+                       type="button"
+                       className="text-danger"
+                       icon={faTrash}
+                       onClick={() => handleRemove(item.id)}
+                     />
+                   </div>
+                 </div>
+               );
+             })}
+           </>
+           
+          ) : (
+            <>
+            <div>
+              <div>
+                <h3 className="shopping-empty">Your Basket is Empty</h3>
               </div>
-            );
-          })}
+              <div className="shopping-empt-icon">
+                <h5>
+                  <FontAwesomeIcon icon={faCartShopping} />
+                </h5>
+              </div>
+            </div>
+          </>
+           
+          )}
         </Modal.Body>
-        {count === 0 && (
+        {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10 ? (
           <>
             <div className="row border-top border-bottom justify-content-end mx-5 py-1">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">
                 <h4 className="mx-2">TOTAL</h4>
-                <h4 className="mx-2">$ 7000</h4>
+                <h4 className="mx-2">Rs /- {totalPrice}</h4>
               </div>
             </div>
             <div className="justify-content-end d-flex px-5 cart-model">
+              <Link to="/transaction" className="w-100 text-end">
               <button className="btn gradient-custom-2 border-0 text-white my-3">
                 PAYMENT
               </button>
+              </Link>
             </div>
           </>
-        )}
+        ) : null}
       </Modal>
     </>
   );

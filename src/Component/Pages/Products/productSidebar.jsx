@@ -35,25 +35,28 @@ import humanconsumable2 from "../../../assets/img/OurProduct/farmfreshmilk.jpg";
 import humanconsumable3 from "../../../assets/img/OurProduct/goatcreamsoap.jpg";
 import goatforsale1 from "../../../assets/img/OurProduct/Barbarigoat.jpg";
 import Rumenovita from "../../../assets/img/OurProduct/Rumenovita.jpg";
-import Neonato from "../../../assets/img/OurProduct/NEONATO.jpg"
-import TanavMukti from "../../../assets/img/OurProduct/Tanaav.jpg"
-import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg"
-import DigestoPlus from "../../../assets/img/OurProduct/Digesto-Plus.jpg"
-import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg"
-import DCox from "../../../assets/img/OurProduct/D-Cox.jpg"
-import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg"
-import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg"
+import Neonato from "../../../assets/img/OurProduct/NEONATO.jpg";
+import TanavMukti from "../../../assets/img/OurProduct/Tanaav.jpg";
+import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg";
+import DigestoPlus from "../../../assets/img/OurProduct/Digesto-Plus.jpg";
+import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg";
+import DCox from "../../../assets/img/OurProduct/D-Cox.jpg";
+import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg";
+import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
 
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
-const ProductSidebar = () => {
+const ProductSidebar = ({ handleClick }) => {
   const { t } = useTranslation();
 
   const Data = [
     {
+      id: 1,
       name: t(["v269"]),
-      price: "Price: 245 INR/Bottle" ,
+      priceText: "Price: 245 INR/Bottle",
+      amount: 1,
+      price: 245,
       description: t(["v270"]),
       img: MICROFLORATONE,
       text: [
@@ -88,14 +91,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v339"]),
+      tipe: t(["v339"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v340"]),
       efficacy2: t(["v341"]),
     },
     {
+      id: 2,
       name: t(["v271"]),
-      price: "Price: 285 INR/Piece",
+      priceText: "Price: 285 INR/Piece",
+      amount: 1,
+      price: 285,
       description: t(["v272"]),
       img: Minromin,
       text: [
@@ -127,17 +133,20 @@ const ProductSidebar = () => {
           {t(["v263"])}
           <br></br>
           <br></br>
-        </>
+        </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v342"]),
+      tipe: t(["v342"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v343"]),
       efficacy2: t(["v344"]),
     },
     {
+      id: 3,
       name: t(["v273"]),
-      price: "Price: 700 INR/Piece",
+      priceText: "Price: 700 INR/Piece",
+      amount: 1,
+      price: 700,
       description: t(["v274"]),
       img: Rumenovita,
       text: [
@@ -163,14 +172,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v345"]),
+      tipe: t(["v345"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v343"]),
       efficacy2: t(["v341"]),
     },
     {
+      id: 4,
       name: t(["v149"]),
-      price: "Price: 190 INR/Bottle",
+      priceText: "Price: 190 INR/Bottle",
+      amount: 1,
+      price: 190,
       description: t(["v150"]),
       img: Neonato,
       text: [
@@ -211,14 +223,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v339"]),
+      tipe: t(["v339"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v340"]),
       efficacy2: t(["v346"]),
     },
     {
+      id: 5,
       name: t(["v135"]),
-      price: "Price: 600 INR/Piece",
+      priceText: "Price: 600 INR/Piece",
+      amount: 1,
+      price: 600,
       description: t(["v136"]),
       img: TanavMukti,
       text: [
@@ -265,14 +280,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v342"]),
+      tipe: t(["v342"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v340"]),
       efficacy2: t(["v347"]),
     },
     {
+      id: 6,
       name: t(["v161"]),
-      price: "Price: 390 INR/Piece",
+      priceText: "Price: 390 INR/Piece",
+      amount: 1,
+      price: 390,
       description: t(["v162"]),
       img: Energico,
       text: [
@@ -295,14 +313,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v342"]),
+      tipe: t(["v342"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v340"]),
       efficacy2: t(["v346"]),
     },
     {
+      id: 7,
       name: t(["v167"]),
-      price: "Price: 180 INR/Piece",
+      priceText: "Price: 180 INR/Piece",
+      amount: 1,
+      price: 180,
       description: t(["v168"]),
       img: DigestoPlus,
       text: [
@@ -322,14 +343,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v345"]),
+      tipe: t(["v345"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v340"]),
       efficacy2: t(["v348"]),
     },
     {
+      id: 8,
       name: t(["v182"]),
-      price: "Price: 150 INR/Piece",
+      priceText: "Price: 150 INR/Piece",
+      amount: 1,
+      price: 150,
       description: t(["v183"]),
       img: Liverofine,
       text: [
@@ -355,14 +379,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v345"]),
+      tipe: t(["v345"]),
       efficacy: t(["v338"]),
       // efficacy1: t(["v340"]),
       efficacy2: t(["v344"]),
     },
     {
+      id: 9,
       name: t(["v189"]),
-      price: "Price: 250 INR/Piece",
+      priceText: "Price: 250 INR/Piece",
+      amount: 1,
+      price: 250,
       description: t(["v190"]),
       img: DCox,
       text: [
@@ -391,14 +418,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v342"]),
+      tipe: t(["v342"]),
       // efficacy: t(["v338"]),
       // efficacy1: t(["v340"]),
       // efficacy2: t(["v341"]),
     },
     {
+      id: 10,
       name: t(["v210"]),
-      price: "Price: 1300 INR/Piece",
+      priceText: "Price: 1300 INR/Piece",
+      amount: 1,
+      price: 1300,
       description: t(["v211"]),
       img: RumenoMicroFlora,
       text: [
@@ -454,14 +484,17 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v342"]),
+      tipe: t(["v342"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v343"]),
       efficacy2: t(["v341"]),
     },
     {
+      id: 11,
       name: t(["v248"]),
-      price: "Price: 600 INR/Piece",
+      priceText: "Price: 600 INR/Piece",
+      amount: 1,
+      price: 600,
       description: t(["v249"]),
       img: LactoPup,
       text: [
@@ -484,7 +517,7 @@ const ProductSidebar = () => {
         </>,
       ],
       suitable: t(["v337"]),
-      tipe:t(["v345"]),
+      tipe: t(["v345"]),
       efficacy: t(["v338"]),
       efficacy1: t(["v343"]),
       efficacy2: t(["v344"]),
@@ -493,29 +526,56 @@ const ProductSidebar = () => {
 
   const FarmEquipment = [
     {
+      id: 12,
       name: t(["v319"]),
-      price: t(["v320"]),
+      priceText: t(["v320"]),
+      amount: 1,
+      price: 600,
       description: t(["v321"]),
       img: farmimg1,
     },
     {
+      id: 13,
       name: t(["v322"]),
-      price: t(["v323"]),
+      priceText: t(["v323"]),
+      amount: 1,
+      price: 600,
       description: t(["v324"]),
       img: farmimg2,
     },
   ];
 
   const RumenoAmazon = [
-    { name: t(["v325"]), img: rumenoamazon1 },
-    { name: t(["v326"]), img: rumenoamazon2 },
+    { name: t(["v325"]), img: rumenoamazon1, amount: 1, price: 600 },
+    { name: t(["v326"]), img: rumenoamazon2, amount: 1, price: 600 },
     {
       name: t(["v172"]),
       img: rumenoamazon3,
       description: t(["v173"]),
+      amount: 1,
       price: 700,
-      text:[<>{t(["v173"])}<br></br><br></br>{t(["v174"])}<br></br><br></br>{t(["v175"])}<br></br><br></br>{t(["v176"])}<br></br><br></br>{t(["v180"])}<br></br><br></br>{t(["v181"])}<br></br><br></br></>]
-
+      text: [
+        <>
+          {t(["v173"])}
+          <br></br>
+          <br></br>
+          {t(["v174"])}
+          <br></br>
+          <br></br>
+          {t(["v175"])}
+          <br></br>
+          <br></br>
+          {t(["v176"])}
+          <br></br>
+          <br></br>
+          {t(["v180"])}
+          <br></br>
+          <br></br>
+          {t(["v181"])}
+          <br></br>
+          <br></br>
+        </>,
+      ],
     },
     { name: t(["v328"]), img: rumenoamazon4 },
     { name: t(["v329"]), img: rumenoamazon5 },
@@ -664,19 +724,7 @@ const ProductSidebar = () => {
         </div>
         <div className="col-md-10 p-3">
           {items.map((item, index) => (
-            <ProductItem
-              key={index}
-              img={item.img}
-              name={item.name}
-              price={item.price}
-              description={item.description}
-              text={item.text}
-              suitable={item.suitable}
-              tipe={item.tipe}
-              efficacy={item.efficacy}
-              efficacy1={item.efficacy1}
-              efficacy2={item.efficacy2}
-            />
+            <ProductItem item={item} handleClick={handleClick} />
           ))}
           <ReactPaginate
             previousLabel={"Previous"}

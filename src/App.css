@@ -2186,3 +2186,10 @@ button.contact_form_submit {
  .our-product-img img , .desk-nav{
   display: block;
  }
+.shopping-empty{
+  text-align: center;
+}
+.shopping-empt-icon{
+  display: flex;
+  justify-content: center;
+}
