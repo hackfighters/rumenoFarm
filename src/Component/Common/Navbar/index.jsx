@@ -397,8 +397,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                        onClick={() => handleRemove(item.id)}
                      />
                    </div>
-                   {/* <div className="col-sm-3 d-flex align-items-center justify-content-center ">
-                   </div> */}
+                   
                  </div>
                );
              })}
