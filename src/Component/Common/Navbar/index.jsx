@@ -1,7 +1,7 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import { UserContext } from '../Modal/logusecont';
+import { UserContext } from "../Modal/logusecont";
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -49,20 +49,6 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   var totalPrice = 0;
-  const username = "admins";
-  const password = "password";
-
-  const user = "admin";
-  const pass = "password";
-
-  // Function
-  // useEffect(() => {
-  //   if (username === username && password === password) {
-  //     setshowlogin(true);
-  //   } else {
-  //     setshowlogin(false);
-  //   }
-  // }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -104,6 +90,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
     setCart(arr);
     // handlePrice();
   };
+  
 
   return (
     <>
@@ -339,12 +326,14 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                 </li>
 
                 <li>
-                  {/* {isLoggedIn ? (
-                    <h4  typeof="button"className="text-danger bg-light m-0 p-1 rounded-circle">Login</h4>
-                  ) : (
-                    <p>notLogin</p>
-                  )} */}
-                  {loggedInUser ? `Welcome, ${loggedInUser}` : 'Please login'}
+                  {loggedInUser ? (
+                    <h4
+                      typeof="button"
+                      className="text-danger bg-light m-0 p-1 rounded-circle"
+                    >
+                      {loggedInUser}
+                    </h4>
+                  ) : null}
                 </li>
               </ul>
             </div>
@@ -380,13 +369,13 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                totalPrice += item.amount * item.price;
                return (
                  <div className="row mb-4 cart-model" key={cartindex}>
-                   <div className="col-sm-3 cart-model-img">
+                   <div className="col-sm-3 cart-model-img text-center">
                      <img className="mx-3" src={item.img} alt="Loading" />
                    </div>
                    <div className="col-sm-3 d-flex align-items-center justify-content-center">
                      <h4>{item.name}</h4>
                    </div>
-                   <div className="col-sm-3  d-flex align-items-center justify-content-around ">
+                   <div className="col-sm-6  d-flex align-items-center justify-content-around ">
                      <FontAwesomeIcon
                        icon={faCirclePlus}
                        type="button"
@@ -400,9 +389,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                        className="text-primary h4 m-0"
                        onClick={() => handleChange(item, -1)}
                      />
-                     <div>{item.price}</div>
-                   </div>
-                   <div className="col-sm-3 d-flex align-items-center justify-content-center ">
+                     <div>{item.price} Rs /-</div>
                      <FontAwesomeIcon
                        type="button"
                        className="text-danger"
@@ -410,6 +397,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                        onClick={() => handleRemove(item.id)}
                      />
                    </div>
+                   
                  </div>
                );
              })}
@@ -440,9 +428,11 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
               </div>
             </div>
             <div className="justify-content-end d-flex px-5 cart-model">
+              <Link to="/transaction" className="w-100 text-end">
               <button className="btn gradient-custom-2 border-0 text-white my-3">
                 PAYMENT
               </button>
+              </Link>
             </div>
           </>
         ) : null}
