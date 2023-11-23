@@ -292,13 +292,13 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
                 totalPrice += item.amount * item.price;
                 return (
                   <div className="row mb-4 cart-model" key={cartindex}>
-                    <div className="col-sm-3 cart-model-img">
+                    <div className="col-sm-3 cart-model-img text-center">
                       <img className="mx-3" src={item.img} alt="Loading" />
                     </div>
                     <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                      <h4>{item.name}</h4>
+                      <h4 className="my-2">{item.name}</h4>
                     </div>
-                    <div className="col-sm-3  d-flex align-items-center justify-content-around ">
+                    <div className="col-sm-6  d-flex align-items-center justify-content-around ">
                       <FontAwesomeIcon
                         icon={faCirclePlus}
                         type="button"
@@ -313,8 +313,6 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
                         onClick={() => handleChange(item, -1)}
                       />
                       <div>{item.price}</div>
-                    </div>
-                    <div className="col-sm-3 d-flex align-items-center justify-content-center ">
                       <FontAwesomeIcon
                         type="button"
                         className="text-danger"
@@ -322,6 +320,8 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
                         onClick={() => handleRemove(item.id)}
                       />
                     </div>
+                    {/* <div className="col-sm-3 d-flex align-items-center justify-content-center ">
+                    </div> */}
                   </div>
                 );
               })}
@@ -353,15 +353,15 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
         size == 9 ||
         size == 10 ? (
           <>
-            <div className="row border-top border-bottom justify-content-end mx-5 py-1">
+            <div className="row border-top border-bottom justify-content-end mx-3 py-2">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">
-                <h4 className="mx-2">TOTAL</h4>
-                <h4 className="mx-2">Rs /- {totalPrice}</h4>
+                <h4 className="mx-2 my-0">TOTAL</h4>
+                <h4 className="mx-2 my-0">Rs /- {totalPrice}</h4>
               </div>
             </div>
             <div className="justify-content-end d-flex px-5 cart-model">
-            <Link to="/transaction" className="w-100 text-end">
-              <button className="btn gradient-custom-2 border-0 text-white my-3">
+            <Link to="/transaction" className="w-100 text-center">
+              <button className="btn gradient-custom-2 border-0 text-white my-3 w-75">
                 PAYMENT
               </button>
             </Link>

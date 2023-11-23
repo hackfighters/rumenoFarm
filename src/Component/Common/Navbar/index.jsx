@@ -49,20 +49,6 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   var totalPrice = 0;
-  const username = "admins";
-  const password = "password";
-
-  const user = "admin";
-  const pass = "password";
-
-  // Function
-  // useEffect(() => {
-  //   if (username === username && password === password) {
-  //     setshowlogin(true);
-  //   } else {
-  //     setshowlogin(false);
-  //   }
-  // }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -104,6 +90,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
     setCart(arr);
     // handlePrice();
   };
+  
 
   return (
     <>
@@ -382,7 +369,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                totalPrice += item.amount * item.price;
                return (
                  <div className="row mb-4 cart-model" key={cartindex}>
-                   <div className="col-sm-3 cart-model-img">
+                   <div className="col-sm-3 cart-model-img text-center">
                      <img className="mx-3" src={item.img} alt="Loading" />
                    </div>
                    <div className="col-sm-3 d-flex align-items-center justify-content-center">
