@@ -118,7 +118,7 @@
 
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useCookies } from "react-cookie";
 import Navbar from "../../Common/Navbar/index";
 import Footer from "../../Common/Footer";
@@ -128,10 +128,12 @@ import Roadmap3 from "../../../assets/img/roadmap_mobile.mp4";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "../../Common/Modal/logusecont";
 
 const Products = () => {
   const [cart, setCart] = useState([]);
   const [cookies, setCookie] = useCookies(["cart"]);
+  const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     if (cookies.cart) {
@@ -143,15 +145,62 @@ const Products = () => {
     setCookie("cart", cart, { path: "/" });
   }, [cart, setCookie]);
 
+  // const handleClick = (item) => {
+  //   let isPresent = false;
+  //   cart.forEach((product) => {
+  //     if (item.id === product.id) {
+  //       isPresent = true;
+  //     }
+  //   });
+  //   if (isPresent) {
+  //     toast.warn("Item is already added to your cart", {
+  //       position: "top-center",
+  //       autoClose: 2000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //     return;
+  //   }
+  //   setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name}]);
+  //   toast.success("Item is added to your cart", {
+  //     position: "top-center",
+  //     autoClose: 2000,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "light",
+  //   });
+  // };
+
   const handleClick = (item) => {
-    let isPresent = false;
-    cart.forEach((product) => {
-      if (item.id === product.id) {
-        isPresent = true;
+    if (loggedInUser) {
+      let isPresent = false;
+      cart.forEach((product) => {
+        if (item.id === product.id) {
+          isPresent = true;
+        }
+      });
+      if (isPresent) {
+        toast.warn("Item is already added to your cart", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        return;
       }
-    });
-    if (isPresent) {
-      toast.warn("Item is already added to your cart", {
+      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name}]);
+      toast.success("Item is added to your cart", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -161,20 +210,15 @@ const Products = () => {
         progress: undefined,
         theme: "light",
       });
-      return;
+    } else {
+      console.log("login first")
+      // Show login page modal or redirect to login page
+      // You can use a state variable to control the visibility of the modal
+      // and show it when the user clicks on the add to cart button
+      // or use a routing library to navigate to the login page
     }
-    setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name}]);
-    toast.success("Item is added to your cart", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
   };
+
 
   const handleChange = (item, d) => {
     let ind = -1;
