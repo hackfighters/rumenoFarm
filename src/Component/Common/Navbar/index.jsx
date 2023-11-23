@@ -375,7 +375,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                    <div className="col-sm-3 d-flex align-items-center justify-content-center">
                      <h4>{item.name}</h4>
                    </div>
-                   <div className="col-sm-3  d-flex align-items-center justify-content-around ">
+                   <div className="col-sm-6  d-flex align-items-center justify-content-around ">
                      <FontAwesomeIcon
                        icon={faCirclePlus}
                        type="button"
@@ -389,9 +389,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                        className="text-primary h4 m-0"
                        onClick={() => handleChange(item, -1)}
                      />
-                     <div>{item.price}</div>
-                   </div>
-                   <div className="col-sm-3 d-flex align-items-center justify-content-center ">
+                     <div>{item.price} Rs /-</div>
                      <FontAwesomeIcon
                        type="button"
                        className="text-danger"
@@ -399,6 +397,8 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
                        onClick={() => handleRemove(item.id)}
                      />
                    </div>
+                   {/* <div className="col-sm-3 d-flex align-items-center justify-content-center ">
+                   </div> */}
                  </div>
                );
              })}
