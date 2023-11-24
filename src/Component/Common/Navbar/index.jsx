@@ -37,7 +37,7 @@ import SendOtp from "../Modal/otp";
 {
   /* Veterinary */
 }
-const Navbar = ({ size, cart, setCart, handleChange}) => {
+const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
   const { t } = useTranslation();
   const { loggedInUser } = useContext(UserContext);
   // State
@@ -90,6 +90,7 @@ const Navbar = ({ size, cart, setCart, handleChange}) => {
     setCart(arr);
     // handlePrice();
   };
+  // console.log(item)
   
 
   return (

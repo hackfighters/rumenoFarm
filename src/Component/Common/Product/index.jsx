@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState ,useContext } from "react";
 import ViewModal from "../Modal/PopModal";
 import ReactStars from "react-rating-stars-component";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../../Common/Modal/logusecont";
+import Login from "../Modal/Login";
+import Registration from "../Modal/Registion";
+import SendOtp from "../Modal/otp";
+import { toast } from "react-toastify";
 
 const ProductItem = ({ item ,handleClick }) => {
   const {
@@ -20,6 +25,8 @@ const ProductItem = ({ item ,handleClick }) => {
   } = item;
   const [showModal, setShowModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
+  const [showOtp, setShowOpt] = useState(false);
 
   const ratingChanged = (newRating) => {
     console.log(newRating);
@@ -42,6 +49,46 @@ const ProductItem = ({ item ,handleClick }) => {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  const openRegistration = () => {
+    setShowRegistrtionModal(true);
+    setShowLoginModal(false);
+  };
+
+  const closeRegistrationModal = () => {
+    setShowRegistrtionModal(false);
+  };
+
+  const OpenSendOtp = () => {
+    setShowOpt(true);
+    setShowLoginModal(false);
+  };
+  const CloseSendOtp = () => {
+    setShowOpt(false);
+  };
+
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const { loggedInUser } = useContext(UserContext);
+  const AddToCart =()=>{
+    if (loggedInUser) {
+
+    handleClick(item)
+  }
+  else {
+      console.log("login first");
+    setShowLoginModal(!showLoginModal);
+    toast.warn("Please Login", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    }
+  }
 
   return (
     <div className="col py-1">
@@ -169,9 +216,20 @@ const ProductItem = ({ item ,handleClick }) => {
             {/* Veterinary docter kese bane */}
             {/* Goat farming training */}
             <div className="prd-btn">
-              <button className="btn text-white border-0 gradient-custom-2 my-4" onClick={()=>handleClick(item)}>
+              <button className="btn text-white border-0 gradient-custom-2 my-4" onClick={AddToCart}>
                 Add to Cart
               </button>
+              <Login
+                    showModal={showLoginModal}
+                    closeModal={setShowLoginModal}
+                    openRegistrationModal={openRegistration}
+                    OpenSendOtpModal={OpenSendOtp}
+                  />
+                  <Registration
+                    showModal={showRegistrationModal}
+                    closeModal={closeRegistrationModal}
+                  />
+                  <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
             </div>
           </div>
         </div>

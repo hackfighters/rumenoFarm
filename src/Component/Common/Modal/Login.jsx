@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
@@ -47,7 +47,7 @@ const Login = ({
     e.preventDefault();
 
     // Perform API login request
-    const response = await fetch('http://127.0.0.1:5000/login', {
+    const response = await fetch('https://dummyjson.com/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,10 +61,30 @@ const Login = ({
       const firstTwoChars = data.username.substring(0, 2);
       setLoggedInUser(firstTwoChars);
       Cookies.set('loggedInUser', firstTwoChars);
-      console.log(response)
-      console.log(data)
+      console.log(response);
+      console.log(data);
+      toast.success("Login Successful", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
       console.error('Login failed');
+      toast.warn("Login Failed", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
