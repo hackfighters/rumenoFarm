@@ -58,10 +58,8 @@ const Login = ({
     if (response.ok) {
       const data = await response.json();
       // setLoggedInUser(data.username);
-      // setLoggedInUser(data.username);
       const firstTwoChars = data.username.substring(0, 2);
       setLoggedInUser(firstTwoChars);
-      // setLoggedInUser(data.username);
       Cookies.set('loggedInUser', firstTwoChars);
       console.log(response)
       console.log(data)

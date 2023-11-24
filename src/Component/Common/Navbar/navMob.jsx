@@ -312,7 +312,7 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
                         className="text-primary h4 m-0"
                         onClick={() => handleChange(item, -1)}
                       />
-                      <div>{item.price}</div>
+                      <div>{item.price} Rs /-</div>
                       <FontAwesomeIcon
                         type="button"
                         className="text-danger"
