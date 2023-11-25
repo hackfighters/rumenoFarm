@@ -622,6 +622,7 @@ const ProductSidebar = ({ handleClick }) => {
     setCurrentPage(0);
   };
 
+
   return (
     <div className="container-fluid mt-4">
       <div className="row flex-nowrap justify-content-center ms-0 mx-md-4 mx-lg-0">
