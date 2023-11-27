@@ -28,6 +28,7 @@ import Select from "../../Common/Select/index";
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
+import axios from "axios";
 {
   /* Rumeno farm  */
 }
@@ -88,9 +89,35 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
+    console.log(cart)
     // handlePrice();
   };
   // console.log(item)
+  // const PaymentDetails =()=>{
+  //   return(
+  //     console.log(cart)
+  //   )
+  // };
+    const PaymentDetails = () => {
+      console.log(cart);
+
+      // Make a POST request to the API endpoint with the cart details
+      axios.post('https://api.example.com/payment', cart)
+        .then(response => {
+          // Handle the response from the API
+          console.log(response.data);
+          console.log(cart);
+
+          // Do something else with the response if needed
+        })
+        .catch(error => {
+          // Handle any errors that occur during the request
+          console.error(error);
+          console.error(cart);
+          console.log(cart);
+        
+        });
+    };
   
 
   return (
@@ -430,7 +457,7 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
             </div>
             <div className="justify-content-end d-flex px-5 cart-model">
               <Link to="/transaction" className="w-100 text-end">
-              <button className="btn gradient-custom-2 border-0 text-white my-3">
+              <button onClick={PaymentDetails} className="btn gradient-custom-2 border-0 text-white my-3">
                 PAYMENT
               </button>
               </Link>
