@@ -1,67 +1,73 @@
-// // import React, { useState, useEffect } from "react";
-// // import axios from "axios";
+// // // import React, { useState } from "react";
+// // // import axios from "axios";
 
-// // const Test = (items) => {
-// //   const [name, setName] = useState("");
-// //   const [email, setEmail] = useState("");
+// import { useState } from "react";
 
-// //   const handleSubmit = async () => {
-// //     try {
-// //       const response = await axios.post("https://jsonplaceholder.typicode.com/posts", {
-// //        items
-// //       });
-// //       console.log(response);
-// //     } catch (error) {
-// //       console.log(error);
-// //     }
+// // // const TestData = () => {
+// // //   const [data, setData] = useState([]);
+
+// // //   const handleClick = () => {
+// // //     axios.get("http://127.0.0.1:5000/info")
+// // //       .then(response => {
+// // //         setData(response.data);
+// // //       })
+// // //       .catch(error => {
+// // //         console.log(error);
+// // //       });
+// // //   };
+
+// // //   return (
+// // //     <div>
+// // //       <button onClick={handleClick}>Get Data</button>
+// // //       <p>{data}</p>
+// // //     </div>
+// // //   );
+// // // };
+
+// // // export default TestData;
+
+// // import React, { useState } from "react";
+
+// // const TestData = () => {
+// //   const [data, setData] = useState([]);
+// //   const handleClick = () => {
+// //     fetch("http://127.0.0.1:5000/info",{mode: "no-cors"})
+// //       .then(response => response.json())
+// //       .then(data => setData(data));
 // //   };
-
 // //   return (
 // //     <div>
-// //       <input
-// //         type="text"
-// //         placeholder="Enter your name"
-// //         onChange={(e) => setName(e.target.value)}
-// //       />
-// //       <input
-// //         type="email"
-// //         placeholder="Enter your email"
-// //         onChange={(e) => setEmail(e.target.value)}
-// //       />
-// //       <button onClick={handleSubmit}>Submit</button>
+// //       <button onClick={handleClick}>Get Data</button>
+// //       <p>{data}</p>
 // //     </div>
 // //   );
 // // };
 
-// // export default Test;
+// // export default TestData;
 
-// import React, { useState } from "react";
-// import axios from "axios";
-
-// const Test = ({item, setCart}) => {
-//   const [response, setResponse] = useState("");
-
-//   const handleSubmit = async () => {
-//     console.log(item)
-//     try {
-//       const response = await axios.post("https://api.example.com/send-message", {
-//         message: "Hello",item
-//       });
-//       setResponse(response.data);
-//     } catch (error) {
-//       console.log(error);
-//       console.log(item)
-//     }
+// const TestData = () => {
+//     const [data, setData] = useState([]);
+//     const handleClick = () => {
+//       fetch("http://127.0.0.1:5000/info", { mode: "no-cors" })
+//         .then((response) => {
+//           if (response.ok) {
+//             return response;
+//           } else {
+//             throw new Error("Unable to fetch data");
+//           }
+//         })
+//         .then((data) => setData(data))
+//         .catch((error) => {
+//           console.error(error);
+//         });
+//     };
+  
+//     return (
+//       <div>
+//         <button onClick={handleClick}>Get Data</button>
+//         <p>{data}</p>
+//       </div>
+//     );
 //   };
-
-//   return (
-//     <div>
-//       <button onClick={handleSubmit}>Send Hello</button>
-//       <p>Response: {response}</p>
-//       <p>Response: {item}</p>
-
-//     </div>
-//   );
-// };
-
-// export default Test;
+  
+//   export default TestData;
