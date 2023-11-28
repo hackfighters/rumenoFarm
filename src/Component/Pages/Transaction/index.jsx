@@ -41,7 +41,7 @@ const Transaction = () => {
 
     // Send form data to the API endpoint
     axios
-      .post("http://127.0.0.1:5000/api/v1/person", transactionDetails)
+      .post("http://127.0.0.1:5000/api/post_data", transactionDetails)
       .then((response) => {
         console.log(
           "Transaction details submitted successfully:",
@@ -62,7 +62,7 @@ const Transaction = () => {
   return (
     <>
       <div className="desk-nav">
-        <Navbar />
+        {/* <Navbar /> */}
       </div>
       <div className="mob-nav">
         <ResponsiveNavbar />
