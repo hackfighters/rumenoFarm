@@ -30,7 +30,7 @@ const Login = ({
     const { username, password } = data;
 
     // Perform API login request
-    const response = await axios.post("https://dummyjson.com/auth/login", {
+    const response = await axios.post("http://127.0.0.1:5000/api/login", {
       username,
       password,
     });

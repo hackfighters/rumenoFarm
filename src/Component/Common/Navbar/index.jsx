@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { UserContext } from "../Modal/logusecont";
+// import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -118,6 +120,15 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
         
         });
     };
+
+  const { setLoggedInUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    Cookies.remove("loggedInUser");
+    setLoggedInUser(null);
+    navigate("/home");
+  };
+
   
 
   return (
@@ -325,12 +336,27 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
+                  {loggedInUser ? (
                     <button
+                    className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                  ) :
+                  <button
+                  className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                  onClick={openModal}
+                >
+                  Login
+                </button>
+                   }
+                    {/* <button
                       className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                       onClick={openModal}
                     >
                       Login
-                    </button>
+                    </button> */}
                   </div>
                   {/* Veterinary docter online */}
                   {/* Veterinary docter cow / rabbit / new me */}
