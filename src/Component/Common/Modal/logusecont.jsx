@@ -4,9 +4,10 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [sizevalue, setSizevalue] = useState(null);
 
   return (
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, sizevalue, setSizevalue }}>
       {children}
     </UserContext.Provider>
   );
