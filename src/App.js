@@ -8,19 +8,13 @@ import Home from "./Component/Pages/Home/index";
 import Services from "./Component/Pages/Service";
 import ProductPage from "./Component/Pages/Products/index";
 import ContactUs from "./Component/Pages/ContactUs";
-// import Navbar from "./Component/Common/Navbar";
-// import LoginForm from "./Component/Common/Modal/loginapi";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "./Component/Common/Navbar";
 import LoginForm from "./Component/Common/Modal/loginapi";
 import { UserProvider } from './Component/Common/Modal/logusecont';
 import Transaction from "./Component/Pages/Transaction";
-// import LogTest from "./Component/testing/logtest";
 
-// Rumeno farm
-// Rumeno
-// Veterinary
 const App = () => {
   const location = useLocation();
 
@@ -84,12 +78,7 @@ const App = () => {
 
   return (
     <>
-    {/* <LogTest/> */}
     <ToastContainer/>
-    
-      {/* // Rumeno farm
-// Rumeno
-// Veterinary */}
 <UserProvider>
       <Routes>
         <Route path="/" element={<Lang />} />
