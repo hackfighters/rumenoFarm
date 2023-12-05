@@ -31,6 +31,8 @@ import Select from "../../Common/Select/index";
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
 import axios from "axios";
+import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 {
   /* Rumeno farm  */
 }
@@ -40,9 +42,9 @@ import axios from "axios";
 {
   /* Veterinary */
 }
-const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
+const Navbar = ({ size }) => {
   const { t } = useTranslation();
-  const { loggedInUser } = useContext(UserContext);
+  const { loggedInUser , sizevalue } = useContext(UserContext);
   // State
   // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -51,6 +53,8 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+  const [cart, setCart] = useState([]);
+
   var totalPrice = 0;
 
   const toggleSelect = () => {
@@ -129,6 +133,87 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
     navigate("/home");
   };
 
+  const [cartData, setCartData] = useState([]);
+
+  // Retrieve cookies
+  const [cookiess] = useCookies(['cart']);
+  useEffect(() => {
+    if (cookiess.cart) {
+      setCartData(cookiess.cart);
+    }
+  }, [cookiess.cart]);
+
+
+  // const [cart, setCart] = useState([]);
+  const [cookies, setCookie] = useCookies(["cart"]);
+  const { setSizevalue } = useContext(UserContext);
+
+  var item = ""
+  var Value = '';
+  // console.log(Value)
+
+  useEffect(() => {
+    if (cookies.cart) {
+      setCart(cookies.cart);
+    }
+  }, []);
+
+  useEffect(() => {
+    setCookie("cart", cart, { path: "/" });
+     Value = cart.length;
+     setSizevalue(Value)
+  console.log(Value)
+  }, [cart, setCookie]);
+
+
+
+  const handleClick = (item) => {
+      let isPresent = false;
+      cart.forEach((product) => {
+    //  Value = cart.length;
+    //  console.log(Value)
+        if (item.id === product.id) {
+          isPresent = true;
+        }
+      });
+      if (isPresent) {
+        toast.warn("Item is already added to your cart", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        return;
+      }
+      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name}]);
+      toast.success("Item is added to your cart", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    };
+  
+
+
+  const handleChange = (item, d) => {
+    let ind = -1;
+    cart.forEach((data, index) => {
+      if (data.id === item.id) ind = index;
+    });
+    const tempArr = [...cart];
+    tempArr[ind].amount += d;
+    if (tempArr[ind].amount === 0) tempArr[ind].amount = 1;
+    setCart(tempArr);
+  };
   
 
   return (
@@ -331,7 +416,7 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
                     />
-                    <span className="badge-cart">{size}</span>
+                    <span className="badge-cart">{sizevalue}</span>
                   </Link>
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
@@ -417,14 +502,15 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10    ? (
+          {size !== 1 ? (
              <>
-             {cart?.map((item, cartindex) => {
+             {cartData?.map((item) => {
                totalPrice += item.amount * item.price;
                return (
-                 <div className="row mb-4 cart-model" key={cartindex}>
+                 <div className="row mb-4 cart-model" key={item.id}>
                    <div className="col-sm-3 cart-model-img text-center">
                      <img className="mx-3" src={item.img} alt="Loading" />
+                     {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
                    </div>
                    <div className="col-sm-3 d-flex align-items-center justify-content-center">
                      <h4>{item.name}</h4>
@@ -437,6 +523,7 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
                        onClick={() => handleChange(item, +1)}
                      />
                      <h6 className="m-0">{item.amount}</h6>
+                     {/* <h6 className="m-0">{cookies.amount}</h6> */}
                      <FontAwesomeIcon
                        icon={faCircleMinus}
                        type="button"
@@ -457,7 +544,8 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
              })}
            </>
            
-          ) : (
+           )  
+           : ( 
             <>
             <div>
               <div>
@@ -471,7 +559,8 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
             </div>
           </>
            
-          )}
+          )
+          } 
         </Modal.Body>
         {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10 ? (
           <>
