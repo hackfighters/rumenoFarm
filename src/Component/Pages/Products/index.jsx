@@ -9,11 +9,17 @@ import Roadmap3 from "../../../assets/img/roadmap_mobile.mp4";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { UserContext } from "../../Common/Modal/logusecont";
 
 const Products = () => {
   const [cart, setCart] = useState([]);
   const [cookies, setCookie] = useCookies(["cart"]);
+  const { setSizevalue } = useContext(UserContext);
+
   var item = ""
+  var Value = '';
+  // console.log(Value)
 
   useEffect(() => {
     if (cookies.cart) {
@@ -23,6 +29,9 @@ const Products = () => {
 
   useEffect(() => {
     setCookie("cart", cart, { path: "/" });
+     Value = cart.length;
+     setSizevalue(Value)
+  console.log(Value)
   }, [cart, setCookie]);
 
 
@@ -30,6 +39,8 @@ const Products = () => {
   const handleClick = (item) => {
       let isPresent = false;
       cart.forEach((product) => {
+    //  Value = cart.length;
+    //  console.log(Value)
         if (item.id === product.id) {
           isPresent = true;
         }
@@ -77,11 +88,13 @@ const Products = () => {
     <>
       <div className="desk-nav">
         <Navbar
-          size={cart.length}
-          cart={cart}
-          setCart={setCart}
-          handleChange={handleChange}
-          item={item}
+          // size={cart.length}
+          // cart={cart}
+          // setCart={setCart}
+          // handleChange={handleChange}
+          // item={item}
+          // value={Value}
+          // cookies={setCookie}
         />
       </div>
       <div className="mob-nav">

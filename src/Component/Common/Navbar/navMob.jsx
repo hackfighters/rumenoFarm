@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 
 // Third party Fortawesome
@@ -23,6 +23,7 @@ import Registration from "../../Common/Modal/Registion";
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
 import { UserContext } from "../Modal/logusecont";
+import Cookies from "js-cookie";
 // {
 //   /* Rumeno farm  */
 // }
@@ -85,6 +86,15 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
     setCart(arr);
     // handlePrice();
   };
+
+  const { setLoggedInUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    Cookies.remove("loggedInUser");
+    setLoggedInUser(null);
+    navigate("/home");
+  };
+
   return (
     <>
       <div className="container-fluid sect-topbar position-absolute">
@@ -206,8 +216,11 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
                       style={{ color: "#f0f2f5" }}
                     />
                     <span className="badge-cart">{size}</span>
+                   
+
                   </Link>
                 </li>
+                <div>Hello</div>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
                     <button
@@ -239,14 +252,21 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
                 <li>
-                  {loggedInUser ? (
-                    <h4
-                      typeof="button"
-                      className="text-danger bg-light m-0 p-1 rounded-circle"
-                    >
-                      {loggedInUser}
-                    </h4>
-                  ) : null}
+                    {loggedInUser ? (
+                      <button
+                        className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    ) : (
+                      <button
+                        className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                        onClick={openModal}
+                      >
+                        Login
+                      </button>
+                    )}
                 </li>
               </ul>
             </div>

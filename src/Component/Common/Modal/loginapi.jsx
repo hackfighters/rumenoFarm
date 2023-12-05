@@ -1,67 +1,37 @@
-// // import React, { useState, useEffect } from "react";
-// // import axios from "axios";
+// import React from 'react';
 
-// // const Test = (items) => {
-// //   const [name, setName] = useState("");
-// //   const [email, setEmail] = useState("");
+// const Testapi = () => {
+//   const handleButtonClick = () => {
+//     const data = {
+//       key1: 'value1',
+//       key2: 'value2',
+//       // Add other data as needed
+//     };
 
-// //   const handleSubmit = async () => {
-// //     try {
-// //       const response = await axios.post("https://jsonplaceholder.typicode.com/posts", {
-// //        items
-// //       });
-// //       console.log(response);
-// //     } catch (error) {
-// //       console.log(error);
-// //     }
-// //   };
-
-// //   return (
-// //     <div>
-// //       <input
-// //         type="text"
-// //         placeholder="Enter your name"
-// //         onChange={(e) => setName(e.target.value)}
-// //       />
-// //       <input
-// //         type="email"
-// //         placeholder="Enter your email"
-// //         onChange={(e) => setEmail(e.target.value)}
-// //       />
-// //       <button onClick={handleSubmit}>Submit</button>
-// //     </div>
-// //   );
-// // };
-
-// // export default Test;
-
-// import React, { useState } from "react";
-// import axios from "axios";
-
-// const Test = ({item, setCart}) => {
-//   const [response, setResponse] = useState("");
-
-//   const handleSubmit = async () => {
-//     console.log(item)
-//     try {
-//       const response = await axios.post("https://api.example.com/send-message", {
-//         message: "Hello",item
+//     fetch('http://127.0.0.1:5000/api/post_data', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(data),
+//     })
+//       .then(response => response.json())
+//       .then(responseData => {
+//         console.log(responseData);
+//         // Handle the response data as needed
+//       })
+//       .catch(error => {
+//         console.error('Error:', error);
+//         // Handle errors as needed
 //       });
-//       setResponse(response.data);
-//     } catch (error) {
-//       console.log(error);
-//       console.log(item)
-//     }
 //   };
 
 //   return (
 //     <div>
-//       <button onClick={handleSubmit}>Send Hello</button>
-//       <p>Response: {response}</p>
-//       <p>Response: {item}</p>
-
+//       <h1>React App</h1>
+//       <button onClick={handleButtonClick}>Send POST Request</button>
 //     </div>
 //   );
 // };
 
-// export default Test;
+// export default Testapi;

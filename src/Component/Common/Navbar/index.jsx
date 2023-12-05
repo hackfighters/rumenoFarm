@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { UserContext } from "../Modal/logusecont";
+// import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,6 +30,9 @@ import Select from "../../Common/Select/index";
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
+import axios from "axios";
+import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 {
   /* Rumeno farm  */
 }
@@ -37,9 +42,9 @@ import SendOtp from "../Modal/otp";
 {
   /* Veterinary */
 }
-const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
+const Navbar = ({ size }) => {
   const { t } = useTranslation();
-  const { loggedInUser } = useContext(UserContext);
+  const { loggedInUser , sizevalue } = useContext(UserContext);
   // State
   // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -48,6 +53,8 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+  const [cart, setCart] = useState([]);
+
   var totalPrice = 0;
 
   const toggleSelect = () => {
@@ -88,9 +95,125 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
+    console.log(cart)
     // handlePrice();
   };
   // console.log(item)
+  // const PaymentDetails =()=>{
+  //   return(
+  //     console.log(cart)
+  //   )
+  // };
+    const PaymentDetails = () => {
+      console.log(cart);
+
+      // Make a POST request to the API endpoint with the cart details
+      axios.post('https://api.example.com/payment', cart)
+        .then(response => {
+          // Handle the response from the API
+          console.log(response.data);
+          console.log(cart);
+
+          // Do something else with the response if needed
+        })
+        .catch(error => {
+          // Handle any errors that occur during the request
+          console.error(error);
+          console.error(cart);
+          console.log(cart);
+        
+        });
+    };
+
+  const { setLoggedInUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    Cookies.remove("loggedInUser");
+    setLoggedInUser(null);
+    navigate("/home");
+  };
+
+  const [cartData, setCartData] = useState([]);
+
+  // Retrieve cookies
+  const [cookiess] = useCookies(['cart']);
+  useEffect(() => {
+    if (cookiess.cart) {
+      setCartData(cookiess.cart);
+    }
+  }, [cookiess.cart]);
+
+
+  // const [cart, setCart] = useState([]);
+  const [cookies, setCookie] = useCookies(["cart"]);
+  const { setSizevalue } = useContext(UserContext);
+
+  var item = ""
+  var Value = '';
+  // console.log(Value)
+
+  useEffect(() => {
+    if (cookies.cart) {
+      setCart(cookies.cart);
+    }
+  }, []);
+
+  useEffect(() => {
+    setCookie("cart", cart, { path: "/" });
+     Value = cart.length;
+     setSizevalue(Value)
+  console.log(Value)
+  }, [cart, setCookie]);
+
+
+
+  const handleClick = (item) => {
+      let isPresent = false;
+      cart.forEach((product) => {
+    //  Value = cart.length;
+    //  console.log(Value)
+        if (item.id === product.id) {
+          isPresent = true;
+        }
+      });
+      if (isPresent) {
+        toast.warn("Item is already added to your cart", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        return;
+      }
+      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name}]);
+      toast.success("Item is added to your cart", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    };
+  
+
+
+  const handleChange = (item, d) => {
+    let ind = -1;
+    cart.forEach((data, index) => {
+      if (data.id === item.id) ind = index;
+    });
+    const tempArr = [...cart];
+    tempArr[ind].amount += d;
+    if (tempArr[ind].amount === 0) tempArr[ind].amount = 1;
+    setCart(tempArr);
+  };
   
 
   return (
@@ -293,17 +416,32 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
                     />
-                    <span className="badge-cart">{size}</span>
+                    <span className="badge-cart">{sizevalue}</span>
                   </Link>
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
+                  {loggedInUser ? (
                     <button
+                    className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
+                  ) :
+                  <button
+                  className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                  onClick={openModal}
+                >
+                  Login
+                </button>
+                   }
+                    {/* <button
                       className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                       onClick={openModal}
                     >
                       Login
-                    </button>
+                    </button> */}
                   </div>
                   {/* Veterinary docter online */}
                   {/* Veterinary docter cow / rabbit / new me */}
@@ -364,14 +502,15 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10    ? (
+          {size !== 1 ? (
              <>
-             {cart?.map((item, cartindex) => {
+             {cartData?.map((item) => {
                totalPrice += item.amount * item.price;
                return (
-                 <div className="row mb-4 cart-model" key={cartindex}>
+                 <div className="row mb-4 cart-model" key={item.id}>
                    <div className="col-sm-3 cart-model-img text-center">
                      <img className="mx-3" src={item.img} alt="Loading" />
+                     {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
                    </div>
                    <div className="col-sm-3 d-flex align-items-center justify-content-center">
                      <h4>{item.name}</h4>
@@ -384,6 +523,7 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
                        onClick={() => handleChange(item, +1)}
                      />
                      <h6 className="m-0">{item.amount}</h6>
+                     {/* <h6 className="m-0">{cookies.amount}</h6> */}
                      <FontAwesomeIcon
                        icon={faCircleMinus}
                        type="button"
@@ -404,7 +544,8 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
              })}
            </>
            
-          ) : (
+           )  
+           : ( 
             <>
             <div>
               <div>
@@ -418,7 +559,8 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
             </div>
           </>
            
-          )}
+          )
+          } 
         </Modal.Body>
         {size == 1 || size == 2 || size == 2 || size == 3 || size == 4 || size == 5 ||size == 6 || size == 7 || size == 8 || size == 9 || size == 10 ? (
           <>
@@ -430,7 +572,7 @@ const Navbar = ({ size, cart, setCart, handleChange ,item}) => {
             </div>
             <div className="justify-content-end d-flex px-5 cart-model">
               <Link to="/transaction" className="w-100 text-end">
-              <button className="btn gradient-custom-2 border-0 text-white my-3">
+              <button onClick={PaymentDetails} className="btn gradient-custom-2 border-0 text-white my-3">
                 PAYMENT
               </button>
               </Link>

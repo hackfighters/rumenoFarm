@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
-import { UserContext } from './logusecont';
+import { UserContext } from "./logusecont";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const Login = ({
   showModal,
@@ -13,56 +15,34 @@ const Login = ({
   OpenSendOtpModal,
 }) => {
   const { t } = useTranslation();
-  const [login, setLogin] = useState({
-    username: "",
-    password: "",
-  });
-
-  // const loginHandleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setLogin({
-  //     ...login,
-  //     [name]: value,
-  //   });
-  // };
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const { setLoggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     // Check if user is already logged in
-    const storedUser = Cookies.get('loggedInUser');
+    const storedUser = Cookies.get("loggedInUser");
     if (storedUser) {
       setLoggedInUser(storedUser);
     }
   }, []);
-    
-
-  const handleLogin = async (e) => {
-    const { name, value } = e.target;
-    setLogin({
-      ...login,
-      [name]: value,
-    });
-    e.preventDefault();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const handleLogin = async (data) => {
+    // Use the values from the form data
+    const { username, password } = data;
 
     // Perform API login request
-    const response = await fetch('https://dummyjson.com/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
+    const response = await axios.post("http://127.0.0.1:5000/api/login", {
+      username,
+      password,
     });
 
-    if (response.ok) {
-      const data = await response.json();
-      // setLoggedInUser(data.username);
+    if (response.status === 200) {
+      const data = await response.data;
       const firstTwoChars = data.username.substring(0, 2);
       setLoggedInUser(firstTwoChars);
-      Cookies.set('loggedInUser', firstTwoChars);
+      Cookies.set("loggedInUser", firstTwoChars);
       console.log(response);
       console.log(data);
+
       toast.success("Login Successful", {
         position: "top-center",
         autoClose: 2000,
@@ -73,8 +53,10 @@ const Login = ({
         progress: undefined,
         theme: "light",
       });
+
+      closeModal(); // Close the login modal
     } else {
-      console.error('Login failed');
+      console.error("Login failed");
       toast.warn("Login Failed", {
         position: "top-center",
         autoClose: 2000,
@@ -87,8 +69,6 @@ const Login = ({
       });
     }
   };
-
-
 
   return (
     <>
@@ -110,7 +90,7 @@ const Login = ({
                   <img src={logo} className="w-25" alt="logo" />
                   <h4 className="mt-1 mb-3 pb-1">RUMENO</h4>
                 </div>
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleSubmit(handleLogin)}>
                   <p className="mb-3">{t("v304")}</p>
                   <div className="form-outline  mb-3">
                     <label className="form-label mx-2" htmlFor="form2Example11">
@@ -118,12 +98,17 @@ const Login = ({
                     </label>
                     <input
                       type="text"
-                      name="username"
                       className="form-control"
                       placeholder="Phone number or email address"
-                      onChange={(e) => setUsername(e.target.value)}
-                      value={username}
+                      {...register("username", {
+                        required: "Username is required",
+                      })}
                     />
+                    {errors.username && (
+                      <div className="text-danger">
+                        {errors.username.message}
+                      </div>
+                    )}
                   </div>
                   <div className="form-outline mb-3">
                     <label className="form-label mx-2" htmlFor="form2Example22">
@@ -131,12 +116,17 @@ const Login = ({
                     </label>
                     <input
                       type="password"
-                      name="password"
                       className="form-control"
                       placeholder="Password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
+                      {...register("password", {
+                        required: "Password is required",
+                      })}
                     />
+                    {errors.password && (
+                      <div className="text-danger">
+                        {errors.password.message}
+                      </div>
+                    )}
                   </div>
                   <div className="text-center pt-1  pb-1">
                     <button
@@ -164,6 +154,7 @@ const Login = ({
                     </button>
                   </div>
                 </form>
+
                 {/* <LoginForm/> */}
               </div>
               <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
