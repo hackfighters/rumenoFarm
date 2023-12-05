@@ -56,7 +56,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v269"]),
       priceText: "Price: 245 INR/Bottle",
       amount: 1,
-      price: 245,
+      price: 245.00,
       description: t(["v270"]),
       img: MICROFLORATONE,
       text: [
@@ -101,7 +101,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v271"]),
       priceText: "Price: 285 INR/Piece",
       amount: 1,
-      price: 285,
+      price: 285.00,
       description: t(["v272"]),
       img: Minromin,
       text: [
@@ -146,7 +146,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v273"]),
       priceText: "Price: 700 INR/Piece",
       amount: 1,
-      price: 700,
+      price: 700.00,
       description: t(["v274"]),
       img: Rumenovita,
       text: [
@@ -180,9 +180,9 @@ const ProductSidebar = ({ handleClick }) => {
     {
       id: 4,
       name: t(["v149"]),
-      priceText: "Price: 190 INR/Bottle",
+      priceText: "Price: 245 INR/Bottle",
       amount: 1,
-      price: 190,
+      price: 245.00,
       description: t(["v150"]),
       img: Neonato,
       text: [
@@ -231,9 +231,9 @@ const ProductSidebar = ({ handleClick }) => {
     {
       id: 5,
       name: t(["v135"]),
-      priceText: "Price: 600 INR/Piece",
+      priceText: "Price: 700 INR/Piece",
       amount: 1,
-      price: 600,
+      price: 700.00,
       description: t(["v136"]),
       img: TanavMukti,
       text: [
@@ -288,9 +288,9 @@ const ProductSidebar = ({ handleClick }) => {
     {
       id: 6,
       name: t(["v161"]),
-      priceText: "Price: 390 INR/Piece",
+      priceText: "Price: 350 INR/Piece",
       amount: 1,
-      price: 390,
+      price: 350.00,
       description: t(["v162"]),
       img: Energico,
       text: [
@@ -321,9 +321,9 @@ const ProductSidebar = ({ handleClick }) => {
     {
       id: 7,
       name: t(["v167"]),
-      priceText: "Price: 180 INR/Piece",
+      priceText: "Price: 195 INR/Piece",
       amount: 1,
-      price: 180,
+      price: 195.00,
       description: t(["v168"]),
       img: DigestoPlus,
       text: [
@@ -351,9 +351,9 @@ const ProductSidebar = ({ handleClick }) => {
     {
       id: 8,
       name: t(["v182"]),
-      priceText: "Price: 150 INR/Piece",
+      priceText: "Price: 125 INR/Piece",
       amount: 1,
-      price: 150,
+      price: 125.00,
       description: t(["v183"]),
       img: Liverofine,
       text: [
@@ -530,7 +530,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v319"]),
       priceText: t(["v320"]),
       amount: 1,
-      price: 600,
+      price: 3400,
       description: t(["v321"]),
       img: farmimg1,
     },
@@ -553,7 +553,8 @@ const ProductSidebar = ({ handleClick }) => {
       img: rumenoamazon3,
       description: t(["v173"]),
       amount: 1,
-      price: 700,
+      priceText: "Rs. 55",
+      price: 55,
       text: [
         <>
           {t(["v173"])}
