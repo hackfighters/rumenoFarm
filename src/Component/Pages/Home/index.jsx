@@ -9,6 +9,8 @@ import About from "../../Common/About";
 import Footer from "../../Common/Footer";
 import Training from "../../Common/Training";
 import FooterTop from "../../Common/CertifiedBox/footer-top";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon, } from "@fortawesome/react-fontawesome";
 
 // Image
 import Prdimg4 from "../../../assets/img/OurProduct/minromix.jpg";
@@ -17,6 +19,7 @@ import Prdimg6 from "../../../assets/img/OurProduct/Rumenovita.jpg";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
+import ReactWhatsapp from "react-whatsapp";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -93,6 +96,18 @@ const Home = () => {
                     TRAINING
                   </button>
                 </div>
+              </a>
+              <a href="#">
+                <ReactWhatsapp
+                  className="whatsapp-sect"
+                  number="8770529849"
+                  message="Hello World"
+                >
+                  <FontAwesomeIcon
+                    icon={faWhatsapp}
+                    className="text-white btn--shockwave is-active"
+                  />
+                </ReactWhatsapp>
               </a>
             </div>
           </div>

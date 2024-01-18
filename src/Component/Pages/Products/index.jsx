@@ -15,13 +15,11 @@ import axios from "axios";
 
 const Products = () => {
   const [cart, setCart] = useState([]);
-  console.log('bbnnmnm',cart)
   const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue,cartdata ,UidData} = useContext(UserContext);
 
   var item = ""
   var Value = '';
-  // console.log(Value)
 
   useEffect(() => {
     if (cookies.cart) {

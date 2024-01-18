@@ -16,6 +16,7 @@ import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import scanner from "../../../assets/img/scanner.png";
 import { Form } from "react-bootstrap";
 import axios from "axios";
+import TransImgUpload from "./transimgupload";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
@@ -33,6 +34,8 @@ const Transaction = () => {
   } = useForm();
 
   const onSubmit = (transactionDetails) => {
+    window.location.href = "/transdetail";
+
     // Handle any errors in the form data
     if (errors) {
       console.error(errors);
@@ -61,9 +64,7 @@ const Transaction = () => {
 
   return (
     <>
-      <div className="desk-nav">
-        {/* <Navbar /> */}
-      </div>
+      <div className="desk-nav">{/* <Navbar /> */}</div>
       <div className="mob-nav">
         <ResponsiveNavbar />
       </div>
@@ -96,13 +97,14 @@ const Transaction = () => {
                         })}
                       />
                       {errors.mobileNumber && (
-        <span className="text-danger">
-          {errors.mobileNumber.type === "required"
-            ? "Please enter your mobile number"
-            : "Please enter a valid mobile number" // Custom error message for pattern validation
-          }
-        </span>
-      )}
+                        <span className="text-danger">
+                          {
+                            errors.mobileNumber.type === "required"
+                              ? "Please enter your mobile number"
+                              : "Please enter a valid mobile number" // Custom error message for pattern validation
+                          }
+                        </span>
+                      )}
                       <input
                         type="text"
                         className="form-control form-group py-3"
@@ -123,14 +125,16 @@ const Transaction = () => {
                           pattern: /^[0-9]{10}$/, // Regex pattern for only numbers
                         })}
                       />
-                     {errors.amount && (
-        <span className="text-danger">
-          {errors.amount.type === "required"
-            ? "Please enter your mobile number"
-            : "Please enter a valid mobile number" // Custom error message for pattern validation
-          }
-        </span>
-      )}
+                      <TransImgUpload/>
+                      {errors.amount && (
+                        <span className="text-danger">
+                          {
+                            errors.amount.type === "required"
+                              ? "Please enter your mobile number"
+                              : "Please enter a valid mobile number"
+                          }
+                        </span>
+                      )}
                       <button
                         className="contact_form_submit mt-5"
                         onClick={handleSubmit(onSubmit)}
@@ -164,17 +168,15 @@ const Transaction = () => {
               </div>
               <div className="contact_info_sec py-4">
                 <h4 className="text-white text-center">SCANNER</h4>
-                <div
-                >
+                <div>
                   <img className="w-100 mb-3" src={scanner} alt="" />
                 </div>
-                
               </div>
             </div>
           </div>
         </div>
       </section>
-      
+
       {/* Rumeno farm  */}
       {/* Rumeno */}
       {/* Veterinary */}
