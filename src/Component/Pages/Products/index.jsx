@@ -75,7 +75,7 @@ const Products = () => {
         return;
       }
      
-      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, Uid:UidData}]);
+      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, uID:UidData}]);
 
       toast.success("Item is added to your cart", {
         position: "top-center",
