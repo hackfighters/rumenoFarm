@@ -11,7 +11,6 @@ import ContactUs from "./Component/Pages/ContactUs";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "./Component/Common/Navbar";
-import LoginForm from "./Component/Common/Modal/loginapi";
 import { UserProvider } from './Component/Common/Modal/logusecont';
 import Transaction from "./Component/Pages/Transaction";
 
@@ -89,6 +88,7 @@ const App = () => {
         <Route path="/transaction" element={<Transaction />} />
       </Routes>
 </UserProvider>
+
     </>
   );
 };

@@ -11,11 +11,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
+import axios from "axios";
 
 const Products = () => {
   const [cart, setCart] = useState([]);
+  console.log('bbnnmnm',cart)
   const [cookies, setCookie] = useCookies(["cart"]);
-  const { setSizevalue } = useContext(UserContext);
+  const { setSizevalue,cartdata ,UidData} = useContext(UserContext);
 
   var item = ""
   var Value = '';
@@ -31,16 +33,32 @@ const Products = () => {
     setCookie("cart", cart, { path: "/" });
      Value = cart.length;
      setSizevalue(Value)
+     handleAddtoCart()
   console.log(Value)
   }, [cart, setCookie]);
 
+
+  // const habnle = () => {
+  //   console.log('ghnm,.',cart)
+
+  // }
+
+  const handleAddtoCart = async () => {
+        console.log('ghnm,.',cart)
+
+    try {
+      const response = await axios.post('https://d002-171-61-11-131.ngrok-free.app/cart', cart);
+      console.log('Add to cart is Successfull', response.data);
+    } catch (error) {
+      console.error('Add to cart is not working', error);
+    }
+  };
 
 
   const handleClick = (item) => {
       let isPresent = false;
       cart.forEach((product) => {
-    //  Value = cart.length;
-    //  console.log(Value)
+
         if (item.id === product.id) {
           isPresent = true;
         }
@@ -58,7 +76,9 @@ const Products = () => {
         });
         return;
       }
-      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name}]);
+     
+      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, Uid:UidData}]);
+
       toast.success("Item is added to your cart", {
         position: "top-center",
         autoClose: 2000,
@@ -69,13 +89,15 @@ const Products = () => {
         progress: undefined,
         theme: "light",
       });
+      
+
     };
   
-
+console.log(cartdata)
 
   const handleChange = (item, d) => {
     let ind = -1;
-    cart.forEach((data, index) => {
+    cartdata.forEach((data, index) => {
       if (data.id === item.id) ind = index;
     });
     const tempArr = [...cart];
@@ -88,10 +110,10 @@ const Products = () => {
     <>
       <div className="desk-nav">
         <Navbar
-          // size={cart.length}
-          // cart={cart}
-          // setCart={setCart}
-          // handleChange={handleChange}
+          size={cart.length}
+          carts={cart}
+          setCarts={setCart}
+          handleChange={handleChange}
           // item={item}
           // value={Value}
           // cookies={setCookie}
