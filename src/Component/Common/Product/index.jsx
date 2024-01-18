@@ -24,22 +24,12 @@ const ProductItem = ({ item ,handleClick }) => {
     efficacy2,
   } = item;
   const [showModal, setShowModal] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
 
   const ratingChanged = (newRating) => {
     console.log(newRating);
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
   };
 
   const openModal = () => {
