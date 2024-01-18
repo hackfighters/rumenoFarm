@@ -52,6 +52,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
     "react-toastify": "^9.1.3",
+    "react-whatsapp": "^0.3.0",
     "universal-cookie": "^6.1.1",
     "web-vitals": "^2.1.4"
   },

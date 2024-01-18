@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "./Component/Common/Navbar";
 import { UserProvider } from './Component/Common/Modal/logusecont';
 import Transaction from "./Component/Pages/Transaction";
+import TransactionDetail from "./Component/Pages/Transaction/transactiondetail";
 
 const App = () => {
   const location = useLocation();
@@ -86,6 +87,7 @@ const App = () => {
         <Route path="/products" element={<ProductPage />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/transaction" element={<Transaction />} />
+        <Route path="/transdetail" element={<TransactionDetail />} />
       </Routes>
 </UserProvider>
 

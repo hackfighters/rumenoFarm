@@ -15,13 +15,11 @@ import axios from "axios";
 
 const Products = () => {
   const [cart, setCart] = useState([]);
-  console.log('bbnnmnm',cart)
   const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue,cartdata ,UidData} = useContext(UserContext);
 
   var item = ""
   var Value = '';
-  // console.log(Value)
 
   useEffect(() => {
     if (cookies.cart) {
@@ -77,7 +75,7 @@ const Products = () => {
         return;
       }
      
-      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, Uid:UidData}]);
+      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, uID:UidData}]);
 
       toast.success("Item is added to your cart", {
         position: "top-center",
