@@ -43,9 +43,9 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 {
   /* Veterinary */
 }
-const Navbar = ({ size, carts, setCarts, handleChange}) => {
+const Navbar = ({ size, carts, setCarts, handleChange }) => {
   const { t } = useTranslation();
-  const { loggedInUser,setCartdata } = useContext(UserContext);
+  const { loggedInUser, setCartdata, UidData} = useContext(UserContext);
   const [lgShow, setLgShow] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
@@ -53,18 +53,20 @@ const Navbar = ({ size, carts, setCarts, handleChange}) => {
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
 
+
+
   var totalAmount = 0;
   var totalPrice = 0;
 
   useEffect(() => {
-  setCartdata(carts)
-    console.log(carts)
+    setCartdata(carts);
+    console.log(carts);
   }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
   };
-  setCartdata(carts)
+  setCartdata(carts);
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
     setSelectedOption(e.target.value);
@@ -96,14 +98,59 @@ const Navbar = ({ size, carts, setCarts, handleChange}) => {
     setShowOpt(false);
   };
 
-  const handleRemoves = (id) => {
+const handleAddtoCartApi = async () => {
+
+  console.log('Hello')
+  // try {
+  //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
+  //   console.log('Add to cart is Successfull', response.data);
+  // } catch (error) {
+  //   console.error('Add to cart is not working', error);
+  // }
+}
+
+
+  const handleRemoves = async (id) => {
+    const RemoveCartData = {id:id,uID:UidData}
+    // console.log(RemoveCartData,'ghgjhjjjj')
+    try {
+      const response = await axios.post('https://d002-171-61-11-131.ngrok-free.app/deleteCart', RemoveCartData);
+      console.log('Add to cart', response.data);
+      if (response.data.msg === 'success') {
+        toast.success("Add to cart is Remove Successfull", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        const arr = carts.filter((item) => item.id !== id);
+        setCarts(arr);
+        
+      } else {
+        toast.error("Add to cart is Remove Failed", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+
+    } catch (error) {
+      console.error('Add to cart is not Remove', error);
+    }
+    // handleRemoveCart(id)
+
     
-    const arr = carts.filter((item) => item.id !== id);
-    setCarts(arr);
   };
 
-
-  
   const { setLoggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -395,6 +442,7 @@ const Navbar = ({ size, carts, setCarts, handleChange}) => {
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
                     OpenSendOtpModal={OpenSendOtp}
+                    handleAddtoCartApi={handleAddtoCartApi}
                   />
                   <Registration
                     showModal={showRegistrationModal}
@@ -441,24 +489,22 @@ const Navbar = ({ size, carts, setCarts, handleChange}) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {
-          size == 1 ||
-          size == 2 ||
-          size == 3 ||
-          size == 4 ||
-          size == 5 ||
-          size == 6 ||
-          size == 7 ||
-          size == 8 ||
-          size == 9 ||
-          size == 10 ? (
+          {size === 1 ||
+          size === 2 ||
+          size === 3 ||
+          size === 4 ||
+          size === 5 ||
+          size === 6 ||
+          size === 7 ||
+          size === 8 ||
+          size === 9 ||
+          size === 10 ? (
             <>
               {carts?.map((item) => {
-                  console.log("jjkk",item)
+                console.log("jjkk", item);
                 totalAmount += item.amount * item.price;
                 totalPrice = item.price * item.amount;
 
-                
                 return (
                   <div className="row mb-4 cart-model" key={item.id}>
                     <div className="col-sm-3 cart-model-img text-center">
@@ -467,7 +513,6 @@ const Navbar = ({ size, carts, setCarts, handleChange}) => {
                     </div>
                     <div className="col-sm-3 d-flex align-items-center justify-content-center">
                       <h4>{item.name}</h4>
-          
                     </div>
                     <div className="col-sm-6  d-flex align-items-center justify-content-around ">
                       <FontAwesomeIcon
@@ -512,17 +557,16 @@ const Navbar = ({ size, carts, setCarts, handleChange}) => {
           )}
         </Modal.Body>
 
-        {
-        size == 1 ||
-        size == 2 ||
-        size == 3 ||
-        size == 4 ||
-        size == 5 ||
-        size == 6 ||
-        size == 7 ||
-        size == 8 ||
-        size == 9 ||
-        size == 10 ? (
+        {size === 1 ||
+        size === 2 ||
+        size === 3 ||
+        size === 4 ||
+        size === 5 ||
+        size === 6 ||
+        size === 7 ||
+        size === 8 ||
+        size === 9 ||
+        size === 10 ? (
           <>
             <div className="row border-top border-bottom justify-content-end mx-5 py-1">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">

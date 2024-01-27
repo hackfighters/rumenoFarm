@@ -18,7 +18,6 @@ const Products = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue,cartdata ,UidData} = useContext(UserContext);
 
-  var item = ""
   var Value = '';
 
   useEffect(() => {
@@ -28,11 +27,15 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
+  
     setCookie("cart", cart, { path: "/" });
      Value = cart.length;
-     setSizevalue(Value)
-     handleAddtoCart()
-  console.log(Value)
+    if(Value !== 0 ){
+      setSizevalue(Value)
+      handleAddtoCart()
+    } 
+     
+  console.log(Value,'BHNJMK,L.;/')
   }, [cart, setCookie]);
 
 
@@ -42,7 +45,6 @@ const Products = () => {
   // }
 
   const handleAddtoCart = async () => {
-        console.log('ghnm,.',cart)
 
     try {
       const response = await axios.post('https://d002-171-61-11-131.ngrok-free.app/cart', cart);
@@ -74,7 +76,12 @@ const Products = () => {
         });
         return;
       }
-     
+      // #820928
+      // #f5f58b
+      // #df5734
+      // #424a6
+      // 9eadab
+
       setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, uID:UidData}]);
 
       toast.success("Item is added to your cart", {
@@ -90,10 +97,11 @@ const Products = () => {
       
 
     };
+
   
-console.log(cartdata)
 
   const handleChange = (item, d) => {
+
     let ind = -1;
     cartdata.forEach((data, index) => {
       if (data.id === item.id) ind = index;

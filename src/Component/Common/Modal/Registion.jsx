@@ -45,7 +45,7 @@ const Registration = ({ showModal, closeModal }) => {
       const response = await axios.post('https://d002-171-61-11-131.ngrok-free.app/rumeno_register', Registrationdata);
       console.log('Registration successful:', response.data);
 
-      if (response.data.status === 200 || response.data.status === 0) {
+      if (response.data.status === 200) {
         toast.success('Registration successful');
         reset()
       } else {
@@ -54,7 +54,7 @@ const Registration = ({ showModal, closeModal }) => {
 
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Error 404', {
+      toast.error('Registration failed', {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,

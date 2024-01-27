@@ -522,7 +522,7 @@ const ProductSidebar = ({ handleClick }) => {
       efficacy1: t(["v343"]),
       efficacy2: t(["v344"]),
     },
-  ];
+      ];
 
   const FarmEquipment = [
     {
@@ -549,7 +549,7 @@ const ProductSidebar = ({ handleClick }) => {
     { name: t(["v325"]), img: rumenoamazon1, amount: 1, price: 600 },
     { name: t(["v326"]), img: rumenoamazon2, amount: 1, price: 600 },
     {
-      name: t(["v172"]),
+            name: t(["v172"]),
       img: rumenoamazon3,
       description: t(["v173"]),
       amount: 1,
