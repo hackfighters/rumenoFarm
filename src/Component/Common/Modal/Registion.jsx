@@ -40,10 +40,10 @@ const Registration = ({ showModal, closeModal }) => {
         address: data.address
         
       }
-    console.log(Registrationdata)
+    // console.log(Registrationdata)
     try {
-      const response = await axios.post('https://d002-171-61-11-131.ngrok-free.app/rumeno_register', Registrationdata);
-      console.log('Registration successful:', response.data);
+      const response = await axios.post('https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/rumeno_register', Registrationdata);
+      // console.log('Registration successful:', response.data);
 
       if (response.data.status === 200) {
         toast.success('Registration successful');

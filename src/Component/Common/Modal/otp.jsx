@@ -28,7 +28,7 @@ const SendOtp = ({ showModal, closeModal }) => {
     try {
       // Make a POST request to your API endpoint
       const response = await axios.post("YOUR_API_ENDPOINT", data);
-      console.log(response.data); // Handle the response as needed
+      // console.log(response.data); // Handle the response as needed
       setShowNewPasswordModal(true);
       closeModal();
     } catch (error) {

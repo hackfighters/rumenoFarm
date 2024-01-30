@@ -45,7 +45,7 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 }
 const Navbar = ({ size, carts, setCarts, handleChange }) => {
   const { t } = useTranslation();
-  const { loggedInUser, setCartdata, UidData} = useContext(UserContext);
+  const { loggedInUser, setCartdata, UidData,setamountData} = useContext(UserContext);
   const [lgShow, setLgShow] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
@@ -60,7 +60,7 @@ const Navbar = ({ size, carts, setCarts, handleChange }) => {
 
   useEffect(() => {
     setCartdata(carts);
-    console.log(carts);
+    // console.log(carts,12333333333);
   }, []);
 
   const toggleSelect = () => {
@@ -100,7 +100,7 @@ const Navbar = ({ size, carts, setCarts, handleChange }) => {
 
 const handleAddtoCartApi = async () => {
 
-  console.log('Hello')
+  // console.log('Hello')
   // try {
   //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
   //   console.log('Add to cart is Successfull', response.data);
@@ -114,7 +114,7 @@ const handleAddtoCartApi = async () => {
     const RemoveCartData = {id:id,uID:UidData}
     // console.log(RemoveCartData,'ghgjhjjjj')
     try {
-      const response = await axios.post('https://d002-171-61-11-131.ngrok-free.app/deleteCart', RemoveCartData);
+      const response = await axios.post('https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/deleteCart', RemoveCartData);
       console.log('Add to cart', response.data);
       if (response.data.msg === 'success') {
         toast.success("Add to cart is Remove Successfull", {
@@ -501,8 +501,9 @@ const handleAddtoCartApi = async () => {
           size === 10 ? (
             <>
               {carts?.map((item) => {
-                console.log("jjkk", item);
                 totalAmount += item.amount * item.price;
+               const  datat = totalAmount
+                setamountData(datat)
                 totalPrice = item.price * item.amount;
 
                 return (

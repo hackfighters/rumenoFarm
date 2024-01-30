@@ -29,7 +29,7 @@ const ProductItem = ({ item ,handleClick }) => {
   const [showOtp, setShowOpt] = useState(false);
 
   const ratingChanged = (newRating) => {
-    console.log(newRating);
+    // console.log(newRating);
   };
 
   const openModal = () => {
@@ -65,7 +65,7 @@ const ProductItem = ({ item ,handleClick }) => {
     handleClick(item)
   }
   else {
-      console.log("login first");
+      // console.log("login first");
     setShowLoginModal(!showLoginModal);
     toast.warn("Please Login", {
       position: "top-center",

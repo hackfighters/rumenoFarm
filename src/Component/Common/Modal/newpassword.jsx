@@ -28,7 +28,7 @@ const SetNewPassword = ({ showModal, closeModal }) => {
       
       // Send data to API using Axios
       const response = await axios.post("YOUR_API_ENDPOINT", data);
-      console.log(response.data); // Handle the response as needed
+      // console.log(response.data); // Handle the response as needed
 
       // Show the Login modal and close the current modal
       setShowLoginModal(true);

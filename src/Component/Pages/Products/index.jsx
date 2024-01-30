@@ -17,7 +17,8 @@ const Products = () => {
   const [cart, setCart] = useState([]);
   const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue,cartdata ,UidData} = useContext(UserContext);
-
+  const [iteamdata ,setiteamdata] = useState()
+  
   var Value = '';
 
   useEffect(() => {
@@ -35,22 +36,21 @@ const Products = () => {
       handleAddtoCart()
     } 
      
-  console.log(Value,'BHNJMK,L.;/')
+  // console.log(Value,'BHNJMK,L.;/')
   }, [cart, setCookie]);
 
 
-  // const habnle = () => {
-  //   console.log('ghnm,.',cart)
-
-  // }
-
   const handleAddtoCart = async () => {
-
+    // console.log(iteamdata,12222222222222)
+    
     try {
-      const response = await axios.post('https://d002-171-61-11-131.ngrok-free.app/cart', cart);
-      console.log('Add to cart is Successfull', response.data);
+    const response = await axios.post('https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/cart', iteamdata);
+    // console.log('Add to cart is Successfull', response.data);
+//     if(response.data.msg == 'success'){
+// handleClick()
+//     }
     } catch (error) {
-      console.error('Add to cart is not working', error);
+    console.error('Add to cart is not working', error);
     }
   };
 
@@ -76,13 +76,11 @@ const Products = () => {
         });
         return;
       }
-      // #820928
-      // #f5f58b
-      // #df5734
-      // #424a6
-      // 9eadab
+
 
       setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, uID:UidData}]);
+      const itemdatra =  { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, uID:UidData}
+      setiteamdata(itemdatra)
 
       toast.success("Item is added to your cart", {
         position: "top-center",
@@ -94,12 +92,8 @@ const Products = () => {
         progress: undefined,
         theme: "light",
       });
-      
 
     };
-
-  
-
   const handleChange = (item, d) => {
 
     let ind = -1;
