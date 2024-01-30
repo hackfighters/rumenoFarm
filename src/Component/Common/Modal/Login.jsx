@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {useEffect, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
@@ -13,7 +13,7 @@ const Login = ({
   closeModal,
   openRegistrationModal,
   OpenSendOtpModal,
-  UidData,
+  handleAddtoCartApi,
 }) => {
   const { t } = useTranslation();
   const { setLoggedInUser, setUidData } = useContext(UserContext);
@@ -31,103 +31,31 @@ const Login = ({
     reset,
     formState: { errors },
   } = useForm();
-  // const handleLogin = async (data) => {
-  //   // Use the values from the form data
-  //   const { username, password } = data;
-
-  //   // Perform API login request
-  //   const response = await axios.post(
-  //     "https://d002-171-61-11-131.ngrok-free.app/rumeno_login",data,
-
-  //     console.log(response,'gjfhfjfhfjjfjjkfjf')
-  //   );
-
-  // if (response.status === 200) {
-  //   const data = await response.data;
-  //   const firstTwoChars = username.substring(0, 2);
-  //   setLoggedInUser(firstTwoChars);
-  //   Cookies.set("loggedInUser", firstTwoChars);
-  //   console.log(response, 'firstTwoChars');
-  //   console.log(data,'rtyhjkl');
-  //   console.log('fghjk',firstTwoChars)
-
-  //   toast.success("Login Successful", {
-  //     position: "top-center",
-  //     autoClose: 2000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "light",
-  //   });
-
-  //   closeModal(); // Close the login modal
-  // } else {
-  //   console.error("Login failed");
-  //   toast.warn("Login Failed", {
-  //     position: "top-center",
-  //     autoClose: 2000,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "light",
-  //   });
-  // }
-  // };
-
-  // const [formData, setFormData] = useState({
-  //   username: "demo7",
-  //   password: "demo1234567",
-  // });
-
-  // console.log(formData,'dfghjkl.;/')
-
-  // ------------
-  // const previouscartdata = async () => {
-  //   try {
-  //     const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
-  //     let Prevcartdata = response.data
-  //     console.log(Prevcartdata, 'safsgsfgsgs')
-  //   } catch (error) {
-  //     console.log("error")
-  //   }
-
-  // };
-
-  // const handleInputChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-  // handleInputChange()
 
   const onSubmit = async (data) => {
     // e.preventDefault(e);
 
     try {
       const response = await axios.post(
-        "https://d002-171-61-11-131.ngrok-free.app/rumeno_login",
+        'https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/rumeno_login',
         data
       );
       // Handle the login success, e.g., store token in state or localStorage
-      console.log("Login successful:", response.data);
-      const firstTwoChars = response.data.userName;
-      const userNameWords = firstTwoChars.split(" ");
-      const firstWord = userNameWords[0];
-      const getUidata = response.data.uID;
-      // const iddata = response.data
-      setUidData(getUidata);
-      // console.log(getUidata,)
-
-      console.log(getUidata, "sdfghjkl;");
-      setLoggedInUser(firstWord);
-      Cookies.set("loggedInUser", firstWord);
+      // console.log("Login successful:", response.data);
       const datastatus = response.data.msg;
+
       if (datastatus === "Success") {
+        handleAddtoCartApi();
+        const firstTwoChars = response.data.userName;
+        const userNameWords = firstTwoChars.split(" ");
+        const firstWord = userNameWords[0];
+        const getUidata = response.data.uID;
+        // const iddata = response.data
+        setUidData(getUidata);
+        // console.log(getUidata,)
+        // console.log(getUidata, "sdfghjkl;");
+        setLoggedInUser(firstWord);
+        Cookies.set("loggedInUser", firstWord);
         toast.success("Login Successful", {
           position: "top-center",
           autoClose: 2000,
@@ -139,7 +67,7 @@ const Login = ({
           theme: "light",
         });
         closeModal(); // Close the login modal
-        reset()
+        reset();
       } else {
         toast.error(datastatus, {
           position: "top-center",

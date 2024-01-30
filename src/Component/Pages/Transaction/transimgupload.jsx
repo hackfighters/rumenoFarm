@@ -1,205 +1,210 @@
-import React, { useState, useRef } from "react";
-// import "../../../assets/test.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
+// import React, { useState, useRef } from "react";
+// // import "../../../assets/test.css";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faImage } from "@fortawesome/free-solid-svg-icons";
 
-const TransImgUpload = () => {
-//   const [isDropZoneOver, setIsDropZoneOver] = useState(false);
-  const [loadingTextVisible, setLoadingTextVisible] = useState(false);
-  const [previewImageVisible, setPreviewImageVisible] = useState(false);
-  const [uploadAreaOpen, setUploadAreaOpen] = useState(false);
-  const [fileDetailsOpen, setFileDetailsOpen] = useState(false);
-  const [uploadedFileOpen, setUploadedFileOpen] = useState(false);
-  const [uploadedFileInfoActive, setUploadedFileInfoActive] = useState(false);
-  const [uploadedFileName, setUploadedFileName] = useState("");
-  const [uploadedFileType, setUploadedFileType] = useState("");
-  const [uploadedFileCounter, setUploadedFileCounter] = useState(0);
+// const TransImgUpload = () => {
+// //   const [isDropZoneOver, setIsDropZoneOver] = useState(false);
+//   const [loadingTextVisible, setLoadingTextVisible] = useState(false);
+//   const [previewImageVisible, setPreviewImageVisible] = useState(false);
+//   const [uploadAreaOpen, setUploadAreaOpen] = useState(false);
+//   const [fileDetailsOpen, setFileDetailsOpen] = useState(false);
+//   const [uploadedFileOpen, setUploadedFileOpen] = useState(false);
+//   const [uploadedFileInfoActive, setUploadedFileInfoActive] = useState(false);
+//   const [uploadedFileName, setUploadedFileName] = useState("");
+//   const [uploadedFileType, setUploadedFileType] = useState("");
+//   const [uploadedFileCounter, setUploadedFileCounter] = useState(0);
+//   const [image, setImage] = useState(null)
 
-  const dropZoneRef = useRef(null);
-  const fileInputRef = useRef(null);
-  const previewImageRef = useRef(null);
+//   console.log(image,'nknjbkjbwkjdbljbd')
 
-  const imagesTypes = ["jpeg", "png", "svg", "gif"];
+//   const dropZoneRef = useRef(null);
+//   const fileInputRef = useRef(null);
+//   const previewImageRef = useRef(null);
 
-  const handleDragOver = (event) => {
-    event.preventDefault();
-    // setIsDropZoneOver(true);
-  };
+//   const imagesTypes = ["jpeg", "png", "svg", "gif"];
 
-  const handleDragLeave = () => {
-    // setIsDropZoneOver(false);
-  };
+//   const handleDragOver = (event) => {
+//     event.preventDefault();
+//     // setIsDropZoneOver(true);
+//   };
 
-  const handleDrop = (event) => {
-    event.preventDefault();
-    // setIsDropZoneOver(false);
+//   const handleDragLeave = () => {
+//     // setIsDropZoneOver(false);
+//   };
 
-    const file = event.dataTransfer.files[0];
-    uploadFile(file);
-    console.log(uploadFile)
-  };
+//   const handleDrop = (event) => {
+//     event.preventDefault();
+//     // setIsDropZoneOver(false);
 
-  const handleClick = () => {
-    fileInputRef.current.click();
-  };
+//     const file = event.dataTransfer.files[0];
+//     uploadFile(file);
+//     console.log(uploadFile)
+//   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    uploadFile(file);
-  };
+//   const handleClick = () => {
+//     fileInputRef.current.click();
+//   };
 
-  const uploadFile = (file) => {
-    const fileType = file.type;
-    const fileSize = file.size;
+//   const handleFileChange = (event) => {
+//     const file = event.target.files[0];
+//     uploadFile(file);
+//     setImage(file)
+//     console.log(file,'fasknlasnl')
+//   };
 
-    if (fileValidate(fileType, fileSize)) {
-      dropZoneRef.current.classList.add("drop-zoon--Uploaded");
-      setLoadingTextVisible(true);
-      setPreviewImageVisible(false);
-      setUploadedFileOpen(false);
-      setUploadedFileInfoActive(false);
+//   const uploadFile = (file) => {
+//     const fileType = file.type;
+//     const fileSize = file.size;
 
-      const fileReader = new FileReader();
+//     if (fileValidate(fileType, fileSize)) {
+//       dropZoneRef.current.classList.add("drop-zoon--Uploaded");
+//       setLoadingTextVisible(true);
+//       setPreviewImageVisible(false);
+//       setUploadedFileOpen(false);
+//       setUploadedFileInfoActive(false);
 
-      fileReader.onload = function () {
-        setTimeout(() => {
-          setUploadAreaOpen(true);
-          setLoadingTextVisible(false);
-          setPreviewImageVisible(true);
-          setFileDetailsOpen(true);
-          setUploadedFileOpen(true);
-          setUploadedFileInfoActive(true);
-        }, 500);
-        console.log("Uploaded Image:", fileReader.result);
+//       const fileReader = new FileReader();
 
-        const UploadedImage = fileReader.result
-        console.log(UploadedImage)
+//       fileReader.onload = function () {
+//         setTimeout(() => {
+//           setUploadAreaOpen(true);
+//           setLoadingTextVisible(false);
+//           setPreviewImageVisible(true);
+//           setFileDetailsOpen(true);
+//           setUploadedFileOpen(true);
+//           setUploadedFileInfoActive(true);
+//         }, 500);
+//         console.log("Uploaded Image:", fileReader.result);
 
-        previewImageRef.current.setAttribute("src", fileReader.result);
-        setUploadedFileName(file.name);
+//         const UploadedImage = fileReader.result
+//         console.log(UploadedImage)
 
-        const fileTypeForState = imagesTypes.includes(fileType)
-          ? fileType
-          : "image";
-        setUploadedFileType(fileTypeForState);
-        progressMove();
-      };
+//         previewImageRef.current.setAttribute("src", fileReader.result);
+//         setUploadedFileName(file.name);
 
-      fileReader.readAsDataURL(file);
-    }
-  };
+//         const fileTypeForState = imagesTypes.includes(fileType)
+//           ? fileType
+//           : "image";
+//         setUploadedFileType(fileTypeForState);
+//         progressMove();
+//       };
 
-  const progressMove = () => {
-    let counter = 0;
+//       fileReader.readAsDataURL(file);
+//     }
+//   };
 
-    setTimeout(() => {
-      const counterIncrease = setInterval(() => {
-        if (counter === 100) {
-          clearInterval(counterIncrease);
-        } else {
-          counter += 10;
-          setUploadedFileCounter(counter);
-        }
-      }, 100);
-    }, 600);
-  };
+//   const progressMove = () => {
+//     let counter = 0;
 
-  const fileValidate = (fileType, fileSize) => {
-    const isImage = imagesTypes.filter(
-      (type) => fileType.indexOf(`image/${type}`) !== -1
-    );
+//     setTimeout(() => {
+//       const counterIncrease = setInterval(() => {
+//         if (counter === 100) {
+//           clearInterval(counterIncrease);
+//         } else {
+//           counter += 10;
+//           setUploadedFileCounter(counter);
+//         }
+//       }, 100);
+//     }, 600);
+//   };
 
-    if (isImage.length !== 0) {
-      if (fileSize <= 2000000) {
-        return true;
-      } else {
-        alert("Please Your File Should be 2 Megabytes or Less");
-        return false;
-      }
-    } else {
-      alert("Please make sure to upload An Image File Type");
-      return false;
-    }
-  };
+//   const fileValidate = (fileType, fileSize) => {
+//     const isImage = imagesTypes.filter(
+//       (type) => fileType.indexOf(`image/${type}`) !== -1
+//     );
 
-  return (
-    <div
-      id="uploadArea"
-      className={`upload-area ${uploadAreaOpen ? "upload-area--open" : ""}`}
-    >
-      <h6 className="my-3 text-secondary">Upload Transaction Screenshot</h6>
-      <div
-        className="upload-area__drop-zoon drop-zoon"
-        ref={dropZoneRef}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        onClick={handleClick}
-      >
-        <span className="drop-zoon__icon">
-          <FontAwesomeIcon icon={faImage} />
-        </span>
-        <p className="drop-zoon__paragraph">
-          Drop your Payment screenshot here
-        </p>
-        <span
-          id="loadingText"
-          className="drop-zoon__loading-text"
-          style={{ display: loadingTextVisible ? "block" : "none" }}
-        >
-          Please Wait
-        </span>
-        <img
-          src=""
-          alt="loading"
-          id="previewImage"
-          className="drop-zoon__preview-image"
-          ref={previewImageRef}
-          style={{ display: previewImageVisible ? "block" : "none" }}
-          draggable="false"
-        />
-        <input
-          type="file"
-          id="fileInput"
-          className="drop-zoon__file-input"
-          accept="image/*"
-          onChange={handleFileChange}
-          ref={fileInputRef}
-        />
-      </div>
+//     if (isImage.length !== 0) {
+//       if (fileSize <= 2000000) {
+//         return true;
+//       } else {
+//         alert("Please Your File Should be 2 Megabytes or Less");
+//         return false;
+//       }
+//     } else {
+//       alert("Please make sure to upload An Image File Type");
+//       return false;
+//     }
+//   };
 
-      <div
-        id="fileDetails"
-        className={`upload-area__file-details file-details ${
-          fileDetailsOpen ? "file-details--open" : ""
-        }`}
-      >
-        <h5 className="my-3">Uploaded File</h5>
+//   return (
+//     <div
+//       id="uploadArea"
+//       className={`upload-area ${uploadAreaOpen ? "upload-area--open" : ""}`}
+//     >
+//       <h6 className="my-3 text-secondary">Upload Transaction Screenshot</h6>
+//       <div
+//         className="upload-area__drop-zoon drop-zoon"
+//         ref={dropZoneRef}
+//         onDragOver={handleDragOver}
+//         onDragLeave={handleDragLeave}
+//         onDrop={handleDrop}
+//         onClick={handleClick}
+//       >
+//         <span className="drop-zoon__icon">
+//           <FontAwesomeIcon icon={faImage} />
+//         </span>
+//         <p className="drop-zoon__paragraph">
+//           Drop your Payment screenshot here
+//         </p>
+//         <span
+//           id="loadingText"
+//           className="drop-zoon__loading-text"
+//           style={{ display: loadingTextVisible ? "block" : "none" }}
+//         >
+//           Please Wait
+//         </span>
+//         <img
+//           src=""
+//           alt="loading"
+//           id="previewImage"
+//           className="drop-zoon__preview-image"
+//           ref={previewImageRef}
+//           style={{ display: previewImageVisible ? "block" : "none" }}
+//           draggable="false"
+//         />
+//         <input
+//           type="file"
+//           id="fileInput"
+//           className="drop-zoon__file-input"
+//           accept="image/*"
+//           onChange={handleFileChange}
+//           ref={fileInputRef}
+//         />
+//       </div>
 
-        <div
-          id="uploadedFile"
-          className={`uploaded-file ${
-            uploadedFileOpen ? "uploaded-file--open" : ""
-          }`}
-        >
-          <div className="uploaded-file__icon-container">
-            <i className="bx bxs-file-blank uploaded-file__icon"></i>
-            <span className="uploaded-file__icon-text">{uploadedFileType}</span>
-          </div>
+//       <div
+//         id="fileDetails"
+//         className={`upload-area__file-details file-details ${
+//           fileDetailsOpen ? "file-details--open" : ""
+//         }`}
+//       >
+//         <h5 className="my-3">Uploaded File</h5>
 
-          <div
-            id="uploadedFileInfo"
-            className={`uploaded-file__info ${
-              uploadedFileInfoActive ? "uploaded-file__info--active" : ""
-            }`}
-          >
-            <span className="uploaded-file__name">{uploadedFileName}</span>
-            <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+//         <div
+//           id="uploadedFile"
+//           className={`uploaded-file ${
+//             uploadedFileOpen ? "uploaded-file--open" : ""
+//           }`}
+//         >
+//           <div className="uploaded-file__icon-container">
+//             <i className="bx bxs-file-blank uploaded-file__icon"></i>
+//             <span className="uploaded-file__icon-text">{uploadedFileType}</span>
+//           </div>
 
-export default TransImgUpload;
+//           <div
+//             id="uploadedFileInfo"
+//             className={`uploaded-file__info ${
+//               uploadedFileInfoActive ? "uploaded-file__info--active" : ""
+//             }`}
+//           >
+//             <span className="uploaded-file__name">{uploadedFileName}</span>
+//             <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default TransImgUpload;

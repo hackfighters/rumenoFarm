@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { UserContext } from "../../../Component/Common/Modal/logusecont";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 // Third party Fortawesome
 import {
@@ -11,55 +13,198 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Common Component
 import Footer from "../../Common/Footer";
-import Navbar from "../../Common/Navbar/index";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import scanner from "../../../assets/img/scanner.png";
 import { Form } from "react-bootstrap";
 import axios from "axios";
-import TransImgUpload from "./transimgupload";
+import { toast } from "react-toastify";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
 const Transaction = () => {
-  const [values, setValues] = useState({
-    name: "",
-    number: "",
-    transactionID: "",
-    amount: "",
-  });
+  const { amountData } = useContext(UserContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (transactionDetails) => {
-    window.location.href = "/transdetail";
+  // Upload Start
 
-    // Handle any errors in the form data
-    if (errors) {
-      console.error(errors);
-      return;
+  const [loadingTextVisible, setLoadingTextVisible] = useState(false);
+  const [previewImageVisible, setPreviewImageVisible] = useState(false);
+  const [uploadAreaOpen, setUploadAreaOpen] = useState(false);
+  const [fileDetailsOpen, setFileDetailsOpen] = useState(false);
+  const [uploadedFileOpen, setUploadedFileOpen] = useState(false);
+  const [uploadedFileInfoActive, setUploadedFileInfoActive] = useState(false);
+  const [uploadedFileName, setUploadedFileName] = useState("");
+  const [uploadedFileType, setUploadedFileType] = useState("");
+  const [uploadedFileCounter, setUploadedFileCounter] = useState(0);
+  const [image, setImage] = useState("");
+
+
+  const dropZoneRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const previewImageRef = useRef(null);
+
+  const imagesTypes = ["jpeg", "png", "svg", "gif"];
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+    // setIsDropZoneOver(true);
+  };
+
+  const handleDragLeave = () => {
+    // setIsDropZoneOver(false);
+  };
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    // setIsDropZoneOver(false);
+
+    const file = event.dataTransfer.files[0];
+    uploadFile(file);
+    // console.log(uploadFile);
+  };
+
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    uploadFile(file);
+    setImage(file);
+  };
+
+  const uploadFile = (file) => {
+    const fileType = file.type;
+    const fileSize = file.size;
+
+    if (fileValidate(fileType, fileSize)) {
+      dropZoneRef.current.classList.add("drop-zoon--Uploaded");
+      setLoadingTextVisible(true);
+      setPreviewImageVisible(false);
+      setUploadedFileOpen(false);
+      setUploadedFileInfoActive(false);
+
+      const fileReader = new FileReader();
+
+      fileReader.onload = function () {
+        setTimeout(() => {
+          setUploadAreaOpen(true);
+          setLoadingTextVisible(false);
+          setPreviewImageVisible(true);
+          setFileDetailsOpen(true);
+          setUploadedFileOpen(true);
+          setUploadedFileInfoActive(true);
+        }, 500);
+
+        // const UploadedImage = fileReader.result;
+        // console.log(UploadedImage);
+
+        previewImageRef.current.setAttribute("src", fileReader.result);
+        setUploadedFileName(file.name);
+
+        const fileTypeForState = imagesTypes.includes(fileType)
+          ? fileType
+          : "image";
+        setUploadedFileType(fileTypeForState);
+        progressMove();
+      };
+
+      fileReader.readAsDataURL(file);
     }
+  };
 
-    // Send form data to the API endpoint
-    axios
-      .post("http://127.0.0.1:5000/api/post_data", transactionDetails)
-      .then((response) => {
-        console.log(
-          "Transaction details submitted successfully:",
-          response.data
-        );
-        setValues({
-          name: "",
-          number: "",
-          transactionID: "",
-          amount: "",
+  const progressMove = () => {
+    let counter = 0;
+
+    setTimeout(() => {
+      const counterIncrease = setInterval(() => {
+        if (counter === 100) {
+          clearInterval(counterIncrease);
+        } else {
+          counter += 10;
+          setUploadedFileCounter(counter);
+        }
+      }, 100);
+    }, 600);
+  };
+
+  const fileValidate = (fileType, fileSize) => {
+    const isImage = imagesTypes.filter(
+      (type) => fileType.indexOf(`image/${type}`) !== -1
+    );
+
+    if (isImage.length !== 0) {
+      if (fileSize <= 2000000) {
+        return true;
+      } else {
+        toast.warn("Please Your File Should be 2 Megabytes or Less", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
         });
-      })
-      .catch((error) => {
-        console.error(error);
+        return false;
+      }
+    } else {
+      toast.warn("Please make sure to upload An Image File Type", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
       });
+      return false;
+    }
+  };
+
+  // upload End
+
+  const onSubmit = (data) => {
+    const formData = new FormData();
+    formData.append("file", image);
+
+    const travdatat = {
+      title: data.name,
+      description: data.mobileNumber,
+      amount: data.amount,
+      transactionID: data.transactionID,
+    };
+    axios
+      .post(
+        "https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/transaction_details",
+        formData
+      )
+      .then((res) => {
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        // console.log(err, "err");
+      });
+
+
+      axios
+      .post(
+        "https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/transaction_details",
+        travdatat
+      )
+      .then((res) => {
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        // console.log(err, "err");
+      });
+
   };
 
   return (
@@ -117,26 +262,121 @@ const Transaction = () => {
                         </span>
                       )}
                       <input
-                        type="text"
+                        type="number"
                         className="form-control form-group py-3"
-                        placeholder="Amount"
+                        // placeholder="Amount"
+                        value={amountData}
                         {...register("amount", {
                           required: true,
-                          pattern: /^[0-9]{10}$/, // Regex pattern for only numbers
+                          // pattern: /^[0-9]{10}$/, // Regex pattern for only numbers
                         })}
                       />
-                      <TransImgUpload/>
                       {errors.amount && (
                         <span className="text-danger">
-                          {
-                            errors.amount.type === "required"
-                              ? "Please enter your mobile number"
-                              : "Please enter a valid mobile number"
-                          }
+                          {errors.amount.type === "required"
+                            ? "Please enter your mobile number"
+                            : "Please enter a valid mobile number"}
                         </span>
                       )}
+                      {/* <input multiple onChange={(e) => setImage(e.target.files[0])} type="file" 
+                      {...register("imges", {
+                        required: true,
+                      })}/> */}
+
+                      {/* <TransImgUpload/> */}
+                      <div
+                        id="uploadArea"
+                        className={`upload-area ${
+                          uploadAreaOpen ? "upload-area--open" : ""
+                        }`}
+                      >
+                        <h6 className="my-3 text-secondary">
+                          Upload Transaction Screenshot
+                        </h6>
+                        <div
+                          className="upload-area__drop-zoon drop-zoon"
+                          ref={dropZoneRef}
+                          onDragOver={handleDragOver}
+                          onDragLeave={handleDragLeave}
+                          onDrop={handleDrop}
+                          onClick={handleClick}
+                        >
+                          <span className="drop-zoon__icon">
+                            <FontAwesomeIcon icon={faImage} />
+                          </span>
+                          <p className="drop-zoon__paragraph">
+                            Drop your Payment screenshot here
+                          </p>
+                          <span
+                            id="loadingText"
+                            className="drop-zoon__loading-text"
+                            style={{
+                              display: loadingTextVisible ? "block" : "none",
+                            }}
+                          >
+                            Please Wait
+                          </span>
+                          <img
+                            src=""
+                            alt="loading"
+                            id="previewImage"
+                            className="drop-zoon__preview-image"
+                            ref={previewImageRef}
+                            style={{
+                              display: previewImageVisible ? "block" : "none",
+                            }}
+                            draggable="false"
+                          />
+                          <input
+                            type="file"
+                            id="fileInput"
+                            className="drop-zoon__file-input"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            ref={fileInputRef}
+                          />
+                        </div>
+
+                        <div
+                          id="fileDetails"
+                          className={`upload-area__file-details file-details ${
+                            fileDetailsOpen ? "file-details--open" : ""
+                          }`}
+                        >
+                          <h5 className="my-3">Uploaded File</h5>
+
+                          <div
+                            id="uploadedFile"
+                            className={`uploaded-file ${
+                              uploadedFileOpen ? "uploaded-file--open" : ""
+                            }`}
+                          >
+                            <div className="uploaded-file__icon-container">
+                              <i className="bx bxs-file-blank uploaded-file__icon"></i>
+                              <span className="uploaded-file__icon-text">
+                                {uploadedFileType}
+                              </span>
+                            </div>
+
+                            <div
+                              id="uploadedFileInfo"
+                              className={`uploaded-file__info ${
+                                uploadedFileInfoActive
+                                  ? "uploaded-file__info--active"
+                                  : ""
+                              }`}
+                            >
+                              <span className="uploaded-file__name">
+                                {uploadedFileName}
+                              </span>
+                              <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <button
                         className="contact_form_submit mt-5"
+                        type="submit"
                         onClick={handleSubmit(onSubmit)}
                       >
                         Submit

@@ -165,7 +165,7 @@ const ContactUs = () => {
     try {
       // Make a POST request to your API endpoint
       const response = await axios.post("http://127.0.0.1:5000/api/post_data", data);
-      console.log(response.data); // Handle the response as needed
+      // console.log(response.data); // Handle the response as needed
     } catch (error) {
       console.error("Error submitting contact details:", error);
 
