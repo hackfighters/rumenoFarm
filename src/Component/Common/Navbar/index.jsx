@@ -52,7 +52,7 @@ const Navbar = ({ size, carts, setCarts, handleChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
-
+  
 
 
   var totalAmount = 0;
@@ -102,10 +102,10 @@ const handleAddtoCartApi = async () => {
 
   // console.log('Hello')
   // try {
-  //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
-  //   console.log('Add to cart is Successfull', response.data);
-  // } catch (error) {
-  //   console.error('Add to cart is not working', error);
+    //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
+    //   console.log('Add to cart is Successfull', response.data);
+    // } catch (error) {
+    //   console.error('Add to cart is not working', error);
   // }
 }
 
