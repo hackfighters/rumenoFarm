@@ -45,16 +45,13 @@ const Login = ({
       const datastatus = response.data.msg;
 
       if (datastatus === "Success") {
-        handleAddtoCartApi();
         const firstTwoChars = response.data.userName;
         const userNameWords = firstTwoChars.split(" ");
         const firstWord = userNameWords[0];
         const getUidata = response.data.uID;
-        // const iddata = response.data
         setUidData(getUidata);
-        // console.log(getUidata,)
-        // console.log(getUidata, "sdfghjkl;");
         setLoggedInUser(firstWord);
+        handleAddtoCartApi();
         Cookies.set("loggedInUser", firstWord);
         toast.success("Login Successful", {
           position: "top-center",

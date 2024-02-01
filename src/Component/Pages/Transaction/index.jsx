@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 // {/* Rumeno */}
 // {/* Veterinary */}
 const Transaction = () => {
-  const { amountData } = useContext(UserContext);
+  const { amountData,UidData } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -173,12 +173,13 @@ const Transaction = () => {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("file", image);
-
+    
     const travdatat = {
       title: data.name,
-      description: data.mobileNumber,
+      mobileNumber: data.mobileNumber,
       amount: data.amount,
       transactionID: data.transactionID,
+      uID:UidData
     };
     axios
       .post(
@@ -190,7 +191,7 @@ const Transaction = () => {
       })
       .catch((err) => {
         // console.log(err, "err");
-      });
+          });
 
 
       axios
