@@ -156,9 +156,12 @@ import MapComp from "../../Common/Map/map";
 import Navbar from "../../Common/Navbar/index";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../../Common/Modal/logusecont";
 
 const ContactUs = () => {
   const { t } = useTranslation();
+  const {cart} = useContext(UserContext);
   const { handleSubmit, register, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
@@ -176,10 +179,10 @@ const ContactUs = () => {
   return (
     <>
       <div className="desk-nav">
-        <Navbar />
+        <Navbar  size={cart.length}/>
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar />
+        <ResponsiveNavbar  size={cart.length}/>
       </div>
       <section className="contact-sect container-fluid">
         <div className="row justify-content-center py-5">

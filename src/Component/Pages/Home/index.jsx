@@ -20,9 +20,14 @@ import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 import ReactWhatsapp from "react-whatsapp";
+import { useContext } from "react";
+import { UserContext } from "../../Common/Modal/logusecont";
+
 
 const Home = () => {
   const { t } = useTranslation();
+  const {cart} = useContext(UserContext);
+
   return (
     <>
       <section className="container-fluid overflow-hidden p-0">
@@ -35,7 +40,7 @@ const Home = () => {
         {/* Veterinary docter kese bane */}
         {/* Goat farming training */}
         <div className="home-backgroundColor overflow-hidden">
-          <Navbar />
+          <Navbar size={cart.length}/>
           <div className="container header-sect pt-5">
             {/* Veterinary docter online */}
             {/* Veterinary docter cow / rabbit / new me */}
