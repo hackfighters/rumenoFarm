@@ -14,9 +14,8 @@ import { UserContext } from "../../Common/Modal/logusecont";
 import axios from "axios";
 
 const Products = () => {
-  const [cart, setCart] = useState([]);
   const [cookies, setCookie] = useCookies(["cart"]);
-  const { setSizevalue,cartdata ,UidData} = useContext(UserContext);
+  const { setSizevalue,cartdata ,UidData,cart,setCart} = useContext(UserContext);
   const [iteamdata ,setiteamdata] = useState()
   
   var Value = '';

@@ -37,7 +37,8 @@ const Login = ({
 
     try {
       const response = await axios.post(
-        'https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/rumeno_login',
+        // 'https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/rumeno_login',
+        'http://localhost:3003/login',
         data
       );
       // Handle the login success, e.g., store token in state or localStorage
@@ -51,7 +52,7 @@ const Login = ({
         const getUidata = response.data.uID;
         setUidData(getUidata);
         setLoggedInUser(firstWord);
-        handleAddtoCartApi();
+        handleAddtoCartApi(getUidata);
         Cookies.set("loggedInUser", firstWord);
         toast.success("Login Successful", {
           position: "top-center",

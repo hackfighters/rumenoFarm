@@ -34,6 +34,8 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
+import datatest from "./test.json";
+import e from "cors";
 {
   /* Rumeno farm  */
 }
@@ -43,30 +45,37 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 {
   /* Veterinary */
 }
-const Navbar = ({ size, carts, setCarts, handleChange }) => {
+const Navbar = ({ size, handleChange }) => {
   const { t } = useTranslation();
-  const { loggedInUser, setCartdata, UidData,setamountData} = useContext(UserContext);
+  const {
+    loggedInUser,
+    setCartdata,
+    UidData,
+    setamountData,
+    cart,
+    setCart,
+    setLoggedInUser,
+  } = useContext(UserContext);
+
   const [lgShow, setLgShow] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
-  
-
 
   var totalAmount = 0;
   var totalPrice = 0;
 
   useEffect(() => {
-    setCartdata(carts);
+    setCartdata(cart);
     // console.log(carts,12333333333);
   }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
   };
-  setCartdata(carts);
+  setCartdata(cart);
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
     setSelectedOption(e.target.value);
@@ -98,25 +107,30 @@ const Navbar = ({ size, carts, setCarts, handleChange }) => {
     setShowOpt(false);
   };
 
-const handleAddtoCartApi = async () => {
+  const handleAddtoCartApi = async (getUidata) => {
+    console.log(datatest, 3455);
 
-  // console.log('Hello')
-  // try {
+    setCart(datatest);
+
+    console.log("Hello");
+    // try {
     //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
     //   console.log('Add to cart is Successfull', response.data);
     // } catch (error) {
     //   console.error('Add to cart is not working', error);
-  // }
-}
-
+    // }
+  };
 
   const handleRemoves = async (id) => {
-    const RemoveCartData = {id:id,uID:UidData}
+    const RemoveCartData = { id: id, uID: UidData };
     // console.log(RemoveCartData,'ghgjhjjjj')
     try {
-      const response = await axios.post('https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/deleteCart', RemoveCartData);
-      console.log('Add to cart', response.data);
-      if (response.data.msg === 'success') {
+      const response = await axios.post(
+        "https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/deleteCart",
+        RemoveCartData
+      );
+      console.log("Add to cart", response.data);
+      if (response.data.msg === "success") {
         toast.success("Add to cart is Remove Successfull", {
           position: "top-center",
           autoClose: 2000,
@@ -127,9 +141,8 @@ const handleAddtoCartApi = async () => {
           progress: undefined,
           theme: "light",
         });
-        const arr = carts.filter((item) => item.id !== id);
-        setCarts(arr);
-        
+        const arr = cart.filter((item) => item.id !== id);
+        setCart(arr);
       } else {
         toast.error("Add to cart is Remove Failed", {
           position: "top-center",
@@ -142,21 +155,18 @@ const handleAddtoCartApi = async () => {
           theme: "light",
         });
       }
-
     } catch (error) {
-      console.error('Add to cart is not Remove', error);
+      console.error("Add to cart is not Remove", error);
     }
     // handleRemoveCart(id)
-
-    
   };
 
-  const { setLoggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("loggedInUser");
     Cookies.remove("cart");
     setLoggedInUser(null);
+    setCart(0);
     navigate("/home");
   };
 
@@ -500,10 +510,10 @@ const handleAddtoCartApi = async () => {
           size === 9 ||
           size === 10 ? (
             <>
-              {carts?.map((item) => {
+              {cart?.map((item) => {
                 totalAmount += item.amount * item.price;
-               const  datat = totalAmount
-                setamountData(datat)
+                const datat = totalAmount;
+                setamountData(datat);
                 totalPrice = item.price * item.amount;
 
                 return (

@@ -13,19 +13,22 @@ import FeedBackForm from "../../Common/Gooogleform/googleform";
 // Image
 import srvcimg1 from "../../../assets/img/service-img/srvc-img1.jpg";
 import srvcimg3 from "../../../assets/img/service-img/srvc-img3.jpg";
+import { useContext } from "react";
+import { UserContext } from "../../Common/Modal/logusecont";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
 const Services = () => {
   const { t } = useTranslation();
+  const {cart} = useContext(UserContext);
 
   return (
     <>
      <div className="desk-nav">
-    <Navbar/>
+    <Navbar  size={cart.length}/>
     </div>
     <div className="mob-nav">
-<ResponsiveNavbar/>
+<ResponsiveNavbar size={cart.length}/>
     </div>
       <section className="container-fluid service-bg overflow-hidden">
         <div

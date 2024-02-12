@@ -24,6 +24,8 @@ import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
 import { UserContext } from "../Modal/logusecont";
 import Cookies from "js-cookie";
+import datatest from './test.json'
+
 // {
 //   /* Rumeno farm  */
 // }
@@ -33,9 +35,9 @@ import Cookies from "js-cookie";
 // {
 //   /* Veterinary */
 // }
-const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
+const ResponsiveNavbar = ({ size, handleChange }) => {
   const { t } = useTranslation();
-  const { loggedInUser } = useContext(UserContext);
+  const { loggedInUser,cart,setCart } = useContext(UserContext);
   // State
   // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -44,6 +46,7 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+
   var totalPrice = 0;
 
   const toggleSelect = () => {
@@ -80,6 +83,20 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
   const CloseSendOtp = () => {
     setShowOpt(false);
   };
+
+  const handleAddtoCartApi = async (getUidata) => {
+    console.log(datatest,3455)
+  
+    setCart(datatest)
+  
+    console.log('Hello')
+    // try {
+      //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
+      //   console.log('Add to cart is Successfull', response.data);
+      // } catch (error) {
+      //   console.error('Add to cart is not working', error);
+    // }
+  }
 
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
@@ -244,6 +261,7 @@ const ResponsiveNavbar = ({ size, cart, setCart, handleChange }) => {
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
                     OpenSendOtpModal={OpenSendOtp}
+                    handleAddtoCartApi={handleAddtoCartApi}
                   />
                   <Registration
                     showModal={showRegistrationModal}
