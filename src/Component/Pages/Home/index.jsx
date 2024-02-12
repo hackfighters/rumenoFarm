@@ -30,7 +30,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="container-fluid overflow-hidden p-0">
+      <section className="container-fluid overflow-hidden p-0" id="#home">
         {/* Veterinary docter online */}
         {/* Veterinary docter cow / rabbit / new me */}
         {/* Veterinary docter salary */}

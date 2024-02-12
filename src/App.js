@@ -13,8 +13,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./Component/Common/Modal/logusecont";
 import Transaction from "./Component/Pages/Transaction";
 import TransactionDetail from "./Component/Pages/Transaction/transactiondetail";
+import Error from "./Component/Common/404page/index";
+import Feedback from './Component/Common/Navbar/frmaftlog'
+
 const App = () => {
-  const location = useLocation();
+    const location = useLocation();
 
   useEffect(() => {
     AOS.init();
@@ -78,13 +81,15 @@ const App = () => {
       <ToastContainer />
       <UserProvider>
         <Routes>
-          <Route path="/" element={<Lang />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/products" element={<ProductPage />} />
-          <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/transaction" element={<Transaction />} />
-          <Route path="/transdetail" element={<TransactionDetail />} />
+          <Route path="/" Component={Lang} />
+          <Route path="/home" Component={Home} />
+          <Route path="/services" Component={Services} />
+          <Route path="/products" Component={ProductPage} />
+          <Route path="/contactus" Component={ContactUs} />
+          <Route path="/transaction" Component={Transaction} />
+          <Route path="/transdetail" Component={TransactionDetail} />
+          <Route path="/frmaftlog" Component={Feedback}/>
+          <Route path="*" Component={Error} />
         </Routes>
       </UserProvider>
 
