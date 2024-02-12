@@ -15,9 +15,9 @@ import axios from "axios";
 
 const Products = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
-  const { setSizevalue,cartdata ,UidData,cart,setCart} = useContext(UserContext);
-  const [iteamdata ,setiteamdata] = useState()
+  const { setSizevalue,cartdata ,UidData,cart,setCart,setiteamdata,iteamdata} = useContext(UserContext);
   
+  console.log(iteamdata,333333333333)
   var Value = '';
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Products = () => {
     // console.log(iteamdata,12222222222222)
     
     try {
-    const response = await axios.post('https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/cart', iteamdata);
+    const response = await axios.post('https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart', iteamdata);
     // console.log('Add to cart is Successfull', response.data);
 //     if(response.data.msg == 'success'){
 // handleClick()
@@ -52,13 +52,12 @@ const Products = () => {
     console.error('Add to cart is not working', error);
     }
   };
-
-
   const handleClick = (item) => {
+
       let isPresent = false;
       cart.forEach((product) => {
 
-        if (item.id === product.id) {
+        if (item.id === parseInt(product.id)) {
           isPresent = true;
         }
       });
@@ -93,26 +92,16 @@ const Products = () => {
       });
 
     };
-  const handleChange = (item, d) => {
-
-    let ind = -1;
-    cartdata.forEach((data, index) => {
-      if (data.id === item.id) ind = index;
-    });
-    const tempArr = [...cart];
-    tempArr[ind].amount += d;
-    if (tempArr[ind].amount === 0) tempArr[ind].amount = 1;
-    setCart(tempArr);
-  };
+ 
 
   return (
     <>
       <div className="desk-nav">
         <Navbar
           size={cart.length}
-          carts={cart}
-          setCarts={setCart}
-          handleChange={handleChange}
+          // carts={cart}
+          // setCarts={setCart}
+          // handleChange={handleChange}
           // item={item}
           // value={Value}
           // cookies={setCookie}
@@ -121,9 +110,9 @@ const Products = () => {
       <div className="mob-nav">
         <ResponsiveNavbar
           size={cart.length}
-          cart={cart}
-          setCart={setCart}
-          handleChange={handleChange}
+          // cart={cart}
+          // setCart={setCart}
+          // handleChange={handleChange}
         />
       </div>
       <div className="our-product-img">

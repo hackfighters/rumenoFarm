@@ -10,9 +10,11 @@ export const UserProvider = ({ children }) => {
   const [UidData , setUidData] = useState(null)
   const [cartdata, setCartdata] = useState(null)
   const [amountData, setamountData] = useState(null)
+  const [iteamdata ,setiteamdata] = useState()
+
 
   return (
-    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, sizevalue, setSizevalue, setUidData, UidData ,cartdata,setCartdata, amountData,setamountData,cart,setCart}}>
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser, sizevalue, setSizevalue, setUidData, UidData ,cartdata,setCartdata, amountData,setamountData,cart,setCart,iteamdata,setiteamdata}}>
       {children}
     </UserContext.Provider>
   );

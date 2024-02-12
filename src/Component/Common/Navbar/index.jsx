@@ -45,7 +45,7 @@ import e from "cors";
 {
   /* Veterinary */
 }
-const Navbar = ({ size, handleChange }) => {
+const Navbar = ({ size }) => {
   const { t } = useTranslation();
   const {
     loggedInUser,
@@ -55,6 +55,9 @@ const Navbar = ({ size, handleChange }) => {
     cart,
     setCart,
     setLoggedInUser,
+    cartdata,
+    setiteamdata,
+    iteamdata
   } = useContext(UserContext);
 
   const [lgShow, setLgShow] = useState(false);
@@ -108,17 +111,18 @@ const Navbar = ({ size, handleChange }) => {
   };
 
   const handleAddtoCartApi = async (getUidata) => {
-    console.log(datatest, 3455);
-
-    setCart(datatest);
-
     console.log("Hello");
-    // try {
-    //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
-    //   console.log('Add to cart is Successfull', response.data);
-    // } catch (error) {
-    //   console.error('Add to cart is not working', error);
-    // }
+    try {
+      const response = await axios.post(
+        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cartuser",
+        { uID: getUidata }
+      );
+      console.log("Add to cart is Successfull", response.data);
+      const getapicart = response.data.data;
+      setCart(getapicart);
+    } catch (error) {
+      console.error("Add to cart is not working", error);
+    }
   };
 
   const handleRemoves = async (id) => {
@@ -126,7 +130,7 @@ const Navbar = ({ size, handleChange }) => {
     // console.log(RemoveCartData,'ghgjhjjjj')
     try {
       const response = await axios.post(
-        "https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/deleteCart",
+        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/deleteCart",
         RemoveCartData
       );
       console.log("Add to cart", response.data);
@@ -168,6 +172,36 @@ const Navbar = ({ size, handleChange }) => {
     setLoggedInUser(null);
     setCart(0);
     navigate("/home");
+  };
+
+  const handleChange = async (item, d) => {
+
+
+   
+    
+    let ind = -1;
+    cart.forEach((data, index) => {
+      if (data.id === item.id) ind = index;
+    });
+ 
+
+
+    const tempArr = [...cart];
+
+    var latestamount = parseInt(tempArr[ind].amount)
+    latestamount += d;
+    tempArr[ind].amount = latestamount
+    setCart(tempArr)
+    var amountdataupdata = tempArr[ind]
+    console.log(amountdataupdata,7777)
+    // Api ------------
+    try {
+      const response = await axios.post('https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart', amountdataupdata);
+      console.log(iteamdata,4444)
+      console.log('Add to cart is Successfull', response.data);
+      } catch (error) {
+      console.error('Add to cart is not working', error);
+      }
   };
 
   return (
@@ -372,6 +406,18 @@ const Navbar = ({ size, handleChange }) => {
                     />
                     <span className="badge-cart">{size}</span>
                   </Link>
+                </li>
+                <li>
+                  {loggedInUser ? (
+                    <NavLink to="/frmaftlog">
+                    <button
+                      typeof="button"
+                      className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                    >
+                      Feedback
+                    </button>
+                    </NavLink>
+                  ) : null}
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-start">
