@@ -270,6 +270,19 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
                 <li>
+                  {loggedInUser ? (
+                    <NavLink to="/frmaftlog">
+                    <button
+                      typeof="button"
+                      className="text-danger bg-secondary m-0 p-1 rounded-circle"
+                    >
+                      {loggedInUser}
+                      Feedback
+                    </button>
+                    </NavLink>
+                  ) : null}
+                </li>
+                <li>
                     {loggedInUser ? (
                       <button
                         className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
