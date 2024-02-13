@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // Third party i18next
@@ -10,8 +10,39 @@ import Select from "../Common/Select";
 // Image
 import lgimg from "../../assets/img/Logo/logo.jpg";
 const Language = () => {
+  const [prompt, setPrompt] = useState(null);
+
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
+  };
+
+  useEffect (() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setPrompt(e);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    console.log('test')
+
+    return () => {
+      window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      console.log('test')
+    };
+  }, []);
+
+  const addToHome = () => {
+    if (prompt) {
+      prompt.prompt();
+      prompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        setPrompt(null);
+      });
+    }
   };
   return (
     <>
@@ -43,7 +74,7 @@ const Language = () => {
                   <Select onChange={(e) => handleChangen(e)} />
                   <div className="lang-link">
                     <Link to="/home" className="d-flex justify-content-center" >
-                      <button className="btn-grad-bt gradient-custom-2">Submit</button>
+                      <button onClick={addToHome} className="btn-grad-bt gradient-custom-2">Submit</button>
                     </Link>
                   </div>
                 </div>
