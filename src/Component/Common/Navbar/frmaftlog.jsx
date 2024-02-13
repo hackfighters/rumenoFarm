@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
+import { NavLink } from "react-router-dom";
 
 const FrmAftLog = () => {
   const { t } = useTranslation();
@@ -23,9 +24,9 @@ const FrmAftLog = () => {
         <div className="row">
           <div className="col-lg-2">
             <div>
-              <a href="/home" class="link_404">
-                Back
-              </a>
+              <NavLink className="link_404" to="/home">
+                Go to Home
+              </NavLink>
             </div>
           </div>
         </div>

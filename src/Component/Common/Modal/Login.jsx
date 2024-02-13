@@ -37,7 +37,7 @@ const Login = ({
 
     try {
       const response = await axios.post(
-        'https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/rumeno_login',
+        'https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/rumeno_login',
         data
       );
       // Handle the login success, e.g., store token in state or localStorage
@@ -79,7 +79,17 @@ const Login = ({
       }
     } catch (error) {
       // Handle login failure
-      console.error("Login failed:", error.message);
+      // console.error("Login failed:", error.message);
+      toast.error(error, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
   return (

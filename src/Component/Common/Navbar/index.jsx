@@ -114,7 +114,7 @@ const Navbar = ({ size }) => {
     console.log("Hello");
     try {
       const response = await axios.post(
-        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cartuser",
+        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cartuser",
         { uID: getUidata }
       );
       console.log("Add to cart is Successfull", response.data);
@@ -130,7 +130,7 @@ const Navbar = ({ size }) => {
     // console.log(RemoveCartData,'ghgjhjjjj')
     try {
       const response = await axios.post(
-        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/deleteCart",
+        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/deleteCart",
         RemoveCartData
       );
       console.log("Add to cart", response.data);
@@ -196,7 +196,7 @@ const Navbar = ({ size }) => {
     console.log(amountdataupdata,7777)
     // Api ------------
     try {
-      const response = await axios.post('https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart', amountdataupdata);
+      const response = await axios.post('https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cart', amountdataupdata);
       console.log(iteamdata,4444)
       console.log('Add to cart is Successfull', response.data);
       } catch (error) {
