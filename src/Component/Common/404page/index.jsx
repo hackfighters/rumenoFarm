@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { NavLink } from "react-router-dom";
 
 const page404 = () => {
   return (
@@ -23,9 +24,9 @@ const page404 = () => {
 
                   <p>the page you are looking for not avaible!</p>
 
-                  <a href="/home" class="link_404">
+                  <NavLink className="link_404" to="/home">
                     Go to Home
-                  </a>
+                  </NavLink>
                 </div>
               </div>
             </div>

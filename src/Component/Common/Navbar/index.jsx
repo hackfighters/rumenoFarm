@@ -138,7 +138,7 @@ const Navbar = ({ size }) => {
     console.log("Hello");
     try {
       const response = await axios.post(
-        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cartuser",
+        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cartuser",
         { uID: getUidata }
       );
       console.log("Add to cart is Successfull", response.data);
@@ -154,7 +154,7 @@ const Navbar = ({ size }) => {
     // console.log(RemoveCartData,'ghgjhjjjj')
     try {
       const response = await axios.post(
-        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/deleteCart",
+        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/deleteCart",
         RemoveCartData
       );
       console.log("Add to cart", response.data);
@@ -758,16 +758,8 @@ const Navbar = ({ size }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {size === 1 ||
-          size === 2 ||
-          size === 3 ||
-          size === 4 ||
-          size === 5 ||
-          size === 6 ||
-          size === 7 ||
-          size === 8 ||
-          size === 9 ||
-          size === 10 ? (
+          {!size === 0
+           ? (
             <>
               {cart?.map((item) => {
                 totalAmount += item.amount * item.price;
@@ -827,16 +819,7 @@ const Navbar = ({ size }) => {
           )}
         </Modal.Body>
 
-        {size === 1 ||
-        size === 2 ||
-        size === 3 ||
-        size === 4 ||
-        size === 5 ||
-        size === 6 ||
-        size === 7 ||
-        size === 8 ||
-        size === 9 ||
-        size === 10 ? (
+        {!size === 0 ? (
           <>
             <div className="row border-top border-bottom justify-content-end mx-5 py-1">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">

@@ -44,7 +44,7 @@ const Products = () => {
     // console.log(iteamdata,12222222222222)
     
     try {
-    const response = await axios.post('https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart', iteamdata);
+    const response = await axios.post('https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cart', iteamdata);
     // console.log('Add to cart is Successfull', response.data);
 //     if(response.data.msg == 'success'){
 // handleClick()

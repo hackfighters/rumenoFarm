@@ -44,7 +44,7 @@ const Registration = ({ showModal, closeModal }) => {
       }
     // console.log(Registrationdata)
     try {
-      const response = await axios.post('https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/rumeno_register', Registrationdata);
+      const response = await axios.post('https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/rumeno_register', Registrationdata);
       // console.log('Registration successful:', response.data);
 
       if (response.data.status === 200) {
