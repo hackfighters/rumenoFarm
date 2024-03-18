@@ -15,6 +15,8 @@ import srvcimg1 from "../../../assets/img/service-img/srvc-img1.jpg";
 import srvcimg3 from "../../../assets/img/service-img/srvc-img3.jpg";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
+import { Accordion } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
@@ -24,6 +26,11 @@ const Services = () => {
 
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Services-Rumeno</title>
+                <link rel="canonical" href="https://rumeno.in/services" />
+            </Helmet>
      <div className="desk-nav">
     <Navbar  size={cart.length}/>
     </div>
@@ -119,8 +126,8 @@ const Services = () => {
             </div>
           </div>
         </div>
-      </section>
-      <div className="container-fluid p-0 service-bg overflow-hidden">
+        
+      <div className="container-fluid p-0  overflow-hidden">
         <div className="row justify-content-center py-4">
           <div
             className="col-lg-11"
@@ -196,11 +203,35 @@ const Services = () => {
               <li>{t("v118")}</li>
               <li>{t("v119")}</li>
             </ul>
-            <p className="px-2">{t("v120")}</p>
           </div>
         </div>
       </div>
+      <div className="container-fluid ">
+      <Accordion defaultActiveKey="0" flush>
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Body>
+          <p>Dairy consultants in India can turn to Rumeno Farmotech, a trailblazing name in the field of agricultural consulting. Rumeno Farmotech provides a range of services that are designed to maximize the administration of dairy farms. The company has a track record of providing customized solutions. By utilizing state-of-the-art technologies and seasoned knowledge, they enable farmers throughout India to increase yield, strengthen the health of their herds, and optimize profits. Rumeno Farmotech is dedicated to fostering revolutionary growth in the Indian dairy sector, from strategic planning to practical assistance, and establishing new benchmarks for excellence for dairy consultants across the country.</p>
+          <p>Dairy farming is a key component of contemporary agriculture, feeding millions of people and propelling global economies. But the intricacies of effectively running a dairy farm demand knowledge above the rudimentary levels. In order to fulfill the changing needs of the business, Rumeno Farmotech provides full dairy farm management services as well as livestock consultancy solutions.</p>
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="1">
+        <Accordion.Header>Accordion Item #2</Accordion.Header>
+        <Accordion.Body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+      </div>
       <FeedBackForm />
+      </section>
+      
       <Footer />
     </>
   );

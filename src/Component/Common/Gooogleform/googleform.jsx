@@ -438,8 +438,11 @@ const FeedBackForm = () => {
     }
   };
   return (
-    <section className="service-form container-fluid ">
+    <section className=" container-fluid ">
       <div className="row py-5 justify-content-center">
+      <h2 className="py-2 px-4 service-head">Form</h2>
+            <p className="px-2 text-center">{t("v120")}</p>
+     
         <div className="col-sm-8">
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="formBasicName">
@@ -510,6 +513,19 @@ const FeedBackForm = () => {
               {errors.experience && (
                 <Form.Text className="text-danger">
                   {errors.experience.message}
+                </Form.Text>
+              )}
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicExperience">
+              <Form.Label>Your Budget</Form.Label>
+              <Form.Control
+                {...register("budget", { required: "please fill budget"+" required" })}
+                type="text"
+                placeholder="Budget"
+              />
+              {errors.budget && (
+                <Form.Text className="text-danger">
+                  {errors.budget.message}
                 </Form.Text>
               )}
             </Form.Group>

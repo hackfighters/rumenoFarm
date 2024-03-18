@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+import { Modal } from "react-bootstrap";
+// import Modal from 'react-modal';
 import { UserContext } from "../Modal/logusecont";
 // import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -36,6 +37,7 @@ import { toast } from "react-toastify";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import datatest from "./test.json";
 import e from "cors";
+import FarmerDetails from "../Modal/FarmerFarmDtl";
 {
   /* Rumeno farm  */
 }
@@ -57,15 +59,27 @@ const Navbar = ({ size }) => {
     setLoggedInUser,
     cartdata,
     setiteamdata,
-    iteamdata
+    iteamdata,
+    setSelectedAnimal,
+    farmDtl,
   } = useContext(UserContext);
 
   const [lgShow, setLgShow] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showFarmModal, setshowFarmModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openSltAnmlModal = () => {
+    setIsModalOpen(true);
+    console.log(farmDtl)
+  };
+  const closeSltAnmlModal = () => {
+    setIsModalOpen(false);
+  };
 
   var totalAmount = 0;
   var totalPrice = 0;
@@ -91,6 +105,16 @@ const Navbar = ({ size }) => {
 
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const openFarmModal = () => {
+    setshowFarmModal(true);
+    console.log(farmDtl)
+  };
+
+  const closeFarmModal = () => {
+    setshowFarmModal(false);
+    setIsModalOpen(true);
   };
 
   const openRegistration = () => {
@@ -175,33 +199,34 @@ const Navbar = ({ size }) => {
   };
 
   const handleChange = async (item, d) => {
-
-
-   
-    
     let ind = -1;
     cart.forEach((data, index) => {
       if (data.id === item.id) ind = index;
     });
- 
-
 
     const tempArr = [...cart];
 
-    var latestamount = parseInt(tempArr[ind].amount)
+    var latestamount = parseInt(tempArr[ind].amount);
     latestamount += d;
-    tempArr[ind].amount = latestamount
-    setCart(tempArr)
-    var amountdataupdata = tempArr[ind]
-    console.log(amountdataupdata,7777)
+    tempArr[ind].amount = latestamount;
+    setCart(tempArr);
+    var amountdataupdata = tempArr[ind];
+    console.log(amountdataupdata, 7777);
     // Api ------------
     try {
-      const response = await axios.post('https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart', amountdataupdata);
-      console.log(iteamdata,4444)
-      console.log('Add to cart is Successfull', response.data);
-      } catch (error) {
-      console.error('Add to cart is not working', error);
-      }
+      const response = await axios.post(
+        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart",
+        amountdataupdata
+      );
+      console.log(iteamdata, 4444);
+      console.log("Add to cart is Successfull", response.data);
+    } catch (error) {
+      console.error("Add to cart is not working", error);
+    }
+  };
+
+  const handleAnmlValue = (value) => {
+    setSelectedAnimal(value);
   };
 
   return (
@@ -366,13 +391,49 @@ const Navbar = ({ size }) => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link px-0"
-                    activeclassname="active"
-                    to="/Services"
-                  >
-                    Services
-                  </NavLink>
+                  <div class="dropdown">
+                    <NavLink
+                      className="nav-link px-0"
+                      activeclassname="active"
+                      to="/services"
+                    >
+                      Services
+                    </NavLink>
+                    <ul
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/services"
+                        >
+                          Service 1
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/servicessecond"
+                        >
+                          Service 2
+                        </NavLink>
+                      </li>
+
+                      <li className="text-center">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/servicesthird"
+                        >
+                          Service 3
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+
                   {/* Veterinary docter online */}
                   {/* Veterinary docter cow / rabbit / new me */}
                   {/* Veterinary docter salary */}
@@ -381,6 +442,15 @@ const Navbar = ({ size }) => {
                   {/* Veterinary docter jods */}
                   {/* Veterinary docter kese bane */}
                   {/* Goat farming training */}
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link px-0"
+                    activeclassname="active"
+                    to="/blog"
+                  >
+                    Blog
+                  </NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink
@@ -409,18 +479,161 @@ const Navbar = ({ size }) => {
                 </li>
                 <li>
                   {loggedInUser ? (
-                    <NavLink to="/frmaftlog">
+                    <>
+                      {farmDtl ? (
+                        <>
                     <button
                       typeof="button"
+                      onClick={openSltAnmlModal}
                       className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                     >
                       Feedback
                     </button>
-                    </NavLink>
-                  ) : null}
+                        <Modal
+                          show={isModalOpen}
+                          onHide={closeSltAnmlModal}
+                          size="sm"
+                        >
+                          <Modal.Header>Select Animal</Modal.Header>
+                          <Modal.Body>
+                            <div className="my-2 text-center">
+                              <NavLink to="/FrmAftLog">
+                                <button
+                                  value="goat"
+                                  onClick={() => handleAnmlValue("goat")}
+                                  className="btn btn-primary w-75"
+                                >
+                                  Goat
+                                </button>
+                              </NavLink>
+                            </div>
+                            <div className="my-2 text-center">
+                              <NavLink to="/FrmAftLog">
+                                <button
+                                  value="sheep"
+                                  onClick={() => handleAnmlValue("sheep")}
+                                  className="btn btn-primary w-75"
+                                >
+                                  Sheep
+                                </button>
+                              </NavLink>
+                            </div>
+                            <div className="my-2 text-center">
+                              <NavLink to="/FrmAftLog">
+                                <button
+                                  value="cow"
+                                  onClick={() => handleAnmlValue("cow")}
+                                  className="btn btn-primary w-75"
+                                >
+                                  Cow
+                                </button>
+                              </NavLink>
+                            </div>
+                            <div className="my-2 text-center">
+                              <NavLink to="/FrmAftLog">
+                                <button
+                                  value="buffalo"
+                                  onClick={() => handleAnmlValue("buffalo")}
+                                  className="btn btn-primary w-75"
+                                >
+                                  Buffalo
+                                </button>
+                              </NavLink>
+                            </div>
+                          </Modal.Body>
+                          <Modal.Footer>
+                            <button
+                              className="btn btn-secondary"
+                              onClick={closeSltAnmlModal}
+                            >
+                              Close
+                            </button>
+                          </Modal.Footer>
+                        </Modal>
+                      </>
+                    ) : (
+                      <>
+                      <button
+                      typeof="button"
+                      onClick={openFarmModal}
+                      className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                    >
+                      Feedback
+                    </button>
+                        <FarmerDetails
+                          showFarmModal={showFarmModal}
+                          closeFarmModal={closeFarmModal}
+                        />
+                      </>
+                    )}
+                    <Modal
+                      show={isModalOpen}
+                      onHide={closeSltAnmlModal}
+                      size="sm"
+                    >
+                      <Modal.Header>Select Animal</Modal.Header>
+                      <Modal.Body>
+                        <div className="my-2 text-center">
+                          <NavLink to="/FrmAftLog">
+                            <button
+                              value="goat"
+                              onClick={() => handleAnmlValue("goat")}
+                              className="btn btn-primary w-75"
+                            >
+                              Goat
+                            </button>
+                          </NavLink>
+                        </div>
+                        <div className="my-2 text-center">
+                          <NavLink to="/FrmAftLog">
+                            <button
+                              value="sheep"
+                              onClick={() => handleAnmlValue("sheep")}
+                              className="btn btn-primary w-75"
+                            >
+                              Sheep
+                            </button>
+                          </NavLink>
+                        </div>
+                        <div className="my-2 text-center">
+                          <NavLink to="/FrmAftLog">
+                            <button
+                              value="cow"
+                              onClick={() => handleAnmlValue("cow")}
+                              className="btn btn-primary w-75"
+                            >
+                              Cow
+                            </button>
+                          </NavLink>
+                        </div>
+                        <div className="my-2 text-center">
+                          <NavLink to="/FrmAftLog">
+                            <button
+                              value="buffalo"
+                              onClick={() => handleAnmlValue("buffalo")}
+                              className="btn btn-primary w-75"
+                            >
+                              Buffalo
+                            </button>
+                          </NavLink>
+                        </div>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <button
+                          className="btn btn-secondary"
+                          onClick={closeSltAnmlModal}
+                        >
+                          Close
+                        </button>
+                      </Modal.Footer>
+                    </Modal>
+                  </>
+                  ) : (
+                    null
+                  )}
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
-                  <div className="d-flex justify-content-start">
+                  <div className="d-flex justify-content-center">
                     {loggedInUser ? (
                       <div class="dropdown">
                         <a

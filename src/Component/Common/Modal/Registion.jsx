@@ -5,16 +5,17 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { Country, State, City } from "country-state-city";
-import Select from "react-select";
+// import { Country, State, City } from "country-state-city";
+// import Select from "react-select";
 
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
+import Login from "./Login";
 
 const Registration = ({ showModal, closeModal }) => {
   const [selectedCountry, setSelectedCountry] = useState(null);
-  
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const { t } = useTranslation();
   const {
     register,
@@ -25,6 +26,7 @@ const Registration = ({ showModal, closeModal }) => {
   const countrydata = selectedCountry?.name
   const countrystate = selectedState?.name
   const countrycity = selectedCity?.name
+
 
   const onSubmit = async (data) => {
 
@@ -48,22 +50,15 @@ const Registration = ({ showModal, closeModal }) => {
       if (response.data.status === 200) {
         toast.success('Registration successful');
         reset()
+        setShowLoginModal(true);
+        closeModal();
       } else {
-        toast.error('Registration failed');
+        toast.error('Registration failedvvcv');
       }
 
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Registration failed', {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      // closeModal()
     }
   };
 
@@ -106,9 +101,15 @@ const Registration = ({ showModal, closeModal }) => {
                         placeholder="Enter Name"
                       />
                       {errors.fullName && (
+                        <>
                         <span className="text-danger">
                           {errors.fullName.message}
                         </span>
+                          <span className="d-none">
+                            {toast.error(errors.fullName.message)}
+                            </span>
+                            </>
+                            
                       )}
                     </div>
                     <div className="form-group col-lg-12 my-2">
@@ -128,6 +129,7 @@ const Registration = ({ showModal, closeModal }) => {
                       {errors.mobile && (
                         <span className="text-danger">
                           {errors.mobile.message}
+                          <span className="d-none">{toast.error(errors.mobile.message)}</span>
                         </span>
                       )}
                     </div>
@@ -152,6 +154,7 @@ const Registration = ({ showModal, closeModal }) => {
                       {errors.email && (
                         <span className="text-danger">
                           {errors.email.message}
+                          <span className="d-none">{toast.error(errors.email.message)}</span>
                         </span>
                       )}
                     </div>
@@ -177,12 +180,13 @@ const Registration = ({ showModal, closeModal }) => {
                       {errors.password && (
                         <span className="text-danger">
                           {errors.password.message}
+                          <span className="d-none">{toast.error(errors.password.message)}</span>
                         </span>
                       )}
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">Country</label>
-                      <Select
+                      {/* <Select
                         options={Country.getAllCountries()}
                         getOptionLabel={(options) => {
                           return options["name"];
@@ -194,11 +198,11 @@ const Registration = ({ showModal, closeModal }) => {
                           setSelectedCountry(item);
                         }}
                         // name="country"
-                      />
+                      /> */}
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">State</label>
-                      <Select
+                      {/* <Select
                         options={State?.getStatesOfCountry(
                           selectedCountry?.isoCode
                         )}
@@ -212,11 +216,11 @@ const Registration = ({ showModal, closeModal }) => {
                         onChange={(item) => {
                           setSelectedState(item);
                         }}
-                      />
+                      /> */}
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">City</label>
-
+{/* 
                       <Select
                         options={City.getCitiesOfState(
                           selectedState?.countryCode,
@@ -232,7 +236,7 @@ const Registration = ({ showModal, closeModal }) => {
                           setSelectedCity(item);
                         }}
                         // name="city"
-                      />
+                      /> */}
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-2">{t("v317")}</label>
@@ -251,6 +255,7 @@ const Registration = ({ showModal, closeModal }) => {
                       {errors.address && (
                         <span className="text-danger">
                           {errors.address.message}
+                          <span className="d-none">{toast.error(errors.address.message)}</span>
                         </span>
                       )}
                     </div>
@@ -275,6 +280,7 @@ const Registration = ({ showModal, closeModal }) => {
           </div>
         </Modal.Body>
       </Modal>
+      <Login showModal={showLoginModal} closeModal={setShowLoginModal}/>
     </>
   );
 };

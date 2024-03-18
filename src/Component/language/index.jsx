@@ -9,12 +9,18 @@ import Select from "../Common/Select";
 
 // Image
 import lgimg from "../../assets/img/Logo/logo.jpg";
+import { Helmet } from "react-helmet";
 const Language = () => {
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
   };
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Language-Rumeno</title>
+                <link rel="canonical" href="https://rumeno.in/" />
+            </Helmet>
       <div className="area">
         <ul className="circles">
           <li></li>

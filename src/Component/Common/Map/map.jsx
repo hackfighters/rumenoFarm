@@ -5,7 +5,7 @@ const GoogleMap = () => {
   return (
     <div className="h-100">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyA5Lt3E5gYb-lfogvaSpCrvCpocLqHwNOI" }}
+        bootstrapURLKeys={{ key: "AIzaSyDZfVO29Iytspv4xz7S68doIoiztiRLhbk" }}
         defaultZoom={10}
         resetBoundsOnResize={true}
         defaultCenter={{ lat: 26.8467, lng: 80.9462 }}

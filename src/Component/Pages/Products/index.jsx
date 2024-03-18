@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Products = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
@@ -96,6 +97,11 @@ const Products = () => {
 
   return (
     <>
+     <Helmet>
+                <meta charSet="utf-8" />
+                <title>Products-Rumeno</title>
+                <link rel="canonical" href="https://rumeno.in/products" />
+            </Helmet>
       <div className="desk-nav">
         <Navbar
           size={cart.length}

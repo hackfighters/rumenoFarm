@@ -16,7 +16,7 @@ const Login = ({
   handleAddtoCartApi,
 }) => {
   const { t } = useTranslation();
-  const { setLoggedInUser, setUidData } = useContext(UserContext);
+  const { setLoggedInUser, setUidData,setfarmDtl } = useContext(UserContext);
 
   useEffect(() => {
     // Check if user is already logged in
@@ -45,11 +45,13 @@ const Login = ({
       const datastatus = response.data.msg;
       if (datastatus === "Success") {
         const firstTwoChars = response.data.userName;
+        const FarmerDtl = "response.data.farmDetail";
         const userNameWords = firstTwoChars.split(" ");
         const firstWord = userNameWords[0];
         const getUidata = response.data.uID;
         setUidData(getUidata);
         setLoggedInUser(firstWord);
+        setfarmDtl(FarmerDtl)
         handleAddtoCartApi(getUidata);
         Cookies.set("loggedInUser", firstWord);
         toast.success("Login Successful", {
@@ -64,7 +66,8 @@ const Login = ({
         });
         closeModal(); // Close the login modal
         reset();
-      } else {
+      } 
+      else {
         toast.error(datastatus, {
           position: "top-center",
           autoClose: 2000,

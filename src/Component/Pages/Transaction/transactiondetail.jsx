@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../../Common/Footer";
+import { Helmet } from "react-helmet";
 // import axios from "axios";
 
 const TransactionDetail = () => {
@@ -32,6 +33,11 @@ const TransactionDetail = () => {
 
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Transaction-Detail-Rumeno</title>
+                <link rel="canonical" href="https://rumeno.in/transdetail" />
+            </Helmet>
       <section className="home-backgroundColor">
         <div className="container py-5">
           <div className="my-5 text-white text-center">

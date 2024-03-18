@@ -622,10 +622,25 @@ const ProductSidebar = ({ handleClick }) => {
     setCategory(category);
     setCurrentPage(0);
   };
+  const [animalType, setAnimalType] = useState("");
+
+  // Step 2: Update the filtering logic
+  let a = [Data, FarmEquipment,RumenoAmazon,HumanConsumable]
+  const filteredItems = categoryItems[category].filter(item => {
+     // Assuming the name property contains the animal type information
+     // Adjust this logic based on how your data is structured
+     return animalType === "" || item.name.includes(animalType);
+  });
 
 
   return (
     <div className="container-fluid mt-4">
+      <div className="my-3 text-end">
+        <button type="button" className="btn btn-success w-auto mx-2" onClick={() => setAnimalType("goat")}>Goat</button>
+        <button type="button" className="btn btn-success w-auto mx-2"  onClick={() => setAnimalType("sheep")}>Sheep</button>
+        <button type="button" className="btn btn-success w-auto mx-2"  onClick={() => setAnimalType("cow")}>Cow</button>
+        <button type="button" className="btn btn-success w-auto mx-2"  onClick={() => setAnimalType("baffalo")}>Baffalo</button>
+      </ div>
       <div className="row flex-nowrap justify-content-center ms-0 mx-md-4 mx-lg-0">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded h-100">
           <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white w-100">
@@ -725,7 +740,7 @@ const ProductSidebar = ({ handleClick }) => {
           </div>
         </div>
         <div className="col-md-10 p-3">
-          {items.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <ProductItem item={item} handleClick={handleClick} />
           ))}
           <ReactPaginate

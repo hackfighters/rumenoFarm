@@ -1,8 +1,14 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const page404 = () => {
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>404-Rumeno</title>
+                <link rel="canonical" href="https://rumeno.in/*" />
+            </Helmet>
       <section class="page_404">
         <div class="container">
           <div class="row">

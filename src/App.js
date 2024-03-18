@@ -14,7 +14,14 @@ import { UserProvider } from "./Component/Common/Modal/logusecont";
 import Transaction from "./Component/Pages/Transaction";
 import TransactionDetail from "./Component/Pages/Transaction/transactiondetail";
 import Error from "./Component/Common/404page/index";
-import Feedback from './Component/Common/Navbar/frmaftlog'
+import FeedBackForm from "./Component/Common/Gooogleform/googleform";
+import FrmAftLog from "./Component/Common/FeedbackForm/selectanimal";
+import AnimalDetailTab from "./Component/Common/FeedbackForm/animaldetailtab";
+import PrivacyPolicy from "./Component/Pages/privacyPolicy";
+import Blog from "./Component/Pages/Blog";
+import ServicesSecond from "./Component/Pages/Service/servicesecond";
+import ServicesThird from "./Component/Pages/Service/servicethird";
+
 
 const App = () => {
     const location = useLocation();
@@ -78,17 +85,23 @@ const App = () => {
 
   return (
     <>
+     
       <ToastContainer />
       <UserProvider>
         <Routes>
           <Route path="/" Component={Lang} />
           <Route path="/home" Component={Home} />
           <Route path="/services" Component={Services} />
+          <Route path="/servicessecond" Component={ServicesSecond} />
+          <Route path="/servicesthird" Component={ServicesThird} />
           <Route path="/products" Component={ProductPage} />
           <Route path="/contactus" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
-          <Route path="/frmaftlog" Component={Feedback}/>
+          <Route path="/frmaftlog" Component={FrmAftLog}/>
+          <Route path="/AnimalDetailTab" Component={AnimalDetailTab}/>
+          <Route path="/privacypolicy" Component={PrivacyPolicy}/>
+          <Route path="/blog" Component={Blog}/>
           <Route path="*" Component={Error} />
         </Routes>
       </UserProvider>

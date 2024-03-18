@@ -22,6 +22,7 @@ import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
 import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
+import { Helmet } from "react-helmet";
 
 
 const Home = () => {
@@ -30,6 +31,11 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home-Rumeno</title>
+                <link rel="canonical" href="https://rumeno.in/home" />
+            </Helmet>
       <section className="container-fluid overflow-hidden p-0" id="#home">
         {/* Veterinary docter online */}
         {/* Veterinary docter cow / rabbit / new me */}
@@ -105,7 +111,7 @@ const Home = () => {
               <a href="#">
                 <ReactWhatsapp
                   className="whatsapp-sect"
-                  number="8770529849"
+                  number="+91 7355043892"
                   message="Hello World"
                 >
                   <FontAwesomeIcon

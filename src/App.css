@@ -2076,6 +2076,15 @@ html {
   padding: 40px;
   border-radius: 25px 0 0 25px;
 }
+.contact_info_sec-form {
+  position: absolute;
+  background-color: #2d2d2d;
+  right: 1px;
+  top: 0%;
+  width: 340px;
+  padding: 40px;
+  border-radius: 25px 0 0 25px;
+}
 .contact_info_sec h4 {
   letter-spacing: 1px;
 }
@@ -2167,6 +2176,12 @@ button.contact_form_submit {
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link.show {
   color: #adff2f !important;
+}
+.animal-bg1{
+  background: #a6ed91;
+}
+.animal-bg2{
+background-color: #fbceb1;
 }
 .product-sect {
   height: 600px;
@@ -2629,4 +2644,15 @@ button.contact_form_submit {
 }
 .contant_box_404 {
   margin-top: -50px;
+}
+
+.animal-bg-size{
+  height: 1000vh;
+}
+
+.fs-7{
+  font-size: 0.8rem !important;
+}
+.letter-spacing {
+  letter-spacing: 2px;
 }

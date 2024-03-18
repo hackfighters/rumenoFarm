@@ -1,4 +1,4 @@
-import React, { useState ,useContext } from "react";
+import React, { useState, useContext } from "react";
 import ViewModal from "../Modal/PopModal";
 import ReactStars from "react-rating-stars-component";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
@@ -9,8 +9,9 @@ import Login from "../Modal/Login";
 import Registration from "../Modal/Registion";
 import SendOtp from "../Modal/otp";
 import { toast } from "react-toastify";
+import ProudctFeedbackModal from "../Modal/productFeedback";
 
-const ProductItem = ({ item ,handleClick }) => {
+const ProductItem = ({ item, handleClick }) => {
   const {
     img,
     name,
@@ -24,6 +25,7 @@ const ProductItem = ({ item ,handleClick }) => {
     efficacy2,
   } = item;
   const [showModal, setShowModal] = useState(false);
+  const [showfeedback, setshowfeedback] = useState(false);
   // const [quantity, setQuantity] = useState(1);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
@@ -38,6 +40,13 @@ const ProductItem = ({ item ,handleClick }) => {
 
   const closeModal = () => {
     setShowModal(false);
+  };
+  const openfeedbackModal = () => {
+    setshowfeedback(true);
+  };
+
+  const closefeedbackModal = () => {
+    setshowfeedback(false);
   };
 
   const openRegistration = () => {
@@ -59,26 +68,24 @@ const ProductItem = ({ item ,handleClick }) => {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { loggedInUser } = useContext(UserContext);
-  const AddToCart =()=>{
+  const AddToCart = () => {
     if (loggedInUser) {
-
-    handleClick(item)
-  }
-  else {
+      handleClick(item);
+    } else {
       // console.log("login first");
-    setShowLoginModal(!showLoginModal);
-    toast.warn("Please Login", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+      setShowLoginModal(!showLoginModal);
+      toast.warn("Please Login", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
-  }
+  };
 
   return (
     <div className="col py-1">
@@ -178,7 +185,7 @@ const ProductItem = ({ item ,handleClick }) => {
             {/* Veterinary docter jods */}
             {/* Veterinary docter kese bane */}
             {/* Goat farming training */}
-          
+
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-danger"
               type="button"
@@ -197,6 +204,7 @@ const ProductItem = ({ item ,handleClick }) => {
               showModal={showModal}
               closeModal={closeModal}
             />
+
             {/* Veterinary docter online */}
             {/* Veterinary docter cow / rabbit / new me */}
             {/* Veterinary docter salary */}
@@ -205,21 +213,38 @@ const ProductItem = ({ item ,handleClick }) => {
             {/* Veterinary docter jods */}
             {/* Veterinary docter kese bane */}
             {/* Goat farming training */}
-            <div className="prd-btn">
-              <button className="btn text-white border-0 gradient-custom-2 my-4" onClick={AddToCart}>
+            <div className="d-flex justify-content-between">
+              <button
+                className="btn text-white border-0 w-auto gradient-custom-2 my-4"
+                onClick={AddToCart}
+              >
                 Add to Cart
               </button>
+              <button
+                className="btn text-white border-0 w-auto gradient-custom-2 my-4"
+                onClick={openfeedbackModal}
+              >
+                FeedBack
+              </button>
+
+              <ProudctFeedbackModal
+              title={name}
+              showfeedModal={showfeedback}
+              closefeedModal={closefeedbackModal}
+            />
+
+            
               <Login
-                    showModal={showLoginModal}
-                    closeModal={setShowLoginModal}
-                    openRegistrationModal={openRegistration}
-                    OpenSendOtpModal={OpenSendOtp}
-                  />
-                  <Registration
-                    showModal={showRegistrationModal}
-                    closeModal={closeRegistrationModal}
-                  />
-                  <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
+                showModal={showLoginModal}
+                closeModal={setShowLoginModal}
+                openRegistrationModal={openRegistration}
+                OpenSendOtpModal={OpenSendOtp}
+              />
+              <Registration
+                showModal={showRegistrationModal}
+                closeModal={closeRegistrationModal}
+              />
+              <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
             </div>
           </div>
         </div>

@@ -18,6 +18,7 @@ import scanner from "../../../assets/img/scanner.png";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
@@ -210,6 +211,11 @@ const Transaction = () => {
 
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Transaction-Rumeno</title>
+                <link rel="canonical" href="https://rumeno.in/transaction" />
+            </Helmet>
       <div className="desk-nav">{/* <Navbar /> */}</div>
       <div className="mob-nav">
         <ResponsiveNavbar />
