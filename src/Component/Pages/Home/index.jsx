@@ -63,22 +63,13 @@ const Home = () => {
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+              
               <div
                 className="col-lg-6"
                 data-aos="fade-left"
                 data-aos-delay="50"
               >
-                {/* // Rumeno farm
-// Rumeno
-// Veterinary */}
+                
                 <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
                   <Carousel interval={2000}>
                     <Carousel.Item>
