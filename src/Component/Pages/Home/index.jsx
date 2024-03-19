@@ -49,6 +49,7 @@ const Home = () => {
         <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
         <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
         <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+        
         <div className="home-backgroundColor overflow-hidden">
           <Navbar size={cart.length} />
           
@@ -63,22 +64,13 @@ const Home = () => {
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+              
               <div
                 className="col-lg-6"
                 data-aos="fade-left"
                 data-aos-delay="50"
               >
-                {/* // Rumeno farm
-// Rumeno
-// Veterinary */}
+                
                 <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
                   <Carousel interval={2000}>
                     <Carousel.Item>
@@ -92,14 +84,7 @@ const Home = () => {
                     </Carousel.Item>
                   </Carousel>
                 </div>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+               
               </div>
               <a href="#training">
                 <div className="training-sect">
@@ -122,14 +107,7 @@ const Home = () => {
               </a>
             </div>
           </div>
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+          
         </div>
         <About />
         <div className="container">
@@ -147,14 +125,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+          
           <div className="row g-0 gx-5 align-items-end">
             <div className="col-lg-6">
               <div className="section-header text-start mb-3">
@@ -185,14 +156,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+              
             </div>
             <div
               className="col-lg-3"
@@ -217,9 +181,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            {/* Rumeno farm  */}
-            {/* Rumeno */}
-            {/* Veterinary */}
+          
             <div
               className="col-lg-3"
               data-aos="flip-left"
@@ -228,14 +190,7 @@ const Home = () => {
               data-aos-delay="300"
             >
               <div className="card-box py-4">
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+               
                 <div className="card1 caa">
                   <img
                     src={Prdimg7}
@@ -263,14 +218,7 @@ const Home = () => {
               data-aos-delay="300"
             >
               <div className="card-box py-4">
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+               
                 <div className="card1 caa">
                   <img
                     src={Prdimg6}
@@ -290,14 +238,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jobs */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+      
           </div>
         </div>
         <Training />

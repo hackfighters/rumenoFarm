@@ -21,23 +21,14 @@ import { useTranslation } from "react-i18next";
 import logo from "../../../assets/img/Logo/newlogo.png";
 import { NavLink } from "react-router-dom";
 import ReactWhatsapp from "react-whatsapp";
-// {/* Rumeno farm  */}
-// {/* Rumeno */}
-// {/* Veterinary */}
+
 const Footer = () => {
   const { t } = useTranslation();
 
   return (
     <>
       <div className="container-fluid footer pt-5">
-        {/* Veterinary docter online */}
-        {/* Veterinary docter cow / rabbit / new me */}
-        {/* Veterinary docter salary */}
-        {/* Veterinary docter fees */}
-        {/* Veterinary docter course */}
-        {/* Veterinary docter jods */}
-        {/* Veterinary docter kese bane */}
-        {/* Goat farming training */}
+
         <div className="row py-4 text-light">
           <div
             className="col-lg-3 text-center"
@@ -47,14 +38,7 @@ const Footer = () => {
             <img className="footer-img" src={logo} alt="Loading" />
           
           </div>
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+    
           <div className="col-lg-2 pt-4">
             <div className="d-flex justify-content-center pb-2">
               <h5 className="me-3">Pages</h5>
@@ -71,14 +55,7 @@ const Footer = () => {
                     Home
                   </NavLink>
                 </li>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+       
                 <li>
                   <a href="#about" className="footer-page">
                     About
@@ -93,14 +70,7 @@ const Footer = () => {
                     Products
                   </NavLink>
                 </li>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+
                 <li>
                   <a href="#training" className="footer-page">
                     Training
@@ -130,14 +100,7 @@ const Footer = () => {
                 />
                 {t("v301")}
               </li>
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+ 
               <li>
                 <FontAwesomeIcon
                   icon={faEnvelope}
@@ -155,28 +118,14 @@ const Footer = () => {
                 +91 7355043892
               </li>
             </ul>
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+           
           </div>
           <div className="col-lg-4 pt-4">
             <div className="text-center">
               <h5>About Company</h5>
               <p className="footer-text pt-3">{t("v303")}</p>
             </div>
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+           
             <div>
               <ul className="list-unstyled d-flex justify-content-center footer-li">
                 <li>
@@ -188,14 +137,7 @@ const Footer = () => {
                   />
                   </a>
                 </li>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
                 <li>
                 <ReactWhatsapp
                   className="bg-transparent border-0"
@@ -218,14 +160,7 @@ const Footer = () => {
                   />
                   </a>
                 </li>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
                 <li>
                   <a href="https://www.instagram.com/rumenofarmotech/" target="_blank">
                   <FontAwesomeIcon
@@ -239,14 +174,7 @@ const Footer = () => {
             </div>
             
           </div>
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+          
         </div>
         <hr className="text-white m-0" />
               <div id="copyright" className="text-white text-center py-3 mx-4 ">
@@ -256,9 +184,7 @@ const Footer = () => {
                 
               </div>
               
-        {/* Rumeno farm  */}
-        {/* Rumeno */}
-        {/* Veterinary */}
+        
       </div>
     </>
   );

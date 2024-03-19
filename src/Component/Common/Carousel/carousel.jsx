@@ -11,14 +11,7 @@ import footcaro4 from "../../../assets/img/Footcaro/footcaro4.png";
 function CarouselFadeExample() {
   return (
     <>
-      {/* Veterinary docter online */}
-      {/* Veterinary docter cow / rabbit / new me */}
-      {/* Veterinary docter salary */}
-      {/* Veterinary docter fees */}
-      {/* Veterinary docter course */}
-      {/* Veterinary docter jods */}
-      {/* Veterinary docter kese bane */}
-      {/* Goat farming training */}
+      
       <Carousel className="common-carousel" interval={1000}>
         <Carousel.Item>
           <img className="d-block mx-auto w-75" src={footcaro1} alt="Loading" />
@@ -33,14 +26,7 @@ function CarouselFadeExample() {
           <img className="d-block mx-auto w-75" src={footcaro4} alt="Loading" />
         </Carousel.Item>
       </Carousel>
-      {/* Veterinary docter online */}
-      {/* Veterinary docter cow / rabbit / new me */}
-      {/* Veterinary docter salary */}
-      {/* Veterinary docter fees */}
-      {/* Veterinary docter course */}
-      {/* Veterinary docter jods */}
-      {/* Veterinary docter kese bane */}
-      {/* Goat farming training */}
+
     </>
   );
 }

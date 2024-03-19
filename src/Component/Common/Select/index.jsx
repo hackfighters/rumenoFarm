@@ -4,23 +4,9 @@ const Select = (props) => {
   return (
     <>
       <div className="input-group">
-        {/* Veterinary docter online */}
-        {/* Veterinary docter cow / rabbit / new me */}
-        {/* Veterinary docter salary */}
-        {/* Veterinary docter fees */}
-        {/* Veterinary docter course */}
-        {/* Veterinary docter jods */}
-        {/* Veterinary docter kese bane */}
-        {/* Goat farming training */}
+        
         <div className="input-group-prepend">
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+         
         </div>
         <select
           className="custom-select w-100 border rounded p-2"
@@ -55,23 +41,9 @@ const Select = (props) => {
             Urdu
           </option>
         </select>
-        {/* Veterinary docter online */}
-        {/* Veterinary docter cow / rabbit / new me */}
-        {/* Veterinary docter salary */}
-        {/* Veterinary docter fees */}
-        {/* Veterinary docter course */}
-        {/* Veterinary docter jods */}
-        {/* Veterinary docter kese bane */}
-        {/* Goat farming training */}
+        
       </div>
-      {/* Veterinary docter online */}
-      {/* Veterinary docter cow / rabbit / new me */}
-      {/* Veterinary docter salary */}
-      {/* Veterinary docter fees */}
-      {/* Veterinary docter course */}
-      {/* Veterinary docter jods */}
-      {/* Veterinary docter kese bane */}
-      {/* Goat farming training */}
+      
     </>
   );
 };
