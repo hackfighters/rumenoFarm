@@ -178,7 +178,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                   <NavLink
                     className="nav-link px-0"
                     activeclassname="active"
-                    exact
+                    exact="true"
                     to="/home"
                   >
                     Home

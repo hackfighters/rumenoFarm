@@ -14,7 +14,6 @@ import { UserProvider } from "./Component/Common/Modal/logusecont";
 import Transaction from "./Component/Pages/Transaction";
 import TransactionDetail from "./Component/Pages/Transaction/transactiondetail";
 import Error from "./Component/Common/404page/index";
-import FeedBackForm from "./Component/Common/Gooogleform/googleform";
 import FrmAftLog from "./Component/Common/FeedbackForm/selectanimal";
 import AnimalDetailTab from "./Component/Common/FeedbackForm/animaldetailtab";
 import PrivacyPolicy from "./Component/Pages/privacyPolicy";
@@ -105,8 +104,6 @@ const App = () => {
           <Route path="*" Component={Error} />
         </Routes>
       </UserProvider>
-
-      {/* <Test/> */}
     </>
   );
 };

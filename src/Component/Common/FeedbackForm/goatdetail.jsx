@@ -257,14 +257,14 @@ const MultiStepForm = () => {
           >
             Create New
           </button>
-      <input class="form-control mr-sm-2 w-25" type="search" placeholder="Search by Name or Age" aria-label="Search" value={searchInput}
+      <input className="form-control mr-sm-2 w-25" type="search" placeholder="Search by Name or Age" aria-label="Search" value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}/>
           </div>
           <div className="row justify-content-center">
             {/* <div className="row"> */}
 
             {filteredData.map((item, index) => (
-              <section class="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect">
+              <section className="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect">
                 <ul className="list-unstyled" key={item.id}>
                   <li className="mx-2 mb-3 fs-2 d-flex justify-content-between align-items-center">
                     <span className="text-uppercase">{item.uniquename}</span>
@@ -663,7 +663,7 @@ const MultiStepForm = () => {
                   <div className="row">
                     <div className=" d-flex justify-content-center">
                       <button
-                        class="btn btn-primary mx-3 w-25"
+                        className="btn btn-primary mx-3 w-25"
                         // onClick={handleSave}
                         type="submit"
                       >

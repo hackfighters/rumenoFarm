@@ -65,7 +65,7 @@ const Footer = () => {
                   <NavLink
                     className="nav-link"
                     activeclassname="active"
-                    exact
+                    exact="true"
                     to="/home"
                   >
                     Home
@@ -110,7 +110,7 @@ const Footer = () => {
                   <NavLink
                     className="nav-link"
                     activeclassname="active"
-                    exact
+                    exact="true"
                     to="/privacypolicy"
                   >
                     Privacy Policy

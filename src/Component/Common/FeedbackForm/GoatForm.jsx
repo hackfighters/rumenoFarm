@@ -822,14 +822,14 @@ var updatedDueDate = ''
               <div className="row">
                 <div className="col-lg-6 d-flex justify-content-center">
                   <button
-                    class="btn btn-primary mx-3 w-25"
+                    className="btn btn-primary mx-3 w-25"
                     onClick={handlePrev}
                     disabled={currentStep === 1}
                   >
                     Back
                   </button>
                   <button
-                    class="btn btn-primary mx-3 w-25"
+                    className="btn btn-primary mx-3 w-25"
                     onClick={handleNext}
                     type="submit"
                     disabled={currentStep === 4}

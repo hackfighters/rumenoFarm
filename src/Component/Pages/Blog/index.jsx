@@ -4,65 +4,33 @@ import Footer from "../../Common/Footer";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import { Helmet } from "react-helmet";
 import { UserContext } from "../../Common/Modal/logusecont";
-import { useForm } from "react-hook-form";
-import { Modal } from "react-bootstrap";
+import blgimg1 from '../../../assets/img/OurProduct/GreenHouseMat2.jpg';
+import blgimg2 from '../../../assets/img/OurProduct/farm-floor.jpg'
 
 const Blog = () => {
+
+const blogdata = [{
+  img:blgimg1,
+  heading:"Know All About Mycotoxicosis Disease and its Management inPoultry",
+  content:" Mycotoxicosis in poultry is a disease caused by toxins frommold-infected feed. Effective management is crucial for poultryhealth. mold-infected feed. Effective management is crucial forpoultry health. mold-infected feed. Effective management iscrucial for poultry health.",
+  title1:'Animal',
+  title2:'Animal',
+  title3:'blog',
+  title4:'Farmer',
+  bottomcontent:'Refit Animal Care',
+},
+{
+  img:blgimg2,
+  heading:" Management inPoultry Know All About Mycotoxicosis Disease and its",
+  content:" Mycotoxicosis in poultry is a disease caused by toxins frommold-infected feed. Effective management is crucial for poultryhealth. mold-infected feed. Effective management is crucial forpoultry health. mold-infected feed. Effective management iscrucial for poultry health.",
+  title1:'Animal',
+  title2:'Animal',
+  title3:'blog',
+  title4:'Farmer',
+  bottomcontent:'Refit Animal Care',
+},]
+
   const { cart } = useContext(UserContext);
-  const { handleSubmit, setValue, register } = useForm();
-  const [blogdata, setblogdata] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
-  const [editIndex, setEditIndex] = useState(null);
-
-  const handleOpenDialog = () => {
-    setOpenModal(true);
-    setValue("blogimage", "");
-    setValue("blogtitle", "");
-    setValue("blogheading", "");
-    setValue("blogdescription", "");
-    setValue("blogtopic", "");
-  };
-
-  const handleCloseDialog = () => {
-    setOpenModal(false);
-    setValue("blogimage", "");
-    setValue("blogtitle", "");
-    setValue("blogheading", "");
-    setValue("blogdescription", "");
-    setValue("blogtopic", "");
-    setEditIndex(null);
-  };
-
-  const onSubmit = (data) => {
-    if (editIndex !== null) {
-      // Edit existing data
-      const updatedData = [...blogdata];
-      updatedData[editIndex] = data;
-      setblogdata(updatedData);
-      console.log(updatedData[editIndex]);
-    } else {
-      // Add new data
-      setblogdata([...blogdata, data]);
-    }
-    console.log(data);
-    setOpenModal(false);
-  };
-
-  const handleEdit = (index) => {
-    setValue("blogimage", blogdata[index].blogimage);
-    setValue("blogtitle", blogdata[index].blogtitle);
-    setValue("blogheading", blogdata[index].blogheading);
-    setValue("blogdescription", blogdata[index].blogdescription);
-    setValue("blogtopic", blogdata[index].blogtopic);
-    setEditIndex(index);
-    setOpenModal(true);
-  };
-
-  const handleDelete = (index) => {
-    const updatedData = [...blogdata];
-    updatedData.splice(index, 1);
-    setblogdata(updatedData);
-  };
 
   return (
     <>
@@ -99,140 +67,41 @@ const Blog = () => {
             </div>
           </div>
         </div>
-        <button
-          className="btn btn-primary w-auto"
-          onClick={() => handleOpenDialog()}
-        >
-          Add blog
-        </button>
-        <div className="row justify-content-center">
-          {blogdata.map((item, index) => (
-            <div className="col-lg-10 " key={index}>
-              <div className="p-3 border d-flex bg-white rounded shadow-sm d-flex flex-column justify-content-between mb-3">
-                <div className="d-flex align-items-center text-decoration-none">
-                  <div className="w-50">
-                    <img className="flex-shrink-0 me-3 rounded-start" src={item.blogimage} />
-                  </div>
-                  <div className="flex-grow-1">
-                    <h2 className="mb-3">
-                      {item.blogheading}
-                    </h2>
-                    <div className="text-muted mb-3">
-                     {item.blogdescription}
-                    </div>
-
-                    <ul className="list-unstyled d-flex mt-3">
-                      <li className="me-3">
-                        <span>{item.blogtitle}</span>
-                      </li>
-                      <li>
-                        <span>20-07-2024</span>
-                      </li>
-                    </ul>
-                    <div className="text-end">
-                      <button
-                        className="btn w-auto mx-2 btn-warning"
-                        onClick={() => handleEdit(index)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="btn w-auto mx-2 btn-danger"
-                        onClick={() => handleDelete(index)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </div>
+        {blogdata.map((item,index) => (
+        <div className="row justify-content-center my-3" key={index}>
+          <div className="d-flex col-lg-10 py-2 align-items-center shadow bg-white ">
+            <img
+              className=" me-3 rounded w-100 "
+              src={item.img}
+              alt="loading"
+              // width={150}
+              height={300}
+            />
+            <div className="flex-grow-1 my-2">
+              <h3 className="mb-3 ">
+                {item.heading}
+              </h3>
+              <div className="text-muted mb-3">
+               {item.content}
               </div>
+              <ul className="list-unstyled d-flex mb-0">
+                <li className="me-3 fw-bold text-primary ">{item.title1} </li>
+                <li className="me-3 fw-bold text-primary ">{item.title2} </li>
+                <li className="me-3 fw-bold text-primary ">{item.title3}</li>
+                <li className="me-3 fw-bold text-primary ">{item.title4} </li>
+              </ul>
+              <ul className="list-unstyled d-flex mt-3">
+                <li className="me-3 ">
+                  <span>{item.bottomcontent}</span>
+                </li>
+                <li>
+                  <span className="text-danger">{new Date().toLocaleDateString("en-GB")}</span>
+                </li>
+              </ul>
             </div>
-          ))}
+          </div>
         </div>
-        <Modal show={openModal} onHide={handleCloseDialog} size="xl">
-          <Modal.Header>
-            {editIndex ? "Edit Blog" : "Add New Blog"}
-          </Modal.Header>
-          <Modal.Body>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="row justify-content-around">
-                <div className="col-lg-5 my-2">
-                  <label className="form-label" for="blogimage">
-                    Image
-                  </label>
-                  <input
-                    name="blogimage"
-                    placeholder="Deworm Report"
-                    type="file"
-                    id="blogimage"
-                    className="form-control"
-                    value={blogdata.blogimage}
-                    {...register("blogimage")}
-                  />
-                </div>
-                <div className="col-lg-5 my-2">
-                  <label className="form-label" for="blogtitle">
-                    Title
-                  </label>
-                  <input
-                    name="blogtitle"
-                    placeholder="Deworm Report"
-                    type="text"
-                    id="blogtitle"
-                    className="form-control"
-                    value={blogdata.blogtitle}
-                    {...register("blogtitle")}
-                  />
-                </div>
-                <div className="col-lg-5 my-2">
-                  <label className="form-label" for="blogheading">
-                    Heading
-                  </label>
-                  <input
-                    name="blogheading"
-                    placeholder="Deworm Report"
-                    type="text"
-                    id="blogheading"
-                    className="form-control"
-                    value={blogdata.blogheading}
-                    {...register("blogheading")}
-                  />
-                </div>
-                <div className="col-lg-5 my-2">
-                  <label className="form-label" for="blogdescription">
-                    Description
-                  </label>
-                  <input
-                    name="blogdescription"
-                    placeholder="Deworm Report"
-                    type="text"
-                    id="blogdescription"
-                    className="form-control"
-                    value={blogdata.blogdescription}
-                    {...register("blogdescription")}
-                  />
-                </div>
-                <div className="col-lg-5 my-2">
-                  <label className="form-label" for="blogtopic">
-                    topic
-                  </label>
-                  <input
-                    name="blogtopic"
-                    placeholder="Deworm Report"
-                    type="text"
-                    id="blogtopic"
-                    className="form-control"
-                    value={blogdata.blogtopic}
-                    {...register("blogtopic")}
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary w-25 mt-3">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </Modal.Body>
-        </Modal>
+         ))}
       </section>
       <Footer />
     </>

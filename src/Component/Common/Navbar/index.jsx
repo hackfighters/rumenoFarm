@@ -86,13 +86,13 @@ const Navbar = ({ size }) => {
 
   useEffect(() => {
     setCartdata(cart);
-    // console.log(carts,12333333333);
   }, []);
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
   };
-  setCartdata(cart);
+
+
   const handleChangen = (e) => {
     i18next.changeLanguage(e.target.value);
     setSelectedOption(e.target.value);
@@ -367,7 +367,7 @@ const Navbar = ({ size }) => {
                   <NavLink
                     className="nav-link px-0"
                     activeclassname="active"
-                    exact
+                    exact="true"
                     to="/home"
                   >
                     Home
@@ -391,7 +391,7 @@ const Navbar = ({ size }) => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <NavLink
                       className="nav-link px-0"
                       activeclassname="active"
@@ -400,7 +400,7 @@ const Navbar = ({ size }) => {
                       Services
                     </NavLink>
                     <ul
-                      class="dropdown-menu"
+                      className="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
                       <li className="">
@@ -635,9 +635,9 @@ const Navbar = ({ size }) => {
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
                     {loggedInUser ? (
-                      <div class="dropdown">
+                      <div className="dropdown">
                         <a
-                          class="p-0  justify-content-end "
+                          className="p-0  justify-content-end "
                           href="#"
                           id="dropdownMenuLink"
                           data-bs-toggle="dropdown"
@@ -646,7 +646,7 @@ const Navbar = ({ size }) => {
                           <img src={logstatus} className="w-75" alt="" />
                         </a>
                         <ul
-                          class="dropdown-menu"
+                          className="dropdown-menu"
                           aria-labelledby="dropdownMenuLink"
                         >
                           <li className="d-flex align-items-center justify-content-center my-2">
@@ -664,7 +664,7 @@ const Navbar = ({ size }) => {
                           </li>
                           <li>
                             <a
-                              class="dropdown-item justify-content-center"
+                              className="dropdown-item justify-content-center"
                               href="/products"
                             >
                               Product
@@ -672,7 +672,7 @@ const Navbar = ({ size }) => {
                           </li>
                           <li>
                             <a
-                              class="dropdown-item justify-content-center"
+                              className="dropdown-item justify-content-center"
                               href="/contactus"
                             >
                               Contact Us

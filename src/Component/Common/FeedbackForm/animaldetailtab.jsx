@@ -38,18 +38,18 @@ const AnimalDetailTab = () => {
               </NavLink>
             </div>
             <div className="mx-5 px-5">
-              <div class="btn-group">
+              <div className="btn-group">
                 <button
                   type="button"
-                  class="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11 is-active dropdown-toggle"
+                  className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11 is-active dropdown-toggle"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
                   Help
                 </button>
-                <div class="dropdown-menu">
-                  {/* <a class="dropdown-item letter-spacing" href="#">
+                <div className="dropdown-menu">
+                  {/* <a className="dropdown-item letter-spacing" href="#">
                   <FontAwesomeIcon
                   icon={faPhone}
                   className="me-2"
@@ -58,7 +58,7 @@ const AnimalDetailTab = () => {
                   </a> */}
                   <h5 className="text-center">Call or Whatsapp</h5>
                   
-                  <a class="dropdown-item letter-spacing d-flex align-items-center justify-content-center" href="#">
+                  <a className="dropdown-item letter-spacing d-flex align-items-center justify-content-center" href="#">
                   <FontAwesomeIcon
                   icon={faPhone}
                   className="me-2 fs-6  bg-secondary p-1 rounded text-white"
@@ -66,8 +66,8 @@ const AnimalDetailTab = () => {
                 +91 7355043892
                   </a>
                   
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item d-flex justify-content-between align-items-center" href="#">
                   <FontAwesomeIcon
                   icon={faEnvelope}
                   className="me-2"

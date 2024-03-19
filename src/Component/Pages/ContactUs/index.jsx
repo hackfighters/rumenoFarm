@@ -218,7 +218,7 @@ const ContactUs = () => {
                       <p className="my-3 text-center">
                         Feel Free to contact us any time.
                       </p>
-                      <Form.Group controlId="formName">
+                      <Form.Group >
                         <Form.Control
                           type="text"
                           placeholder="Name"
@@ -232,7 +232,7 @@ const ContactUs = () => {
                         </Form.Control.Feedback>
                       </Form.Group>
 
-                      <Form.Group controlId="formEmail">
+                      <Form.Group >
                         <Form.Control
                           type="text"
                           placeholder="Email"
@@ -250,7 +250,7 @@ const ContactUs = () => {
                         </Form.Control.Feedback>
                       </Form.Group>
 
-                      <Form.Group controlId="formMessage">
+                      <Form.Group >
                         <Form.Control
                           as="textarea"
                           rows={3}
