@@ -20,6 +20,7 @@ import PrivacyPolicy from "./Component/Pages/privacyPolicy";
 import Blog from "./Component/Pages/Blog";
 import ServicesSecond from "./Component/Pages/Service/servicesecond";
 import ServicesThird from "./Component/Pages/Service/servicethird";
+import BlogContent from "./Component/Pages/Blog/blogContent";
 
 
 const App = () => {
@@ -101,6 +102,7 @@ const App = () => {
           <Route path="/AnimalDetailTab" Component={AnimalDetailTab}/>
           <Route path="/privacypolicy" Component={PrivacyPolicy}/>
           <Route path="/blog" Component={Blog}/>
+          <Route path="/blog/:id" Component={BlogContent}/>
           <Route path="*" Component={Error} />
         </Routes>
       </UserProvider>

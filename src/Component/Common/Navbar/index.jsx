@@ -233,25 +233,11 @@ const Navbar = ({ size }) => {
     <>
       <div className="container-fluid sect-topbar position-absolute">
         <div className="row">
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+          
           <div id="topbar" className="col-sm-12 d-flex align-items-center px-0">
             <div className="container-fluid">
               <div className="contact-info row justify-content-between px-0">
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
                 <div className="col-sm-3 px-4 d-flex cnt align-items-center">
                   <FontAwesomeIcon
                     icon={faLocationDot}
@@ -260,14 +246,7 @@ const Navbar = ({ size }) => {
                   />
                   <span className="text-dark">{t("v301")}</span>
                 </div>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
                   <FontAwesomeIcon
                     icon={faEnvelope}
@@ -275,24 +254,10 @@ const Navbar = ({ size }) => {
                     style={{ color: "#f0f0f0" }}
                   />
                   <span className="text-dark">rumeno.farmotech@gmail.com</span>
-                  {/* Veterinary docter online */}
-                  {/* Veterinary docter cow / rabbit / new me */}
-                  {/* Veterinary docter salary */}
-                  {/* Veterinary docter fees */}
-                  {/* Veterinary docter course */}
-                  {/* Veterinary docter jods */}
-                  {/* Veterinary docter kese bane */}
-                  {/* Goat farming training */}
+                  
                 </div>
                 <div className="col-sm-2 px-sm-5 px-lg-2 d-flex cnt justify-content-end align-items-center">
-                  {/* Veterinary docter online */}
-                  {/* Veterinary docter cow / rabbit / new me */}
-                  {/* Veterinary docter salary */}
-                  {/* Veterinary docter fees */}
-                  {/* Veterinary docter course */}
-                  {/* Veterinary docter jods */}
-                  {/* Veterinary docter kese bane */}
-                  {/* Goat farming training */}
+                  
                   <FontAwesomeIcon
                     icon={faClock}
                     className="me-2"
@@ -329,14 +294,7 @@ const Navbar = ({ size }) => {
               </div>
             </div>
           </div>
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+          
           <div
             id="header"
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
@@ -355,9 +313,7 @@ const Navbar = ({ size }) => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            {/* Rumeno farm  */}
-            {/* Rumeno */}
-            {/* Veterinary */}
+            
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -373,14 +329,7 @@ const Navbar = ({ size }) => {
                     Home
                   </NavLink>
                 </li>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -434,14 +383,7 @@ const Navbar = ({ size }) => {
                     </ul>
                   </div>
 
-                  {/* Veterinary docter online */}
-                  {/* Veterinary docter cow / rabbit / new me */}
-                  {/* Veterinary docter salary */}
-                  {/* Veterinary docter fees */}
-                  {/* Veterinary docter course */}
-                  {/* Veterinary docter jods */}
-                  {/* Veterinary docter kese bane */}
-                  {/* Goat farming training */}
+                  
                 </li>
                 <li className="nav-item">
                   <NavLink
@@ -698,14 +640,7 @@ const Navbar = ({ size }) => {
                       </button>
                     )}
                   </div>
-                  {/* Veterinary docter online */}
-                  {/* Veterinary docter cow / rabbit / new me */}
-                  {/* Veterinary docter salary */}
-                  {/* Veterinary docter fees */}
-                  {/* Veterinary docter course */}
-                  {/* Veterinary docter jods */}
-                  {/* Veterinary docter kese bane */}
-                  {/* Goat farming training */}
+                  
                   <Login
                     showModal={showModal}
                     closeModal={closeModal}
@@ -732,14 +667,7 @@ const Navbar = ({ size }) => {
                 </li> */}
               </ul>
             </div>
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+            
           </div>
         </div>
       </div>

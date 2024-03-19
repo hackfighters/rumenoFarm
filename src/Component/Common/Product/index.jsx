@@ -89,83 +89,34 @@ const ProductItem = ({ item, handleClick }) => {
 
   return (
     <div className="col py-1">
-      {/* Veterinary docter online */}
-      {/* Veterinary docter cow / rabbit / new me */}
-      {/* Veterinary docter salary */}
-      {/* Veterinary docter fees */}
-      {/* Veterinary docter course */}
-      {/* Veterinary docter jods */}
-      {/* Veterinary docter kese bane */}
-      {/* Goat farming training */}
+      
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
-          {/* Veterinary docter online */}
-          {/* Veterinary docter cow / rabbit / new me */}
-          {/* Veterinary docter salary */}
-          {/* Veterinary docter fees */}
-          {/* Veterinary docter course */}
-          {/* Veterinary docter jods */}
-          {/* Veterinary docter kese bane */}
-          {/* Goat farming training */}
+          
           <div className="col-sm-4 p-4">
             <img src={img} alt="Loading" className="w-100" />
           </div>
           <div className="col-sm-8 px-5 text-center text-lg-start">
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+            
             <div className="fs-3">{name}</div>
             <div className="fs-4 mt-2 text-danger">{priceText}</div>
             <div className="mt-2">{description}</div>
             <div className="d-flex justify-content-between mt-2">
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+              
               <div>
                 <span className="fw-bold">{suitable}</span>
                 <span>{tipe}</span>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
               </div>
               <div>
                 <span className="fw-bold">{efficacy}</span>
                 <span>{efficacy1}</span>
                 <span>{efficacy2}</span>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
               </div>
             </div>
             <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+              
               <ReactStars
                 count={5}
                 onChange={ratingChanged}
@@ -177,14 +128,7 @@ const ProductItem = ({ item, handleClick }) => {
                 activeColor="#ffd700"
               />
             </div>
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+            
 
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-danger"
@@ -205,14 +149,7 @@ const ProductItem = ({ item, handleClick }) => {
               closeModal={closeModal}
             />
 
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+            
             <div className="d-flex justify-content-between">
               <button
                 className="btn text-white border-0 w-auto gradient-custom-2 my-4"

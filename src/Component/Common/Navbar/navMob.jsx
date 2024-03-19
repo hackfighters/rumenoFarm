@@ -115,14 +115,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
   return (
     <>
       <div className="container-fluid sect-topbar position-absolute">
-        {/* Veterinary docter online */}
-        {/* Veterinary docter cow / rabbit / new me */}
-        {/* Veterinary docter salary */}
-        {/* Veterinary docter fees */}
-        {/* Veterinary docter course */}
-        {/* Veterinary docter jods */}
-        {/* Veterinary docter kese bane */}
-        {/* Goat farming training */}
+        
         <div className="row">
           <div
             id=""
@@ -131,14 +124,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
             <a className="logo" href="#/">
               <img className="ps-4 logo" src={logo} alt="" />
             </a>
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+            
             <button
               className="navbar-toggler bg-secondary"
               type="button"
@@ -149,30 +135,14 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon"></span>
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+              
             </button>
-            {/* Rumeno farm  */}
-            {/* Rumeno */}
-            {/* Veterinary */}
+            
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              {/* Veterinary docter online */}
-              {/* Veterinary docter cow / rabbit / new me */}
-              {/* Veterinary docter salary */}
-              {/* Veterinary docter fees */}
-              {/* Veterinary docter course */}
-              {/* Veterinary docter jods */}
-              {/* Veterinary docter kese bane */}
-              {/* Goat farming training */}
+              
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
                 <li className="nav-item">
                   <NavLink
@@ -202,14 +172,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     Services
                   </NavLink>
                 </li>
-                {/* Veterinary docter online */}
-                {/* Veterinary docter cow / rabbit / new me */}
-                {/* Veterinary docter salary */}
-                {/* Veterinary docter fees */}
-                {/* Veterinary docter course */}
-                {/* Veterinary docter jods */}
-                {/* Veterinary docter kese bane */}
-                {/* Goat farming training */}
+                
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -247,14 +210,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                       Login
                     </button>
                   </div>
-                  {/* Veterinary docter online */}
-                  {/* Veterinary docter cow / rabbit / new me */}
-                  {/* Veterinary docter salary */}
-                  {/* Veterinary docter fees */}
-                  {/* Veterinary docter course */}
-                  {/* Veterinary docter jods */}
-                  {/* Veterinary docter kese bane */}
-                  {/* Goat farming training */}
+                  
 
                   <Login
                     showModal={showModal}
@@ -301,14 +257,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                 </li>
               </ul>
             </div>
-            {/* Veterinary docter online */}
-            {/* Veterinary docter cow / rabbit / new me */}
-            {/* Veterinary docter salary */}
-            {/* Veterinary docter fees */}
-            {/* Veterinary docter course */}
-            {/* Veterinary docter jods */}
-            {/* Veterinary docter kese bane */}
-            {/* Goat farming training */}
+            
           </div>
         </div>
       </div>
