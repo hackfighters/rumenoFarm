@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -43,6 +43,7 @@ import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg";
 import DCox from "../../../assets/img/OurProduct/D-Cox.jpg";
 import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg";
 import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
+import { Link, useParams } from "react-router-dom";
 
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
@@ -53,7 +54,7 @@ const ProductSidebar = ({ handleClick }) => {
   const Data = [
     {
       id: 1,
-      name: t(["v269"]),
+      name: "cow",
       priceText: "Price: 245 INR/Bottle",
       amount: 1,
       price: 245.00,
@@ -98,7 +99,7 @@ const ProductSidebar = ({ handleClick }) => {
     },
     {
       id: 2,
-      name: t(["v271"]),
+      name: "goat",
       priceText: "Price: 285 INR/Piece",
       amount: 1,
       price: 285.00,
@@ -624,25 +625,42 @@ const ProductSidebar = ({ handleClick }) => {
   };
   const [animalType, setAnimalType] = useState("");
 
-  // Step 2: Update the filtering logic
-  const filteredItems = categoryItems[category].filter(item => {
-     // Assuming the name property contains the animal type information
-     // Adjust this logic based on how your data is structured
-     return animalType === "" || item.name.includes(animalType);
-  });
-  const handleAnimalTypeClick = (animalType) => {
-    setAnimalType(animalType === animalType ? "" : animalType); // Toggle selection
-  };
+  // // Step 2: Update the filtering logic
+  // const filteredItems = categoryItems[category].filter(item => {
+  //    // Assuming the name property contains the animal type information
+  //    // Adjust this logic based on how your data is structured
+  //    return animalType === "" || item.name.includes(animalType);
+  // });
+  // const handleAnimalTypeClick = (animalType) => {
+  //   setAnimalType(animalType === animalType ? "" : animalType); // Toggle selection
+  // };
+  const { name } = useParams();
+  console.log(name)
+  // const blog = blogdata.find((blog) => blog.name === parseInt(name));
+
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  useEffect(() => {
+    const items = categoryItems[category];
+    if (name) {
+      // Filter items based on the name parameter
+      const filtered = items.filter(item => item.name.includes(name));
+      setFilteredItems(filtered);
+    } else {
+      setFilteredItems(items);
+    }
+  }, [category, name]);
+ 
 
 
   return (
     <div className="container-fluid mt-4">
       <div className="my-3 text-end">
-        <button type="button" className={`btn ${animalType === "" ? "btn-warning":"btn-success"} w-auto mx-2`} onClick={() => setAnimalType("")}>All</button>
-        <button type="button" className={`btn ${animalType === "goat" ? "btn-warning":"btn-success"} w-auto mx-2`} onClick={() => setAnimalType("goat")}>Goat</button>
-        <button type="button" className={`btn ${animalType === "sheep" ? "btn-warning":"btn-success"} w-auto mx-2`}  onClick={() => setAnimalType("sheep")}>Sheep</button>
-        <button type="button" className={`btn ${animalType === "cow" ? "btn-warning":"btn-success"} w-auto mx-2`}  onClick={() => setAnimalType("cow")}>Cow</button>
-        <button type="button" className={`btn ${animalType === "baffalo" ? "btn-warning":"btn-success"} w-auto mx-2`}  onClick={() => setAnimalType("baffalo")}>Baffalo</button>
+        <Link to={`/products/${""}`}><button type="button" className={`btn ${animalType === "" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`} onClick={() => setAnimalType("")}>All</button></Link>
+        <Link to={`/products/${"goat"}`}><button type="button" className={`btn ${animalType === "goat" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`} onClick={() => setAnimalType("goat")}>Goat</button></Link>
+        <Link to={`/products/${"sheep"}`}><button type="button" className={`btn ${animalType === "sheep" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`}  onClick={() => setAnimalType("sheep")}>Sheep</button></Link>
+        <Link to={`/products/${"cow"}`}><button type="button" className={`btn ${animalType === "cow" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`}  onClick={() => setAnimalType("cow")}>Cow</button></Link>
+        <Link to={`/products/${"baffalo"}`}><button type="button" className={`btn ${animalType === "baffalo" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`}  onClick={() => setAnimalType("baffalo")}>Baffalo</button></Link>
       </ div>
       <div className="row flex-nowrap justify-content-center ms-0 mx-md-4 mx-lg-0">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded h-100">

@@ -21,6 +21,10 @@ import Blog from "./Component/Pages/Blog";
 import ServicesSecond from "./Component/Pages/Service/servicesecond";
 import ServicesThird from "./Component/Pages/Service/servicethird";
 import BlogContent from "./Component/Pages/Blog/blogContent";
+import GoatCategoryPage from "./Component/Pages/Category/goatCategory";
+import DogCategoryPage from "./Component/Pages/Category/dogCategory";
+import CattleCategoryPage from "./Component/Pages/Category/cattleCategory";
+import PoultryCategoryPage from "./Component/Pages/Category/poultryCategory";
 
 
 const App = () => {
@@ -95,6 +99,7 @@ const App = () => {
           <Route path="/servicessecond" Component={ServicesSecond} />
           <Route path="/servicesthird" Component={ServicesThird} />
           <Route path="/products" Component={ProductPage} />
+          <Route path="/products/:name" Component={ProductPage} />
           <Route path="/contactus" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
@@ -103,6 +108,10 @@ const App = () => {
           <Route path="/privacypolicy" Component={PrivacyPolicy}/>
           <Route path="/blog" Component={Blog}/>
           <Route path="/blog/:id" Component={BlogContent}/>
+          <Route path="/goatcategory" Component={GoatCategoryPage}/>
+          <Route path="/dogcategory" Component={DogCategoryPage}/>
+          <Route path="/cattlecategory" Component={CattleCategoryPage}/>
+          <Route path="/poultrycategory" Component={PoultryCategoryPage}/>
           <Route path="*" Component={Error} />
         </Routes>
       </UserProvider>

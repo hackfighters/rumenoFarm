@@ -330,14 +330,70 @@ const Navbar = ({ size }) => {
                   </NavLink>
                 </li>
                 
+               
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link px-0"
-                    activeclassname="active"
-                    to="/products"
-                  >
-                    Products
-                  </NavLink>
+                  <div className="dropdown">
+                    <NavLink
+                      className="nav-link px-0"
+                      activeclassname="active"
+                      to="/products"
+                    >
+                      Products
+                    </NavLink>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/products"
+                        >
+                          Our Products
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/goatcategory"
+                        >
+                          Goat Category
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/dogcategory"
+                        >
+                          Dog Category
+                        </NavLink>
+                      </li>
+
+                      <li className="text-center">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/cattlecategory"
+                        >
+                          Cattle Category
+                        </NavLink>
+                      </li>
+                      <li className="text-center">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/poultrycategory"
+                        >
+                          Poultry Category
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+
+                  
                 </li>
                 <li className="nav-item">
                   <div className="dropdown">

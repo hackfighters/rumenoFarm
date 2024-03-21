@@ -11,6 +11,7 @@ import service5 from '../../../assets/img/service-img/service5.jpg'
 import service6 from '../../../assets/img/service-img/service6.jpg'
 import service7 from '../../../assets/img/service-img/service7.jpg'
 import service8 from '../../../assets/img/service-img/service8.jpg'
+import KeysWords from "../../Common/apiData/keyWords";
 
 
 const ServicesThird = () => {
@@ -22,6 +23,11 @@ const ServicesThird = () => {
       <title>Services-Rumeno</title>
       <link rel="canonical" href="https://rumeno.in/servicesthird" />
     </Helmet>
+    <ul className="d-none">
+        {KeysWords.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
     <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
         <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
