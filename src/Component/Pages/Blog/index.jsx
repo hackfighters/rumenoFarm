@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 import { UserContext } from "../../Common/Modal/logusecont";
 import blgimg1 from "../../../assets/img/OurProduct/GreenHouseMat2.jpg";
 import blgimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
+import KeysWords from "../../Common/apiData/keyWords";
 
 const Blog = () => {
   const blogdata = [
@@ -37,6 +38,7 @@ const Blog = () => {
       bottomcontent: "Refit Animal Care",
     },
   ];
+  
 
   const { cart } = useContext(UserContext);
 
@@ -47,6 +49,11 @@ const Blog = () => {
         <title>Blog-Rumeno</title>
         <link rel="canonical" href="https://rumeno.in/blog" />
       </Helmet>
+      <ul className="d-none">
+        {KeysWords.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
       <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
         <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>

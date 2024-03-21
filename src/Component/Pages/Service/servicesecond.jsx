@@ -12,6 +12,7 @@ import service1 from "../../../assets/img/service-img/service1.jpg";
 import service2 from "../../../assets/img/service-img/service2.jpg";
 import service3 from "../../../assets/img/service-img/service3.jpg";
 import service4 from "../../../assets/img/service-img/service4.jpg";
+import KeysWords from "../../Common/apiData/keyWords";
 
 const ServicesSecond = () => {
   const { cart } = useContext(UserContext);
@@ -22,6 +23,11 @@ const ServicesSecond = () => {
         <title>Services-Rumeno</title>
         <link rel="canonical" href="https://rumeno.in/servicessecond" />
       </Helmet>
+      <ul className="d-none">
+        {KeysWords.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
       <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
         <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>

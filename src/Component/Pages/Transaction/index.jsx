@@ -19,6 +19,7 @@ import { Form } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import KeysWords from "../../Common/apiData/keyWords";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
@@ -216,6 +217,11 @@ const Transaction = () => {
                 <title>Transaction-Rumeno</title>
                 <link rel="canonical" href="https://rumeno.in/transaction" />
             </Helmet>
+            <ul className="d-none">
+        {KeysWords.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
             <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
         <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>

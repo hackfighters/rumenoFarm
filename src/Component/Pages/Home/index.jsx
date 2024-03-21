@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
@@ -24,12 +24,13 @@ import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
+import KeysWords from "../../Common/apiData/keyWords"
 
 const Home = () => {
   const { t } = useTranslation();
   const { cart } = useContext(UserContext);
 
-  
+ 
 
   return (
     <>
@@ -38,25 +39,58 @@ const Home = () => {
         <title>Home-Rumeno</title>
         <link rel="canonical" href="https://rumeno.in/home" />
       </Helmet>
+      <ul className="d-none">
+        {KeysWords.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+
       <section className="container-fluid overflow-hidden p-0" id="#home">
-        <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
-        <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
-        <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        
+        <a
+          className="d-none"
+          href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/cow-feed/s?k=cow+feed"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
+        ></a>
+
         <div className="home-backgroundColor overflow-hidden">
           <Navbar size={cart.length} />
-          
 
           <div className="container header-sect pt-5">
-            
-            
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
                 <h1 className="text-light mt-5 caro-text pt-5">
@@ -64,13 +98,12 @@ const Home = () => {
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
-              
+
               <div
                 className="col-lg-6"
                 data-aos="fade-left"
                 data-aos-delay="50"
               >
-                
                 <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
                   <Carousel interval={2000}>
                     <Carousel.Item>
@@ -84,7 +117,6 @@ const Home = () => {
                     </Carousel.Item>
                   </Carousel>
                 </div>
-               
               </div>
               <a href="#training">
                 <div className="training-sect">
@@ -107,7 +139,6 @@ const Home = () => {
               </a>
             </div>
           </div>
-          
         </div>
         <About />
         <div className="container">
@@ -125,7 +156,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="row g-0 gx-5 align-items-end">
             <div className="col-lg-6">
               <div className="section-header text-start mb-3">
@@ -148,7 +179,7 @@ const Home = () => {
                     <h4 className="card-title">{t("v269")}</h4>
                     <p className="card-sub-title"></p>
                     <p className="card-sub-title">{t("v270")}</p>
-                    <Link to="/products">
+                    <Link   to={`/products/${"cow"}`}>
                       <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
                         See More
                       </button>
@@ -156,7 +187,6 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              
             </div>
             <div
               className="col-lg-3"
@@ -172,7 +202,7 @@ const Home = () => {
                     <h4 className="card-title">{t("v271")}</h4>
                     <p className="card-sub-title"></p>
                     <p className="card-sub-title">{t("v272")}</p>
-                    <Link to="/products">
+                    <Link to={`/products/${"goat"}`}>
                       <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
                         See More
                       </button>
@@ -181,7 +211,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          
+
             <div
               className="col-lg-3"
               data-aos="flip-left"
@@ -190,7 +220,6 @@ const Home = () => {
               data-aos-delay="300"
             >
               <div className="card-box py-4">
-               
                 <div className="card1 caa">
                   <img
                     src={Prdimg7}
@@ -218,7 +247,6 @@ const Home = () => {
               data-aos-delay="300"
             >
               <div className="card-box py-4">
-               
                 <div className="card1 caa">
                   <img
                     src={Prdimg6}
@@ -238,7 +266,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-      
           </div>
         </div>
         <Training />
