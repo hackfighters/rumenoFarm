@@ -88,20 +88,20 @@ const ProductItem = ({ item, handleClick }) => {
   };
 
   return (
-    <div className="col py-1">
+    <div className=" py-1">
       
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
           
           <div className="col-sm-4 p-4">
-            <img src={img} alt="Loading" className="w-100" />
+            <img src={img} width={200} height={400} alt="Loading" className="w-100" />
           </div>
-          <div className="col-sm-8 px-5 text-center text-lg-start">
+          <div className="col-sm-8 px-3 lg:px-5 text-center text-lg-start">
             
             <div className="fs-3">{name}</div>
             <div className="fs-4 mt-2 text-danger">{priceText}</div>
             <div className="mt-2">{description}</div>
-            <div className="d-flex justify-content-between mt-2">
+            <div className="lg:d-flex d-block justify-content-between mt-2">
               
               <div>
                 <span className="fw-bold">{suitable}</span>
@@ -152,13 +152,13 @@ const ProductItem = ({ item, handleClick }) => {
             
             <div className="d-flex justify-content-between">
               <button
-                className="btn text-white border-0 w-auto gradient-custom-2 my-4"
+                className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
                 onClick={AddToCart}
               >
                 Add to Cart
               </button>
               <button
-                className="btn text-white border-0 w-auto gradient-custom-2 my-4"
+                className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
                 onClick={openfeedbackModal}
               >
                 FeedBack

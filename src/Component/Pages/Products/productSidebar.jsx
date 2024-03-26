@@ -54,10 +54,10 @@ const ProductSidebar = ({ handleClick }) => {
   const Data = [
     {
       id: 1,
-      name: "cow",
+      name: t(["v254"]),
       priceText: "Price: 245 INR/Bottle",
       amount: 1,
-      price: 245.00,
+      price: 245.0,
       description: t(["v270"]),
       img: MICROFLORATONE,
       text: [
@@ -99,10 +99,10 @@ const ProductSidebar = ({ handleClick }) => {
     },
     {
       id: 2,
-      name: "goat",
+      name: t(["v197"]),
       priceText: "Price: 285 INR/Piece",
       amount: 1,
-      price: 285.00,
+      price: 285.0,
       description: t(["v272"]),
       img: Minromin,
       text: [
@@ -147,7 +147,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v273"]),
       priceText: "Price: 700 INR/Piece",
       amount: 1,
-      price: 700.00,
+      price: 700.0,
       description: t(["v274"]),
       img: Rumenovita,
       text: [
@@ -183,7 +183,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v149"]),
       priceText: "Price: 245 INR/Bottle",
       amount: 1,
-      price: 245.00,
+      price: 245.0,
       description: t(["v150"]),
       img: Neonato,
       text: [
@@ -234,7 +234,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v135"]),
       priceText: "Price: 700 INR/Piece",
       amount: 1,
-      price: 700.00,
+      price: 700.0,
       description: t(["v136"]),
       img: TanavMukti,
       text: [
@@ -291,7 +291,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v161"]),
       priceText: "Price: 350 INR/Piece",
       amount: 1,
-      price: 350.00,
+      price: 350.0,
       description: t(["v162"]),
       img: Energico,
       text: [
@@ -324,7 +324,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v167"]),
       priceText: "Price: 195 INR/Piece",
       amount: 1,
-      price: 195.00,
+      price: 195.0,
       description: t(["v168"]),
       img: DigestoPlus,
       text: [
@@ -354,7 +354,7 @@ const ProductSidebar = ({ handleClick }) => {
       name: t(["v182"]),
       priceText: "Price: 125 INR/Piece",
       amount: 1,
-      price: 125.00,
+      price: 125.0,
       description: t(["v183"]),
       img: Liverofine,
       text: [
@@ -523,7 +523,7 @@ const ProductSidebar = ({ handleClick }) => {
       efficacy1: t(["v343"]),
       efficacy2: t(["v344"]),
     },
-      ];
+  ];
 
   const FarmEquipment = [
     {
@@ -550,7 +550,7 @@ const ProductSidebar = ({ handleClick }) => {
     { name: t(["v325"]), img: rumenoamazon1, amount: 1, price: 600 },
     { name: t(["v326"]), img: rumenoamazon2, amount: 1, price: 600 },
     {
-            name: t(["v172"]),
+      name: t(["v172"]),
       img: rumenoamazon3,
       description: t(["v173"]),
       amount: 1,
@@ -625,18 +625,8 @@ const ProductSidebar = ({ handleClick }) => {
   };
   const [animalType, setAnimalType] = useState("");
 
-  // // Step 2: Update the filtering logic
-  // const filteredItems = categoryItems[category].filter(item => {
-  //    // Assuming the name property contains the animal type information
-  //    // Adjust this logic based on how your data is structured
-  //    return animalType === "" || item.name.includes(animalType);
-  // });
-  // const handleAnimalTypeClick = (animalType) => {
-  //   setAnimalType(animalType === animalType ? "" : animalType); // Toggle selection
-  // };
   const { name } = useParams();
-  console.log(name)
-  // const blog = blogdata.find((blog) => blog.name === parseInt(name));
+  console.log(name);
 
   const [filteredItems, setFilteredItems] = useState([]);
 
@@ -644,24 +634,82 @@ const ProductSidebar = ({ handleClick }) => {
     const items = categoryItems[category];
     if (name) {
       // Filter items based on the name parameter
-      const filtered = items.filter(item => item.name.includes(name));
+      const filtered = items.filter((item) => item.name.includes(name));
       setFilteredItems(filtered);
     } else {
       setFilteredItems(items);
     }
   }, [category, name]);
- 
-
 
   return (
     <div className="container-fluid mt-4">
       <div className="my-3 text-end">
-        <Link to={`/products/${""}`}><button type="button" className={`btn ${animalType === "" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`} onClick={() => setAnimalType("")}>All</button></Link>
-        <Link to={`/products/${"goat"}`}><button type="button" className={`btn ${animalType === "goat" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`} onClick={() => setAnimalType("goat")}>Goat</button></Link>
-        <Link to={`/products/${"sheep"}`}><button type="button" className={`btn ${animalType === "sheep" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`}  onClick={() => setAnimalType("sheep")}>Sheep</button></Link>
-        <Link to={`/products/${"cow"}`}><button type="button" className={`btn ${animalType === "cow" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`}  onClick={() => setAnimalType("cow")}>Cow</button></Link>
-        <Link to={`/products/${"baffalo"}`}><button type="button" className={`btn ${animalType === "baffalo" ? "gradient-custom-2 btn-light text-white border-0":"btn-outline-danger"} w-auto mx-2`}  onClick={() => setAnimalType("baffalo")}>Baffalo</button></Link>
-      </ div>
+        <Link className=" " to={`/products/${""}`}>
+          <button
+            type="button"
+            className={`btn ${
+              animalType === ""
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+            } w-auto mx-2`}
+            onClick={() => setAnimalType("")}
+          >
+            All
+          </button>
+        </Link>
+        <Link className=" " to={`/products/${"goat"}`}>
+          <button
+            type="button"
+            className={`btn ${
+              animalType === "goat"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+            } w-auto mx-2`}
+            onClick={() => setAnimalType("goat")}
+          >
+            Goat
+          </button>
+        </Link>
+        <Link className=" " to={`/products/${"sheep"}`}>
+          <button
+            type="button"
+            className={`btn ${
+              animalType === "sheep"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+            } w-auto mx-2`}
+            onClick={() => setAnimalType("sheep")}
+          >
+            Sheep
+          </button>
+        </Link>
+        <Link className=" " to={`/products/${"cow"}`}>
+          <button
+            type="button"
+            className={`btn ${
+              animalType === "cow"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+            } w-auto mx-2`}
+            onClick={() => setAnimalType("cow")}
+          >
+            Cow
+          </button>
+        </Link>
+        <Link className=" " to={`/products/${"baffalo"}`}>
+          <button
+            type="button"
+            className={`btn ${
+              animalType === "baffalo"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+            } w-auto mx-2`}
+            onClick={() => setAnimalType("baffalo")}
+          >
+            Baffalo
+          </button>
+        </Link>
+      </div>
       <div className="row flex-nowrap justify-content-center ms-0 mx-md-4 mx-lg-0">
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white rounded h-100">
           <div className="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white w-100">
@@ -762,7 +810,7 @@ const ProductSidebar = ({ handleClick }) => {
         </div>
         <div className="col-md-10 p-3">
           {filteredItems.map((item, index) => (
-            <ProductItem item={item} handleClick={handleClick} />
+            <ProductItem key={index} item={item} handleClick={handleClick} />
           ))}
           <ReactPaginate
             previousLabel={"Previous"}

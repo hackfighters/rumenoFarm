@@ -634,7 +634,7 @@ const MultiStepForm = () => {
                         value={maindata.bodyscore}
                         {...register("bodyscore")}
                       >
-                        <option selected>
+                        <option defaultValue>
                           Open this and select body score
                         </option>
                         <option value="1">1</option>

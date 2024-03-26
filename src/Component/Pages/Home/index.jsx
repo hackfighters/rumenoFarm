@@ -11,12 +11,15 @@ import Training from "../../Common/Training";
 import FooterTop from "../../Common/CertifiedBox/footer-top";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HomeJson from '../../../assets/js/homeScript.json';
+
+
 
 // Image
-import Prdimg4 from "../../../assets/img/OurProduct/prdaml2.png";
+import Prdimg4 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg5 from "../../../assets/img/OurProduct/prdaml1.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml3.png";
-import Prdimg7 from "../../../assets/img/OurProduct/prdaml4.png";
+import Prdimg7 from "../../../assets/img/OurProduct/prdaml5.png";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
@@ -24,13 +27,11 @@ import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
-import KeysWords from "../../Common/apiData/keyWords"
+import KeysWords from "../../Common/apiData/keyWords";
 
 const Home = () => {
   const { t } = useTranslation();
   const { cart } = useContext(UserContext);
-
- 
 
   return (
     <>
@@ -38,10 +39,25 @@ const Home = () => {
         <meta charSet="utf-8" />
         <title>Home-Rumeno</title>
         <link rel="canonical" href="https://rumeno.in/home" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": HomeJson["@context"],
+            "@type": HomeJson["@type"],
+            "mainEntity": HomeJson.mainEntity.map((item, index) => ({
+              "@type": item["@type"],
+              "name": item.name,
+              "acceptedAnswer": {
+                "@type": item.acceptedAnswer["@type"],
+                "text": item.acceptedAnswer.text
+              }
+            }))
+          })}
+        </script>
       </Helmet>
       <ul className="d-none">
-        {KeysWords.map((item) => (
-          <li>{item}</li>
+        {KeysWords.map((item, index) => (
+          <li key={index}>{item}</li>
         ))}
       </ul>
 
@@ -166,106 +182,56 @@ const Home = () => {
           </div>
           <div className="row">
             <div
-              className="col-lg-3"
+              className="col-lg-4"
               data-aos="flip-left"
               data-aos-easing="ease-out-cubic"
               data-aos-duration="1000"
               data-aos-delay="300"
             >
-              <div className="card-box py-4">
-                <div className="card1">
-                  <img src={Prdimg5} alt="Loading" className="card-img" />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v269")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v270")}</p>
-                    <Link   to={`/products/${"cow"}`}>
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
+              <div className="card-box">
+                <Link to={`/products/${"cow"}`}>
+                  <div className="card1">
+                    <img src={Prdimg5} alt="Loading" className="card-img" />
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
             <div
-              className="col-lg-3"
+              className="col-lg-4"
               data-aos="flip-left"
               data-aos-easing="ease-out-cubic"
               data-aos-duration="1000"
               data-aos-delay="300"
             >
-              <div className="card-box py-4">
-                <div className="card1">
-                  <img src={Prdimg4} alt="Loading" className="card-img" />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v271")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v272")}</p>
-                    <Link to={`/products/${"goat"}`}>
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
+              <div className="card-box">
+                <Link to={`/products/${"goat"}`}>
+                  <div className="card1">
+                    <img src={Prdimg4} alt="Loading" className="card-img" />
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
 
             <div
-              className="col-lg-3"
+              className="col-lg-4"
               data-aos="flip-left"
               data-aos-easing="ease-out-cubic"
               data-aos-duration="1000"
               data-aos-delay="300"
             >
-              <div className="card-box py-4">
-                <div className="card1 caa">
-                  <img
-                    src={Prdimg7}
-                    alt="Loading"
-                    className="card-img img-width h-25"
-                  />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v273")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v274")}</p>
-                    <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
+              <div className="card-box">
+                <Link to={`/products/${"dog"}`}>
+                  <div className="card1">
+                    <img
+                      src={Prdimg7}
+                      alt="Loading"
+                      className="card-img img-width h-25"
+                    />
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
-            <div
-              className="col-lg-3"
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="1000"
-              data-aos-delay="300"
-            >
-              <div className="card-box py-4">
-                <div className="card1 caa">
-                  <img
-                    src={Prdimg6}
-                    alt="Loading"
-                    className="card-img img-width h-100"
-                  />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v273")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v274")}</p>
-                    <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
         <Training />

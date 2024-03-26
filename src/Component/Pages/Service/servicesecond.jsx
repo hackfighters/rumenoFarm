@@ -6,6 +6,8 @@ import Navbar from "../../Common/Navbar";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import Footer from "../../Common/Footer";
 import { useTranslation } from "react-i18next";
+import GoatServiceJson from '../../../assets/js/goatServiceJson.json'
+
 
 // Import images
 import service1 from "../../../assets/img/service-img/service1.jpg";
@@ -22,12 +24,26 @@ const ServicesSecond = () => {
         <meta charSet="utf-8" />
         <title>Services-Rumeno</title>
         <link rel="canonical" href="https://rumeno.in/servicessecond" />
+        <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": GoatServiceJson["@context"],
+      "@type": GoatServiceJson["@type"],
+      "mainEntity": GoatServiceJson.mainEntity.map((item, index) => ({
+        "@type": item["@type"],
+        "name": item.name,
+        "acceptedAnswer": {
+          "@type": item.acceptedAnswer["@type"],
+          "text": item.acceptedAnswer.text
+        }
+      }))
+    })}
+  </script>
       </Helmet>
       <ul className="d-none">
-        {KeysWords.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
+  {KeysWords.map((item, index) => (
+    <li key={index}>{item}</li>
+  ))}
+</ul>
       <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
         <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>

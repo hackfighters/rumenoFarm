@@ -182,7 +182,7 @@ const PostWean = () => {
                               {...register("postbodyscore")}
                              
                             >
-                              <option selected>
+                              <option defaultValue>
                                 Open this and select kidding score
                               </option>
                               <option value="1">1</option>

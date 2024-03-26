@@ -226,7 +226,7 @@ const onsubmit = (data) => {
                               aria-label="Default select example"
                               {...register("heat")}
                             >
-                              <option selected>
+                              <option defaultValue>
                                 Open this and select heat name
                               </option>
                               <option value="heat1">heat 1</option>
@@ -265,7 +265,7 @@ const onsubmit = (data) => {
                               aria-label="Default select example"
                               {...register("heatresult")}
                             >
-                              <option selected>
+                              <option defaultValue>
                                 Open this and select heat Result
                               </option>
                               <option value="heat1">Meeted</option>

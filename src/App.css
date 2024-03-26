@@ -2656,3 +2656,11 @@ background-color: #fbceb1;
 .letter-spacing {
   letter-spacing: 2px;
 }
+
+img.card-img{
+  transition: transform 0.3s ease-in-out;
+ }
+ 
+ img.card-img:hover {
+  transform: scale(1.1);
+ }

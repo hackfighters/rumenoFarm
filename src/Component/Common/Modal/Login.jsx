@@ -37,7 +37,7 @@ const Login = ({
 
     try {
       const response = await axios.post(
-        'https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/rumeno_login',
+        'http://localhost:7000/api/data',
         data
       );
       // Handle the login success, e.g., store token in state or localStorage
@@ -45,7 +45,7 @@ const Login = ({
       const datastatus = response.data.msg;
       if (datastatus === "Success") {
         const firstTwoChars = response.data.userName;
-        const FarmerDtl = "response.data.farmDetail";
+        const FarmerDtl =  response.data.FarmName;
         const userNameWords = firstTwoChars.split(" ");
         const firstWord = userNameWords[0];
         const getUidata = response.data.uID;

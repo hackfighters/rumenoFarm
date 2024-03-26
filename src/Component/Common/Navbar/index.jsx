@@ -38,15 +38,7 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import datatest from "./test.json";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
-{
-  /* Rumeno farm  */
-}
-{
-  /* Rumeno */
-}
-{
-  /* Veterinary */
-}
+
 const Navbar = ({ size }) => {
   const { t } = useTranslation();
   const {
@@ -233,11 +225,11 @@ const Navbar = ({ size }) => {
     <>
       <div className="container-fluid sect-topbar position-absolute">
         <div className="row">
-          
+
           <div id="topbar" className="col-sm-12 d-flex align-items-center px-0">
             <div className="container-fluid">
               <div className="contact-info row justify-content-between px-0">
-                
+
                 <div className="col-sm-3 px-4 d-flex cnt align-items-center">
                   <FontAwesomeIcon
                     icon={faLocationDot}
@@ -246,7 +238,7 @@ const Navbar = ({ size }) => {
                   />
                   <span className="text-dark">{t("v301")}</span>
                 </div>
-                
+
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
                   <FontAwesomeIcon
                     icon={faEnvelope}
@@ -254,10 +246,10 @@ const Navbar = ({ size }) => {
                     style={{ color: "#f0f0f0" }}
                   />
                   <span className="text-dark">rumeno.farmotech@gmail.com</span>
-                  
+
                 </div>
                 <div className="col-sm-2 px-sm-5 px-lg-2 d-flex cnt justify-content-end align-items-center">
-                  
+
                   <FontAwesomeIcon
                     icon={faClock}
                     className="me-2"
@@ -294,7 +286,7 @@ const Navbar = ({ size }) => {
               </div>
             </div>
           </div>
-          
+
           <div
             id="header"
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
@@ -313,7 +305,7 @@ const Navbar = ({ size }) => {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            
+
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -329,8 +321,8 @@ const Navbar = ({ size }) => {
                     Home
                   </NavLink>
                 </li>
-                
-               
+
+
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
@@ -393,7 +385,7 @@ const Navbar = ({ size }) => {
                     </ul>
                   </div>
 
-                  
+
                 </li>
                 <li className="nav-item">
                   <div className="dropdown">
@@ -439,7 +431,7 @@ const Navbar = ({ size }) => {
                     </ul>
                   </div>
 
-                  
+
                 </li>
                 <li className="nav-item">
                   <NavLink
@@ -480,152 +472,152 @@ const Navbar = ({ size }) => {
                     <>
                       {farmDtl ? (
                         <>
-                    <button
-                      typeof="button"
-                      onClick={openSltAnmlModal}
-                      className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
-                    >
-                      Feedback
-                    </button>
-                        <Modal
-                          show={isModalOpen}
-                          onHide={closeSltAnmlModal}
-                          size="sm"
-                        >
-                          <Modal.Header>Select Animal</Modal.Header>
-                          <Modal.Body>
-                            <div className="my-2 text-center">
-                              <NavLink to="/FrmAftLog">
-                                <button
-                                  value="goat"
-                                  onClick={() => handleAnmlValue("goat")}
-                                  className="btn btn-primary w-75"
-                                >
-                                  Goat
-                                </button>
-                              </NavLink>
-                            </div>
-                            <div className="my-2 text-center">
-                              <NavLink to="/FrmAftLog">
-                                <button
-                                  value="sheep"
-                                  onClick={() => handleAnmlValue("sheep")}
-                                  className="btn btn-primary w-75"
-                                >
-                                  Sheep
-                                </button>
-                              </NavLink>
-                            </div>
-                            <div className="my-2 text-center">
-                              <NavLink to="/FrmAftLog">
-                                <button
-                                  value="cow"
-                                  onClick={() => handleAnmlValue("cow")}
-                                  className="btn btn-primary w-75"
-                                >
-                                  Cow
-                                </button>
-                              </NavLink>
-                            </div>
-                            <div className="my-2 text-center">
-                              <NavLink to="/FrmAftLog">
-                                <button
-                                  value="buffalo"
-                                  onClick={() => handleAnmlValue("buffalo")}
-                                  className="btn btn-primary w-75"
-                                >
-                                  Buffalo
-                                </button>
-                              </NavLink>
-                            </div>
-                          </Modal.Body>
-                          <Modal.Footer>
-                            <button
-                              className="btn btn-secondary"
-                              onClick={closeSltAnmlModal}
-                            >
-                              Close
-                            </button>
-                          </Modal.Footer>
-                        </Modal>
-                      </>
-                    ) : (
-                      <>
-                      <button
-                      typeof="button"
-                      onClick={openFarmModal}
-                      className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
-                    >
-                      Feedback
-                    </button>
-                        <FarmerDetails
-                          showFarmModal={showFarmModal}
-                          closeFarmModal={closeFarmModal}
-                        />
-                      </>
-                    )}
-                    <Modal
-                      show={isModalOpen}
-                      onHide={closeSltAnmlModal}
-                      size="sm"
-                    >
-                      <Modal.Header>Select Animal</Modal.Header>
-                      <Modal.Body>
-                        <div className="my-2 text-center">
-                          <NavLink to="/FrmAftLog">
-                            <button
-                              value="goat"
-                              onClick={() => handleAnmlValue("goat")}
-                              className="btn btn-primary w-75"
-                            >
-                              Goat
-                            </button>
-                          </NavLink>
-                        </div>
-                        <div className="my-2 text-center">
-                          <NavLink to="/FrmAftLog">
-                            <button
-                              value="sheep"
-                              onClick={() => handleAnmlValue("sheep")}
-                              className="btn btn-primary w-75"
-                            >
-                              Sheep
-                            </button>
-                          </NavLink>
-                        </div>
-                        <div className="my-2 text-center">
-                          <NavLink to="/FrmAftLog">
-                            <button
-                              value="cow"
-                              onClick={() => handleAnmlValue("cow")}
-                              className="btn btn-primary w-75"
-                            >
-                              Cow
-                            </button>
-                          </NavLink>
-                        </div>
-                        <div className="my-2 text-center">
-                          <NavLink to="/FrmAftLog">
-                            <button
-                              value="buffalo"
-                              onClick={() => handleAnmlValue("buffalo")}
-                              className="btn btn-primary w-75"
-                            >
-                              Buffalo
-                            </button>
-                          </NavLink>
-                        </div>
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <button
-                          className="btn btn-secondary"
-                          onClick={closeSltAnmlModal}
-                        >
-                          Close
-                        </button>
-                      </Modal.Footer>
-                    </Modal>
-                  </>
+                          <button
+                            typeof="button"
+                            onClick={openSltAnmlModal}
+                            className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                          >
+                            Feedback
+                          </button>
+                          <Modal
+                            show={isModalOpen}
+                            onHide={closeSltAnmlModal}
+                            size="sm"
+                          >
+                            <Modal.Header>Select Animal</Modal.Header>
+                            <Modal.Body>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="goat"
+                                    onClick={() => handleAnmlValue("goat")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Goat
+                                  </button>
+                                </NavLink>
+                              </div>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="sheep"
+                                    onClick={() => handleAnmlValue("sheep")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Sheep
+                                  </button>
+                                </NavLink>
+                              </div>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="cow"
+                                    onClick={() => handleAnmlValue("cow")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Cow
+                                  </button>
+                                </NavLink>
+                              </div>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="buffalo"
+                                    onClick={() => handleAnmlValue("buffalo")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Buffalo
+                                  </button>
+                                </NavLink>
+                              </div>
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <button
+                                className="btn btn-secondary"
+                                onClick={closeSltAnmlModal}
+                              >
+                                Close
+                              </button>
+                            </Modal.Footer>
+                          </Modal>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            typeof="button"
+                            onClick={openFarmModal}
+                            className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                          >
+                            Feedback
+                          </button>
+                          <FarmerDetails
+                            showFarmModal={showFarmModal}
+                            closeFarmModal={closeFarmModal}
+                          />
+                        </>
+                      )}
+                      <Modal
+                        show={isModalOpen}
+                        onHide={closeSltAnmlModal}
+                        size="sm"
+                      >
+                        <Modal.Header>Select Animal</Modal.Header>
+                        <Modal.Body>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="goat"
+                                onClick={() => handleAnmlValue("goat")}
+                                className="btn btn-primary w-75"
+                              >
+                                Goat
+                              </button>
+                            </NavLink>
+                          </div>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="sheep"
+                                onClick={() => handleAnmlValue("sheep")}
+                                className="btn btn-primary w-75"
+                              >
+                                Sheep
+                              </button>
+                            </NavLink>
+                          </div>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="cow"
+                                onClick={() => handleAnmlValue("cow")}
+                                className="btn btn-primary w-75"
+                              >
+                                Cow
+                              </button>
+                            </NavLink>
+                          </div>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="buffalo"
+                                onClick={() => handleAnmlValue("buffalo")}
+                                className="btn btn-primary w-75"
+                              >
+                                Buffalo
+                              </button>
+                            </NavLink>
+                          </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <button
+                            className="btn btn-secondary"
+                            onClick={closeSltAnmlModal}
+                          >
+                            Close
+                          </button>
+                        </Modal.Footer>
+                      </Modal>
+                    </>
                   ) : (
                     null
                   )}
@@ -696,7 +688,7 @@ const Navbar = ({ size }) => {
                       </button>
                     )}
                   </div>
-                  
+
                   <Login
                     showModal={showModal}
                     closeModal={closeModal}
@@ -723,7 +715,7 @@ const Navbar = ({ size }) => {
                 </li> */}
               </ul>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -743,64 +735,64 @@ const Navbar = ({ size }) => {
         </Modal.Header>
         <Modal.Body className="cart-model-body">
           {!size === 0
-           ? (
-            <>
-              {cart?.map((item) => {
-                totalAmount += item.amount * item.price;
-                const datat = totalAmount;
-                setamountData(datat);
-                totalPrice = item.price * item.amount;
+            ? (
+              <>
+                {cart?.map((item) => {
+                  totalAmount += item.amount * item.price;
+                  const datat = totalAmount;
+                  setamountData(datat);
+                  totalPrice = item.price * item.amount;
 
-                return (
-                  <div className="row mb-4 cart-model" key={item.id}>
-                    <div className="col-sm-3 cart-model-img text-center">
-                      <img className="mx-3" src={item.img} alt="Loading" />
-                      {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
+                  return (
+                    <div className="row mb-4 cart-model" key={item.id}>
+                      <div className="col-sm-3 cart-model-img text-center">
+                        <img className="mx-3" src={item.img} alt="Loading" />
+                        {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
+                      </div>
+                      <div className="col-sm-3 d-flex align-items-center justify-content-center">
+                        <h4>{item.name}</h4>
+                      </div>
+                      <div className="col-sm-6  d-flex align-items-center justify-content-around ">
+                        <FontAwesomeIcon
+                          icon={faCirclePlus}
+                          type="button"
+                          className="text-primary h4 m-0"
+                          onClick={() => handleChange(item, +1)}
+                        />
+                        <h6 className="m-0">{item.amount}</h6>
+                        {/* <h6 className="m-0">{cookies.amount}</h6> */}
+                        <FontAwesomeIcon
+                          icon={faCircleMinus}
+                          type="button"
+                          className="text-primary h4 m-0"
+                          onClick={() => handleChange(item, -1)}
+                        />
+                        <div>{totalPrice} Rs /-</div>
+                        <FontAwesomeIcon
+                          type="button"
+                          className="text-danger"
+                          icon={faTrash}
+                          onClick={() => handleRemoves(item.id)}
+                        />
+                      </div>
                     </div>
-                    <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                      <h4>{item.name}</h4>
-                    </div>
-                    <div className="col-sm-6  d-flex align-items-center justify-content-around ">
-                      <FontAwesomeIcon
-                        icon={faCirclePlus}
-                        type="button"
-                        className="text-primary h4 m-0"
-                        onClick={() => handleChange(item, +1)}
-                      />
-                      <h6 className="m-0">{item.amount}</h6>
-                      {/* <h6 className="m-0">{cookies.amount}</h6> */}
-                      <FontAwesomeIcon
-                        icon={faCircleMinus}
-                        type="button"
-                        className="text-primary h4 m-0"
-                        onClick={() => handleChange(item, -1)}
-                      />
-                      <div>{totalPrice} Rs /-</div>
-                      <FontAwesomeIcon
-                        type="button"
-                        className="text-danger"
-                        icon={faTrash}
-                        onClick={() => handleRemoves(item.id)}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </>
-          ) : (
-            <>
-              <div>
+                  );
+                })}
+              </>
+            ) : (
+              <>
                 <div>
-                  <h3 className="shopping-empty">Your Basket is Empty</h3>
+                  <div>
+                    <h3 className="shopping-empty">Your Basket is Empty</h3>
+                  </div>
+                  <div className="shopping-empt-icon">
+                    <h5>
+                      <FontAwesomeIcon icon={faCartShopping} />
+                    </h5>
+                  </div>
                 </div>
-                <div className="shopping-empt-icon">
-                  <h5>
-                    <FontAwesomeIcon icon={faCartShopping} />
-                  </h5>
-                </div>
-              </div>
-            </>
-          )}
+              </>
+            )}
         </Modal.Body>
 
         {!size === 0 ? (

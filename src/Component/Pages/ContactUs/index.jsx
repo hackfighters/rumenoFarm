@@ -58,10 +58,10 @@ const ContactUs = () => {
         <link rel="canonical" href="https://rumeno.in/contactus" />
       </Helmet>
       <ul className="d-none">
-        {KeysWords.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
+  {KeysWords.map((item, index) => (
+    <li key={index}>{item}</li>
+  ))}
+</ul>
       <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
         <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>

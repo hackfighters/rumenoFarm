@@ -357,7 +357,7 @@ const Deworm = () => {
                                 })
                               }
                             >
-                              <option selected>
+                              <option defaultValue>
                                 Open this and select endo type
                               </option>
                               <option value="1">1</option>
@@ -384,7 +384,7 @@ const Deworm = () => {
                                 })
                               }
                             >
-                              <option selected>
+                              <option defaultValue>
                                 Open this and select ecto type
                               </option>
                               <option value="1">1</option>

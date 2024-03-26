@@ -149,7 +149,7 @@ const FarmerDetails = ({showFarmModal,closeFarmModal}) => {
                 />
               </div>
               <div className="text-center">
-                <button type="submit" className="btn btn-primary w-25 mt-3" onClick={closeFarmModal}>
+                <button type="submit" className="btn btn-primary w-auto mt-3" onClick={closeFarmModal}>
                   Submit
                 </button>
               </div>
