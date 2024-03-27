@@ -734,7 +734,7 @@ const Navbar = ({ size }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {!size === 0
+          {!size == 0
             ? (
               <>
                 {cart?.map((item) => {
@@ -795,7 +795,7 @@ const Navbar = ({ size }) => {
             )}
         </Modal.Body>
 
-        {!size === 0 ? (
+        {!size == 0 ? (
           <>
             <div className="row border-top border-bottom justify-content-end mx-5 py-1">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">

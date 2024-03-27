@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../../Common/Navbar";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import Footer from "../../Common/Footer";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Accordion } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { useCookies } from "react-cookie";
 
 // import images
 import MICROFLORATONE from "../../../assets/img/OurProduct/microfloratane.jpg";
@@ -34,9 +35,22 @@ import DCox from "../../../assets/img/OurProduct/D-Cox.jpg";
 import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg";
 import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
 import ProductItem from "../../Common/Product";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight, faEye } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
+import ProudctFeedbackModal from "../../Common/Modal/productFeedback";
+import Login from "../../Common/Modal/Login";
+import Registration from "../../Common/Modal/Registion";
+import SendOtp from "../../Common/Modal/otp";
+import { Link } from "react-router-dom";
 
-const GoatCategoryPage = ({handleClick}) => {
-  const { cart } = useContext(UserContext);
+const GoatCategoryPage = ({ }) => {
+
+  const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
+  const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
+  const [showOtp, setShowOpt] = useState(false);
+
+
   const { t } = useTranslation();
   const Data = [
     {
@@ -579,14 +593,74 @@ const GoatCategoryPage = ({handleClick}) => {
     { name: t(["v335"]), img: humanconsumable2 },
     { name: t(["v336"]), img: humanconsumable3 },
   ];
+  var Value = '';
+  const AllData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
+  const [cookies, setCookie] = useCookies(["cart"]);
+  useEffect(() => {
+    if (cookies.cart) {
+      setCart(cookies.cart);
+    }
+  }, []);
+  useEffect(() => {
+    setCookie("cart", cart, { path: "/" });
+    Value = cart.length;
+    if (Value !== 0) {
+      setSizevalue(Value)
+    }
+  }, [cart, setCookie]);
 
-  const allData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
 
   // Filter logic (you need to define your filter criteria here)
-  const filterData = allData.filter((item) => {
+  const filterData = AllData.filter((item) => {
     // Example filter criteria: filter items where the name includes "Goat"
     return item.name.toLowerCase().includes("goat");
   });
+
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const { loggedInUser } = useContext(UserContext);
+
+  const openRegistration = () => {
+    setShowRegistrtionModal(true);
+    setShowLoginModal(false);
+  };
+
+  const closeRegistrationModal = () => {
+    setShowRegistrtionModal(false);
+  };
+  const OpenSendOtp = () => {
+    setShowOpt(true);
+    setShowLoginModal(false);
+  };
+  const CloseSendOtp = () => {
+    setShowOpt(false);
+  };
+
+
+
+  const AddToCarts = (item) => {
+    if (loggedInUser) {
+      console.log("Item added to cart:", item);
+      // handleClick(item);
+      // Add logic to handle adding item to cart
+      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
+      const itemdatra = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }
+      setiteamdata(itemdatra)
+      console.log(itemdatra)
+    } else {
+      // console.log("login first");
+      setShowLoginModal(!showLoginModal);
+      toast.warn("Please Login", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <>
@@ -618,14 +692,54 @@ const GoatCategoryPage = ({handleClick}) => {
             </div>
           </div>
         </div>
-        <div className="row bg-white shadow mx-3 my-4 justify-content-center">
-            
-        {filterData.map((item, index) => (
-          <div className="col-lg-4">
-            <ProductItem key={index} item={item} handleClick={handleClick} />
+        <div className="container-fluid">
+          <div className="row justify-content-center">
+
+            {filterData.map((item, index) => (
+              <div key={index} className="col-lg-3 text-center border bg-white m-3  shadow">
+                <img src={item.img} className="w-100 mt-2" height={200} alt="loading" />
+                <h5 className="mt-3  fw-bold m-auto text-center">{item.name}</h5>
+                <p className="mt-2"> dolor similique expedita provident ipsam sunt rerum rem voluptatem.</p>
+                <hr className="my-0" />
+                <div className="d-flex justify-content-between mx-2 align-item-center">
+                  <button
+                    className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
+                    onClick={() => AddToCarts(item)}
+                  >
+                    Add to Cart
+                  </button>
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/products/ProductDetail/${item.name}`}>
+                    <span
+                      className=""
+                    >
+                      View More
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </span>
+                  </Link>
+
+                </div>
+              </div>
+            ))}
+
+
+
+            <Login
+              showModal={showLoginModal}
+              closeModal={setShowLoginModal}
+              openRegistrationModal={openRegistration}
+              OpenSendOtpModal={OpenSendOtp}
+            />
+            <Registration
+              showModal={showRegistrationModal}
+              closeModal={closeRegistrationModal}
+            />
+            <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
           </div>
-        ))}
-      
+
+        </div>
+        <div className="row bg-white shadow mx-3 my-4 justify-content-center">
+
+
           <div className="col-lg-11">
             <h1 className="my-4 text-center">
               Goat Feed Supplements Improving Performance and Health
@@ -792,7 +906,7 @@ const GoatCategoryPage = ({handleClick}) => {
               healthy and happy!{" "}
             </p>
           </div>
-          
+
         </div>
       </section>
       <Footer />

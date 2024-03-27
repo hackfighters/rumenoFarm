@@ -25,6 +25,7 @@ import GoatCategoryPage from "./Component/Pages/Category/goatCategory";
 import DogCategoryPage from "./Component/Pages/Category/dogCategory";
 import CattleCategoryPage from "./Component/Pages/Category/cattleCategory";
 import PoultryCategoryPage from "./Component/Pages/Category/poultryCategory";
+import ProductDetail from "./Component/Common/Product/productDetail";
 
 
 const App = () => {
@@ -100,6 +101,7 @@ const App = () => {
           <Route path="/servicesthird" Component={ServicesThird} />
           <Route path="/products" Component={ProductPage} />
           <Route path="/products/:name" Component={ProductPage} />
+          <Route path="/products/ProductDetail/:name" Component={ProductDetail} />
           <Route path="/contactus" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
