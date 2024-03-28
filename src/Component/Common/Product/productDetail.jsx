@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 
+// 
+import ReactStars from "react-rating-stars-component";
+
 import MICROFLORATONE from "../../../assets/img/OurProduct/microfloratane.jpg";
 import Minromin from "../../../assets/img/OurProduct/minromix.jpg";
 import farmimg1 from "../../../assets/img/OurProduct/FarmHouse.jpg";
@@ -28,17 +31,20 @@ import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.
 import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
 import ProductItem from "../../Common/Product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faCircleMinus, faCirclePlus, faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from '../Modal/logusecont';
 import { useTranslation } from 'react-i18next';
 import Navbar from '../Navbar';
 import ResponsiveNavbar from '../Navbar/navMob';
 import Footer from '../Footer';
 import { useParams } from 'react-router-dom';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 
 const ProductDetail = () => {
-    const { cart } = useContext(UserContext);
+    const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
     const { t } = useTranslation();
     const Data = [
         {
@@ -582,28 +588,105 @@ const ProductDetail = () => {
         { name: t(["v336"]), img: humanconsumable3 },
     ];
 
+    var Value = '';
+    const AllData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
+    const [cookies, setCookie] = useCookies(["cart"]);
+    useEffect(() => {
+        if (cookies.cart) {
+            setCart(cookies.cart);
+        }
+    }, []);
+    useEffect(() => {
+        setCookie("cart", cart, { path: "/" });
+        Value = cart.length;
+        if (Value !== 0) {
+            setSizevalue(Value)
+        }
+    }, [cart, setCookie]);
+
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
+    const [showOtp, setShowOpt] = useState(false);
+    const { loggedInUser } = useContext(UserContext);
+
+    const openRegistration = () => {
+        setShowRegistrtionModal(true);
+        setShowLoginModal(false);
+    };
+
+    const closeRegistrationModal = () => {
+        setShowRegistrtionModal(false);
+    };
+    const OpenSendOtp = () => {
+        setShowOpt(true);
+        setShowLoginModal(false);
+    };
+    const CloseSendOtp = () => {
+        setShowOpt(false);
+    };
+
+    var ItemQuantity;
+    const handleChange = (item, change) => {
+        const updatedCart = cart.map(cartItem => {
+            if (cartItem.id === item.id) {
+                const ItemQuantity = cartItem.amount + change;
+                if (ItemQuantity < 1) return cartItem; // Prevent quantity from going below 1
+                console.log(ItemQuantity)
+                return { ...cartItem, amount: ItemQuantity };
+            }
+            return cartItem;
+        });
+        setCart(updatedCart);
+    };
+
     const allData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
     const { name } = useParams();
 
-    // Filter logic (you need to define your filter criteria here)
-    const filterData = allData.filter((item) => {
-        // Example filter criteria: filter items where the name includes "Goat"
-        return item.name.toLowerCase().includes(name);
-    });
+    const AddToCarts = (item) => {
+        if (loggedInUser) {
+           // Check if the item already exists in the cart
+           const itemExists = cart.some(cartItem => cartItem.name === item.name);
+       
+           if (!itemExists) {
+             console.log("Item added to cart:", item);
+             // Add logic to handle adding item to cart
+             setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
+             const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
+             setiteamdata(itemData);
+             console.log(itemData);
+           } else {
+             // Optionally, show a message that the item is already in the cart
+             console.log("Item already in cart");
+           }
+        } else {
+           setShowLoginModal(!showLoginModal);
+           toast.warn("Please Login", {
+             position: "top-center",
+             autoClose: 2000,
+             hideProgressBar: false,
+             closeOnClick: true,
+             pauseOnHover: true,
+             draggable: true,
+             progress: undefined,
+             theme: "light",
+           });
+        }
+       };
+      
 
     const [filteredItems, setFilteredItems] = useState([]);
 
     useEffect(() => {
         const items = allData;
         if (name) {
-          // Filter items based on the name parameter
-          const filtered = items.filter((item) => item.name.includes(name));
-          setFilteredItems(filtered);
+            // Filter items based on the name parameter
+            const filtered = items.filter((item) => item.name.includes(name));
+            setFilteredItems(filtered);
         } else {
-          setFilteredItems(items);
+            setFilteredItems(items);
         }
-      }, [name]);
-    
+    }, [name]);
+
     return (
         <>
             <div className="desk-nav">
@@ -614,45 +697,96 @@ const ProductDetail = () => {
             </div>
             <section className="container-fluid service-bg overflow-hidden">
 
-                <div className="row">
-                    <div className="col-lg-5">
-                        <img src="" alt="loading" />
-                    </div>
-                    <div className="col-lg-7">
-                        <h2>{name}</h2>
-                        <hr />
-                        <h2>price</h2>
-                        <h2>quantity</h2>
-                    </div>
-                </div>
-                <div className='row'>
-                {filteredItems.map((item, index) => (
-                    <div className='col-lg-5'>
-                    <img src={item.img} className="w-100 mt-2" height={200} alt="loading" />
-                <h5 className="mt-3  fw-bold m-auto text-center">{item.name}</h5>
-                <p className="mt-2"> dolor similique expedita provident ipsam sunt rerum rem voluptatem.</p>
-                <hr className="my-0" />
-                <div className="d-flex justify-content-between mx-2 align-item-center">
-                  <button
-                    className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
-                    // onClick={() => AddToCarts(item)}
-                  >
-                    Add to Cart
-                  </button>
-                  {/* <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/products/ProductDetail/${item.name}`}> */}
-                    <span
-                      className=""
+                <div
+                    className="section-header text-center mx-auto mb-3 pt-5"
+                    data-wow-delay="0.1s"
+                >
+                    <div
+                        className="d-flex justify-content-center pt-4 mt-lg-5"
+                        data-aos="fade-right"
+                        data-aos-offset="300"
+                        data-aos-easing="ease-in-sine"
                     >
-                      View More
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </span>
-                  {/* </Link> */}
-
+                        <div className="mx-2">
+                            <div className="services-line-largeleft"></div>
+                            <div className="services-line-smallleft"></div>
+                        </div>
+                        <span className="label-title">Product Detail</span>
+                        <div className="mx-2">
+                            <div className="services-line-largeright"></div>
+                            <div className="services-line-smallright"></div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            ))}
-            </div>
-                
+                <div className='row justify-content-center bg-white mx-5 py-2'>
+                    {filteredItems.map((item, index) => (
+                        <>
+                            <div className="col-lg-4">
+                                <img className='w-100' src={item.img} height={500} alt="loading" />
+                            </div>
+                            <div className="col-lg-5 offset-lg-1">
+                                <h1 className=''>{item.name}</h1>
+                                <h2 className='my-3 text-danger fw-bold'>₹ {item.price} /-</h2>
+                                <hr />
+                                <div className="my-3 d justify-content-center">
+                                    <h6 className='my-0'>Please Rate Us Our Product</h6>
+                                    <ReactStars
+                                        count={5}
+                                        // onChange={ratingChanged}
+                                        size={24}
+                                        isHalf={true}
+                                        emptyIcon={<i className="far fa-star"></i>}
+                                        halfIcon={<i className="fa fa-star-half-alt"></i>}
+                                        fullIcon={<i className="fa fa-star"></i>}
+                                        activeColor="#ffd700"
+                                    />
+                                </div>
+                                <div className='my-3'>
+                                    <span className="fw-bold">{item.suitable}</span>
+                                    <span>{item.tipe}</span>
+
+                                </div>
+                                <div className='my-3'>
+                                    <span className="fw-bold">{item.efficacy}</span>
+                                    <span>{item.efficacy1}</span>
+                                    <span>{item.efficacy2}</span>
+
+                                </div>
+                                <div className='my-3'>
+                                    <h5 className='text-danger d-flex align-items-center'>For Videos<FontAwesomeIcon
+                                        className="mx-2 my-0 h3 text-danger"
+                                        type="button"
+                                        icon={faYoutube}
+                                    /></h5>
+                                </div>
+                                <hr />
+                                <div className='d-flex align-items-center'>
+                                    <FontAwesomeIcon
+                                        icon={faCirclePlus}
+                                        type="button"
+                                        className="text-primary h3  mx-2 my-0"
+                                        onClick={() => handleChange(item, +1)}
+                                    />
+                                    <h5 className="px-4 fw-bold py-2 my-0 border rounded">{item.amount}</h5>
+                                    <FontAwesomeIcon
+                                        icon={faCircleMinus}
+                                        type="button"
+                                        className="text-primary h3  mx-2 my-0"
+                                        onClick={() => handleChange(item, -1)}
+                                    />
+                                </div>
+
+                                <button
+                                    className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
+                                    onClick={() => AddToCarts(item)}
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </>
+                    ))}
+                </div>
+
             </section>
             <Footer />
         </>

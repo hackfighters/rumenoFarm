@@ -596,7 +596,7 @@ const GoatCategoryPage = ({ }) => {
   var Value = '';
   const AllData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
   const [cookies, setCookie] = useCookies(["cart"]);
-  useEffect(() => {
+  useEffect((item) => {
     if (cookies.cart) {
       setCart(cookies.cart);
     }
@@ -639,29 +639,35 @@ const GoatCategoryPage = ({ }) => {
 
   const AddToCarts = (item) => {
     if (loggedInUser) {
-      console.log("Item added to cart:", item);
-      // handleClick(item);
-      // Add logic to handle adding item to cart
-      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
-      const itemdatra = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }
-      setiteamdata(itemdatra)
-      console.log(itemdatra)
+       // Check if the item already exists in the cart
+       const itemExists = cart.some(cartItem => cartItem.name === item.name);
+   
+       if (!itemExists) {
+         console.log("Item added to cart:", item);
+         // Add logic to handle adding item to cart
+         setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
+         const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
+         setiteamdata(itemData);
+         console.log(itemData);
+       } else {
+         // Optionally, show a message that the item is already in the cart
+         console.log("Item already in cart");
+       }
     } else {
-      // console.log("login first");
-      setShowLoginModal(!showLoginModal);
-      toast.warn("Please Login", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+       setShowLoginModal(!showLoginModal);
+       toast.warn("Please Login", {
+         position: "top-center",
+         autoClose: 2000,
+         hideProgressBar: false,
+         closeOnClick: true,
+         pauseOnHover: true,
+         draggable: true,
+         progress: undefined,
+         theme: "light",
+       });
     }
-  };
-
+   };
+  
   return (
     <>
       <div className="desk-nav">
@@ -708,7 +714,7 @@ const GoatCategoryPage = ({ }) => {
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/products/ProductDetail/${item.name}`}>
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" >
                     <span
                       className=""
                     >
