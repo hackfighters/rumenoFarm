@@ -72,7 +72,7 @@ const Footer = () => {
                 </li>
 
                 <li>
-                  <a href="#training" className="footer-page">
+                  <a href="/home/#training"   className="footer-page">
                     Training
                   </a>
                 </li>

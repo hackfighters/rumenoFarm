@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
@@ -11,12 +11,15 @@ import Training from "../../Common/Training";
 import FooterTop from "../../Common/CertifiedBox/footer-top";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HomeJson from '../../../assets/js/homeScript.json';
+
+
 
 // Image
-import Prdimg4 from "../../../assets/img/OurProduct/prdaml2.png";
+import Prdimg4 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg5 from "../../../assets/img/OurProduct/prdaml1.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml3.png";
-import Prdimg7 from "../../../assets/img/OurProduct/prdaml4.png";
+import Prdimg7 from "../../../assets/img/OurProduct/prdaml5.png";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
@@ -24,12 +27,11 @@ import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
+import KeysWords from "../../Common/apiData/keyWords";
 
 const Home = () => {
   const { t } = useTranslation();
   const { cart } = useContext(UserContext);
-
-  
 
   return (
     <>
@@ -37,26 +39,74 @@ const Home = () => {
         <meta charSet="utf-8" />
         <title>Home-Rumeno</title>
         <link rel="canonical" href="https://rumeno.in/home" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": HomeJson["@context"],
+            "@type": HomeJson["@type"],
+            "mainEntity": HomeJson.mainEntity.map((item, index) => ({
+              "@type": item["@type"],
+              "name": item.name,
+              "acceptedAnswer": {
+                "@type": item.acceptedAnswer["@type"],
+                "text": item.acceptedAnswer.text
+              }
+            }))
+          })}
+        </script>
       </Helmet>
+      <ul className="d-none">
+        {KeysWords.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+
       <section className="container-fluid overflow-hidden p-0" id="#home">
-        <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
-        <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
-        <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        
+        <a
+          className="d-none"
+          href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/cow-feed/s?k=cow+feed"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
+        ></a>
+        <a
+          className="d-none"
+          href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
+        ></a>
+
         <div className="home-backgroundColor overflow-hidden">
           <Navbar size={cart.length} />
-          
 
           <div className="container header-sect pt-5">
-            
-            
             <div className="row header-txt pt-5 mt-5">
               <div className="col-lg-6 pt-5" data-aos="fade-right">
                 <h1 className="text-light mt-5 caro-text pt-5">
@@ -64,13 +114,12 @@ const Home = () => {
                 </h1>
                 <p className="text-light h4">{t("v2")}</p>
               </div>
-              
+
               <div
                 className="col-lg-6"
                 data-aos="fade-left"
                 data-aos-delay="50"
               >
-                
                 <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
                   <Carousel interval={2000}>
                     <Carousel.Item>
@@ -84,7 +133,6 @@ const Home = () => {
                     </Carousel.Item>
                   </Carousel>
                 </div>
-               
               </div>
               <a href="#training">
                 <div className="training-sect">
@@ -107,7 +155,6 @@ const Home = () => {
               </a>
             </div>
           </div>
-          
         </div>
         <About />
         <div className="container">
@@ -125,7 +172,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="row g-0 gx-5 align-items-end">
             <div className="col-lg-6">
               <div className="section-header text-start mb-3">
@@ -135,110 +182,56 @@ const Home = () => {
           </div>
           <div className="row">
             <div
-              className="col-lg-3"
+              className="col-lg-4"
               data-aos="flip-left"
               data-aos-easing="ease-out-cubic"
               data-aos-duration="1000"
               data-aos-delay="300"
             >
-              <div className="card-box py-4">
-                <div className="card1">
-                  <img src={Prdimg5} alt="Loading" className="card-img" />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v269")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v270")}</p>
-                    <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
+              <div className="card-box">
+                <Link to={`/products/${"cow"}`}>
+                  <div className="card1">
+                    <img src={Prdimg5} alt="Loading" className="card-img" />
                   </div>
-                </div>
-              </div>
-              
-            </div>
-            <div
-              className="col-lg-3"
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="1000"
-              data-aos-delay="300"
-            >
-              <div className="card-box py-4">
-                <div className="card1">
-                  <img src={Prdimg4} alt="Loading" className="card-img" />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v271")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v272")}</p>
-                    <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          
-            <div
-              className="col-lg-3"
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="1000"
-              data-aos-delay="300"
-            >
-              <div className="card-box py-4">
-               
-                <div className="card1 caa">
-                  <img
-                    src={Prdimg7}
-                    alt="Loading"
-                    className="card-img img-width h-25"
-                  />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v273")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v274")}</p>
-                    <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
-                  </div>
-                </div>
+                </Link>
               </div>
             </div>
             <div
-              className="col-lg-3"
+              className="col-lg-4"
               data-aos="flip-left"
               data-aos-easing="ease-out-cubic"
               data-aos-duration="1000"
               data-aos-delay="300"
             >
-              <div className="card-box py-4">
-               
-                <div className="card1 caa">
-                  <img
-                    src={Prdimg6}
-                    alt="Loading"
-                    className="card-img img-width h-100"
-                  />
-                  <div className="card-body h-100">
-                    <h4 className="card-title">{t("v273")}</h4>
-                    <p className="card-sub-title"></p>
-                    <p className="card-sub-title">{t("v274")}</p>
-                    <Link to="/products">
-                      <button className="btn text-white border-0 gradient-custom-2 my-4 w-50">
-                        See More
-                      </button>
-                    </Link>
+              <div className="card-box">
+                <Link to={`/products/${"goat"}`}>
+                  <div className="card1">
+                    <img src={Prdimg4} alt="Loading" className="card-img" />
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
-      
+
+            <div
+              className="col-lg-4"
+              data-aos="flip-left"
+              data-aos-easing="ease-out-cubic"
+              data-aos-duration="1000"
+              data-aos-delay="300"
+            >
+              <div className="card-box">
+                <Link to={`/products/${"dog"}`}>
+                  <div className="card1">
+                    <img
+                      src={Prdimg7}
+                      alt="Loading"
+                      className="card-img img-width h-25"
+                    />
+                  </div>
+                </Link>
+              </div>
+            </div>
+
           </div>
         </div>
         <Training />

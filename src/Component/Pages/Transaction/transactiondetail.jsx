@@ -1,6 +1,7 @@
 import React from "react";
 import Footer from "../../Common/Footer";
 import { Helmet } from "react-helmet";
+import KeysWords from "../../Common/apiData/keyWords";
 // import axios from "axios";
 
 const TransactionDetail = () => {
@@ -38,6 +39,11 @@ const TransactionDetail = () => {
                 <title>Transaction-Detail-Rumeno</title>
                 <link rel="canonical" href="https://rumeno.in/transdetail" />
             </Helmet>
+            <ul className="d-none">
+  {KeysWords.map((item, index) => (
+    <li key={index}>{item}</li>
+  ))}
+</ul>
             <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
         <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>

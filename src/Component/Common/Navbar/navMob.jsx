@@ -22,9 +22,12 @@ import Registration from "../../Common/Modal/Registion";
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
+import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import { UserContext } from "../Modal/logusecont";
 import Cookies from "js-cookie";
 import datatest from './test.json'
+import FarmerDetails from "../Modal/FarmerFarmDtl";
+
 
 // {
 //   /* Rumeno farm  */
@@ -37,7 +40,8 @@ import datatest from './test.json'
 // }
 const ResponsiveNavbar = ({ size, handleChange }) => {
   const { t } = useTranslation();
-  const { loggedInUser,cart,setCart } = useContext(UserContext);
+    
+    const { loggedInUser, cart, setCart ,farmDtl,setSelectedAnimal,  } = useContext(UserContext);
   // State
   // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -46,6 +50,27 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+  const [showFarmModal, setshowFarmModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openSltAnmlModal = () => {
+    setIsModalOpen(true);
+    console.log(farmDtl)
+  };
+  const closeSltAnmlModal = () => {
+    setIsModalOpen(false);
+  };
+  const openFarmModal = () => {
+    setshowFarmModal(true);
+    console.log(farmDtl)
+  };
+
+  const closeFarmModal = () => {
+    setshowFarmModal(false);
+    setIsModalOpen(true);
+  };
+
+
 
   var totalPrice = 0;
 
@@ -85,16 +110,15 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
   };
 
   const handleAddtoCartApi = async (getUidata) => {
-    console.log(datatest,3455)
-  
+    console.log(datatest, 3455)
+
     setCart(datatest)
-  
-    console.log('Hello')
+
     // try {
-      //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
-      //   console.log('Add to cart is Successfull', response.data);
-      // } catch (error) {
-      //   console.error('Add to cart is not working', error);
+    //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
+    //   console.log('Add to cart is Successfull', response.data);
+    // } catch (error) {
+    //   console.error('Add to cart is not working', error);
     // }
   }
 
@@ -112,10 +136,14 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
     navigate("/home");
   };
 
+  const handleAnmlValue = (value) => {
+    setSelectedAnimal(value);
+  };
+
   return (
     <>
       <div className="container-fluid sect-topbar position-absolute">
-        
+
         <div className="row">
           <div
             id=""
@@ -124,7 +152,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
             <a className="logo" href="#/">
               <img className="ps-4 logo" src={logo} alt="" />
             </a>
-            
+
             <button
               className="navbar-toggler bg-secondary"
               type="button"
@@ -135,14 +163,14 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
               aria-label="Toggle navigation"
             >
               <span className="navbar-toggler-icon"></span>
-              
+
             </button>
-            
+
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              
+
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
                 <li className="nav-item">
                   <NavLink
@@ -154,7 +182,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     Home
                   </NavLink>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
                     activeclassname="active"
@@ -162,17 +190,118 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                   >
                     Products
                   </NavLink>
+                </li> */}
+                <li className="nav-item">
+                  <div className="dropdown">
+                    <NavLink
+                      className="nav-link px-0"
+                      activeclassname="active"
+                      to="/products"
+                    >
+                      Products
+                    </NavLink>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/products"
+                        >
+                          Our Products
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/goatcategory"
+                        >
+                          Goat Category
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/dogcategory"
+                        >
+                          Dog Category
+                        </NavLink>
+                      </li>
+
+                      <li className="text-center">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/cattlecategory"
+                        >
+                          Cattle Category
+                        </NavLink>
+                      </li>
+                      <li className="text-center">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/poultrycategory"
+                        >
+                          Poultry Category
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+
+
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    className="nav-link px-0"
-                    activeclassname="active"
-                    to="/Services"
-                  >
-                    Services
-                  </NavLink>
+                  <div className="dropdown">
+                    <NavLink
+                      className="nav-link px-0"
+                      activeclassname="active"
+                      to="/services"
+                    >
+                      Services
+                    </NavLink>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/services"
+                        >
+                          Service 1
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/servicessecond"
+                        >
+                          Service 2
+                        </NavLink>
+                      </li>
+
+                      <li className="text-center">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/servicesthird"
+                        >
+                          Service 3
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+
+
                 </li>
-                
+
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -196,21 +325,232 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                       style={{ color: "#f0f2f5" }}
                     />
                     <span className="badge-cart">{size}</span>
-                   
+
 
                   </Link>
                 </li>
-                <div>Hello</div>
+
+                <li>
+                  {loggedInUser ? (
+                    <>
+                      {farmDtl ? (
+                        <>
+                          <button
+                            typeof="button"
+                            onClick={openSltAnmlModal}
+                            className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                          >
+                            Feedback
+                          </button>
+                          <Modal
+                            show={isModalOpen}
+                            onHide={closeSltAnmlModal}
+                            size="sm"
+                          >
+                            <Modal.Header>Select Animal</Modal.Header>
+                            <Modal.Body>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="goat"
+                                    onClick={() => handleAnmlValue("goat")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Goat
+                                  </button>
+                                </NavLink>
+                              </div>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="sheep"
+                                    onClick={() => handleAnmlValue("sheep")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Sheep
+                                  </button>
+                                </NavLink>
+                              </div>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="cow"
+                                    onClick={() => handleAnmlValue("cow")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Cow
+                                  </button>
+                                </NavLink>
+                              </div>
+                              <div className="my-2 text-center">
+                                <NavLink to="/FrmAftLog">
+                                  <button
+                                    value="buffalo"
+                                    onClick={() => handleAnmlValue("buffalo")}
+                                    className="btn btn-primary w-75"
+                                  >
+                                    Buffalo
+                                  </button>
+                                </NavLink>
+                              </div>
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <button
+                                className="btn btn-secondary"
+                                onClick={closeSltAnmlModal}
+                              >
+                                Close
+                              </button>
+                            </Modal.Footer>
+                          </Modal>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            typeof="button"
+                            onClick={openFarmModal}
+                            className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                          >
+                            Feedback
+                          </button>
+                          <FarmerDetails
+                            showFarmModal={showFarmModal}
+                            closeFarmModal={closeFarmModal}
+                          />
+                        </>
+                      )}
+                      <Modal
+                        show={isModalOpen}
+                        onHide={closeSltAnmlModal}
+                        size="sm"
+                      >
+                        <Modal.Header>Select Animal</Modal.Header>
+                        <Modal.Body>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="goat"
+                                onClick={() => handleAnmlValue("goat")}
+                                className="btn btn-primary w-75"
+                              >
+                                Goat
+                              </button>
+                            </NavLink>
+                          </div>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="sheep"
+                                onClick={() => handleAnmlValue("sheep")}
+                                className="btn btn-primary w-75"
+                              >
+                                Sheep
+                              </button>
+                            </NavLink>
+                          </div>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="cow"
+                                onClick={() => handleAnmlValue("cow")}
+                                className="btn btn-primary w-75"
+                              >
+                                Cow
+                              </button>
+                            </NavLink>
+                          </div>
+                          <div className="my-2 text-center">
+                            <NavLink to="/FrmAftLog">
+                              <button
+                                value="buffalo"
+                                onClick={() => handleAnmlValue("buffalo")}
+                                className="btn btn-primary w-75"
+                              >
+                                Buffalo
+                              </button>
+                            </NavLink>
+                          </div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <button
+                            className="btn btn-secondary"
+                            onClick={closeSltAnmlModal}
+                          >
+                            Close
+                          </button>
+                        </Modal.Footer>
+                      </Modal>
+                    </>
+                  ) : (
+                    null
+                  )}
+                </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
-                    <button
-                      className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
-                      onClick={openModal}
-                    >
-                      Login
-                    </button>
+                    {loggedInUser ? (
+                      <div className="dropdown">
+                        <a
+                          className="p-0  justify-content-end "
+                          href="#"
+                          id="dropdownMenuLink"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="false"
+                        >
+                          <img src={logstatus} className="w-75" alt="" />
+                        </a>
+                        <ul
+                          className="dropdown-menu"
+                          aria-labelledby="dropdownMenuLink"
+                        >
+                          <li className="d-flex align-items-center justify-content-center my-2">
+                            <img
+                              src={logstatus}
+                              className="nav-log-status mx-2"
+                              alt=""
+                            />
+                            <h5
+                              typeof="button"
+                              className="text-danger fw-bolder m-0 p-1 text-uppercase"
+                            >
+                              {loggedInUser}
+                            </h5>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item justify-content-center"
+                              href="/products"
+                            >
+                              Product
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              className="dropdown-item justify-content-center"
+                              href="/contactus"
+                            >
+                              Contact Us
+                            </a>
+                          </li>
+                          <hr />
+                          <li className="px-4">
+                            <button
+                              className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                              onClick={handleLogout}
+                            >
+                              Logout
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    ) : (
+                      <button
+                        className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
+                        onClick={openModal}
+                      >
+                        Login
+                      </button>
+                    )}
                   </div>
-                  
 
                   <Login
                     showModal={showModal}
@@ -225,39 +565,9 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                   />
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
-                <li>
-                  {loggedInUser ? (
-                    <NavLink to="/frmaftlog">
-                    <button
-                      typeof="button"
-                      className="text-danger bg-secondary m-0 p-1 rounded-circle"
-                    >
-                      {loggedInUser}
-                      Feedback
-                    </button>
-                    </NavLink>
-                  ) : null}
-                </li>
-                <li>
-                    {loggedInUser ? (
-                      <button
-                        className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
-                        onClick={handleLogout}
-                      >
-                        Logout
-                      </button>
-                    ) : (
-                      <button
-                        className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
-                        onClick={openModal}
-                      >
-                        Login
-                      </button>
-                    )}
-                </li>
               </ul>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -275,18 +585,18 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
             Shopping Cart
           </Modal.Title>
         </Modal.Header>
-         <Modal.Body className="cart-model-body">
+        <Modal.Body className="cart-model-body">
           {size == 1 ||
-          size == 2 ||
-          size == 2 ||
-          size == 3 ||
-          size == 4 ||
-          size == 5 ||
-          size == 6 ||
-          size == 7 ||
-          size == 8 ||
-          size == 9 ||
-          size == 10 ? (
+            size == 2 ||
+            size == 2 ||
+            size == 3 ||
+            size == 4 ||
+            size == 5 ||
+            size == 6 ||
+            size == 7 ||
+            size == 8 ||
+            size == 9 ||
+            size == 10 ? (
             <>
               {cart?.map((item, cartindex) => {
                 totalPrice += item.amount * item.price;
@@ -342,16 +652,16 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
           )}
         </Modal.Body>
         {size == 1 ||
-        size == 2 ||
-        size == 2 ||
-        size == 3 ||
-        size == 4 ||
-        size == 5 ||
-        size == 6 ||
-        size == 7 ||
-        size == 8 ||
-        size == 9 ||
-        size == 10 ? (
+          size == 2 ||
+          size == 2 ||
+          size == 3 ||
+          size == 4 ||
+          size == 5 ||
+          size == 6 ||
+          size == 7 ||
+          size == 8 ||
+          size == 9 ||
+          size == 10 ? (
           <>
             <div className="row border-top border-bottom justify-content-end mx-3 py-2">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">
@@ -360,14 +670,14 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
               </div>
             </div>
             <div className="justify-content-end d-flex px-5 cart-model">
-            <Link to="/transaction" className="w-100 text-center">
-              <button className="btn gradient-custom-2 border-0 text-white my-3 w-75">
-                PAYMENT
-              </button>
-            </Link>
+              <Link to="/transaction" className="w-100 text-center">
+                <button className="btn gradient-custom-2 border-0 text-white my-3 w-75">
+                  PAYMENT
+                </button>
+              </Link>
             </div>
           </>
-        ):null}
+        ) : null}
       </Modal>
     </>
   );
