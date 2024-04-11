@@ -548,10 +548,10 @@ const GoatCategoryPage = ({ }) => {
   ];
 
   const RumenoAmazon = [
-    { name: t(["v325"]), img: rumenoamazon1, amount: 1, price: 600 },
-    { name: t(["v326"]), img: rumenoamazon2, amount: 1, price: 600 },
+    { id:14, name: t(["v325"]), img: rumenoamazon1, amount: 1, price: 600 },
+    { id:15, name: t(["v326"]), img: rumenoamazon2, amount: 1, price: 600 },
     {
-      name: t(["v172"]),
+      id:16, name: t(["v172"]),
       img: rumenoamazon3,
       description: t(["v173"]),
       amount: 1,
@@ -580,23 +580,23 @@ const GoatCategoryPage = ({ }) => {
         </>,
       ],
     },
-    { name: t(["v328"]), img: rumenoamazon4 },
-    { name: t(["v329"]), img: rumenoamazon5 },
-    { name: t(["v330"]), img: rumenoamazon6 },
-    { name: t(["v331"]), img: rumenoamazon7 },
-    { name: t(["v332"]), img: rumenoamazon8 },
-    { name: t(["v333"]), img: rumenoamazon9 },
+    { id:17, name: t(["v328"]), img: rumenoamazon4 },
+    { id:18, name: t(["v329"]), img: rumenoamazon5 },
+    { id:19, name: t(["v330"]), img: rumenoamazon6 },
+    { id:20, name: t(["v331"]), img: rumenoamazon7 },
+    { id:21, name: t(["v332"]), img: rumenoamazon8 },
+    { id:22, name: t(["v333"]), img: rumenoamazon9 },
   ];
 
   const HumanConsumable = [
-    { name: t(["v334"]), img: humanconsumable1 },
-    { name: t(["v335"]), img: humanconsumable2 },
-    { name: t(["v336"]), img: humanconsumable3 },
+    {id:23, name: t(["v334"]), img: humanconsumable1 },
+    {id:24, name: t(["v335"]), img: humanconsumable2 },
+    {id:25, name: t(["v336"]), img: humanconsumable3 },
   ];
   var Value = '';
   const AllData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
   const [cookies, setCookie] = useCookies(["cart"]);
-  useEffect((item) => {
+  useEffect(() => {
     if (cookies.cart) {
       setCart(cookies.cart);
     }
@@ -640,7 +640,8 @@ const GoatCategoryPage = ({ }) => {
   const AddToCarts = (item) => {
     if (loggedInUser) {
        // Check if the item already exists in the cart
-       const itemExists = cart.some(cartItem => cartItem.name === item.name);
+       const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
+       console.log(cart)
    
        if (!itemExists) {
          console.log("Item added to cart:", item);
@@ -651,7 +652,7 @@ const GoatCategoryPage = ({ }) => {
          console.log(itemData);
        } else {
          // Optionally, show a message that the item is already in the cart
-         console.log("Item already in cart");
+         console.log("Item already in cart",item);
        }
     } else {
        setShowLoginModal(!showLoginModal);
@@ -698,11 +699,24 @@ const GoatCategoryPage = ({ }) => {
             </div>
           </div>
         </div>
-        <div className="container-fluid">
-          <div className="row justify-content-center">
+        <div className="container-fluid category-section">
+          <div className="row category-menu justify-content-end mx-1">
+          <div className="col-lg-9 bg-white shadow ">
+              <h4 className="mt-2 text-center mb-0 fw-bold">CATEGORY MENU</h4>
+              <hr className="my-2"/>
+              <ul>
+                <li><Link className="text-decoration-none text-dark">Goat Vaccine</Link></li>
+                <li><Link className="text-decoration-none text-dark">Goat Accessories</Link></li>
+                <li><Link className="text-decoration-none text-dark">Goat Deworm</Link></li>
+                <li><Link className="text-decoration-none text-dark">Goat Food</Link></li>
+                <li><Link className="text-decoration-none text-dark">Goat Medicine</Link></li>
+              </ul>
+          </div>
+          </div>
+          <div className="row justify-content-start">
 
             {filterData.map((item, index) => (
-              <div key={index} className="col-lg-3 text-center border bg-white m-3  shadow">
+              <div key={index} className="col-lg-3 text-center border bg-white mx-2  my-3  shadow">
                 <img src={item.img} className="w-100 mt-2" height={200} alt="loading" />
                 <h5 className="mt-3  fw-bold m-auto text-center">{item.name}</h5>
                 <p className="mt-2"> dolor similique expedita provident ipsam sunt rerum rem voluptatem.</p>
@@ -714,7 +728,7 @@ const GoatCategoryPage = ({ }) => {
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" >
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/products/ProductDetail/${item.name}`} >
                     <span
                       className=""
                     >

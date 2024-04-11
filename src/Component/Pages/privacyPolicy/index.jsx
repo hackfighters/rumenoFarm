@@ -10,26 +10,26 @@ const PrivacyPolicy = () => {
   const { cart } = useContext(UserContext);
   return (
     <>
-    <Helmet>
-                <meta charSet="utf-8" />
-                <title>Privacy-Policy-Rumeno</title>
-                <link rel="canonical" href="https://rumeno.in/privacypolicy" />
-            </Helmet>
-            <ul className="d-none">
-  {KeysWords.map((item, index) => (
-    <li key={index}>{item}</li>
-  ))}
-</ul>
-            <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
-        <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
-        <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Privacy-Policy-Rumeno</title>
+        <link rel="canonical" href="https://rumeno.in/privacypolicy" />
+      </Helmet>
+      <ul className="d-none">
+        {KeysWords.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+      <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
+      <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
+      <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <div className="desk-nav">
         <Navbar size={cart.length} />
       </div>
@@ -163,6 +163,50 @@ const PrivacyPolicy = () => {
             By using our website, you hereby consent to our Privacy Policy and
             agree to its Terms and Conditions.
           </p>
+          <h2 className="py-2 my-5 px-4 text-center service-head">
+            Return Policy for Animal Feed Supplements
+          </h2>
+          <h3 className="py-2 my-5 px-4 service-head">1. Eligibility for Returns
+          </h3>
+          <p className="mx-3">We want you to be satisfied with your purchase. If you are not completely happy with your animal feed supplement, here are the eligibility criteria for returns:</p>
+          <ul>
+            <li><strong>Unopened Products : </strong> You may return unopened animal feed supplements within 15 days of the purchase date.</li>
+            <li><strong>Defective or Damaged Products : </strong> If you receive a product that is defective or damaged, please contact us within 7 days of delivery.</li>
+          </ul>
+
+          <h3 className="py-2 my-5 px-4 service-head">
+            2. How to Initiate a Return
+          </h3>
+          <p className="mx-3">To initiate a return, follow these steps:</p>
+          <ul className=" ">
+            <li>Contact Us: Reach out to our customer support team via email support@rumenofarmotech.com or Whats app message on phone # 7355043892. Provide your order number and a brief description of the issue.
+            </li>
+            <li>Return Authorization: We will provide you with a return authorization (RA) number.</li>
+            <li>Packaging: Repackage the product securely, including all original packaging materials.</li>
+            <li>Shipping: Ship the product back to us using a trackable shipping method. You are responsible for return shipping costs.</li>
+          </ul>
+          <h3 className="py-2 my-5 px-4 service-head">
+            3. Refund Process
+          </h3>
+          <ul>
+            <li>Once we receive the returned product, we will inspect it.
+            </li>
+            <li>If the product meets the eligibility criteria, we will process your refund within 5 business days.</li>
+            <li>Refunds will be issued to the original payment method used during the purchase.
+            </li>
+          </ul>
+          <h3 className="py-2 my-5 px-4 service-head">
+            4. Exceptions
+          </h3>
+          <ul>
+            <li>Opened Products: Unfortunately, we cannot accept returns for opened or partially used products due to safety and hygiene reasons.</li>
+            <li>Custom Orders: Customized or personalized animal feed supplements are non-returnable unless they are defective.</li>
+          </ul>
+          <h3 className="py-2 my-5 px-4 service-head">
+            5. Contact Us
+          </h3>
+          <p className="mx-3">If you have any questions or need assistance with your return, please contact our customer support team at  support@rumenofarmotech.com or whats app us on 7355043892</p>
+          <hr />
         </div>
       </section>
       <Footer />

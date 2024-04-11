@@ -175,9 +175,10 @@ const Transaction = () => {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("file", image);
+    console.log(formData);
     
     const travdatat = {
-      title: data.name,
+      name: data.name,
       mobileNumber: data.mobileNumber,
       amount: data.amount,
       transactionID: data.transactionID,
@@ -440,10 +441,6 @@ const Transaction = () => {
         </div>
       </section>
 
-      {/* Rumeno farm  */}
-      {/* Rumeno */}
-      {/* Veterinary */}
-      {/* </div> */}
       <Footer />
     </>
   );

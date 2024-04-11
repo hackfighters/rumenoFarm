@@ -28,6 +28,8 @@ import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
+import Achievment from "../../Common/achievment";
+import HomeFaq from "../../Common/faq";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -141,9 +143,8 @@ const Home = () => {
                   </button>
                 </div>
               </a>
-              <a href="/#">
                 <ReactWhatsapp
-                  className="whatsapp-sect"
+                  className="whatsapp-sect w-auto px-1"
                   number="+91 7355043892"
                   message="Hello World"
                 >
@@ -152,11 +153,11 @@ const Home = () => {
                     className="text-white btn--shockwave is-active"
                   />
                 </ReactWhatsapp>
-              </a>
             </div>
           </div>
         </div>
         <About />
+        <Achievment/>
         <div className="container">
           <div className="text-center">
             <div
@@ -234,6 +235,7 @@ const Home = () => {
 
           </div>
         </div>
+        <HomeFaq/>
         <Training />
         <FooterTop />
         <Footer />

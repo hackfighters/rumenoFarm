@@ -101,21 +101,25 @@ const Footer = () => {
                 {t("v301")}
               </li>
  
-              <li>
+              <li  >
+                <a className="text-decoration-none text-white" rel="noreferrer" href="https://mail.google.com" target="_blank">
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   className="me-2"
                   style={{ color: "white" }}
                 />
                 rumeno.farmotech@gmail.com
+                </a>
               </li>
               <li>
+                <a className="text-decoration-none text-white" rel="noreferrer" href="tel:+91 7355043892">
                 <FontAwesomeIcon
                   icon={faPhone}
                   className="me-2"
                   style={{ color: "white" }}
                 />
                 +91 7355043892
+                </a>
               </li>
             </ul>
            
@@ -129,7 +133,7 @@ const Footer = () => {
             <div>
               <ul className="list-unstyled d-flex justify-content-center footer-li">
                 <li>
-                  <a href="https://www.facebook.com/RumenoFarmotech/" target="_blank">
+                  <a href="https://www.facebook.com/RumenoFarmotech/" rel="noreferrer" target="_blank">
                   <FontAwesomeIcon
                     icon={faFacebook}
                     className="mx-2 fs-3"
@@ -152,7 +156,7 @@ const Footer = () => {
                   /></ReactWhatsapp>
                 </li>
                 <li>
-                  <a href="https://www.youtube.com/@RumenoFarmotech-bg5y" target="_blank">
+                  <a href="https://www.youtube.com/@RumenoFarmotech-bg5y" rel="noreferrer" target="_blank">
                   <FontAwesomeIcon
                     icon={faYoutube}
                     className="mx-2 fs-3"
@@ -162,7 +166,7 @@ const Footer = () => {
                 </li>
                 
                 <li>
-                  <a href="https://www.instagram.com/rumenofarmotech/" target="_blank">
+                  <a href="https://www.instagram.com/rumenofarmotech/" rel="noreferrer" target="_blank">
                   <FontAwesomeIcon
                     icon={faInstagram}
                     className="mx-2 fs-3"
@@ -179,7 +183,7 @@ const Footer = () => {
         <hr className="text-white m-0" />
               <div id="copyright" className="text-white text-center py-3 mx-4 ">
                 &copy; 2022 - {new Date().getFullYear()}{" "}
-                <a href="_https://www.rumeno.in/">https://www.rumeno.in</a> -
+                <a href="https://www.rumeno.in/" target="_blank" rel="noreferrer">https://www.rumeno.in</a> -
                 All Rights Reserved.
                 
               </div>

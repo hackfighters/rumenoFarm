@@ -1,0 +1,33 @@
+.slider {
+  margin: 0 auto;
+  height: 33rem;
+  display: flex;
+  justify-content: center;
+  perspective: 180rem;
+  position: relative;
+  width: 100%;
+}
+
+.slider div {
+  display: inline-block;
+  position: absolute;
+  backface-visibility: hidden;
+  transform-origin: 50% 0;
+  transition: .4s all;
+}
+
+.slider div.active {
+  z-index: 4;
+}
+
+.translated-ltr{margin-top:-40px;}
+.translated-ltr{margin-top:-40px;}
+.goog-te-banner-frame {display: none;margin-top:-20px;}
+
+.goog-logo-link {
+   display:none !important;
+} 
+
+.goog-te-gadget{
+   color: transparent !important;
+}

@@ -31,7 +31,7 @@ import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.
 import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
 import ProductItem from "../../Common/Product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faCircleMinus, faCirclePlus, faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightArrowLeft, faChevronRight, faCircleMinus, faCirclePlus, faEye, faTags, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from '../Modal/logusecont';
 import { useTranslation } from 'react-i18next';
 import Navbar from '../Navbar';
@@ -41,6 +41,8 @@ import { useParams } from 'react-router-dom';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
+import { faCircleDot } from '@fortawesome/free-regular-svg-icons';
+import { Accordion } from 'react-bootstrap';
 
 
 const ProductDetail = () => {
@@ -644,35 +646,35 @@ const ProductDetail = () => {
 
     const AddToCarts = (item) => {
         if (loggedInUser) {
-           // Check if the item already exists in the cart
-           const itemExists = cart.some(cartItem => cartItem.name === item.name);
-       
-           if (!itemExists) {
-             console.log("Item added to cart:", item);
-             // Add logic to handle adding item to cart
-             setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
-             const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
-             setiteamdata(itemData);
-             console.log(itemData);
-           } else {
-             // Optionally, show a message that the item is already in the cart
-             console.log("Item already in cart");
-           }
+            // Check if the item already exists in the cart
+            const itemExists = cart.some(cartItem => cartItem.name === item.name);
+
+            if (!itemExists) {
+                console.log("Item added to cart:", item);
+                // Add logic to handle adding item to cart
+                setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
+                const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
+                setiteamdata(itemData);
+                console.log(itemData);
+            } else {
+                // Optionally, show a message that the item is already in the cart
+                console.log("Item already in cart");
+            }
         } else {
-           setShowLoginModal(!showLoginModal);
-           toast.warn("Please Login", {
-             position: "top-center",
-             autoClose: 2000,
-             hideProgressBar: false,
-             closeOnClick: true,
-             pauseOnHover: true,
-             draggable: true,
-             progress: undefined,
-             theme: "light",
-           });
+            setShowLoginModal(!showLoginModal);
+            toast.warn("Please Login", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
-       };
-      
+    };
+
 
     const [filteredItems, setFilteredItems] = useState([]);
 
@@ -718,15 +720,40 @@ const ProductDetail = () => {
                         </div>
                     </div>
                 </div>
-                <div className='row justify-content-center bg-white mx-5 py-2'>
-                    {filteredItems.map((item, index) => (
-                        <>
+                {filteredItems.map((item, index) => (
+                    <>
+                        <div className='row justify-content-center bg-white  lg:mx-5 mx-0 py-2'>
                             <div className="col-lg-4">
                                 <img className='w-100' src={item.img} height={500} alt="loading" />
                             </div>
                             <div className="col-lg-5 offset-lg-1">
                                 <h1 className=''>{item.name}</h1>
-                                <h2 className='my-3 text-danger fw-bold'>₹ {item.price} /-</h2>
+                                <h1 className='my-3 text-danger fw-bold'>₹ {item.price} /-</h1>
+                                <Accordion className='' defaultActiveKey="0" flush>
+                                    <Accordion.Item className="my-3" eventKey="0">
+                                        <Accordion.Header className='border bg-none'>
+                                            <FontAwesomeIcon className='text-danger' icon={faTags} /><strong className='mx-2 text-primary'>Save Extra</strong>get 5% Discount and more...
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            <p>
+                                                <strong>Get 5% discount</strong> on susbscribing youtube channel & <strong>get extra 5% discount</strong> on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days.
+
+                                            </p>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                                {/* <div class="dropdown show my-3">
+                                    <a class="px-3 py-3 btn  border w-auto my-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <FontAwesomeIcon className='text-danger' icon={faTags} /><strong className='mx-2 text-primary'>Save Extra</strong>get 5% Discount and more...
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <p className='px-2'>
+                                            <strong>Get 5% discount</strong> on susbscribing youtube channel & <strong>get extra 5% discount</strong> on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days.
+                                        </p>
+                                    </div>
+                                </div> */}
+                                <h5><FontAwesomeIcon className='text-success mx-1' icon={faCircleDot} /> This is a <strong>vegetarian</strong> product</h5>
                                 <hr />
                                 <div className="my-3 d justify-content-center">
                                     <h6 className='my-0'>Please Rate Us Our Product</h6>
@@ -758,9 +785,16 @@ const ProductDetail = () => {
                                         type="button"
                                         icon={faYoutube}
                                     /></h5>
+                                    <hr />
+                                    <h4 className='fw-bold'>Delivery</h4>
+                                    <p className='my-1'>within 5 -7 days</p>
+                                    <p className='text-primary'><FontAwesomeIcon className='mx-1' icon={faArrowRightArrowLeft} /> Refundable for any manufacturing defect within 1 week
+                                    </p>
                                 </div>
                                 <hr />
-                                <div className='d-flex align-items-center'>
+                                <h5><strong>Weight :</strong> <span className='text-danger mx-1 fw-bold'>500 gm</span></h5>
+                                <hr />
+                                <div className='d-flex justify-content-between align-items-center'>
                                     <FontAwesomeIcon
                                         icon={faCirclePlus}
                                         type="button"
@@ -774,18 +808,39 @@ const ProductDetail = () => {
                                         className="text-primary h3  mx-2 my-0"
                                         onClick={() => handleChange(item, -1)}
                                     />
-                                </div>
-
                                 <button
                                     className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
                                     onClick={() => AddToCarts(item)}
                                 >
                                     Add to Cart
                                 </button>
+                                </div>
+
+
+                                <ul className='border-top pt-3'>
+                                    <li>
+                                        <strong>Tanav Mukti Powder:</strong> A specialized blend of natural adaptogenic herbs designed to alleviate stress in animals.
+                                    </li>
+                                    <li className='my-1'>
+                                        <strong>Dosage:</strong> Mix the recommended amount of Tanav Mukti Powder with your pet’s food or water.
+                                    </li>
+                                    <li className='my-1'>
+                                        <strong>Frequency:</strong> Administer twice daily for optimal results.
+                                    </li>
+                                    <li>
+                                        <strong>Consult a Veterinarian:</strong> Always consult a veterinarian before introducing any new product to your pet’s routine.
+                                    </li>
+                                </ul>
                             </div>
-                        </>
-                    ))}
-                </div>
+                        </div>
+                        <div className="row my-4 lg:mx-5 mx-0 py-4 bg-white">
+                            <h4 className='fw-bold mb-2'>* Description</h4>
+                            <hr />
+                            <p className='mx-4'>{item.description}</p>
+
+                        </div>
+                    </>
+                ))}
 
             </section>
             <Footer />

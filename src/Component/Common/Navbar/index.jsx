@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate,useParams } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 // import Modal from 'react-modal';
 import { UserContext } from "../Modal/logusecont";
 // import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
+
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,8 +39,11 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import datatest from "./test.json";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
+import TranslateButton from "../translate/trasn";
+import SearchBar from "./navsearch";
 
 const Navbar = ({ size }) => {
+  const { search } = useParams();
   const { t } = useTranslation();
   const {
     loggedInUser,
@@ -180,8 +184,9 @@ const Navbar = ({ size }) => {
     }
     // handleRemoveCart(id)
   };
-
   const navigate = useNavigate();
+
+
   const handleLogout = () => {
     Cookies.remove("loggedInUser");
     Cookies.remove("cart");
@@ -281,6 +286,7 @@ const Navbar = ({ size }) => {
                       value={selectedOption}
                       onChange={(e) => handleChangen(e)}
                     />
+                    // <TranslateButton/> 
                   )}
                 </div>
               </div>
@@ -311,6 +317,7 @@ const Navbar = ({ size }) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
+                
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -351,7 +358,7 @@ const Navbar = ({ size }) => {
                           activeclassname="active"
                           to="/goatcategory"
                         >
-                          Goat Category
+                          Goat Feed Supliments
                         </NavLink>
                       </li>
                       <li className="">
@@ -360,7 +367,7 @@ const Navbar = ({ size }) => {
                           activeclassname="active"
                           to="/dogcategory"
                         >
-                          Dog Category
+                          Dog Feed Supliments
                         </NavLink>
                       </li>
 
@@ -370,7 +377,7 @@ const Navbar = ({ size }) => {
                           activeclassname="active"
                           to="/cattlecategory"
                         >
-                          Cattle Category
+                          Cattle Feed Supliments
                         </NavLink>
                       </li>
                       <li className="text-center">
@@ -379,7 +386,7 @@ const Navbar = ({ size }) => {
                           activeclassname="active"
                           to="/poultrycategory"
                         >
-                          Poultry Category
+                          Poultry Feed Supliments
                         </NavLink>
                       </li>
                     </ul>
@@ -406,7 +413,7 @@ const Navbar = ({ size }) => {
                           activeclassname="active"
                           to="/services"
                         >
-                          Service 1
+                          Service
                         </NavLink>
                       </li>
                       <li className="">
@@ -415,17 +422,17 @@ const Navbar = ({ size }) => {
                           activeclassname="active"
                           to="/servicessecond"
                         >
-                          Service 2
+                          Goat Farming Consultant
                         </NavLink>
                       </li>
-
+                  
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
                           to="/servicesthird"
                         >
-                          Service 3
+                          Dairy Consultant
                         </NavLink>
                       </li>
                     </ul>
@@ -450,6 +457,9 @@ const Navbar = ({ size }) => {
                   >
                     Contact Us
                   </NavLink>
+                </li>
+                <li>
+               <SearchBar defaultSearchText={search}/>
                 </li>
                 {/* <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
@@ -477,7 +487,7 @@ const Navbar = ({ size }) => {
                             onClick={openSltAnmlModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Feedback
+                            Form
                           </button>
                           <Modal
                             show={isModalOpen}
@@ -548,7 +558,7 @@ const Navbar = ({ size }) => {
                             onClick={openFarmModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Feedback
+                            Form
                           </button>
                           <FarmerDetails
                             showFarmModal={showFarmModal}
@@ -653,20 +663,20 @@ const Navbar = ({ size }) => {
                             </h5>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item justify-content-center"
-                              href="/products"
+                              to="/products"
                             >
                               Product
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item justify-content-center"
-                              href="/contactus"
+                              to="/contactus"
                             >
                               Contact Us
-                            </a>
+                            </Link>
                           </li>
                           <hr />
                           <li className="px-4">

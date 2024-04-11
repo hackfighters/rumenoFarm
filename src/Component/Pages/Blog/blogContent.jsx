@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import blgimg1 from "../../../assets/img/OurProduct/GreenHouseMat2.jpg";
 import blgimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
@@ -8,9 +8,10 @@ import Navbar from "../../Common/Navbar";
 import Footer from "../../Common/Footer";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import KeysWords from "../../Common/apiData/keyWords";
-
+import { useForm } from "react-hook-form";
 const BlogContent = () => {
   const { cart } = useContext(UserContext);
+  const { register, handleSubmit } = useForm();
   const blogdata = [
     {
       id: 1,
@@ -23,7 +24,7 @@ const BlogContent = () => {
       title2: "Animal",
       title3: "blog",
       title4: "Farmer",
-      bottomcontent: "Refit Animal Care",
+      bottomcontent: "Rumeno Animal Care",
     },
     {
       id: 2,
@@ -36,11 +37,24 @@ const BlogContent = () => {
       title2: "Animal",
       title3: "blog",
       title4: "Farmer",
-      bottomcontent: "Refit Animal Care",
+      bottomcontent: "Rumeno Animal Care",
     },
   ];
+
   const { id } = useParams();
   const blog = blogdata.find((blog) => blog.id === parseInt(id));
+
+  const onSubmit = (data) => {
+    let comntsendtoapi = {
+      id: blog.id,
+      name: data.blogname,
+      email: data.blogemail,
+      comment: data.blogcomment,
+    }
+    console.log(comntsendtoapi);
+
+
+  }
   return (
     <>
       <Helmet>
@@ -49,10 +63,10 @@ const BlogContent = () => {
         <link rel="canonical" href="https://rumeno.in/blog" />
       </Helmet>
       <ul className="d-none">
-  {KeysWords.map((item, index) => (
-    <li key={index}>{item}</li>
-  ))}
-</ul>
+        {KeysWords.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
       <a
         className="d-none"
         href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"
@@ -160,6 +174,61 @@ const BlogContent = () => {
             </div>
           </div>
         </div>
+
+
+        <form className="container  justify-content-center bg-white" onSubmit={handleSubmit(onSubmit)}>
+          <div className="row py-5 px-4">
+        <h4 className="mb-3"> For Any Comment</h4>
+        <hr />
+            <div className="col-lg-6">
+              <div className="col-lg-8 my-3">
+                <div>
+                  <label className="form-label px-2" htmlFor="blogname">
+                    Name
+                  </label>
+                </div>
+                <input
+                  placeholder="Name"
+                  type="text"
+                  id="blogname"
+                  className="form-control"
+                  {...register("blogname")}
+                />
+              </div>
+              <div className="col-lg-8 my-3">
+                <div>
+                  <label className="form-label px-2" htmlFor="blogemail">
+                    Email
+                  </label>
+                </div>
+                <input
+                  placeholder="Email"
+                  type="email"
+                  id="blogemail"
+                  className="form-control"
+                  {...register("blogemail")}
+                />
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="col-lg-10 my-3">
+                <label htmlFor="blogcomment" className="form-label">
+                  Any Comment
+                </label>
+                <textarea
+                  className="form-control"
+                  id="blogcomment"
+                  {...register("blogcomment")}
+                  rows="3"
+                ></textarea>
+              </div>
+              <button type="submit" className="btn btn-primary w-25 mt-3">
+                Submit
+              </button>
+            </div>
+          </div>
+
+        </form>
       </section>
       <Footer />
     </>

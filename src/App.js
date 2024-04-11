@@ -14,8 +14,8 @@ import { UserProvider } from "./Component/Common/Modal/logusecont";
 import Transaction from "./Component/Pages/Transaction";
 import TransactionDetail from "./Component/Pages/Transaction/transactiondetail";
 import Error from "./Component/Common/404page/index";
-import FrmAftLog from "./Component/Common/FeedbackForm/selectanimal";
-import AnimalDetailTab from "./Component/Common/FeedbackForm/animaldetailtab";
+import FrmAftLog from "./Component/Common/AnimalFeedbackForm/selectanimal";
+import AnimalDetailTab from "./Component/Common/AnimalFeedbackForm/animaldetailtab";
 import PrivacyPolicy from "./Component/Pages/privacyPolicy";
 import Blog from "./Component/Pages/Blog";
 import ServicesSecond from "./Component/Pages/Service/servicesecond";
@@ -90,7 +90,6 @@ const App = () => {
 
   return (
     <>
-     
       <ToastContainer />
       <UserProvider>
         <Routes>

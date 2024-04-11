@@ -274,7 +274,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           activeclassname="active"
                           to="/services"
                         >
-                          Service 1
+                          Service
                         </NavLink>
                       </li>
                       <li className="">
@@ -283,7 +283,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           activeclassname="active"
                           to="/servicessecond"
                         >
-                          Service 2
+                          Goat Farming Consultant
                         </NavLink>
                       </li>
 
@@ -293,7 +293,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           activeclassname="active"
                           to="/servicesthird"
                         >
-                          Service 3
+                          Dairy Consultant
                         </NavLink>
                       </li>
                     </ul>
@@ -340,7 +340,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                             onClick={openSltAnmlModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Feedback
+                            Form
                           </button>
                           <Modal
                             show={isModalOpen}
@@ -411,7 +411,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                             onClick={openFarmModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Feedback
+                            Form
                           </button>
                           <FarmerDetails
                             showFarmModal={showFarmModal}

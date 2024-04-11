@@ -116,7 +116,7 @@ const Registration = ({ showModal, closeModal }) => {
                       <label className="my-2">{t("v312")}</label>
                       <input
                         {...register("mobile", {
-                          required: "Mobile No is required",
+                          required: "Mobile Number is required",
                         })}
                         type="text"
                         className={`form-control ${
@@ -124,7 +124,7 @@ const Registration = ({ showModal, closeModal }) => {
                         }`}
                         name="mobile"
                       
-                        placeholder="Mobile No"
+                        placeholder="Mobile Number"
                       />
                       {errors.mobile && (
                         <span className="text-danger">
