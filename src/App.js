@@ -26,6 +26,7 @@ import DogCategoryPage from "./Component/Pages/Category/dogCategory";
 import CattleCategoryPage from "./Component/Pages/Category/cattleCategory";
 import PoultryCategoryPage from "./Component/Pages/Category/poultryCategory";
 import ProductDetail from "./Component/Common/Product/productDetail";
+import ThankYouPage from "./Component/Common/thankyou";
 
 
 const App = () => {
@@ -100,7 +101,7 @@ const App = () => {
           <Route path="/servicesthird" Component={ServicesThird} />
           <Route path="/products" Component={ProductPage} />
           <Route path="/products/:name" Component={ProductPage} />
-          <Route path="/products/ProductDetail/:name" Component={ProductDetail} />
+          <Route path="/products/ProductDetail/:id" Component={ProductDetail} />
           <Route path="/contactus" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
@@ -113,6 +114,7 @@ const App = () => {
           <Route path="/dogcategory" Component={DogCategoryPage}/>
           <Route path="/cattlecategory" Component={CattleCategoryPage}/>
           <Route path="/poultrycategory" Component={PoultryCategoryPage}/>
+          <Route path="/thankyoupage" Component={ThankYouPage}/>
           <Route path="*" Component={Error} />
         </Routes>
       </UserProvider>

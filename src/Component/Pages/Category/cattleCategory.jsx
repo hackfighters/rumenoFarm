@@ -7,6 +7,39 @@ import { Accordion } from "react-bootstrap";
 
 const CattleCategoryPage = () => {
   const { cart } = useContext(UserContext);
+  
+  const FAQ = [
+        {
+            "question": "What is cattle feed supplement?",
+            "answer": "Cattle feed supplements are essential additives that enhance the nutritional value of the basal feed for livestock. They provide essential nutrients like vitamins, minerals, and proteins to improve growth, health, and productivity.  Common supplements include calcium, phosphorus, magnesium, and selenium"
+        },
+        {
+            "question": "What is livestock supplements?",
+            "answer": "Livestock supplements are ingredients added to feed in micro quantities to improve growth, feed efficiency, and prevent diseases.  They include essential nutrients like vitamins, minerals, and protein sources.  Proper supplementation ensures optimal health and performance in cattle"
+        },
+        {
+            "question": "Do Cows Need Supplements?",
+            "answer": "Yes, cows benefit from supplements to meet their nutritional requirements.  Vitamins A, D, and E, along with minerals, are crucial for their health and productivity.  Supplements help address deficiencies and support growth, reproduction, and milk production."
+        },
+        {
+            "question": "What is the best vitamins for cow?",
+            "answer": "Vitamin A: Essential for vision, immune function, and reproductive health.  Vitamin D: Supports calcium absorption and bone health.  Vitamin E: Acts as an antioxidant and promotes muscle function.  Vitamin B12: Vital for metabolism and energy production"
+        },
+        {
+            "question": "What is selenium vitamin for cows?",
+            "answer": "Selenium is an essential trace mineral.  It works with vitamin E to protect tissues, supports muscle growth, and prevents white muscle disease.  Proper supplementation strategies are crucial to prevent deficiency or toxicity  You can get all selenium from our Selennium-E products"
+        },
+        {
+            "question": "What is the best cow weight gain supplement?",
+            "answer": "High-energy feeds like corn are effective for weight gain.  Consider protein-rich supplements (soybean meal, canola meal) to support growth.  Ensure a balanced diet with adequate nutrients for optimal weight gain"
+        },
+        {
+            "question": "How to increase milk production in cows naturally ?",
+            "answer": "Quality Forage: Provide high-quality pasture and hay.  Proper Nutrition: Balanced diet with adequate protein, energy, and minerals.  Hydration: Ensure access to clean water.  Stress Reduction: Minimize stressors like overcrowding or abrupt changes.  Regular Milking Schedule: Consistent milking routines stimulate production  Increase your cattle milk with our doodh vardhan product"
+        }
+    ]
+
+
   // var Value = '';
   // const AllData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
   // const [cookies, setCookie] = useCookies(["cart"]);
@@ -250,7 +283,15 @@ const CattleCategoryPage = () => {
             </p>
           </div>
         </div>
-        
+        <Accordion defaultActiveKey="0" flush>
+          {FAQ.map((item, index) => (
+            <Accordion.Item className="m-3" key={index} eventKey={index.toString()}>
+              <Accordion.Header><strong className="mx-2">Q.{index+1} </strong> {item.question}</Accordion.Header>
+              <Accordion.Body>{item.answer}</Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+
       </section>
       <Footer />
     </>

@@ -94,7 +94,7 @@ const Achievment = () => {
 
                         >
                             <div className="slider" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                                <div><img className="shadow w-0 sm:w-100" width={550} sizes={10} height={400} alt="loading" src={caroimg1} /></div>
+                                <div><img className="shadow w-0 achievment-img" width={550} sizes={10} height={400} alt="loading" src={caroimg1} /></div>
                                 <div> <video
                                     muted
                                     height={380}
@@ -103,8 +103,8 @@ const Achievment = () => {
                                     className="shadow w-auto"
                                     src={caroimg3}
                                 ></video></div>
-                                <div><img className="shadow w-0 sm:w-100" width={550} sizes={10} height={400} alt="loading" src={caroimg2} /></div>
-                                <div><img className="shadow w-0 sm:w-100" width={550} sizes={10} height={400} alt="loading" src={caroimg4} /></div>
+                                <div><img className="shadow w-0 achievment-img" width={550} sizes={10} height={400} alt="loading" src={caroimg2} /></div>
+                                <div><img className="shadow w-0 achievment-img" width={550} sizes={10} height={400} alt="loading" src={caroimg4} /></div>
                             </div>
                         </div>
                     </div>

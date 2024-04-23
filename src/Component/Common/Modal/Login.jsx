@@ -37,7 +37,7 @@ const Login = ({
 
     try {
       const response = await axios.post(
-        'http://localhost:7000/api/data',
+        'http://localhost:2000/api/data',
         data
       );
       // Handle the login success, e.g., store token in state or localStorage

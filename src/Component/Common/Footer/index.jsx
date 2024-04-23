@@ -72,9 +72,9 @@ const Footer = () => {
                 </li>
 
                 <li>
-                  <a href="/home/#training"   className="footer-page">
+                  <NavLink to="/home"   className="footer-page">
                     Training
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink

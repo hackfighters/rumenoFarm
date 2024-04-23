@@ -211,3 +211,81 @@ function TranslateButton() {
 }
 export default TranslateButton;
 
+// import React, { useEffect } from 'react';
+// import { toast } from "react-toastify";
+// function TranslateButton() {
+//   useEffect(() => {
+//     try {
+//       const googleTranslateElementInit = () => {
+//         new window.google.translate.TranslateElement({
+//           pageLanguage: 'en'
+//         }, 'google_translate_element');
+//       }
+
+//       const addScript = document.createElement('script');
+//       addScript.setAttribute('src','//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');                
+//       document.body.appendChild(addScript);
+
+//       window.googleTranslateElementInit = googleTranslateElementInit;
+//     } catch (error) {
+//       console.error('Error loading Google Translate:', error);
+//       if (error.response) {
+//         toast.error(error.response.data.message);
+//       } else if (error.request) {
+//         toast.error("Network Error: Please check your internet connection");
+//       } else {
+//         toast.error("An unexpected error occurred");
+//       }
+//     }
+//   }, []);
+
+//   return (
+//     <div id="google_translate_element"></div>
+//   );
+// }
+
+// export default TranslateButton;
+
+// import React, { useEffect } from 'react';
+// import { toast } from "react-toastify";
+
+// function TranslateButton() {
+//   useEffect(() => {
+//     const loadGoogleTranslate = async () => {
+//       try {
+//         const googleTranslateElementInit = () => {
+//           new window.google.translate.TranslateElement({
+//             pageLanguage: 'en'
+//           }, 'google_translate_element');
+//         }
+
+//         if (!window.google || !window.google.translate) {
+//           const addScript = document.createElement('script');
+//           addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+//           document.body.appendChild(addScript);
+//           window.googleTranslateElementInit = googleTranslateElementInit;
+//         } else {
+//           googleTranslateElementInit();
+//         }
+//       } catch (error) {
+//         console.error('Error loading Google Translate:', error);
+//         if (error.response) {
+//           toast.error(error.response.data.message);
+//         } else if (error.request) {
+//           toast.error("Network Error: Please check your internet connection");
+//         } else {
+//           toast.error("An unexpected error occurred");
+//         }
+//       }
+//     };
+
+//     loadGoogleTranslate();
+
+//   }, []);
+
+//   return (
+//     <div id="google_translate_element"></div>
+//   );
+// }
+
+// export default TranslateButton;

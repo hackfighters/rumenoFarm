@@ -6,6 +6,32 @@ import { UserContext } from "../../Common/Modal/logusecont";
 import { Accordion } from "react-bootstrap";
 
 const PoultryCategoryPage = () => {
+  const FAQ = [
+    {
+      question: "What is feed supplement for poultry?",
+      answer: "Poultry feed supplements are additional nutritional substances given to chickens to enhance their diet and promote health and productivity.Commonly used supplements include protein sources like fish meal or soybean meal.The need for supplementation depends on various factors, and it’s crucial for egg - laying hens and during winter months12."
+    },
+    {
+      question: "What is the best feed for poultry?",
+      answer: "Scratch and Peck Organic Chicken Feeds are highly recommended. They are USDA certified organic, non-GMO, and sustainably sourced.These feeds contain essential vitamins, minerals, and protein sources like black soldier fly larvae(grubs) for optimal health and egg production3."
+    },
+    {
+      question: "Which vitamin is good for poultry?",
+      answer: "Vitamin A: Boosts growth and egg production.Vitamin B2: Supports growth.Vitamin K: Essential for muscle health and healthy blood.Vitamin E: Important for growth and reproduction.Vitamin D: Strengthens eggshells and increases egg production1."
+    },
+    {
+      question: "Which medicine is best for poultry growth?",
+      answer: "Rumeno Farmotech provides you various types of supplements that will increase your poultry growth like Energico=Maintains energy level Poultryfine=Antibacterial for your broilers Florovita- 12=Probiotic supplement for poultry and weight gainer   Selennium - E=helps to maintain selenium balance in broilers"
+    },
+    {
+      question: "Do chickens need supplements?",
+      answer: "Chickens benefit from supplements:Vitamin D for strong eggshells.     Calcium during peak egg production.    Stress relief during challenging times.    Consult experts for personalized advice."
+    },
+    {
+      question: "Which poultry feed supplements promote eggshell strength?",
+      answer: "When it comes to promoting eggshell strength in poultry, several supplements play a crucial role. One notable product is “Selennium-E” by Rumeno Farmotech. This supplement combines the power of selenium and vitamin E to enhance eggshell quality. Selenium supports antioxidant function, while vitamin E contributes to overall reproductive health. Including Selennium-E in your poultry feed can lead to stronger, more resilient eggshells."
+    }
+  ]
   const { cart } = useContext(UserContext);
 
   // var Value = '';
@@ -56,7 +82,7 @@ const PoultryCategoryPage = () => {
   //   if (loggedInUser) {
   //      // Check if the item already exists in the cart
   //      const itemExists = cart.some(cartItem => cartItem.name === item.name);
-   
+
   //      if (!itemExists) {
   //        console.log("Item added to cart:", item);
   //        // Add logic to handle adding item to cart
@@ -260,6 +286,14 @@ const PoultryCategoryPage = () => {
             </p>
           </div>
         </div>
+        <Accordion defaultActiveKey="0" flush>
+          {FAQ.map((item, index) => (
+            <Accordion.Item className="m-3" key={index} eventKey={index.toString()}>
+              <Accordion.Header><strong className="mx-2">Q.{index + 1} </strong> {item.question}</Accordion.Header>
+              <Accordion.Body>{item.answer}</Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
       </section>
       <Footer />
     </>
