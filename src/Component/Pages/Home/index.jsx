@@ -181,7 +181,7 @@ const Home = () => {
               data-aos-offset="300"
               data-aos-easing="ease-in-sine"
             >
-              <span className="label-title">Our Products</span>
+              <span className="label-title">Our Products According To Species</span>
               <div>
                 <div className="about-line-large"></div>
                 <div className="about-line-small"></div>
@@ -206,9 +206,9 @@ const Home = () => {
           data-aos-duration="1000"
           data-aos-delay="300"
         >
-          <div className="card-box">
-            <Link to={`/products/${product.id}`}>
-              <div className="card1">
+          <div className="card-box my-2 ">
+            <Link to={`/veterinary-products/${product.id}`}>
+              <div className="card1 shadow-2">
                 <img src={product.imgSrc} alt="Loading" className="card-img" />
               </div>
             </Link>

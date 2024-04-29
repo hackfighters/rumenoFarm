@@ -37,7 +37,7 @@ const Login = ({
 
     try {
       const response = await axios.post(
-        'http://localhost:2000/api/data',
+        'http://192.168.1.7:5000/rumeno_login',
         data
       );
       // Handle the login success, e.g., store token in state or localStorage
@@ -53,7 +53,12 @@ const Login = ({
         setLoggedInUser(firstWord);
         setfarmDtl(FarmerDtl)
         handleAddtoCartApi(getUidata);
-        Cookies.set("loggedInUser", firstWord);
+        const pid = response.data.pID;
+        const rid = response.data.rId;
+        const sessionid = response.data.sessionId
+        console.warn(pid,rid,sessionid)
+
+        Cookies.set("loggedInUser", [{name:firstWord,Uid:getUidata,pid:pid,rid:rid,sessionid:sessionid}]);
         toast.success("Login Successful", {
           position: "top-center",
           autoClose: 2000,

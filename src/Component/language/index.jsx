@@ -6,11 +6,11 @@ import i18next from "i18next";
 
 // Common Component
 import Select from "../Common/Select";
+import TranslateButton from "../Common/translate/translate";
 
 // Image
 import lgimg from "../../assets/img/Logo/logo.jpg";
 import { Helmet } from "react-helmet";
-import TranslateButton from "../Common/translate/trasn";
 const Language = () => {
   const [prompt, setPrompt] = useState(null);
 
@@ -78,8 +78,8 @@ const Language = () => {
               </div>
               <div className="col-lg-6">
                 <div className="lang-box2 my-2">
-                <Select onChange={(e) => handleChangen(e)} />
-                  {/* <TranslateButton/>  */}
+                {/* <Select onChange={(e) => handleChangen(e)} /> */}
+                  <TranslateButton/> 
                   <div className="lang-link">
                     <Link to="/home" className="d-flex justify-content-center" >
                       <button onClick={addToHome} className="btn-grad-bt gradient-custom-2">Submit</button>

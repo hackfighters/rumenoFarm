@@ -45,11 +45,11 @@ const Products = () => {
     // console.log(iteamdata,12222222222222)
 
     try {
-      const response = await axios.post('https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cart', iteamdata);
-      // console.log('Add to cart is Successfull', response.data);
-      //     if(response.data.msg == 'success'){
-      // handleClick()
-      //     }
+      const response = await axios.post('http://192.168.1.7:5000/cart', iteamdata);
+      console.log('Add to cart is Successfull', response.data);
+          if(response.data.msg == 'success'){
+      handleClick()
+          }
     } catch (error) {
       console.error('Add to cart is not working', error);
     }
@@ -78,10 +78,11 @@ const Products = () => {
     }
 
 
-    setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
-    const itemdatra = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }
+    setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+    const itemdatra = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }
     setiteamdata(itemdatra)
     console.log(itemdatra)
+    
 
     toast.success("Item is added to your cart", {
       position: "top-center",
@@ -102,7 +103,7 @@ const Products = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Products-Rumeno</title>
-        <link rel="canonical" href="https://rumeno.in/products" />
+        <link rel="canonical" href="https://rumeno.in/veterinary-products" />
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (
@@ -138,7 +139,7 @@ const Products = () => {
         // handleChange={handleChange}
         />
       </div>
-      <div className="our-product-img">
+      {/* <div className="our-product-img">
         <img
           src={Roadmap1}
           alt="Loading"
@@ -151,15 +152,15 @@ const Products = () => {
           className="w-100  pt-5 vh-100 "
           src={Roadmap3}
         ></video>
-      </div>
-      <div className="container-fluid abt-sect py-3 overflow-hidden">
-        <div className="d-flex justify-content-center pt-2">
-          <div className="mx-2">
+      </div> */}
+      <div className="container-fluid abt-sect pt-5 pb-3 overflow-hidden">
+        <div className="d-flex justify-content-center pt-5">
+          <div className="mx-2 pt-5">
             <div className="services-line-largeleft"></div>
             <div className="services-line-smallleft"></div>
           </div>
-          <span className="label-title text-center">Our Product</span>
-          <div className="mx-2">
+          <span className="label-title pt-5 text-center">Veterinary Products</span>
+          <div className="mx-2 pt-5">
             <div className="services-line-largeright"></div>
             <div className="services-line-smallright"></div>
           </div>

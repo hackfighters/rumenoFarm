@@ -41,10 +41,10 @@ const Footer = () => {
     
           <div className="col-lg-2 pt-4">
             <div className="d-flex justify-content-center pb-2">
-              <h5 className="me-3">Pages</h5>
+              <h5 className="">Pages</h5>
             </div>
             <div className="d-flex justify-content-center">
-              <ul className="list-unstyled footer-li">
+              <ul className="list-unstyled footer-li text-center">
                 <li>
                   <NavLink
                     className="nav-link"
@@ -65,7 +65,7 @@ const Footer = () => {
                   <NavLink
                     className="nav-link"
                     activeclassname="active"
-                    to="/products"
+                    to="/veterinary-products"
                   >
                     Products
                   </NavLink>

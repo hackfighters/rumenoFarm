@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 
 // Third party Fortawesome
@@ -27,6 +27,7 @@ import { UserContext } from "../Modal/logusecont";
 import Cookies from "js-cookie";
 import datatest from './test.json'
 import FarmerDetails from "../Modal/FarmerFarmDtl";
+import SearchBar from "./navsearch";
 
 
 // {
@@ -40,8 +41,9 @@ import FarmerDetails from "../Modal/FarmerFarmDtl";
 // }
 const ResponsiveNavbar = ({ size, handleChange }) => {
   const { t } = useTranslation();
-    
-    const { loggedInUser, cart, setCart ,farmDtl,setSelectedAnimal,  } = useContext(UserContext);
+  const { search } = useParams();
+
+  const { loggedInUser, cart, setCart, farmDtl, setSelectedAnimal, } = useContext(UserContext);
   // State
   // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -182,124 +184,124 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     Home
                   </NavLink>
                 </li>
-                {/* <li className="nav-item">
-                  <NavLink
-                    className="nav-link px-0"
-                    activeclassname="active"
-                    to="/products"
-                  >
-                    Products
-                  </NavLink>
-                </li> */}
-                <li className="nav-item">
+
+                <li className="nav-item dropdown">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0"
-                      activeclassname="active"
-                      to="/products"
+                      className="nav-link px-0 dropdown-toggle"
+                      to="#"
+                      id="navbarDropdown"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      Products
+                      Veterinary-Products
                     </NavLink>
-                    <ul
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenuLink"
-                    >
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown" data-bs-auto-close="outside">
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/products"
+                          to="/veterinary-products"
                         >
-                          Our Products
+                          Veterinary-Products
                         </NavLink>
                       </li>
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/goatcategory"
+                          to="/goat-feed-supplements"
                         >
-                          Goat Category
-                        </NavLink>
-                      </li>
-                      <li className="">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/dogcategory"
-                        >
-                          Dog Category
-                        </NavLink>
-                      </li>
-
-                      <li className="text-center">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/cattlecategory"
-                        >
-                          Cattle Category
+                          Goat Feed Supplements
                         </NavLink>
                       </li>
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/poultrycategory"
+                          to="/cattle-feed-supplements"
                         >
-                          Poultry Category
+                          Cattle Feed Supplements
+                        </NavLink>
+                      </li>
+                      <li className="text-center">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/poultry-feed-supplements"
+                        >
+                          Poultry Feed Supplements
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/dog-feed-supplements"
+                        >
+                          Dog Feed Supplements
                         </NavLink>
                       </li>
                     </ul>
                   </div>
-
-
                 </li>
-                <li className="nav-item">
+
+                <li className="nav-item dropdown">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0"
-                      activeclassname="active"
-                      to="/services"
+                      className="nav-link px-0 dropdown-toggle"
+                      to="#"
+                      id="navbarDropdown"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      Services
+                      Veterinary-Services
                     </NavLink>
-                    <ul
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenuLink"
-                    >
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown" data-bs-auto-close="outside">
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/services"
+                          to="/veterinary-services"
                         >
-                          Service
+                          Veterinary-Services
                         </NavLink>
                       </li>
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/servicessecond"
+                          to="/goat-farming-consultant"
                         >
                           Goat Farming Consultant
                         </NavLink>
                       </li>
-
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/servicesthird"
+                          to="/dairy-consultant"
                         >
                           Dairy Consultant
                         </NavLink>
                       </li>
+                      
                     </ul>
                   </div>
+                </li>
+                
+                
 
-
+                <li className="nav-item">
+                  <NavLink
+                    className="nav-link px-0"
+                    activeclassname="active"
+                    to="/blog"
+                  >
+                    Blog
+                  </NavLink>
                 </li>
 
                 <li className="nav-item">
@@ -311,9 +313,10 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     Contact Us
                   </NavLink>
                 </li>
-                {/* <li className="nav-item" id="admin">
-                  <button className="btn btn-success w-100 my-2">Admin</button>
-                </li> */}
+                <li>
+                  <SearchBar defaultSearchText={search} />
+                </li>
+
                 <li className="nav-item">
                   <Link
                     id="login"
@@ -518,7 +521,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           <li>
                             <a
                               className="dropdown-item justify-content-center"
-                              href="/products"
+                              href="/veterinary-products"
                             >
                               Product
                             </a>

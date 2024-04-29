@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Carousel } from 'react-bootstrap'
 import '../../../assets/css/slider.css'
 
@@ -11,64 +11,77 @@ import caroimg4 from "../../../assets/img/achievement-img/achmt44.jpg";
 
 const Achievment = () => {
 
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
-    const sliderWidth = 480; // Width of each image placeholder
-    const increment = 120;
+    const [isPlaying, setIsPlaying] = useState(false);
+    const videoRef = useRef(null);
+
+    const togglePlay = () => {
+        if (isPlaying) {
+            videoRef.current.pause();
+        } else {
+            videoRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+    };
+    const items = [
+        <img
+
+            className="d-block achievment-img"
+
+            src={caroimg1}
+
+        />,
+        <img
+
+            className="d-block achievment-img"
+
+            src={caroimg2}
+
+        />,
+        <div className="video-container" onClick={togglePlay}>
+            <video
+                muted
+                controls={isPlaying}
+                ref={videoRef}
+                className="video"
+                src={caroimg3}
+            ></video>
+            {!isPlaying && (
+                <div className="play-icon btn--shockwave is-active">&#9658;</div>
+            )}
+        </div>,
+        <img
+
+            className="d-block achievment-img"
+
+            src={caroimg4}
+
+        />,
+
+    ];
+
+    const chunk = (arr, size) =>
+        Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+            arr.slice(i * size, i * size + size)
+        );
+
+    const [chunkSize, setChunkSize] = useState(2);
+
+    const updateChunkSize = () => {
+        const isMobile = window.innerWidth < 768;
+        setChunkSize(isMobile ? 1 : 2);
+    };
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (!isHovered) {
-                setActiveIndex((prevIndex) => (prevIndex + 1) % 4); // Set to 4 for 4 images
-            }
-        }, 3000); // Auto slide every 7 seconds
+        updateChunkSize();
+        window.addEventListener('resize', updateChunkSize);
+        return () => {
+            window.removeEventListener('resize', updateChunkSize);
+        };
+    }, []);
 
-        return () => clearInterval(interval);
-    }, [isHovered]);
+    const slides = chunk(items, chunkSize);
 
-    const position = () => {
-        const half = activeIndex;
-        let x = 0;
-        let z = 0;
-        let scaleX = 1.3;
-        let scaleY = 1.3;
-        let transformOrigin = sliderWidth / 2;
 
-        document.querySelectorAll('.slider div').forEach((element, index) => {
-            scaleX = scaleY = 1;
-            if (index < half) {
-                x = sliderWidth / 2 - increment * (half - index + 1);
-                z = -increment * (half - index + 1);
-            } else if (index > half) {
-                x = sliderWidth / 2 + increment * (index - half + 1);
-                z = -increment * (index - half + 1);
-            } else {
-                x = sliderWidth / 2;
-                z = 1;
-                scaleX = scaleY = 1.2;
-                transformOrigin = 'initial';
-            }
-            element.style.transform = `translate3d(${calculateX(x, index)}px, 0, ${z}px) scale3d(${scaleX}, ${scaleY}, 1)`;
-            element.style.zIndex = index < half ? index + 1 : 6 - index; // Set to 4 for 4 images
-            element.style.transformOriginX = `${transformOrigin}px`;
-        });
-    };
-
-    const calculateX = (position, index) => {
-        return index < activeIndex ? position - sliderWidth / 2 : position - sliderWidth / 2;
-    };
-
-    useEffect(() => {
-        position();
-    }, [activeIndex]);
-
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
 
     return (
         <>
@@ -89,24 +102,23 @@ const Achievment = () => {
                         </div>
 
                     </div>
-                    <div className="row justify-content-center">
-                        <div className="" id="wrap-sh-slider"
+                    <div className="row achievement-section justify-content-center">
 
-                        >
-                            <div className="slider" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                                <div><img className="shadow w-0 achievment-img" width={550} sizes={10} height={400} alt="loading" src={caroimg1} /></div>
-                                <div> <video
-                                    muted
-                                    height={380}
-                                    width={10}
-                                    controls
-                                    className="shadow w-auto"
-                                    src={caroimg3}
-                                ></video></div>
-                                <div><img className="shadow w-0 achievment-img" width={550} sizes={10} height={400} alt="loading" src={caroimg2} /></div>
-                                <div><img className="shadow w-0 achievment-img" width={550} sizes={10} height={400} alt="loading" src={caroimg4} /></div>
-                            </div>
-                        </div>
+                        <Carousel interval={null} >
+                            {slides.map((slide, idx) => (
+                                <Carousel.Item key={idx}>
+                                    <div className="d-flex justify-content-around">
+                                        {slide.map((image, index) => (
+                                            <div key={index}>
+                                                {image}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </Carousel.Item>
+                            ))}
+
+                        </Carousel>
+
                     </div>
 
                     <div className="col-lg-12">

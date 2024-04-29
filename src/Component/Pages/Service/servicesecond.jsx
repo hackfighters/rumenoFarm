@@ -23,7 +23,7 @@ const ServicesSecond = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Services-Rumeno</title>
-        <link rel="canonical" href="https://rumeno.in/servicessecond" />
+        <link rel="canonical" href="https://rumeno.in/goat-farming-consultant" />
         <script type="application/ld+json">
     {JSON.stringify({
       "@context": GoatServiceJson["@context"],
@@ -75,7 +75,7 @@ const ServicesSecond = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Services</span>
+            <span className="label-title">Goat Farming Consultant</span>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
@@ -86,6 +86,15 @@ const ServicesSecond = () => {
           <h2 className="py-2 px-4 service-head">
             Unlocking Goat Farming Success: Rumeno Farmotech's Expertise
           </h2>
+          <p className="mx-5 my-4">
+          Rumeno Farmotech, a prominent goat farming consultant in the field of animal husbandry, offers specialized services to enhance the productivity and well-being of goat herds. Their comprehensive services include:
+          <ul>
+            <li>Nutritional Guidance: Rumeno provides tailored dietary plans, ensuring optimal nutrition for goats at different life stages.</li>
+            <li>Health Management: They offer preventive healthcare strategies, vaccinations, and disease management protocols.</li>
+            <li>Breeding Consultation: Rumeno assists in selecting suitable breeding pairs and optimizing breeding cycles.</li>
+            <li>Infrastructure Planning: From barn design to feed storage, they advise on efficient farm infrastructure.</li>
+          </ul>
+          </p>
           <div className="row">
             <div className="col-lg-6">
               <p className="mx-5 my-4">

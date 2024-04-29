@@ -96,12 +96,12 @@ const App = () => {
         <Routes>
           <Route path="/" Component={Lang} />
           <Route path="/home" Component={Home} />
-          <Route path="/services" Component={Services} />
-          <Route path="/servicessecond" Component={ServicesSecond} />
-          <Route path="/servicesthird" Component={ServicesThird} />
-          <Route path="/products" Component={ProductPage} />
-          <Route path="/products/:name" Component={ProductPage} />
-          <Route path="/products/ProductDetail/:id" Component={ProductDetail} />
+          <Route path="/veterinary-services" Component={Services} />
+          <Route path="/goat-farming-consultant" Component={ServicesSecond} />
+          <Route path="/dairy-consultant" Component={ServicesThird} />
+          <Route path="/veterinary-products" Component={ProductPage} />
+          <Route path="/veterinary-products/:name" Component={ProductPage} />
+          <Route path="/veterinary-products/ProductDetail/:id" Component={ProductDetail} />
           <Route path="/contactus" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
@@ -110,10 +110,10 @@ const App = () => {
           <Route path="/privacypolicy" Component={PrivacyPolicy}/>
           <Route path="/blog" Component={Blog}/>
           <Route path="/blog/:id" Component={BlogContent}/>
-          <Route path="/goatcategory" Component={GoatCategoryPage}/>
-          <Route path="/dogcategory" Component={DogCategoryPage}/>
-          <Route path="/cattlecategory" Component={CattleCategoryPage}/>
-          <Route path="/poultrycategory" Component={PoultryCategoryPage}/>
+          <Route path="/goat-feed-supplements" Component={GoatCategoryPage}/>
+          <Route path="/dog-feed-supplements" Component={DogCategoryPage}/>
+          <Route path="/cattle-feed-supplements" Component={CattleCategoryPage}/>
+          <Route path="/poultry-feed-supplements" Component={PoultryCategoryPage}/>
           <Route path="/thankyoupage" Component={ThankYouPage}/>
           <Route path="*" Component={Error} />
         </Routes>

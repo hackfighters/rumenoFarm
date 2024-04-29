@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 const ThankYouPage = () => {
-  
+
     return (
         <>
         <Navbar/>
@@ -18,7 +18,7 @@ const ThankYouPage = () => {
                 </p>
                 <p class="my-3">
                     Please check your mail for more Details
-                    
+
                 </p>
             </div>
         </section>
@@ -66,19 +66,19 @@ export default ThankYouPage
 //       description:'hello world',
 //     },
 // {
-  //       id: 1,
-  //       name:'admin',
-  //       weight: 2kg",
-  //       price: "2",
-  //       description:'hello world',
-  //     },
-  // {
-    //       id: 2,
-    //       name:'admin',
-    //       weight: "7kg",
-    //       price: "7",
-    //       description:'hello world',
-    //     },
+//       id: 1,
+//       name:'admin',
+//       weight: 2kg",
+//       price: "2",
+//       description:'hello world',
+//     },
+// {
+//       id: 2,
+//       name:'admin',
+//       weight: "7kg",
+//       price: "7",
+//       description:'hello world',
+//     },
 //  ];
 
 //  return (
@@ -255,17 +255,109 @@ export default ThankYouPage
 //       description:'hello world',
 //     },
 // {
-  //       id: 1,
-  //       name:'admin',
-  //       weight: 2kg",
-  //       price: "2",
-  //       description:'hello world',
-  //     },
-  // {
-    //       id: 2,
-    //       name:'admin',
-    //       weight: "7kg",
-    //       price: "7",
-    //       description:'hello world',
-    //     },
+//       id: 1,
+//       name:'admin',
+//       weight: 2kg",
+//       price: "2",
+//       description:'hello world',
+//     },
+// {
+//       id: 2,
+//       name:'admin',
+//       weight: "7kg",
+//       price: "7",
+//       description:'hello world',
+//     },
 //  ];
+// ThankYouPage
+// import React from 'react';
+
+// function ThankYouPage() {
+
+
+//   return (
+//     <>
+//     <div class="container">
+//   <h1>Use Bootstrap's carousel to show multiple items per slide.</h1>
+//   <div class="row">
+//     <div class="col-md-12">
+//       <div class="carousel slide multi-item-carousel" id="theCarousel">
+//         <div class="carousel-inner">
+//           <div class="item active">
+//             <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/f44336/000000" class="img-responsive"/></a></div>
+//           </div>
+//           <div class="item">
+//             <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/e91e63/000000" class="img-responsive"/></a></div>
+//           </div>
+//           <div class="item">
+//             <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/9c27b0/000000" class="img-responsive"/></a></div>
+//           </div>
+//           <div class="item">
+//             <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/673ab7/000000" class="img-responsive"/></a></div>
+//           </div>
+//           <div class="item">
+//             <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/4caf50/000000" class="img-responsive"/></a></div>
+//           </div>
+//           <div class="item">
+//             <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive"/></a></div>
+//           </div>
+
+//           <div class="item">
+//             <div class="col-xs-4"><a href="#1"><img src="http://placehold.it/300/8bc34a/000000" class="img-responsive"/></a></div>
+//           </div>
+
+//         </div>
+//         <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+//         <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+//     </>
+//   )
+
+// }
+
+// export default ThankYouPage;
+
+// import React, { useState, useEffect } from 'react';
+// import '../../assets/css/test.css';
+
+
+// function ThankYouPage() {
+//   const [isScrolled, setIsScrolled] = useState(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       // Check if the user has scrolled down by a certain amount
+//       const scrollPosition = window.scrollY;
+//       if (scrollPosition > 100) {
+//         setIsScrolled(true);
+//       } else {
+//         setIsScrolled(false);
+//       }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+//   return (
+//     <div className="App">
+//       <div className={isScrolled ? "navbar scrolled" : "navbar"}>
+//         {/* Your navbar content */}
+//         Navbar
+//       </div>
+//       <div className="content">
+//         {/* Your page content */}
+//         {Array.from({ length: 100 }, (_, i) => (
+//           <p key={i}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default ThankYouPage;

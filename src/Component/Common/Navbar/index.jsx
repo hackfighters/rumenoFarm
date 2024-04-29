@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink, useNavigate,useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 // import Modal from 'react-modal';
 import { UserContext } from "../Modal/logusecont";
@@ -39,7 +39,7 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import datatest from "./test.json";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
-import TranslateButton from "../translate/trasn";
+// import TranslateButton from "../translate/trasn";
 import SearchBar from "./navsearch";
 
 const Navbar = ({ size }) => {
@@ -150,7 +150,7 @@ const Navbar = ({ size }) => {
     // console.log(RemoveCartData,'ghgjhjjjj')
     try {
       const response = await axios.post(
-        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/deleteCart",
+        "http://192.168.1.7:5000/deleteCart",
         RemoveCartData
       );
       console.log("Add to cart", response.data);
@@ -222,13 +222,13 @@ const Navbar = ({ size }) => {
     // Api ------------
     try {
       const response = await axios.post(
-        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart",
+        "http://192.168.1.7:5000/cart",
         amountdataupdata
       );
       console.log(iteamdata, 4444);
-      console.log("Add to cart is Successfull", response.data);
+      console.log("quantity increase Successfull", response.data);
     } catch (error) {
-      console.error("Add to cart is not working", error);
+      console.error("quantity increase not working", error);
     }
   };
 
@@ -327,7 +327,7 @@ const Navbar = ({ size }) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
-                
+
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -338,16 +338,14 @@ const Navbar = ({ size }) => {
                     Home
                   </NavLink>
                 </li>
-
-
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
                       className="nav-link px-0"
                       activeclassname="active"
-                      to="/products"
+                      to="/veterinary-products"
                     >
-                      Products
+                      Veterinary-Products
                     </NavLink>
                     <ul
                       className="dropdown-menu"
@@ -357,61 +355,51 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/products"
+                          to="/goat-feed-supplements"
                         >
-                          Our Products
+                          Goat Feed Supplements
                         </NavLink>
                       </li>
-                      <li className="">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/goatcategory"
-                        >
-                          Goat Feed Supliments
-                        </NavLink>
-                      </li>
-                      <li className="">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/dogcategory"
-                        >
-                          Dog Feed Supliments
-                        </NavLink>
-                      </li>
+                      
 
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/cattlecategory"
+                          to="/cattle-feed-supplements"
                         >
-                          Cattle Feed Supliments
+                          Cattle Feed Supplements
                         </NavLink>
                       </li>
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/poultrycategory"
+                          to="/poultry-feed-supplements"
                         >
-                          Poultry Feed Supliments
+                          Poultry Feed Supplements
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/dog-feed-supplements"
+                        >
+                          Dog Feed Supplements
                         </NavLink>
                       </li>
                     </ul>
                   </div>
-
-
                 </li>
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
                       className="nav-link px-0"
                       activeclassname="active"
-                      to="/services"
+                      to="/veterinary-services"
                     >
-                      Services
+                      Veterinary-Services
                     </NavLink>
                     <ul
                       className="dropdown-menu"
@@ -421,26 +409,17 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/services"
-                        >
-                          Service
-                        </NavLink>
-                      </li>
-                      <li className="">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/servicessecond"
+                          to="/goat-farming-consultant"
                         >
                           Goat Farming Consultant
                         </NavLink>
                       </li>
-                  
+
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/servicesthird"
+                          to="/dairy-consultant"
                         >
                           Dairy Consultant
                         </NavLink>
@@ -450,6 +429,7 @@ const Navbar = ({ size }) => {
 
 
                 </li>
+
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -469,7 +449,7 @@ const Navbar = ({ size }) => {
                   </NavLink>
                 </li>
                 <li>
-               <SearchBar defaultSearchText={search}/>
+                  <SearchBar defaultSearchText={search} />
                 </li>
                 {/* <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
@@ -675,7 +655,7 @@ const Navbar = ({ size }) => {
                           <li>
                             <Link
                               className="dropdown-item justify-content-center"
-                              to="/products"
+                              to="/veterinary-products"
                             >
                               Product
                             </Link>

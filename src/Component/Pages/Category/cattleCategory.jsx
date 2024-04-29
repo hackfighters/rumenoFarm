@@ -137,7 +137,7 @@ const CattleCategoryPage = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Cattle Category</span>
+            <span className="label-title">Cattle Feed Supplements</span>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
@@ -192,17 +192,12 @@ const CattleCategoryPage = () => {
         <div className="row bg-white shadow mx-3 my-4 justify-content-center">
           <div className="col-lg-11 my-4">
             <h1 className="my-4 text-center">
-              Enhancing Cattle Well-being and Growth with RumenO Farmotech
-              Supplementation
+            Enhancing Cattle Well-being and Growth with Rumeno's Cattle Feed Supplements
             </h1>
             <h2 className="my-2">Overview</h2>
             <p>
-              For many farmers, raising cattle is both their livelihood and
-              their passion. Making sure your dairy or beef cattle are healthy
-              and gaining the maximum amount of weight is crucial. To do this,
-              proper nutrition is essential, and here's where premium vitamins
-              fit in. We'll discuss several cow supplements in this blog, with
-              an emphasis on RumenO Farmotech products
+            Rumeno Farmotech produces high-quality animal feed supplements to enhance livestock health and productivity. Their cattle feed supplements includes mineral combinations and calcium supplements, ensuring robust growth and nourishment for cows and buffaloes. With a commitment to research-driven solutions, Rumeno Farmotech offers a broad range of products for your lovely cattle, like
+            
             </p>
             <hr className="my-4"/>
             <h3 className="fw-bold">1. Cattle Weight Gain Supplements</h3>

@@ -23,6 +23,7 @@ import farmbuner from "../../../assets/img/OurProduct/FarmHouse.jpg";
 import farmflour from "../../../assets/img/OurProduct/farm-floor.jpg";
 import goatsheepnipple from "../../../assets/img/OurProduct/GoatNipple.png";
 import Neonato from "../../../assets/img/OurProduct/NOENATO.png";
+import axios from 'axios';
 
 const ProductDetail = () => {
     const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
@@ -512,11 +513,10 @@ const ProductDetail = () => {
 
     const { name, id } = useParams();
 
-    const AddToCarts = (item) => {
+    const AddToCarts = async (item) => {
         if (loggedInUser) {
             // Check if the item already exists in the cart
-            const itemExists = cart.some(cartItem => cartItem.name === item.name);
-
+            const itemExists = cart.some(cartItem => cartItem.id === item.id);
             if (!itemExists) {
                 toast.success("Item is added to your cart", {
                     position: "top-center",
@@ -530,10 +530,19 @@ const ProductDetail = () => {
                 });
                 console.log("Item added to cart:", item);
                 // Add logic to handle adding item to cart
-                setCart([...cart, { id: item.id, amount: amountdata, price: item.price, img: item.img, name: item.name, uID: UidData }]);
-                const itemData = { id: item.id, amount: amountdata, price: item.price, img: item.img, name: item.name, uID: UidData };
+                setCart([...cart, { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+                const itemData = { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData };
                 setiteamdata(itemData);
-                console.log(itemData);
+                console.warn(itemData);
+                
+    try {
+        const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
+        console.log('Add to cart is Successfull', response.data);
+            if(response.data.msg == 'success'){
+            }
+      } catch (error) {
+        console.error('Add to cart is not working', error);
+      }
             }
             else {
                 toast.warn("Item is already added to your cart", {
@@ -639,7 +648,7 @@ const ProductDetail = () => {
 
                             </div>
                             <div className="col-lg-5 offset-lg-1">
-                                <h1 className=''>{item.name}</h1>
+                                <h1 className='mt-3'>{item.name}</h1>
                                 <h1 className='my-3 text-danger fw-bold'>₹ {item.priceText} /-</h1>
                                 <Accordion className='' defaultActiveKey="0" flush>
                                     <Accordion.Item className="my-3" eventKey="0">
@@ -694,9 +703,9 @@ const ProductDetail = () => {
                                 <hr />
                                 <h5><strong>Weight :</strong> <span className='text-danger mx-1 fw-bold'>{item.Weight}</span></h5>
                                 <hr />
-                                <div className='row  my-3' >
+                                <div className='row  my-3 ' >
                                     {aa.map((item) => (
-                                        <Link className='col-lg-2 mx-2 py-1 border border-danger border-2 d-grid rounded px-0 text-center text-decoration-none' to={`/products/ProductDetail/${item.id}`}>
+                                        <Link className='col-lg-2 m-2 py-1 border border-danger border-2 d-grid rounded px-3 w-auto text-center text-decoration-none' to={`/veterinary-products/ProductDetail/${item.id}`}>
                                             <div className=''>
                                                 <h6 className='fw-bold my-1 text-dark'>₹ {item.priceText}/-</h6>
                                                 <h6 className=' text-danger my-1'>{item.Weight}</h6>

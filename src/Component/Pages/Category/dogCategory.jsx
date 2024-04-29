@@ -106,7 +106,7 @@ const DogCategoryPage = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Dog Category</span>
+            <span className="label-title">Dog Feed Supplements</span>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>

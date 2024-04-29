@@ -21,7 +21,7 @@ const ServicesThird = () => {
     <Helmet>
       <meta charSet="utf-8" />
       <title>Services-Rumeno</title>
-      <link rel="canonical" href="https://rumeno.in/servicesthird" />
+      <link rel="canonical" href="https://rumeno.in/dairy-farming-consultant" />
     </Helmet>
     <ul className="d-none">
   {KeysWords.map((item, index) => (
@@ -59,7 +59,7 @@ const ServicesThird = () => {
             <div className="services-line-largeleft"></div>
             <div className="services-line-smallleft"></div>
           </div>
-          <span className="label-title">Services</span>
+          <span className="label-title">Dairy Consultant</span>
           <div className="mx-2">
             <div className="services-line-largeright"></div>
             <div className="services-line-smallright"></div>
@@ -68,7 +68,8 @@ const ServicesThird = () => {
       </div>
       <div className="col-lg-12">
         <h2 className="py-2 px-4 service-head">
-          Rumeno Farmotech's Contribution to the Revolution of Dairy Farming
+        Dairy Consultant Services by Rumeno Farmotech
+
         </h2>
         <div className="row">
           <div className="col-lg-6">

@@ -43,6 +43,7 @@ import Login from "../../Common/Modal/Login";
 import Registration from "../../Common/Modal/Registion";
 import SendOtp from "../../Common/Modal/otp";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const GoatCategoryPage = ({ }) => {
 
@@ -548,7 +549,7 @@ const GoatCategoryPage = ({ }) => {
       id: 2,
       name: "Neonato",
       priceText: 245,
-      img: "https://www.rumeno.in/static/media/NEONATO.f8e7cf362bb1c575fe9e.jpg",
+      img: Neonato,
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -817,7 +818,7 @@ const GoatCategoryPage = ({ }) => {
 
 
 
-  const AddToCarts = (item) => {
+  const AddToCarts = async (item) => {
     if (loggedInUser) {
        // Check if the item already exists in the cart
        const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
@@ -830,6 +831,14 @@ const GoatCategoryPage = ({ }) => {
          const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
          setiteamdata(itemData);
          console.log(itemData);
+         try {
+          const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
+          console.log('Add to cart is Successfull', response.data);
+              if(response.data.msg == 'success'){
+              }
+        } catch (error) {
+          console.error('Add to cart is not working', error);
+        }
        } else {
          // Optionally, show a message that the item is already in the cart
          console.log("Item already in cart",item);
@@ -872,7 +881,7 @@ const GoatCategoryPage = ({ }) => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Goat Category</span>
+            <span className="label-title">Goat Feed Supplements</span>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
@@ -908,7 +917,7 @@ const GoatCategoryPage = ({ }) => {
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/products/ProductDetail/${item.id}`} >
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/ProductDetail/${item.id}`} >
                     <span
                       className=""
                     >

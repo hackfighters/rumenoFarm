@@ -8,7 +8,7 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/products/${searchText}`);
+    navigate(`/veterinary-products/${searchText}`);
   };
 
   return (

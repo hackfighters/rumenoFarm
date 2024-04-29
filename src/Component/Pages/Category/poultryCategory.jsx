@@ -131,7 +131,7 @@ const PoultryCategoryPage = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Poultry Category</span>
+            <span className="label-title">Poultry Feed Supplements</span>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
@@ -186,8 +186,7 @@ const PoultryCategoryPage = () => {
         <div className="row bg-white shadow mx-3 my-4 justify-content-center">
           <div className="col-lg-11 my-4">
             <h1 className="my-4 text-center">
-              Enhancing Poultry Health An All-Inclusive Handbook on Poultry
-              Supplements
+            Enhancing Poultry Health An All-Inclusive Handbook on Poultry Feed Supplements
             </h1>
             <h3 className="my-3">Overview</h3>
             <p>
@@ -265,12 +264,7 @@ const PoultryCategoryPage = () => {
 
             <h4>Let me present Rumeno Farmotech.</h4>
             <p>
-              We at Rumeno Farmotech are devoted to the well-being of poultry.
-              Being a top producer of supplements for poultry feed, we are
-              experts at making premium supplements that are suited to each
-              species' particular dietary needs. Our products are carefully
-              designed to improve the health and well-being of birds, increase
-              their output, and guarantee healthy growth.
+            Rumeno Farmotech, a trusted name in animal feed supplements, offers high-quality poultry vitamin supplements. These supplements enhance the general health and well-being of chickens, ducks, and other fowl. With a commitment to research-driven solutions, Rumeno Farmotech ensures that its products reach farmers and livestock owners across India.
             </p>
             <p>
               Our quick-start poultry supplements are made to get your flock

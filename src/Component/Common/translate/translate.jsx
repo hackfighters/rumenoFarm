@@ -188,28 +188,27 @@
 // </html> 
 
 
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
 
-function TranslateButton() {
-  useEffect(() => {
-    const googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement({
-        pageLanguage: 'en'
-      }, 'google_translate_element');
-    }
+// function TranslateButton() {
+//   useEffect(() => {
+//     const googleTranslateElementInit = () => {
+//       new window.google.translate.TranslateElement({
+//         pageLanguage: 'en'
+//       }, 'google_translate_element');
+//     }
+//     const addScript = document.createElement('script');
+//     addScript.setAttribute('src','//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');                
+//     document.body.appendChild(addScript);
 
-    const addScript = document.createElement('script');
-    addScript.setAttribute('src','//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');                
-    document.body.appendChild(addScript);
+//     window.googleTranslateElementInit = googleTranslateElementInit;
+//   }, []);
 
-    window.googleTranslateElementInit = googleTranslateElementInit;
-  }, []);
-
-  return (
-    <div id="google_translate_element"></div>
-  );
-}
-export default TranslateButton;
+//   return (
+//     <div id="google_translate_element"></div>
+//   );
+// }
+// export default TranslateButton;
 
 // import React, { useEffect } from 'react';
 // import { toast } from "react-toastify";
@@ -268,14 +267,9 @@ export default TranslateButton;
 //           googleTranslateElementInit();
 //         }
 //       } catch (error) {
-//         console.error('Error loading Google Translate:', error);
-//         if (error.response) {
-//           toast.error(error.response.data.message);
-//         } else if (error.request) {
-//           toast.error("Network Error: Please check your internet connection");
-//         } else {
-//           toast.error("An unexpected error occurred");
-//         }
+//         console.log(error.response)
+//         // console.error('Error loading Google Translate:', error);
+     
 //       }
 //     };
 
@@ -289,3 +283,28 @@ export default TranslateButton;
 // }
 
 // export default TranslateButton;
+
+import React, { useEffect } from 'react';
+
+function TranslateButton() {
+  useEffect(() => {
+    const googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'en'
+      }, 'google_translate_element');
+    }
+
+    const addScript = document.createElement('script');
+    console.log(addScript);
+    addScript.setAttribute('src','//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');                
+    document.body.appendChild(addScript);
+    
+
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
+  return (
+    <div id="google_translate_element"></div>
+  );
+}
+export default TranslateButton;
