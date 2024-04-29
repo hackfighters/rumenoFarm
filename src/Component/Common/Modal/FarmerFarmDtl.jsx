@@ -41,11 +41,11 @@ const FarmerDetails = ({showFarmModal,closeFarmModal}) => {
               </div>
               <div className="col-lg-5 my-2">
                 <label className="form-label" for="number">
-                  Number
+                  Mobile Number
                 </label>
                 <input
                   name="number"
-                  placeholder="Number"
+                  placeholder="Mobile Number"
                   type="number"
                   id="number"
                   className="form-control"
@@ -94,60 +94,19 @@ const FarmerDetails = ({showFarmModal,closeFarmModal}) => {
               </div>
               <div className="col-lg-5 my-2">
                 <div>
-                  <label className="form-label px-2" htmlFor="soilchange">
-                    Soil Change Date
+                  <label className="form-label px-2" htmlFor="noofanimal">
+                    Number of Animals
                   </label>
                 </div>
                 <input
-                  placeholder="soil Change Date"
-                  type="date"
-                  id="soilchange"
+                  placeholder="Number of Animals"
+                  type="number"
+                  id="noofanimal"
                   className="form-control"
-                  {...register("soilchange")}
+                  {...register("noofanimal")}
                 />
               </div>
-              <div className="col-lg-5 my-2">
-                <div>
-                  <label className="form-label px-2" htmlFor="limesprinkledate">
-                    Lime Sprinkle Date
-                  </label>
-                </div>
-                <input
-                  placeholder="Lime Sprinkle Date"
-                  type="date"
-                  id="limesprinkledate"
-                  className="form-control"
-                  {...register("limesprinkledate")}
-                />
-              </div>
-              <div className="col-lg-5 my-2">
-                <div>
-                  <label className="form-label px-2" htmlFor="insecticide">
-                    Insecticide Date
-                  </label>
-                </div>
-                <input
-                  placeholder="Incesticide Date"
-                  type="date"
-                  id="insecticidedate"
-                  className="form-control"
-                  {...register("insecticidedate")}
-                />
-              </div>
-              <div className="col-lg-5 my-2">
-                <div>
-                  <label className="form-label px-2" htmlFor="insecticide">
-                    Insecticide Name
-                  </label>
-                </div>
-                <input
-                  placeholder="Incesticide Name"
-                  type="text"
-                  id="insecticide"
-                  className="form-control"
-                  {...register("insecticide")}
-                />
-              </div>
+              
               <div className="text-center">
                 <button type="submit" className="btn btn-primary w-auto mt-3" onClick={closeFarmModal}>
                   Submit

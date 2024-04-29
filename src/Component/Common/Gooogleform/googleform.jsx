@@ -14,6 +14,7 @@ const FeedBackForm = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data)
     try {
       // Make an HTTP POST request using Axios
       const response = await axios.post("http://127.0.0.1:5000/api/post_data", data);

@@ -2,594 +2,463 @@ import React, { useContext, useEffect, useState } from 'react'
 
 // 
 import ReactStars from "react-rating-stars-component";
-
-import MICROFLORATONE from "../../../assets/img/OurProduct/microfloratane.jpg";
-import Minromin from "../../../assets/img/OurProduct/minromix.jpg";
-import farmimg1 from "../../../assets/img/OurProduct/FarmHouse.jpg";
-import farmimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
-import rumenoamazon1 from "../../../assets/img/OurProduct/Castrator.jpg";
-import rumenoamazon2 from "../../../assets/img/OurProduct/GoatHoofCutter.jpg";
-import rumenoamazon3 from "../../../assets/img/OurProduct/GoatNipple.jpg";
-import rumenoamazon4 from "../../../assets/img/OurProduct/WaterBowl.jpg";
-import rumenoamazon5 from "../../../assets/img/OurProduct/AnimalEarTagging.jpg";
-import rumenoamazon6 from "../../../assets/img/OurProduct/WeighingMachine.jpg";
-import rumenoamazon7 from "../../../assets/img/OurProduct/HangingWeighingScale.jpg";
-import rumenoamazon8 from "../../../assets/img/OurProduct/InfraredThermometer.jpg";
-import rumenoamazon9 from "../../../assets/img/OurProduct/GreenHouseMat2.jpg";
-import humanconsumable1 from "../../../assets/img/OurProduct/HyegoatMilkpowder.jpg";
-import humanconsumable2 from "../../../assets/img/OurProduct/farmfreshmilk.jpg";
-import humanconsumable3 from "../../../assets/img/OurProduct/goatcreamsoap.jpg";
-import goatforsale1 from "../../../assets/img/OurProduct/Barbarigoat.jpg";
-import Rumenovita from "../../../assets/img/OurProduct/Rumenovita.jpg";
-import Neonato from "../../../assets/img/OurProduct/NEONATO.jpg";
-import TanavMukti from "../../../assets/img/OurProduct/Tanaav.jpg";
-import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg";
-import DigestoPlus from "../../../assets/img/OurProduct/Digesto-Plus.jpg";
-import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg";
-import DCox from "../../../assets/img/OurProduct/D-Cox.jpg";
-import RumenoMicroFlora from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg";
-import LactoPup from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
-import ProductItem from "../../Common/Product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faCircleMinus, faCirclePlus, faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightArrowLeft, faCircleMinus, faCirclePlus, faTags, } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from '../Modal/logusecont';
 import { useTranslation } from 'react-i18next';
 import Navbar from '../Navbar';
 import ResponsiveNavbar from '../Navbar/navMob';
 import Footer from '../Footer';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
-
+import { faCircleDot } from '@fortawesome/free-regular-svg-icons';
+import { Accordion } from 'react-bootstrap';
+import poultryfine from "../../../assets/img/OurProduct/Poultryfine.png";
+import Florovita from "../../../assets/img/OurProduct/florovita-12.png";
+import bullgoat from "../../../assets/img/OurProduct/Bull-Goat.png";
+import Selennium from "../../../assets/img/OurProduct/selennium-E.png";
+import farmbuner from "../../../assets/img/OurProduct/FarmHouse.jpg";
+import farmflour from "../../../assets/img/OurProduct/farm-floor.jpg";
+import goatsheepnipple from "../../../assets/img/OurProduct/GoatNipple.png";
+import Neonato from "../../../assets/img/OurProduct/NOENATO.png";
+import axios from 'axios';
 
 const ProductDetail = () => {
     const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
-    const { t } = useTranslation();
-    const Data = [
-        {
-            id: 1,
-            name: t(["v254"]),
-            priceText: "Price: 245 INR/Bottle",
-            amount: 1,
-            price: 245.0,
-            description: t(["v270"]),
-            img: MICROFLORATONE,
-            text: [
-                <>
-                    {t(["v255"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v256"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v257"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v258"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v259"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v260"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v261"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v262"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v263"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v339"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v340"]),
-            efficacy2: t(["v341"]),
-        },
-        {
-            id: 2,
-            name: t(["v197"]),
-            priceText: "Price: 285 INR/Piece",
-            amount: 1,
-            price: 285.0,
-            description: t(["v272"]),
-            img: Minromin,
-            text: [
-                <>
-                    {t(["v198"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v199"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v200"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v201"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v202"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v260"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v261"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v262"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v263"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v342"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v343"]),
-            efficacy2: t(["v344"]),
-        },
-        {
-            id: 3,
-            name: t(["v273"]),
-            priceText: "Price: 700 INR/Piece",
-            amount: 1,
-            price: 700.0,
-            description: t(["v274"]),
-            img: Rumenovita,
-            text: [
-                <>
-                    {t(["v204"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v205"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v206"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v207"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v208"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v209"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v345"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v343"]),
-            efficacy2: t(["v341"]),
-        },
-        {
-            id: 4,
-            name: t(["v149"]),
-            priceText: "Price: 245 INR/Bottle",
-            amount: 1,
-            price: 245.0,
-            description: t(["v150"]),
-            img: Neonato,
-            text: [
-                <>
-                    {t(["v150"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v151"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v152"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v153"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v154"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v155"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v156"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v157"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v158"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v159"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v160"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v339"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v340"]),
-            efficacy2: t(["v346"]),
-        },
-        {
-            id: 5,
-            name: t(["v135"]),
-            priceText: "Price: 700 INR/Piece",
-            amount: 1,
-            price: 700.0,
-            description: t(["v136"]),
-            img: TanavMukti,
-            text: [
-                <>
-                    {t(["v136"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v137"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v138"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v139"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v140"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v141"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v142"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v143"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v144"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v145"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v146"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v147"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v148"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v342"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v340"]),
-            efficacy2: t(["v347"]),
-        },
-        {
-            id: 6,
-            name: t(["v161"]),
-            priceText: "Price: 350 INR/Piece",
-            amount: 1,
-            price: 350.0,
-            description: t(["v162"]),
-            img: Energico,
-            text: [
-                <>
-                    {t(["v162"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v163"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v164"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v165"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v166"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v342"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v340"]),
-            efficacy2: t(["v346"]),
-        },
-        {
-            id: 7,
-            name: t(["v167"]),
-            priceText: "Price: 195 INR/Piece",
-            amount: 1,
-            price: 195.0,
-            description: t(["v168"]),
-            img: DigestoPlus,
-            text: [
-                <>
-                    {t(["v168"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v169"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v170"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v171"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v345"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v340"]),
-            efficacy2: t(["v348"]),
-        },
-        {
-            id: 8,
-            name: t(["v182"]),
-            priceText: "Price: 125 INR/Piece",
-            amount: 1,
-            price: 125.0,
-            description: t(["v183"]),
-            img: Liverofine,
-            text: [
-                <>
-                    {t(["v183"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v184"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v185"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v186"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v187"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v188"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v345"]),
-            efficacy: t(["v338"]),
-            // efficacy1: t(["v340"]),
-            efficacy2: t(["v344"]),
-        },
-        {
-            id: 9,
-            name: t(["v189"]),
-            priceText: "Price: 250 INR/Piece",
-            amount: 1,
-            price: 250,
-            description: t(["v190"]),
-            img: DCox,
-            text: [
-                <>
-                    {t(["v190"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v191"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v192"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v193"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v194"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v195"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v196"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v342"]),
-            // efficacy: t(["v338"]),
-            // efficacy1: t(["v340"]),
-            // efficacy2: t(["v341"]),
-        },
-        {
-            id: 10,
-            name: t(["v210"]),
-            priceText: "Price: 1300 INR/Piece",
-            amount: 1,
-            price: 1300,
-            description: t(["v211"]),
-            img: RumenoMicroFlora,
-            text: [
-                <>
-                    {t(["v212"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v213"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v214"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v215"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v216"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v217"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v218"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v219"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v220"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v221"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v223"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v224"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v225"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v226"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v227"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v228"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v342"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v343"]),
-            efficacy2: t(["v341"]),
-        },
-        {
-            id: 11,
-            name: t(["v248"]),
-            priceText: "Price: 600 INR/Piece",
-            amount: 1,
-            price: 600,
-            description: t(["v249"]),
-            img: LactoPup,
-            text: [
-                <>
-                    {t(["v249"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v250"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v251"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v252"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v253"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-            suitable: t(["v337"]),
-            tipe: t(["v345"]),
-            efficacy: t(["v338"]),
-            efficacy1: t(["v343"]),
-            efficacy2: t(["v344"]),
-        },
-    ];
-
-    const FarmEquipment = [
-        {
-            id: 12,
-            name: t(["v319"]),
-            priceText: t(["v320"]),
-            amount: 1,
-            price: 3400,
-            description: t(["v321"]),
-            img: farmimg1,
-        },
-        {
-            id: 13,
-            name: t(["v322"]),
-            priceText: t(["v323"]),
-            amount: 1,
-            price: 600,
-            description: t(["v324"]),
-            img: farmimg2,
-        },
-    ];
-
-    const RumenoAmazon = [
-        { name: t(["v325"]), img: rumenoamazon1, amount: 1, price: 600 },
-        { name: t(["v326"]), img: rumenoamazon2, amount: 1, price: 600 },
-        {
-            name: t(["v172"]),
-            img: rumenoamazon3,
-            description: t(["v173"]),
-            amount: 1,
-            priceText: "Rs. 55",
-            price: 55,
-            text: [
-                <>
-                    {t(["v173"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v174"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v175"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v176"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v180"])}
-                    <br></br>
-                    <br></br>
-                    {t(["v181"])}
-                    <br></br>
-                    <br></br>
-                </>,
-            ],
-        },
-        { name: t(["v328"]), img: rumenoamazon4 },
-        { name: t(["v329"]), img: rumenoamazon5 },
-        { name: t(["v330"]), img: rumenoamazon6 },
-        { name: t(["v331"]), img: rumenoamazon7 },
-        { name: t(["v332"]), img: rumenoamazon8 },
-        { name: t(["v333"]), img: rumenoamazon9 },
-    ];
-
-    const HumanConsumable = [
-        { name: t(["v334"]), img: humanconsumable1 },
-        { name: t(["v335"]), img: humanconsumable2 },
-        { name: t(["v336"]), img: humanconsumable3 },
-    ];
+    const [amountdata, setAmountData] = useState(1)
+    // console.log(amountdata, 122)
+    const Data =
+  [
+      {
+          id: 1,
+          name: "Tanav Mukti",
+          priceText: 700,
+          img: "https://www.rumeno.in/static/media/Tanaav.f892208d5402ec8a78de.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "500gm",
+          Shortdescription: "Tanav Mukti Powder: A specialized blend of natural adaptogenic herbs designed to alleviate stress in animals. This non-sedative formula helps pets cope with physical, mental, and emotional stressors, promoting a sense of calm and well-being.\nHolistic Approach: Tanav Mukti takes a holistic approach to stress management, addressing both the physiological and psychological aspects of anxiety in animals.\nEasy Administration: Simply mix the recommended dosage with your pet’s food or water. It’s palatable and easy to incorporate into their daily routine.\nSafe and Gentle: Tanav Mukti is free from harmful chemicals and additives, making it suitable for all breeds and sizes of animals.\nResults Over Time: Consistent use of Tanav Mukti can lead to noticeable improvements in your pet’s overall demeanor and behavior.",
+          description: "Tanav Mukti: The Advanced Supplement for Animal Stress Relief, Energy Boosting, and Immunity Enhancement\n\nBringing home a new animal or transporting one can be an exciting but stressful experience for both you and your animal. The change in environment, routine, and diet can trigger stress, anxiety, and weakened immunity in animals. That's why it's crucial to give them the right kind of support to help them adjust and thrive in their new surroundings. And this is where Tanav Mukti comes in as the ultimate stress reliever, energy booster, and immunity enhancer for animals.\n\nWhat is Tanav Mukti?\n\nTanav Mukti is an advanced supplement designed to provide holistic support for animals' overall wellbeing. It is made with a blend of natural ingredients that work synergistically to reduce stress, boost energy, and enhance immunity in animals. Tanav Mukti is a highly effective supplement that can be used for different animal species, including goats, sheeps, cattle, dogs, cats, horses, birds, and livestock.\n\nBenefits of Tanav Mukti\n\nStress Relief: Tanav Mukti helps animals cope with stress and anxiety related to changes in environment, routine, or diet. It promotes relaxation, calmness, and a sense of well-being, which can help your animal adjust to its new surroundings more easily.\n\nEnergy Boost: Tanav Mukti is also an excellent energy booster that provides animals with the necessary nutrients and vitamins to stay active and healthy. It improves endurance, strength, and vitality, allowing animals to perform at their best.\n\nImmunity Enhancement: Tanav Mukti contains powerful antioxidants and immune-boosting compounds that help animals fight off infections and diseases. It strengthens their immune system, making them less susceptible to common illnesses and health issues.\n\nEasy to Use: Tanav Mukti comes in an easy-to-administer powder form, that can be easily mixed with food or water. It's also safe for animals of all ages, breeds, and sizes.\n\nWhy choose Tanav Mukti?\n\nTanav Mukti is a reliable and effective solution for animal stress relief, energy boosting, and immunity enhancement. It's made with high-quality natural ingredients that are safe and gentle on animals' bodies. Moreover, Tanav Mukti is formulated by animal experts who understand the unique needs and challenges of animals. With Tanav Mukti, you can be assured that your animal is getting the best possible support for their overall health and wellbeing.",
+          Instruction: "Tanav Mukti Powder: A specialized blend of natural adaptogenic herbs designed to alleviate stress in animals.\nDosage: Mix the recommended amount of Tanav Mukti Powder with your pet’s food or water.\nFrequency: Administer twice daily for optimal results.\nConsult a Veterinarian: Always consult a veterinarian before introducing any new product to your pet’s routine.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      
+      {
+          id: 2,
+          name: "Neonato",
+          priceText: 245,
+          img: Neonato,
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "100ml",
+          Shortdescription: "Neonato Powder: A specialized blend of natural compounds designed to enhance the immune system of newborn animals.\nBoosts Immunity: Neonato provides essential nutrients and bioactive compounds to strengthen the innate defenses of young animals.\nGentle and Effective: Formulated to be gentle on delicate systems while promoting overall health and resilience.",
+          description: "Neonato\n\nNeonato is a specially designed bioactive supplement that provides essential support for the health and immunity of newborn animals, kids, and chicks. It contains a unique blend of natural ingredients that work synergistically to maintain a healthy gut microflora, boost immunity, and prevent the growth of harmful bacteria. \n\nThe Benefits of Neonato\n\nKills Harmful Bacteria: Neonato is highly effective in killing harmful bacteria that can cause diseases and infections in newborn animals, kids, and chicks. It creates an environment in the gut that is unfavorable to the growth of harmful microorganisms, thereby protecting the animals from potential infections.\n\nSaves Good Bacteria : Unlike antibiotics, which kill both good and bad bacteria, Neonato only targets harmful microorganisms, while preserving the beneficial ones. This helps maintain a healthy balance of gut microflora, which is essential for optimal digestive and immune health.\n\nBoosts Immunity: Neonato contains natural immune-boosting ingredients that stimulate the production of antibodies and other immune cells. This enhances the animal's ability to fight off infections and diseases, and helps them develop a strong immune system from an early age.\n\nImproves Digestion: Neonato promotes the growth of beneficial bacteria in the gut, which helps improve digestion and nutrient absorption. This can lead to better growth, development, and overall health of newborn animals, kids, and chicks.\n\nSafe and Easy to Use: Neonato is a safe and easy-to-use supplement that can be added to the animal's feed or water. It does not contain any harmful chemicals or antibiotics, and is gentle on the animal's digestive system.\n\nWhy Choose Neonato?\n\nNeonato is a reliable and effective solution for supporting the health and immunity of newborn animals, kids, and chicks. It is made with high-quality natural ingredients that have been carefully selected for their beneficial properties. Neonato is also formulated by animal experts who understand the unique needs and challenges of newborn animals, kids, and chicks.",
+          Instruction: "Dosage Preparation:\nMix 1 scoop (provided) of Neonato Powder with 100 ml of warm water. Stir well until fully dissolved.\nAdjust the quantity based on the animal’s weight and age. Consult a veterinarian for precise dosing.\nFeeding Schedule:\nAdminister Neonato twice daily, preferably after feeding.\nFor newborn animals, start Neonato within the first 24 hours of life.\nContinue Neonato for at least 7 days or as recommended by your vet.\nAdministration:\nUse a clean feeding bottle or syringe to feed Neonato to young animals.\nGradually increase the amount as the animal grows.\nStorage:\nStore Neonato in a cool, dry place away from direct sunlight.\nKeep the container tightly sealed to maintain freshness.",
+          Category: "For All Kids",
+          Type: "Medicine"
+      },
+      {
+          id: 3,
+          name: "Energico",
+          priceText: 235,
+          img: "https://www.rumeno.in/static/media/Energico-Animal.99c24705a20ebcdc16a8.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "500gm",
+          Shortdescription: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\nBoosts Hydration: Energico replenishes vital minerals lost during stress, illness, or physical exertion.\nEasy to Administer: Simply mix with water or food for convenient use",
+          description: "Energico\n\nEnergico is the premium electrolyte supplement designed for animal health and performance, brought to you by Rumeno. Formulated with essential electrolytes, dextrose, maltodextrin, and probiotics, Energico provides a quick source of energy and promotes proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Trust Rumeno for the ultimate support in keeping your animals healthy, energized, and performing at their best.\n\nRumeno's Energico is the ultimate electrolyte supplement for supporting animal health and performance. Made with the highest quality ingredients, including essential electrolytes, dextrose, maltodextrin, and probiotics, Energico provides a quick and effective source of energy and promotes proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Choose Energico and give your animals the support they need to thrive.\n\nWhen it comes to animal health and performance, trust the experts at Rumeno and Energico. Our premium electrolyte supplement is packed with essential electrolytes, dextrose, maltodextrin, and probiotics, providing a quick source of energy and promoting proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. With Energico, you can rest assured that your animals are receiving the highest quality care and support available.\n\nGive your animals the premium care and support they deserve with Rumeno's Energico. Our advanced electrolyte supplement is specially formulated with essential electrolytes, dextrose, maltodextrin, and probiotics, promoting proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Choose Energico and see the difference in your animals' performance and overall well-being.\n\nRumeno's Energico is the top choice for animal owners who demand the best for their animals. Our premium electrolyte supplement is made with only the highest quality ingredients, including essential electrolytes, dextrose, maltodextrin, and probiotics, providing a quick source of energy and promoting proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Give your animals the support they need to thrive with Energico by Rumeno.",
+          Instruction: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\r\nDosage:\r\nMix 1 scoop (provided) of Energico Powder with 1 liter of clean water.\r\nAdjust the quantity based on the animal’s size and condition. Consult a veterinarian for precise dosing.\r\nAdministration:\r\nOffer the prepared solution to the animal using a clean water bowl or syringe.\r\nRepeat as needed during periods of stress, illness, or hot weather.\r\nStorage:\r\nStore Energico in a cool, dry place away from direct sunlight.\r\nKeep the container tightly sealed to maintain freshness.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      {
+          id: 4,
+          name: "Energico",
+          priceText:  390,
+          img: "https://www.rumeno.in/static/media/Energico-Animal.99c24705a20ebcdc16a8.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\nBoosts Hydration: Energico replenishes vital minerals lost during stress, illness, or physical exertion.\nEasy to Administer: Simply mix with water or food for convenient use",
+          description: "Energico\n\nEnergico is the premium electrolyte supplement designed for animal health and performance, brought to you by Rumeno. Formulated with essential electrolytes, dextrose, maltodextrin, and probiotics, Energico provides a quick source of energy and promotes proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Trust Rumeno for the ultimate support in keeping your animals healthy, energized, and performing at their best.\n\nRumeno's Energico is the ultimate electrolyte supplement for supporting animal health and performance. Made with the highest quality ingredients, including essential electrolytes, dextrose, maltodextrin, and probiotics, Energico provides a quick and effective source of energy and promotes proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Choose Energico and give your animals the support they need to thrive.\n\nWhen it comes to animal health and performance, trust the experts at Rumeno and Energico. Our premium electrolyte supplement is packed with essential electrolytes, dextrose, maltodextrin, and probiotics, providing a quick source of energy and promoting proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. With Energico, you can rest assured that your animals are receiving the highest quality care and support available.\n\nGive your animals the premium care and support they deserve with Rumeno's Energico. Our advanced electrolyte supplement is specially formulated with essential electrolytes, dextrose, maltodextrin, and probiotics, promoting proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Choose Energico and see the difference in your animals' performance and overall well-being.\n\nRumeno's Energico is the top choice for animal owners who demand the best for their animals. Our premium electrolyte supplement is made with only the highest quality ingredients, including essential electrolytes, dextrose, maltodextrin, and probiotics, providing a quick source of energy and promoting proper hydration, energy, and digestive health in horses, cattle, sheep, goats, and other livestock. Give your animals the support they need to thrive with Energico by Rumeno.",
+          Instruction: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\r\nDosage:\r\nMix 1 scoop (provided) of Energico Powder with 1 liter of clean water.\r\nAdjust the quantity based on the animal’s size and condition. Consult a veterinarian for precise dosing.\r\nAdministration:\r\nOffer the prepared solution to the animal using a clean water bowl or syringe.\r\nRepeat as needed during periods of stress, illness, or hot weather.\r\nStorage:\r\nStore Energico in a cool, dry place away from direct sunlight.\r\nKeep the container tightly sealed to maintain freshness.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      {
+          id: 5,
+          name: "Micro Floratone",
+          priceText: 245,
+          img: "https://www.rumeno.in/static/media/microfloratane.5f9b45158503745d7101.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "100gm",
+          Shortdescription: "Micro Floratone Powder: A premium quality blend of prebiotics, probiotics, vitamins, and minerals. Specifically formulated to support overall health and well-being in pets.\nHolistic Approach: Enhances digestion, supports bowel health, and promotes a balanced gut microbiome.\nEasy to Administer: Mix with food for convenient daily use.",
+          description: "Micro Floratone\n\nIntroducing Micro Floratone - the ultimate all-in-one dietary supplement for dogs and cats. This premium quality supplement is specially formulated to support your pet's overall health and well-being with a unique blend of prebiotics, probiotics, vitamins, and minerals.\nMicro Floratone contains a powerful combination of prebiotics and probiotics to support your pet's digestive health and immune system. It promotes the growth of beneficial bacteria in your pet's gut, while also reducing the population of harmful bacteria. This helps to maintain a healthy balance of gut flora, which can lead to better digestion, stronger immunity, and improved nutrient absorption.\nIn addition to its prebiotic and probiotic blend, Micro Floratone also contains a range of essential vitamins and minerals that are important for your pet's overall health. These include vitamins A, B1, B2, B6, B12, D3, E, and K, as well as minerals like calcium, phosphorus, and iron.\nDogs and cats may need Micro Floratone Pre+Probiotic or Micro Floratone (Pre+Probiotic with multi-vitamins and minerals) for a variety of reasons, such as:\n1.\tDigestive Issues: If your pet is experiencing digestive issues like diarrhea, constipation, or vomiting, it could be a sign of an imbalance in their gut flora. The prebiotics and probiotics in Micro Floratone can help restore this balance and promote healthy digestion.\n2.\tAntibiotic Use: Antibiotics can kill off both good and bad bacteria in your pet's gut, leading to an imbalance in their gut flora. Supplementing with Micro Floratone can help replenish the beneficial bacteria and prevent digestive upset.\n3.\tStressful Events: Events such as a change in diet, a move to a new home, or a stay in a kennel can be stressful for pets and may affect their gut health. Micro Floratone can help support their digestive and immune systems during these times.\n4.\tImmune Support: The probiotics in Micro Floratone can help support your pet's immune system by promoting the growth of beneficial bacteria in their gut, which play a crucial role in maintaining overall health and immunity.\n5.\tAging: As pets age, their digestive and immune systems may become weaker. Supplementing with Micro Floratone can help support these systems and keep your pet healthy and comfortable in their golden years.\nDogs and cats may need Micro Floratone Pre+Probiotic or Micro Floratone (Pre+Probiotic with multi-vitamins and minerals) for a variety of reasons related to digestive health, immunity, and overall well-being. If you have concerns about your pet's health or are looking for ways to support their health and longevity, consult with your veterinarian to see if Micro Floratone is right for your furry friend.\nMicro Floratone is suitable for dogs and cats of all ages and breeds, and is easy to use - simply sprinkle the recommended amount over your pet's food. It is free from artificial colors, flavors, and preservatives.\nWith regular use of Micro Floratone, you can help to ensure that your pet is getting all of the essential nutrients they need to thrive. Whether you have a young kitten or a senior dog, this supplement can help support their overall health and well-being. So if you want to give your pet the best possible chance at a healthy and happy life, try Micro Floratone today.",
+          Instruction: "Micro Floratone Powder: A premium quality blend of prebiotics, probiotics, vitamins, and minerals designed to support your pet’s overall health and well-being1.\nDosage:\nMix the recommended amount of Micro Floratone Powder with your pet’s food.\nAdjust the quantity based on your pet’s size and age. Consult a veterinarian for precise dosing.\nDaily Use:\nAdminister once daily for optimal results.\nMicro Floratone provides a full spectrum of quality ingredients to promote digestive health and immunity.\nStorage:\nStore in a cool, dry place away from direct sunlight.\nSeal the container tightly to maintain freshness.",
+          Category: "Dog and cat",
+          Type: "Medicine"
+      },
+      {
+          id: 6,
+          name: "Minromix",
+          priceText: 285,
+          img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Minromix: A comprehensive mineral and vitamin supplement for animals.\nContains essential minerals such as calcium, phosphorus, and magnesium.\nEnriched with vitamins A, D, and E for overall health.\nSupports bone development, immune system, and reproductive health.\nIdeal for livestock, poultry, and pets.\nEasy to administer – simply mix with feed or water.",
+          description: "Minromix\n\nMinromix is an innovative product that is specially designed for better production in livestock. It is a blend of Metho Chelated Multi Vitamins, Macro and Micro Mineral Mixture, essential enzymes, amino acids, bioactivated chromium, Probiotics and Bypass Fat. This unique blend of ingredients is designed to meet the nutritional requirements of livestock and promote healthy growth, productivity, and overall well-being.\n\nOne of the key features of Minromix is its Metho Chelated Multi Vitamins. These vitamins are essential for optimal animal health and help to support normal growth and development, improve immune function, and increase the efficiency of nutrient utilization. Additionally, the Macro and Micro Mineral Mixture in Minromix contains a balanced blend of essential minerals that are critical for the development and maintenance of strong bones, healthy muscles, and overall animal health.\n\nAnother unique aspect of Minromix is the addition of essential enzymes, amino acids, and bioactivated chromium. These ingredients help to improve the digestibility and absorption of nutrients from feed, ensuring that animals get the most out of their diet. This can lead to improved feed conversion ratios and increased productivity, as well as reduced feed costs.\n\nFurthermore, Minromix contains Probiotics, which are beneficial bacteria that help to maintain a healthy gut microbiome. These beneficial bacteria can help to improve digestion, reduce the risk of digestive disorders, and support immune function. Lastly, the addition of Bypass Fat in Minromix provides a source of energy for livestock that is easily digestible and can be used to support growth and productivity.\n\nOverall, Minromix is an excellent product that is designed to meet the nutritional needs of livestock and promote optimal growth and productivity. With its unique blend of Metho Chelated Multi Vitamins, Macro and Micro Mineral Mixture, essential enzymes, amino acids, bioactivated chromium, Probiotics, and Bypass Fat, Minromix is a complete nutritional solution that can help to ensure that animals reach their full potential.",
+          Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      {
+          id: 7,
+          name: "Minromix",
+          priceText:  1400 ,
+          img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "5kg",
+          Shortdescription: "Minromix: A comprehensive mineral and vitamin supplement for animals.\nContains essential minerals such as calcium, phosphorus, and magnesium.\nEnriched with vitamins A, D, and E for overall health.\nSupports bone development, immune system, and reproductive health.\nIdeal for livestock, poultry, and pets.\nEasy to administer – simply mix with feed or water.",
+          description: "Minromix\n\nMinromix is an innovative product that is specially designed for better production in livestock. It is a blend of Metho Chelated Multi Vitamins, Macro and Micro Mineral Mixture, essential enzymes, amino acids, bioactivated chromium, Probiotics and Bypass Fat. This unique blend of ingredients is designed to meet the nutritional requirements of livestock and promote healthy growth, productivity, and overall well-being.\n\nOne of the key features of Minromix is its Metho Chelated Multi Vitamins. These vitamins are essential for optimal animal health and help to support normal growth and development, improve immune function, and increase the efficiency of nutrient utilization. Additionally, the Macro and Micro Mineral Mixture in Minromix contains a balanced blend of essential minerals that are critical for the development and maintenance of strong bones, healthy muscles, and overall animal health.\n\nAnother unique aspect of Minromix is the addition of essential enzymes, amino acids, and bioactivated chromium. These ingredients help to improve the digestibility and absorption of nutrients from feed, ensuring that animals get the most out of their diet. This can lead to improved feed conversion ratios and increased productivity, as well as reduced feed costs.\n\nFurthermore, Minromix contains Probiotics, which are beneficial bacteria that help to maintain a healthy gut microbiome. These beneficial bacteria can help to improve digestion, reduce the risk of digestive disorders, and support immune function. Lastly, the addition of Bypass Fat in Minromix provides a source of energy for livestock that is easily digestible and can be used to support growth and productivity.\n\nOverall, Minromix is an excellent product that is designed to meet the nutritional needs of livestock and promote optimal growth and productivity. With its unique blend of Metho Chelated Multi Vitamins, Macro and Micro Mineral Mixture, essential enzymes, amino acids, bioactivated chromium, Probiotics, and Bypass Fat, Minromix is a complete nutritional solution that can help to ensure that animals reach their full potential.",
+          Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      {
+          id: 8,
+          name: "Minromix",
+          priceText: 4600,
+          img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "20kg",
+          Shortdescription: "Minromix: A comprehensive mineral and vitamin supplement for animals.\nContains essential minerals such as calcium, phosphorus, and magnesium.\nEnriched with vitamins A, D, and E for overall health.\nSupports bone development, immune system, and reproductive health.\nIdeal for livestock, poultry, and pets.\nEasy to administer – simply mix with feed or water.",
+          description: "Minromix\n\nMinromix is an innovative product that is specially designed for better production in livestock. It is a blend of Metho Chelated Multi Vitamins, Macro and Micro Mineral Mixture, essential enzymes, amino acids, bioactivated chromium, Probiotics and Bypass Fat. This unique blend of ingredients is designed to meet the nutritional requirements of livestock and promote healthy growth, productivity, and overall well-being.\n\nOne of the key features of Minromix is its Metho Chelated Multi Vitamins. These vitamins are essential for optimal animal health and help to support normal growth and development, improve immune function, and increase the efficiency of nutrient utilization. Additionally, the Macro and Micro Mineral Mixture in Minromix contains a balanced blend of essential minerals that are critical for the development and maintenance of strong bones, healthy muscles, and overall animal health.\n\nAnother unique aspect of Minromix is the addition of essential enzymes, amino acids, and bioactivated chromium. These ingredients help to improve the digestibility and absorption of nutrients from feed, ensuring that animals get the most out of their diet. This can lead to improved feed conversion ratios and increased productivity, as well as reduced feed costs.\n\nFurthermore, Minromix contains Probiotics, which are beneficial bacteria that help to maintain a healthy gut microbiome. These beneficial bacteria can help to improve digestion, reduce the risk of digestive disorders, and support immune function. Lastly, the addition of Bypass Fat in Minromix provides a source of energy for livestock that is easily digestible and can be used to support growth and productivity.\n\nOverall, Minromix is an excellent product that is designed to meet the nutritional needs of livestock and promote optimal growth and productivity. With its unique blend of Metho Chelated Multi Vitamins, Macro and Micro Mineral Mixture, essential enzymes, amino acids, bioactivated chromium, Probiotics, and Bypass Fat, Minromix is a complete nutritional solution that can help to ensure that animals reach their full potential.",
+          Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      {
+          id: 9,
+          name: "Rumenovita ",
+          priceText: 700,
+          img: "https://www.rumeno.in/static/media/Rumenovita.309f164bb1e0f66284e2.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Rumenovita Fast Weight Gainer: Specifically beneficial for goats and sheep, it helps animals quickly gain weight, especially when they need to reach a certain weight for market or breeding purposes1.\nPromotes Rapid Growth: Formulated to enhance growth rates in young animals.\nEssential for Market-Ready Animals: Ideal for achieving desired weight targets.",
+          description: "Rumenovita\n\nIntroducing Rumenovita - the ultimate product that is specifically formulated to support fast growth and weight gain in your animals. With its unique blend of high by-pass protein and other key ingredients, Rumenovita provides the ultimate nutritional support to help your animals reach their full potential.\n\nThe high by-pass protein in Rumenovita is carefully selected to ensure that your animals are receiving the highest quality protein sources available. By providing this valuable nutrient in a form that is more easily absorbed by the animal's body, Rumenovita helps to support muscle growth and development, which in turn helps to promote faster weight gain.\n\nIn addition to its high-quality protein sources, Rumenovita is also packed with other essential nutrients that are critical for optimal growth and development. These include a carefully balanced blend of vitamins, minerals, and other key nutrients that work together to support your animal's overall health and wellbeing.\n\nOne of the key benefits of Rumenovita is its ability to support healthy digestion in your animals. The unique blend of probiotics, prebiotics, and other digestive enzymes helps to promote a healthy gut environment, which is essential for optimal nutrient absorption and utilization. This means that your animals are able to get the most out of their feed, which can lead to faster growth and weight gain.\n\nAt Rumenovita, we understand the importance of providing your animals with the best possible nutrition. That's why we've developed a product that is specifically designed to support fast growth and weight gain, while also promoting overall health and wellbeing. Whether you're raising cattle, sheep, or other livestock, Rumenovita is the perfect choice for farmers and livestock owners who want to give their animals the best possible chance at success.\n\nSo why wait? Give your animals the nutritional support they need to reach their full potential with Rumenovita. With its high-quality ingredients, proven results, and unbeatable value, Rumenovita is the ultimate choice for fast growth and weight gain in your animals. Try it today and see the difference for yourself!",
+          Instruction: "Consultation with a Professional:\nBefore starting any supplementation, consult a veterinarian or a livestock nutritionist.\nDiscuss the specific needs of your animals and any existing health conditions.\nDosage and Administration:\nAdminister Rumenovita orally to the animals.\nMix the recommended dosage with their regular feed or water.\nThe appropriate dosage may vary based on factors such as the animal’s age, weight, and overall health.\nFollow the manufacturer’s guidelines closely for accurate dosing.\nFrequency:\nProvide Rumenovita daily or as advised by an expert.\nFor young animals, consider administering it during critical growth phases.\nBenefits and Expected Outcomes:\nImproved Digestion: Rumenovita enhances rumen function, aiding in better nutrient breakdown and absorption.\nWeight Gain: The supplement supports healthy weight gain by optimizing nutrient utilization.\nGrowth Promotion: It contributes to overall growth and development.\nImmune Support: Rumenovita boosts the immune system, reducing the risk of diseases.\nCoat Condition: Some users report shinier and healthier coats in animals.\nStorage:\nStore Rumenovita in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nBalanced Nutrition: Remember that Rumenovita is not a substitute for a well-rounded diet. Ensure your animals receive proper nutrition.\nMonitoring: Observe your animals closely for any adverse reactions.\nDiscontinue if Necessary: If unusual symptoms occur, discontinue use and seek professional advice.\nCompatibility with Other Supplements or Medications:\nRumenovita can be used alongside other feed supplements or medications. However, consult a professional to avoid interactions.\nRecord Keeping:\nMaintain accurate records of Rumenovita administration.\nNote down dates, dosages, and details of the animals receiving the supplement.\nRegularly assess their progress to evaluate the effectiveness of the product.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      {
+          id: 10,
+          name: "Rumenovita ",
+          priceText: 3250,
+          img: "https://www.rumeno.in/static/media/Rumenovita.309f164bb1e0f66284e2.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "5kg",
+          Shortdescription: "Rumenovita Fast Weight Gainer: Specifically beneficial for goats and sheep, it helps animals quickly gain weight, especially when they need to reach a certain weight for market or breeding purposes1.\nPromotes Rapid Growth: Formulated to enhance growth rates in young animals.\nEssential for Market-Ready Animals: Ideal for achieving desired weight targets.",
+          description: "Rumenovita\n\nIntroducing Rumenovita - the ultimate product that is specifically formulated to support fast growth and weight gain in your animals. With its unique blend of high by-pass protein and other key ingredients, Rumenovita provides the ultimate nutritional support to help your animals reach their full potential.\n\nThe high by-pass protein in Rumenovita is carefully selected to ensure that your animals are receiving the highest quality protein sources available. By providing this valuable nutrient in a form that is more easily absorbed by the animal's body, Rumenovita helps to support muscle growth and development, which in turn helps to promote faster weight gain.\n\nIn addition to its high-quality protein sources, Rumenovita is also packed with other essential nutrients that are critical for optimal growth and development. These include a carefully balanced blend of vitamins, minerals, and other key nutrients that work together to support your animal's overall health and wellbeing.\n\nOne of the key benefits of Rumenovita is its ability to support healthy digestion in your animals. The unique blend of probiotics, prebiotics, and other digestive enzymes helps to promote a healthy gut environment, which is essential for optimal nutrient absorption and utilization. This means that your animals are able to get the most out of their feed, which can lead to faster growth and weight gain.\n\nAt Rumenovita, we understand the importance of providing your animals with the best possible nutrition. That's why we've developed a product that is specifically designed to support fast growth and weight gain, while also promoting overall health and wellbeing. Whether you're raising cattle, sheep, or other livestock, Rumenovita is the perfect choice for farmers and livestock owners who want to give their animals the best possible chance at success.\n\nSo why wait? Give your animals the nutritional support they need to reach their full potential with Rumenovita. With its high-quality ingredients, proven results, and unbeatable value, Rumenovita is the ultimate choice for fast growth and weight gain in your animals. Try it today and see the difference for yourself!",
+          Instruction: "Consultation with a Professional:\nBefore starting any supplementation, consult a veterinarian or a livestock nutritionist.\nDiscuss the specific needs of your animals and any existing health conditions.\nDosage and Administration:\nAdminister Rumenovita orally to the animals.\nMix the recommended dosage with their regular feed or water.\nThe appropriate dosage may vary based on factors such as the animal’s age, weight, and overall health.\nFollow the manufacturer’s guidelines closely for accurate dosing.\nFrequency:\nProvide Rumenovita daily or as advised by an expert.\nFor young animals, consider administering it during critical growth phases.\nBenefits and Expected Outcomes:\nImproved Digestion: Rumenovita enhances rumen function, aiding in better nutrient breakdown and absorption.\nWeight Gain: The supplement supports healthy weight gain by optimizing nutrient utilization.\nGrowth Promotion: It contributes to overall growth and development.\nImmune Support: Rumenovita boosts the immune system, reducing the risk of diseases.\nCoat Condition: Some users report shinier and healthier coats in animals.\nStorage:\nStore Rumenovita in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nBalanced Nutrition: Remember that Rumenovita is not a substitute for a well-rounded diet. Ensure your animals receive proper nutrition.\nMonitoring: Observe your animals closely for any adverse reactions.\nDiscontinue if Necessary: If unusual symptoms occur, discontinue use and seek professional advice.\nCompatibility with Other Supplements or Medications:\nRumenovita can be used alongside other feed supplements or medications. However, consult a professional to avoid interactions.\nRecord Keeping:\nMaintain accurate records of Rumenovita administration.\nNote down dates, dosages, and details of the animals receiving the supplement.\nRegularly assess their progress to evaluate the effectiveness of the product.",
+          Category: "All",
+          Type: "Medicine"
+      },
+      {
+          id: 11,
+          name: "Digesto Plus",
+          priceText: 190,
+          img: "https://www.rumeno.in/static/media/Digesto-Plus.58b7849606e0ed51a509.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Digesto Plus Powder: A unique formulation containing a combination of buffer agents and toxin binders. It regulates rumen pH levels, prevents acidosis, and improves feed efficiency.\nToxin Binder: Contains toxin binders to neutralize harmful substances like mycotoxins, ensuring overall digestive well-being.\nEssential Component: An effective addition to any animal nutrition program, supporting ruminants’ health and performance",
+          description: "Digesto Plus\n\nDigesto Plus is a specialized product designed to help maintain the optimal digestive health of ruminants such as cattle, sheep, and goats. The unique formulation of this product contains a combination of buffer agents and toxin binders that work together to support a healthy digestive system in animals.\n\nThe digestive system of ruminants is complex and sensitive, and any imbalances can lead to a range of health issues. Digesto Plus helps to regulate the pH levels in the rumen and prevent acidosis, which can be a common problem for ruminants fed high-grain diets. By promoting a healthy pH balance, this product helps to improve feed efficiency and reduce the risk of digestive disorders.\n\nIn addition to its buffering properties, Digesto Plus also contains toxin binders that help to neutralize harmful substances such as mycotoxins. Mycotoxins are toxic substances produced by fungi that can contaminate feed and cause a range of health problems in animals, including reduced feed intake, poor growth, and impaired immune function. The inclusion of toxin binders in Digesto Plus helps to protect animals from the negative effects of mycotoxins and other harmful substances.\n\nDigesto Plus is a reliable and effective product that is easy to use and can be incorporated into a range of feeding programs. It is specially designed to help keep ruminants healthy and support optimal performance, making it an essential component of any animal nutrition program. With Digesto Plus, you can rest assured that your animals are receiving the support they need to maintain a healthy digestive system and reach their full potential.",
+          Instruction: "Product Description:\nDigesto Plus contains a unique combination of buffer agents and toxin binders.\nIt supports a healthy digestive system in ruminants by regulating rumen pH and neutralizing harmful substances.\nTarget Animals:\nSuitable for:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian before use.\nAdminister orally, mixed with feed or water.\nRecommended dosage: 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nBenefits:\npH Regulation: Prevents acidosis, common in ruminants fed high-grain diets.\nFeed Efficiency: Improves feed utilization.\nToxin Neutralization: Contains binders to counter mycotoxins and other harmful substances.\nStorage:\nStore in a cool, dry place away from sunlight.\nPrecautions:\nMonitor for adverse reactions.\nSeek professional advice if needed.",
+          Category: "cow, goat ",
+          Type: "Medicine"
+      },
+      {
+          id: 12,
+          name: "Digesto Plus",
+          priceText: 875,
+          img: "https://www.rumeno.in/static/media/Digesto-Plus.58b7849606e0ed51a509.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "5kg",
+          Shortdescription: "Digesto Plus Powder: A unique formulation containing a combination of buffer agents and toxin binders. It regulates rumen pH levels, prevents acidosis, and improves feed efficiency.\nToxin Binder: Contains toxin binders to neutralize harmful substances like mycotoxins, ensuring overall digestive well-being.\nEssential Component: An effective addition to any animal nutrition program, supporting ruminants’ health and performance",
+          description: "Digesto Plus\n\nDigesto Plus is a specialized product designed to help maintain the optimal digestive health of ruminants such as cattle, sheep, and goats. The unique formulation of this product contains a combination of buffer agents and toxin binders that work together to support a healthy digestive system in animals.\n\nThe digestive system of ruminants is complex and sensitive, and any imbalances can lead to a range of health issues. Digesto Plus helps to regulate the pH levels in the rumen and prevent acidosis, which can be a common problem for ruminants fed high-grain diets. By promoting a healthy pH balance, this product helps to improve feed efficiency and reduce the risk of digestive disorders.\n\nIn addition to its buffering properties, Digesto Plus also contains toxin binders that help to neutralize harmful substances such as mycotoxins. Mycotoxins are toxic substances produced by fungi that can contaminate feed and cause a range of health problems in animals, including reduced feed intake, poor growth, and impaired immune function. The inclusion of toxin binders in Digesto Plus helps to protect animals from the negative effects of mycotoxins and other harmful substances.\n\nDigesto Plus is a reliable and effective product that is easy to use and can be incorporated into a range of feeding programs. It is specially designed to help keep ruminants healthy and support optimal performance, making it an essential component of any animal nutrition program. With Digesto Plus, you can rest assured that your animals are receiving the support they need to maintain a healthy digestive system and reach their full potential.",
+          Instruction: "Product Description:\nDigesto Plus contains a unique combination of buffer agents and toxin binders.\nIt supports a healthy digestive system in ruminants by regulating rumen pH and neutralizing harmful substances.\nTarget Animals:\nSuitable for:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian before use.\nAdminister orally, mixed with feed or water.\nRecommended dosage: 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nBenefits:\npH Regulation: Prevents acidosis, common in ruminants fed high-grain diets.\nFeed Efficiency: Improves feed utilization.\nToxin Neutralization: Contains binders to counter mycotoxins and other harmful substances.\nStorage:\nStore in a cool, dry place away from sunlight.\nPrecautions:\nMonitor for adverse reactions.\nSeek professional advice if needed.",
+          Category: "cow, goat ",
+          Type: "Medicine"
+      },
+      {
+          id: 13,
+          name: "Liverofine",
+          priceText: 125,
+          img: "https://www.rumeno.in/static/media/Liverofine.e956615d5fe6c67bac95.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "200gm",
+          Shortdescription: "Liverofine Liver Tonic: A unique blend of vitamins, minerals, and herbal extracts specifically formulated to promote optimal liver function and overall well-being.\nKey Ingredients:\nMilk Thistle: Contains silymarin, a powerful antioxidant that protects liver cells and aids in tissue regeneration.\nDandelion Root: Traditionally used as a natural diuretic and liver tonic, helping flush out toxins.\nB Vitamins: Essential for energy production and nutrient metabolism.\nEasy to Administer: Suitable for all ages, Liverofine can be added to food or water for convenient use",
+          description: "Liverofine\n\nLiverofine is a high-quality liver tonic that has been specifically formulated to support liver health in animals. This unique blend of vitamins, minerals, and herbal extracts is designed to promote optimal liver function and overall well-being in pets and livestock.\n\nThe liver is a vital organ that plays a critical role in the metabolism of nutrients and the detoxification of harmful substances in the body. However, factors such as poor diet, exposure to toxins, and certain medical conditions can impair liver function and lead to a range of health problems in animals.\n\nLiverofine is made with a combination of natural ingredients that have been carefully selected for their beneficial effects on liver health. These ingredients include milk thistle, dandelion root and various B vitamins, all of which are known for their ability to support liver function and promote overall wellness in animals.\n\nMilk thistle, for example, contains a powerful antioxidant called silymarin that helps protect liver cells from damage and promotes the regeneration of healthy liver tissue. Dandelion root has been traditionally used as a natural diuretic and liver tonic, helping to flush out toxins from the body and support healthy liver function, while B vitamins are essential for energy production and the metabolism of nutrients in the body.\n\nLiverofine is easy to administer and can be added to your animal's food or water. It is suitable for use in pets and livestock of all ages and breeds, and can be particularly beneficial for animals with liver disease, compromised liver function, or a history of exposure to toxins.\n\nTherefore, Liverofine is a safe and effective liver tonic that can help support optimal liver function and promote overall well-being in your animal.",
+          Instruction: "Product Description:\nLiverofine is a specialized liver tonic formulated to enhance liver function and overall well-being in animals.\nIt contains essential nutrients and herbal extracts that promote liver health and aid in detoxification.\nTarget Animals:\nLiverofine is suitable for various animals, including:\nCattle\nSheep\nGoats\nPoultry\nSwine\nHorses\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Liverofine.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific liver health needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nFrequency:\nProvide Liverofine daily or as advised by a professional.\nFor animals with liver issues, consider prolonged use or as part of a maintenance regimen.\nBenefits:\nLiver Support: Liverofine aids in liver detoxification and supports optimal liver function.\nAntioxidant Properties: Contains antioxidants that protect liver cells from damage.\nMetabolic Balance: Helps maintain metabolic processes related to liver health.\nImproved Digestion: A healthy liver contributes to better nutrient absorption and digestion.\nStorage:\nStore Liverofine in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nCompatibility:\nLiverofine can be used alongside other supplements or medications. Consult a professional to avoid interactions.\nRecord Keeping:\nMaintain records of Liverofine administration, including dates, dosages, and animal details.\nRegularly assess the animals’ liver health to evaluate the effectiveness of the tonic.",
+          Category: "poultry, goat, cow",
+          Type: "Medicine"
+      },
+      {
+          id: 14,
+          name: "Liverofine",
+          priceText: 600,
+          img: "https://www.rumeno.in/static/media/Liverofine.e956615d5fe6c67bac95.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Liverofine Liver Tonic: A unique blend of vitamins, minerals, and herbal extracts specifically formulated to promote optimal liver function and overall well-being.\nKey Ingredients:\nMilk Thistle: Contains silymarin, a powerful antioxidant that protects liver cells and aids in tissue regeneration.\nDandelion Root: Traditionally used as a natural diuretic and liver tonic, helping flush out toxins.\nB Vitamins: Essential for energy production and nutrient metabolism.\nEasy to Administer: Suitable for all ages, Liverofine can be added to food or water for convenient use",
+          description: "Liverofine\n\nLiverofine is a high-quality liver tonic that has been specifically formulated to support liver health in animals. This unique blend of vitamins, minerals, and herbal extracts is designed to promote optimal liver function and overall well-being in pets and livestock.\n\nThe liver is a vital organ that plays a critical role in the metabolism of nutrients and the detoxification of harmful substances in the body. However, factors such as poor diet, exposure to toxins, and certain medical conditions can impair liver function and lead to a range of health problems in animals.\n\nLiverofine is made with a combination of natural ingredients that have been carefully selected for their beneficial effects on liver health. These ingredients include milk thistle, dandelion root and various B vitamins, all of which are known for their ability to support liver function and promote overall wellness in animals.\n\nMilk thistle, for example, contains a powerful antioxidant called silymarin that helps protect liver cells from damage and promotes the regeneration of healthy liver tissue. Dandelion root has been traditionally used as a natural diuretic and liver tonic, helping to flush out toxins from the body and support healthy liver function, while B vitamins are essential for energy production and the metabolism of nutrients in the body.\n\nLiverofine is easy to administer and can be added to your animal's food or water. It is suitable for use in pets and livestock of all ages and breeds, and can be particularly beneficial for animals with liver disease, compromised liver function, or a history of exposure to toxins.\n\nTherefore, Liverofine is a safe and effective liver tonic that can help support optimal liver function and promote overall well-being in your animal.",
+          Instruction: "Product Description:\nLiverofine is a specialized liver tonic formulated to enhance liver function and overall well-being in animals.\nIt contains essential nutrients and herbal extracts that promote liver health and aid in detoxification.\nTarget Animals:\nLiverofine is suitable for various animals, including:\nCattle\nSheep\nGoats\nPoultry\nSwine\nHorses\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Liverofine.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific liver health needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nFrequency:\nProvide Liverofine daily or as advised by a professional.\nFor animals with liver issues, consider prolonged use or as part of a maintenance regimen.\nBenefits:\nLiver Support: Liverofine aids in liver detoxification and supports optimal liver function.\nAntioxidant Properties: Contains antioxidants that protect liver cells from damage.\nMetabolic Balance: Helps maintain metabolic processes related to liver health.\nImproved Digestion: A healthy liver contributes to better nutrient absorption and digestion.\nStorage:\nStore Liverofine in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nCompatibility:\nLiverofine can be used alongside other supplements or medications. Consult a professional to avoid interactions.\nRecord Keeping:\nMaintain records of Liverofine administration, including dates, dosages, and animal details.\nRegularly assess the animals’ liver health to evaluate the effectiveness of the tonic.",
+          Category: "poultry, goat, cow",
+          Type: "Medicine"
+      },
+      {
+          id: 15,
+          name: "D-Cox",
+          priceText: 250,
+          img: "https://www.rumeno.in/static/media/D-Cox.a94b558940bc0e2ddaeb.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "250gm",
+          Shortdescription: "D-Cox Powder: Formulated to enhance growth rates in young goats during the critical weaning phase.\nSupports Weight Gain: Boosts weight gain and overall development.\nEasy Administration: Simply mix with feed for convenient use.",
+          description: "D-Cox\n\nD-Cox is a natural feed supplement designed specifically for weaning goat and sheep kids. It is formulated to help support healthy growth and development while also providing protection against common diseases such as coccidia.\n\nWeaning is a critical period in the life of young animals, as it marks the transition from milk to solid food. During this time, the digestive system undergoes significant changes, and the animals may be more susceptible to digestive upsets and other health problems. D-Cox is designed to provide the essential nutrients and support needed to help young animals thrive during this period.\n\nThe key ingredient in D-Cox is a blend of natural herbs and botanicals that have been carefully selected for their nutritional and medicinal properties. These ingredients work together to support healthy digestion, boost immunity, and promote growth and development in young animals.\n\nOne of the most significant benefits of D-Cox is its ability to help prevent and treat coccidia, a common and potentially deadly disease that affects young goats and sheep. Coccidia is caused by a parasite that can infect the digestive tract, leading to diarrhea, dehydration, and weight loss. D-Cox contains natural compounds that help to eliminate these parasites, reducing the risk of infection and improving overall health and wellbeing.\n\nIn addition to its anti-coccidia properties, D-Cox also contains a range of other nutrients and ingredients that are essential for healthy growth and development in young animals. These include vitamins, minerals, amino acids, and digestive enzymes.\n\nD-Cox is easy to use and can be added to the animals' feed or water. It is safe and gentle on the digestive system, making it suitable for use with even the most delicate young animals.\n\nOverall, D-Cox is an excellent choice for farmers and animal breeders who want to ensure the health and wellbeing of their young goats and sheep during the critical weaning period. With its natural, herbal formula, D-Cox can help to support healthy growth and development, boost immunity, and provide protection against common diseases like coccidia.",
+          Instruction: "Product Description:\nD-Cox is a coccidiostat formulated to prevent coccidiosis in young goats during the critical weaning phase.\nIt contains the active drug ingredient Decoquinate (6%) to combat Eimeria christenseni and E. ninakohlyakimovae, the common coccidia species affecting goats.\nTarget Animals:\nD-Cox is specifically intended for young goats during the weaning period.\nDosage and Administration:\nConsult a veterinarian or livestock expert before using D-Cox.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage is to provide 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nMix D-Cox thoroughly into the goat’s ration.\nDuration:\nFeed D-Cox for at least 28 days during periods of coccidiosis exposure or when experience indicates coccidiosis is likely to be a hazard.\nTypes of Medicated Feed:\nType C Medicated Feed (Complete Ration):\nMix D-Cox into the complete feed to provide the proper decoquinate levels daily.\nExample dosages:\n0.5 lbs per ton of feed (13.6 g/ton) for 20 lbs body weight\n0.7 lbs per ton of feed (19.0 g/ton) for 14.3 lbs body weight\n1.0 lb per ton of feed (27.2 g/ton) for 10 lbs body weight\nStorage:\nStore D-Cox in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor goats closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.",
+          Category: "goat",
+          Type: "Medicine"
+      },
+      {
+          id: 16,
+          name: "Rumeno Micro Flora",
+          priceText: 90,
+          img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "50gm",
+          Shortdescription: "Rumeno Micro Flora Powder: A premium quality blend of prebiotics and probiotics designed to support your pet’s overall health and well-being.\nDigestive Health: Promotes the growth of beneficial bacteria in your pet’s gut, while reducing harmful bacteria, leading to better digestion and stronger immunity.\nEssential Nutrients: Contains vitamins (A, B1, B2, B6, B12, D3, E, and K) and minerals (calcium, phosphorus, and iron) for optimal health.\n",
+          description: "Rumeno Micro Flora\n\nIntroducing Rumeno Micro-Flora, a powerful pre+probiotic supplement designed specifically for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals.\n\nOur carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.\n\nUnlike many other pre+probiotic supplements, Rumeno Micro-Flora contains a high concentration of beneficial bacteria, including Lactobacillus spp, Bifidobacterium spp , Streptococcus spp, Sacchromyces spp, Bacillus spp, among others. Each strain is specially selected for its unique health benefits, and our manufacturing process ensures that the bacteria remain viable and active until consumed by your animal.\n\nPrebiotics are non-digestible fibers that serve as a food source for beneficial bacteria in the gut. When animals consume prebiotics, they pass through the digestive system undigested until they reach the colon, where they are fermented by the gut microbiota.\n\nCombining prebiotics and probiotics in a supplement can provide a range of health benefits for animals, as they work together to support a healthy gut microbiome. Here are some of the benefits that can result from a combination of prebiotics and probiotics:\n\nImproved digestive health: Probiotics introduce beneficial bacteria to the gut, while prebiotics provide the food source that helps these bacteria thrive. Together, they work to balance the gut microbiome, improve digestion, and reduce the risk of digestive disorders such as diarrhea, constipation, and irritable bowel syndrome.\n\nEnhanced immune function: The gut microbiome plays a critical role in immune function, and prebiotics and probiotics can work together to promote a healthy immune system. Probiotics can boost the production of immune cells, while prebiotics nourish the gut microbiota and support immune function.\n\nIncreased nutrient absorption: Prebiotics and probiotics can enhance the absorption of nutrients, such as calcium, magnesium, and iron, by improving the digestive process and promoting the growth of beneficial bacteria.\n\nReduced stress and anxiety: Studies have shown that prebiotics and probiotics can help to reduce stress and anxiety in animals, possibly by regulating the production of stress hormones in the body.\n\nImproved feed conversion: The prebiotics in Rumeno Micro-Flora can help to improve the digestibility of feed in farm animals, which can lead to more efficient feed conversion and better weight gain. This can be especially important for meat animals, as it can reduce the amount of time and feed required to reach market weight.\n\nIncreased milk production: In dairy animals, the combination of prebiotics and probiotics in Rumeno Micro-Flora can help to improve digestion and nutrient absorption, which can lead to increased milk production.\n\nEnhanced nutrient uptake: The probiotics in Rumeno Micro-Flora can help to promote the growth of beneficial bacteria in the gut, which can enhance the uptake of nutrients such as calcium, magnesium, and iron. This can help to improve overall health and wellbeing in farm animals, as well as support increased production.\n\nReduced risk of digestive disorders: The prebiotics and probiotics in Rumeno Micro-Flora can help to balance the gut microbiome, which can reduce the risk of digestive disorders such as diarrhea, bloat, and colic. This can help to keep animals healthy and productive, which can ultimately benefit the bottom line for farmers.\n\nNatural and safe: Rumeno Micro-Flora is made from high-quality, natural ingredients and is free from harsh chemicals and antibiotics. This means that it provides a safe and effective way to support production in farm animals without the risk of negative side effects or antibiotic resistance.\n\nBy supporting a healthy gut microbiome, prebiotics and probiotics can improve overall health and wellbeing in animals. This can include improved skin and coat health, increased energy levels, and reduced risk of chronic diseases.\n\nOverall, a combination of prebiotics and probiotics can provide a range of benefits for animals, from improved digestion and immune function to enhanced nutrient absorption and reduced stress. By working together to support a healthy gut microbiome, prebiotics and probiotics can help to promote optimal health and wellbeing in your furry friends.\n\nWhether you're a pet owner looking to support your furry friend's digestive health, or a farmer looking to improve the productivity and well-being of your livestock, Rumeno Micro-Flora is the perfect solution. Our easy-to-administer supplement can be added to your animal's food or water, and is suitable for all types of animals, including dogs, cats, horses, cows, goats, sheep, pigs, poultry, parrots, piegions and more.\n\nSo why wait? Try Rumeno Micro-Flora today and give your animal the gift of a healthy gut and improved overall health and wellness.",
+          Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
+          Category: "goat ,cow",
+          Type: "Medicine"
+      },
+      {
+          id: 17,
+          name: "Rumeno Micro Flora",
+          priceText: 350,
+          img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "250gm",
+          Shortdescription: "Rumeno Micro Flora Powder: A premium quality blend of prebiotics and probiotics designed to support your pet’s overall health and well-being.\nDigestive Health: Promotes the growth of beneficial bacteria in your pet’s gut, while reducing harmful bacteria, leading to better digestion and stronger immunity.\nEssential Nutrients: Contains vitamins (A, B1, B2, B6, B12, D3, E, and K) and minerals (calcium, phosphorus, and iron) for optimal health.\n",
+          description: "Rumeno Micro Flora\n\nIntroducing Rumeno Micro-Flora, a powerful pre+probiotic supplement designed specifically for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals.\n\nOur carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.\n\nUnlike many other pre+probiotic supplements, Rumeno Micro-Flora contains a high concentration of beneficial bacteria, including Lactobacillus spp, Bifidobacterium spp , Streptococcus spp, Sacchromyces spp, Bacillus spp, among others. Each strain is specially selected for its unique health benefits, and our manufacturing process ensures that the bacteria remain viable and active until consumed by your animal.\n\nPrebiotics are non-digestible fibers that serve as a food source for beneficial bacteria in the gut. When animals consume prebiotics, they pass through the digestive system undigested until they reach the colon, where they are fermented by the gut microbiota.\n\nCombining prebiotics and probiotics in a supplement can provide a range of health benefits for animals, as they work together to support a healthy gut microbiome. Here are some of the benefits that can result from a combination of prebiotics and probiotics:\n\nImproved digestive health: Probiotics introduce beneficial bacteria to the gut, while prebiotics provide the food source that helps these bacteria thrive. Together, they work to balance the gut microbiome, improve digestion, and reduce the risk of digestive disorders such as diarrhea, constipation, and irritable bowel syndrome.\n\nEnhanced immune function: The gut microbiome plays a critical role in immune function, and prebiotics and probiotics can work together to promote a healthy immune system. Probiotics can boost the production of immune cells, while prebiotics nourish the gut microbiota and support immune function.\n\nIncreased nutrient absorption: Prebiotics and probiotics can enhance the absorption of nutrients, such as calcium, magnesium, and iron, by improving the digestive process and promoting the growth of beneficial bacteria.\n\nReduced stress and anxiety: Studies have shown that prebiotics and probiotics can help to reduce stress and anxiety in animals, possibly by regulating the production of stress hormones in the body.\n\nImproved feed conversion: The prebiotics in Rumeno Micro-Flora can help to improve the digestibility of feed in farm animals, which can lead to more efficient feed conversion and better weight gain. This can be especially important for meat animals, as it can reduce the amount of time and feed required to reach market weight.\n\nIncreased milk production: In dairy animals, the combination of prebiotics and probiotics in Rumeno Micro-Flora can help to improve digestion and nutrient absorption, which can lead to increased milk production.\n\nEnhanced nutrient uptake: The probiotics in Rumeno Micro-Flora can help to promote the growth of beneficial bacteria in the gut, which can enhance the uptake of nutrients such as calcium, magnesium, and iron. This can help to improve overall health and wellbeing in farm animals, as well as support increased production.\n\nReduced risk of digestive disorders: The prebiotics and probiotics in Rumeno Micro-Flora can help to balance the gut microbiome, which can reduce the risk of digestive disorders such as diarrhea, bloat, and colic. This can help to keep animals healthy and productive, which can ultimately benefit the bottom line for farmers.\n\nNatural and safe: Rumeno Micro-Flora is made from high-quality, natural ingredients and is free from harsh chemicals and antibiotics. This means that it provides a safe and effective way to support production in farm animals without the risk of negative side effects or antibiotic resistance.\n\nBy supporting a healthy gut microbiome, prebiotics and probiotics can improve overall health and wellbeing in animals. This can include improved skin and coat health, increased energy levels, and reduced risk of chronic diseases.\n\nOverall, a combination of prebiotics and probiotics can provide a range of benefits for animals, from improved digestion and immune function to enhanced nutrient absorption and reduced stress. By working together to support a healthy gut microbiome, prebiotics and probiotics can help to promote optimal health and wellbeing in your furry friends.\n\nWhether you're a pet owner looking to support your furry friend's digestive health, or a farmer looking to improve the productivity and well-being of your livestock, Rumeno Micro-Flora is the perfect solution. Our easy-to-administer supplement can be added to your animal's food or water, and is suitable for all types of animals, including dogs, cats, horses, cows, goats, sheep, pigs, poultry, parrots, piegions and more.\n\nSo why wait? Try Rumeno Micro-Flora today and give your animal the gift of a healthy gut and improved overall health and wellness.",
+          Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
+          Category: "goat ,cow",
+          Type: "Medicine"
+      },
+      {
+          id: 18,
+          name: "Rumeno Micro Flora",
+          priceText: 650,
+          img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "500gm",
+          Shortdescription: "Rumeno Micro Flora Powder: A premium quality blend of prebiotics and probiotics designed to support your pet’s overall health and well-being.\nDigestive Health: Promotes the growth of beneficial bacteria in your pet’s gut, while reducing harmful bacteria, leading to better digestion and stronger immunity.\nEssential Nutrients: Contains vitamins (A, B1, B2, B6, B12, D3, E, and K) and minerals (calcium, phosphorus, and iron) for optimal health.\n",
+          description: "Rumeno Micro Flora\n\nIntroducing Rumeno Micro-Flora, a powerful pre+probiotic supplement designed specifically for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals.\n\nOur carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.\n\nUnlike many other pre+probiotic supplements, Rumeno Micro-Flora contains a high concentration of beneficial bacteria, including Lactobacillus spp, Bifidobacterium spp , Streptococcus spp, Sacchromyces spp, Bacillus spp, among others. Each strain is specially selected for its unique health benefits, and our manufacturing process ensures that the bacteria remain viable and active until consumed by your animal.\n\nPrebiotics are non-digestible fibers that serve as a food source for beneficial bacteria in the gut. When animals consume prebiotics, they pass through the digestive system undigested until they reach the colon, where they are fermented by the gut microbiota.\n\nCombining prebiotics and probiotics in a supplement can provide a range of health benefits for animals, as they work together to support a healthy gut microbiome. Here are some of the benefits that can result from a combination of prebiotics and probiotics:\n\nImproved digestive health: Probiotics introduce beneficial bacteria to the gut, while prebiotics provide the food source that helps these bacteria thrive. Together, they work to balance the gut microbiome, improve digestion, and reduce the risk of digestive disorders such as diarrhea, constipation, and irritable bowel syndrome.\n\nEnhanced immune function: The gut microbiome plays a critical role in immune function, and prebiotics and probiotics can work together to promote a healthy immune system. Probiotics can boost the production of immune cells, while prebiotics nourish the gut microbiota and support immune function.\n\nIncreased nutrient absorption: Prebiotics and probiotics can enhance the absorption of nutrients, such as calcium, magnesium, and iron, by improving the digestive process and promoting the growth of beneficial bacteria.\n\nReduced stress and anxiety: Studies have shown that prebiotics and probiotics can help to reduce stress and anxiety in animals, possibly by regulating the production of stress hormones in the body.\n\nImproved feed conversion: The prebiotics in Rumeno Micro-Flora can help to improve the digestibility of feed in farm animals, which can lead to more efficient feed conversion and better weight gain. This can be especially important for meat animals, as it can reduce the amount of time and feed required to reach market weight.\n\nIncreased milk production: In dairy animals, the combination of prebiotics and probiotics in Rumeno Micro-Flora can help to improve digestion and nutrient absorption, which can lead to increased milk production.\n\nEnhanced nutrient uptake: The probiotics in Rumeno Micro-Flora can help to promote the growth of beneficial bacteria in the gut, which can enhance the uptake of nutrients such as calcium, magnesium, and iron. This can help to improve overall health and wellbeing in farm animals, as well as support increased production.\n\nReduced risk of digestive disorders: The prebiotics and probiotics in Rumeno Micro-Flora can help to balance the gut microbiome, which can reduce the risk of digestive disorders such as diarrhea, bloat, and colic. This can help to keep animals healthy and productive, which can ultimately benefit the bottom line for farmers.\n\nNatural and safe: Rumeno Micro-Flora is made from high-quality, natural ingredients and is free from harsh chemicals and antibiotics. This means that it provides a safe and effective way to support production in farm animals without the risk of negative side effects or antibiotic resistance.\n\nBy supporting a healthy gut microbiome, prebiotics and probiotics can improve overall health and wellbeing in animals. This can include improved skin and coat health, increased energy levels, and reduced risk of chronic diseases.\n\nOverall, a combination of prebiotics and probiotics can provide a range of benefits for animals, from improved digestion and immune function to enhanced nutrient absorption and reduced stress. By working together to support a healthy gut microbiome, prebiotics and probiotics can help to promote optimal health and wellbeing in your furry friends.\n\nWhether you're a pet owner looking to support your furry friend's digestive health, or a farmer looking to improve the productivity and well-being of your livestock, Rumeno Micro-Flora is the perfect solution. Our easy-to-administer supplement can be added to your animal's food or water, and is suitable for all types of animals, including dogs, cats, horses, cows, goats, sheep, pigs, poultry, parrots, piegions and more.\n\nSo why wait? Try Rumeno Micro-Flora today and give your animal the gift of a healthy gut and improved overall health and wellness.",
+          Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
+          Category: "goat ,cow",
+          Type: "Medicine"
+      },
+      {
+          id: 19,
+          name: "Rumeno Micro Flora",
+          priceText: 1300,
+          img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Rumeno Micro Flora Powder: A premium quality blend of prebiotics and probiotics designed to support your pet’s overall health and well-being.\nDigestive Health: Promotes the growth of beneficial bacteria in your pet’s gut, while reducing harmful bacteria, leading to better digestion and stronger immunity.\nEssential Nutrients: Contains vitamins (A, B1, B2, B6, B12, D3, E, and K) and minerals (calcium, phosphorus, and iron) for optimal health.\n",
+          description: "Rumeno Micro Flora\n\nIntroducing Rumeno Micro-Flora, a powerful pre+probiotic supplement designed specifically for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals.\n\nOur carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.\n\nUnlike many other pre+probiotic supplements, Rumeno Micro-Flora contains a high concentration of beneficial bacteria, including Lactobacillus spp, Bifidobacterium spp , Streptococcus spp, Sacchromyces spp, Bacillus spp, among others. Each strain is specially selected for its unique health benefits, and our manufacturing process ensures that the bacteria remain viable and active until consumed by your animal.\n\nPrebiotics are non-digestible fibers that serve as a food source for beneficial bacteria in the gut. When animals consume prebiotics, they pass through the digestive system undigested until they reach the colon, where they are fermented by the gut microbiota.\n\nCombining prebiotics and probiotics in a supplement can provide a range of health benefits for animals, as they work together to support a healthy gut microbiome. Here are some of the benefits that can result from a combination of prebiotics and probiotics:\n\nImproved digestive health: Probiotics introduce beneficial bacteria to the gut, while prebiotics provide the food source that helps these bacteria thrive. Together, they work to balance the gut microbiome, improve digestion, and reduce the risk of digestive disorders such as diarrhea, constipation, and irritable bowel syndrome.\n\nEnhanced immune function: The gut microbiome plays a critical role in immune function, and prebiotics and probiotics can work together to promote a healthy immune system. Probiotics can boost the production of immune cells, while prebiotics nourish the gut microbiota and support immune function.\n\nIncreased nutrient absorption: Prebiotics and probiotics can enhance the absorption of nutrients, such as calcium, magnesium, and iron, by improving the digestive process and promoting the growth of beneficial bacteria.\n\nReduced stress and anxiety: Studies have shown that prebiotics and probiotics can help to reduce stress and anxiety in animals, possibly by regulating the production of stress hormones in the body.\n\nImproved feed conversion: The prebiotics in Rumeno Micro-Flora can help to improve the digestibility of feed in farm animals, which can lead to more efficient feed conversion and better weight gain. This can be especially important for meat animals, as it can reduce the amount of time and feed required to reach market weight.\n\nIncreased milk production: In dairy animals, the combination of prebiotics and probiotics in Rumeno Micro-Flora can help to improve digestion and nutrient absorption, which can lead to increased milk production.\n\nEnhanced nutrient uptake: The probiotics in Rumeno Micro-Flora can help to promote the growth of beneficial bacteria in the gut, which can enhance the uptake of nutrients such as calcium, magnesium, and iron. This can help to improve overall health and wellbeing in farm animals, as well as support increased production.\n\nReduced risk of digestive disorders: The prebiotics and probiotics in Rumeno Micro-Flora can help to balance the gut microbiome, which can reduce the risk of digestive disorders such as diarrhea, bloat, and colic. This can help to keep animals healthy and productive, which can ultimately benefit the bottom line for farmers.\n\nNatural and safe: Rumeno Micro-Flora is made from high-quality, natural ingredients and is free from harsh chemicals and antibiotics. This means that it provides a safe and effective way to support production in farm animals without the risk of negative side effects or antibiotic resistance.\n\nBy supporting a healthy gut microbiome, prebiotics and probiotics can improve overall health and wellbeing in animals. This can include improved skin and coat health, increased energy levels, and reduced risk of chronic diseases.\n\nOverall, a combination of prebiotics and probiotics can provide a range of benefits for animals, from improved digestion and immune function to enhanced nutrient absorption and reduced stress. By working together to support a healthy gut microbiome, prebiotics and probiotics can help to promote optimal health and wellbeing in your furry friends.\n\nWhether you're a pet owner looking to support your furry friend's digestive health, or a farmer looking to improve the productivity and well-being of your livestock, Rumeno Micro-Flora is the perfect solution. Our easy-to-administer supplement can be added to your animal's food or water, and is suitable for all types of animals, including dogs, cats, horses, cows, goats, sheep, pigs, poultry, parrots, piegions and more.\n\nSo why wait? Try Rumeno Micro-Flora today and give your animal the gift of a healthy gut and improved overall health and wellness.",
+          Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
+          Category: "goat ,cow",
+          Type: "Medicine"
+      },
+      {
+          id: 20,
+          name: "Lacto-Pup Milk Replacer",
+          priceText: 600,
+          img: "https://www.rumeno.in/static/media/Lacto-Pup-Milk-Replacer.0683b2701f8fe6234860.jpg",
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "500gm",
+          Shortdescription: "Complete Milk Replacement: Ideal for newborn puppies, Lacto-Pup provides essential nutrients and amino acids, closely resembling natural mother’s milk.\nBoosts Cognitive Development: Enriched with DHA (Docosahexaenoic acid) for cognitive development and visual acuity.\nVersatile Use: Suitable for weaning puppies, pregnant or lactating mothers, and convalescing animals. Lacto-Pup has been trusted for over 100 years in saving young lives",
+          description: "Lacto-Pup Milk Replacer\n\nIntroducing Lacto Pup Milk Replacer - the perfect solution for puppies that require a milk substitute. Made from high-quality ingredients, Lacto Pup Milk Replacer is specially formulated to provide all the necessary nutrients and vitamins to ensure optimal growth and development in young puppies.\nWith Lacto Pup Milk Replacer, you can rest assured that your puppy is getting the nutrition they need to thrive. Our milk replacer is made with high-quality ingredients, including premium-grade milk proteins, vitamins, and minerals as calcium and phosphorus, to support strong bones and teeth. . It contains a perfect blend of proteins, fats, and carbohydrates to support healthy growth and development in puppies. Lacto Pup Milk Replacer is carefully crafted to mimic the nutritional profile of mother's milk. It is also enriched with probiotics, which helps to support digestive health and boost the immune system.\nOur milk replacer is ideal for newborn puppies who are unable to nurse from their mother or those who are weaning. It is also suitable for orphaned puppies or those whose mothers cannot produce enough milk. It is also an excellent choice for growing puppies who need additional nutrients to support their growth and development.. Lacto Pup Milk Replacer is easy to prepare and can be given to puppies as a sole source of nutrition or as a supplement to mother's milk. \nLacto Pup Milk Replacer is easy to prepare and feed, making it the ideal choice for busy pet owners. Simply mix the powder with warm water according to the instructions on the package and offer it to your puppy. It can be fed as a complete diet or in combination with solid food.\nWith Lacto Pup Milk Replacer, you can rest assured that your puppy is getting the nutrition they need to thrive. It is recommended by veterinarians and trusted by breeders nationwide. Give your puppy the best start in life with Lacto Pup Milk Replacer.",
+          Instruction: "Product Description:\nLacto-Pup Milk Replacer is designed to provide essential nutrition for puppies during their early stages of life.\nIt closely resembles natural mother’s milk, ensuring optimal growth and development.\nTarget Animals:\nSuitable for:\nNewborn puppies\nOrphaned puppies\nUnderweight puppies\nPreparation:\nUsing the scoop provided, add Lacto-Pup Milk Replacer to warm water (allow boiled water to cool before use).\nStir until completely dissolved.\nAllow the mixture to cool until lukewarm (around 38°C or blood temperature).\nFeeding Equipment:\nUse proper feeding equipment, such as the Beaphar Feeding Set or Beaphar Feeding Syringes.\nEnsure the equipment is clean and sterile.\nRecommended Dilution:\nThe recommended dilution for different puppy weights:\nFor 250g (0.25kg) puppies: Add 7 level scoops to 100ml warm water.\nFor 500g (0.5kg) puppies: Add 160ml per day.\nFor 1000g (1kg) puppies: Add 250ml per day.\nFor 2000g (2kg) puppies: Add 400ml per day.\nFor 5000g (5kg) puppies: Add 900ml per day.\nFeeding Frequency:\nAdjust the volume per day based on the puppy’s weight and age.\nSplit the daily volume across the recommended number of feeds per day.\nGradually transition to solid food after the 28th day.\nStorage:\nPrepared Lacto-Pup Milk Replacer can be refrigerated for up to 24 hours.\nReheat to 38°C or blood temperature before feeding.",
+          Category: "all except poultry",
+          Type: "Medicine"
+      },
+      {
+          id: 21,
+          name: "Poultryfine",
+          priceText: 1600,
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Poultryfine is an antibacterial poultry feed supplement designed to enhance the health and well-being of domesticated birds raised for meat and eggs. It aids in maintaining a clean and disease-free environment for chickens, turkeys, ducks, and geese.",
+          Description: "Poultryfine: Your Trusted Solution for Poultry Health and Growth\n\nAre you looking for top-quality antibacterial products to enhance the health and productivity of your poultry? Look no further! Poultryfine offers a comprehensive range of poultry feed supplements designed to promote growth, boost immunity, and maintain overall well-being.\n\nKey Features:\nAntibacterial Formulation: Our products are fortified with powerful antibacterial agents that help prevent and manage infections. Say goodbye to common poultry ailments and ensure a healthier flock.\nGrowth Promotion: Poultryfine’s antibacterial growth promoters stimulate optimal growth rates. Your birds will thrive, reaching their full potential in no time.\nNutrient-Rich: Our supplements are packed with essential vitamins, minerals, and amino acids. They support bone health, feather quality, and egg production.\nDigestive Health: A healthy gut is crucial for poultry. Poultryfine’s formulations aid digestion, improve nutrient absorption, and maintain gut flora balance.\nWhy Choose Poultryfine?\nScientifically Formulated: Our team of experts ensures that each product is backed by rigorous research and development.\nSafe and Effective: Poultryfine products are safe for your birds and the environment. We prioritize sustainability and animal welfare.\nEasy to Administer: Whether you’re a small-scale farmer or a large poultry operation, our supplements are user-friendly and convenient.\nProduct Range:\nPoultryfine Antibacterial Growth Promoter: Boost growth rates and immunity while keeping infections at bay.\nPoultryfine Immune Boost: Strengthen your flock’s defenses against diseases.\nPoultryfine NutriVit: A complete nutritional package for optimal health.\nPoultryfine GutGuard: Maintain gut health for better digestion and nutrient utilization.",
+          Instruction: "Dosage and Administration:\r\nMix Poultryfine with the regular feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your poultry flock consistently.\r\nFrequency:\r\nProvide Poultryfine daily as part of the birds’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Poultryfine in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nHygiene and Cleanliness:\r\nRegularly clean and disinfect feeding equipment, waterers, and the feeding area.\r\nAvoid cross-contamination by handling the supplement with clean hands and utensils.\r\nMonitoring:\r\nObserve your poultry flock for any signs of improved health, reduced bacterial infections, or enhanced productivity.\r\nAdjust the dosage if necessary based on flock size and specific health conditions.",
+          Category: "poultry",
+          Type: "Medicine",
+          img: poultryfine
+      },
+      {
+          id: 22,
+          name: "Florovita-12",
+          priceText: 1300,
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "1kg",
+          Shortdescription: "Florovita-12, a probiotic supplement for poultry, is a powerful ally in maintaining the health and well-being of your feathered flock. Specifically designed for chickens, turkeys, ducks, and geese, it harnesses the benefits of live microorganisms found in the birds’ digestive systems. By promoting a healthy gut, boosting immunity, enhancing egg laying, and preventing viral and bacterial diseases, Florovita-12 ensures your poultry thrive naturally. Trust in this probiotic supplement to support your poultry farm’s success!",
+          Description: "Florovita-12: Probiotic Supplement for Poultry and Broiler Weight Gainer\r\nOverview:\r\nFlorovita-12 is a powerful probiotic supplement for poultry, meticulously designed to enhance the health and weight gain of poultry, especially broilers. Whether you’re a commercial poultry farmer or a backyard enthusiast, Florovita-12 provides essential nutrients for optimal growth.\r\n\r\nKey Features:\r\nProbiotic Power: Florovita-12 is a poultry feed supplements that contains a blend of beneficial probiotics that support gut health. A balanced gut microbiome improves nutrient absorption, digestion, and overall well-being.\r\nWeight Gain Formula: Broilers need efficient weight gain for optimal meat production. Florovita-12 also acts as a broiler weight gainer, promoting healthy muscle development and robust growth.\r\nVitamins and Minerals: Beyond probiotics, this supplement includes essential vitamins (such as vitamin B12) and minerals (like zinc and manganese). These micronutrients contribute to overall health and vitality.\r\nDigestive Comfort: A well-functioning digestive system reduces stress and ensures efficient feed utilization. Florovita-12 supports digestive comfort, leading to better feed conversion.\r\nBenefits:\r\nImproved Feed Efficiency: Florovita-12 helps broilers convert feed into weight gain more effectively.\r\nEnhanced Muscle Mass: Healthy weight gain translates to better meat yield and quality.\r\nStress Reduction: Probiotics support stress tolerance, especially during environmental changes or disease challenges.\r\nFlorovita-12: Boost your poultry’s growth with our premium poultry weight gain supplement. Specifically designed for poultry, Florovita-12 supports muscle development and efficient feed conversion. Watch your birds thrive! \r\nDirections for Use:\r\nMix: Blend the recommended amount of Florovita-12 with your poultry feed.\r\nAdminister: Offer daily according to weight and species guidelines.\r\nObserve: Monitor your poultry’s weight gain and adjust dosage if needed.\r\nQuality Assurance:\r\nScientifically Formulated: Florovita-12 is developed by poultry nutrition experts.\r\nThird-Party Tested: Rigorous quality checks ensure purity, potency, and safety.\r\nNo Artificial Additives: Free from artificial colors, flavors, and preservatives.\r\nChoose Florovita-12:\r\nInvest in your poultry’s health and weight gain with Florovita-12. Watch your broilers thrive!",
+          Instruction: "Dosage and Administration:\r\nMix Florovita-12 with the regular feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your poultry flock consistently.\r\nFrequency:\r\nProvide Florovita-12 daily as part of the birds’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Florovita-12 in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nHygiene and Cleanliness:\r\nRegularly clean and disinfect feeding equipment, waterers, and the feeding area.\r\nAvoid cross-contamination by handling the supplement with clean hands and utensils.\r\nMonitoring:\r\nObserve your poultry flock for any signs of improved health, reduced bacterial infections, or enhanced productivity.\r\nAdjust the dosage if necessary based on flock size and specific health conditions.",
+          Category: "poultry",
+          Type: "Medicine",
+          img: Florovita
+      },
+      {
+          id: 23,
+          name: "Bull Goat",
+          priceText: 1175,
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "5kg",
+          Shortdescription: "“Bull Goat: Boost your goats’ weight and overall health with this specially formulated supplement. Designed to enhance appetite and promote healthy weight gain, it’s ideal for goats of all ages. Whether you’re raising dairy goats or meat goats, trust Bull Goat to help your herd thrive",
+          Description: "Bull Goat: Your Ultimate Solution for Goat Health and Weight Gain\r\n\r\nAre you seeking top-notch goat weight gain supplements to ensure your goats thrive? Look no further! Bull Goat offers a comprehensive range of products designed to enhance goat health, promote weight gain, and boost overall well-being.\r\n\r\nKey Features:\r\nHigh-Protein Formula: Our goat weight gain supplement is packed with essential nutrients, including protein. This protein supports muscle development and overall body mass, ensuring your goats reach their full potential.\r\nOptimal Nutrient Balance: Bull Goat provides a balanced blend of vitamins, minerals, and amino acids. These nutrients contribute to bone health, coat quality, and reproductive performance.\r\nDigestive Support: A healthy gut is crucial for goats. Our supplement aids digestion, improves nutrient absorption, and maintains gut flora balance.\r\nWhy Choose Bull Goat?\r\nScientifically Formulated: Our team of experts ensures that each product is backed by rigorous research and development.\r\nSafe and Effective: Bull Goat products are safe for your goats and promote overall well-being.\r\nEasy to Administer: Whether you’re a small-scale goat keeper or a large farm, our supplements are user-friendly and convenient.\r\nProduct Range:\r\nBull Goat Weight Gain Booster: Accelerate weight gain and muscle development with this high-protein supplement.\r\nBull Goat Health Essentials: A complete nutritional package for optimal goat health.\r\nBull Goat Digestive Aid: Maintain gut health for better digestion and nutrient utilization.",
+          Instruction: "Dosage and Administration:\r\nMix Bull Goat with the regular goat feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your goats consistently.\r\nFrequency:\r\nProvide Bull Goat daily as part of the goats’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Bull Goat in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nMonitoring:\r\nObserve your goats for any signs of improved weight gain, enhanced appetite, and overall health.\r\nAdjust the dosage if necessary based on individual goat needs and specific health conditions.",
+          Category: "goat",
+          Type: "Medicine",
+          img: bullgoat
+      },
+      {
+          id: 24,
+          name: "Selennium-E",
+          priceText: 260,
+          Veg: "Veg",
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "300g",
+          Shortdescription: "Selenium-E, a poultry feed selenium supplement, plays a vital role in maintaining the health of your feathered flock. As a cofactor for the enzyme glutathione peroxidase, it helps remove peroxides (oxidative free radicals), thus preventing oxidative stress. Additionally, Selenium-E contributes to reproductive health.",
+          Description: "Selenium-E: Your Poultry’s Essential Nutrient Boost\n\nIntroducing Selenium-E is a premium poultry feed supplement meticulously crafted to enhance the health and productivity of your feathered friends. Packed with vital vitamins and minerals, this specialized formula ensures your poultry flock thrives in every aspect.\n\nSelennium-E is a premium selenium supplement for poultry, meticulously crafted to meet the specific needs of poultry (chickens, ducks, turkeys, etc.). Whether you raise chickens, ducks, turkeys, or other poultry, selenium-E provides essential nutrients for optimal health.\n\nKey Features:\nSelenium Boost: Selennium-E is a high-quality feed supplement for poultry that contains a concentrated dose of selenium, supporting antioxidant defenses, immune function, and overall vitality in poultry. This essential trace mineral plays a crucial role in maintaining their well-being.\nVitamins and Minerals: Beyond selenium, this supplement includes a balanced blend of vitamins (such as vitamin E) and minerals (including zinc and copper). These micronutrients contribute to feather quality, egg production, and bone strength.\nFeed Efficiency: Selennium-E enhances feed utilization, ensuring that your poultry get the most out of their diet. Improved nutrient absorption translates to better growth and performance.\nImmune Support: A robust immune system is essential for disease resistance. The selenium in Selennium-E bolsters immune responses, helping your poultry stay healthy.\nBenefits:\nHealthy Egg Production: Selennium-E positively influences egg quality and production rates.\nStrong Bones and Feathers: The combination of selenium and other nutrients supports skeletal health and feather integrity.\nReduced Stress: Antioxidant properties help combat oxidative stress, especially during challenging conditions.\nDirections for Use:\nMix: Blend the recommended amount of selenium-E with your poultry feed.\nAdminister: Offer daily according to weight and species guidelines.\nObserve: Monitor your poultry’s well-being and adjust dosage if needed.\nQuality Assurance:\nScientifically Formulated: Selennium-E is developed by poultry nutrition experts.\nThird-Party Tested: Rigorous quality checks ensure purity, potency, and safety.\nNo Artificial Additives: Free from artificial colors, flavors, and preservatives.\nChoose Selennium-E:\nInvest in your poultry’s health with selenium-E. Provide the essential nutrients they need to thrive!",
+          Instruction: "Dosage and Administration:\r\nMix Selenium-E with the regular poultry feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your poultry flock consistently.\r\nFrequency:\r\nProvide Selenium-E daily as part of the birds’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Selenium-E in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nMonitoring:\r\nObserve your poultry flock for any signs of improved health, especially related to selenium deficiency.\r\nAdjust the dosage if necessary based on flock size and specific health conditions.",
+          Category: "poultry",
+          Type: "Medicine",
+          img: Selennium
+      },
+      {
+          id: 25,
+          name: "Farm house floor burner",
+          priceText: 3000,
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Shortdescription: "A floor burner is an essential component in livestock housing, particularly in poultry and dairy farms. Let’s explore its significance and characteristics:\n\nPurpose:\nThe floor burner serves multiple purposes for animals:\nResting: Animals frequently use the floor for resting.\nMovement: It provides a surface for animals to move around.\nFeeding: Animals access their feed on the floor.\nMilking: In dairy farms, cows are milked on the floor.\nQualities:\nThe floor must possess specific qualities to meet these purposes:\nComfort: Animals should find the floor reasonably cool during hot weather and warm during cooler days.\nProtection: It shields animals from external elements such as rain, sun, and wind.\nSafety: The floor prevents predators (e.g., dogs, cats, snakes) from accessing the animals.\nHygiene: Proper flooring minimizes disease transmission and ensures cleanliness.",
+          Description: "Farmhouse Floor Burner: Enhancing Warmth and Rustic Charm\n\nA farmhouse floor burner is more than just a functional heating appliance—it’s a captivating centerpiece that infuses warmth and character into your living space. Whether you’re nestled in the countryside or embracing farmhouse aesthetics in an urban setting, this versatile burner adds rustic allure to any room.\n\nKey Features:\n\nNatural Materials: Crafted from timeless materials like wood or stone, the farmhouse floor burner pays homage to traditional architecture. The use of reclaimed wood imparts a rich patina, while stone veneer creates a low-profile yet eye-catching design.\nVersatility: From modest hearth surrounds to dramatic floor-to-ceiling accent walls, the farmhouse floor burner adapts seamlessly to various spaces. Its rugged appeal complements both minimalist and cozy interiors.\nBudget-Friendly Options:\nTimber Beam Mantelpiece: An affordable solution, a simple timber beam serves as a rustic mantel. Consider sourcing reclaimed wood for added character.\nPainted Brick Fireplace: Transform a brick fireplace with a coat of heat-resistant paint. Opt for earthy tones or neutrals to evoke a welcoming ambiance.\nModern Farmhouse Inspiration:\nMalm Gas Fire: For a retro-futuristic touch, install a Malm gas fire. Interior designer Leanne Ford used one in her rustic LA bolthole.\nConcrete Block Chimney: Architects in Maine created an industrial-style chimney using concrete blocks, blending contemporary design with utilitarian aesthetics.\nCreate a Cozy Haven: Whether you’re curling up with a book or hosting friends, the farmhouse floor burner radiates comfort and nostalgia. Let its flames dance and transform your space into a charming retreat.",
+          Instruction: "Here are the instructions for using a floor burner effectively:\n\nPlacement and Safety:\nSelect a Suitable Location: Place the floor burner in an area with proper ventilation and away from flammable materials.\nStable Surface: Ensure the floor is stable and level to prevent accidents.\nClearance: Maintain adequate clearance around the burner to prevent overheating nearby objects.\nIgnition and Operation:\nFuel Type: Identify the type of fuel your floor burner uses (e.g., wood, gas, pellets).\nIgnition: Follow the manufacturer’s instructions to ignite the burner safely.\nAdjust Flames: Adjust the flame intensity using controls provided (if applicable).\nMaintenance and Cleaning:\nRegular Cleaning: Remove ashes and debris from the burner regularly.\nInspect Components: Check for any damaged parts, leaks, or blockages.\nChimney Maintenance: If your floor burner has a chimney, ensure it’s clean and free of creosote buildup.\nSafety Precautions:\nCarbon Monoxide (CO) Monitoring: Install a CO detector near the burner to detect any leaks.\nFire Extinguisher: Keep a fire extinguisher nearby.\nChildproofing: If you have children or pets, take precautions to prevent accidental contact with the burner.\nExtinguishing the Flame:\nSafe Cooling: Allow the burner to cool down before handling or cleaning.\nClose Vents: If applicable, close vents to extinguish the flame.\nRemember to consult the specific user manual provided by the manufacturer for detailed instructions tailored to your floor burner model. Stay safe and enjoy the warmth!",
+          Type: "Tool",
+          img: farmbuner
+      },
+      {
+          id: 26,
+          name: "Slatted Floor",
+          priceText: 135,
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Shortdescription: "A slatted floor is a specialized flooring system commonly used in livestock housing, particularly for animals like poultry, goats, and pigs. Let’s delve into its key features:\n\nDesign and Composition:\nA slatted floor consists of evenly spaced iron rods or wooden reapers.\nThese rods or reapers are typically positioned 2 to 3 feet above the ground level.\nThe interspaces between the rods allow for the efficient fall of animal droppings through the slats.\nPurpose and Benefits:\nDroppings Management: The primary purpose of a slatted floor is to facilitate the removal of animal waste.\nHygiene: By allowing droppings to fall through, it helps maintain a cleaner and more hygienic environment.\nComfort: Animals can move freely on the slatted surface, promoting better comfort and mobility.\nMaterials Used:\nIron rods with a diameter of around 2 inches or wooden reapers are commonly employed.\nThe choice of material depends on factors such as cost, durability, and ease of cleaning.",
+          Description: "The Rumeno Slatted Floor is a high-quality flooring solution designed specifically for livestock housing, including goat farms, pig pens, and poultry enclosures. Let’s explore its features:\r\n\r\nMaterial and Construction:\r\nPremium Plastic: The Rumeno Slatted Floor is crafted from durable, UV-coated plastic material.\r\nSlatted Design: It features evenly spaced slats that allow for efficient waste management.\r\nAdvantages:\r\nHygienic: The slatted design ensures that animal droppings fall through the gaps, maintaining cleanliness and minimizing odor.\r\nComfort: Animals can move freely on the textured surface, promoting better mobility and well-being.\r\nLongevity: The Rumeno Slatted Floor is built to withstand harsh farm conditions, offering a long product life.\r\nDimensions and Installation:\r\nAvailable in various sizes (e.g., 2 feet x 2 feet, 600 mm x 600 mm).\r\nEasy to install and compatible with different livestock housing setups.\r\nWhether you’re managing a goat farm or a poultry facility, the Rumeno Slatted Floor provides a reliable and efficient flooring solution for your animals.",
+          Instruction: "Placement and Safety:\r\nSelect a Suitable Location: Place the slatted floor in the designated livestock area.\r\nStable Base: Ensure that the supporting structure (beams or framework) is stable and level.\r\nSafety Measures: Consider safety precautions such as non-slip coatings or textured surfaces to prevent animals from slipping.\r\nAnimal Introduction:\r\nGradual Transition: Introduce animals to the slatted floor gradually. Allow them to explore and adapt.\r\nComfort Zone: Provide additional bedding or soft areas nearby initially to ease the transition.\r\nWaste Management:\r\nDroppings Removal: The slatted design allows droppings to fall through. Regularly remove accumulated waste.\r\nCleaning Schedule: Establish a cleaning routine to maintain hygiene.\r\nHealth Monitoring:\r\nFoot Health: Monitor animals’ feet for any signs of abrasions or discomfort.\r\nLeg Health: Ensure that animals move comfortably and without strain.\r\nMaintenance:\r\nInspect Regularly: Check for damaged slats, loose connections, or wear.\r\nRepair or Replace: Promptly repair or replace any damaged sections.",
+          Type: "Tool",
+          img: farmflour
+      },
+      {
+          id: 27,
+          name: "Goat and sheep nipples",
+          priceText: 55,
+          Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of  livestock farming  by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
+          Delivery: "within 5 -7 days",
+          Refundable: "Refundable for any manufacturing defect within 1 week",
+          Weight: "50gm",
+          Shortdescription: "Design and Compatibility:\r\nThese nipples are specially designed to fit on standard Pepsi or Cola size bottles.\r\nThe bottle cap design allows easy attachment to the bottle, creating a secure and leak-proof seal.\r\nFarmers and breeders can create a makeshift feeding bottle using readily available materials.\r\nQuality and Safety:\r\nMade from high-quality materials, these nipples are safe for young animals.\r\nThey mimic the natural teats of a mother goat or sheep, aiding the transition from nursing to bottle feeding.\r\nBenefits:\r\nCost-Effective: Eliminates the need for expensive bottles and specialized equipment.\r\nDigestion Support: Encourages natural feeding positions, promoting healthy digestion and nutrient absorption.\r\nWhether you’re managing a small backyard farm or a large commercial operation, the Rumeno Pet Animals Bottle Nipple ensures convenient and safe feeding for your animals",
+          Description: "The Rumeno Pet Animals Bottle Nipple is a versatile and convenient solution for feeding young animals, especially goats and sheep. These specially designed nipples fit standard Pepsi or Cola size bottles, allowing you to create a makeshift feeding bottle with readily available materials. Here are the key features:\r\n\r\nEasy Attachment:\r\nThe bottle cap design allows the nipple to be easily screwed onto the top of the bottle, creating a secure and leak-proof seal.\r\nTransport and use the feeding bottle without worrying about spills or leaks.\r\nHigh-Quality Materials:\r\nMade from safe materials, these nipples mimic the natural teats of a mother goat or sheep.\r\nFacilitate a smooth transition from nursing to bottle feeding.\r\nCost-Effective and Digestion-Friendly:\r\nEliminate the need for expensive bottles and specialized equipment.\r\nPromote healthy digestion by allowing young animals to feed at their own pace and in a natural position.\r\nWhether you’re a backyard farmer or managing a large commercial operation, the Rumeno Pet Animals Bottle Nipple ensures convenient and safe feeding for your animals.",
+          Instruction: "Preparation and Compatibility:\r\nSelect a Suitable Bottle: Choose a standard Pepsi or Cola size bottle.\r\nInspect the Nipple: Ensure that the Rumeno Pet Animals Bottle Nipple is clean and free from any debris.\r\nAttachment:\r\nScrew-On Design: Place the nipple on the top of the bottle.\r\nSecure Seal: Screw the nipple onto the bottle cap until it creates a secure and leak-proof seal.\r\nFeeding Process:\r\nComfortable Position: Hold the bottle at an angle that allows the young animal to feed comfortably.\r\nNatural Teat Position: Position the nipple so that it mimics the natural teats of a mother goat or sheep.\r\nAllow Self-Feeding: Let the young animal suckle at its own pace.\r\nMonitoring and Cleaning:\r\nObserve Feeding: Monitor the animal during feeding to ensure it is comfortable and latching properly.\r\nRegular Cleaning: After each use, disassemble the nipple and clean it thoroughly. Use warm water and mild soap.\r\nStorage and Reuse:\r\nStore Properly: Keep the nipple in a clean, dry place.\r\nReuse: The Rumeno Pet Animals Bottle Nipple is reusable. Inspect it before each use to ensure it’s in good condition.",
+          Type: "Tool",
+          img: goatsheepnipple
+      }
+  ]
 
     var Value = '';
-    const AllData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
     const [cookies, setCookie] = useCookies(["cart"]);
     useEffect(() => {
         if (cookies.cart) {
@@ -609,6 +478,7 @@ const ProductDetail = () => {
     const [showOtp, setShowOpt] = useState(false);
     const { loggedInUser } = useContext(UserContext);
 
+
     const openRegistration = () => {
         setShowRegistrtionModal(true);
         setShowLoginModal(false);
@@ -625,67 +495,118 @@ const ProductDetail = () => {
         setShowOpt(false);
     };
 
-    var ItemQuantity;
-    const handleChange = (item, change) => {
+    const handleChange = (item, change, dataamount) => {
         const updatedCart = cart.map(cartItem => {
             if (cartItem.id === item.id) {
-                const ItemQuantity = cartItem.amount + change;
+                let ItemQuantity = cartItem.amount + change;
+                setAmountData(ItemQuantity)
                 if (ItemQuantity < 1) return cartItem; // Prevent quantity from going below 1
-                console.log(ItemQuantity)
                 return { ...cartItem, amount: ItemQuantity };
             }
             return cartItem;
+
         });
+
         setCart(updatedCart);
     };
 
-    const allData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
-    const { name } = useParams();
 
-    const AddToCarts = (item) => {
+    const { name, id } = useParams();
+
+    const AddToCarts = async (item) => {
         if (loggedInUser) {
-           // Check if the item already exists in the cart
-           const itemExists = cart.some(cartItem => cartItem.name === item.name);
-       
-           if (!itemExists) {
-             console.log("Item added to cart:", item);
-             // Add logic to handle adding item to cart
-             setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
-             const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
-             setiteamdata(itemData);
-             console.log(itemData);
-           } else {
-             // Optionally, show a message that the item is already in the cart
-             console.log("Item already in cart");
-           }
+            // Check if the item already exists in the cart
+            const itemExists = cart.some(cartItem => cartItem.id === item.id);
+            if (!itemExists) {
+                toast.success("Item is added to your cart", {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                console.log("Item added to cart:", item);
+                // Add logic to handle adding item to cart
+                setCart([...cart, { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+                const itemData = { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData };
+                setiteamdata(itemData);
+                console.warn(itemData);
+                
+    try {
+        const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
+        console.log('Add to cart is Successfull', response.data);
+            if(response.data.msg == 'success'){
+            }
+      } catch (error) {
+        console.error('Add to cart is not working', error);
+      }
+            }
+            else {
+                toast.warn("Item is already added to your cart", {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+
         } else {
-           setShowLoginModal(!showLoginModal);
-           toast.warn("Please Login", {
-             position: "top-center",
-             autoClose: 2000,
-             hideProgressBar: false,
-             closeOnClick: true,
-             pauseOnHover: true,
-             draggable: true,
-             progress: undefined,
-             theme: "light",
-           });
+            // setShowLoginModal(!showLoginModal);
+            toast.warn("Please Login", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
-       };
-      
+    };
+
 
     const [filteredItems, setFilteredItems] = useState([]);
+    const items = Data;
+    // const title = "Poultryfine";
 
-    useEffect(() => {
-        const items = allData;
-        if (name) {
-            // Filter items based on the name parameter
-            const filtered = items.filter((item) => item.name.includes(name));
-            setFilteredItems(filtered);
-        } else {
-            setFilteredItems(items);
-        }
-    }, [name]);
+    // const sameitemfilter = items.filter((item) => item.id);
+    const sameitemfilter = items.filter((item) => item.id == id)
+    const filterbynames = sameitemfilter[0].name
+    const aa = items.filter((item) => item.name.includes(filterbynames))
+    console.warn(aa)
+    if (sameitemfilter.length > 0) {
+        // console.warn(sameitemfilter[0],id);
+    } else {
+        // console.warn(sameitemfilter[0],"not",id);
+    }
+    // useEffect(() => {
+    //     if (name) {
+    //         // Filter items based on the name parameter
+    //         const filtered = items.filter((item) => item.name.includes(name));
+    //         setFilteredItems(filtered);
+    //     } else {
+    //         setFilteredItems(items);
+    //     }
+    // }, [name]);
+    //  useEffect(() => {
+    //     if (id) {
+    //         // Filter items based on the id parameter
+    //         const filtered = items.filter((item) => item.id.includes(id));
+    //         console.warn(filtered,id,filteredItems)
+    //         setFilteredItems(filtered);
+    //     } else {
+    //         setFilteredItems(items);
+    //     }
+    // }, [id]);
+
 
     return (
         <>
@@ -718,15 +639,31 @@ const ProductDetail = () => {
                         </div>
                     </div>
                 </div>
-                <div className='row justify-content-center bg-white mx-5 py-2'>
-                    {filteredItems.map((item, index) => (
-                        <>
+                {sameitemfilter.map((item, index) => (
+                    <>
+                        <div className='row justify-content-center bg-white  lg:mx-5 mx-0 py-2'>
                             <div className="col-lg-4">
                                 <img className='w-100' src={item.img} height={500} alt="loading" />
+
+
                             </div>
                             <div className="col-lg-5 offset-lg-1">
-                                <h1 className=''>{item.name}</h1>
-                                <h2 className='my-3 text-danger fw-bold'>₹ {item.price} /-</h2>
+                                <h1 className='mt-3'>{item.name}</h1>
+                                <h1 className='my-3 text-danger fw-bold'>₹ {item.priceText} /-</h1>
+                                <Accordion className='' defaultActiveKey="0" flush>
+                                    <Accordion.Item className="my-3" eventKey="0">
+                                        <Accordion.Header className='border bg-none'>
+                                            <FontAwesomeIcon className='text-danger' icon={faTags} /><strong className='mx-2 text-primary'>Save Extra</strong>get 5% Discount and more...
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            <p>
+                                                {item.Offer}
+                                            </p>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+
+                                <h5><FontAwesomeIcon className='text-success mx-1' icon={faCircleDot} /> This is a <strong>{item.Veg}</strong> product</h5>
                                 <hr />
                                 <div className="my-3 d justify-content-center">
                                     <h6 className='my-0'>Please Rate Us Our Product</h6>
@@ -750,42 +687,82 @@ const ProductDetail = () => {
                                     <span className="fw-bold">{item.efficacy}</span>
                                     <span>{item.efficacy1}</span>
                                     <span>{item.efficacy2}</span>
-
                                 </div>
                                 <div className='my-3'>
-                                    <h5 className='text-danger d-flex align-items-center'>For Videos<FontAwesomeIcon
+                                    <a href='https://www.youtube.com/@RumenoFarmotech-bg5y' target='_blank' className='text-danger text-decoration-none fs-5 d-flex align-items-center'>For Videos<FontAwesomeIcon
                                         className="mx-2 my-0 h3 text-danger"
                                         type="button"
                                         icon={faYoutube}
-                                    /></h5>
+                                    /></a>
+                                    <hr />
+                                    <h4 className='fw-bold'>Delivery</h4>
+                                    <p className='my-1'>{item.Delivery}</p>
+                                    <p className='text-primary'><FontAwesomeIcon className='mx-1' icon={faArrowRightArrowLeft} /> {item.Refundable}
+                                    </p>
                                 </div>
                                 <hr />
-                                <div className='d-flex align-items-center'>
+                                <h5><strong>Weight :</strong> <span className='text-danger mx-1 fw-bold'>{item.Weight}</span></h5>
+                                <hr />
+                                <div className='row  my-3 ' >
+                                    {aa.map((item) => (
+                                        <Link className='col-lg-2 m-2 py-1 border border-danger border-2 d-grid rounded px-3 w-auto text-center text-decoration-none' to={`/veterinary-products/ProductDetail/${item.id}`}>
+                                            <div className=''>
+                                                <h6 className='fw-bold my-1 text-dark'>₹ {item.priceText}/-</h6>
+                                                <h6 className=' text-danger my-1'>{item.Weight}</h6>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                                <div className='d-flex justify-content-between align-items-center'>
                                     <FontAwesomeIcon
                                         icon={faCirclePlus}
                                         type="button"
                                         className="text-primary h3  mx-2 my-0"
                                         onClick={() => handleChange(item, +1)}
                                     />
-                                    <h5 className="px-4 fw-bold py-2 my-0 border rounded">{item.amount}</h5>
+                                    <h5 className="px-4 fw-bold py-2 my-0 border rounded">{amountdata}</h5>
                                     <FontAwesomeIcon
                                         icon={faCircleMinus}
                                         type="button"
                                         className="text-primary h3  mx-2 my-0"
                                         onClick={() => handleChange(item, -1)}
                                     />
+                                    <button
+                                        className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
+                                        onClick={() => AddToCarts(item)}
+                                    >
+                                        Add to Cart
+                                    </button>
                                 </div>
 
-                                <button
-                                    className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
-                                    onClick={() => AddToCarts(item)}
-                                >
-                                    Add to Cart
-                                </button>
+
+                                {/* <ul className='border-top pt-3'>
+                                    <li>
+                                        <strong>Tanav Mukti Powder:</strong> A specialized blend of natural adaptogenic herbs designed to alleviate stress in animals.
+                                    </li>
+                                    <li className='my-1'>
+                                        <strong>Dosage:</strong> Mix the recommended amount of Tanav Mukti Powder with your pet’s food or water.
+                                    </li>
+                                    <li className='my-1'>
+                                        <strong>Frequency:</strong> Administer twice daily for optimal results.
+                                    </li>
+                                    <li>
+                                        <strong>Consult a Veterinarian:</strong> Always consult a veterinarian before introducing any new product to your pet’s routine.
+                                    </li>
+                                </ul> */}
                             </div>
-                        </>
-                    ))}
-                </div>
+                            <hr />
+                            <p className='px-4'>{item.Instruction}</p>
+
+                        </div>
+                        <div className="row my-4 lg:mx-5 mx-0 py-4 bg-white">
+                            <h4 className='fw-bold mb-2'>* Description</h4>
+                            <hr />
+                            <p className='px-4'>{item.description}</p>
+
+                        </div>
+                    </>
+                ))}
 
             </section>
             <Footer />

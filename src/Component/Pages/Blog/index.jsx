@@ -22,7 +22,7 @@ const Blog = () => {
       title2: "Animal",
       title3: "blog",
       title4: "Farmer",
-      bottomcontent: "Refit Animal Care",
+      bottomcontent: "Rumeno Animal Care",
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ const Blog = () => {
       title2: "Animal",
       title3: "blog",
       title4: "Farmer",
-      bottomcontent: "Refit Animal Care",
+      bottomcontent: "Rumeno Animal Care",
     },
   ];
   

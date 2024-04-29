@@ -17,9 +17,9 @@ import KeysWords from "../../Common/apiData/keyWords";
 
 const Products = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
-  const { setSizevalue,cartdata ,UidData,cart,setCart,setiteamdata,iteamdata} = useContext(UserContext);
-  
-  console.log(iteamdata,333333333333)
+  const { setSizevalue, cartdata, UidData, cart, setCart, setiteamdata, iteamdata } = useContext(UserContext);
+
+  console.log(iteamdata, 333333333333)
   var Value = '';
 
   useEffect(() => {
@@ -29,60 +29,42 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-  
+
     setCookie("cart", cart, { path: "/" });
-     Value = cart.length;
-    if(Value !== 0 ){
+    Value = cart.length;
+    if (Value !== 0) {
       setSizevalue(Value)
       handleAddtoCart()
-    } 
-     
-  // console.log(Value,'BHNJMK,L.;/')
+    }
+
+    // console.log(Value,'BHNJMK,L.;/')
   }, [cart, setCookie]);
 
 
   const handleAddtoCart = async () => {
     // console.log(iteamdata,12222222222222)
-    
+
     try {
-    const response = await axios.post('https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cart', iteamdata);
-    // console.log('Add to cart is Successfull', response.data);
-//     if(response.data.msg == 'success'){
-// handleClick()
-//     }
+      const response = await axios.post('http://192.168.1.7:5000/cart', iteamdata);
+      console.log('Add to cart is Successfull', response.data);
+          if(response.data.msg == 'success'){
+      handleClick()
+          }
     } catch (error) {
-    console.error('Add to cart is not working', error);
+      console.error('Add to cart is not working', error);
     }
   };
   const handleClick = (item) => {
 
-      let isPresent = false;
-      cart.forEach((product) => {
+    let isPresent = false;
+    cart.forEach((product) => {
 
-        if (item.id === parseInt(product.id)) {
-          isPresent = true;
-        }
-      });
-      if (isPresent) {
-        toast.warn("Item is already added to your cart", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        return;
+      if (item.id === parseInt(product.id)) {
+        isPresent = true;
       }
-
-
-      setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, uID:UidData}]);
-      const itemdatra =  { id: item.id, amount: 1, price: item.price, img: item.img , name: item.name, uID:UidData}
-      setiteamdata(itemdatra)
-
-      toast.success("Item is added to your cart", {
+    });
+    if (isPresent) {
+      toast.warn("Item is already added to your cart", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -92,52 +74,72 @@ const Products = () => {
         progress: undefined,
         theme: "light",
       });
+      return;
+    }
 
-    };
- 
+
+    setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+    const itemdatra = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }
+    setiteamdata(itemdatra)
+    console.log(itemdatra)
+    
+
+    toast.success("Item is added to your cart", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  };
+
 
   return (
     <>
-     <Helmet>
-                <meta charSet="utf-8" />
-                <title>Products-Rumeno</title>
-                <link rel="canonical" href="https://rumeno.in/products" />
-            </Helmet>
-            <ul className="d-none">
-  {KeysWords.map((item, index) => (
-    <li key={index}>{item}</li>
-  ))}
-</ul>
-            <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
-        <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
-        <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Products-Rumeno</title>
+        <link rel="canonical" href="https://rumeno.in/veterinary-products" />
+      </Helmet>
+      <ul className="d-none">
+        {KeysWords.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+      <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
+      <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
+      <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <div className="desk-nav">
         <Navbar
           size={cart.length}
-          // carts={cart}
-          // setCarts={setCart}
-          // handleChange={handleChange}
-          // item={item}
-          // value={Value}
-          // cookies={setCookie}
+        // carts={cart}
+        // setCarts={setCart}
+        // handleChange={handleChange}
+        // item={item}
+        // value={Value}
+        // cookies={setCookie}
         />
       </div>
       <div className="mob-nav">
         <ResponsiveNavbar
           size={cart.length}
-          // cart={cart}
-          // setCart={setCart}
-          // handleChange={handleChange}
+        // cart={cart}
+        // setCart={setCart}
+        // handleChange={handleChange}
         />
       </div>
-      <div className="our-product-img">
+      {/* <div className="our-product-img">
         <img
           src={Roadmap1}
           alt="Loading"
@@ -150,15 +152,15 @@ const Products = () => {
           className="w-100  pt-5 vh-100 "
           src={Roadmap3}
         ></video>
-      </div>
-      <div className="container-fluid abt-sect py-3 overflow-hidden">
-        <div className="d-flex justify-content-center pt-2">
-          <div className="mx-2">
+      </div> */}
+      <div className="container-fluid abt-sect pt-5 pb-3 overflow-hidden">
+        <div className="d-flex justify-content-center pt-5">
+          <div className="mx-2 pt-5">
             <div className="services-line-largeleft"></div>
             <div className="services-line-smallleft"></div>
           </div>
-          <span className="label-title text-center">Our Product</span>
-          <div className="mx-2">
+          <span className="label-title pt-5 text-center">Veterinary Products</span>
+          <div className="mx-2 pt-5">
             <div className="services-line-largeright"></div>
             <div className="services-line-smallright"></div>
           </div>

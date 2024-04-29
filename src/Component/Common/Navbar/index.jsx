@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { Modal } from "react-bootstrap";
 // import Modal from 'react-modal';
 import { UserContext } from "../Modal/logusecont";
 // import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
+
 
 // Third party Fortawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,8 +39,11 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import datatest from "./test.json";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
+// import TranslateButton from "../translate/trasn";
+import SearchBar from "./navsearch";
 
 const Navbar = ({ size }) => {
+  const { search } = useParams();
   const { t } = useTranslation();
   const {
     loggedInUser,
@@ -146,7 +150,7 @@ const Navbar = ({ size }) => {
     // console.log(RemoveCartData,'ghgjhjjjj')
     try {
       const response = await axios.post(
-        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/deleteCart",
+        "http://192.168.1.7:5000/deleteCart",
         RemoveCartData
       );
       console.log("Add to cart", response.data);
@@ -177,11 +181,22 @@ const Navbar = ({ size }) => {
       }
     } catch (error) {
       console.error("Add to cart is not Remove", error);
+      toast.error("Add to cart is not Remove", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     // handleRemoveCart(id)
   };
-
   const navigate = useNavigate();
+
+
   const handleLogout = () => {
     Cookies.remove("loggedInUser");
     Cookies.remove("cart");
@@ -207,13 +222,13 @@ const Navbar = ({ size }) => {
     // Api ------------
     try {
       const response = await axios.post(
-        "https://4497-2401-4900-1c09-3c48-195c-e295-882-2fa7.ngrok-free.app/cart",
+        "http://192.168.1.7:5000/cart",
         amountdataupdata
       );
       console.log(iteamdata, 4444);
-      console.log("Add to cart is Successfull", response.data);
+      console.log("quantity increase Successfull", response.data);
     } catch (error) {
-      console.error("Add to cart is not working", error);
+      console.error("quantity increase not working", error);
     }
   };
 
@@ -281,6 +296,7 @@ const Navbar = ({ size }) => {
                       value={selectedOption}
                       onChange={(e) => handleChangen(e)}
                     />
+                    // <TranslateButton/> 
                   )}
                 </div>
               </div>
@@ -311,6 +327,7 @@ const Navbar = ({ size }) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav w-100 justify-content-evenly bg-transparent">
+
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -321,16 +338,14 @@ const Navbar = ({ size }) => {
                     Home
                   </NavLink>
                 </li>
-
-
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
                       className="nav-link px-0"
                       activeclassname="active"
-                      to="/products"
+                      to="/veterinary-products"
                     >
-                      Products
+                      Veterinary-Products
                     </NavLink>
                     <ul
                       className="dropdown-menu"
@@ -340,61 +355,51 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/products"
+                          to="/goat-feed-supplements"
                         >
-                          Our Products
+                          Goat Feed Supplements
                         </NavLink>
                       </li>
-                      <li className="">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/goatcategory"
-                        >
-                          Goat Category
-                        </NavLink>
-                      </li>
-                      <li className="">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/dogcategory"
-                        >
-                          Dog Category
-                        </NavLink>
-                      </li>
+                      
 
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/cattlecategory"
+                          to="/cattle-feed-supplements"
                         >
-                          Cattle Category
+                          Cattle Feed Supplements
                         </NavLink>
                       </li>
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/poultrycategory"
+                          to="/poultry-feed-supplements"
                         >
-                          Poultry Category
+                          Poultry Feed Supplements
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/dog-feed-supplements"
+                        >
+                          Dog Feed Supplements
                         </NavLink>
                       </li>
                     </ul>
                   </div>
-
-
                 </li>
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
                       className="nav-link px-0"
                       activeclassname="active"
-                      to="/services"
+                      to="/veterinary-services"
                     >
-                      Services
+                      Veterinary-Services
                     </NavLink>
                     <ul
                       className="dropdown-menu"
@@ -404,18 +409,9 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/services"
+                          to="/goat-farming-consultant"
                         >
-                          Service 1
-                        </NavLink>
-                      </li>
-                      <li className="">
-                        <NavLink
-                          className="nav-link px-0 justify-content-center"
-                          activeclassname="active"
-                          to="/servicessecond"
-                        >
-                          Service 2
+                          Goat Farming Consultant
                         </NavLink>
                       </li>
 
@@ -423,9 +419,9 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/servicesthird"
+                          to="/dairy-consultant"
                         >
-                          Service 3
+                          Dairy Consultant
                         </NavLink>
                       </li>
                     </ul>
@@ -433,6 +429,7 @@ const Navbar = ({ size }) => {
 
 
                 </li>
+
                 <li className="nav-item">
                   <NavLink
                     className="nav-link px-0"
@@ -450,6 +447,9 @@ const Navbar = ({ size }) => {
                   >
                     Contact Us
                   </NavLink>
+                </li>
+                <li>
+                  <SearchBar defaultSearchText={search} />
                 </li>
                 {/* <li className="nav-item" id="admin">
                   <button className="btn btn-success w-100 my-2">Admin</button>
@@ -477,7 +477,7 @@ const Navbar = ({ size }) => {
                             onClick={openSltAnmlModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Feedback
+                            Form
                           </button>
                           <Modal
                             show={isModalOpen}
@@ -548,7 +548,7 @@ const Navbar = ({ size }) => {
                             onClick={openFarmModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Feedback
+                            Form
                           </button>
                           <FarmerDetails
                             showFarmModal={showFarmModal}
@@ -653,20 +653,20 @@ const Navbar = ({ size }) => {
                             </h5>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item justify-content-center"
-                              href="/products"
+                              to="/veterinary-products"
                             >
                               Product
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item justify-content-center"
-                              href="/contactus"
+                              to="/contactus"
                             >
                               Contact Us
-                            </a>
+                            </Link>
                           </li>
                           <hr />
                           <li className="px-4">

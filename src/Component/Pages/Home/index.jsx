@@ -16,10 +16,14 @@ import HomeJson from '../../../assets/js/homeScript.json';
 
 
 // Image
-import Prdimg4 from "../../../assets/img/OurProduct/prdaml6.png";
-import Prdimg5 from "../../../assets/img/OurProduct/prdaml1.png";
-import Prdimg6 from "../../../assets/img/OurProduct/prdaml3.png";
-import Prdimg7 from "../../../assets/img/OurProduct/prdaml5.png";
+import Prdimg1 from "../../../assets/img/OurProduct/prdaml1.png";
+import Prdimg2 from "../../../assets/img/OurProduct/prdaml2.png";
+import Prdimg3 from "../../../assets/img/OurProduct/prdaml3.png";
+import Prdimg4 from "../../../assets/img/OurProduct/prdaml4.png";
+import Prdimg5 from "../../../assets/img/OurProduct/prdaml5.png";
+import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
+import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
+import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
@@ -28,11 +32,24 @@ import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
+import Achievment from "../../Common/achievment";
+import HomeFaq from "../../Common/faq";
 
 const Home = () => {
+
   const { t } = useTranslation();
   const { cart } = useContext(UserContext);
 
+  const products = [
+    { id: 'cow', imgSrc: Prdimg1 },
+    { id: 'goat', imgSrc: Prdimg2 },
+    { id: 'dog', imgSrc: Prdimg3 },
+    { id: 'hen', imgSrc: Prdimg4 },
+    { id: 'fish', imgSrc: Prdimg5 },
+    { id: 'horse', imgSrc: Prdimg6 },
+    { id: 'birds', imgSrc: Prdimg7 },
+    { id: 'swine', imgSrc: Prdimg8 },
+  ];
   return (
     <>
       <Helmet>
@@ -141,9 +158,8 @@ const Home = () => {
                   </button>
                 </div>
               </a>
-              <a href="/#">
                 <ReactWhatsapp
-                  className="whatsapp-sect"
+                  className="whatsapp-sect w-auto px-1"
                   number="+91 7355043892"
                   message="Hello World"
                 >
@@ -152,11 +168,11 @@ const Home = () => {
                     className="text-white btn--shockwave is-active"
                   />
                 </ReactWhatsapp>
-              </a>
             </div>
           </div>
         </div>
         <About />
+        <Achievment/>
         <div className="container">
           <div className="text-center">
             <div
@@ -165,7 +181,7 @@ const Home = () => {
               data-aos-offset="300"
               data-aos-easing="ease-in-sine"
             >
-              <span className="label-title">Our Products</span>
+              <span className="label-title">Our Products According To Species</span>
               <div>
                 <div className="about-line-large"></div>
                 <div className="about-line-small"></div>
@@ -181,59 +197,27 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-            <div
-              className="col-lg-4"
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="1000"
-              data-aos-delay="300"
-            >
-              <div className="card-box">
-                <Link to={`/products/${"cow"}`}>
-                  <div className="card1">
-                    <img src={Prdimg5} alt="Loading" className="card-img" />
-                  </div>
-                </Link>
+      {products.map(product => (
+        <div
+          key={product.id}
+          className="col-lg-3"
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+        >
+          <div className="card-box my-2 ">
+            <Link to={`/veterinary-products/${product.id}`}>
+              <div className="card1 shadow-2">
+                <img src={product.imgSrc} alt="Loading" className="card-img" />
               </div>
-            </div>
-            <div
-              className="col-lg-4"
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="1000"
-              data-aos-delay="300"
-            >
-              <div className="card-box">
-                <Link to={`/products/${"goat"}`}>
-                  <div className="card1">
-                    <img src={Prdimg4} alt="Loading" className="card-img" />
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            <div
-              className="col-lg-4"
-              data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="1000"
-              data-aos-delay="300"
-            >
-              <div className="card-box">
-                <Link to={`/products/${"dog"}`}>
-                  <div className="card1">
-                    <img
-                      src={Prdimg7}
-                      alt="Loading"
-                      className="card-img img-width h-25"
-                    />
-                  </div>
-                </Link>
-              </div>
-            </div>
-
+            </Link>
           </div>
         </div>
+      ))}
+    </div>
+        </div>
+        <HomeFaq/>
         <Training />
         <FooterTop />
         <Footer />

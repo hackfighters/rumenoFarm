@@ -10,6 +10,8 @@ import Registration from "../Modal/Registion";
 import SendOtp from "../Modal/otp";
 import { toast } from "react-toastify";
 import ProudctFeedbackModal from "../Modal/productFeedback";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ProductItem = ({ item, handleClick }) => {
   const {
@@ -21,6 +23,10 @@ const ProductItem = ({ item, handleClick }) => {
     efficacy,
     suitable,
     tipe,
+    Category,
+    Weight,
+    Instruction,
+    Shortdescription,
     efficacy1,
     efficacy2,
   } = item;
@@ -68,9 +74,37 @@ const ProductItem = ({ item, handleClick }) => {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const { loggedInUser } = useContext(UserContext);
-  const AddToCart = () => {
+  const AddToCart = async () => {
     if (loggedInUser) {
       handleClick(item);
+      console.warn(item)
+      
+      // try {
+      //   const response = await axios.post('http://192.168.1.11:5000/cartss',item);
+      //   console.warn("cart add successfully :", response.data);
+      //   toast.success("cart add successfully", {
+      //     position: "top-center",
+      //     autoClose: 2000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: "light",
+      //   });
+      // } catch (error) {
+      //     console.warn(error)
+      //     toast.error(error, {
+      //       position: "top-center",
+      //       autoClose: 2000,
+      //       hideProgressBar: false,
+      //       closeOnClick: true,
+      //       pauseOnHover: true,
+      //       draggable: true,
+      //       progress: undefined,
+      //       theme: "light",
+      //     });
+      //   }
     } else {
       // console.log("login first");
       setShowLoginModal(!showLoginModal);
@@ -93,19 +127,24 @@ const ProductItem = ({ item, handleClick }) => {
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
         <div className="row">
           
-          <div className="col-sm-4 p-4">
+          <div className="col-sm-4 p-4 product">
+          <Link className="text-decoration-none text-dark" to={`/veterinary-products/ProductDetail/${item.id}`}>
             <img src={img} width={200} height={400} alt="Loading" className="w-100" />
+          </Link>
           </div>
           <div className="col-sm-8 px-3 lg:px-5 text-center text-lg-start">
             
-            <div className="fs-3">{name}</div>
-            <div className="fs-4 mt-2 text-danger">{priceText}</div>
-            <div className="mt-2">{description}</div>
+            <Link className="text-decoration-none text-dark" to={`/veterinary-products/ProductDetail/${item.id}`}>
+              <div className="fs-3">{name}</div>
+              </Link>
+            <div className="fs-4 mt-2 text-danger">₹ {priceText} /-</div>
+            <div className="fs-4 mt-2 "> { Weight } </div>
+            <div className="mt-2">{Instruction}</div>
             <div className="lg:d-flex d-block justify-content-between mt-2">
               
               <div>
-                <span className="fw-bold">{suitable}</span>
-                <span>{tipe}</span>
+                <span className="fw-bold my-2 ">Suitable for </span>
+                <span>{Category}</span>
                 
               </div>
               <div>
@@ -144,7 +183,7 @@ const ProductItem = ({ item, handleClick }) => {
             <ViewModal
               title={name}
               img={img}
-              text={text}
+              text={description}
               showModal={showModal}
               closeModal={closeModal}
             />

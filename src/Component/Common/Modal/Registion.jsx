@@ -44,7 +44,7 @@ const Registration = ({ showModal, closeModal }) => {
       }
     // console.log(Registrationdata)
     try {
-      const response = await axios.post('https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/rumeno_register', Registrationdata);
+      const response = await axios.post('http://192.168.1.11:5000/rumeno_register', Registrationdata);
       // console.log('Registration successful:', response.data);
 
       if (response.data.status === 200) {
@@ -116,7 +116,7 @@ const Registration = ({ showModal, closeModal }) => {
                       <label className="my-2">{t("v312")}</label>
                       <input
                         {...register("mobile", {
-                          required: "Mobile No is required",
+                          required: "Mobile Number is required",
                         })}
                         type="text"
                         className={`form-control ${
@@ -124,7 +124,7 @@ const Registration = ({ showModal, closeModal }) => {
                         }`}
                         name="mobile"
                       
-                        placeholder="Mobile No"
+                        placeholder="Mobile Number"
                       />
                       {errors.mobile && (
                         <span className="text-danger">
@@ -220,8 +220,8 @@ const Registration = ({ showModal, closeModal }) => {
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">City</label>
-{/* 
-                      <Select
+
+                      {/* <Select
                         options={City.getCitiesOfState(
                           selectedState?.countryCode,
                           selectedState?.isoCode

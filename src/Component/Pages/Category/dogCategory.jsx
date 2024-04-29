@@ -6,7 +6,83 @@ import { UserContext } from "../../Common/Modal/logusecont";
 import { Accordion } from "react-bootstrap";
 
 const DogCategoryPage = () => {
+  
   const { cart } = useContext(UserContext);
+
+  // var Value = '';
+  // const AllData = [...Data, ...FarmEquipment, ...RumenoAmazon, ...HumanConsumable];
+  // const [cookies, setCookie] = useCookies(["cart"]);
+  // useEffect((item) => {
+  //   if (cookies.cart) {
+  //     setCart(cookies.cart);
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   setCookie("cart", cart, { path: "/" });
+  //   Value = cart.length;
+  //   if (Value !== 0) {
+  //     setSizevalue(Value)
+  //   }
+  // }, [cart, setCookie]);
+
+
+  // // Filter logic (you need to define your filter criteria here)
+  // const filterData = AllData.filter((item) => {
+  //   // Example filter criteria: filter items where the name includes "Goat"
+  //   return item.name.toLowerCase().includes("goat");
+  // });
+
+  // const [showLoginModal, setShowLoginModal] = useState(false);
+  // const { loggedInUser } = useContext(UserContext);
+
+  // const openRegistration = () => {
+  //   setShowRegistrtionModal(true);
+  //   setShowLoginModal(false);
+  // };
+
+  // const closeRegistrationModal = () => {
+  //   setShowRegistrtionModal(false);
+  // };
+  // const OpenSendOtp = () => {
+  //   setShowOpt(true);
+  //   setShowLoginModal(false);
+  // };
+  // const CloseSendOtp = () => {
+  //   setShowOpt(false);
+  // };
+
+
+
+  // const AddToCarts = (item) => {
+  //   if (loggedInUser) {
+  //      // Check if the item already exists in the cart
+  //      const itemExists = cart.some(cartItem => cartItem.name === item.name);
+   
+  //      if (!itemExists) {
+  //        console.log("Item added to cart:", item);
+  //        // Add logic to handle adding item to cart
+  //        setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
+  //        const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
+  //        setiteamdata(itemData);
+  //        console.log(itemData);
+  //      } else {
+  //        // Optionally, show a message that the item is already in the cart
+  //        console.log("Item already in cart");
+  //      }
+  //   } else {
+  //      setShowLoginModal(!showLoginModal);
+  //      toast.warn("Please Login", {
+  //        position: "top-center",
+  //        autoClose: 2000,
+  //        hideProgressBar: false,
+  //        closeOnClick: true,
+  //        pauseOnHover: true,
+  //        draggable: true,
+  //        progress: undefined,
+  //        theme: "light",
+  //      });
+  //   }
+  //  };
   return (
     <>
       <div className="desk-nav">
@@ -30,13 +106,58 @@ const DogCategoryPage = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Dog Category</span>
+            <span className="label-title">Dog Feed Supplements</span>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
             </div>
           </div>
         </div>
+        {/* <div className="container-fluid">
+          <div className="row justify-content-center">
+
+            {filterData.map((item, index) => (
+              <div key={index} className="col-lg-3 text-center border bg-white m-3  shadow">
+                <img src={item.img} className="w-100 mt-2" height={200} alt="loading" />
+                <h5 className="mt-3  fw-bold m-auto text-center">{item.name}</h5>
+                <p className="mt-2"> dolor similique expedita provident ipsam sunt rerum rem voluptatem.</p>
+                <hr className="my-0" />
+                <div className="d-flex justify-content-between mx-2 align-item-center">
+                  <button
+                    className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
+                    onClick={() => AddToCarts(item)}
+                  >
+                    Add to Cart
+                  </button>
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" >
+                    <span
+                      className=""
+                    >
+                      View More
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </span>
+                  </Link>
+
+                </div>
+              </div>
+            ))}
+
+
+
+            <Login
+              showModal={showLoginModal}
+              closeModal={setShowLoginModal}
+              openRegistrationModal={openRegistration}
+              OpenSendOtpModal={OpenSendOtp}
+            />
+            <Registration
+              showModal={showRegistrationModal}
+              closeModal={closeRegistrationModal}
+            />
+            <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
+          </div>
+
+        </div> */}
         <div className="row bg-white shadow mx-3 my-4 justify-content-center">
           <div className="col-lg-11 my-4">
             <h1 className="my-4 text-center">Dogs Supplements to Promote Optimal Health</h1>

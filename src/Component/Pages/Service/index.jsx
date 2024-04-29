@@ -18,10 +18,29 @@ import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
+import { Accordion } from "react-bootstrap";
 
 const Services = () => {
   const { t } = useTranslation();
   const { cart } = useContext(UserContext);
+
+  const FAQ = [
+    {
+ 
+    
+      question: "Are Vet Services Taxable?",
+        answer: "Veterinary Services for Pet Animals: These services, which include medical treatment for pets, are not taxable under the Goods and Services Tax (GST). They fall under the nil rate Category1.Veterinary Services for Livestock: Similar to pet animals, services related to livestock health care are also not taxable and fall under the nil rate Category2. Other Veterinary Services (Not Elsewhere Classified): Services beyond pet animals and livestock, such as specialized treatments or laboratory testing, are subject to an 18% GST rate"}
+    ,{
+   
+      question: "What Does Veterinary Services Mean?",
+        answer: "Veterinary services refer to professional medical care provided to animals by licensed veterinarians. These services encompass a wide range of activities, including diagnosing and treating illnesses, performing surgeries, administering vaccinations, conducting health check-ups, and offering preventive care. Veterinarians play a crucial role in maintaining the health and well-being of pets, livestock, and other animals."
+      }
+    ,{
+      
+      question: "What Are Veterinary Services?",
+        answer: "Veterinary services encompass various aspects related to animal health and care. Some common veterinary services include: Medical Consultations: Veterinarians diagnose and treat illnesses, injuries, and health conditions in animals. Surgical Procedures: Veterinarians perform surgeries, such as spaying/neutering, tumor removal, and orthopedic procedures. Vaccinations: Administering vaccines to prevent diseases in animals. Dental Care: Cleaning teeth, treating dental issues, and promoting oral health. Parasite Control: Preventing and treating parasites like fleas, ticks, and worms. Nutritional Guidance: Advising on proper diets and nutrition for different species. Emergency Care: Providing urgent medical attention in critical situations. Wellness Exams: Regular check-ups to monitor overall health. Laboratory Testing: Conducting diagnostic tests (bloodwork, X-rays, etc.). Animal Behavior Consultations: Addressing behavioral issues in pets. Farm Animal Services: Caring for livestock, poultry, and other farm animals."
+      }
+  ]
 
   return (
     <>
@@ -80,7 +99,7 @@ const Services = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Our Services</span>
+            <span className="label-title">Veterinary  Services</span>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
@@ -123,6 +142,42 @@ const Services = () => {
             </div>
           </div>
         </div>
+        <div className="col-lg-12 mb-2 mt-5">
+          <h2 className=" py-2 px-4 service-head">Veterinary Services by Rumeno Farmotech: Enhancing Animal Health through Expert Care</h2>
+        </div>
+        <div className="p-3">
+      <p>In the dynamic world of animal husbandry, ensuring the well-being and productivity of our beloved creatures is of utmost importance. Proper nutrition and specialized care play pivotal roles in achieving these goals. Enter Rumeno Farmotech, a name synonymous with excellence in animal feed supplements and veterinary services.
+      </p>
+      <hr />
+      <h3 className="my-3 fw-bold">Why Choose Rumeno Farmotech?</h3>
+        <h4 className="fw-bold">1. Comprehensive Product Range:</h4>
+        <ul>
+  <li className="m-2"> <strong>Cow Feed Supplements: </strong> These products are tailored to support the growth and development of cattle. With meticulously crafted mineral combinations and calcium supplements, Rumeno Farmotech ensures that your cows and buffaloes receive optimal nourishment.</li>
+  <li className="m-2"> <strong>Poultry Feed Supplements: </strong> Chickens, ducks, and other fowl benefit from high-quality supplements that enhance overall health.</li>
+  <li className="m-2"> <strong>Aqua Feed Supplements: </strong> Specialized nutrition is essential for aquaculture. Fish and other aquatic creatures thrive with Rumeno Farmotech’s supplements.</li>
+  <li className="m-2"> <strong>Pigeon Feed Supplements: </strong> Avian enthusiasts can rely on Rumeno Farmotech to provide proper nourishment for their feathered companions.</li>
+</ul>
+      <h4 className="fw-bold">2. Nationwide Reach:</h4>
+      <ul>
+        <li className="m-2">With operations across India, Rumeno Farmotech ensures that its products and veterinary services are accessible to farmers and livestock owners in every corner of the country.</li>
+      </ul>
+      <h4 className="fw-bold">3. country.Research-Driven Approach:</h4>
+      <ul>
+      <li className="m-2"> The Rumeno Farmotech team is committed to continuous research and development. They create new formulations to address evolving challenges faced by farmers.</li>
+<li className="m-2"> Their solutions, including growth promoters and disease preventatives, are backed by scientific research.</li>
+      </ul>
+      <p className=""> Rumeno Farmotech’s commitment to excellence extends beyond feed supplements. Their veterinary services, backed by research and expertise, contribute to healthier and happier animals. As you optimize your veterinary practice online, remember that every click could lead to a wagging tail or a grateful purr</p>
+      <hr />
+      <h4 className="my-3 fw-bold"> Why Opt for Our Veterinary Products?</h4>
+      <ul>
+        <li className="my-2"><strong> Quality Control : </strong>
+          All of our animal products come from reliable suppliers and have undergone safety and effectiveness testing.</li>
+        <li className="my-2"><strong> Expert Suggestions : </strong>
+          Our group of skilled vets makes sure that every animal product satisfies the highest requirements.</li>
+        <li className="my-2"><strong> Client Testimonials : </strong>
+          View the reviews left by other pet owners regarding our animal goods. Their contentment says it all.</li>
+      </ul>
+      </div>
         <div className="col-lg-12 my-5">
           <h2 className=" py-2 px-4 service-head">{t("v268")}</h2>
         </div>
@@ -233,6 +288,14 @@ const Services = () => {
               </ul>
             </div>
           </div>
+          <Accordion defaultActiveKey="0" flush>
+          {FAQ.map((item, index) => (
+            <Accordion.Item className="m-3" key={index} eventKey={index.toString()}>
+              <Accordion.Header><strong className="mx-2">Q.{index + 1} </strong> {item.question}</Accordion.Header>
+              <Accordion.Body>{item.answer}</Accordion.Body>
+            </Accordion.Item>
+          ))}
+        </Accordion>
         </div>
 
         <FeedBackForm />

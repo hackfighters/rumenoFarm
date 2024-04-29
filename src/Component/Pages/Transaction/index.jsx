@@ -20,11 +20,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
+import { useNavigate } from "react-router-dom";
 // {/* Rumeno farm  */}
 // {/* Rumeno */}
 // {/* Veterinary */}
 const Transaction = () => {
-  const { amountData,UidData } = useContext(UserContext);
+  const { amountData, UidData } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -43,8 +44,12 @@ const Transaction = () => {
   const [uploadedFileType, setUploadedFileType] = useState("");
   const [uploadedFileCounter, setUploadedFileCounter] = useState(0);
   const [image, setImage] = useState("");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const handlePaymentMethodChange = (event) => {
+    setSelectedPaymentMethod(event.target.value);
+  };
 
-
+  const navigate = useNavigate();
   const dropZoneRef = useRef(null);
   const fileInputRef = useRef(null);
   const previewImageRef = useRef(null);
@@ -175,63 +180,94 @@ const Transaction = () => {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("file", image);
-    
-    const travdatat = {
-      title: data.name,
-      mobileNumber: data.mobileNumber,
-      amount: data.amount,
-      transactionID: data.transactionID,
-      uID:UidData
-    };
-    axios
-      .post(
-        "https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/transaction_details",
-        formData
-      )
-      .then((res) => {
-        // console.log(res.data);
-      })
-      .catch((err) => {
-        // console.log(err, "err");
-          });
+    // console.log(formData);
 
+    var paydata;
+    if (data.paymode=="COD"){
+      paydata = {
+        name: data.name,
+        mobileNumber: data.mobileNumber,
+        address: data.address,
+        amount: data.amount,
+        paymode: data.paymode,
+        uID: UidData,
 
+      };
+      console.warn(paydata)
       axios
       .post(
-        "https://89a8-2401-4900-1c08-7658-ec3a-e43b-4210-c5fa.ngrok-free.app/transaction_details",
-        travdatat
+        "http://localhost:2000/transaction_details",
+        paydata
       )
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
-        // console.log(err, "err");
+        console.log(err, "err");
       });
-
+    }
+    else{
+      paydata = {
+        name: data.name,
+        mobileNumber: data.mobileNumber,
+        address: data.address,
+        amount: data.amount,
+        transactionID: data.transactionID,
+        paymode: data.paymode,
+        uID: UidData
+      };
+      console.warn(paydata)
+      axios
+        .post(
+          "http://localhost:2000/transaction_details",
+          formData
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err, "err");
+        });
+  
+  
+      axios
+        .post(
+          "http://localhost:2000/transaction_details",
+          paydata
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err, "err");
+        });
+    }
+// Navigate to Thankyou page
+navigate("/thankyoupage");
   };
 
   return (
     <>
-    <Helmet>
-                <meta charSet="utf-8" />
-                <title>Transaction-Rumeno</title>
-                <link rel="canonical" href="https://rumeno.in/transaction" />
-            </Helmet>
-            <ul className="d-none">
-  {KeysWords.map((item, index) => (
-    <li key={index}>{item}</li>
-  ))}
-</ul>
-            <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
-        <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
-        <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Transaction-Rumeno</title>
+        <link rel="canonical" href="https://rumeno.in/transaction" />
+      </Helmet>
+      <ul className="d-none">
+        {KeysWords.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+      <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
+      <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
+      <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <div className="desk-nav">{/* <Navbar /> */}</div>
       <div className="mob-nav">
         <ResponsiveNavbar />
@@ -276,14 +312,13 @@ const Transaction = () => {
                       <input
                         type="text"
                         className="form-control form-group py-3"
-                        placeholder="Transaction ID"
-                        {...register("transactionID", { required: true })}
+                        placeholder="Address"
+                        {...register("address", { required: true })}
                       />
-                      {errors.transactionID && (
-                        <span className="text-danger">
-                          Transaction ID is required
-                        </span>
+                      {errors.address && (
+                        <span className="text-danger">Address is required</span>
                       )}
+
                       <input
                         type="number"
                         className="form-control form-group py-3"
@@ -301,102 +336,138 @@ const Transaction = () => {
                             : "Please enter a valid mobile number"}
                         </span>
                       )}
-                      {/* <input multiple onChange={(e) => setImage(e.target.files[0])} type="file" 
-                      {...register("imges", {
-                        required: true,
-                      })}/> */}
+                      <div className="row mt-3">
+                        <div className="col-lg-6 text-center  border-end">
+                        <input
+                          type="radio"
+                          className="form-check-input"
+                          id="cod"
+                          name="paymentMethod"
+                          onClick={handlePaymentMethodChange}
+                          value="COD"
+                          {...register('paymode', { required: true })}
+                        />
+                        <label htmlFor="cod" className="fw-bold text-danger mx-1">COD</label>
+                        {/* <p className="pt-1">(2% extra on Cash On Delivery)</p> */}
+                        </div>
+                        <div className="col-lg-6 text-center">
+                        <input
+                          type="radio"
+                          className="form-check-input"
+                          id="upi"
+                          name="paymentMethod"
+                          onClick={handlePaymentMethodChange}
+                          value="UPI"
+                          {...register("paymode", { required: true })}
+
+                        />
+                        <label htmlFor="upi" className="fw-bold text-danger mx-1">UPI</label>
+                        </div>
+                      </div>
+                      <hr />
 
                       {/* <TransImgUpload/> */}
-                      <div
-                        id="uploadArea"
-                        className={`upload-area ${
-                          uploadAreaOpen ? "upload-area--open" : ""
-                        }`}
-                      >
-                        <h6 className="my-3 text-secondary">
-                          Upload Transaction Screenshot
-                        </h6>
-                        <div
-                          className="upload-area__drop-zoon drop-zoon"
-                          ref={dropZoneRef}
-                          onDragOver={handleDragOver}
-                          onDragLeave={handleDragLeave}
-                          onDrop={handleDrop}
-                          onClick={handleClick}
-                        >
-                          <span className="drop-zoon__icon">
-                            <FontAwesomeIcon icon={faImage} />
-                          </span>
-                          <p className="drop-zoon__paragraph">
-                            Drop your Payment screenshot here
-                          </p>
-                          <span
-                            id="loadingText"
-                            className="drop-zoon__loading-text"
-                            style={{
-                              display: loadingTextVisible ? "block" : "none",
-                            }}
-                          >
-                            Please Wait
-                          </span>
-                          <img
-                            src=""
-                            alt="loading"
-                            id="previewImage"
-                            className="drop-zoon__preview-image"
-                            ref={previewImageRef}
-                            style={{
-                              display: previewImageVisible ? "block" : "none",
-                            }}
-                            draggable="false"
-                          />
+                      {selectedPaymentMethod === "UPI" && (
+                        <>
                           <input
-                            type="file"
-                            id="fileInput"
-                            className="drop-zoon__file-input"
-                            accept="image/*"
-                            onChange={handleFileChange}
-                            ref={fileInputRef}
+                            type="text"
+                            className="form-control form-group py-3"
+                            placeholder="Transaction ID"
+                            {...register("transactionID", { required: true })}
                           />
-                        </div>
-
-                        <div
-                          id="fileDetails"
-                          className={`upload-area__file-details file-details ${
-                            fileDetailsOpen ? "file-details--open" : ""
-                          }`}
-                        >
-                          <h5 className="my-3">Uploaded File</h5>
-
+                          {errors.transactionID && (
+                            <span className="text-danger">
+                              Transaction ID is required
+                            </span>
+                          )}
                           <div
-                            id="uploadedFile"
-                            className={`uploaded-file ${
-                              uploadedFileOpen ? "uploaded-file--open" : ""
-                            }`}
+                            id="uploadArea"
+                            className={`upload-area ${uploadAreaOpen ? "upload-area--open" : ""
+                              }`}
                           >
-                            <div className="uploaded-file__icon-container">
-                              <i className="bx bxs-file-blank uploaded-file__icon"></i>
-                              <span className="uploaded-file__icon-text">
-                                {uploadedFileType}
+                            <h6 className="my-3 text-secondary">
+                              Upload Transaction Screenshot
+                            </h6>
+                            <div
+                              className="upload-area__drop-zoon drop-zoon"
+                              ref={dropZoneRef}
+                              onDragOver={handleDragOver}
+                              onDragLeave={handleDragLeave}
+                              onDrop={handleDrop}
+                              onClick={handleClick}
+                            >
+                              <span className="drop-zoon__icon">
+                                <FontAwesomeIcon icon={faImage} />
                               </span>
+                              <p className="drop-zoon__paragraph">
+                                Drop your Payment screenshot here
+                              </p>
+                              <span
+                                id="loadingText"
+                                className="drop-zoon__loading-text"
+                                style={{
+                                  display: loadingTextVisible ? "block" : "none",
+                                }}
+                              >
+                                Please Wait
+                              </span>
+                              <img
+                                src=""
+                                alt="loading"
+                                id="previewImage"
+                                className="drop-zoon__preview-image"
+                                ref={previewImageRef}
+                                style={{
+                                  display: previewImageVisible ? "block" : "none",
+                                }}
+                                draggable="false"
+                              />
+                              <input
+                                type="file"
+                                id="fileInput"
+                                className="drop-zoon__file-input"
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                ref={fileInputRef}
+                              />
                             </div>
 
                             <div
-                              id="uploadedFileInfo"
-                              className={`uploaded-file__info ${
-                                uploadedFileInfoActive
-                                  ? "uploaded-file__info--active"
-                                  : ""
-                              }`}
+                              id="fileDetails"
+                              className={`upload-area__file-details file-details ${fileDetailsOpen ? "file-details--open" : ""
+                                }`}
                             >
-                              <span className="uploaded-file__name">
-                                {uploadedFileName}
-                              </span>
-                              <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
+                              <h5 className="my-3">Uploaded File</h5>
+
+                              <div
+                                id="uploadedFile"
+                                className={`uploaded-file ${uploadedFileOpen ? "uploaded-file--open" : ""
+                                  }`}
+                              >
+                                <div className="uploaded-file__icon-container">
+                                  <i className="bx bxs-file-blank uploaded-file__icon"></i>
+                                  <span className="uploaded-file__icon-text">
+                                    {uploadedFileType}
+                                  </span>
+                                </div>
+
+                                <div
+                                  id="uploadedFileInfo"
+                                  className={`uploaded-file__info ${uploadedFileInfoActive
+                                      ? "uploaded-file__info--active"
+                                      : ""
+                                    }`}
+                                >
+                                  <span className="uploaded-file__name">
+                                    {uploadedFileName}
+                                  </span>
+                                  <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
+                        </>
+                      )}
                       <button
                         className="contact_form_submit mt-5"
                         type="submit"
@@ -440,10 +511,6 @@ const Transaction = () => {
         </div>
       </section>
 
-      {/* Rumeno farm  */}
-      {/* Rumeno */}
-      {/* Veterinary */}
-      {/* </div> */}
       <Footer />
     </>
   );

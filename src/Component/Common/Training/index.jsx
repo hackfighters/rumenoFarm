@@ -8,7 +8,7 @@ const Training = () => {
 
   return (
     <>
-      <section id="training" className="py-4 sect-training header">
+      <section id="training" className="py-4 sect-training header border-0">
         
         <div className="container">
           <div
