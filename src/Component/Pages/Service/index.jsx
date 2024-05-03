@@ -45,9 +45,11 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
-        <title>Services-Rumeno</title>
-        <link rel="canonical" href="https://rumeno.in/services" />
+        <meta charSet="utf-8" name="description" content="Looking for trusted veterinary services in india? Explore a network of clinics offering comprehensive pet care. Rumeno connects you with experienced veterinarians for all your animal's needs.
+" />
+        <title>Top-Rated Veterinary Services in india: Experienced Pet Care Clinics
+</title>
+        <link rel="canonical" href="https://rumeno.in/veterinary-services" />
         <script type="application/ld+json">
     {JSON.stringify({
       "@context": ServiceJson["@context"],

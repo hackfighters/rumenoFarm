@@ -101,8 +101,10 @@ const Products = () => {
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
-        <title>Products-Rumeno</title>
+        <meta charSet="utf-8" name="description" content="Support animal health naturally! Explore Rumeno's innovative veterinary products for all your pet's needs. Shop Now
+" />
+        <title>Rumeno Veterinary Products: Trusted by Vets, Loved by Pets
+</title>
         <link rel="canonical" href="https://rumeno.in/veterinary-products" />
       </Helmet>
       <ul className="d-none">

@@ -21,39 +21,41 @@ const ServicesSecond = () => {
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
-        <title>Services-Rumeno</title>
+        <meta charSet="utf-8" name="description" content="Get expert advice for your Lucknow goat farm with Rumeno's consulting services. Our experienced goat farming consultant offers personalized guidance on breeding, raising, and managing healthy, productive goats.
+" />
+        <title>Rumeno: Expert Goat Farming Consultants in india
+        </title>
         <link rel="canonical" href="https://rumeno.in/goat-farming-consultant" />
         <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": GoatServiceJson["@context"],
-      "@type": GoatServiceJson["@type"],
-      "mainEntity": GoatServiceJson.mainEntity.map((item, index) => ({
-        "@type": item["@type"],
-        "name": item.name,
-        "acceptedAnswer": {
-          "@type": item.acceptedAnswer["@type"],
-          "text": item.acceptedAnswer.text
-        }
-      }))
-    })}
-  </script>
+          {JSON.stringify({
+            "@context": GoatServiceJson["@context"],
+            "@type": GoatServiceJson["@type"],
+            "mainEntity": GoatServiceJson.mainEntity.map((item, index) => ({
+              "@type": item["@type"],
+              "name": item.name,
+              "acceptedAnswer": {
+                "@type": item.acceptedAnswer["@type"],
+                "text": item.acceptedAnswer.text
+              }
+            }))
+          })}
+        </script>
       </Helmet>
       <ul className="d-none">
-  {KeysWords.map((item, index) => (
-    <li key={index}>{item}</li>
-  ))}
-</ul>
+        {KeysWords.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
       <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
-        <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
-        <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
-        <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
-        <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
-        <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>
+      <a className="d-none" href="https://www.amazon.in/goat-farming-accessories/s?k=goat+farming+accessories"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-farm-equipment/s?k=cow+farm+equipment"></a>
+      <a className="d-none" href="https://www.amazon.in/cow-feed/s?k=cow+feed"></a>
+      <a className="d-none" href="https://www.amazon.in/cattle-medicine/s?k=cattle+medicine"></a>
+      <a className="d-none" href="https://www.indiamart.com/shakyaworldtrade/goat-farming-equipment-and-accessories.html"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20feed&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
+      <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <div className="desk-nav">
         <Navbar size={cart.length} />
       </div>
@@ -87,13 +89,13 @@ const ServicesSecond = () => {
             Unlocking Goat Farming Success: Rumeno Farmotech's Expertise
           </h2>
           <p className="mx-5 my-4">
-          Rumeno Farmotech, a prominent goat farming consultant in the field of animal husbandry, offers specialized services to enhance the productivity and well-being of goat herds. Their comprehensive services include:
-          <ul>
-            <li>Nutritional Guidance: Rumeno provides tailored dietary plans, ensuring optimal nutrition for goats at different life stages.</li>
-            <li>Health Management: They offer preventive healthcare strategies, vaccinations, and disease management protocols.</li>
-            <li>Breeding Consultation: Rumeno assists in selecting suitable breeding pairs and optimizing breeding cycles.</li>
-            <li>Infrastructure Planning: From barn design to feed storage, they advise on efficient farm infrastructure.</li>
-          </ul>
+            Rumeno Farmotech, a prominent goat farming consultant in the field of animal husbandry, offers specialized services to enhance the productivity and well-being of goat herds. Their comprehensive services include:
+            <ul>
+              <li>Nutritional Guidance: Rumeno provides tailored dietary plans, ensuring optimal nutrition for goats at different life stages.</li>
+              <li>Health Management: They offer preventive healthcare strategies, vaccinations, and disease management protocols.</li>
+              <li>Breeding Consultation: Rumeno assists in selecting suitable breeding pairs and optimizing breeding cycles.</li>
+              <li>Infrastructure Planning: From barn design to feed storage, they advise on efficient farm infrastructure.</li>
+            </ul>
           </p>
           <div className="row">
             <div className="col-lg-6">
@@ -108,11 +110,7 @@ const ServicesSecond = () => {
                 goat farming.
               </p>
               <p className="mx-5 my-4">
-                In the field of goat farming consultancy, Rumeno Farmotech is a
-                reputable name, providing farmers hoping to succeed in this
-                rapidly growing business with customized solutions. As goat
-                farming consultants, Rumeno Farmotech offers priceless
-                knowledge.
+                In the field of goat farming consultancy, Rumeno Farmotech is a reputable name, providing farmers hoping to succeed in this rapidly growing business with customized solutions. As a goat farming consultant, Rumeno Farmotech offers priceless knowledge.
               </p>
               <p className="mx-5 my-4">
                 On the choice of breed, maximizing nutrition, controlling

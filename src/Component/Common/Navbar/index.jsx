@@ -255,13 +255,14 @@ const Navbar = ({ size }) => {
                 </div>
 
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className="me-2"
-                    style={{ color: "#f0f0f0" }}
-                  />
-                  <span className="text-dark">rumeno.farmotech@gmail.com</span>
-
+                <a className="text-decoration-none text-dark" rel="noreferrer" href="https://mail.google.com" target="_blank">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
+                rumeno.farmotech@gmail.com
+                </a>
                 </div>
                 <div className="col-sm-2 px-sm-5 px-lg-2 d-flex cnt justify-content-end align-items-center">
 
@@ -276,12 +277,14 @@ const Navbar = ({ size }) => {
                   </span>
                 </div>
                 <div className="col-lg-2 col-sm-1 px-2 d-flex cnt align-items-center justify-content-center">
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className="me-2"
-                    style={{ color: "#f1f4f8" }}
-                  />
-                  <span className="text-dark  ">+91 7355043892</span>
+                  <a className="text-decoration-none text-dark" rel="noreferrer" href="tel:+91 7355043892">
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
+                +91 7355043892
+                </a>
                 </div>
                 <div className="col-sm-2  px-2   align-items-center  nav-lang-switch h-100 my-auto  justify-content-lg-start  justify-content-sm-center">
                   <FontAwesomeIcon
@@ -341,9 +344,7 @@ const Navbar = ({ size }) => {
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0"
-                      activeclassname="active"
-                      to="/veterinary-products"
+                      className="nav-head px-0"
                     >
                       Veterinary-Products
                     </NavLink>
@@ -351,6 +352,15 @@ const Navbar = ({ size }) => {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
+                    <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/veterinary-products"
+                    >
+                      Veterinary-Products
+                    </NavLink>
+                      </li>
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
@@ -395,9 +405,7 @@ const Navbar = ({ size }) => {
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0"
-                      activeclassname="active"
-                      to="/veterinary-services"
+                      className="nav-head px-0"
                     >
                       Veterinary-Services
                     </NavLink>
@@ -405,6 +413,15 @@ const Navbar = ({ size }) => {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/veterinary-services"
+                    >
+                      Veterinary-Services
+                    </NavLink>
+                      </li>
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
@@ -657,7 +674,7 @@ const Navbar = ({ size }) => {
                               className="dropdown-item justify-content-center"
                               to="/veterinary-products"
                             >
-                              Product
+                             Veterinary Products
                             </Link>
                           </li>
                           <li>

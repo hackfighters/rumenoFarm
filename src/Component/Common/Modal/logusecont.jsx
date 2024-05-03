@@ -6,6 +6,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const [LoginUserData, setLoginUserData] = useState();
   const [farmDtl, setfarmDtl] = useState(null);
   const [sizevalue, setSizevalue] = useState(null);
   const [UidData, setUidData] = useState(null);
@@ -58,7 +59,8 @@ export const UserProvider = ({ children }) => {
         brddata,
         setbrddata,
         Ucaddkid,
-        setUcaddkid,
+        setUcaddkid,LoginUserData, 
+        setLoginUserData,
       }}
     >
       {children}
