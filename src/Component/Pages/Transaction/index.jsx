@@ -196,15 +196,17 @@ const Transaction = () => {
         name: data.name,
         mobileNumber: data.mobileNumber,
         address: data.address,
-        amount: Finalamt,
+        amount: amountData,
+        transactionID: "NA",
+        cod_payment: "NA",
         paymode: data.paymode,
-        uID: UidData,
-
+        uID: UidData
       };
+      
       console.warn(paydata)
       axios
       .post(
-        "http://localhost:2000/transaction_details",
+        "http://192.168.1.8:5000/transaction_details",
         paydata
       )
       .then((res) => {
@@ -222,12 +224,13 @@ const Transaction = () => {
         amount: amountData,
         transactionID: data.transactionID,
         paymode: data.paymode,
+        cod_payment: "NA",
         uID: UidData
       };
       console.warn(paydata)
       axios
         .post(
-          "http://localhost:2000/transaction_details",
+          "http://192.168.1.8:5000/transaction_details",
           formData
         )
         .then((res) => {
@@ -240,7 +243,7 @@ const Transaction = () => {
   
       axios
         .post(
-          "http://localhost:2000/transaction_details",
+          "http://192.168.1.8:5000/transaction_details",
           paydata
         )
         .then((res) => {

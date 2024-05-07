@@ -25,7 +25,6 @@ import SendOtp from "../Modal/otp";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import { UserContext } from "../Modal/logusecont";
 import Cookies from "js-cookie";
-import datatest from './test.json'
 import FarmerDetails from "../Modal/FarmerFarmDtl";
 import SearchBar from "./navsearch";
 
@@ -111,18 +110,18 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
     setShowOpt(false);
   };
 
-  const handleAddtoCartApi = async (getUidata) => {
-    console.log(datatest, 3455)
+  // const handleAddtoCartApi = async (getUidata) => {
+  //   console.log(datatest, 3455)
 
-    setCart(datatest)
+  //   setCart(datatest)
 
-    // try {
-    //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
-    //   console.log('Add to cart is Successfull', response.data);
-    // } catch (error) {
-    //   console.error('Add to cart is not working', error);
-    // }
-  }
+  //   // try {
+  //   //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
+  //   //   console.log('Add to cart is Successfull', response.data);
+  //   // } catch (error) {
+  //   //   console.error('Add to cart is not working', error);
+  //   // }
+  // }
 
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
@@ -559,7 +558,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
                     OpenSendOtpModal={OpenSendOtp}
-                    handleAddtoCartApi={handleAddtoCartApi}
+                    // handleAddtoCartApi={handleAddtoCartApi}
                   />
                   <Registration
                     showModal={showRegistrationModal}

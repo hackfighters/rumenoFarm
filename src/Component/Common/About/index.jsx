@@ -136,7 +136,7 @@ const About = () => {
             data-aos-delay="20"
             data-aos-duration="1500"
           >
-            <p className="par mx-4">{t("v5")}</p>
+            <p className="par mx-5">{t("v5")}</p>
           </div>
         </div>
       </div>

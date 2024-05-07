@@ -1,5 +1,7 @@
 body {
   font-family: Poppins !important;
+  position: relative;
+  top: 0 !important;
 }
 .nav-text h6 {
   color: #000;
@@ -261,6 +263,9 @@ body {
   box-shadow: 0 0 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
   border-radius: 4px;
+}
+.login-dropdown{
+  left: -101px !important;
 }
 .navbar .dropdown ul li {
   min-width: 200px;
@@ -843,7 +848,7 @@ body {
   border-radius: 4px 4px 0 0;
 }
 .option:nth-child(2):hover ~ #option-bg {
-  top: 40px;
+  /* top: 40px; */
   background-color: #0057ff;
 }
 .lang-link a {
@@ -2750,6 +2755,12 @@ img.card-img{
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.text-trun-cart{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 

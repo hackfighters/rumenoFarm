@@ -598,8 +598,8 @@ const DogCategoryPage = () => {
       if (!itemExists) {
         console.log("Item added to cart:", item);
         // Add logic to handle adding item to cart
-        setCart([...cart, { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData }]);
-        const itemData = { id: item.id, amount: 1, price: item.price, img: item.img, name: item.name, uID: UidData };
+        setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         console.log(itemData);
         try {

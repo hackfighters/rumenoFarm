@@ -29,6 +29,7 @@ const Registration = ({ showModal, closeModal }) => {
 
 
   const onSubmit = async (data) => {
+    console.log(data,register)
 
     const Registrationdata = 
       {
@@ -43,23 +44,23 @@ const Registration = ({ showModal, closeModal }) => {
         
       }
     // console.log(Registrationdata)
-    try {
-      const response = await axios.post('http://192.168.1.11:5000/rumeno_register', Registrationdata);
-      // console.log('Registration successful:', response.data);
+    // try {
+    //   const response = await axios.post('http://192.168.1.14:5000/rumeno_register', Registrationdata);
+    //   // console.log('Registration successful:', response.data);
 
-      if (response.data.status === 200) {
-        toast.success('Registration successful');
-        reset()
-        setShowLoginModal(true);
-        closeModal();
-      } else {
-        toast.error('Registration failedvvcv');
-      }
+    //   if (response.data.status === 200) {
+    //     toast.success('Registration successful');
+    //     reset()
+    //     setShowLoginModal(true);
+    //     closeModal();
+    //   } else {
+    //     toast.error('Registration failedvvcv');
+    //   }
 
-    } catch (error) {
-      console.error('Error:', error);
-      // closeModal()
-    }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   // closeModal()
+    // }
   };
 
   
@@ -164,10 +165,14 @@ const Registration = ({ showModal, closeModal }) => {
                         {...register("password", {
                           required: "Password is required",
                           minLength: {
-                            value: 8,
+                            value: 6,
                             message:
                               "Password must be at least 8 characters long",
-                          },
+                          }
+                          ,pattern:{
+                            value: /^(?=.*[A-Z])(?=.*[@#$%^&*(),.?":{}|<>]).+$/, 
+                            message: "Password must contain at least one uppercase letter and one special character."
+                          }
                         })}
                         type="password"
                         className={`form-control ${

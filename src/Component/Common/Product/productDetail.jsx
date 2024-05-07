@@ -27,6 +27,7 @@ import prolackgoat from "../../../assets/img/OurProduct/pro-lack-goat-powder.png
 import prolackcalf from "../../../assets/img/OurProduct/pro-lack-calf-powder.png";
 import selenniumGC from "../../../assets/img/OurProduct/Selennium-GC.png";
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const ProductDetail = () => {
     const { UidData, cart, setCart, setiteamdata, setSizevalue, LoginUserData } = useContext(UserContext);
@@ -690,6 +691,13 @@ const ProductDetail = () => {
 
     return (
         <>
+        <Helmet>
+        <meta charSet="utf-8" name="description" content="Support animal health naturally! Explore Rumeno's innovative veterinary products for all your pet's needs. Shop Now
+" />
+        <title>Rumeno Veterinary Products: Trusted by Vets, Loved by Pets
+</title>
+        <link rel="canonical" href="https://rumeno.in/veterinary-products" />
+      </Helmet>
             <div className="desk-nav">
                 <Navbar size={cart.length} />
             </div>

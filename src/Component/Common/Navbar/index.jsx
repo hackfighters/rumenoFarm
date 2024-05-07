@@ -36,10 +36,9 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
-import datatest from "./test.json";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
-// import TranslateButton from "../translate/trasn";
+import TranslateButton from "../translate/trasn";
 import SearchBar from "./navsearch";
 
 const Navbar = ({ size }) => {
@@ -130,20 +129,20 @@ const Navbar = ({ size }) => {
     setShowOpt(false);
   };
 
-  const handleAddtoCartApi = async (getUidata) => {
-    console.log("Hello");
-    try {
-      const response = await axios.post(
-        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cartuser",
-        { uID: getUidata }
-      );
-      console.log("Add to cart is Successfull", response.data);
-      const getapicart = response.data.data;
-      setCart(getapicart);
-    } catch (error) {
-      console.error("Add to cart is not working", error);
-    }
-  };
+  // const handleAddtoCartApi = async (getUidata) => {
+  //   console.log("Hello");
+  //   try {
+  //     const response = await axios.post(
+  //       "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cartuser",
+  //       { uID: getUidata }
+  //     );
+  //     console.log("Add to cart is Successfull", response.data);
+  //     const getapicart = response.data.data;
+  //     setCart(getapicart);
+  //   } catch (error) {
+  //     console.error("Add to cart is not working", error);
+  //   }
+  // };
 
   const handleRemoves = async (id) => {
     const RemoveCartData = { id: id, uID: UidData };
@@ -294,12 +293,12 @@ const Navbar = ({ size }) => {
                     icon={faLanguage}
                   />
                   {showSelect && (
-                    <Select
-                      className=""
-                      value={selectedOption}
-                      onChange={(e) => handleChangen(e)}
-                    />
-                    // <TranslateButton/> 
+                    // <Select
+                    //   className=""
+                    //   value={selectedOption}
+                    //   onChange={(e) => handleChangen(e)}
+                    // />
+                    <TranslateButton/> 
                   )}
                 </div>
               </div>
@@ -653,7 +652,7 @@ const Navbar = ({ size }) => {
                           <img src={logstatus} className="w-75" alt="" />
                         </a>
                         <ul
-                          className="dropdown-menu"
+                          className="dropdown-menu login-dropdown"
                           aria-labelledby="dropdownMenuLink"
                         >
                           <li className="d-flex align-items-center justify-content-center my-2">
@@ -711,7 +710,7 @@ const Navbar = ({ size }) => {
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
                     OpenSendOtpModal={OpenSendOtp}
-                    handleAddtoCartApi={handleAddtoCartApi}
+                    // handleAddtoCartApi={handleAddtoCartApi}
                   />
                   <Registration
                     showModal={showRegistrationModal}
@@ -767,7 +766,7 @@ const Navbar = ({ size }) => {
                         {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
                       </div>
                       <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                        <h4>{item.name}</h4>
+                        <h4 className="text-trun-cart">{item.name}</h4>
                       </div>
                       <div className="col-sm-6  d-flex align-items-center justify-content-around ">
                         <FontAwesomeIcon
