@@ -95,7 +95,7 @@ const Blog = () => {
         {blogdata.map((item, index) => (
           <div className="row justify-content-center my-3" key={index}>
             <div
-              className="d-flex col-lg-10 py-2 align-items-center shadow bg-white"
+              className=" blog-card col-lg-10 py-2 align-items-center shadow bg-white"
             >
               <img
                 className=" me-3 rounded w-100 "

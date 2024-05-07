@@ -135,14 +135,15 @@ const BlogContent = () => {
             </div>
           </div>
         </div>
-        <div className="row justify-content-center m-5 shadow bg-white">
+        <div className="container m-auto ">
+        <div className="row justify-content-center shadow bg-white">
           <div className="col-lg-11">
             <h1 className="my-3 ">{blog.heading}</h1>
           </div>
           <hr className="mb-4" />
           <div className="col-lg-11">
             <img
-              className=" mx-2 rounded  w-100"
+              className="rounded  w-100"
               src={blog.img}
               alt="loading"
               // width={150}
@@ -174,9 +175,10 @@ const BlogContent = () => {
             </div>
           </div>
         </div>
+        </div>
 
 
-        <form className="container  justify-content-center bg-white" onSubmit={handleSubmit(onSubmit)}>
+        <form className="container mt-5  justify-content-center bg-white" onSubmit={handleSubmit(onSubmit)}>
           <div className="row py-5 px-4">
         <h4 className="mb-3"> For Any Comment</h4>
         <hr />
@@ -222,7 +224,7 @@ const BlogContent = () => {
                   rows="3"
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary w-25 mt-3">
+              <button type="submit" className="btn btn-primary w-auto mt-3">
                 Submit
               </button>
             </div>

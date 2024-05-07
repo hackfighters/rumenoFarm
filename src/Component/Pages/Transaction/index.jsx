@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../../Component/Common/Modal/logusecont";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
+import ReactWhatsapp from "react-whatsapp";
 
 // Third party Fortawesome
 import {
@@ -45,8 +46,15 @@ const Transaction = () => {
   const [uploadedFileCounter, setUploadedFileCounter] = useState(0);
   const [image, setImage] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [Finalamt, setFinalamt] = useState(0);
   const handlePaymentMethodChange = (event) => {
     setSelectedPaymentMethod(event.target.value);
+    if(event.target.value === "COD"){
+      console.warn("COD payment")
+      setFinalamt(amountData + amountData * 0.02)
+      console.warn(Finalamt)
+    }
+
   };
 
   const navigate = useNavigate();
@@ -188,15 +196,17 @@ const Transaction = () => {
         name: data.name,
         mobileNumber: data.mobileNumber,
         address: data.address,
-        amount: data.amount,
+        amount: amountData,
+        transactionID: "NA",
+        cod_payment: "NA",
         paymode: data.paymode,
-        uID: UidData,
-
+        uID: UidData
       };
+      
       console.warn(paydata)
       axios
       .post(
-        "http://localhost:2000/transaction_details",
+        "http://192.168.1.8:5000/transaction_details",
         paydata
       )
       .then((res) => {
@@ -211,15 +221,16 @@ const Transaction = () => {
         name: data.name,
         mobileNumber: data.mobileNumber,
         address: data.address,
-        amount: data.amount,
+        amount: amountData,
         transactionID: data.transactionID,
         paymode: data.paymode,
+        cod_payment: "NA",
         uID: UidData
       };
       console.warn(paydata)
       axios
         .post(
-          "http://localhost:2000/transaction_details",
+          "http://192.168.1.8:5000/transaction_details",
           formData
         )
         .then((res) => {
@@ -232,7 +243,7 @@ const Transaction = () => {
   
       axios
         .post(
-          "http://localhost:2000/transaction_details",
+          "http://192.168.1.8:5000/transaction_details",
           paydata
         )
         .then((res) => {
@@ -280,7 +291,7 @@ navigate("/thankyoupage");
                 <div className="col-sm-8">
                   <div className="contact_form_inner row  justify-content-center">
                     <Form className="contact_field col-sm-7 pt-1 pb-5">
-                      <h3 className="my-2 text-center">Payment Gateway</h3>
+                      <h3 className="my-2 text-center">Payment Process</h3>
                       <p className="my-3 text-center">Transaction Details</p>
                       <input
                         type="text"
@@ -318,24 +329,7 @@ navigate("/thankyoupage");
                       {errors.address && (
                         <span className="text-danger">Address is required</span>
                       )}
-
-                      <input
-                        type="number"
-                        className="form-control form-group py-3"
-                        // placeholder="Amount"
-                        value={amountData}
-                        {...register("amount", {
-                          required: true,
-                          // pattern: /^[0-9]{10}$/, // Regex pattern for only numbers
-                        })}
-                      />
-                      {errors.amount && (
-                        <span className="text-danger">
-                          {errors.amount.type === "required"
-                            ? "Please enter your mobile number"
-                            : "Please enter a valid mobile number"}
-                        </span>
-                      )}
+                      <div className=" p-3 border-bottom fw-bold">₹ {amountData} /-</div>
                       <div className="row mt-3">
                         <div className="col-lg-6 text-center  border-end">
                         <input
@@ -348,7 +342,7 @@ navigate("/thankyoupage");
                           {...register('paymode', { required: true })}
                         />
                         <label htmlFor="cod" className="fw-bold text-danger mx-1">COD</label>
-                        {/* <p className="pt-1">(2% extra on Cash On Delivery)</p> */}
+                        <p className="pt-1">(2% extra on Cash On Delivery)</p>
                         </div>
                         <div className="col-lg-6 text-center">
                         <input
@@ -362,13 +356,19 @@ navigate("/thankyoupage");
 
                         />
                         <label htmlFor="upi" className="fw-bold text-danger mx-1">UPI</label>
+                        <p className="pt-1">(Pay Using Scanner or UPI Number)</p>
                         </div>
                       </div>
-                      <hr />
+                      <hr className="mt-1" />
 
                       {/* <TransImgUpload/> */}
                       {selectedPaymentMethod === "UPI" && (
                         <>
+                        <ul className="d-flex list-unstyled justify-content-center" >
+                          <li className="mx-2">UPI NO:-<span className="fw-bold"> 7355043892</span></li>
+                          <li className="mx-2">UPI ID:-<span className="fw-bold"> 7355043892m@pnb</span>
+                          </li>
+                        </ul>
                           <input
                             type="text"
                             className="form-control form-group py-3"
@@ -468,6 +468,18 @@ navigate("/thankyoupage");
                           </div>
                         </>
                       )}
+                      {selectedPaymentMethod === "COD" && (
+                        <>
+                        
+                        <ul>
+                          <li className="justify-content-between d-flex my-1"><span>Amount</span> <span className="fw-bold " >₹ {amountData} /-</span></li>
+                          <li className="justify-content-between d-flex my-1"><span>2% extra on COD</span> <span className="fw-bold mx-2 text-success">+ 2%</span></li>
+                          <hr />
+                          <li className="justify-content-between d-flex"><span>Total Amount </span> <span className="fw-bold text-danger h5">₹ {Finalamt} /-</span></li>
+                        </ul>
+                        </>
+                      )}
+                      
                       <button
                         className="contact_form_submit mt-5"
                         type="submit"
@@ -480,22 +492,38 @@ navigate("/thankyoupage");
                 </div>
                 <div className="col-md-2">
                   <div className="right_conatct_social_icon d-flex align-items-end justify-content-center">
-                    <div className="socil_item_inner d-flex py-2">
-                      <FontAwesomeIcon
-                        className="text-white mx-3 h3"
-                        type="button"
-                        icon={faFacebook}
-                      />
-                      <FontAwesomeIcon
-                        className="text-white mx-3 h3"
-                        type="button"
-                        icon={faInstagram}
-                      />
-                      <FontAwesomeIcon
-                        className="text-white mx-3 h3"
-                        type="button"
-                        icon={faWhatsapp}
-                      />
+                  <div className="socil_item_inner d-flex py-2">
+                      <a
+                        href="https://www.facebook.com/RumenoFarmotech/"
+                        target="_blank"
+                      >
+                        <FontAwesomeIcon
+                          className="text-white mx-3 h3"
+                          type="button"
+                          icon={faFacebook}
+                        />
+                      </a>
+                      <a
+                        href="https://www.instagram.com/rumenofarmotech/"
+                        target="_blank"
+                      >
+                        <FontAwesomeIcon
+                          className="text-white mx-3 h3"
+                          type="button"
+                          icon={faInstagram}
+                        />
+                      </a>
+                      <ReactWhatsapp
+                        className="bg-transparent border-0"
+                        number="+91 7355043892"
+                        message="Hello World"
+                      >
+                        <FontAwesomeIcon
+                          className="text-white mx-3 h3"
+                          type="button"
+                          icon={faWhatsapp}
+                        />
+                      </ReactWhatsapp>
                     </div>
                   </div>
                 </div>

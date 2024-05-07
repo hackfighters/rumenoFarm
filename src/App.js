@@ -101,7 +101,7 @@ const App = () => {
           <Route path="/dairy-consultant" Component={ServicesThird} />
           <Route path="/veterinary-products" Component={ProductPage} />
           <Route path="/veterinary-products/:name" Component={ProductPage} />
-          <Route path="/veterinary-products/ProductDetail/:id" Component={ProductDetail} />
+          <Route path="/veterinary-products/ProductDetail/:id/:name" Component={ProductDetail} />
           <Route path="/contactus" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />

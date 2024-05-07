@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import Login from "./Login";
+import { UserContext } from "./logusecont";
 
 const SetNewPassword = ({ showModal, closeModal }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -16,19 +18,36 @@ const SetNewPassword = ({ showModal, closeModal }) => {
     watch,
   } = useForm();
   const { t } = useTranslation();
+  const { UidData,setUidData } = useContext(UserContext);
+  // useEffect(() => {
+  //   const getuidfromcookies = JSON.parse(Cookies.get("loginUserData") ?? "{}");
+  // setUidData(getuidfromcookies.uID)
+  // console.log(UidData)
+  // }, [])
 
   const password = watch("newpassword");
 
   const onSubmit = async (data) => {
+    console.log(data);
+    let NewPassword;
     try {
       if (data.newpassword !== data.confirmpassword) {
         alert("Passwords do not match");
         return;
+      }else{
+         NewPassword = {
+          pwd:data.newpassword,
+          uID:UidData,
+        }
+        console.log(NewPassword)
       }
+
       
       // Send data to API using Axios
-      const response = await axios.post("YOUR_API_ENDPOINT", data);
-      // console.log(response.data); // Handle the response as needed
+      const response = await axios.post(
+        // "http://192.168.1.14:5000/updatepwd", NewPassword
+      );
+      console.log(response.data); // Handle the response as needed
 
       // Show the Login modal and close the current modal
       setShowLoginModal(true);

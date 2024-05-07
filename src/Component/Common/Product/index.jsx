@@ -28,6 +28,7 @@ const ProductItem = ({ item, handleClick }) => {
     Instruction,
     Shortdescription,
     efficacy1,
+    imgText,
     efficacy2,
   } = item;
   const [showModal, setShowModal] = useState(false);
@@ -121,6 +122,8 @@ const ProductItem = ({ item, handleClick }) => {
     }
   };
 
+
+
   return (
     <div className=" py-1">
       
@@ -128,13 +131,13 @@ const ProductItem = ({ item, handleClick }) => {
         <div className="row">
           
           <div className="col-sm-4 p-4 product">
-          <Link className="text-decoration-none text-dark" to={`/veterinary-products/ProductDetail/${item.id}`}>
-            <img src={img} width={200} height={400} alt="Loading" className="w-100" />
+          <Link className="text-decoration-none text-dark" to={`/veterinary-products/ProductDetail/${item.id}/${item.imgText.replace(/ /g, '-')}`}>
+            <img src={img} width={200} height={400} alt={item.imgText} className="w-100" />
           </Link>
           </div>
           <div className="col-sm-8 px-3 lg:px-5 text-center text-lg-start">
             
-            <Link className="text-decoration-none text-dark" to={`/veterinary-products/ProductDetail/${item.id}`}>
+            <Link className="text-decoration-none text-dark" to={`/veterinary-products/ProductDetail/${item.id}/${item.imgText.replace(/ /g, '-')}`}>
               <div className="fs-3">{name}</div>
               </Link>
             <div className="fs-4 mt-2 text-danger">₹ {priceText} /-</div>

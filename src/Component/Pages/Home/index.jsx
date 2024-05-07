@@ -24,9 +24,9 @@ import Prdimg5 from "../../../assets/img/OurProduct/prdaml5.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
 import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
-import caroimg1 from "../../../assets/img/home-img/caroimg1.png";
-import caroimg2 from "../../../assets/img/home-img/caroimg2.png";
-import caroimg3 from "../../../assets/img/home-img/caroimg3.png";
+import caroimg1 from "../../../assets/img/home-img/caroimg1.jpg";
+import caroimg2 from "../../../assets/img/home-img/caroimg2.jpg";
+import caroimg3 from "../../../assets/img/home-img/caroimg3.jpeg";
 import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
@@ -44,17 +44,18 @@ const Home = () => {
     { id: 'cow', imgSrc: Prdimg1 },
     { id: 'goat', imgSrc: Prdimg2 },
     { id: 'dog', imgSrc: Prdimg3 },
-    { id: 'hen', imgSrc: Prdimg4 },
+    { id: 'poultry', imgSrc: Prdimg4 },
     { id: 'fish', imgSrc: Prdimg5 },
     { id: 'horse', imgSrc: Prdimg6 },
-    { id: 'birds', imgSrc: Prdimg7 },
-    { id: 'swine', imgSrc: Prdimg8 },
+    { id: 'pigeon', imgSrc: Prdimg7 },
+    { id: 'pig', imgSrc: Prdimg8 },
   ];
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" />
-        <title>Home-Rumeno</title>
+        <meta charSet="utf-8" name="description" content="Concerned about herd health and production? Powerful animal feed supplements can boost immunity, enhance growth, and reduce waste. Learn More!
+" />
+        <title>Supercharge Your Pet's Health: Animal Feed Supplements | Rumeno</title>
         <link rel="canonical" href="https://rumeno.in/home" />
 
         <script type="application/ld+json">

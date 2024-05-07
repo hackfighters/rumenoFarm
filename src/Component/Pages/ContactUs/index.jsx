@@ -190,20 +190,25 @@ const ContactUs = () => {
               <div className="contact_info_sec-form">
                 <h4 className="text-white py-2">Contact Info</h4>
                 <div className="d-flex info_single align-items-center my-4">
-                  <FontAwesomeIcon
-                    className="text-white mx-2 "
-                    type="button"
-                    icon={faPhone}
-                  />
-                  <span className="text-white">+91 7355043892</span>
+                <a className="text-decoration-none text-white" rel="noreferrer" href="tel:+91 7355043892">
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
+                +91 7355043892
+                </a>
                 </div>
                 <div className="d-flex info_single align-items-center my-4">
-                  <FontAwesomeIcon
-                    className="text-white mx-2 "
-                    type="button"
-                    icon={faEnvelope}
-                  />
-                  <span className="text-white">rumeno.farmotech@gmail.com</span>
+                  
+                  <a className="text-decoration-none text-white d-flex" rel="noreferrer" href="https://mail.google.com" target="_blank">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
+                <span>rumeno.farmotech@gmail.com</span>
+                </a>
                 </div>
                 {/* Rumeno farm  */}
                 {/* Rumeno */}

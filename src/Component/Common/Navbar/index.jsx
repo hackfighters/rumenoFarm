@@ -36,10 +36,9 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
-import datatest from "./test.json";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
-// import TranslateButton from "../translate/trasn";
+import TranslateButton from "../translate/trasn";
 import SearchBar from "./navsearch";
 
 const Navbar = ({ size }) => {
@@ -130,20 +129,20 @@ const Navbar = ({ size }) => {
     setShowOpt(false);
   };
 
-  const handleAddtoCartApi = async (getUidata) => {
-    console.log("Hello");
-    try {
-      const response = await axios.post(
-        "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cartuser",
-        { uID: getUidata }
-      );
-      console.log("Add to cart is Successfull", response.data);
-      const getapicart = response.data.data;
-      setCart(getapicart);
-    } catch (error) {
-      console.error("Add to cart is not working", error);
-    }
-  };
+  // const handleAddtoCartApi = async (getUidata) => {
+  //   console.log("Hello");
+  //   try {
+  //     const response = await axios.post(
+  //       "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cartuser",
+  //       { uID: getUidata }
+  //     );
+  //     console.log("Add to cart is Successfull", response.data);
+  //     const getapicart = response.data.data;
+  //     setCart(getapicart);
+  //   } catch (error) {
+  //     console.error("Add to cart is not working", error);
+  //   }
+  // };
 
   const handleRemoves = async (id) => {
     const RemoveCartData = { id: id, uID: UidData };
@@ -255,13 +254,14 @@ const Navbar = ({ size }) => {
                 </div>
 
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className="me-2"
-                    style={{ color: "#f0f0f0" }}
-                  />
-                  <span className="text-dark">rumeno.farmotech@gmail.com</span>
-
+                <a className="text-decoration-none text-dark" rel="noreferrer" href="https://mail.google.com" target="_blank">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
+                rumeno.farmotech@gmail.com
+                </a>
                 </div>
                 <div className="col-sm-2 px-sm-5 px-lg-2 d-flex cnt justify-content-end align-items-center">
 
@@ -276,12 +276,14 @@ const Navbar = ({ size }) => {
                   </span>
                 </div>
                 <div className="col-lg-2 col-sm-1 px-2 d-flex cnt align-items-center justify-content-center">
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className="me-2"
-                    style={{ color: "#f1f4f8" }}
-                  />
-                  <span className="text-dark  ">+91 7355043892</span>
+                  <a className="text-decoration-none text-dark" rel="noreferrer" href="tel:+91 7355043892">
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="me-2"
+                  style={{ color: "white" }}
+                />
+                +91 7355043892
+                </a>
                 </div>
                 <div className="col-sm-2  px-2   align-items-center  nav-lang-switch h-100 my-auto  justify-content-lg-start  justify-content-sm-center">
                   <FontAwesomeIcon
@@ -291,12 +293,12 @@ const Navbar = ({ size }) => {
                     icon={faLanguage}
                   />
                   {showSelect && (
-                    <Select
-                      className=""
-                      value={selectedOption}
-                      onChange={(e) => handleChangen(e)}
-                    />
-                    // <TranslateButton/> 
+                    // <Select
+                    //   className=""
+                    //   value={selectedOption}
+                    //   onChange={(e) => handleChangen(e)}
+                    // />
+                    <TranslateButton/> 
                   )}
                 </div>
               </div>
@@ -341,9 +343,7 @@ const Navbar = ({ size }) => {
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0"
-                      activeclassname="active"
-                      to="/veterinary-products"
+                      className="nav-head px-0"
                     >
                       Veterinary-Products
                     </NavLink>
@@ -351,6 +351,15 @@ const Navbar = ({ size }) => {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
+                    <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/veterinary-products"
+                    >
+                      Veterinary-Products
+                    </NavLink>
+                      </li>
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
@@ -395,9 +404,7 @@ const Navbar = ({ size }) => {
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0"
-                      activeclassname="active"
-                      to="/veterinary-services"
+                      className="nav-head px-0"
                     >
                       Veterinary-Services
                     </NavLink>
@@ -405,6 +412,15 @@ const Navbar = ({ size }) => {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
+                      <li className="">
+                        <NavLink
+                          className="nav-link px-0 justify-content-center"
+                          activeclassname="active"
+                          to="/veterinary-services"
+                    >
+                      Veterinary-Services
+                    </NavLink>
+                      </li>
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
@@ -636,7 +652,7 @@ const Navbar = ({ size }) => {
                           <img src={logstatus} className="w-75" alt="" />
                         </a>
                         <ul
-                          className="dropdown-menu"
+                          className="dropdown-menu login-dropdown"
                           aria-labelledby="dropdownMenuLink"
                         >
                           <li className="d-flex align-items-center justify-content-center my-2">
@@ -657,7 +673,7 @@ const Navbar = ({ size }) => {
                               className="dropdown-item justify-content-center"
                               to="/veterinary-products"
                             >
-                              Product
+                             Veterinary Products
                             </Link>
                           </li>
                           <li>
@@ -694,7 +710,7 @@ const Navbar = ({ size }) => {
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
                     OpenSendOtpModal={OpenSendOtp}
-                    handleAddtoCartApi={handleAddtoCartApi}
+                    // handleAddtoCartApi={handleAddtoCartApi}
                   />
                   <Registration
                     showModal={showRegistrationModal}
@@ -750,7 +766,7 @@ const Navbar = ({ size }) => {
                         {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
                       </div>
                       <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                        <h4>{item.name}</h4>
+                        <h4 className="text-trun-cart">{item.name}</h4>
                       </div>
                       <div className="col-sm-6  d-flex align-items-center justify-content-around ">
                         <FontAwesomeIcon

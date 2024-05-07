@@ -7,7 +7,7 @@ const HomeFaq = () => {
                 <div className="container">
                     <div className="row">
                         <h4>Rumeno Farmotech is trusted by Indian farmers for a number of reasons:</h4>
-                        <ul>
+                        <ul className='mx-3'>
                             <li className=''>
                                 <strong>Scientific Excellence:</strong> Their group of professionals is always looking for new ways to solve problems.
                             </li>
@@ -21,7 +21,7 @@ const HomeFaq = () => {
                         <h4>Veterinary Feed Supplements: Nurturing Animal Health with Precision Nutrition</h4>
                         <p>It is everyone's duty to ensure the production and well-being of cattle in the large field of animal husbandry. In order to accomplish these objectives, proper diet is crucial, and veterinary feed additives become vital friends. Rumeno Farmotech is a prominent Indian manufacturer that is dedicated to improving animal health with high-quality feed.</p>
                         <h5>The Role of Animal Feed Supplements</h5>
-                        <ul>
+                        <ul className='mx-3'>
                             <li>
                                 <strong>Nutritional Gaps:</strong> Animals may still have nutritional gaps even with the best feeding procedures. By supplying vital vitamins, minerals, amino acids, and other elements that may be absent from their regular diet, feed supplements fill up these nutritional gaps.
                             </li>

@@ -25,7 +25,6 @@ import SendOtp from "../Modal/otp";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import { UserContext } from "../Modal/logusecont";
 import Cookies from "js-cookie";
-import datatest from './test.json'
 import FarmerDetails from "../Modal/FarmerFarmDtl";
 import SearchBar from "./navsearch";
 
@@ -111,18 +110,18 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
     setShowOpt(false);
   };
 
-  const handleAddtoCartApi = async (getUidata) => {
-    console.log(datatest, 3455)
+  // const handleAddtoCartApi = async (getUidata) => {
+  //   console.log(datatest, 3455)
 
-    setCart(datatest)
+  //   setCart(datatest)
 
-    // try {
-    //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
-    //   console.log('Add to cart is Successfull', response.data);
-    // } catch (error) {
-    //   console.error('Add to cart is not working', error);
-    // }
-  }
+  //   // try {
+  //   //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
+  //   //   console.log('Add to cart is Successfull', response.data);
+  //   // } catch (error) {
+  //   //   console.error('Add to cart is not working', error);
+  //   // }
+  // }
 
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
@@ -185,27 +184,25 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                   </NavLink>
                 </li>
 
-                <li className="nav-item dropdown">
+                <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0 dropdown-toggle"
-                      to="#"
-                      id="navbarDropdown"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
+                      className="nav-head px-0"
                     >
                       Veterinary-Products
                     </NavLink>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown" data-bs-auto-close="outside">
-                      <li className="">
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                    <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
                           to="/veterinary-products"
-                        >
-                          Veterinary-Products
-                        </NavLink>
+                    >
+                      Veterinary-Products
+                    </NavLink>
                       </li>
                       <li className="">
                         <NavLink
@@ -216,6 +213,8 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           Goat Feed Supplements
                         </NavLink>
                       </li>
+                      
+
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
@@ -246,28 +245,25 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     </ul>
                   </div>
                 </li>
-
-                <li className="nav-item dropdown">
+                <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-link px-0 dropdown-toggle"
-                      to="#"
-                      id="navbarDropdown"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
+                      className="nav-head px-0"
                     >
                       Veterinary-Services
                     </NavLink>
-                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown" data-bs-auto-close="outside">
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
                       <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
                           to="/veterinary-services"
-                        >
-                          Veterinary-Services
-                        </NavLink>
+                    >
+                      Veterinary-Services
+                    </NavLink>
                       </li>
                       <li className="">
                         <NavLink
@@ -278,6 +274,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           Goat Farming Consultant
                         </NavLink>
                       </li>
+
                       <li className="text-center">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
@@ -287,9 +284,10 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           Dairy Consultant
                         </NavLink>
                       </li>
-                      
                     </ul>
                   </div>
+
+
                 </li>
                 
                 
@@ -560,7 +558,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
                     OpenSendOtpModal={OpenSendOtp}
-                    handleAddtoCartApi={handleAddtoCartApi}
+                    // handleAddtoCartApi={handleAddtoCartApi}
                   />
                   <Registration
                     showModal={showRegistrationModal}
