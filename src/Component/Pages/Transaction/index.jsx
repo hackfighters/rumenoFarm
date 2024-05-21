@@ -35,6 +35,7 @@ const Transaction = () => {
 
   // Upload Start
 
+
   const [loadingTextVisible, setLoadingTextVisible] = useState(false);
   const [previewImageVisible, setPreviewImageVisible] = useState(false);
   const [uploadAreaOpen, setUploadAreaOpen] = useState(false);
@@ -47,14 +48,23 @@ const Transaction = () => {
   const [image, setImage] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const [Finalamt, setFinalamt] = useState(0);
+  const [AdvancePaymnt, setAdvancePaymnt] = useState(0);
+  const [shipingCharge, setshipingCharge] = useState(0);
+
   const handlePaymentMethodChange = (event) => {
     setSelectedPaymentMethod(event.target.value);
-    if(event.target.value === "COD"){
+    if (event.target.value === "COD" && amountData <= 1000) {
       console.warn("COD payment")
-      setFinalamt(amountData + amountData * 0.02)
+      setshipingCharge(amountData * 0.02)
+      setFinalamt(amountData + amountData * 0.02 - 100)
       console.warn(Finalamt)
     }
-
+    else if(event.target.value === "COD" && amountData > 1000) {
+      setAdvancePaymnt(amountData * 0.1)
+      setshipingCharge(amountData * 0.02)
+      setFinalamt( amountData + amountData * 0.02 - amountData * 0.1)
+      console.warn(Finalamt,AdvancePaymnt)
+    }
   };
 
   const navigate = useNavigate();
@@ -78,7 +88,7 @@ const Transaction = () => {
     // setIsDropZoneOver(false);
 
     const file = event.dataTransfer.files[0];
-    uploadFile(file);
+    // uploadFile(file);
     // console.log(uploadFile);
   };
 
@@ -188,10 +198,10 @@ const Transaction = () => {
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("file", image);
-    // console.log(formData);
+    console.log(image);
 
-    var paydata;
-    if (data.paymode=="COD"){
+    let paydata;
+    if (data.paymode == "COD") {
       paydata = {
         name: data.name,
         mobileNumber: data.mobileNumber,
@@ -202,21 +212,21 @@ const Transaction = () => {
         paymode: data.paymode,
         uID: UidData
       };
-      
+
       console.warn(paydata)
       axios
-      .post(
-        "http://192.168.1.8:5000/transaction_details",
-        paydata
-      )
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err, "err");
-      });
+        .post(
+          "http://192.168.1.8:5000/transaction_details",
+          paydata
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err, "err");
+        });
     }
-    else{
+    else {
       paydata = {
         name: data.name,
         mobileNumber: data.mobileNumber,
@@ -239,8 +249,8 @@ const Transaction = () => {
         .catch((err) => {
           console.log(err, "err");
         });
-  
-  
+
+
       axios
         .post(
           "http://192.168.1.8:5000/transaction_details",
@@ -253,8 +263,8 @@ const Transaction = () => {
           console.log(err, "err");
         });
     }
-// Navigate to Thankyou page
-navigate("/thankyoupage");
+    // Navigate to Thankyou page
+    navigate("/thankyoupage");
   };
 
   return (
@@ -332,31 +342,31 @@ navigate("/thankyoupage");
                       <div className=" p-3 border-bottom fw-bold">₹ {amountData} /-</div>
                       <div className="row mt-3">
                         <div className="col-lg-6 text-center  border-end">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          id="cod"
-                          name="paymentMethod"
-                          onClick={handlePaymentMethodChange}
-                          value="COD"
-                          {...register('paymode', { required: true })}
-                        />
-                        <label htmlFor="cod" className="fw-bold text-danger mx-1">COD</label>
-                        <p className="pt-1">(2% extra on Cash On Delivery)</p>
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            id="cod"
+                            name="paymentMethod"
+                            onClick={handlePaymentMethodChange}
+                            value="COD"
+                            {...register('paymode', { required: true })}
+                          />
+                          <label htmlFor="cod" className="fw-bold text-danger mx-1">COD</label>
+                          <p className="pt-1">(2% extra on Cash On Delivery)</p>
                         </div>
                         <div className="col-lg-6 text-center">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          id="upi"
-                          name="paymentMethod"
-                          onClick={handlePaymentMethodChange}
-                          value="UPI"
-                          {...register("paymode", { required: true })}
+                          <input
+                            type="radio"
+                            className="form-check-input"
+                            id="upi"
+                            name="paymentMethod"
+                            onClick={handlePaymentMethodChange}
+                            value="UPI"
+                            {...register("paymode", { required: true })}
 
-                        />
-                        <label htmlFor="upi" className="fw-bold text-danger mx-1">UPI</label>
-                        <p className="pt-1">(Pay Using Scanner or UPI Number)</p>
+                          />
+                          <label htmlFor="upi" className="fw-bold text-danger mx-1">UPI</label>
+                          <p className="pt-1">(Pay Using Scanner or UPI Number)</p>
                         </div>
                       </div>
                       <hr className="mt-1" />
@@ -364,11 +374,11 @@ navigate("/thankyoupage");
                       {/* <TransImgUpload/> */}
                       {selectedPaymentMethod === "UPI" && (
                         <>
-                        <ul className="d-flex list-unstyled justify-content-center" >
-                          <li className="mx-2">UPI NO:-<span className="fw-bold"> 7355043892</span></li>
-                          <li className="mx-2">UPI ID:-<span className="fw-bold"> 7355043892m@pnb</span>
-                          </li>
-                        </ul>
+                          <ul className="d-flex list-unstyled justify-content-center" >
+                            <li className="mx-2">UPI NO:-<span className="fw-bold"> 7355043892</span></li>
+                            <li className="mx-2">UPI ID:-<span className="fw-bold"> 7355043892m@pnb</span>
+                            </li>
+                          </ul>
                           <input
                             type="text"
                             className="form-control form-group py-3"
@@ -454,8 +464,8 @@ navigate("/thankyoupage");
                                 <div
                                   id="uploadedFileInfo"
                                   className={`uploaded-file__info ${uploadedFileInfoActive
-                                      ? "uploaded-file__info--active"
-                                      : ""
+                                    ? "uploaded-file__info--active"
+                                    : ""
                                     }`}
                                 >
                                   <span className="uploaded-file__name">
@@ -468,18 +478,242 @@ navigate("/thankyoupage");
                           </div>
                         </>
                       )}
-                      {selectedPaymentMethod === "COD" && (
+                      {(selectedPaymentMethod === "COD" && amountData <= 1000) && (
                         <>
-                        
-                        <ul>
-                          <li className="justify-content-between d-flex my-1"><span>Amount</span> <span className="fw-bold " >₹ {amountData} /-</span></li>
-                          <li className="justify-content-between d-flex my-1"><span>2% extra on COD</span> <span className="fw-bold mx-2 text-success">+ 2%</span></li>
+                          <p className="fw-bold fs-6 text-danger px-1">(You have to pay ₹ 100 in advance. which will be deducted from your total amount.)</p>
+                          <h1>PAY {AdvancePaymnt }</h1>
                           <hr />
-                          <li className="justify-content-between d-flex"><span>Total Amount </span> <span className="fw-bold text-danger h5">₹ {Finalamt} /-</span></li>
-                        </ul>
+                          <ul className="d-flex list-unstyled justify-content-center" >
+                            <li className="mx-2">UPI NO:-<span className="fw-bold"> 7355043892</span></li>
+                            <li className="mx-2">UPI ID:-<span className="fw-bold"> 7355043892m@pnb</span>
+                            </li>
+                          </ul>
+                          <input
+                            type="text"
+                            className="form-control form-group py-3"
+                            placeholder="Transaction ID"
+                            {...register("transactionID", { required: true })}
+                          />
+                          {errors.transactionID && (
+                            <span className="text-danger">
+                              Transaction ID is required
+                            </span>
+                          )}
+                          <div
+                            id="uploadArea"
+                            className={`upload-area ${uploadAreaOpen ? "upload-area--open" : ""
+                              }`}
+                          >
+                            <h6 className="my-3 text-secondary">
+                              Upload Transaction Screenshot
+                            </h6>
+                            <div
+                              className="upload-area__drop-zoon drop-zoon"
+                              ref={dropZoneRef}
+                              onDragOver={handleDragOver}
+                              onDragLeave={handleDragLeave}
+                              onDrop={handleDrop}
+                              onClick={handleClick}
+                            >
+                              <span className="drop-zoon__icon">
+                                <FontAwesomeIcon icon={faImage} />
+                              </span>
+                              <p className="drop-zoon__paragraph">
+                                Drop your Payment screenshot here
+                              </p>
+                              <span
+                                id="loadingText"
+                                className="drop-zoon__loading-text"
+                                style={{
+                                  display: loadingTextVisible ? "block" : "none",
+                                }}
+                              >
+                                Please Wait
+                              </span>
+                              <img
+                                src=""
+                                alt="loading"
+                                id="previewImage"
+                                className="drop-zoon__preview-image"
+                                ref={previewImageRef}
+                                style={{
+                                  display: previewImageVisible ? "block" : "none",
+                                }}
+                                draggable="false"
+                              />
+                              <input
+                                type="file"
+                                id="fileInput"
+                                className="drop-zoon__file-input"
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                ref={fileInputRef}
+                              />
+                            </div>
+
+                            <div
+                              id="fileDetails"
+                              className={`upload-area__file-details file-details ${fileDetailsOpen ? "file-details--open" : ""
+                                }`}
+                            >
+                              <h5 className="my-3">Uploaded File</h5>
+
+                              <div
+                                id="uploadedFile"
+                                className={`uploaded-file ${uploadedFileOpen ? "uploaded-file--open" : ""
+                                  }`}
+                              >
+                                <div className="uploaded-file__icon-container">
+                                  <i className="bx bxs-file-blank uploaded-file__icon"></i>
+                                  <span className="uploaded-file__icon-text">
+                                    {uploadedFileType}
+                                  </span>
+                                </div>
+
+                                <div
+                                  id="uploadedFileInfo"
+                                  className={`uploaded-file__info ${uploadedFileInfoActive
+                                    ? "uploaded-file__info--active"
+                                    : ""
+                                    }`}
+                                >
+                                  <span className="uploaded-file__name">
+                                    {uploadedFileName}
+                                  </span>
+                                  <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <ul>
+                            <li className="justify-content-between d-flex my-1"><span>Amount</span> <span className="fw-bold mx-2" >₹ {amountData} /-</span></li>
+                            <li className="justify-content-between d-flex my-1"><span>2% extra on COD</span> <span className="fw-bold mx-2 text-success">+ {shipingCharge.toFixed(1)} /-</span></li>
+                            <li className="justify-content-between d-flex my-1"><span>Advance Payment</span> <span className="fw-bold mx-2 text-danger">- ₹ 100 /-</span></li>
+                            <hr />
+                            <li className="justify-content-between d-flex"><span>Total Amount </span> <span className="fw-bold text-danger h5">₹ {Finalamt.toFixed(1)} /-</span></li>
+                          </ul>
                         </>
                       )}
-                      
+                      {(selectedPaymentMethod === "COD" && amountData > 1000) && (
+                        <>
+                          <p className="fw-bold fs-6 text-danger px-1">(You have to pay 10% of you Amount in advance. which will be deducted from your total amount.)</p>
+                          <hr />
+                          <h4 className="fw-bold">Pay = <span className="text-danger"> ₹ {AdvancePaymnt} /- </span></h4>
+                          <hr />
+                          <ul className="d-flex list-unstyled justify-content-center" >
+                            <li className="mx-2">UPI NO:-<span className="fw-bold"> 7355043892</span></li>
+                            <li className="mx-2">UPI ID:-<span className="fw-bold"> 7355043892m@pnb</span>
+                            </li>
+                          </ul>
+                          <input
+                            type="text"
+                            className="form-control form-group py-3"
+                            placeholder="Transaction ID"
+                            {...register("transactionID", { required: true })}
+                          />
+                          {errors.transactionID && (
+                            <span className="text-danger">
+                              Transaction ID is required
+                            </span>
+                          )}
+                          <div
+                            id="uploadArea"
+                            className={`upload-area ${uploadAreaOpen ? "upload-area--open" : ""
+                              }`}
+                          >
+                            <h6 className="my-3 text-secondary">
+                              Upload Transaction Screenshot
+                            </h6>
+                            <div
+                              className="upload-area__drop-zoon drop-zoon"
+                              ref={dropZoneRef}
+                              onDragOver={handleDragOver}
+                              onDragLeave={handleDragLeave}
+                              onDrop={handleDrop}
+                              onClick={handleClick}
+                            >
+                              <span className="drop-zoon__icon">
+                                <FontAwesomeIcon icon={faImage} />
+                              </span>
+                              <p className="drop-zoon__paragraph">
+                                Drop your Payment screenshot here
+                              </p>
+                              <span
+                                id="loadingText"
+                                className="drop-zoon__loading-text"
+                                style={{
+                                  display: loadingTextVisible ? "block" : "none",
+                                }}
+                              >
+                                Please Wait
+                              </span>
+                              <img
+                                src=""
+                                alt="loading"
+                                id="previewImage"
+                                className="drop-zoon__preview-image"
+                                ref={previewImageRef}
+                                style={{
+                                  display: previewImageVisible ? "block" : "none",
+                                }}
+                                draggable="false"
+                              />
+                              <input
+                                type="file"
+                                id="fileInput"
+                                className="drop-zoon__file-input"
+                                accept="image/*"
+                                onChange={handleFileChange}
+                                ref={fileInputRef}
+                              />
+                            </div>
+
+                            <div
+                              id="fileDetails"
+                              className={`upload-area__file-details file-details ${fileDetailsOpen ? "file-details--open" : ""
+                                }`}
+                            >
+                              <h5 className="my-3">Uploaded File</h5>
+
+                              <div
+                                id="uploadedFile"
+                                className={`uploaded-file ${uploadedFileOpen ? "uploaded-file--open" : ""
+                                  }`}
+                              >
+                                <div className="uploaded-file__icon-container">
+                                  <i className="bx bxs-file-blank uploaded-file__icon"></i>
+                                  <span className="uploaded-file__icon-text">
+                                    {uploadedFileType}
+                                  </span>
+                                </div>
+
+                                <div
+                                  id="uploadedFileInfo"
+                                  className={`uploaded-file__info ${uploadedFileInfoActive
+                                    ? "uploaded-file__info--active"
+                                    : ""
+                                    }`}
+                                >
+                                  <span className="uploaded-file__name">
+                                    {uploadedFileName}
+                                  </span>
+                                  <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <ul>
+                            <li className="justify-content-between d-flex my-1"><span>Amount</span> <span className="fw-bold mx-2" >₹ {amountData} /-</span></li>
+                            <li className="justify-content-between d-flex my-1"><span>2% extra on COD</span> <span className="fw-bold mx-2 text-success">+ {shipingCharge.toFixed(1)} /-</span></li>
+                            <li className="justify-content-between d-flex my-1"><span>Advance Payment</span> <span className="fw-bold mx-2 text-danger">- ₹ {AdvancePaymnt.toFixed(1)} /-</span></li>
+                            <hr />
+                            <li className="justify-content-between d-flex"><span>Total Amount </span> <span className="fw-bold text-danger h5">₹ {Finalamt.toFixed(1)} /-</span></li>
+                          </ul>
+                        </>
+                      )}
+
                       <button
                         className="contact_form_submit mt-5"
                         type="submit"
@@ -492,7 +726,7 @@ navigate("/thankyoupage");
                 </div>
                 <div className="col-md-2">
                   <div className="right_conatct_social_icon d-flex align-items-end justify-content-center">
-                  <div className="socil_item_inner d-flex py-2">
+                    <div className="socil_item_inner d-flex py-2">
                       <a
                         href="https://www.facebook.com/RumenoFarmotech/"
                         target="_blank"

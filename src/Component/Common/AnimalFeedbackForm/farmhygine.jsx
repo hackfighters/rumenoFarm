@@ -15,18 +15,18 @@ const FarmHygine = () => {
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
-    setValue('soildate', "");
-    setValue('limesprinkledate', "");
-    setValue('insecticidedate', "");
+    setValue('soil_date', "");
+    setValue('limesprinkle_date', "");
+    setValue('insecticide_date', "");
     setValue('insecticide', "");
     setSelectedItem(null);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
-    setValue('soildate', "");
-    setValue('limesprinkledate', "");
-    setValue('insecticidedate', "");
+    setValue('soil_date', "");
+    setValue('limesprinkle_date', "");
+    setValue('insecticide_date', "");
     setValue('insecticide', "");
     setSelectedItem(null);
   };
@@ -41,12 +41,12 @@ const FarmHygine = () => {
  
     // ... (your existing functions and JSX)
 
-  const onsubmit = (data) => {
+  const onsubmit = async(data) => {
     let FFid;
     if (selectedItem !== null) {
       // Edit existing data
       const updatedData = [...farmHygine];
-      updatedData[selectedItem] = { fid: selectedItem + 1, ...data };
+      updatedData[selectedItem] = { f_id: selectedItem + 1, ...data };
       setFarmhygine(updatedData);
       console.log(updatedData[selectedItem])
       let FarmHygine = updatedData[selectedItem];
@@ -54,38 +54,59 @@ const FarmHygine = () => {
       let Mrgcokifrm = { ...getcokidata, FarmHygine };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
+      try {
+        const response = await axios.post('http://192.168.1.6:5000/farmsanitation',updatedData[selectedItem])
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
     
     setSelectedItem(null);
 
     } else {
       // Add new data
-      const fid = farmHygine.length > 0 ? farmHygine[farmHygine.length - 1].fid + 1 : 1;
-            setFarmhygine([...farmHygine, { fid: fid, ...data }]);
-      FFid = {fid,...data}
+      const f_id = farmHygine.length > 0 ? farmHygine[farmHygine.length - 1].f_id + 1 : 1;
+            setFarmhygine([...farmHygine, { f_id: f_id, ...data }]);
+      FFid = {f_id,...data}
       console.log(FFid)
       let FarmHygine = FFid;
       let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
       let Mrgcokifrm = { ...getcokidata, FarmHygine };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
+      try {
+        const response = await axios.post('http://192.168.1.6:5000/farmsanitation',FFid)
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
     }
     // console.log(data ,vaccine);
     setOpenDialog(false);
   };
 
   const handleEdit = (index) => {
-    setValue('soildate',farmHygine[index].soildate);
-    setValue('limesprinkledate',farmHygine[index].limesprinkledate);
-    setValue('insecticidedate',farmHygine[index].insecticidedate);
+    setValue('soil_date',farmHygine[index].soil_date);
+    setValue('limesprinkle_date',farmHygine[index].limesprinkle_date);
+    setValue('insecticide_date',farmHygine[index].insecticide_date);
     setValue('insecticide',farmHygine[index].insecticide);
     setSelectedItem(index);
     setOpenDialog(true);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async(index) => {
+    const deletedItem = farmHygine[index]; 
     const updatedData = [...farmHygine];
     updatedData.splice(index, 1);
     setFarmhygine(updatedData);
+    console.log(deletedItem); 
+    try {
+      const response = await axios.post('http://192.168.1.6:5000/farmsanitation',deletedItem)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
+    
   };
 
 
@@ -116,7 +137,7 @@ const FarmHygine = () => {
                             Solid Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.soildate}
+                            {item.soil_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -124,7 +145,7 @@ const FarmHygine = () => {
                             Lime Sprinkle Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.limesprinkledate}
+                            {item.limesprinkle_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -132,7 +153,7 @@ const FarmHygine = () => {
                           Insecticide Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.insecticidedate}
+                            {item.insecticide_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -186,8 +207,8 @@ const FarmHygine = () => {
                               type="date"
                               id="soildate"
                               className="form-control"
-                              value={farmHygine.soildate}
-                              {...register("soildate")}
+                              value={farmHygine.soil_date}
+                              {...register("soil_date")}
                               
                             />
                           </div>
@@ -206,8 +227,8 @@ const FarmHygine = () => {
                               type="date"
                               id="limesprinkledate"
                               className="form-control"
-                              value={farmHygine.limesprinkledate}
-                              {...register("limesprinkledate")}
+                              value={farmHygine.limesprinkle_date}
+                              {...register("limesprinkle_date")}
                               
                             />
                           </div>
@@ -226,8 +247,8 @@ const FarmHygine = () => {
                               type="date"
                               id="insecticidedate"
                               className="form-control"
-                              value={farmHygine.insecticidedate}
-                              {...register("insecticidedate")}
+                              value={farmHygine.insecticide_date}
+                              {...register("insecticide_date")}
                               
                             />
                           </div>

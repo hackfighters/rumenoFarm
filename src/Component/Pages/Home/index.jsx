@@ -27,6 +27,7 @@ import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
 import caroimg1 from "../../../assets/img/home-img/caroimg1.jpg";
 import caroimg2 from "../../../assets/img/home-img/caroimg2.jpg";
 import caroimg3 from "../../../assets/img/home-img/caroimg3.jpeg";
+import homevideo from "../../../assets/img/home-video.mp4";
 import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
@@ -121,35 +122,17 @@ const Home = () => {
           href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
         ></a>
 
-        <div className="home-backgroundColor overflow-hidden">
+        <div className=" overflow-hidden">
           <Navbar size={cart.length} />
-
-          <div className="container header-sect pt-5">
-            <div className="row header-txt pt-5 mt-5">
-              <div className="col-lg-6 pt-5" data-aos="fade-right">
-                <h1 className="text-light mt-5 caro-text pt-5">
-                  <span className="caroText">{t("v1")}</span>
-                </h1>
-                <p className="text-light h4">{t("v2")}</p>
-              </div>
-
-              <div
-                className="col-lg-6"
-                data-aos="fade-left"
-                data-aos-delay="50"
-              >
-                <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
-                  <Carousel interval={2000}>
-                    <Carousel.Item>
-                      <img className="w-100" src={caroimg1} alt="loading" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                      <img className="w-100" src={caroimg2} alt="loading" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                      <img className="w-100" src={caroimg3} alt="loading" />
-                    </Carousel.Item>
-                  </Carousel>
+          <div className="container header-sect px-0 mx-0">
+            <div className="row header-txt ">
+              <div className=" video-section">
+                <video className="mx-0 px-0" autoPlay={true} muted loop={true} src={homevideo}></video>
+                <div className="col-lg-5 px-2 py-5 video-content" data-aos="fade-right">
+                  <h1 className="">
+                    <span className="">{t("v1")}</span>
+                  </h1>
+                  <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
               <a href="#training">
@@ -159,21 +142,21 @@ const Home = () => {
                   </button>
                 </div>
               </a>
-                <ReactWhatsapp
-                  className="whatsapp-sect w-auto px-1"
-                  number="+91 7355043892"
-                  message="Hello World"
-                >
-                  <FontAwesomeIcon
-                    icon={faWhatsapp}
-                    className="text-white btn--shockwave is-active"
-                  />
-                </ReactWhatsapp>
+              <ReactWhatsapp
+                className="whatsapp-sect w-auto px-1"
+                number="+91 7355043892"
+                message="Hello World"
+              >
+                <FontAwesomeIcon
+                  icon={faWhatsapp}
+                  className="text-white btn--shockwave is-active"
+                />
+              </ReactWhatsapp>
             </div>
           </div>
         </div>
         <About />
-        <Achievment/>
+        <Achievment />
         <div className="container">
           <div className="text-center">
             <div
@@ -198,27 +181,27 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-      {products.map(product => (
-        <div
-          key={product.id}
-          className="col-lg-3"
-          data-aos="flip-left"
-          data-aos-easing="ease-out-cubic"
-          data-aos-duration="1000"
-          data-aos-delay="300"
-        >
-          <div className="card-box my-2 ">
-            <Link to={`/veterinary-products/${product.id}`}>
-              <div className="card1 shadow-2">
-                <img src={product.imgSrc} alt="Loading" className="card-img" />
+            {products.map(product => (
+              <div
+                key={product.id}
+                className="col-lg-3"
+                data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
+                data-aos-delay="300"
+              >
+                <div className="card-box my-2 ">
+                  <Link to={`/veterinary-products/${product.id}`}>
+                    <div className="card1 shadow-2">
+                      <img src={product.imgSrc} alt="Loading" className="card-img" />
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </Link>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-        </div>
-        <HomeFaq/>
+        <HomeFaq />
         <Training />
         <FooterTop />
         <Footer />

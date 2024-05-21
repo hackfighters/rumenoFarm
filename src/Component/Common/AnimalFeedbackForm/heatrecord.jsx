@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../Modal/logusecont";
 import { Modal } from "react-bootstrap";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const HeatRecord = () => {
   const { register, handleSubmit, setValue } = useForm();
@@ -93,41 +94,102 @@ const HeatRecord = () => {
   //   setOpenDialog(false);
   // };
 
-  const onsubmit = (data) => {
+  // const onsubmit = async(data) => {
+    
+  //   try {
+  //     const response = await axios.post('http://192.168.1.6:5000/estrus_heat',data)
+  //     console.log(response.data)
+  // } catch (error) {
+  //     console.log(error)
+  // }
+  //   let HRid;
+  //   let heat = data.heat;
+  //   let heatdate = data.heatdate;
+  //   let duedate = date.toLocaleDateString("en-GB");
+  //   let breeddate = data.breeddate;
+    
+  //   if (selectedItem !== null) {
+  //     data = { heat: heat, heatdate: heatdate, breeddate: breeddate , duedate: duedate  }
+  //     // Edit existing data
+  //     const updatedData = [...heat];
+  //     updatedData[selectedItem] = { hid: selectedItem + 1, ...data  };
+  //     setheat(updatedData);
+  //     console.log(updatedData[selectedItem])
+  //     let HeatRecord = updatedData[selectedItem];
+  //     let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
+  //     let Mrgcokifrm = { ...getcokidata, HeatRecord };
+  //     Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
+  //     console.log(Cookies.get("AnimalCookiesData"));
+    
+  //   setSelectedItem(null);
+  
+  //   } else {
+      
+  //     data = { heat: heat, heatdate: heatdate, breeddate: breeddate , duedate: duedate  }
+      
+  //     // Add new data
+  //     const hid = heat.length > 0 ? heat[heat.length - 1].hid + 1 : 1;
+  //     let b = [...heat, { hid: hid,  heat: heat, heatdate: heatdate, breeddate: breeddate , duedate: duedate  }]
+  //     setheat([...heat, { hid: hid,  ...data  }]);
+  //     HRid = {hid,...data}
+  //     console.log(HRid)
+  //     let HeatRecord = HRid;
+  //     let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
+  //     let Mrgcokifrm = { ...getcokidata, HeatRecord };
+  //     Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
+  //     console.log(Cookies.get("AnimalCookiesData"));
+      
+  //   }
+  //   console.log(data);
+  //   setOpenDialog(false);
+  // };
+  const onsubmit = async (data) => {
+    console.log(data);
+    try {
+      // Assuming the API endpoint expects a POST request with the data object
+      const response = await axios.post('http://192.168.1.6:5000/estrus_heat', data);
+      console.log(response.data);
+      // Handle successful API call here
+    } catch (error) {
+      console.error(error);
+      // Handle error here
+    }
+  
+    // Logic to handle form submission
     let HRid;
     let heat = data.heat;
     let heatdate = data.heatdate;
     let duedate = date.toLocaleDateString("en-GB");
     let breeddate = data.breeddate;
-    if (selectedItem !== null) {
-      data = { heat: heat, heatdate: heatdate, breeddate: breeddate , duedate: duedate  }
+  
+    if (selectedItem!== null) {
       // Edit existing data
       const updatedData = [...heat];
-      updatedData[selectedItem] = { hid: selectedItem + 1, ...data  };
+      updatedData[selectedItem] = { hid: selectedItem + 1,...data };
       setheat(updatedData);
-      console.log(updatedData[selectedItem])
+      console.log(updatedData[selectedItem]);
+  
       let HeatRecord = updatedData[selectedItem];
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, HeatRecord };
+      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData')?? '{}');
+      let Mrgcokifrm = {...getcokidata, HeatRecord };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
-    
-    setSelectedItem(null);
   
+      setSelectedItem(null);
     } else {
-      data = { heat: heat, heatdate: heatdate, breeddate: breeddate , duedate: duedate  }
       // Add new data
-      const hid = heat.length > 0 ? heat[heat.length - 1].hid + 1 : 1;
-      let b = [...heat, { hid: hid,  heat: heat, heatdate: heatdate, breeddate: breeddate , duedate: duedate  }]
-      setheat([...heat, { hid: hid,  ...data  }]);
-      HRid = {hid,...data}
-      console.log(HRid)
+      const hid = heat.length > 0? heat[heat.length - 1].hid + 1 : 1;
+      setheat([...heat, { hid: hid,...data }]);
+      HRid = { hid,...data };
+      console.log(HRid);
+  
       let HeatRecord = HRid;
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, HeatRecord };
+      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData')?? '{}');
+      let Mrgcokifrm = {...getcokidata, HeatRecord };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
     }
+  
     console.log(data);
     setOpenDialog(false);
   };

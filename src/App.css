@@ -29,6 +29,33 @@ body {
     #57c84d,
     #2eb62c
   );
+ /* background: url(./assets/img/home-video.gif);
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%; */
+  /* min-width: 100vw;
+  min-height: 100vh; */
+}
+.video-section{
+  position: relative;
+}
+.video-section video{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+.video-content{
+  position: absolute;
+  left: 5rem;
+  top: 13rem;
+  filter: drop-shadow(2px 4px 6px black);
+  color: white !important;
+  backdrop-filter: blur(5px);
+}
+.video-content h1{
+  font-size: xxx-large !important;
+  color: white !important;
 }
 .nav-text small {
   display: flex;
@@ -167,6 +194,7 @@ body {
   transition: all 0.5s;
   z-index: 996;
   filter: drop-shadow(2px 4px 6px black);
+  backdrop-filter: blur(4px);
 }
 #topbar.topbar-scrolled {
   top: -40px;
@@ -1533,6 +1561,27 @@ body {
   .prd-btn button {
     width: 100% !important;
   }
+  .video-section video{
+    width: 100vw;
+    height: 115vh;
+    object-fit: cover;
+  }
+  .video-content{
+    position: absolute;
+    left: 5%;
+    top: 10rem;
+    filter: drop-shadow(2px 4px 6px black);
+    z-index: 999;
+    color: white !important;
+  }
+  .video-content h1{
+    font-size: xxx-large !important;
+    color: white !important;
+  }
+  .video-content p{
+    font-size: x-large !important;
+    color: white !important;
+  }
 }
 .contact_field {
   margin-top: 24%;
@@ -2691,7 +2740,7 @@ background-color: #fbceb1;
 }
 
 .animal-bg-size{
-  height: 1000vh;
+ min-height: 100vh;
 }
 
 .fs-7{
@@ -2786,4 +2835,131 @@ img.card-img{
 }
 .nav-head:hover{
   color: #adff2f !important;
+}
+select.goog-te-combo option[value="af"],
+select.goog-te-combo option[value="am"],
+select.goog-te-combo option[value="ar"],
+select.goog-te-combo option[value="az"],
+select.goog-te-combo option[value="bm"],
+select.goog-te-combo option[value="be"],
+select.goog-te-combo option[value="bs"],
+select.goog-te-combo option[value="bg"],
+select.goog-te-combo option[value="ca"],
+select.goog-te-combo option[value="ceb"],
+select.goog-te-combo option[value="ny"],
+select.goog-te-combo option[value="zh-CN"],
+select.goog-te-combo option[value="zh-TW"],
+select.goog-te-combo option[value="co"],
+select.goog-te-combo option[value="hr"],
+select.goog-te-combo option[value="cs"],
+select.goog-te-combo option[value="da"],
+select.goog-te-combo option[value="dv"],
+select.goog-te-combo option[value="doi"],
+select.goog-te-combo option[value="eo"],
+select.goog-te-combo option[value="et"],
+select.goog-te-combo option[value="ee"],
+select.goog-te-combo option[value="tl"],
+select.goog-te-combo option[value="fi"],
+select.goog-te-combo option[value="fr"],
+select.goog-te-combo option[value="fy"],
+select.goog-te-combo option[value="gl"],
+select.goog-te-combo option[value="ka"],
+select.goog-te-combo option[value="el"],
+select.goog-te-combo option[value="gn"],
+select.goog-te-combo option[value="ht"],
+select.goog-te-combo option[value="ha"],
+select.goog-te-combo option[value="haw"],
+select.goog-te-combo option[value="iw"],
+select.goog-te-combo option[value="hmn"],
+select.goog-te-combo option[value="hu"],
+select.goog-te-combo option[value="is"],
+select.goog-te-combo option[value="ig"],
+select.goog-te-combo option[value="ilo"],
+select.goog-te-combo option[value="ga"],
+select.goog-te-combo option[value="it"],
+select.goog-te-combo option[value="jw"],
+select.goog-te-combo option[value="kk"],
+select.goog-te-combo option[value="km"],
+select.goog-te-combo option[value="rw"],
+select.goog-te-combo option[value="gom"],
+select.goog-te-combo option[value="kri"],
+select.goog-te-combo option[value="ku"],
+select.goog-te-combo option[value="ckb"],
+select.goog-te-combo option[value="ky"],
+select.goog-te-combo option[value="lo"],
+select.goog-te-combo option[value="la"],
+select.goog-te-combo option[value="lv"],
+select.goog-te-combo option[value="ln"],
+select.goog-te-combo option[value="lt"],
+select.goog-te-combo option[value="lg"],
+select.goog-te-combo option[value="lb"],
+select.goog-te-combo option[value="mk"],
+select.goog-te-combo option[value="mai"],
+select.goog-te-combo option[value="mg"],
+select.goog-te-combo option[value="ms"],
+select.goog-te-combo option[value="mt"],
+select.goog-te-combo option[value="mi"],
+select.goog-te-combo option[value="mni-Mtei"],
+select.goog-te-combo option[value="lus"],
+select.goog-te-combo option[value="mn"],
+select.goog-te-combo option[value="my"],
+select.goog-te-combo option[value="ne"],
+select.goog-te-combo option[value="no"],
+select.goog-te-combo option[value="om"],
+select.goog-te-combo option[value="ps"],
+select.goog-te-combo option[value="fa"],
+select.goog-te-combo option[value="pl"],
+select.goog-te-combo option[value="pt"],
+select.goog-te-combo option[value="qu"],
+select.goog-te-combo option[value="ro"],
+select.goog-te-combo option[value="ru"],
+select.goog-te-combo option[value="sm"],
+select.goog-te-combo option[value="sa"],
+select.goog-te-combo option[value="gd"],
+select.goog-te-combo option[value="nso"],
+select.goog-te-combo option[value="sr"],
+select.goog-te-combo option[value="st"],
+select.goog-te-combo option[value="sn"],
+select.goog-te-combo option[value="sd"],
+select.goog-te-combo option[value="si"],
+select.goog-te-combo option[value="sk"],
+select.goog-te-combo option[value="sl"],
+select.goog-te-combo option[value="so"],
+select.goog-te-combo option[value="su"],
+select.goog-te-combo option[value="sw"],
+select.goog-te-combo option[value="sv"],
+select.goog-te-combo option[value="tg"],
+select.goog-te-combo option[value="tt"],
+select.goog-te-combo option[value="th"],
+select.goog-te-combo option[value="ti"],
+select.goog-te-combo option[value="ts"],
+select.goog-te-combo option[value="tr"],
+select.goog-te-combo option[value="tk"],
+select.goog-te-combo option[value="ak"],
+select.goog-te-combo option[value="uk"],
+select.goog-te-combo option[value="ug"],
+select.goog-te-combo option[value="uz"],
+select.goog-te-combo option[value="vi"],
+select.goog-te-combo option[value="cy"],
+select.goog-te-combo option[value="xh"],
+select.goog-te-combo option[value="yi"],
+select.goog-te-combo option[value="yo"],
+select.goog-te-combo option[value="sq"],
+select.goog-te-combo option[value="hy"],
+select.goog-te-combo option[value="ay"],
+select.goog-te-combo option[value="eu"],
+select.goog-te-combo option[value="nl"],
+select.goog-te-combo option[value="de"],
+select.goog-te-combo option[value="id"],
+select.goog-te-combo option[value="ja"],
+select.goog-te-combo option[value="ko"],
+select.goog-te-combo option[value="es"],
+select.goog-te-combo option[value="zu"] {
+  display: none;
+}
+.skiptranslate.goog-te-gadget {
+  font-size: 0px;
+}
+.selected-bg-color{
+  background-color: antiquewhite;
 }

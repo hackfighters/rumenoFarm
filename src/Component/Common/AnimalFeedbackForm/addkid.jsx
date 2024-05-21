@@ -9,130 +9,58 @@ import Cookies from "js-cookie";
 
 const KidAddForm = () => {
   const { register, handleSubmit, setValue } = useForm();
-  const { Ucaddkid, setUcaddkid, Ucmilkrec } = useContext(UserContext);
+  const { FarmDataUMKid } = useContext(UserContext);
   const [addkiddata, setaddkiddata] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleOpenDialog = () => {
     setModalIsOpen(true);
-    setValue("kidage", "");
-    setValue("kiduniquename", "");
-    setValue("birthdate", "");
-    setValue("kgender", "");
+    setValue("kid_age", "");
+    setValue("kid_uniquename", "");
+    setValue("birth_date", "");
+    setValue("k_gender", "");
     setValue("breed", "");
-    setValue("kidcode", "");
-    setValue("kidscore", "");
-    setValue("birthtype", "");
-    setValue("kidweight", "");
-    setValue("weandate", "");
-    setValue("weanweight", "");
-    setValue("motherweanweight", "");
-    setValue("motherweandate", "");
+    setValue("kid_code", "");
+    setValue("kid_score", "");
+    setValue("birth_type", "");
+    setValue("kid_weight", "");
+    setValue("wean_date", "");
+    setValue("wean_weight", "");
+    setValue("mother_wean_weight", "");
+    setValue("mother_wean_date", "");
     setValue("castration", "");
-    setValue("kidcomment", "");
-    setValue("breeddate", "");
+    setValue("kid_comment", "");
+    
   };
 
   const handleCloseDialog = () => {
     setModalIsOpen(false);
-    setValue("kidage", "");
-    setValue("kiduniquename", "");
-    setValue("birthdate", "");
-    setValue("kgender", "");
+    setValue("kid_age", "");
+    setValue("kid_uniquename", "");
+    setValue("birth_date", "");
+    setValue("k_gender", "");
     setValue("breed", "");
-    setValue("kidcode", "");
-    setValue("kidscore", "");
-    setValue("birthtype", "");
-    setValue("kidweight", "");
-    setValue("weandate", "");
-    setValue("weanweight", "");
-    setValue("motherweanweight", "");
-    setValue("motherweandate", "");
+    setValue("kid_code", "");
+    setValue("kid_score", "");
+    setValue("birth_type", "");
+    setValue("kid_weight", "");
+    setValue("wean_date", "");
+    setValue("wean_weight", "");
+    setValue("mother_wean_weight", "");
+    setValue("mother_wean_date", "");
     setValue("castration", "");
-    setValue("kidcomment", "");
-    setValue("breeddate", "");
+    setValue("kid_comment", "");
+    
     setSelectedItem(null);
   };
 
-  // const onsubmit = (data) => {
-  //   let finalData;
-  //   if (selectedItem !== null) {
-  //     // Edit existing data
-  //     const updatedData = [...addkiddata];
-
-  //     updatedData[selectedItem] = data;
-  //     setaddkiddata(updatedData);
-  //     finalData = {
-  //       Uid: "200" + (selectedItem + 1),
-  //       cno: selectedItem + 1,
-  //       birthdate: data.birthdate,
-  //       birthtype: data.birthtype,
-  //       birthweight: data.birthweight,
-  //       breed: data.breed,
-  //       castration: data.castration,
-  //       kidcomment: data.kidcomment,
-  //       kidkgender: data.kidkgender,
-  //       kidage: data.kidage,
-  //       kidcode: data.kidcode,
-  //       kidscore: data.kidscore,
-  //       kiduniquename: data.kiduniquename,
-  //       kidweight: data.kidweight,
-  //       motherage: data.motherage,
-  //       motherweandate: data.motherweandate,
-  //       motherweanweight: data.motherweanweight,
-  //       weandate: data.weandate,
-  //       weanweight: data.weanweight,
-  //       milkforkid: Ucaddkid.milkforkid,
-  //       milkvolume: Ucaddkid.milkvolume,
-  //       milkdate: Ucaddkid.milkdate,
-  //     };
-  //     console.log(finalData);
-  //   } else {
-  //     // Add new data
-  //     setaddkiddata([...addkiddata, data]);
-  //     finalData = {
-  //       Uid: "200" + (addkiddata.length + 1),
-  //       cno: addkiddata.length + 1,
-  //       birthdate: data.birthdate,
-  //       birthtype: data.birthtype,
-  //       birthweight: data.birthweight,
-  //       breed: data.breed,
-  //       castration: data.castration,
-  //       kidcomment: data.kidcomment,
-  //       kidkgender: data.kidkgender,
-  //       kidage: data.kidage,
-  //       kidcode: data.kidcode,
-  //       kidscore: data.kidscore,
-  //       kiduniquename: data.kiduniquename,
-  //       kidweight: data.kidweight,
-  //       motherage: data.motherage,
-  //       motherweandate: data.motherweandate,
-  //       motherweanweight: data.motherweanweight,
-  //       weandate: data.weandate,
-  //       weanweight: data.weanweight,
-  //       milkforkid: Ucaddkid.milkforkid,
-  //       milkvolume: Ucaddkid.milkvolume,
-  //       milkdate: Ucaddkid.milkdate,
-  //     };
-  //     console.log(finalData);
-  //   }
-  //   let KidData = finalData
-  //   let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData'))
-  //   let Mrgcokifrm = {...getcokidata, KidData}
-  //   console.log(getcokidata)
-  //   Cookies.set('AnimalCookiesData', JSON.stringify(Mrgcokifrm));
-  //   console.log(Mrgcokifrm)
-  //   console.log(Cookies.get('AnimalCookiesData'));
-  //   setModalIsOpen(false);
-  // };
-
-  const onsubmit = (data) => {
+  const onsubmit = async (data) => {
     let KKid;
     if (selectedItem !== null) {
       // Edit existing data
       const updatedData = [...addkiddata];
-      updatedData[selectedItem] = { kid: selectedItem + 1, ...data };
+      updatedData[selectedItem] = { kid: selectedItem + 1, uID:FarmDataUMKid.uID,mid:FarmDataUMKid.mid ,kid:FarmDataUMKid.kid, ...data };
       setaddkiddata(updatedData);
       console.log(updatedData[selectedItem]);
       let KidData = updatedData[selectedItem];
@@ -140,81 +68,70 @@ const KidAddForm = () => {
       let Mrgcokifrm = { ...getcokidata, KidData };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
-
+      try {
+        const response = await axios.post('http://192.168.1.14:5000/kid_details', updatedData[selectedItem])
+        console.log(response.data)
+      } catch (error) {
+        console.log(error)
+      }
       setSelectedItem(null);
     } else {
       // Add new data
-      const kid =
-        addkiddata.length > 0 ? addkiddata[addkiddata.length - 1].kid + 1 : 1;
-      setaddkiddata([...addkiddata, { kid: kid, ...data }]);
-      KKid = { kid, ...data };
-      console.log(KKid);
+      const k_id =
+        addkiddata.length > 0 ? addkiddata[addkiddata.length - 1].k_id + 1 : 1;
+      setaddkiddata([...addkiddata, { k_id: k_id, ...data }]);
+      KKid = { k_id, uID:FarmDataUMKid.uID,mid:FarmDataUMKid.mid,kid:FarmDataUMKid.kid, ...data };
+      console.log(KKid,addkiddata);
       let KidData = KKid;
       let getcokidata = JSON.parse(Cookies.get("AnimalCookiesData") ?? "{}");
       let Mrgcokifrm = { ...getcokidata, KidData };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
     }
+    try {
+      const response = await axios.post('http://192.168.1.14:5000/kid_details', KKid)
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
     // console.log(data ,vaccine);
     setModalIsOpen(false);
   };
 
-  const FinalSubmit = () => {
-    // let finalData = {
-    //   Uid:'20'+addkiddata.length+1,
-    //   cid: addkiddata.length,
-    //   birthdate: addkiddata.birthdate,
-    //   birthtype: addkiddata.birthtype,
-    //   birthweight: addkiddata.birthweight,
-    //   breed: addkiddata.breed,
-    //   castration: addkiddata.castration,
-    //   kidcomment: addkiddata.kidcomment,
-    //   kidkgender: addkiddata.kidkgender,
-    //   kidage: addkiddata.kidage,
-    //   kidcode: addkiddata.kidcode,
-    //   kidscore: addkiddata.kidscore,
-    //   kiduniquename: addkiddata.kiduniquename,
-    //   kidweight: addkiddata.kidweight,
-    //   motherage: addkiddata.motherage,
-    //   motherweandate: addkiddata.motherweandate,
-    //   motherweanweight: addkiddata.motherweanweight,
-    //   weandate: addkiddata.weandate,
-    //   weanweight: addkiddata.weanweight,
-    //   milkforkid: Ucaddkid.milkforkid,
-    //   milkvolume: Ucaddkid.milkvolume,
-    //   milkdate: Ucaddkid.milkdate,
-    // };
-    // setUcaddkid(finalData);
-    // console.log(Ucaddkid);
-    // setModalIsOpen(false);
-  };
 
   const handleEdit = (index) => {
-    setValue("kidage", addkiddata[index].kidage);
-    setValue("kiduniquename", addkiddata[index].kiduniquename);
-    setValue("birthdate", addkiddata[index].birthdate);
-    setValue("kgender", addkiddata[index].kgender);
+    setValue("kid_age", addkiddata[index].kid_age);
+    setValue("kid_uniquename", addkiddata[index].kid_uniquename);
+    setValue("birth_date", addkiddata[index].birth_date);
+    setValue("k_gender", addkiddata[index].k_gender);
     setValue("breed", addkiddata[index].breed);
-    setValue("kidcode", addkiddata[index].kidcode);
-    setValue("kidscore", addkiddata[index].kidscore);
-    setValue("birthtype", addkiddata[index].birthtype);
-    setValue("kidweight", addkiddata[index].kidweight);
-    setValue("weandate", addkiddata[index].weandate);
-    setValue("weanweight", addkiddata[index].weanweight);
-    setValue("motherweanweight", addkiddata[index].motherweanweight);
-    setValue("motherweandate", addkiddata[index].motherweandate);
+    setValue("kid_code", addkiddata[index].kid_code);
+    setValue("kid_score", addkiddata[index].kid_score);
+    setValue("birth_type", addkiddata[index].birth_type);
+    setValue("kid_weight", addkiddata[index].kid_weight);
+    setValue("wean_date", addkiddata[index].wean_date);
+    setValue("wean_weight", addkiddata[index].wean_weight);
+    setValue("mother_wean_weight", addkiddata[index].mother_wean_weight);
+    setValue("mother_wean_date", addkiddata[index].mother_wean_date);
     setValue("castration", addkiddata[index].castration);
-    setValue("kidcomment", addkiddata[index].kidcomment);
-    setValue("breeddate", addkiddata[index].breeddate);
+    setValue("kid_comment", addkiddata[index].kid_comment);
     setSelectedItem(index);
     setModalIsOpen(true);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async(index) => {
+    const deletedItem = addkiddata[index]; 
     const updatedData = [...addkiddata];
     updatedData.splice(index, 1);
     setaddkiddata(updatedData);
-  };
+    console.log(deletedItem); 
+    try {
+      const response = await axios.delete('http://192.168.1.14:5000/kid_details',deletedItem)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
+  }
 
   return (
     <>
@@ -239,7 +156,7 @@ const KidAddForm = () => {
                         >
                           <span className="text-center px-0 py-2 fs-2 col-lg-3 ">
                             <strong className="d-block text-uppercase">
-                              {item.kiduniquename}
+                              {item.kid_uniquename}
                             </strong>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -247,7 +164,7 @@ const KidAddForm = () => {
                               Age :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.kidage}
+                              {item.kid_age}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -255,7 +172,7 @@ const KidAddForm = () => {
                               Birth Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.birthdate}
+                              {item.birth_date}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -263,7 +180,7 @@ const KidAddForm = () => {
                               Gender :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.kidkgender}
+                              {item.k_gender}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -271,7 +188,7 @@ const KidAddForm = () => {
                               Kid Code :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.kidcode}
+                              {item.kid_code}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -279,7 +196,7 @@ const KidAddForm = () => {
                               Kid Score :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.kidscore}
+                              {item.kid_score}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -287,7 +204,7 @@ const KidAddForm = () => {
                               Birth Type :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.birthtype}
+                              {item.birth_type}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -295,7 +212,7 @@ const KidAddForm = () => {
                               Kid Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.kidweight}
+                              {item.kid_weight}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -303,7 +220,7 @@ const KidAddForm = () => {
                               Wean Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.weandate}
+                              {item.wean_date}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -311,7 +228,7 @@ const KidAddForm = () => {
                               Wean Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.weanweight}
+                              {item.wean_weight}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -319,7 +236,7 @@ const KidAddForm = () => {
                               Mother Wean Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.motherweanweight}
+                              {item.mother_wean_weight}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -327,7 +244,7 @@ const KidAddForm = () => {
                               Mother Wean Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.motherweandate}
+                              {item.mother_wean_date}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -343,7 +260,7 @@ const KidAddForm = () => {
                               Birth Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.birthweight}
+                              {item.birth_weight}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -360,7 +277,7 @@ const KidAddForm = () => {
                               Mother Age :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.motherage}
+                              {item.mother_age}
                             </span>
                           </span>
 
@@ -369,7 +286,7 @@ const KidAddForm = () => {
                               Comment :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.kidcomment}
+                              {item.kid_comment}
                             </span>
                           </span>
                           <span className="text-center mx-2 py-3  ">
@@ -415,8 +332,8 @@ const KidAddForm = () => {
                               type="textt"
                               id="kiduniquename"
                               className="form-control"
-                              value={addkiddata.kiduniquename}
-                              {...register("kiduniquename")}
+                              value={addkiddata.kid_uniquename}
+                              {...register("kid_uniquename")}
                             />
                           </div>
                           <div className="col-lg-5 my-2">
@@ -429,8 +346,8 @@ const KidAddForm = () => {
                               type="textt"
                               id="kidage"
                               className="form-control"
-                              value={addkiddata.kidage}
-                              {...register("kidage")}
+                              value={addkiddata.kid_age}
+                              {...register("kid_age")}
                             />
                           </div>
                           <div className="col-lg-5 my-2">
@@ -443,8 +360,8 @@ const KidAddForm = () => {
                               type="textt"
                               id="kidweight"
                               className="form-control"
-                              value={addkiddata.kidweight}
-                              {...register("kidweight")}
+                              value={addkiddata.kidw_eight}
+                              {...register("kid_weight")}
                             />
                           </div>
                           <div className="col-lg-5 my-2">
@@ -457,11 +374,11 @@ const KidAddForm = () => {
                               type="number"
                               id="motherage"
                               className="form-control"
-                              value={addkiddata.motherage}
-                              {...register("motherage")}
+                              value={addkiddata.mother_age}
+                              {...register("mother_age")}
                             />
                           </div>
-                        
+
                           <div className="col-lg-5 my-2">
                             <label className="form-label" for="selectbreed">
                               Select Breed
@@ -493,8 +410,8 @@ const KidAddForm = () => {
                               type="date"
                               id="birthdate"
                               className="form-control"
-                              value={addkiddata.birthdate}
-                              {...register("birthdate")}
+                              value={addkiddata.birth_date}
+                              {...register("birth_date")}
                             />
                           </div>
 
@@ -512,7 +429,7 @@ const KidAddForm = () => {
                                 name="kgender"
                                 id="inlineRadio1"
                                 value="doe"
-                                {...register("kidkgender")}
+                                {...register("k_gender")}
                               />
                               <label
                                 className="form-check-label"
@@ -528,7 +445,7 @@ const KidAddForm = () => {
                                 name="kgender"
                                 id="inlineRadio2"
                                 value="buck"
-                                {...register("kidkgender")}
+                                {...register("k_gender")}
                               />
                               <label
                                 className="form-check-label"
@@ -544,7 +461,7 @@ const KidAddForm = () => {
                                 name="kgender"
                                 id="inlineRadio3"
                                 value="wether"
-                                {...register("kidkgender")}
+                                {...register("k_gender")}
                               />
                               <label
                                 className="form-check-label"
@@ -562,7 +479,7 @@ const KidAddForm = () => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
-                              {...register("kidcode")}
+                              {...register("kid_code")}
                             >
                               <option selected disabled>
                                 Open this and select kidding code
@@ -587,7 +504,7 @@ const KidAddForm = () => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
-                              {...register("kidscore")}
+                              {...register("kid_score")}
                             >
                               <option defaultValue>
                                 Open this and select kidding score
@@ -607,7 +524,7 @@ const KidAddForm = () => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
-                              {...register("birthtype")}
+                              {...register("birth_type")}
                             >
                               <option value="Single">Single</option>
                               <option value="Twin">Twin</option>
@@ -625,8 +542,8 @@ const KidAddForm = () => {
                               type="number"
                               id="birthweight"
                               className="form-control"
-                              value={addkiddata.birthweight}
-                              {...register("birthweight")}
+                              value={addkiddata.birth_weight}
+                              {...register("birth_weight")}
                             />
                           </div>
                           <div className="col-lg-5 my-2">
@@ -642,11 +559,11 @@ const KidAddForm = () => {
                               </span>
                             </div>
                             <input
-                              {...register("weandate")}
+                              {...register("wean_date")}
                               placeholder="Wean Date"
                               type="date"
                               id="weandate"
-                              value={addkiddata.weandate}
+                              value={addkiddata.wean_date}
                               className="form-control"
                             />
                           </div>
@@ -659,11 +576,11 @@ const KidAddForm = () => {
                               Wean Weight
                             </label>
                             <input
-                              {...register("weanweight")}
+                              {...register("wean_weight")}
                               placeholder="Wean Weight"
                               type="number"
                               id="weanweight"
-                              value={addkiddata.weanweight}
+                              value={addkiddata.wean_weight}
                               className="form-control"
                             />
                           </div>
@@ -682,11 +599,11 @@ const KidAddForm = () => {
                               </span>
                             </div>
                             <input
-                              {...register("motherweanweight")}
+                              {...register("mother_wean_weight")}
                               placeholder="Mother Weight at Wean"
                               type="number"
                               id="motherweanweight"
-                              value={addkiddata.motherweanweight}
+                              value={addkiddata.mother_wean_weight}
                               className="form-control"
                             />
                           </div>
@@ -708,8 +625,8 @@ const KidAddForm = () => {
                               type="date"
                               id="motherweandate"
                               className="form-control"
-                              value={addkiddata.motherweandate}
-                              {...register("motherweandate")}
+                              value={addkiddata.mother_wean_date}
+                              {...register("mother_wean_date")}
                             />
                           </div>
                           <div className="col-lg-5 my-2">
@@ -744,8 +661,8 @@ const KidAddForm = () => {
                             <textarea
                               className="form-control"
                               id="exampleFormControlTextarea1"
-                              value={addkiddata.kidcomment}
-                              {...register("kidcomment")}
+                              value={addkiddata.kid_comment}
+                              {...register("kid_comment")}
                               rows="3"
                             ></textarea>
                           </div>

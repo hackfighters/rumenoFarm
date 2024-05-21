@@ -13,13 +13,7 @@ export const UserProvider = ({ children }) => {
   const [cartdata, setCartdata] = useState(null);
   const [amountData, setamountData] = useState(null);
   const [iteamdata, setiteamdata] = useState();
-  const [kiddata, setKidData] = useState({});
-  const [brddata, setbrddata] = useState({});
-  const [Ucaddkid, setUcaddkid] = useState({});
-  const [Ucmilkrec, setUcmilkrec] = useState({});
-  const [UcPostWean, setUcPostWean] = useState({});
-  const [Ucvaccine, setUcvaccine] = useState({});
-  const [prntUid, setprntUid] = useState({});
+  const [FarmDataUMKid, setFarmDataUMKid] = useState({});
   const [AnimalData, setAnimalData] = useState({});
   const [selectedAnimal, setSelectedAnimal] = useState("");
 
@@ -29,18 +23,10 @@ export const UserProvider = ({ children }) => {
         loggedInUser,
         farmDtl,
         setfarmDtl,
-        prntUid,
-        setprntUid,
         AnimalData,
         setAnimalData,
-        UcPostWean,
         selectedAnimal,
         setSelectedAnimal,
-        setUcPostWean,
-        Ucvaccine,
-        setUcvaccine,
-        Ucmilkrec,
-        setUcmilkrec,
         setLoggedInUser,
         sizevalue,
         setSizevalue,
@@ -54,13 +40,10 @@ export const UserProvider = ({ children }) => {
         setCart,
         iteamdata,
         setiteamdata,
-        kiddata,
-        setKidData,
-        brddata,
-        setbrddata,
-        Ucaddkid,
-        setUcaddkid,LoginUserData, 
+        LoginUserData, 
         setLoginUserData,
+        FarmDataUMKid,
+         setFarmDataUMKid
       }}
     >
       {children}

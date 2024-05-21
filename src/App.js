@@ -101,7 +101,7 @@ const App = () => {
           <Route path="/dairy-consultant" Component={ServicesThird} />
           <Route path="/veterinary-products" Component={ProductPage} />
           <Route path="/veterinary-products/:name" Component={ProductPage} />
-          <Route path="/veterinary-products/ProductDetail/:id/:name" Component={ProductDetail} />
+          <Route path="/veterinary-products/:name/:id" Component={ProductDetail} />
           <Route path="/contactus" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
@@ -110,10 +110,10 @@ const App = () => {
           <Route path="/privacypolicy" Component={PrivacyPolicy}/>
           <Route path="/blog" Component={Blog}/>
           <Route path="/blog/:id" Component={BlogContent}/>
-          <Route path="/goat-feed-supplements" Component={GoatCategoryPage}/>
-          <Route path="/dog-feed-supplements" Component={DogCategoryPage}/>
-          <Route path="/cattle-feed-supplements" Component={CattleCategoryPage}/>
-          <Route path="/poultry-feed-supplements" Component={PoultryCategoryPage}/>
+          <Route path="/veterinary-products/goat-feed-supplements" Component={GoatCategoryPage}/>
+          <Route path="/veterinary-products/dog-feed-supplements" Component={DogCategoryPage}/>
+          <Route path="/veterinary-products/cattle-feed-supplements" Component={CattleCategoryPage}/>
+          <Route path="/veterinary-products/poultry-feed-supplements" Component={PoultryCategoryPage}/>
           <Route path="/thankyoupage" Component={ThankYouPage}/>
           <Route path="*" Component={Error} />
         </Routes>

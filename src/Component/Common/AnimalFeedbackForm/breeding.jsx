@@ -43,40 +43,40 @@ const BreedHeat = () => {
  const handleOpenDialog = () => {
     setOpenDialog(true);
     setValue("heat", "");
-    setValue("heatdate", "");
-    setValue("heatresult", "");
-    setValue("breedername", "");
-    setValue("breeddate", "");
-    setValue("duedate", "");
+    setValue("heat_date", "");
+    setValue("heat_result", "");
+    setValue("breeder_name", "");
+    setValue("breed_date", "");
+    setValue("due_date", "");
     setSelectedItem(null);
  };
 
  const handleCloseDialog = () => {
     setOpenDialog(false);
     setValue("heat", "");
-    setValue("heatdate", "");
-    setValue("heatresult", "");
-    setValue("breedername", "");
-    setValue("breeddate", "");
-    setValue("duedate", "");
+    setValue("heat_date", "");
+    setValue("heat_result", "");
+    setValue("breeder_name", "");
+    setValue("breed_date", "");
+    setValue("due_date", "");
     setSelectedItem(null);
  };
 
 
 
-const onsubmit = (data) => {
+const onsubmit = async(data) => {
   let BRid;
-  let duedate = date.toLocaleDateString("en-GB");
-  let breeddate = data.breeddate;
+  let due_date = date.toLocaleDateString("en-GB");
+  let breed_date = data.breed_date;
   let heat = data.heat;
-  let heatdate = data.heatdate;
-  let heatresult = data.heatresult;
-  let breedername = data.breedername;
+  let heat_date = data.heat_date;
+  let heat_result = data.heat_result;
+  let breeder_name = data.breeder_name;
   if (selectedItem !== null) {
-    data = {  heat: heat, heatdate: heatdate, heatresult: heatresult,breedername: breedername, breeddate: breeddate , duedate: duedate  }
+    data = {  heat: heat, heat_date: heat_date, heat_result: heat_result,breeder_name: breeder_name, breed_date: breed_date , due_date: due_date  }
     // Edit existing data
     const updatedData = [...breeddata];
-    updatedData[selectedItem] = { brdid: selectedItem + 1, ...data  };
+    updatedData[selectedItem] = { brd_id: selectedItem + 1, ...data  };
     setBreeddata(updatedData);
     console.log(updatedData[selectedItem])
     let BreedRecord = updatedData[selectedItem];
@@ -84,22 +84,33 @@ const onsubmit = (data) => {
     let Mrgcokifrm = { ...getcokidata, BreedRecord };
     Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
     console.log(Cookies.get("AnimalCookiesData"));
-  
+    try {
+      const response = await axios.put('http://192.168.1.6:5000/estrus_heat',updatedData[selectedItem])
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
   setSelectedItem(null);
 
   } else {
-    data = {  heat: heat, heatdate: heatdate,heatresult: heatresult,breedername: breedername, breeddate: breeddate , duedate: duedate  }
+    data = {  heat: heat, heat_date: heat_date,heat_result: heat_result,breeder_name: breeder_name, breed_date: breed_date , due_date: due_date  }
     // Add new data
-    const brdid = breeddata.length > 0 ? breeddata[breeddata.length - 1].brdid + 1 : 1;
-    let b = [...breeddata, { brdid: brdid, heat: heat, heatdate: heatdate,heatresult: heatresult,breedername: breedername, breeddate: breeddate , duedate: duedate  }]
-          setBreeddata([...breeddata, { brdid: brdid,  ...data  }]);
-    BRid = {brdid,...data}
+    const brd_id = breeddata.length > 0 ? breeddata[breeddata.length - 1].brd_id + 1 : 1;
+    let b = [...breeddata, { brd_id: brd_id, heat: heat, heat_date: heat_date,heat_result: heat_result,breeder_name: breeder_name, breed_date: breed_date , due_date: due_date  }]
+          setBreeddata([...breeddata, { brd_id: brd_id,  ...data  }]);
+    BRid = {brd_id,...data}
     console.log(BRid)
     let BreedRecord = BRid;
     let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
     let Mrgcokifrm = { ...getcokidata, BreedRecord };
     Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
     console.log(Cookies.get("AnimalCookiesData"));
+    try {
+      const response = await axios.post('http://192.168.1.6:5000/estrus_heat',BRid)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
   }
   console.log(data);
   setOpenDialog(false);
@@ -108,19 +119,28 @@ const onsubmit = (data) => {
  const handleEdit = (index) => {
     const item = breeddata[index];
     setValue("heat", item.heat);
-    setValue("heatdate", item.heatdate);
-    setValue("heatresult", item.heatresult)
-    setValue("breedername", item.breedername)
-    setValue("breeddate", item.breeddate);
-    setValue("duedate", item.duedate);
+    setValue("heat_date", item.heat_date);
+    setValue("heat_result", item.heat_result)
+    setValue("breeder_name", item.breeder_name)
+    setValue("breed_date", item.breed_date);
+    setValue("due_date", item.due_date);
     setSelectedItem(index);
     setOpenDialog(true);
  };
 
- const handleDelete = (index) => {
-    const updatedData = [...breeddata];
-    updatedData.splice(index, 1);
-    setBreeddata(updatedData);
+ const handleDelete = async(index) => {
+   const deletedItem = breeddata[index]; 
+   const updatedData = [...breeddata];
+   updatedData.splice(index, 1);
+   updatedData.splice(index, 1);
+   setBreeddata(updatedData);
+    console.log(deletedItem); 
+    try {
+      const response = await axios.put('http://192.168.1.6:5000/estrus_heat',deletedItem)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
  };
 
   return (
@@ -156,7 +176,7 @@ const onsubmit = (data) => {
                             Date of Heat :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.heatdate}
+                            {item.heat_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -164,7 +184,7 @@ const onsubmit = (data) => {
                             Heat Result :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.heatresult}
+                            {item.heat_result}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -172,7 +192,7 @@ const onsubmit = (data) => {
                             Breeder Name :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.breedername}
+                            {item.breeder_name}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -180,7 +200,7 @@ const onsubmit = (data) => {
                             Breed Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.breeddate}
+                            {item.breed_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -188,7 +208,7 @@ const onsubmit = (data) => {
                             Due Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.duedate}
+                            {item.due_date}
                           </span>
                         </span>
 
@@ -251,8 +271,8 @@ const onsubmit = (data) => {
                               type="date"
                               id="heatdate"
                               className="form-control"
-                              value={breeddata.heatdate}
-                              {...register("heatdate")}
+                              value={breeddata.heat_date}
+                              {...register("heat_date")}
                             />
                           </div>
 
@@ -263,7 +283,7 @@ const onsubmit = (data) => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
-                              {...register("heatresult")}
+                              {...register("heat_result")}
                             >
                               <option defaultValue>
                                 Open this and select heat Result
@@ -288,8 +308,8 @@ const onsubmit = (data) => {
                               type="text"
                               id="breedername"
                               className="form-control"
-                              value={breeddata.breedername}
-                              {...register("breedername")}
+                              value={breeddata.breeder_name}
+                              {...register("breeder_name")}
                               
                             />
                           </div>
@@ -304,7 +324,7 @@ const onsubmit = (data) => {
                             type="date"
                             id="breeddate"
                             className="form-control"
-                            {...register("breeddate")}
+                            {...register("breed_date")}
                             value={breeddata.inputValue}
                             onChange={handleDateChange}
                           />
@@ -313,7 +333,7 @@ const onsubmit = (data) => {
                           <label className="form-label">Birth Due Date</label>
                           <h5
                             value={breeddata.duedate}
-                            {...register("duedate")}
+                            {...register("due_date")}
                           >
                             {date.toISOString().split('T')[0]}
                           </h5>
