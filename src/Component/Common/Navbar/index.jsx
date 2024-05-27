@@ -38,7 +38,7 @@ import { toast } from "react-toastify";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
-import TranslateButton from "../translate/trasn";
+import TranslateButton from "../translate/translate";
 import SearchBar from "./navsearch";
 
 const Navbar = ({ size }) => {
@@ -250,11 +250,11 @@ const Navbar = ({ size }) => {
                     className="me-2"
                     style={{ color: "#f5f5f5" }}
                   />
-                  <span className="text-dark">{t("v301")}</span>
+                  <span className="text-white">{t("v301")}</span>
                 </div>
 
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
-                <a className="text-decoration-none text-dark" rel="noreferrer" href="https://mail.google.com" target="_blank">
+                <a className="text-decoration-none text-white" rel="noreferrer" href="https://mail.google.com" target="_blank">
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   className="me-2"
@@ -270,13 +270,13 @@ const Navbar = ({ size }) => {
                     className="me-2"
                     style={{ color: "#fafcff" }}
                   />
-                  <span className="text-dark  ">
+                  <span className="text-white  ">
                     {" "}
                     {t("v302")} 9:00am - 8:00pm
                   </span>
                 </div>
                 <div className="col-lg-2 col-sm-1 px-2 d-flex cnt align-items-center justify-content-center">
-                  <a className="text-decoration-none text-dark" rel="noreferrer" href="tel:+91 7355043892">
+                  <a className="text-decoration-none text-white" rel="noreferrer" href="tel:+91 7355043892">
                 <FontAwesomeIcon
                   icon={faPhone}
                   className="me-2"

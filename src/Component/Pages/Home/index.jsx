@@ -24,9 +24,12 @@ import Prdimg5 from "../../../assets/img/OurProduct/prdaml5.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
 import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
-import caroimg1 from "../../../assets/img/home-img/caroimg1.jpg";
-import caroimg2 from "../../../assets/img/home-img/caroimg2.jpg";
-import caroimg3 from "../../../assets/img/home-img/caroimg3.jpeg";
+import caroimg1 from "../../../assets/img/home-img/homecaro1.jpg";
+import caroimg2 from "../../../assets/img/home-img/homecaro2.jpg";
+import caroimg3 from "../../../assets/img/home-img/homecaro3.jpg";
+import caroimg4 from "../../../assets/img/home-img/homecaro4.jpg";
+import caroimg5 from "../../../assets/img/home-img/homecaro5.jpg";
+import caroimg6 from "../../../assets/img/home-img/homecaro6.jpg";
 import homevideo from "../../../assets/img/home-video.mp4";
 import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
@@ -35,6 +38,8 @@ import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
 import Achievment from "../../Common/achievment";
 import HomeFaq from "../../Common/faq";
+
+
 
 const Home = () => {
 
@@ -73,6 +78,7 @@ const Home = () => {
             }))
           })}
         </script>
+        
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (
@@ -124,17 +130,36 @@ const Home = () => {
 
         <div className=" overflow-hidden">
           <Navbar size={cart.length} />
-          <div className="container header-sect px-0 mx-0">
+          <div className="container-fluid header-sect px-0 mx-0">
             <div className="row header-txt ">
               <div className=" video-section">
-                <video className="mx-0 px-0" autoPlay={true} muted loop={true} src={homevideo}></video>
-                <div className="col-lg-5 px-2 py-5 video-content" data-aos="fade-right">
+                <div className="col-lg-10 px-2 py-5 text-center video-content" data-aos="fade-right">
                   <h1 className="">
                     <span className="">{t("v1")}</span>
                   </h1>
                   <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
+              <Carousel className="" fade interval={2000} pause={false}>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg1} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg2} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg3} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg4} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg5} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg6} alt="Loading" />
+                </Carousel.Item>
+              </Carousel>
               <a href="#training">
                 <div className="training-sect">
                   <button className="btn gradient-custom-2 border-0 text-white btn--shockwave is-active">

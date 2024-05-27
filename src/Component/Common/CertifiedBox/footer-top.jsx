@@ -17,7 +17,7 @@ const FooterTop = () => {
         <div className="container bg-primary footer-header rounded">
           <div className="row py-4 justify-content-evenly">
             <div className="col-sm-9 d-flex align-items-center">
-              <h2 className="text-white ms-2">{t("v71")}</h2>
+              <h2 className=" ms-2">{t("v71")}</h2>
             </div>
             <div className="col-sm-2 ">
               <CarouselFadeExample />

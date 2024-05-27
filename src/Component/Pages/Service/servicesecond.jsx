@@ -85,7 +85,7 @@ const ServicesSecond = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Unlocking Goat Farming Success: Rumeno Farmotech's Expertise
           </h2>
           <p className="mx-5 my-4">
@@ -130,7 +130,7 @@ const ServicesSecond = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Goat Farming Advisor: Your Success Associated Partner
           </h2>
           <p className="mx-5 my-4">
@@ -150,7 +150,7 @@ const ServicesSecond = () => {
           </p>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Nutritionist for Ruminants: Optimising Feed for Strong Herds
           </h2>
           <p className="mx-5 my-4">
@@ -170,7 +170,7 @@ const ServicesSecond = () => {
           </p>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Consultant for Goats and Sheep: Promoting Excellence in Livestock
             Management
           </h2>

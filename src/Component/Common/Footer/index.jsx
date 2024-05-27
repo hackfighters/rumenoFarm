@@ -57,9 +57,9 @@ const Footer = () => {
                 </li>
        
                 <li>
-                  <a href="#about" className="footer-page">
+                <NavLink to="/home"   className="footer-page">
                     About
-                  </a>
+                  </NavLink>
                 </li>
                 <li>
                   <NavLink

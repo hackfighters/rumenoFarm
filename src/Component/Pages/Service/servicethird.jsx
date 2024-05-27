@@ -69,7 +69,7 @@ const ServicesThird = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Dairy Consultant Services by Rumeno Farmotech
 
           </h2>
@@ -93,7 +93,7 @@ const ServicesThird = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Understanding Dairy Farm Management Services
           </h2>
           <p className="mx-5 my-4">
@@ -112,7 +112,7 @@ const ServicesThird = () => {
           </p>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Navigating Livestock Challenges with Expert Consulting
           </h2>
           <p className="mx-5 my-4">
@@ -132,7 +132,7 @@ const ServicesThird = () => {
           </p>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">
+          <h2 className="py-2 px-4 service-head shadow">
             Empowering Dairy Farmers with Rumeno Farmotech
           </h2>
           <p className="mx-5 my-4">

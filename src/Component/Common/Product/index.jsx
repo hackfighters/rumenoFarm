@@ -127,7 +127,7 @@ const ProductItem = ({ item, handleClick }) => {
   return (
     <div className=" py-1">
       
-      <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2">
+      <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2 shadow">
         <div className="row">
           
           <div className="col-sm-4 p-4 product">

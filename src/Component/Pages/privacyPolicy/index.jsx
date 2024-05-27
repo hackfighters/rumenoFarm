@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 my-5 px-4 service-head">
+          <h2 className="py-2 my-5 px-4 service-head shadow">
             Privacy Policy for Rumeno Farmotech
           </h2>
           <p className="m-3">
@@ -72,7 +72,7 @@ const PrivacyPolicy = () => {
             If you have additional questions or require more information about
             our Privacy Policy, do not hesitate to contact us.
           </p>
-          <h2 className="py-2 my-5 px-4 service-head">Log Files</h2>
+          <h2 className="py-2 my-5 px-4 service-head shadow">Log Files</h2>
           <p className="m-3">
             Rumeno Farmotech follows a standard procedure of using log files.
             These files log visitors when they visit websites. All hosting
@@ -86,7 +86,7 @@ const PrivacyPolicy = () => {
             website, and gathering demographic information. Our Privacy Policy
             was created with the help of the Privacy Policy Generator.
           </p>
-          <h2 className="py-2 my-5 px-4 service-head">
+          <h2 className="py-2 my-5 px-4 service-head shadow">
             Cookies and Web Beacons
           </h2>
           <p className="m-3">
@@ -97,7 +97,7 @@ const PrivacyPolicy = () => {
             experience by customizing our web page content based on visitors'
             browser type and/or other information.
           </p>
-          <h2 className="py-2 my-5 px-4 service-head">Privacy Policies</h2>
+          <h2 className="py-2 my-5 px-4 service-head shadow">Privacy Policies</h2>
           <p className="m-3">
             You may consult this list to find the Privacy Policy for each of the
             advertising partners of Rumeno Farmotech.
@@ -116,7 +116,7 @@ const PrivacyPolicy = () => {
             Note that Rumeno Farmotech has no access to or control over these
             cookies that are used by third-party advertisers.
           </p>
-          <h2 className="py-2 my-5 px-4 service-head">
+          <h2 className="py-2 my-5 px-4 service-head shadow">
             Third Party Privacy Policies
           </h2>
           <p className="m-3">
@@ -132,7 +132,7 @@ const PrivacyPolicy = () => {
             with specific web browsers, it can be found at the browsers'
             respective websites.
           </p>
-          <h2 className="py-2 my-5 px-4 service-head">
+          <h2 className="py-2 my-5 px-4 service-head shadow">
             Children's Information
           </h2>
           <p className="m-3">
@@ -148,7 +148,7 @@ const PrivacyPolicy = () => {
             will do our best efforts to promptly remove such information from
             our records.
           </p>
-          <h2 className="py-2 my-5 px-4 service-head">
+          <h2 className="py-2 my-5 px-4 service-head shadow">
             Online Privacy Policy Only
           </h2>
           <p className="m-3">
@@ -158,15 +158,15 @@ const PrivacyPolicy = () => {
             not applicable to any information collected offline or via channels
             other than this website.
           </p>
-          <h2 className="py-2 my-5 px-4 service-head">Consent</h2>
+          <h2 className="py-2 my-5 px-4 service-head shadow">Consent</h2>
           <p className="my-5 mx-3 ">
             By using our website, you hereby consent to our Privacy Policy and
             agree to its Terms and Conditions.
           </p>
-          <h2 className="py-2 my-5 px-4 text-center service-head">
+          <h2 className="py-2 my-5 px-4 text-center service-head shadow">
             Return Policy for Animal Feed Supplements
           </h2>
-          <h3 className="py-2 my-5 px-4 service-head">1. Eligibility for Returns
+          <h3 className="py-2 my-5 px-4 service-head shadow">1. Eligibility for Returns
           </h3>
           <p className="mx-3">We want you to be satisfied with your purchase. If you are not completely happy with your animal feed supplement, here are the eligibility criteria for returns:</p>
           <ul>
@@ -174,7 +174,7 @@ const PrivacyPolicy = () => {
             <li><strong>Defective or Damaged Products : </strong> If you receive a product that is defective or damaged, please contact us within 7 days of delivery.</li>
           </ul>
 
-          <h3 className="py-2 my-5 px-4 service-head">
+          <h3 className="py-2 my-5 px-4 service-head shadow">
             2. How to Initiate a Return
           </h3>
           <p className="mx-3">To initiate a return, follow these steps:</p>
@@ -185,7 +185,7 @@ const PrivacyPolicy = () => {
             <li>Packaging: Repackage the product securely, including all original packaging materials.</li>
             <li>Shipping: Ship the product back to us using a trackable shipping method. You are responsible for return shipping costs.</li>
           </ul>
-          <h3 className="py-2 my-5 px-4 service-head">
+          <h3 className="py-2 my-5 px-4 service-head shadow">
             3. Refund Process
           </h3>
           <ul>
@@ -195,14 +195,14 @@ const PrivacyPolicy = () => {
             <li>Refunds will be issued to the original payment method used during the purchase.
             </li>
           </ul>
-          <h3 className="py-2 my-5 px-4 service-head">
+          <h3 className="py-2 my-5 px-4 service-head shadow">
             4. Exceptions
           </h3>
           <ul>
             <li>Opened Products: Unfortunately, we cannot accept returns for opened or partially used products due to safety and hygiene reasons.</li>
             <li>Custom Orders: Customized or personalized animal feed supplements are non-returnable unless they are defective.</li>
           </ul>
-          <h3 className="py-2 my-5 px-4 service-head">
+          <h3 className="py-2 my-5 px-4 service-head shadow">
             5. Contact Us
           </h3>
           <p className="mx-3">If you have any questions or need assistance with your return, please contact our customer support team at  support@rumenofarmotech.com or whats app us on 7355043892</p>

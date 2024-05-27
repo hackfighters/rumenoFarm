@@ -109,7 +109,7 @@ const Services = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head">{t("v267")}</h2>
+          <h2 className="py-2 px-4 service-head shadow">{t("v267")}</h2>
         </div>
         <div className="container">
           <div className="row my-3">
@@ -145,7 +145,7 @@ const Services = () => {
           </div>
         </div>
         <div className="col-lg-12 mb-2 mt-5">
-          <h2 className=" py-2 px-4 service-head">Veterinary Services by Rumeno Farmotech: Enhancing Animal Health through Expert Care</h2>
+          <h2 className=" py-2 px-4 service-head shadow">Veterinary Services by Rumeno Farmotech: Enhancing Animal Health through Expert Care</h2>
         </div>
         <div className="p-3">
       <p>In the dynamic world of animal husbandry, ensuring the well-being and productivity of our beloved creatures is of utmost importance. Proper nutrition and specialized care play pivotal roles in achieving these goals. Enter Rumeno Farmotech, a name synonymous with excellence in animal feed supplements and veterinary services.
@@ -181,7 +181,7 @@ const Services = () => {
       </ul>
       </div>
         <div className="col-lg-12 my-5">
-          <h2 className=" py-2 px-4 service-head">{t("v268")}</h2>
+          <h2 className=" py-2 px-4 service-head shadow">{t("v268")}</h2>
         </div>
         <div className="container">
           <div className="row srvc-consl justify-content-evenly my-3">
@@ -269,7 +269,7 @@ const Services = () => {
             </div>
           </div>
           <div className="col-lg-12 mb-3">
-            <h2 className="py-2 px-4 service-head">{t("v111")}</h2>
+            <h2 className="py-2 px-4 service-head shadow">{t("v111")}</h2>
           </div>
           <div
             className="row justify-content-center"
