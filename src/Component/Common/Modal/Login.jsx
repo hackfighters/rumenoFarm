@@ -612,7 +612,7 @@ useEffect(() => {
       const response = await axios.post(
       'http://localhost:2000/api/data',data
       );
-      // Handle the login success, e.g., store token in state or localStorage
+      // Handle the login success, e.g., store token i n state or localStorage
       setviewProduct(true)
       console.warn("Login successful:", response.data);
       const datastatus = response.data.msg;
