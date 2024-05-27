@@ -208,7 +208,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/goat-feed-supplements"
+                          to="/veterinary-products/goat-feed-supplements"
                         >
                           Goat Feed Supplements
                         </NavLink>
@@ -219,7 +219,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/cattle-feed-supplements"
+                          to="/veterinary-products/cattle-feed-supplements"
                         >
                           Cattle Feed Supplements
                         </NavLink>
@@ -228,7 +228,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/poultry-feed-supplements"
+                          to="/veterinary-products/poultry-feed-supplements"
                         >
                           Poultry Feed Supplements
                         </NavLink>
@@ -237,7 +237,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/dog-feed-supplements"
+                          to="/veterinary-products/dog-feed-supplements"
                         >
                           Dog Feed Supplements
                         </NavLink>
@@ -308,7 +308,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                     activeclassname="active"
                     to="/contactus"
                   >
-                    Contact Us
+                    Contact-Us
                   </NavLink>
                 </li>
                 <li>
@@ -341,7 +341,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                             onClick={openSltAnmlModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Form
+                            Farm Data
                           </button>
                           <Modal
                             show={isModalOpen}
@@ -412,7 +412,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                             onClick={openFarmModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Form
+                            Farm Data
                           </button>
                           <FarmerDetails
                             showFarmModal={showFarmModal}
@@ -529,7 +529,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                               className="dropdown-item justify-content-center"
                               href="/contactus"
                             >
-                              Contact Us
+                              Contact-Us
                             </a>
                           </li>
                           <hr />

@@ -1,14 +1,22 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
 
 
 const FarmerDetails = ({showFarmModal,closeFarmModal}) => {
     const { register, handleSubmit,reset} = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit =  async(data) => {
+    try {
+      const response = await axios.post('http://192.168.1.6:5000/farmdetail',data)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
         console.log(data);
         reset()
+
     };
 
   return (

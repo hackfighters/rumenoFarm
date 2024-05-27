@@ -16,27 +16,27 @@ const MilkRecord = () => {
 
   const handleOpenDialog = () => {
     setOpenModal(true);
-    setValue('milkforkid', "");
-    setValue('milkvolume', "");
-    setValue('milkdate', "");  
+    setValue('milk_for_kid', "");
+    setValue('milk_volume', "");
+    setValue('milk_date', "");  
     setSelectedItem(null);
   };
 
   const handleCloseDialog = () => {
     setOpenModal(false);
-    setValue('milkforkid', "");
-    setValue('milkvolume', "");
-    setValue('milkdate', "");
+    setValue('milk_for_kid', "");
+    setValue('milk_volume', "");
+    setValue('milk_date', "");
     setSelectedItem(null);
   };
 
 
-  const onsubmit = (data) => {
+  const onsubmit = async(data) => {
     let MMid;
     if (selectedItem !== null) {
       // Edit existing data
       const updatedData = [...milkrec];
-      updatedData[selectedItem] = { mlkid: selectedItem + 1, ...data };
+      updatedData[selectedItem] = { mlk_id: selectedItem + 1, ...data };
       setMilkrec(updatedData);
       console.log(updatedData[selectedItem])
       let MilkRecord = updatedData[selectedItem];
@@ -44,14 +44,19 @@ const MilkRecord = () => {
       let Mrgcokifrm = { ...getcokidata, MilkRecord };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
-    
+      try {
+        const response = await axios.put('http://192.168.1.6:5000/milk_detail',updatedData[selectedItem])
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
     setSelectedItem(null);
 
     } else {
       // Add new data
-      const mlkid = milkrec.length > 0 ? milkrec[milkrec.length - 1].mlkid + 1 : 1;
-            setMilkrec([...milkrec, { mlkid: mlkid, ...data }]);
-      MMid = {mlkid,...data}
+      const mlk_id = milkrec.length > 0 ? milkrec[milkrec.length - 1].mlk_id + 1 : 1;
+            setMilkrec([...milkrec, { mlk_id: mlk_id, ...data }]);
+      MMid = {mlk_id,...data}
       console.log(MMid)
       let MilkRecord = MMid;
       let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
@@ -59,25 +64,39 @@ const MilkRecord = () => {
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
     }
+    try {
+      const response = await axios.post('http://192.168.1.6:5000/milk_detail',MMid)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
     // console.log(data ,vaccine);
     setOpenModal(false);
   };
 
 
   const handleEdit = (index) => {
-    setValue('milkforkid', milkrec[index].milkforkid);
-    setValue('milkvolume', milkrec[index].milkvolume);
-    setValue('milkdate', milkrec[index].milkdate);
+    setValue('milk_for_kid', milkrec[index].milk_for_kid);
+    setValue('milk_volume', milkrec[index].milk_volume);
+    setValue('milk_date', milkrec[index].milk_date);
     setSelectedItem(index);
     setOpenModal(true);
   };
 
 
-  const handleDelete = (index) => {
+  const handleDelete = async(index) => {
+    const deletedItem = milkrec[index]; 
     const updatedData = [...milkrec];
     updatedData.splice(index, 1);
     setMilkrec(updatedData);
-  };
+    console.log(deletedItem); 
+    try {
+      const response = await axios.delete('http://192.168.1.6:5000/milk_detail',deletedItem)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
+  }
 
   return (
     <>
@@ -101,7 +120,7 @@ const MilkRecord = () => {
                             Number of kids  :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.milkforkid}
+                            {item.milk_for_kid}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -109,7 +128,7 @@ const MilkRecord = () => {
                             Milk Volume  :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.milkvolume} Liter
+                            {item.milk_volume} Liter
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -117,7 +136,7 @@ const MilkRecord = () => {
                             Milk Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.milkdate}
+                            {item.milk_date}
                           </span>
                         </span>
                         
@@ -155,7 +174,7 @@ const MilkRecord = () => {
                               id="milkvolume"
                               className="form-control"
                               value={milkrec.milkvolume}
-                              {...register("milkvolume")}
+                              {...register("milk_volume")}
                               // onChange={(e) =>
                               //   setmilkrec({
                               //     ...milkrec,
@@ -176,7 +195,7 @@ const MilkRecord = () => {
                               id="milkforkid"
                               className="form-control"
                               value={milkrec.milkforkid}
-                              {...register("milkforkid")}
+                              {...register("milk_for_kid")}
                               // onChange={(e) =>
                               //   setmilkrec({
                               //     ...milkrec,
@@ -204,7 +223,7 @@ const MilkRecord = () => {
                               id="milkdate"
                               className="form-control"
                               value={milkrec.milkdate}
-                              {...register("milkdate")}
+                              {...register("milk_date")}
                               // onChange={(e) =>
                               //   setmilkrec({
                               //     ...formData,

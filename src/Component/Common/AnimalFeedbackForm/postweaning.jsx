@@ -16,28 +16,28 @@ const PostWean = () => {
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
-      setValue('postweandate', "");
-      setValue('postweanweight', "");
-      setValue('postbodyscore', "");
-      setValue('postweancomment', "");
+      setValue('post_wean_date', "");
+      setValue('post_wean_weight', "");
+      setValue('post_body_score', "");
+      setValue('post_wean_comment', "");
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
-    setValue('postweandate', "");
-    setValue('postweanweight', "");
-    setValue('postbodyscore', "");
-    setValue('postweancomment', "");
+    setValue('post_wean_date', "");
+    setValue('post_wean_weight', "");
+    setValue('post_body_score', "");
+    setValue('post_wean_comment', "");
     setSelectedItem(null);
     
   };
 
-  const onsubmit = (data) => {
+  const onsubmit = async(data) => {
     let PWid;
     if (selectedItem !== null) {
       // Edit existing data
       const updatedData = [...postWean];
-      updatedData[selectedItem] = { pwid: selectedItem + 1, ...data };
+      updatedData[selectedItem] = { pw_id: selectedItem + 1, ...data };
       setPostWean(updatedData);
       console.log(updatedData[selectedItem])
       let PostWean = updatedData[selectedItem];
@@ -45,14 +45,19 @@ const PostWean = () => {
       let Mrgcokifrm = { ...getcokidata, PostWean };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
-    
+      try {
+        const response = await axios.post('http://192.168.1.6:5000/post_wean',updatedData[selectedItem])
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
     setSelectedItem(null);
 
     } else {
       // Add new data
-      const pwid = postWean.length > 0 ? postWean[postWean.length - 1].pwid + 1 : 1;
-            setPostWean([...postWean, { pwid: pwid, ...data }]);
-      PWid = {pwid,...data}
+      const pw_id = postWean.length > 0 ? postWean[postWean.length - 1].pw_id + 1 : 1;
+            setPostWean([...postWean, { pw_id: pw_id, ...data }]);
+      PWid = {pw_id,...data}
       console.log(PWid)
       let PostWean = PWid;
       let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
@@ -60,28 +65,38 @@ const PostWean = () => {
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
     }
+    try {
+      const response = await axios.post('http://192.168.1.6:5000/post_wean',PWid)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
     // console.log(data ,vaccine);
     setOpenDialog(false);
   };
 
   const handleEdit = (index) => {
-    setValue('postweandate', postWean[index].postweandate);
-    setValue('postweanweight', postWean[index].postweanweight);
-    setValue('postbodyscore', postWean[index].postbodyscore);
-    setValue('postweancomment', postWean[index].postweancomment);
+    setValue('post_wean_date', postWean[index].post_wean_date);
+    setValue('post_wean_weight', postWean[index].post_wean_weight);
+    setValue('post_body_score', postWean[index].post_body_score);
+    setValue('post_wean_comment', postWean[index].post_wean_comment);
     setSelectedItem(index);
     setOpenDialog(true);
   };
 
-
-  const handleDelete = (id) => {
-    setPostWean((prevData) => {
-      const deletedItem = prevData.find((item) => item.id === id);
-      const newData = prevData.filter((item) => item.id !== id);
-      console.log("Delete Item:", deletedItem);
-      return newData;
-    });
-  };
+  const handleDelete = async(index) => {
+    const deletedItem = postWean[index]; 
+    const updatedData = [...postWean];
+    updatedData.splice(index, 1);
+    setPostWean(updatedData);
+    console.log(deletedItem); 
+    try {
+      const response = await axios.delete('http://192.168.1.6:5000/post_wean',deletedItem)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
+  }
 
   return (
     <>
@@ -105,7 +120,7 @@ const PostWean = () => {
                             Post Wean Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.postweandate}
+                            {item.post_wean_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -113,7 +128,7 @@ const PostWean = () => {
                             Post Wean Weight :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.postweanweight}
+                            {item.post_wean_weight}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -121,7 +136,7 @@ const PostWean = () => {
                             Body Score :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.postbodyscore}
+                            {item.post_body_score}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -129,7 +144,7 @@ const PostWean = () => {
                             Comment :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.postweancomment}
+                            {item.post_wean_comment}
                           </span>
                         </span>
 
@@ -165,8 +180,8 @@ const PostWean = () => {
                               type="number"
                               id="postweanweight"
                               className="form-control"
-                              value={postWean.postweanweight}
-                              {...register("postweanweight")}
+                              value={postWean.post_wean_weight}
+                              {...register("post_wean_weight")}
                              
                             />
                           </div>
@@ -178,8 +193,8 @@ const PostWean = () => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
-                              value={postWean.postbodyscore}
-                              {...register("postbodyscore")}
+                              value={postWean.post_body_score}
+                              {...register("post_body_score")}
                              
                             >
                               <option defaultValue>
@@ -208,8 +223,8 @@ const PostWean = () => {
                               type="date"
                               id="postweandate"
                               className="form-control"
-                              value={postWean.postweandate}
-                              {...register("postweandate")}
+                              value={postWean.post_wean_date}
+                              {...register("post_wean_date")}
                              
                             />
                           </div>
@@ -224,8 +239,8 @@ const PostWean = () => {
                             <textarea
                               className="form-control"
                               id="exampleFormControlTextarea1"
-                              value={postWean.postweancomment}
-                              {...register("postweancomment")}
+                              value={postWean.post_wean_comment}
+                              {...register("post_wean_comment")}
                              
                               rows="3"
                             ></textarea>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { UserContext } from "../Modal/logusecont";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,21 +15,26 @@ import {
   faVenusMars,
   faWeightScale,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const MultiStepForm = () => {
   const { register, handleSubmit, setValue } = useForm();
-  const { selectedAnimal, setAnimalData, AnimalData, setprntUid, prntUid } =
+  const { selectedAnimal,FarmDataUMKid, setFarmDataUMKid } =
     useContext(UserContext);
-
   const [maindata, setMainData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const [searchInput, setSearchInput] = useState("");
+  const [selectedItemData, setSelectedItemData] = useState({});
+
 
   const filteredData = maindata.filter((item) =>
-    item.uniquename.includes(searchInput.toLowerCase()) || item.age.includes(searchInput.toLowerCase())
+    (item.uniquename?.includes(searchInput.toLowerCase()) || false) ||
+    (item.age?.includes(searchInput.toLowerCase()) || false)
   );
+  
+  
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -38,11 +43,11 @@ const MultiStepForm = () => {
     setValue("gender", "");
     setValue("height", "");
     setValue("weight", "");
-    setValue("dateofpurchesing", "");
-    setValue("pregnancydetail", "");
-    setValue("maledetail", "");
-    setValue("bodyscore", "");
-    setValue("basiccomment", "");
+    setValue("date_of_purchesing", "");
+    setValue("pregnancy_detail", "");
+    setValue("male_detail", "");
+    setValue("body_score", "");
+    setValue("basic_comment", "");
     setSelectedItem(null);
   };
 
@@ -53,17 +58,18 @@ const MultiStepForm = () => {
     setValue("gender", "");
     setValue("height", "");
     setValue("weight", "");
-    setValue("dateofpurchesing", "");
-    setValue("pregnancydetail", "");
-    setValue("maledetail", "");
-    setValue("bodyscore", "");
-    setValue("basiccomment", "");
+    setValue("date_of_purchesing", "");
+    setValue("pregnancy_detail", "");
+    setValue("male_detail", "");
+    setValue("body_score", "");
+    setValue("basic_comment", "");
 
     setSelectedItem(null);
   };
   const [showprntdetl, setshowprntdetl] = useState(false);
 
-  const openshowprntdetl = () => {
+  const openshowprntdetl = (item) => {
+    setSelectedItemData(item);
     setshowprntdetl(true);
   };
 
@@ -72,50 +78,66 @@ const MultiStepForm = () => {
   };
   let Uid = ''
   let finalData;
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (selectedItem !== null) {
       // Edit existing data
       const updatedData = [...maindata];
-      updatedData[selectedItem] = data;
-      setMainData(updatedData);
+      
       finalData = {
         animal: selectedAnimal,
-        Uid: "7700" + (selectedItem + 1),
+        kid: "7700" + (selectedItem + 1),
         mid: selectedItem + 1,
+        uID:FarmDataUMKid.uID,
         uniquename: data.uniquename,
         age: data.age,
         gender: data.gender,
         height: data.height,
         weight: data.weight,
-        dateofpurchesing: data.dateofpurchesing,
-        pregnancydetail: data.pregnancydetail,
-        maledetail: data.maledetail,
-        bodyscore: data.bodyscore,
-        basiccomment: data.basiccomment,
+        date_of_purchesing: data.date_of_purchesing,
+        pregnancy_detail: data.pregnancy_detail,
+        male_detail: data.male_detail,
+        body_score: data.body_score,
+        basic_comment: data.basic_comment,
       };
+      updatedData[selectedItem] = finalData;
+      setMainData(updatedData);
+      console.log(finalData,updatedData);
+      try {
+        const response = await axios.put('http://192.168.1.14:5000/basic_details',finalData)
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
       setSelectedItem(null);
     } else {
       // Add new data
-      setMainData([...maindata, data]);
+      
       finalData = {
         animal: selectedAnimal,
-        Uid: "7700" + (maindata.length + 1),
+        kid: "7700" + (maindata.length + 1),
         mid: maindata.length + 1,
+        uID:FarmDataUMKid.uID,
         uniquename: data.uniquename,
         age: data.age,
         gender: data.gender,
         height: data.height,
         weight: data.weight,
-        dateofpurchesing: data.dateofpurchesing,
-        pregnancydetail: data.pregnancydetail,
-        maledetail: data.maledetail,
-        bodyscore: data.bodyscore,
-        basiccomment: data.basiccomment,
+        date_of_purchesing: data.date_of_purchesing,
+        pregnancy_detail: data.pregnancy_detail,
+        male_detail: data.male_detail,
+        body_score: data.body_score,
+        basic_comment: data.basic_comment,
       };
       setMainData([...maindata, finalData]);
+      console.log(finalData)
+      try {
+        const response = await axios.post('http://192.168.1.14:5000/basic_details',finalData)
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
 
     }
-    console.log(data,maindata)
     // Set finalData in cookies
     Cookies.set("AnimalCookiesData", JSON.stringify(finalData));
     console.log(Cookies.get("AnimalCookiesData"));
@@ -123,131 +145,48 @@ const MultiStepForm = () => {
   };
 
   const AddMoreDtl = (index)=>{
+    const basicDtl ={ kid:maindata[index].kid,mid:maindata[index].mid}; // Retrieve the item before deletion
+    
+    setFarmDataUMKid((prev) => ({ ...prev, ...basicDtl }));
     let b ={ selectedAnimal, Uid:maindata[index].Uid}
     console.log(b)
     Cookies.set("AnimalCookiesData", JSON.stringify(b));
     console.log(Cookies.get("AnimalCookiesData"));
   }
 
-  // const onSubmit = (data) => {
-  //   if (selectedItem !== null) {
-  //     const updatedData = [...goatdata];
-  //     updatedData[selectedItem] = data;
-  //     setMainData(updatedData);
-  //   const testMainData = {
-  //     animal: selectedAnimal,
-  //     Uid: "7700" + (selectedItem + 1),
-  //     mid: selectedItem + 1,
-  //     uniquename: data.uniquename,
-  //     age: data.age,
-  //     gender: data.gender,
-  //     heating: brddata.heating,
-  //     duedate: brddata.duedate,
-  //     heatdate: brddata.heatdate,
-  //     breeddate: brddata.breeddate,
-  //     cid: Ucaddkid.cid,
-  //     birthdate: Ucaddkid.birthdate,
-  //     birthtype: Ucaddkid.birthtype,
-  //     birthweight: Ucaddkid.birthweight,
-  //     breed: Ucaddkid.breed,
-  //     castration: Ucaddkid.castration,
-  //     basiccomment: Ucaddkid.basiccomment,
-  //     kidgender: Ucaddkid.kidgender,
-  //     kidage: Ucaddkid.kidage,
-  //     kidcode: Ucaddkid.kidcode,
-  //     kidscore: Ucaddkid.kidscore,
-  //     kiduniquename: Ucaddkid.kiduniquename,
-  //     kidweight: Ucaddkid.kidweight,
-  //     motherage: Ucaddkid.motherage,
-  //     motherweandate: Ucaddkid.motherweandate,
-  //     motherweanweight: Ucaddkid.motherweanweight,
-  //     weandate: Ucaddkid.weandate,
-  //     weanweight: Ucaddkid.weanweight,
-  //     milkforkid: Ucaddkid.milkforkid,
-  //     milkvolume: Ucaddkid.milkvolume,
-  //     milkdate: Ucaddkid.milkdate,
-  //     postweandate: UcPostWean.postweandate,
-  //     postweanweight: UcPostWean.postweanweight,
-  //     postbodyscore: UcPostWean.postbodyscore,
-  //     postweanbasiccomment: UcPostWean.postweanbasiccomment,
-  //     vaccine: Ucvaccine.vaccine,
-  //     vaccinedate: Ucvaccine.vaccinedate,
-  //   };
-  //   console.log(testMainData);
-  // } else {
-  //   setMainData([...goatdata, data]);
-  //   const testMainData = {
-  //     animal: selectedAnimal,
-  //     Uid: "7700" + (goatdata.length + 1),
-  //     mid: goatdata.length + 1,
-  //     uniquename: data.uniquename,
-  //     age: data.age,
-  //     gender: data.gender,
-  //     heating: brddata.heating,
-  //     duedate: brddata.duedate,
-  //     heatdate: brddata.heatdate,
-  //     breeddate: brddata.breeddate,
-  //     cid: Ucaddkid.cid,
-  //     birthdate: Ucaddkid.birthdate,
-  //     birthtype: Ucaddkid.birthtype,
-  //     birthweight: Ucaddkid.birthweight,
-  //     breed: Ucaddkid.breed,
-  //     castration: Ucaddkid.castration,
-  //     basiccomment: Ucaddkid.basiccomment,
-  //     kidgender: Ucaddkid.kidgender,
-  //     kidage: Ucaddkid.kidage,
-  //     kidcode: Ucaddkid.kidcode,
-  //     kidscore: Ucaddkid.kidscore,
-  //     kiduniquename: Ucaddkid.kiduniquename,
-  //     kidweight: Ucaddkid.kidweight,
-  //     motherage: Ucaddkid.motherage,
-  //     motherweandate: Ucaddkid.motherweandate,
-  //     motherweanweight: Ucaddkid.motherweanweight,
-  //     weandate: Ucaddkid.weandate,
-  //     weanweight: Ucaddkid.weanweight,
-  //     milkforkid: Ucaddkid.milkforkid,
-  //     milkvolume: Ucaddkid.milkvolume,
-  //     milkdate: Ucaddkid.milkdate,
-  //     postweandate: UcPostWean.postweandate,
-  //     postweanweight: UcPostWean.postweanweight,
-  //     postbodyscore: UcPostWean.postbodyscore,
-  //     postweanbasiccomment: UcPostWean.postweanbasiccomment,
-  //     vaccine: Ucvaccine.vaccine,
-  //     vaccinedate: Ucvaccine.vaccinedate,
-  //   };
-  //   console.log(testMainData);
-  // }
-  // setModalIsOpen(false);
-
-  //   // console.log(Ucaddkid);
-  //   // console.log(testMainData);
-  //   // console.log(data);
-  // };
-
+  
   const handleEdit = (index) => {
     setValue("uniquename", maindata[index].uniquename);
     setValue("age", maindata[index].age);
     setValue("gender", maindata[index].gender);
     setValue("height", maindata[index].height);
     setValue("weight", maindata[index].weight);
-    setValue("dateofpurchesing", maindata[index].dateofpurchesing);
-    setValue("pregnancydetail", maindata[index].pregnancydetail);
-    setValue("maledetail", maindata[index].maledetail);
-    setValue("bodyscore", maindata[index].bodyscore);
-    setValue("basiccomment", maindata[index].basiccomment);
+    setValue("date_of_purchesing", maindata[index].date_of_purchesing);
+    setValue("pregnancy_detail", maindata[index].pregnancy_detail);
+    setValue("male_detail", maindata[index].male_detail);
+    setValue("body_score", maindata[index].body_score);
+    setValue("basic_comment", maindata[index].basic_comment);
     setSelectedItem(index);
     setModalIsOpen(true);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async(index) => {
+    const deletedItem = maindata[index]; // Retrieve the item before deletion
     const updatedData = [...maindata];
     updatedData.splice(index, 1);
     setMainData(updatedData);
+    console.log(deletedItem); // Log the deleted item
+    try {
+      const response = await axios.post('http://192.168.1.14:5000/basic_details',deletedItem)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
   };
-
   return (
     <section className="home-backgroundColor animal-bg-size">
       <div className="container-fluid ">
+        <Link className="btn btn-secondary w-auto m-3" to='/home' >home</Link>
         <div className="container m-0-auto  px-0">
           <div className="py-5 w-75 d-flex align-items-center justify-content-between m-auto">
           <button
@@ -269,7 +208,7 @@ const MultiStepForm = () => {
                   <li className="mx-2 mb-3 fs-2 d-flex justify-content-between align-items-center">
                     <span className="text-uppercase">{item.uniquename}</span>
                     <span
-                      onClick={openshowprntdetl}
+                      onClick={() => openshowprntdetl(item)}
                       className="fs-6 text-success d-flex align-items-center  px-1 rounded"
                     >
                       More
@@ -334,67 +273,67 @@ const MultiStepForm = () => {
                             {" "}
                             <strong> MId : </strong>
                           </span>{" "}
-                          <span> {item.id}</span>{" "}
+                          <span> {selectedItemData.mid}</span>{" "}
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
                             <strong> Name : </strong>
                           </span>{" "}
-                          <span>{item.uniquename}</span>
+                          <span>{selectedItemData.uniquename}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg2 px-2">
                           <span>
                             <strong> Age : </strong>
                           </span>{" "}
-                          <span>{item.age}</span>
+                          <span>{selectedItemData.age}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
                             <strong> Gender : </strong>
                           </span>{" "}
-                          <span>{item.gender}</span>
+                          <span>{selectedItemData.gender}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg2 px-2">
                           <span>
                             <strong> Height : </strong>
                           </span>{" "}
-                          <span>{item.height}</span>
+                          <span>{selectedItemData.height}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
                             <strong> Weight : </strong>
                           </span>{" "}
-                          <span>{item.weight}</span>
+                          <span>{selectedItemData.weight}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg2 px-2">
                           <span>
                             <strong> Male Detail : </strong>
                           </span>{" "}
-                          <span>{item.maledetail}</span>
+                          <span>{selectedItemData.male_detail}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
                             <strong> Body Score: </strong>
                           </span>{" "}
-                          <span>{item.bodyscore}</span>
+                          <span>{selectedItemData.body_score}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg2 px-2">
                           <span>
                             <strong> Date of Purchasing : </strong>
                           </span>{" "}
-                          <span>{item.dateofpurchesing}</span>
+                          <span>{selectedItemData.date_of_purchesing}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
-                            <strong> femaledetail : </strong>
+                            <strong> female detail : </strong>
                           </span>{" "}
-                          <span>{item.pregnancydetail}</span>
+                          <span>{selectedItemData.pregnancy_detail}</span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg2 px-2">
                           <span>
                             <strong> Comment : </strong>
                           </span>{" "}
-                          <span>{item.basiccomment}</span>
+                          <span>{selectedItemData.basic_comment}</span>
                         </li>
                       </ul>
                     </Modal.Body>
@@ -410,12 +349,12 @@ const MultiStepForm = () => {
                     Edit
                   </button>
                   <div
-                    onClick={handleDelete}
+                    onClick={() => handleDelete(index)}
                     className="bg-danger px-3 pe-auto rounded d-flex align-items-center"
                   >
                     <FontAwesomeIcon className="text-white" icon={faTrash} />
                   </div>
-                  <NavLink to="/AnimalDetailTab">
+                  <NavLink to="/AnimalDetailTab" >
                     <button
                       type="submit"
                       onClick={() => AddMoreDtl(index)}
@@ -491,8 +430,8 @@ const MultiStepForm = () => {
                         type="number"
                         id="dateofpurchesing"
                         className="form-control"
-                        value={maindata.dateofpurchesing}
-                        {...register("dateofpurchesing")}
+                        value={maindata.date_of_purchesing}
+                        {...register("date_of_purchesing")}
                       />
                     </div>
 
@@ -591,8 +530,8 @@ const MultiStepForm = () => {
                       <select
                         className="form-select"
                         aria-label="Default select example"
-                        value={maindata.pregnancydetail}
-                        {...register("pregnancydetail")}
+                        value={maindata.pregnancy_detail}
+                        {...register("pregnancy_detail")}
                       >
                         <option selected disabled>
                           select pregnancy Detail
@@ -608,13 +547,13 @@ const MultiStepForm = () => {
                     </div>
                     <div className="col-lg-5 my-2">
                       <label className="form-label" for="selectmale">
-                        Select maledetail
+                        Select male detail
                       </label>
                       <select
                         className="form-select"
                         aria-label="Default select example"
                         value={maindata.maledetail}
-                        {...register("maledetail")}
+                        {...register("male_detail")}
                       >
                         <option selected disabled>
                           select if male
@@ -630,8 +569,8 @@ const MultiStepForm = () => {
                       <select
                         className="form-select"
                         aria-label="Default select example"
-                        value={maindata.bodyscore}
-                        {...register("bodyscore")}
+                        value={maindata.body_score}
+                        {...register("body_score")}
                       >
                         <option defaultValue>
                           Open this and select body score
@@ -653,7 +592,7 @@ const MultiStepForm = () => {
                       <textarea
                         className="form-control"
                         id="exampleFormControlTextarea1"
-                        {...register("basiccomment")}
+                        {...register("basic_comment")}
                         rows="3"
                       ></textarea>
                     </div>

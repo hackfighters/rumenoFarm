@@ -15,23 +15,23 @@ const VaccineRecord = () => {
   const handleOpenDialog = (item = {}) => {
     setOpenDialog(true);
     setValue("vaccine", "");
-    setValue("vaccinedate", "");
+    setValue("vaccine_date", "");
     setSelectedItem(null);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setValue("vaccine", "");
-    setValue("vaccinedate", "");
+    setValue("vaccine_date", "");
     setSelectedItem(null);
   };
 
-  const onsubmit = (data) => {
+  const onsubmit = async(data) => {
     let VVid;
     if (selectedItem !== null) {
       // Edit existing data
       const updatedData = [...vaccine];
-      updatedData[selectedItem] = { vid: selectedItem + 1, ...data };
+      updatedData[selectedItem] = { v_id: selectedItem + 1, ...data };
       setVacine(updatedData);
       console.log(updatedData[selectedItem]);
       let Vaccine = updatedData[selectedItem];
@@ -39,13 +39,18 @@ const VaccineRecord = () => {
       let Mrgcokifrm = { ...getcokidata, Vaccine };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
-
+      try {
+        const response = await axios.put('http://192.168.1.6:5000/vaccine_details',updatedData[selectedItem])
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
       setSelectedItem(null);
     } else {
       // Add new data
-      const vid = vaccine.length > 0 ? vaccine[vaccine.length - 1].vid + 1 : 1;
-      setVacine([...vaccine, { vid: vid, ...data }]);
-      VVid = { vid, ...data };
+      const v_id = vaccine.length > 0 ? vaccine[vaccine.length - 1].v_id + 1 : 1;
+      setVacine([...vaccine, { v_id: v_id, ...data }]);
+      VVid = { v_id, ...data };
       console.log(VVid);
       let Vaccine = VVid;
       let getcokidata = JSON.parse(Cookies.get("AnimalCookiesData") ?? "{}");
@@ -54,20 +59,34 @@ const VaccineRecord = () => {
       console.log(Cookies.get("AnimalCookiesData"));
     }
     console.log(data, vaccine);
+    try {
+      const response = await axios.post('http://192.168.1.6:5000/vaccine_details',VVid)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
     setOpenDialog(false);
   };
 
   const handleEdit = (index) => {
     setValue("vaccine", vaccine[index].vaccine);
-    setValue("vaccinedate", vaccine[index].vaccinedate);
+    setValue("vaccine_date", vaccine[index].vaccine_date);
     setSelectedItem(index);
     setOpenDialog(true);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async(index) => {
+    const deletedItem = vaccine[index]; 
     const updatedData = [...vaccine];
     updatedData.splice(index, 1);
     setVacine(updatedData);
+    console.log(deletedItem); 
+    try {
+      const response = await axios.delete('http://192.168.1.6:5000/vaccine_details',deletedItem)
+      console.log(response.data)
+  } catch (error) {
+      console.log(error)
+  }
   };
 
   return (
@@ -103,7 +122,7 @@ const VaccineRecord = () => {
                             Vaccine Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.vaccinedate}
+                            {item.vaccine_date}
                           </span>
                         </span>
 
@@ -173,7 +192,7 @@ const VaccineRecord = () => {
                               id="vaccinedate"
                               className="form-control"
                               value={vaccine.vaccinedate}
-                              {...register("vaccinedate")}
+                              {...register("vaccine_date")}
                             />
                           </div>
 

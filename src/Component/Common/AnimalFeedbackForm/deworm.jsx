@@ -11,47 +11,47 @@ const Deworm = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [formData, setFormData] = useState({
-    wormdate: "",
-    wormreport: "",
-    endodate: "",
-    endoname: "",
-    endotype: "",
-    ectodate: "",
-    ectoname: "",
-    ectotype: "",
-    bathdate: "",
+    worm_date: "",
+    worm_report: "",
+    endo_date: "",
+    endo_name: "",
+    endo_type: "",
+    ecto_date: "",
+    ecto_name: "",
+    ecto_type: "",
+    bath_date: "",
   });
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
-    setValue("wormdate", "");
-    setValue("wormreport", "");
-    setValue("endodate", "");
-    setValue("endoname", "");
-    setValue("endotype", "");
-    setValue("ectodate", "");
-    setValue("ectoname", "");
-    setValue("ectotype", "");
-    setValue("bathdate", "");
+    setValue("worm_date", "");
+    setValue("worm_report", "");
+    setValue("endo_date", "");
+    setValue("endo_name", "");
+    setValue("endo_type", "");
+    setValue("ecto_date", "");
+    setValue("ecto_name", "");
+    setValue("ecto_type", "");
+    setValue("bath_date", "");
     setSelectedItem(null);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
-    setValue("wormdate", "");
-    setValue("wormreport", "");
-    setValue("endodate", "");
-    setValue("endoname", "");
-    setValue("endotype", "");
-    setValue("ectodate", "");
-    setValue("ectoname", "");
-    setValue("ectotype", "");
-    setValue("bathdate", "");
+    setValue("worm_date", "");
+    setValue("worm_report", "");
+    setValue("endo_date", "");
+    setValue("endo_name", "");
+    setValue("endo_type", "");
+    setValue("ecto_date", "");
+    setValue("ecto_name", "");
+    setValue("ecto_type", "");
+    setValue("bath_date", "");
     setSelectedItem(null);
   };
 
   
-  const onsubmit = (data) => {
+  const onsubmit = async(data) => {
     let DDid;
     if (selectedItem !== null) {
       // Edit existing data
@@ -64,43 +64,62 @@ const Deworm = () => {
       let Mrgcokifrm = { ...getcokidata, Deworm };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
-    
+      try {
+        const response = await axios.post('http://192.168.1.6:5000/de_worm',updatedData[selectedItem])
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
     setSelectedItem(null);
 
     } else {
       // Add new data
-      const did = deworm.length > 0 ? deworm[deworm.length - 1].did + 1 : 1;
-            setDeworm([...deworm, { did: did, ...data }]);
-      DDid = {did,...data}
+      const d_id = deworm.length > 0 ? deworm[deworm.length - 1].d_id + 1 : 1;
+            setDeworm([...deworm, { d_id: d_id, ...data }]);
+      DDid = {d_id,...data}
       console.log(DDid)
       let Deworm = DDid;
       let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
       let Mrgcokifrm = { ...getcokidata, Deworm };
       Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
       console.log(Cookies.get("AnimalCookiesData"));
+      try {
+        const response = await axios.post('http://192.168.1.6:5000/de_worm',DDid)
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
     }
     // console.log(data ,vaccine);
     setOpenDialog(false);
   };
 
   const handleEdit = (index) => {
-    setValue("wormdate", deworm[index].wormdate);
-    setValue("wormreport", deworm[index].wormreport);
-    setValue("endodate", deworm[index].endodate);
-    setValue("endoname", deworm[index].endoname);
-    setValue("endotype", deworm[index].endotype);
-    setValue("ectodate", deworm[index].ectodate);
-    setValue("ectoname", deworm[index].ectoname);
-    setValue("ectotype", deworm[index].ectotype);
-    setValue("bathdate", deworm[index].bathdate);
+    setValue("worm_date", deworm[index].wormdate);
+    setValue("worm_report", deworm[index].wormreport);
+    setValue("endo_date", deworm[index].endodate);
+    setValue("endo_name", deworm[index].endoname);
+    setValue("endo_type", deworm[index].endotype);
+    setValue("ecto_date", deworm[index].ectodate);
+    setValue("ecto_name", deworm[index].ectoname);
+    setValue("ecto_type", deworm[index].ectotype);
+    setValue("bath_date", deworm[index].bathdate);
     setSelectedItem(index);
     setOpenDialog(true);
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async(index) => {
+    const deletedItem = deworm[index]; 
     const updatedData = [...deworm];
     updatedData.splice(index, 1);
     setDeworm(updatedData);
+    console.log(deletedItem)
+      try {
+        const response = await axios.post('http://192.168.1.6:5000/de_worm',deletedItem)
+        console.log(response.data)
+    } catch (error) {
+        console.log(error)
+    }
   };
 
   return (
@@ -128,7 +147,7 @@ const Deworm = () => {
                             Worm Report :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.wormreport}
+                            {item.worm_report}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -136,7 +155,7 @@ const Deworm = () => {
                             Worm Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.wormdate}
+                            {item.worm_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -144,7 +163,7 @@ const Deworm = () => {
                             Endo Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.endodate}
+                            {item.endo_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -152,7 +171,7 @@ const Deworm = () => {
                             Endo Name :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.endoname}
+                            {item.endo_name}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -160,7 +179,7 @@ const Deworm = () => {
                             Endo Type :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.endotype}
+                            {item.endo_type}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -168,7 +187,7 @@ const Deworm = () => {
                             Ecto Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.ectodate}
+                            {item.ecto_date}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -176,7 +195,7 @@ const Deworm = () => {
                             Ecto Name :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.ectoname}
+                            {item.ecto_name}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -184,7 +203,7 @@ const Deworm = () => {
                             Ecto Type :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.ectotype}
+                            {item.ecto_type}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -192,7 +211,7 @@ const Deworm = () => {
                             Animal Bath Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.bathdate}
+                            {item.bath_date}
                           </span>
                         </span>
                         <span className="text-center mx-2">
@@ -232,12 +251,12 @@ const Deworm = () => {
                               type="text"
                               id="wormreport"
                               className="form-control"
-                              {...register("wormreport")}
-                              value={formData.wormreport}
+                              {...register("worm_report")}
+                              value={formData.worm_report}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  wormreport: e.target.value,
+                                  worm_report: e.target.value,
                                 })
                               }
                             />
@@ -252,12 +271,12 @@ const Deworm = () => {
                               type="date"
                               id="wormdate"
                               className="form-control"
-                              {...register("wormdate")}
-                              value={formData.wormdate}
+                              {...register("worm_date")}
+                              value={formData.worm_date}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  wormdate: e.target.value,
+                                  worm_date: e.target.value,
                                 })
                               }
                             />
@@ -272,12 +291,12 @@ const Deworm = () => {
                               type="text"
                               id="endoname"
                               className="form-control"
-                              {...register("endoname")}
-                              value={formData.endoname}
+                              {...register("endo_name")}
+                              value={formData.endo_name}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  endoname: e.target.value,
+                                  endo_name: e.target.value,
                                 })
                               }
                             />
@@ -292,12 +311,12 @@ const Deworm = () => {
                               type="text"
                               id="ectoname"
                               className="form-control"
-                              {...register("ectoname")}
-                              value={formData.ectoname}
+                              {...register("ecto_name")}
+                              value={formData.ecto_name}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  ectoname: e.target.value,
+                                  ecto_name: e.target.value,
                                 })
                               }
                             />
@@ -312,12 +331,12 @@ const Deworm = () => {
                               type="date"
                               id="endodate"
                               className="form-control"
-                              {...register("endodate")}
-                              value={formData.endodate}
+                              {...register("endo_date")}
+                              value={formData.endo_date}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  endodate: e.target.value,
+                                  endo_date: e.target.value,
                                 })
                               }
                             />
@@ -332,12 +351,12 @@ const Deworm = () => {
                               type="date"
                               id="ectodate"
                               className="form-control"
-                              {...register("ectodate")}
-                              value={formData.ectodate}
+                              {...register("ecto_date")}
+                              value={formData.ecto_date}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  ectodate: e.target.value,
+                                  ecto_date: e.target.value,
                                 })
                               }
                             />
@@ -349,11 +368,11 @@ const Deworm = () => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
-                              {...register("endotype")}
+                              {...register("endo_type")}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  endotype: e.target.value,
+                                  endo_type: e.target.value,
                                 })
                               }
                             >
@@ -376,11 +395,11 @@ const Deworm = () => {
                             <select
                               className="form-select"
                               aria-label="Default select example"
-                              {...register("ectotype")}
+                              {...register("ecto_type")}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  ectotype: e.target.value,
+                                  ecto_type: e.target.value,
                                 })
                               }
                             >
@@ -405,16 +424,16 @@ const Deworm = () => {
                               </label>
                             </div>
                             <input
-                              {...register("bathdate")}
+                              {...register("bath_date")}
                               placeholder="Animal Bath Ectoparasite Date"
                               type="date"
                               id="bathdate"
                               className="form-control"
-                              value={formData.bathdate}
+                              value={formData.bath_date}
                               onChange={(e) =>
                                 setFormData({
                                   ...formData,
-                                  bathdate: e.target.value,
+                                  bath_date: e.target.value,
                                 })
                               }
                             />

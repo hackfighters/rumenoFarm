@@ -38,7 +38,7 @@ import { toast } from "react-toastify";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
-import TranslateButton from "../translate/trasn";
+import TranslateButton from "../translate/translate";
 import SearchBar from "./navsearch";
 
 const Navbar = ({ size }) => {
@@ -250,11 +250,11 @@ const Navbar = ({ size }) => {
                     className="me-2"
                     style={{ color: "#f5f5f5" }}
                   />
-                  <span className="text-dark">{t("v301")}</span>
+                  <span className="text-white">{t("v301")}</span>
                 </div>
 
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
-                <a className="text-decoration-none text-dark" rel="noreferrer" href="https://mail.google.com" target="_blank">
+                <a className="text-decoration-none text-white" rel="noreferrer" href="https://mail.google.com" target="_blank">
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   className="me-2"
@@ -270,13 +270,13 @@ const Navbar = ({ size }) => {
                     className="me-2"
                     style={{ color: "#fafcff" }}
                   />
-                  <span className="text-dark  ">
+                  <span className="text-white  ">
                     {" "}
                     {t("v302")} 9:00am - 8:00pm
                   </span>
                 </div>
                 <div className="col-lg-2 col-sm-1 px-2 d-flex cnt align-items-center justify-content-center">
-                  <a className="text-decoration-none text-dark" rel="noreferrer" href="tel:+91 7355043892">
+                  <a className="text-decoration-none text-white" rel="noreferrer" href="tel:+91 7355043892">
                 <FontAwesomeIcon
                   icon={faPhone}
                   className="me-2"
@@ -364,7 +364,7 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/goat-feed-supplements"
+                          to="/veterinary-products/goat-feed-supplements"
                         >
                           Goat Feed Supplements
                         </NavLink>
@@ -375,7 +375,7 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/cattle-feed-supplements"
+                          to="/veterinary-products/cattle-feed-supplements"
                         >
                           Cattle Feed Supplements
                         </NavLink>
@@ -384,7 +384,7 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/poultry-feed-supplements"
+                          to="/veterinary-products/poultry-feed-supplements"
                         >
                           Poultry Feed Supplements
                         </NavLink>
@@ -393,7 +393,7 @@ const Navbar = ({ size }) => {
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
-                          to="/dog-feed-supplements"
+                          to="/veterinary-products/dog-feed-supplements"
                         >
                           Dog Feed Supplements
                         </NavLink>
@@ -461,7 +461,7 @@ const Navbar = ({ size }) => {
                     activeclassname="active"
                     to="/contactus"
                   >
-                    Contact Us
+                    Contact-Us
                   </NavLink>
                 </li>
                 <li>
@@ -484,16 +484,16 @@ const Navbar = ({ size }) => {
                   </Link>
                 </li>
                 <li>
-                  {loggedInUser ? (
+                 {loggedInUser ? (
                     <>
-                      {farmDtl ? (
+                       {farmDtl ? (
                         <>
                           <button
                             typeof="button"
                             onClick={openSltAnmlModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Form
+                            Farm Data
                           </button>
                           <Modal
                             show={isModalOpen}
@@ -557,21 +557,21 @@ const Navbar = ({ size }) => {
                             </Modal.Footer>
                           </Modal>
                         </>
-                      ) : (
-                        <>
+                      ) : ( 
+                         <>
                           <button
                             typeof="button"
                             onClick={openFarmModal}
                             className="btn border-0 text-white  gradient-custom-2 my-2 w-100 custom-btn btn-11"
                           >
-                            Form
+                            Farm Data
                           </button>
                           <FarmerDetails
                             showFarmModal={showFarmModal}
                             closeFarmModal={closeFarmModal}
                           />
-                        </>
-                      )}
+                        </> 
+                      )} 
                       <Modal
                         show={isModalOpen}
                         onHide={closeSltAnmlModal}
@@ -634,9 +634,9 @@ const Navbar = ({ size }) => {
                         </Modal.Footer>
                       </Modal>
                     </>
-                  ) : (
-                    null
-                  )}
+                   ) : ( 
+                     null 
+                   )} 
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
@@ -681,7 +681,7 @@ const Navbar = ({ size }) => {
                               className="dropdown-item justify-content-center"
                               to="/contactus"
                             >
-                              Contact Us
+                              Contact-Us
                             </Link>
                           </li>
                           <hr />
@@ -719,7 +719,7 @@ const Navbar = ({ size }) => {
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
 
-                {/* <li>
+                 <li>
                   {loggedInUser ? (
                     <h4
                       typeof="button"
@@ -728,7 +728,7 @@ const Navbar = ({ size }) => {
                       {loggedInUser}
                     </h4>
                   ) : null}
-                </li> */}
+                </li> 
               </ul>
             </div>
 

@@ -13,8 +13,8 @@ import bullgoat from "../../../assets/img/OurProduct/Bull-Goat.png";
 import Selennium from "../../../assets/img/OurProduct/selennium-E.png";
 import farmbuner from "../../../assets/img/OurProduct/FarmHouse.jpg";
 import farmflour from "../../../assets/img/OurProduct/farm-floor.jpg";
-import goatsheepnipple from "../../../assets/img/OurProduct/GoatNipple.png";
-import Neonato from "../../../assets/img/OurProduct/NOENATO.png";
+import goatsheepnipple from "../../../assets/img/OurProduct/goatSheepNipple.png";
+import Neonato from "../../../assets/img/OurProduct/neonatobottle.png";
 import prolackgoat from "../../../assets/img/OurProduct/pro-lack-goat-powder.png";
 import prolackcalf from "../../../assets/img/OurProduct/pro-lack-calf-powder.png";
 import selenniumGC from "../../../assets/img/OurProduct/Selennium-GC.png";
@@ -83,11 +83,11 @@ const CattleCategoryPage = () => {
         Instruction: "Tanav Mukti Powder: A specialized blend of natural adaptogenic herbs designed to alleviate stress in animals.\nDosage: Mix the recommended amount of Tanav Mukti Powder with your pet’s food or water.\nFrequency: Administer twice daily for optimal results.\nConsult a Veterinarian: Always consult a veterinarian before introducing any new product to your pet’s routine.",
         Category: "cow,goat",
         Type: "Medicine",
-        imgText: "Anti Stress Animal Feed Supplement"
+        imgText: "Tanav Mukti Anti Stress Animal Feed Supplement"
       },
       {
         id: 2,
-        name: "Neonato Veterinary products for Goat ,Cow, Buffalo kids | Natural supplement for newborn animals ",
+        name: "Neonato Veterinary products for Goat ,Cow, and Buffalo kids | Natural supplement for newborn animals",
         priceText: 245,
         img: Neonato,
         Veg: "Veg",
@@ -96,11 +96,11 @@ const CattleCategoryPage = () => {
         Refundable: "Refundable for any manufacturing defect within 1 week",
         Weight: "100ml",
         Shortdescription: "Neonato Powder: A specialized blend of natural compounds designed to enhance the immune system of newborn animals.\nBoosts Immunity: Neonato provides essential nutrients and bioactive compounds to strengthen the innate defenses of young animals.\nGentle and Effective: Formulated to be gentle on delicate systems while promoting overall health and resilience.",
-        description: "Neonato: The Organic Option for Promoting the Health of Newborn Animals\nSearching for natural vitamins to give your new furry (or feathered) buddy a healthy start, or for veterinary treatments specifically meant for children? Neonato is the only place to look!\n\nNeonato is an all-natural supplement for newborn animals created by expert veterinarians. Neonato, which is made with a combination of premium herbs and vital nutrients, supports:\n\ndevelopment of a healthy immune system\nHealthy digestion and nutrient absorption\ngeneral vigor and expansion\nWhy Opt for Neonato?\n\nNatural Ingredients: Neonato is kind to your newborn pet's developing system because it doesn't include harsh chemicals or unnatural additions.\nDeveloped by Veterinarians: Neonato, which was created by veterinarians, guarantees that the proper ratio of nutrients is present for optimum health.\n\nSimple to Administer: Adding Neonato to your newborn pet's care regimen is made easy by its handy format.\nNeonato can help you provide your beloved new pet with the natural support they deserve. Place your order right now!\n",
+        description: "Neonato: The Organic Option for Promoting the Health of Newborn Animals\nSearching for natural vitamins to give your new furry (or feathered) buddy a healthy start, or for veterinary treatments specifically meant for children? Neonato is the only place to look!\n\nNeonato is an all-Neonato Natural supplement for newborn animals created by expert veterinarians. Neonato, which is made with a combination of premium herbs and vital nutrients, supports:\n\ndevelopment of a healthy immune system\nHealthy digestion and nutrient absorption\ngeneral vigor and expansion\nWhy Opt for Neonato?\n\nNatural Ingredients: Neonato is kind to your newborn pet's developing system because it doesn't include harsh chemicals or unnatural additions.\nDeveloped by Veterinarians: Neonato, which was created by veterinarians, guarantees that the proper ratio of nutrients is present for optimum health.\n\nSimple to Administer: Adding Neonato to your newborn pet's care regimen is made easy by its handy format.\nNeonato can help you provide your beloved new pet with the natural support they deserve. Place your order right now!\n",
         Instruction: "Dosage Preparation:\nMix 1 scoop (provided) of Neonato Powder with 100 ml of warm water. Stir well until fully dissolved.\nAdjust the quantity based on the animal’s weight and age. Consult a veterinarian for precise dosing.\nFeeding Schedule:\nAdminister Neonato twice daily, preferably after feeding.\nFor newborn animals, start Neonato within the first 24 hours of life.\nContinue Neonato for at least 7 days or as recommended by your vet.\nAdministration:\nUse a clean feeding bottle or syringe to feed Neonato to young animals.\nGradually increase the amount as the animal grows.\nStorage:\nStore Neonato in a cool, dry place away from direct sunlight.\nKeep the container tightly sealed to maintain freshness.",
         Category: "For All Kids",
         Type: "Medicine",
-        imgText: "Natural supplement for newborn animals"
+        imgText: "Neonato Natural supplement for newborn animals"
       },
       {
         id: 3,
@@ -117,7 +117,7 @@ const CattleCategoryPage = () => {
         Instruction: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\nDosage:\nMix 1 scoop (provided) of Energico Powder with 1 liter of clean water.\nAdjust the quantity based on the animal’s size and condition. Consult a veterinarian for precise dosing.\nAdministration:\nOffer the prepared solution to the animal using a clean water bowl or syringe.\nRepeat as needed during periods of stress, illness, or hot weather.\nStorage:\nStore Energico in a cool, dry place away from direct sunlight.\nKeep the container tightly sealed to maintain freshness.",
         Category: "cow,goat,poultry",
         Type: "Medicine",
-        imgText: "Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon"
+        imgText: "Energico Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon"
       },
       {
         id: 4,
@@ -134,7 +134,7 @@ const CattleCategoryPage = () => {
         Instruction: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\nDosage:\nMix 1 scoop (provided) of Energico Powder with 1 liter of clean water.\nAdjust the quantity based on the animal’s size and condition. Consult a veterinarian for precise dosing.\nAdministration:\nOffer the prepared solution to the animal using a clean water bowl or syringe.\nRepeat as needed during periods of stress, illness, or hot weather.\nStorage:\nStore Energico in a cool, dry place away from direct sunlight.\nKeep the container tightly sealed to maintain freshness.",
         Category: "cow,goat,poultry",
         Type: "Medicine",
-        imgText: "Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon"
+        imgText: "Energico Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon"
       },
       {
         id: 5,
@@ -151,11 +151,11 @@ const CattleCategoryPage = () => {
         Instruction: "Micro Floratone Powder: A premium quality blend of prebiotics, probiotics, vitamins, and minerals designed to support your pet’s overall health and well-being1.\nDosage:\nMix the recommended amount of Micro Floratone Powder with your pet’s food.\nAdjust the quantity based on your pet’s size and age. Consult a veterinarian for precise dosing.\nDaily Use:\nAdminister once daily for optimal results.\nMicro Floratone provides a full spectrum of quality ingredients to promote digestive health and immunity.\nStorage:\nStore in a cool, dry place away from direct sunlight.\nSeal the container tightly to maintain freshness.",
         Category: "Dog and cat",
         Type: "Medicine",
-        imgText: "digestive supplements for dogs"
+        imgText: "Micro Floratone digestive supplements for dogs"
       },
       {
         id: 6,
-        name: "Minromix | Mineral mixture for cattle,beef ,goat ,poultry,dog,and cat",
+        name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
         priceText: 285,
         img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
         Veg: "Veg",
@@ -168,11 +168,11 @@ const CattleCategoryPage = () => {
         Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
         Category: "cow,goat,poultry",
         Type: "Medicine",
-        imgText: "Mineral mixture for cattle beef goat sheep horse and broilers"
+        imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers"
       },
       {
         id: 7,
-        name: "Minromix | Mineral mixture for cattle,beef ,goat ,poultry,dog,and cat",
+        name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
         priceText: 1400,
         img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
         Veg: "Veg",
@@ -185,11 +185,11 @@ const CattleCategoryPage = () => {
         Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
         Category: "cow,goat,poultry",
         Type: "Medicine",
-        imgText: "Mineral mixture for cattle beef goat sheep horse and broilers"
+        imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers"
       },
       {
         id: 8,
-        name: "Minromix | Mineral mixture for cattle,beef ,goat ,poultry,dog,and cat",
+        name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
         priceText: 4600,
         img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
         Veg: "Veg",
@@ -202,7 +202,7 @@ const CattleCategoryPage = () => {
         Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
         Category: "cow,goat,poultry",
         Type: "Medicine",
-        imgText: "Mineral mixture for cattle beef goat sheep horse and broilers"
+        imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers"
       },
       {
         id: 9,
@@ -219,7 +219,7 @@ const CattleCategoryPage = () => {
         Instruction: "Consultation with a Professional:\nBefore starting any supplementation, consult a veterinarian or a livestock nutritionist.\nDiscuss the specific needs of your animals and any existing health conditions.\nDosage and Administration:\nAdminister Rumenovita orally to the animals.\nMix the recommended dosage with their regular feed or water.\nThe appropriate dosage may vary based on factors such as the animal’s age, weight, and overall health.\nFollow the manufacturer’s guidelines closely for accurate dosing.\nFrequency:\nProvide Rumenovita daily or as advised by an expert.\nFor young animals, consider administering it during critical growth phases.\nBenefits and Expected Outcomes:\nImproved Digestion: Rumenovita enhances rumen function, aiding in better nutrient breakdown and absorption.\nWeight Gain: The supplement supports healthy weight gain by optimizing nutrient utilization.\nGrowth Promotion: It contributes to overall growth and development.\nImmune Support: Rumenovita boosts the immune system, reducing the risk of diseases.\nCoat Condition: Some users report shinier and healthier coats in animals.\nStorage:\nStore Rumenovita in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nBalanced Nutrition: Remember that Rumenovita is not a substitute for a well-rounded diet. Ensure your animals receive proper nutrition.\nMonitoring: Observe your animals closely for any adverse reactions.\nDiscontinue if Necessary: If unusual symptoms occur, discontinue use and seek professional advice.\nCompatibility with Other Supplements or Medications:\nRumenovita can be used alongside other feed supplements or medications. However, consult a professional to avoid interactions.\nRecord Keeping:\nMaintain accurate records of Rumenovita administration.\nNote down dates, dosages, and details of the animals receiving the supplement.\nRegularly assess their progress to evaluate the effectiveness of the product.",
         Category: "cow,goat",
         Type: "Medicine",
-        imgText: "Growth booster for animals"
+        imgText: "Rumenovita Growth booster for animals"
       },
       {
         id: 10,
@@ -236,7 +236,7 @@ const CattleCategoryPage = () => {
         Instruction: "Consultation with a Professional:\nBefore starting any supplementation, consult a veterinarian or a livestock nutritionist.\nDiscuss the specific needs of your animals and any existing health conditions.\nDosage and Administration:\nAdminister Rumenovita orally to the animals.\nMix the recommended dosage with their regular feed or water.\nThe appropriate dosage may vary based on factors such as the animal’s age, weight, and overall health.\nFollow the manufacturer’s guidelines closely for accurate dosing.\nFrequency:\nProvide Rumenovita daily or as advised by an expert.\nFor young animals, consider administering it during critical growth phases.\nBenefits and Expected Outcomes:\nImproved Digestion: Rumenovita enhances rumen function, aiding in better nutrient breakdown and absorption.\nWeight Gain: The supplement supports healthy weight gain by optimizing nutrient utilization.\nGrowth Promotion: It contributes to overall growth and development.\nImmune Support: Rumenovita boosts the immune system, reducing the risk of diseases.\nCoat Condition: Some users report shinier and healthier coats in animals.\nStorage:\nStore Rumenovita in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nBalanced Nutrition: Remember that Rumenovita is not a substitute for a well-rounded diet. Ensure your animals receive proper nutrition.\nMonitoring: Observe your animals closely for any adverse reactions.\nDiscontinue if Necessary: If unusual symptoms occur, discontinue use and seek professional advice.\nCompatibility with Other Supplements or Medications:\nRumenovita can be used alongside other feed supplements or medications. However, consult a professional to avoid interactions.\nRecord Keeping:\nMaintain accurate records of Rumenovita administration.\nNote down dates, dosages, and details of the animals receiving the supplement.\nRegularly assess their progress to evaluate the effectiveness of the product.",
         Category: "cow,goat",
         Type: "Medicine",
-        imgText: "Growth booster for animals"
+        imgText: "Rumenovita Growth booster for animals"
       },
       {
         id: 11,
@@ -253,7 +253,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nDigesto Plus contains a unique combination of buffer agents and toxin binders.\nIt supports a healthy digestive system in ruminants by regulating rumen pH and neutralizing harmful substances.\nTarget Animals:\nSuitable for:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian before use.\nAdminister orally, mixed with feed or water.\nRecommended dosage: 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nBenefits:\npH Regulation: Prevents acidosis, common in ruminants fed high-grain diets.\nFeed Efficiency: Improves feed utilization.\nToxin Neutralization: Contains binders to counter mycotoxins and other harmful substances.\nStorage:\nStore in a cool, dry place away from sunlight.\nPrecautions:\nMonitor for adverse reactions.\nSeek professional advice if needed.",
         Category: "cow, goat ",
         Type: "Medicine",
-        imgText: "digestive supplements for animals"
+        imgText: "Digesto Plus digestive supplements for animals"
       },
       {
         id: 12,
@@ -270,7 +270,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nDigesto Plus contains a unique combination of buffer agents and toxin binders.\nIt supports a healthy digestive system in ruminants by regulating rumen pH and neutralizing harmful substances.\nTarget Animals:\nSuitable for:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian before use.\nAdminister orally, mixed with feed or water.\nRecommended dosage: 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nBenefits:\npH Regulation: Prevents acidosis, common in ruminants fed high-grain diets.\nFeed Efficiency: Improves feed utilization.\nToxin Neutralization: Contains binders to counter mycotoxins and other harmful substances.\nStorage:\nStore in a cool, dry place away from sunlight.\nPrecautions:\nMonitor for adverse reactions.\nSeek professional advice if needed.",
         Category: "cow, goat ",
         Type: "Medicine",
-        imgText: "digestive supplements for animals"
+        imgText: "Digesto Plus digestive supplements for animals"
       },
       {
         id: 13,
@@ -287,7 +287,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nLiverofine is a specialized liver tonic formulated to enhance liver function and overall well-being in animals.\nIt contains essential nutrients and herbal extracts that promote liver health and aid in detoxification.\nTarget Animals:\nLiverofine is suitable for various animals, including:\nCattle\nSheep\nGoats\nPoultry\nSwine\nHorses\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Liverofine.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific liver health needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nFrequency:\nProvide Liverofine daily or as advised by a professional.\nFor animals with liver issues, consider prolonged use or as part of a maintenance regimen.\nBenefits:\nLiver Support: Liverofine aids in liver detoxification and supports optimal liver function.\nAntioxidant Properties: Contains antioxidants that protect liver cells from damage.\nMetabolic Balance: Helps maintain metabolic processes related to liver health.\nImproved Digestion: A healthy liver contributes to better nutrient absorption and digestion.\nStorage:\nStore Liverofine in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nCompatibility:\nLiverofine can be used alongside other supplements or medications. Consult a professional to avoid interactions.\nRecord Keeping:\nMaintain records of Liverofine administration, including dates, dosages, and animal details.\nRegularly assess the animals’ liver health to evaluate the effectiveness of the tonic.",
         Category: "poultry, goat, cow",
         Type: "Medicine",
-        imgText: "veterinary liver tonic"
+        imgText: "Liverofine veterinary liver tonic"
       },
       {
         id: 14,
@@ -304,7 +304,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nLiverofine is a specialized liver tonic formulated to enhance liver function and overall well-being in animals.\nIt contains essential nutrients and herbal extracts that promote liver health and aid in detoxification.\nTarget Animals:\nLiverofine is suitable for various animals, including:\nCattle\nSheep\nGoats\nPoultry\nSwine\nHorses\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Liverofine.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific liver health needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nFrequency:\nProvide Liverofine daily or as advised by a professional.\nFor animals with liver issues, consider prolonged use or as part of a maintenance regimen.\nBenefits:\nLiver Support: Liverofine aids in liver detoxification and supports optimal liver function.\nAntioxidant Properties: Contains antioxidants that protect liver cells from damage.\nMetabolic Balance: Helps maintain metabolic processes related to liver health.\nImproved Digestion: A healthy liver contributes to better nutrient absorption and digestion.\nStorage:\nStore Liverofine in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nCompatibility:\nLiverofine can be used alongside other supplements or medications. Consult a professional to avoid interactions.\nRecord Keeping:\nMaintain records of Liverofine administration, including dates, dosages, and animal details.\nRegularly assess the animals’ liver health to evaluate the effectiveness of the tonic.",
         Category: "poultry, goat, cow",
         Type: "Medicine",
-        imgText: "veterinary liver tonic"
+        imgText: "Liverofine veterinary liver tonic"
       },
       {
         id: 15,
@@ -321,7 +321,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nD-Cox is a coccidiostat formulated to prevent coccidiosis in young goats during the critical weaning phase.\nIt contains the active drug ingredient Decoquinate (6%) to combat Eimeria christenseni and E. ninakohlyakimovae, the common coccidia species affecting goats.\nTarget Animals:\nD-Cox is specifically intended for young goats during the weaning period.\nDosage and Administration:\nConsult a veterinarian or livestock expert before using D-Cox.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage is to provide 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nMix D-Cox thoroughly into the goat’s ration.\nDuration:\nFeed D-Cox for at least 28 days during periods of coccidiosis exposure or when experience indicates coccidiosis is likely to be a hazard.\nTypes of Medicated Feed:\nType C Medicated Feed (Complete Ration):\nMix D-Cox into the complete feed to provide the proper decoquinate levels daily.\nExample dosages:\n0.5 lbs per ton of feed (13.6 g/ton) for 20 lbs body weight\n0.7 lbs per ton of feed (19.0 g/ton) for 14.3 lbs body weight\n1.0 lb per ton of feed (27.2 g/ton) for 10 lbs body weight\nStorage:\nStore D-Cox in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor goats closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.",
         Category: "goat",
         Type: "Medicine",
-        imgText: "Weaning goat supplement"
+        imgText: "D Cox Weaning goat supplement"
       },
       {
         id: 16,
@@ -338,7 +338,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
         Category: "goat ,cow",
         Type: "Medicine",
-        imgText: "Pre Probiotic supplement for animals Pet health supplement and Veterinary health supplement"
+        imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
       },
       {
         id: 17,
@@ -355,7 +355,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
         Category: "goat ,cow",
         Type: "Medicine",
-        imgText: "Pre Probiotic supplement for animals Pet health supplement and Veterinary health supplement"
+        imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
       },
       {
         id: 18,
@@ -372,7 +372,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
         Category: "goat ,cow",
         Type: "Medicine",
-        imgText: "Pre Probiotic supplement for animals Pet health supplement and Veterinary health supplement"
+        imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
       },
       {
         id: 19,
@@ -389,7 +389,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
         Category: "goat ,cow",
         Type: "Medicine",
-        imgText: "Pre Probiotic supplement for animals Pet health supplement and Veterinary health supplement"
+        imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
       },
       {
         id: 20,
@@ -406,7 +406,7 @@ const CattleCategoryPage = () => {
         Instruction: "Product Description:\nLacto-Pup Milk Replacer is designed to provide essential nutrition for puppies during their early stages of life.\nIt closely resembles natural mother’s milk, ensuring optimal growth and development.\nTarget Animals:\nSuitable for:\nNewborn puppies\nOrphaned puppies\nUnderweight puppies\nPreparation:\nUsing the scoop provided, add Lacto-Pup Milk Replacer to warm water (allow boiled water to cool before use).\nStir until completely dissolved.\nAllow the mixture to cool until lukewarm (around 38°C or blood temperature).\nFeeding Equipment:\nUse proper feeding equipment, such as the Beaphar Feeding Set or Beaphar Feeding Syringes.\nEnsure the equipment is clean and sterile.\nRecommended Dilution:\nThe recommended dilution for different puppy weights:\nFor 250g (0.25kg) puppies: Add 7 level scoops to 100ml warm water.\nFor 500g (0.5kg) puppies: Add 160ml per day.\nFor 1000g (1kg) puppies: Add 250ml per day.\nFor 2000g (2kg) puppies: Add 400ml per day.\nFor 5000g (5kg) puppies: Add 900ml per day.\nFeeding Frequency:\nAdjust the volume per day based on the puppy’s weight and age.\nSplit the daily volume across the recommended number of feeds per day.\nGradually transition to solid food after the 28th day.\nStorage:\nPrepared Lacto-Pup Milk Replacer can be refrigerated for up to 24 hours.\nReheat to 38°C or blood temperature before feeding.",
         Category: "dog",
         Type: "Medicine",
-        imgText: "Milk Replacer For Puppies"
+        imgText: "Lacto Pup Milk Replacer For Puppies"
       },
       {
         id: 21,
@@ -423,7 +423,7 @@ const CattleCategoryPage = () => {
         Instruction: "Dosage and Administration:\nMix Poultryfine with the regular feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\nAdminister the supplemented feed to your poultry flock consistently.\nFrequency:\nProvide Poultryfine daily as part of the birds’ regular diet.\nFor optimal results, maintain a consistent feeding schedule.\nStorage:\nStore Poultryfine in a cool, dry place away from direct sunlight.\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\nHygiene and Cleanliness:\nRegularly clean and disinfect feeding equipment, waterers, and the feeding area.\nAvoid cross-contamination by handling the supplement with clean hands and utensils.\nMonitoring:\nObserve your poultry flock for any signs of improved health, reduced bacterial infections, or enhanced productivity.\nAdjust the dosage if necessary based on flock size and specific health conditions.",
         Category: "poultry",
         Type: "Medicine",
-        imgText: "Anti bacterial Poulry Feed Supplement"
+        imgText: "Poultryfine Anti bacterial Poulry Feed Supplement"
       },
       {
         id: 22,
@@ -440,7 +440,7 @@ const CattleCategoryPage = () => {
         Instruction: "Dosage and Administration:\r\nMix Florovita-12 with the regular feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your poultry flock consistently.\r\nFrequency:\r\nProvide Florovita-12 daily as part of the birds’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Florovita-12 in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nHygiene and Cleanliness:\r\nRegularly clean and disinfect feeding equipment, waterers, and the feeding area.\r\nAvoid cross-contamination by handling the supplement with clean hands and utensils.\r\nMonitoring:\r\nObserve your poultry flock for any signs of improved health, reduced bacterial infections, or enhanced productivity.\r\nAdjust the dosage if necessary based on flock size and specific health conditions.",
         Category: "poultry",
         Type: "Medicine",
-        imgText: "Broiler Weight Gainer, Probiotic supplement for poultry and Poultry feed supplements"
+        imgText: "Florovita-12 Broiler Weight Gainer"
       },
       {
         id: 23,
@@ -457,7 +457,7 @@ const CattleCategoryPage = () => {
         Instruction: "Dosage and Administration:\r\nMix Bull Goat with the regular goat feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your goats consistently.\r\nFrequency:\r\nProvide Bull Goat daily as part of the goats’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Bull Goat in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nMonitoring:\r\nObserve your goats for any signs of improved weight gain, enhanced appetite, and overall health.\r\nAdjust the dosage if necessary based on individual goat needs and specific health conditions.",
         Category: "goat",
         Type: "Medicine",
-        imgText: "Goat weight gain supplement goat feed supplement and Goat Health Products"
+        imgText: "Bull Goat Goat weight gain supplement"
       },
       {
         id: 24,
@@ -473,7 +473,7 @@ const CattleCategoryPage = () => {
         description: "Selenium-E: Your Poultry’s Essential Nutrient Boost\n\nIntroducing Selenium-E is a premium poultry feed supplement meticulously crafted to enhance the health and productivity of your feathered friends. Packed with vital vitamins and minerals, this specialized formula ensures your poultry flock thrives in every aspect.\n\nSelennium-E is a premium selenium supplement for poultry, meticulously crafted to meet the specific needs of poultry (chickens, ducks, turkeys, etc.). Whether you raise chickens, ducks, turkeys, or other poultry, selenium-E provides essential nutrients for optimal health.\n\nKey Features:\nSelenium Boost: Selennium-E is a high-quality feed supplement for poultry that contains a concentrated dose of selenium, supporting antioxidant defenses, immune function, and overall vitality in poultry. This essential trace mineral plays a crucial role in maintaining their well-being.\nVitamins and Minerals: Beyond selenium, this supplement includes a balanced blend of vitamins (such as vitamin E) and minerals (including zinc and copper). These micronutrients contribute to feather quality, egg production, and bone strength.\nFeed Efficiency: Selennium-E enhances feed utilization, ensuring that your poultry get the most out of their diet. Improved nutrient absorption translates to better growth and performance.\nImmune Support: A robust immune system is essential for disease resistance. The selenium in Selennium-E bolsters immune responses, helping your poultry stay healthy.\nBenefits:\nHealthy Egg Production: Selennium-E positively influences egg quality and production rates.\nStrong Bones and Feathers: The combination of selenium and other nutrients supports skeletal health and feather integrity.\nReduced Stress: Antioxidant properties help combat oxidative stress, especially during challenging conditions.\nDirections for Use:\nMix: Blend the recommended amount of selenium-E with your poultry feed.\nAdminister: Offer daily according to weight and species guidelines.\nObserve: Monitor your poultry’s well-being and adjust dosage if needed.\nQuality Assurance:\nScientifically Formulated: Selennium-E is developed by poultry nutrition experts.\nThird-Party Tested: Rigorous quality checks ensure purity, potency, and safety.\nNo Artificial Additives: Free from artificial colors, flavors, and preservatives.\nChoose Selennium-E:\nInvest in your poultry’s health with selenium-E. Provide the essential nutrients they need to thrive!",
         Instruction: "Dosage and Administration:\r\nMix Selenium-E with the regular poultry feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your poultry flock consistently.\r\nFrequency:\r\nProvide Selenium-E daily as part of the birds’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Selenium-E in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nMonitoring:\r\nObserve your poultry flock for any signs of improved health, especially related to selenium deficiency.\r\nAdjust the dosage if necessary based on flock size and specific health conditions.",
         Type: "Medicine",
-        imgText: "Selenium supplement for poultry Poultry feed supplement"
+        imgText: "Selennium-E Selenium supplement for poultry"
       },
       {
         id: 25,
@@ -533,7 +533,7 @@ const CattleCategoryPage = () => {
         Instruction: "Water Soluble Dose\n3-gm / 10-KG Body Weight\n3-5 days as required ",
         Category: "cow,goat",
         Type: "Medicine",
-        imgText: "Selenium supplement for cattle"
+        imgText: "Selennium-GC Selenium supplement for cattle"
       },
       {
         id: 29,
@@ -550,7 +550,7 @@ const CattleCategoryPage = () => {
         Instruction: "Daily diet: Milk should be fed 10% of total body weight. It should be divided equally two or three times a day. Make fresh milk every time. Do not make and store extra liquid milk. Prepare the required amount to drink at once. For the first three days after birth, the kid should be given mother's colostrum. \nOn the very first day of milk replacer consumption just give only 100-200 ml of milk to adjust the digestive system with the milk replacer and gradually increase 100 ml on the daily basis till it goes to 10% fo the body weight\nAfter opening the packet, place the milk powder in a clean and dry place in an air tight container. Protect it from direct sunlight.\nFeeding bottles and nipples should be cleaned with disinfectant or lukewarm water after each intake.\nThe feeding bottle and nipple should always be kept clean.\nPreparation:\nPrepare the milk in lukewarm (39° C) water.\nPrepare 1 liter of milk by mixing 100 g of milk powder in 900 ml of lukewarm water.\nReady milk should be given immediately after preparation when the milk temperature is slightly warm (37° C) ",
         Category: "cattle",
         Type: "Medicine",
-        imgText: "calf milk replacer"
+        imgText: "Pro-lac power calf milk replacer"
       },
       {
         id: 30,
@@ -567,7 +567,7 @@ const CattleCategoryPage = () => {
         Instruction: "Daily diet: Milk should be fed 10% of total body weight. It should be divided equally two or three times a day. Make fresh milk every time. Do not make and store extra liquid milk. Prepare the required amount to drink at once. For the first three days after birth, the kid should be given mother's colostrum. \nOn the very first day of milk replacer consumption just give only 100-200 ml of milk to adjust the digestive system with the milk replacer and gradually increase 100 ml on the daily basis till it goes to 10% fo the body weight\nAfter opening the packet, place the milk powder in a clean and dry place in an air tight container. Protect it from direct sunlight.\nFeeding bottles and nipples should be cleaned with disinfectant or lukewarm water after each intake.\nThe feeding bottle and nipple should always be kept clean.\nPreparation:\nPrepare the milk in lukewarm (39° C) water.\nPrepare 1 liter of milk by mixing 100 g of milk powder in 900 ml of lukewarm water.\nReady milk should be given immediately after preparation when the milk temperature is slightly warm (37° C) ",
         Category: "goat",
         Type: "Medicine",
-        imgText: "goat milk replacer"
+        imgText: "Pro-lac power goat milk replacer"
       }
     ]
   
@@ -588,9 +588,11 @@ const CattleCategoryPage = () => {
     }, [cart, setCookie]);
   
   
-    const filteredProducts = MainJson.filter(product => 
-      product.Category && product.Category.includes("cattle") ||
-      product.name && product.name.includes("cattle")
+    const filteredProducts = MainJson.filter(product =>
+      ["kid", "cattle"].some(keyword =>
+        product.Category?.toLowerCase().includes(keyword.toLowerCase()) ||
+        product.name?.toLowerCase().includes(keyword.toLowerCase())
+      )
     );
     const uniqueNames = new Set(filteredProducts.map(item => item.name.toLowerCase()));
     const uniqueItemsArray = Array.from(uniqueNames, name =>
@@ -729,7 +731,7 @@ const CattleCategoryPage = () => {
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/ProductDetail/${item.id}/${item.imgText.replace(/ /g, '-')}`} >
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`} >
                     <span
                       className=""
                     >
@@ -778,7 +780,7 @@ const CattleCategoryPage = () => {
             <p>
               <strong>Corn:</strong> Feeds based on corn are high in energy and
               aid in the growth of cattle's mass. They are especially helpful
-              when beef cattle are being finished.
+              when  cattle are being finished.
             </p>
             <p>
               <strong>Barley: </strong> An additional grain high in energy that

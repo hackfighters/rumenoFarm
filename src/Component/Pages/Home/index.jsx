@@ -24,9 +24,13 @@ import Prdimg5 from "../../../assets/img/OurProduct/prdaml5.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
 import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
-import caroimg1 from "../../../assets/img/home-img/caroimg1.jpg";
-import caroimg2 from "../../../assets/img/home-img/caroimg2.jpg";
-import caroimg3 from "../../../assets/img/home-img/caroimg3.jpeg";
+import caroimg1 from "../../../assets/img/home-img/homecaro1.jpg";
+import caroimg2 from "../../../assets/img/home-img/homecaro2.jpg";
+import caroimg3 from "../../../assets/img/home-img/homecaro3.jpg";
+import caroimg4 from "../../../assets/img/home-img/homecaro4.jpg";
+import caroimg5 from "../../../assets/img/home-img/homecaro5.jpg";
+import caroimg6 from "../../../assets/img/home-img/homecaro6.jpg";
+import homevideo from "../../../assets/img/home-video.mp4";
 import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
@@ -34,6 +38,8 @@ import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
 import Achievment from "../../Common/achievment";
 import HomeFaq from "../../Common/faq";
+
+
 
 const Home = () => {
 
@@ -72,6 +78,7 @@ const Home = () => {
             }))
           })}
         </script>
+        
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (
@@ -121,37 +128,38 @@ const Home = () => {
           href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
         ></a>
 
-        <div className="home-backgroundColor overflow-hidden">
+        <div className=" overflow-hidden">
           <Navbar size={cart.length} />
-
-          <div className="container header-sect pt-5">
-            <div className="row header-txt pt-5 mt-5">
-              <div className="col-lg-6 pt-5" data-aos="fade-right">
-                <h1 className="text-light mt-5 caro-text pt-5">
-                  <span className="caroText">{t("v1")}</span>
-                </h1>
-                <p className="text-light h4">{t("v2")}</p>
-              </div>
-
-              <div
-                className="col-lg-6"
-                data-aos="fade-left"
-                data-aos-delay="50"
-              >
-                <div className="container-fluid p-0 mb-5" data-wow-delay="0.1s">
-                  <Carousel interval={2000}>
-                    <Carousel.Item>
-                      <img className="w-100" src={caroimg1} alt="loading" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                      <img className="w-100" src={caroimg2} alt="loading" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                      <img className="w-100" src={caroimg3} alt="loading" />
-                    </Carousel.Item>
-                  </Carousel>
+          <div className="container-fluid header-sect px-0 mx-0">
+            <div className="row header-txt ">
+              <div className=" video-section">
+                <div className="col-lg-10 px-2 py-5 text-center video-content" data-aos="fade-right">
+                  <h1 className="">
+                    <span className="">{t("v1")}</span>
+                  </h1>
+                  <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
+              <Carousel className="" fade interval={2000} pause={false}>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg1} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg2} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg3} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg4} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg5} alt="Loading" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img className="d-block mx-auto w-100" src={caroimg6} alt="Loading" />
+                </Carousel.Item>
+              </Carousel>
               <a href="#training">
                 <div className="training-sect">
                   <button className="btn gradient-custom-2 border-0 text-white btn--shockwave is-active">
@@ -159,21 +167,21 @@ const Home = () => {
                   </button>
                 </div>
               </a>
-                <ReactWhatsapp
-                  className="whatsapp-sect w-auto px-1"
-                  number="+91 7355043892"
-                  message="Hello World"
-                >
-                  <FontAwesomeIcon
-                    icon={faWhatsapp}
-                    className="text-white btn--shockwave is-active"
-                  />
-                </ReactWhatsapp>
+              <ReactWhatsapp
+                className="whatsapp-sect w-auto px-1"
+                number="+91 7355043892"
+                message="Hello World"
+              >
+                <FontAwesomeIcon
+                  icon={faWhatsapp}
+                  className="text-white btn--shockwave is-active"
+                />
+              </ReactWhatsapp>
             </div>
           </div>
         </div>
         <About />
-        <Achievment/>
+        <Achievment />
         <div className="container">
           <div className="text-center">
             <div
@@ -198,27 +206,27 @@ const Home = () => {
             </div>
           </div>
           <div className="row">
-      {products.map(product => (
-        <div
-          key={product.id}
-          className="col-lg-3"
-          data-aos="flip-left"
-          data-aos-easing="ease-out-cubic"
-          data-aos-duration="1000"
-          data-aos-delay="300"
-        >
-          <div className="card-box my-2 ">
-            <Link to={`/veterinary-products/${product.id}`}>
-              <div className="card1 shadow-2">
-                <img src={product.imgSrc} alt="Loading" className="card-img" />
+            {products.map(product => (
+              <div
+                key={product.id}
+                className="col-lg-3"
+                data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="1000"
+                data-aos-delay="300"
+              >
+                <div className="card-box my-2 ">
+                  <Link to={`/veterinary-products/${product.id}`}>
+                    <div className="card1 shadow-2">
+                      <img src={product.imgSrc} alt="Loading" className="card-img" />
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </Link>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-        </div>
-        <HomeFaq/>
+        <HomeFaq />
         <Training />
         <FooterTop />
         <Footer />
