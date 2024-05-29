@@ -140,24 +140,24 @@ const Home = () => {
                   <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
-              <Carousel className="" fade interval={2000} pause={false}>
+              <Carousel className="header-carousel" fade interval={2000} pause={false}>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100" src={caroimg1} alt="Loading" />
+                  <img className="d-block mx-auto w-100 " src={caroimg1} alt="Loading" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100" src={caroimg2} alt="Loading" />
+                  <img className="d-block mx-auto w-100 " src={caroimg2} alt="Loading" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100" src={caroimg3} alt="Loading" />
+                  <img className="d-block mx-auto w-100 " src={caroimg3} alt="Loading" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100" src={caroimg4} alt="Loading" />
+                  <img className="d-block mx-auto w-100 " src={caroimg4} alt="Loading" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100" src={caroimg5} alt="Loading" />
+                  <img className="d-block mx-auto w-100 " src={caroimg5} alt="Loading" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100" src={caroimg6} alt="Loading" />
+                  <img className="d-block mx-auto w-100 " src={caroimg6} alt="Loading" />
                 </Carousel.Item>
               </Carousel>
               <a href="#training">

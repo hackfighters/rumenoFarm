@@ -150,9 +150,9 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
             id=""
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top header"
           >
-            <a className="logo" href="#/">
+            <NavLink className="logo" to="/home">
               <img className="ps-4 logo" src={logo} alt="" />
-            </a>
+              </NavLink>
 
             <button
               className="navbar-toggler bg-secondary"

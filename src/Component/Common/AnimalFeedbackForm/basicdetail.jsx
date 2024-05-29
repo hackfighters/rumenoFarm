@@ -426,8 +426,8 @@ const MultiStepForm = () => {
                       </label>
                       <input
                         name="dateofpurchesing"
-                        placeholder="dateofpurchesing"
-                        type="number"
+                        placeholder="date of purchesing"
+                        type="date"
                         id="dateofpurchesing"
                         className="form-control"
                         value={maindata.date_of_purchesing}

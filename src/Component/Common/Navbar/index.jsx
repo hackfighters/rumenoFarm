@@ -293,11 +293,6 @@ const Navbar = ({ size }) => {
                     icon={faLanguage}
                   />
                   {showSelect && (
-                    // <Select
-                    //   className=""
-                    //   value={selectedOption}
-                    //   onChange={(e) => handleChangen(e)}
-                    // />
                     <TranslateButton/> 
                   )}
                 </div>
@@ -309,9 +304,9 @@ const Navbar = ({ size }) => {
             id="header"
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
           >
-            <a className="logo" href="#/">
+              <NavLink className="logo" to="/home">
               <img className="ps-4 logo" src={logo} alt="" />
-            </a>
+              </NavLink>
             <button
               className="navbar-toggler bg-secondary"
               type="button"
@@ -718,17 +713,6 @@ const Navbar = ({ size }) => {
                   />
                   <SendOtp showModal={showOtp} closeModal={CloseSendOtp} />
                 </li>
-
-                 <li>
-                  {loggedInUser ? (
-                    <h4
-                      typeof="button"
-                      className="text-danger bg-light m-0 p-1 rounded-circle"
-                    >
-                      {loggedInUser}
-                    </h4>
-                  ) : null}
-                </li> 
               </ul>
             </div>
 

@@ -59,7 +59,7 @@ const Transaction = () => {
       setFinalamt(amountData + amountData * 0.02 - 100)
       console.warn(Finalamt)
     }
-    else if(event.target.value === "COD" && amountData > 1000) {
+    else if(event.target.value === "COD" && amountData >= 1000) {
       setAdvancePaymnt(amountData * 0.1)
       setshipingCharge(amountData * 0.02)
       setFinalamt( amountData + amountData * 0.02 - amountData * 0.1)
@@ -481,7 +481,7 @@ const Transaction = () => {
                       {(selectedPaymentMethod === "COD" && amountData <= 1000) && (
                         <>
                           <p className="fw-bold fs-6 text-danger px-1">(You have to pay ₹ 100 in advance. which will be deducted from your total amount.)</p>
-                          <h1>PAY {AdvancePaymnt }</h1>
+                          <h4 className="fw-bold">PAY =<span className="text-danger"> ₹ 100 /-</span></h4>
                           <hr />
                           <ul className="d-flex list-unstyled justify-content-center" >
                             <li className="mx-2">UPI NO:-<span className="fw-bold"> 7355043892</span></li>

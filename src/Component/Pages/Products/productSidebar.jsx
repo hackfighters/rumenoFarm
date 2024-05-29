@@ -31,6 +31,15 @@ import Neonato from "../../../assets/img/OurProduct/neonatobottle.png";
 import prolackgoat from "../../../assets/img/OurProduct/pro-lack-goat-powder.png";
 import prolackcalf from "../../../assets/img/OurProduct/pro-lack-calf-powder.png";
 import selenniumGC from "../../../assets/img/OurProduct/Selennium-GC.png";
+import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg"; 
+import Microfloratane from "../../../assets/img/OurProduct/microfloratane.jpg";
+import Minromix from "../../../assets/img/OurProduct/minromix.jpg";
+import Rumenovita from "../../../assets/img/OurProduct/Rumenovita.jpg";
+import DigestoPlus from "../../../assets/img/OurProduct/Digesto-Plus.jpg";
+import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg";
+import DCox from "../../../assets/img/OurProduct/D-Cox.jpg";
+import RumenoMicroflorapre from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg";
+import LactoPupMilkReplacer from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
 
 
 import { Link, useParams } from "react-router-dom";
@@ -79,7 +88,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 3,
         name: "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
         priceText: 235,
-        img: "https://www.rumeno.in/static/media/Energico-Animal.99c24705a20ebcdc16a8.jpg",
+        img: Energico,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -96,7 +105,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 4,
         name: "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
         priceText: 390,
-        img: "https://www.rumeno.in/static/media/Energico-Animal.99c24705a20ebcdc16a8.jpg",
+        img: Energico,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -113,7 +122,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 5,
         name: "Micro Floratone | Digestive supplements for dogs ",
         priceText: 245,
-        img: "https://www.rumeno.in/static/media/microfloratane.5f9b45158503745d7101.jpg",
+        img: Microfloratane,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -130,7 +139,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 6,
         name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
         priceText: 285,
-        img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+        img: Minromix,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -147,7 +156,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 7,
         name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
         priceText:  1400,
-        img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+        img: Minromix,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -164,7 +173,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 8,
         name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
         priceText: 4600,
-        img: "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+        img: Minromix,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -181,7 +190,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 9,
         name: "Rumenovita | Growth booster for animals | Animal feed supplement",
         priceText: 700,
-        img: "https://www.rumeno.in/static/media/Rumenovita.309f164bb1e0f66284e2.jpg",
+        img: Rumenovita,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -198,7 +207,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 10,
         name: "Rumenovita | Growth booster for animals | Animal feed supplement",
         priceText: 3250,
-        img: "https://www.rumeno.in/static/media/Rumenovita.309f164bb1e0f66284e2.jpg",
+        img: Rumenovita,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -215,7 +224,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 11,
         name: "Digesto Plus | digestive supplements for animals",
         priceText: 190,
-        img: "https://www.rumeno.in/static/media/Digesto-Plus.58b7849606e0ed51a509.jpg",
+        img: DigestoPlus,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -232,7 +241,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 12,
         name: "Digesto Plus | digestive supplements for animals",
         priceText:  875,
-        img: "https://www.rumeno.in/static/media/Digesto-Plus.58b7849606e0ed51a509.jpg",
+        img: DigestoPlus,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -249,7 +258,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 13,
         name: "Liverofine | veterinary liver tonic",
         priceText: 125,
-        img: "https://www.rumeno.in/static/media/Liverofine.e956615d5fe6c67bac95.jpg",
+        img: Liverofine,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -266,7 +275,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 14,
         name: "Liverofine | veterinary liver tonic",
         priceText: 600,
-        img: "https://www.rumeno.in/static/media/Liverofine.e956615d5fe6c67bac95.jpg",
+        img: Liverofine,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -283,7 +292,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 15,
         name: "D-Cox | Weaning goat supplement",
         priceText: 250,
-        img: "https://www.rumeno.in/static/media/D-Cox.a94b558940bc0e2ddaeb.jpg",
+        img: DCox,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -300,7 +309,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 16,
         name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
         priceText: 90,
-        img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+        img: RumenoMicroflorapre,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -317,7 +326,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 17,
         name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
         priceText:  350,
-        img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+        img: RumenoMicroflorapre,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -334,7 +343,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 18,
         name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
         priceText:  650,
-        img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+        img: RumenoMicroflorapre,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -351,7 +360,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 19,
         name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
         priceText:  1300,
-        img: "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+        img: RumenoMicroflorapre,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -368,7 +377,7 @@ const ProductSidebar = ({ handleClick }) => {
         id: 20,
         name: "Lacto-Pup Milk Replacer | Milk Replacer for Puppies",
         priceText: 600,
-        img: "https://www.rumeno.in/static/media/Lacto-Pup-Milk-Replacer.0683b2701f8fe6234860.jpg",
+        img: LactoPupMilkReplacer,
         Veg: "Veg",
         Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
         Delivery: "within 5 -7 days",
@@ -705,6 +714,8 @@ const ProductSidebar = ({ handleClick }) => {
       filteredItems = items.filter(item =>
         item.name && item.name.toLowerCase().includes(lowerCaseName)||
         item.Category && item.Category.toLowerCase().includes(lowerCaseName)||
+        item.Shortdescription && item.Shortdescription.toLowerCase().includes(lowerCaseName)||
+        item.description && item.description.toLowerCase().includes(lowerCaseName)||
         item.Type && item.Type.toLowerCase().includes(lowerCaseName)
       );
       console.warn(filteredItems)
