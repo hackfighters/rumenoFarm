@@ -37,7 +37,7 @@ const TransactionDetail = () => {
     <Helmet>
                 <meta charSet="utf-8" />
                 <title>Transaction-Detail-Rumeno</title>
-                <link rel="canonical" href="https://rumeno.in/transdetail" />
+                <link rel="canonical" href="https://www.rumeno.in/transdetail" />
             </Helmet>
             <ul className="d-none">
   {KeysWords.map((item, index) => (

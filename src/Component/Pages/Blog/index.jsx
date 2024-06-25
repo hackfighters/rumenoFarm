@@ -47,7 +47,7 @@ const Blog = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Blog-Rumeno</title>
-        <link rel="canonical" href="https://rumeno.in/blog" />
+        <link rel="canonical" href="https://www.rumeno.in/blog" />
       </Helmet>
       <ul className="d-none">
   {KeysWords.map((item, index) => (

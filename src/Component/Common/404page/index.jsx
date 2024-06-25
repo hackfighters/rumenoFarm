@@ -8,7 +8,7 @@ const page404 = () => {
     <Helmet>
                 <meta charSet="utf-8" />
                 <title>404-Rumeno</title>
-                <link rel="canonical" href="https://rumeno.in/*" />
+                <link rel="canonical" href="https://www.rumeno.in/*" />
             </Helmet>
             <a className="d-none" href="https://www.amazon.in/Sheep-Goat-Feed/b?ie=UTF8&node=28179044031"></a>
         <a className="d-none" href="https://www.amazon.in/goat-medicine/s?k=goat+medicine"></a>

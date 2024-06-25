@@ -7,6 +7,7 @@ import caroimg1 from "../../../assets/img/achievement-img/achmt1.png";
 import caroimg2 from "../../../assets/img/achievement-img/achmt2.png";
 import caroimg3 from "../../../assets/img/achmtvideo.mp4";
 import caroimg4 from "../../../assets/img/achievement-img/achmt44.jpg";
+import caroimg5 from "../../../assets/img/achievement-img/achmt5.png";
 
 
 const Achievment = () => {
@@ -56,6 +57,13 @@ const Achievment = () => {
             src={caroimg4}
 
         />,
+        <img
+
+            className="d-block achievment-img"
+
+            src={caroimg5}
+
+        />,
 
     ];
 
@@ -86,7 +94,7 @@ const Achievment = () => {
     return (
         <>
             <section className='container-fluid bg-light  py-5'>
-                <div className="row px-4">
+                <div className="row px-2">
                     <div
                         className="col-lg-6 mb-6 mb-lg-0"
                         data-aos="fade-right"
@@ -102,7 +110,7 @@ const Achievment = () => {
                         </div>
 
                     </div>
-                    <div className="row achievement-section justify-content-center">
+                    <div className=" achievement-section justify-content-center px-0">
 
                         <Carousel interval={null} >
                             {slides.map((slide, idx) => (

@@ -1,17 +1,22 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
+import Cookies from "js-cookie";
 
-const ProudctFeedbackModal = ({ showfeedModal, closefeedModal, title }) => {
+const ProudctFeedbackModal = ({ showfeedModal, closefeedModal, title,pid }) => {
   const { register, handleSubmit, reset } = useForm();
+  const getUserId = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const onSubmit = (data) => {
     let feedbackdata = {
-      product: title,
-      feedback: data.feedback,
+      product_id:pid,
+      feedback:data.feedback,
+      user_id:getUserId.uID,
+      time:new Date().toLocaleDateString("en-GB"),
     }
     console.log(feedbackdata);
     reset();
+    closefeedModal();
   };
 
   return (

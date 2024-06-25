@@ -155,7 +155,7 @@ const Deworm = () => {
                             Worm Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.worm_date}
+                          {new Date(item.worm_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -163,7 +163,7 @@ const Deworm = () => {
                             Endo Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.endo_date}
+                          {new Date(item.endo_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -187,7 +187,7 @@ const Deworm = () => {
                             Ecto Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.ecto_date}
+                          {new Date(item.ecto_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -211,7 +211,7 @@ const Deworm = () => {
                             Animal Bath Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.bath_date}
+                            {new Date(item.bath_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center mx-2">

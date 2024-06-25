@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
-import Lang from "./Component/language/index";
+import language from "./Component/language/index";
 import Home from "./Component/Pages/Home/index";
 import Services from "./Component/Pages/Service";
 import ProductPage from "./Component/Pages/Products/index";
@@ -94,7 +94,7 @@ const App = () => {
       <ToastContainer />
       <UserProvider>
         <Routes>
-          <Route path="/" Component={Lang} />
+          <Route path="/" Component={language} />
           <Route path="/home" Component={Home} />
           <Route path="/veterinary-services" Component={Services} />
           <Route path="/goat-farming-consultant" Component={ServicesSecond} />
@@ -102,7 +102,7 @@ const App = () => {
           <Route path="/veterinary-products" Component={ProductPage} />
           <Route path="/veterinary-products/:name" Component={ProductPage} />
           <Route path="/veterinary-products/:name/:id" Component={ProductDetail} />
-          <Route path="/contactus" Component={ContactUs} />
+          <Route path="/contact-us" Component={ContactUs} />
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
           <Route path="/frmaftlog" Component={FrmAftLog}/>
@@ -123,3 +123,6 @@ const App = () => {
 };
 
 export default App;
+
+//  camel case is used for naming conventions
+// route is map with function name controllers

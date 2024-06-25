@@ -208,6 +208,7 @@ const ProductItem = ({ item, handleClick }) => {
 
               <ProudctFeedbackModal
               title={name}
+              pid={item.id}
               showfeedModal={showfeedback}
               closefeedModal={closefeedbackModal}
             />

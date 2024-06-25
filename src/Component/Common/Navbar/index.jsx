@@ -204,20 +204,55 @@ const Navbar = ({ size }) => {
     navigate("/home");
   };
 
+  // const handleChange = async (item, d) => {
+
+  //   let ind = -1;
+  //   cart.forEach((data, index) => {
+  //     if (data.id === item.id) ind = index;
+  //   });
+
+  //   const tempArr = [...cart];
+
+  //   var latestamount = parseInt(tempArr[ind].amount);
+  //   latestamount += d;
+  //   tempArr[ind].amount = latestamount;
+  //   setCart(tempArr);
+  //   var amountdataupdata = tempArr[ind];
+  //   console.log(amountdataupdata, 7777);
+  //   // Api ------------
+  //   try {
+  //     const response = await axios.post(
+  //       "http://192.168.1.7:5000/cart",
+  //       amountdataupdata
+  //     );
+  //     console.log(iteamdata, 4444);
+  //     console.log("quantity increase Successfull", response.data);
+  //   } catch (error) {
+  //     console.error("quantity increase not working", error);
+  //   }
+  // };
+
   const handleChange = async (item, d) => {
     let ind = -1;
     cart.forEach((data, index) => {
       if (data.id === item.id) ind = index;
     });
-
+  
     const tempArr = [...cart];
-
+  
     var latestamount = parseInt(tempArr[ind].amount);
     latestamount += d;
+  
+    // Ensure the amount does not go below 1
+    if (latestamount < 1) {
+      latestamount = 1;
+    }
+  
     tempArr[ind].amount = latestamount;
     setCart(tempArr);
     var amountdataupdata = tempArr[ind];
     console.log(amountdataupdata, 7777);
+  
     // Api ------------
     try {
       const response = await axios.post(
@@ -225,11 +260,12 @@ const Navbar = ({ size }) => {
         amountdataupdata
       );
       console.log(iteamdata, 4444);
-      console.log("quantity increase Successfull", response.data);
+      console.log("quantity increase Successful", response.data);
     } catch (error) {
       console.error("quantity increase not working", error);
     }
   };
+  
 
   const handleAnmlValue = (value) => {
     setSelectedAnimal(value);
@@ -454,7 +490,7 @@ const Navbar = ({ size }) => {
                   <NavLink
                     className="nav-link px-0"
                     activeclassname="active"
-                    to="/contactus"
+                    to="/contact-us"
                   >
                     Contact-Us
                   </NavLink>
@@ -674,7 +710,7 @@ const Navbar = ({ size }) => {
                           <li>
                             <Link
                               className="dropdown-item justify-content-center"
-                              to="/contactus"
+                              to="/contact-us"
                             >
                               Contact-Us
                             </Link>
@@ -750,7 +786,7 @@ const Navbar = ({ size }) => {
                         {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
                       </div>
                       <div className="col-sm-3 d-flex align-items-center justify-content-center">
-                        <h4 className="text-trun-cart">{item.name}</h4>
+                        <h4 className="text-trun">{item.name}</h4>
                       </div>
                       <div className="col-sm-6  d-flex align-items-center justify-content-around ">
                         <FontAwesomeIcon

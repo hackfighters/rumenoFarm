@@ -49,7 +49,7 @@ const Services = () => {
 " />
         <title>Top-Rated Veterinary Services in india: Experienced Pet Care Clinics
 </title>
-        <link rel="canonical" href="https://rumeno.in/veterinary-services" />
+        <link rel="canonical" href="https://www.rumeno.in/veterinary-services" />
         <script type="application/ld+json">
     {JSON.stringify({
       "@context": ServiceJson["@context"],

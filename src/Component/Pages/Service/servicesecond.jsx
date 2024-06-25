@@ -25,7 +25,7 @@ const ServicesSecond = () => {
 " />
         <title>Rumeno: Expert Goat Farming Consultants in india
         </title>
-        <link rel="canonical" href="https://rumeno.in/goat-farming-consultant" />
+        <link rel="canonical" href="https://www.rumeno.in/goat-farming-consultant" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": GoatServiceJson["@context"],
@@ -86,7 +86,7 @@ const ServicesSecond = () => {
         </div>
         <div className="col-lg-12">
           <h2 className="py-2 px-4 service-head shadow">
-            Unlocking Goat Farming Success: Rumeno Farmotech's Expertise
+            Rumeno's Goat Farming Consultant : Rumeno Farmotech's Expertise
           </h2>
           <p className="mx-5 my-4">
             Rumeno Farmotech, a prominent goat farming consultant in the field of animal husbandry, offers specialized services to enhance the productivity and well-being of goat herds. Their comprehensive services include:

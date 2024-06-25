@@ -176,7 +176,7 @@ const PostWean = () => {
                             </label>
                             <input
                               name="postweanweight"
-                              placeholder="Unique Name"
+                              placeholder="Kid Weight"
                               type="number"
                               id="postweanweight"
                               className="form-control"

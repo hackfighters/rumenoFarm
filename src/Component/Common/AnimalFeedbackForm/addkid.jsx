@@ -172,7 +172,7 @@ const KidAddForm = () => {
                               Birth Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.birth_date}
+                          {new Date(item.birth_date).toLocaleDateString('en-IN')}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -220,7 +220,7 @@ const KidAddForm = () => {
                               Wean Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.wean_date}
+                              {new Date(item.wean_date).toLocaleDateString('en-IN')}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -244,7 +244,7 @@ const KidAddForm = () => {
                               Mother Wean Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.mother_wean_date}
+                              {new Date(item.mother_wean_date).toLocaleDateString('en-IN')}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">

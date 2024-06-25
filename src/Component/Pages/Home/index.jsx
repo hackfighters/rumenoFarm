@@ -24,6 +24,12 @@ import Prdimg5 from "../../../assets/img/OurProduct/prdaml5.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
 import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
+import mobcaroimg1 from "../../../assets/img/home-img/homecaromob1.png";
+import mobcaroimg2 from "../../../assets/img/home-img/homecaromob2.jpg";
+import mobcaroimg3 from "../../../assets/img/home-img/homecaromob3.png";
+import mobcaroimg4 from "../../../assets/img/home-img/homecaromob4.png";
+import mobcaroimg5 from "../../../assets/img/home-img/homecaromob5.png";
+import mobcaroimg6 from "../../../assets/img/home-img/homecaromob6.png";
 import caroimg1 from "../../../assets/img/home-img/homecaro1.jpg";
 import caroimg2 from "../../../assets/img/home-img/homecaro2.jpg";
 import caroimg3 from "../../../assets/img/home-img/homecaro3.jpg";
@@ -59,10 +65,9 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <meta charSet="utf-8" name="description" content="Concerned about herd health and production? Powerful animal feed supplements can boost immunity, enhance growth, and reduce waste. Learn More!
-" />
+        <meta charSet="utf-8" name="description" content="Concerned about herd health and production? Powerful animal feed supplements can boost immunity, enhance growth, and reduce waste. Learn More!" />
         <title>Supercharge Your Pet's Health: Animal Feed Supplements | Rumeno</title>
-        <link rel="canonical" href="https://rumeno.in/home" />
+        <link rel="canonical" href="https://www.rumeno.in/home" />
 
         <script type="application/ld+json">
           {JSON.stringify({
@@ -78,7 +83,7 @@ const Home = () => {
             }))
           })}
         </script>
-        
+
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (
@@ -140,24 +145,42 @@ const Home = () => {
                   <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
-              <Carousel className="header-carousel" fade interval={2000} pause={false}>
+              <Carousel className="header-carousel" fade interval={2000000} pause={false}>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100 " src={caroimg1} alt="Loading" />
+                  <picture>
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg1} />
+                    <img className="d-block mx-auto w-100 " src={caroimg1} alt="loading" />
+                  </picture>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100 " src={caroimg2} alt="Loading" />
+                  <picture>
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg2} />
+                    <img className="d-block mx-auto w-100 " src={caroimg2} alt="loading" />
+                  </picture>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100 " src={caroimg3} alt="Loading" />
+                  <picture>
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg3} />
+                    <img className="d-block mx-auto w-100 " src={caroimg3} alt="loading" />
+                  </picture>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100 " src={caroimg4} alt="Loading" />
+                  <picture>
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg4} />
+                    <img className="d-block mx-auto w-100 " src={caroimg4} alt="loading" />
+                  </picture>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100 " src={caroimg5} alt="Loading" />
+                  <picture>
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg5} />
+                    <img className="d-block mx-auto w-100 " src={caroimg5} alt="loading" />
+                  </picture>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <img className="d-block mx-auto w-100 " src={caroimg6} alt="Loading" />
+                  <picture>
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg6} />
+                    <img className="d-block mx-auto w-100 " src={caroimg6} alt="loading" />
+                  </picture>
                 </Carousel.Item>
               </Carousel>
               <a href="#training">

@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Privacy-Policy-Rumeno</title>
-        <link rel="canonical" href="https://rumeno.in/privacypolicy" />
+        <link rel="canonical" href="https://www.rumeno.in/privacypolicy" />
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (

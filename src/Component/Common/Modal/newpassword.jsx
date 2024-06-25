@@ -137,7 +137,7 @@ const SetNewPassword = ({ showModal, closeModal }) => {
                 </form>
               </div>
               <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
-                <div className="text-white text-center px-2">
+                <div className="text-white text-center p-2">
                   <h4 className="mb-4">{t("v133")}</h4>
                   <p className="small mb-0">{t("v134")}</p>
                 </div>

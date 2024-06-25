@@ -16,6 +16,7 @@ export const UserProvider = ({ children }) => {
   const [FarmDataUMKid, setFarmDataUMKid] = useState({});
   const [AnimalData, setAnimalData] = useState({});
   const [selectedAnimal, setSelectedAnimal] = useState("");
+  const [showKidMainCard, setshowKidMainCard] = useState({});
 
   return (
     <UserContext.Provider
@@ -43,7 +44,7 @@ export const UserProvider = ({ children }) => {
         LoginUserData, 
         setLoginUserData,
         FarmDataUMKid,
-         setFarmDataUMKid
+         setFarmDataUMKid,showKidMainCard, setshowKidMainCard
       }}
     >
       {children}

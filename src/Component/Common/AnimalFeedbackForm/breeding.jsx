@@ -176,7 +176,7 @@ const onsubmit = async(data) => {
                             Date of Heat :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.heat_date}
+                            {new Date(item.heat_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -200,7 +200,7 @@ const onsubmit = async(data) => {
                             Breed Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.breed_date}
+                          {new Date(item.breed_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -208,7 +208,7 @@ const onsubmit = async(data) => {
                             Due Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.due_date}
+                          {new Date(item.due_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
 

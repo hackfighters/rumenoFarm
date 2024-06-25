@@ -51,7 +51,7 @@ const Language = () => {
     <Helmet>
                 <meta charSet="utf-8" />
                 <title>Language-Rumeno</title>
-                <link rel="canonical" href="https://rumeno.in/" />
+                <link rel="canonical" href="https://www.rumeno.in/" />
             </Helmet>
       <div className="area">
         <ul className="circles">

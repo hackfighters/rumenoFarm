@@ -105,7 +105,7 @@ const Products = () => {
 " />
         <title>Rumeno Veterinary Products: Trusted by Vets, Loved by Pets
 </title>
-        <link rel="canonical" href="https://rumeno.in/veterinary-products" />
+        <link rel="canonical" href="https://www.rumeno.in/veterinary-products" />
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import { UserContext } from "../Modal/logusecont";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,10 +16,11 @@ import {
   faWeightScale,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import TableFarmData from "./tableFarmdata";
 
 const MultiStepForm = () => {
   const { register, handleSubmit, setValue } = useForm();
-  const { selectedAnimal,FarmDataUMKid, setFarmDataUMKid } =
+  const { selectedAnimal, setFarmDataUMKid } =
     useContext(UserContext);
   const [maindata, setMainData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -27,14 +28,16 @@ const MultiStepForm = () => {
 
   const [searchInput, setSearchInput] = useState("");
   const [selectedItemData, setSelectedItemData] = useState({});
+  const [showFarmTableModal, setShowFarmTableModal] = useState(false);
 
+  const handleOpenFarmTableModal = () => setShowFarmTableModal(true);
+  const handleCloseFarmTableModal = () => setShowFarmTableModal(false);
+  const apiUrl = process.env.REACT_APP_API;
 
   const filteredData = maindata.filter((item) =>
     (item.uniquename?.includes(searchInput.toLowerCase()) || false) ||
     (item.age?.includes(searchInput.toLowerCase()) || false)
   );
-  
-  
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -76,85 +79,59 @@ const MultiStepForm = () => {
   const closeshowprntdetl = () => {
     setshowprntdetl(false);
   };
-  let Uid = ''
-  let finalData;
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(apiUrl);
+      setMainData(response.data);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
+
+  
+
   const onSubmit = async (data) => {
     if (selectedItem !== null) {
-      // Edit existing data
-      const updatedData = [...maindata];
-      
-      finalData = {
-        animal: selectedAnimal,
-        kid: "7700" + (selectedItem + 1),
-        mid: selectedItem + 1,
-        uID:FarmDataUMKid.uID,
-        uniquename: data.uniquename,
-        age: data.age,
-        gender: data.gender,
-        height: data.height,
-        weight: data.weight,
-        date_of_purchesing: data.date_of_purchesing,
-        pregnancy_detail: data.pregnancy_detail,
-        male_detail: data.male_detail,
-        body_score: data.body_score,
-        basic_comment: data.basic_comment,
-      };
-      updatedData[selectedItem] = finalData;
-      setMainData(updatedData);
-      console.log(finalData,updatedData);
+      // Edit existing item
       try {
-        const response = await axios.put('http://192.168.1.14:5000/basic_details',finalData)
-        console.log(response.data)
-    } catch (error) {
-        console.log(error)
-    }
-      setSelectedItem(null);
+        const response = await axios.put(`${apiUrl}/${maindata[selectedItem].id}`, data);
+        const updatedMilkrec = [...maindata];
+        updatedMilkrec[selectedItem] = response.data;
+        fetchItems();
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
     } else {
-      // Add new data
-      
-      finalData = {
-        animal: selectedAnimal,
-        kid: "7700" + (maindata.length + 1),
-        mid: maindata.length + 1,
-        uID:FarmDataUMKid.uID,
-        uniquename: data.uniquename,
-        age: data.age,
-        gender: data.gender,
-        height: data.height,
-        weight: data.weight,
-        date_of_purchesing: data.date_of_purchesing,
-        pregnancy_detail: data.pregnancy_detail,
-        male_detail: data.male_detail,
-        body_score: data.body_score,
-        basic_comment: data.basic_comment,
-      };
-      setMainData([...maindata, finalData]);
-      console.log(finalData)
+      // Add new item
       try {
-        const response = await axios.post('http://192.168.1.14:5000/basic_details',finalData)
-        console.log(response.data)
-    } catch (error) {
-        console.log(error)
+        const response = await axios.post(apiUrl, data);
+        fetchItems();
+      } catch (error) {
+        console.error("Error adding item:", error);
+      }
     }
-
-    }
-    // Set finalData in cookies
-    Cookies.set("AnimalCookiesData", JSON.stringify(finalData));
-    console.log(Cookies.get("AnimalCookiesData"));
+    console.log('data: ', data,maindata);
     setModalIsOpen(false);
   };
 
-  const AddMoreDtl = (index)=>{
-    const basicDtl ={ kid:maindata[index].kid,mid:maindata[index].mid}; // Retrieve the item before deletion
-    
+
+  const AddMoreDtl = (index) => {
+    const basicDtl = { mid: maindata[index].id };
+
+    const getLoginData = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+    let sendMid = { ...getLoginData, ...basicDtl };
+    Cookies.set('loginUserData',JSON.stringify(sendMid));
+
     setFarmDataUMKid((prev) => ({ ...prev, ...basicDtl }));
-    let b ={ selectedAnimal, Uid:maindata[index].Uid}
-    console.log(b)
-    Cookies.set("AnimalCookiesData", JSON.stringify(b));
-    console.log(Cookies.get("AnimalCookiesData"));
+    let setDataCookies = { selectedAnimal, Uid: maindata[index].Uid }
+    Cookies.set("AnimalCookiesDatas", JSON.stringify(setDataCookies));
   }
 
-  
   const handleEdit = (index) => {
     setValue("uniquename", maindata[index].uniquename);
     setValue("age", maindata[index].age);
@@ -170,41 +147,46 @@ const MultiStepForm = () => {
     setModalIsOpen(true);
   };
 
-  const handleDelete = async(index) => {
-    const deletedItem = maindata[index]; // Retrieve the item before deletion
-    const updatedData = [...maindata];
-    updatedData.splice(index, 1);
-    setMainData(updatedData);
-    console.log(deletedItem); // Log the deleted item
+
+  const handleDelete = async (index) => {
     try {
-      const response = await axios.post('http://192.168.1.14:5000/basic_details',deletedItem)
-      console.log(response.data)
-  } catch (error) {
-      console.log(error)
-  }
+      const response = await axios.delete(`${apiUrl}/${maindata[index].id}`);
+      console.log(response.data);
+      setMainData(maindata.filter((_, i) => i !== index));
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
   };
+
   return (
     <section className="home-backgroundColor animal-bg-size">
       <div className="container-fluid ">
-        <Link className="btn btn-secondary w-auto m-3" to='/home' >home</Link>
+        <div className="d-flex justify-content-between p-3">
+          <Link className="btn btn-secondary w-auto" to='/home' >home</Link>
+          <button className="btn btn-info w-auto text-white" onClick={handleOpenFarmTableModal}>Farm Table</button>
+        </div>
+        <TableFarmData showFarmTableModal={showFarmTableModal} handleCloseFarmTableModal={handleCloseFarmTableModal} />
         <div className="container m-0-auto  px-0">
           <div className="py-5 w-75 d-flex align-items-center justify-content-between m-auto">
-          <button
-            type="button"
-            onClick={openModal}
-            className="btn btn-secondary w-auto"
-          >
-            Create New
-          </button>
-      <input className="form-control mr-sm-2 w-25" type="search" placeholder="Search by Name or Age" aria-label="Search" value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}/>
+            <button
+              type="button"
+              onClick={openModal}
+              className="btn btn-secondary w-auto"
+            >
+              Create New
+            </button>
+
+
+
+            <input className="form-control mr-sm-2 w-25" type="search" placeholder="Search by Name or Age" aria-label="Search" value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)} />
           </div>
           <div className="row justify-content-center">
             {/* <div className="row"> */}
 
             {filteredData.map((item, index) => (
-              <section className="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect">
-                <ul className="list-unstyled" key={item.id}>
+              <section className="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect" key={index}>
+                <ul className="list-unstyled" >
                   <li className="mx-2 mb-3 fs-2 d-flex justify-content-between align-items-center">
                     <span className="text-uppercase">{item.uniquename}</span>
                     <span
@@ -273,7 +255,7 @@ const MultiStepForm = () => {
                             {" "}
                             <strong> MId : </strong>
                           </span>{" "}
-                          <span> {selectedItemData.mid}</span>{" "}
+                          <span> {selectedItemData.id}</span>{" "}
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
@@ -350,7 +332,7 @@ const MultiStepForm = () => {
                   </button>
                   <div
                     onClick={() => handleDelete(index)}
-                    className="bg-danger px-3 pe-auto rounded d-flex align-items-center"
+                    className="w-auto btn btn-danger px-3 pe-auto rounded d-flex align-items-center"
                   >
                     <FontAwesomeIcon className="text-white" icon={faTrash} />
                   </div>
@@ -374,7 +356,7 @@ const MultiStepForm = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="row justify-content-center">
                     <h2 className="text-center">
-                      {selectedItem !== null ? "Edit" : "Fill"} Basic Details of { selectedAnimal}
+                      {selectedItem !== null ? "Edit" : "Fill"} Basic Details of {selectedAnimal}
                     </h2>
 
                     <div className="col-lg-5 my-2">

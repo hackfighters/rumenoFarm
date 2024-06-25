@@ -122,7 +122,7 @@ const VaccineRecord = () => {
                             Vaccine Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.vaccine_date}
+                          {new Date(item.vaccine_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
 

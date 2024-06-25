@@ -23,7 +23,7 @@ const ServicesThird = () => {
 " />
         <title>Lucknow Goat Dairy Consultant: Expert Guidance from Rumeno
         </title>
-        <link rel="canonical" href="https://rumeno.in/dairy-farming-consultant" />
+        <link rel="canonical" href="https://www.rumeno.in/dairy-farming-consultant" />
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (

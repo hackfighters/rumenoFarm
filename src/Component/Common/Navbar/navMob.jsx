@@ -27,6 +27,7 @@ import { UserContext } from "../Modal/logusecont";
 import Cookies from "js-cookie";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
 import SearchBar from "./navsearch";
+import axios from "axios";
 
 
 // {
@@ -38,7 +39,7 @@ import SearchBar from "./navsearch";
 // {
 //   /* Veterinary */
 // }
-const ResponsiveNavbar = ({ size, handleChange }) => {
+const ResponsiveNavbar = ({ size }) => {
   const { t } = useTranslation();
   const { search } = useParams();
 
@@ -122,6 +123,32 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
   //   //   console.error('Add to cart is not working', error);
   //   // }
   // }
+
+  const handleChange = async (item, d) => {
+    let ind = -1;
+    cart.forEach((data, index) => {
+      if (data.id === item.id) ind = index;
+    });
+
+    const tempArr = [...cart];
+
+    var latestamount = parseInt(tempArr[ind].amount);
+    latestamount += d;
+    tempArr[ind].amount = latestamount;
+    setCart(tempArr);
+    var amountdataupdata = tempArr[ind];
+    console.log(amountdataupdata, 7777);
+    // Api ------------
+    try {
+      const response = await axios.post(
+        "http://192.168.1.7:5000/cart",
+        amountdataupdata
+      );
+      console.log("quantity increase Successfull", response.data);
+    } catch (error) {
+      console.error("quantity increase not working", error);
+    }
+  };
 
   const handleRemove = (id) => {
     const arr = cart.filter((item) => item.id !== id);
@@ -306,7 +333,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                   <NavLink
                     className="nav-link px-0"
                     activeclassname="active"
-                    to="/contactus"
+                    to="/contact-us"
                   >
                     Contact-Us
                   </NavLink>
@@ -527,7 +554,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
                           <li>
                             <a
                               className="dropdown-item justify-content-center"
-                              href="/contactus"
+                              href="/contact-us"
                             >
                               Contact-Us
                             </a>
@@ -587,17 +614,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="cart-model-body">
-          {size == 1 ||
-            size == 2 ||
-            size == 2 ||
-            size == 3 ||
-            size == 4 ||
-            size == 5 ||
-            size == 6 ||
-            size == 7 ||
-            size == 8 ||
-            size == 9 ||
-            size == 10 ? (
+          {!size == 0 ? (
             <>
               {cart?.map((item, cartindex) => {
                 totalPrice += item.amount * item.price;
@@ -652,17 +669,7 @@ const ResponsiveNavbar = ({ size, handleChange }) => {
             </>
           )}
         </Modal.Body>
-        {size == 1 ||
-          size == 2 ||
-          size == 2 ||
-          size == 3 ||
-          size == 4 ||
-          size == 5 ||
-          size == 6 ||
-          size == 7 ||
-          size == 8 ||
-          size == 9 ||
-          size == 10 ? (
+        {! size == 0 ? (
           <>
             <div className="row border-top border-bottom justify-content-end mx-3 py-2">
               <div className="col-sm-12 d-flex align-items-center justify-content-between">

@@ -33,7 +33,6 @@ const FarmHygine = () => {
 
 
   useEffect(() => {
-    console.log(Cookies.get("AnimalCookiesData"));
     let b = Cookies.get("AnimalCookiesData")
     // setFarmhygine((prev)=>)
   }, []); 
@@ -137,7 +136,7 @@ const FarmHygine = () => {
                             Solid Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.soil_date}
+                          {new Date(item.soil_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -145,7 +144,7 @@ const FarmHygine = () => {
                             Lime Sprinkle Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.limesprinkle_date}
+                          {new Date(item.limesprinkle_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -153,7 +152,7 @@ const FarmHygine = () => {
                           Insecticide Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.insecticide_date}
+                          {new Date(item.insecticide_date).toLocaleDateString('en-IN')}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">

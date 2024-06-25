@@ -7,7 +7,7 @@ const HomeFaq = () => {
                 <div className="container">
                     <div className="row">
                         <h4>Rumeno Farmotech is trusted by Indian farmers for a number of reasons:</h4>
-                        <ul className='mx-3'>
+                        <ul className='mx-4'>
                             <li className=''>
                                 <strong>Scientific Excellence:</strong> Their group of professionals is always looking for new ways to solve problems.
                             </li>
