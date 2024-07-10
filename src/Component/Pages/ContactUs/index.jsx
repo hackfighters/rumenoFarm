@@ -25,7 +25,7 @@ import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
 import ReactWhatsapp from "react-whatsapp";
 import KeysWords from "../../Common/apiData/keyWords";
-
+import Cookies from "js-cookie";
 const ContactUs = () => {
   const { t } = useTranslation();
   const { cart } = useContext(UserContext);
@@ -35,12 +35,19 @@ const ContactUs = () => {
     formState: { errors },
   } = useForm();
   const apiUrl = process.env.REACT_APP_API;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+
   const onSubmit = async (data) => {
     try {
       // Make a POST request to your API endpoint
       const response = await axios.post(
         `${apiUrl}/contact_us`,
-        data
+        data,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        }
       );
       // console.log(response.data); // Handle the response as needed
     } catch (error) {

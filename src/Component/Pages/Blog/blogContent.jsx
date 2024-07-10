@@ -9,10 +9,13 @@ import Footer from "../../Common/Footer";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import KeysWords from "../../Common/apiData/keyWords";
 import { useForm } from "react-hook-form";
+import Cookies from "js-cookie";
 import axios from "axios";
 const BlogContent = () => {
   const { cart } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
+  const apiUrl = `${process.env.REACT_APP_API}/blog`;
+  const getparentidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
   const blogdata = [
     {
       id: 1,
@@ -53,7 +56,12 @@ const BlogContent = () => {
       email: data.blogemail,
       comment: data.blogcomment,
     }
-    const response = await axios.post(`${process.env.REACT_APP_API}/blog`, comntsendtoapi);
+    const response = await axios.post(`${process.env.REACT_APP_API}/blog`, comntsendtoapi,
+      {
+        headers: {
+          'Authorization': `${getparentidCookies.token}`
+        }
+      });
 
     // Handle the response as needed
     console.log("API Response:", response.data);

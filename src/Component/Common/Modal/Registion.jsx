@@ -30,8 +30,6 @@ const Registration = ({ showModal, closeModal }) => {
 
 
   const onSubmit = async (data) => {
-    console.log(data,register)
-
     const Registrationdata = 
       {
         country : countrydata,

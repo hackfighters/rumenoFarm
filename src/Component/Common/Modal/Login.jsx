@@ -624,12 +624,17 @@ const Login = ({
     formState: { errors },
   } = useForm();
 
+  // ---------------
+  
+
   const onSubmit = async (data) => {
     console.log('data: ', data);
     const payload = {
       email: data?.username,
       password: data?.password
     }
+
+
     // e.preventDefault(e);
     try {
       const response = await axios.post(
@@ -708,7 +713,7 @@ const Login = ({
     } catch (error) {
       // Handle login failure
       // console.error("Login failed:", error.message);
-      toast.error(error.response.data.message, {
+      toast.error(error, {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,

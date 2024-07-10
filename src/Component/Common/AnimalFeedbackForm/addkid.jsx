@@ -145,7 +145,12 @@ const KidAddForm = () => {
     setaddkiddata(updatedData);
     console.log(deletedItem); 
     try {
-      const response = await axios.delete('http://192.168.1.14:5000/kid_details',deletedItem)
+      const response = await axios.delete(`${apiUrl}/${addkiddata[index]._id}`,
+        {
+          headers: {
+            'Authorization': `${getparentidCookies.token}`
+          }
+        })
       console.log(response.data)
   } catch (error) {
       console.log(error)
