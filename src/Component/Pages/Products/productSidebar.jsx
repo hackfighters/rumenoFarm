@@ -934,7 +934,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
           />
         </div>
       </div>
-      <h2 class="py-2 mt-5 px-4 service-head">Veterinary Products: Keeping Your Animals Happy and Healthy</h2>
+      <h2 className="py-2 mt-5 px-4 service-head">Veterinary Products: Keeping Your Animals Happy and Healthy</h2>
       <div className="bg-white p-3">
       <p>In the dynamic world of animal husbandry, ensuring the well-being and productivity of our beloved creatures is of utmost importance. Proper nutrition and specialized care play pivotal roles in achieving these goals. Enter Rumeno Farmotech, a name synonymous with excellence in animal feed supplements and veterinary services.
       </p>

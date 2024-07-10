@@ -25,7 +25,7 @@ import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
 import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
 import mobcaroimg1 from "../../../assets/img/home-img/homecaromob1.png";
-import mobcaroimg2 from "../../../assets/img/home-img/homecaromob2.jpg";
+import mobcaroimg2 from "../../../assets/img/home-img/homecaromob2.png";
 import mobcaroimg3 from "../../../assets/img/home-img/homecaromob3.png";
 import mobcaroimg4 from "../../../assets/img/home-img/homecaromob4.png";
 import mobcaroimg5 from "../../../assets/img/home-img/homecaromob5.png";
@@ -149,37 +149,37 @@ const Home = () => {
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg1} />
-                    <img className="d-block mx-auto w-100 " src={caroimg1} alt="loading" />
+                    <img className="d-block mx-auto w-100 " src={caroimg1} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg2} />
-                    <img className="d-block mx-auto w-100 " src={caroimg2} alt="loading" />
+                    <img className="d-block mx-auto w-100 " src={caroimg2} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg3} />
-                    <img className="d-block mx-auto w-100 " src={caroimg3} alt="loading" />
+                    <img className="d-block mx-auto w-100 " src={caroimg3} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg4} />
-                    <img className="d-block mx-auto w-100 " src={caroimg4} alt="loading" />
+                    <img className="d-block mx-auto w-100 " src={caroimg4} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg5} />
-                    <img className="d-block mx-auto w-100 " src={caroimg5} alt="loading" />
+                    <img className="d-block mx-auto w-100 " src={caroimg5} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg6} />
-                    <img className="d-block mx-auto w-100 " src={caroimg6} alt="loading" />
+                    <img className="d-block mx-auto w-100 " src={caroimg6} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
               </Carousel>
@@ -241,7 +241,7 @@ const Home = () => {
                 <div className="card-box my-2 ">
                   <Link to={`/veterinary-products/${product.id}`}>
                     <div className="card1 shadow-2">
-                      <img src={product.imgSrc} alt="Loading" className="card-img" />
+                      <img src={product.imgSrc} alt="Rumeno-Veterinary-Product" className="card-img" />
                     </div>
                   </Link>
                 </div>

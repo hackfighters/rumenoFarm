@@ -12,7 +12,8 @@ const PostWean = () => {
   const [postWean, setPostWean] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-
+  const apiUrl = `${process.env.REACT_APP_API}/farm_data/wean`;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -32,47 +33,57 @@ const PostWean = () => {
     
   };
 
-  const onsubmit = async(data) => {
-    let PWid;
-    if (selectedItem !== null) {
-      // Edit existing data
-      const updatedData = [...postWean];
-      updatedData[selectedItem] = { pw_id: selectedItem + 1, ...data };
-      setPostWean(updatedData);
-      console.log(updatedData[selectedItem])
-      let PostWean = updatedData[selectedItem];
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, PostWean };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-      try {
-        const response = await axios.post('http://192.168.1.6:5000/post_wean',updatedData[selectedItem])
-        console.log(response.data)
-    } catch (error) {
-        console.log(error)
-    }
-    setSelectedItem(null);
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
-    } else {
-      // Add new data
-      const pw_id = postWean.length > 0 ? postWean[postWean.length - 1].pw_id + 1 : 1;
-            setPostWean([...postWean, { pw_id: pw_id, ...data }]);
-      PWid = {pw_id,...data}
-      console.log(PWid)
-      let PostWean = PWid;
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, PostWean };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-    }
+  const fetchItems = async (id) => {
     try {
-      const response = await axios.post('http://192.168.1.6:5000/post_wean',PWid)
-      console.log(response.data)
-  } catch (error) {
-      console.log(error)
-  }
-    // console.log(data ,vaccine);
-    setOpenDialog(false);
+      const response = await axios.get(`${apiUrl}/${getMidCookies.mid}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+      setPostWean(response.data);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
+
+  const onsubmit = async (data) => {
+    if (selectedItem !== null) {
+      // Edit existing item
+      try {
+        const response = await axios.put(`${apiUrl}/${postWean[selectedItem]._id}`, data,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        const updatedpostWean = [...postWean];
+        updatedpostWean[selectedItem] = response.data;
+        fetchItems();
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    } else {
+      // Add new item
+      try {
+    const payload = {...data,...{parentid:getMidCookies.mid}}
+    console.log('payload: ', payload);
+        const response = await axios.post(apiUrl, payload,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        fetchItems();
+      } catch (error) {
+        console.error("Error adding item:", error);
+      }
+    }
+    handleCloseDialog();
   };
 
   const handleEdit = (index) => {
@@ -91,7 +102,12 @@ const PostWean = () => {
     setPostWean(updatedData);
     console.log(deletedItem); 
     try {
-      const response = await axios.delete('http://192.168.1.6:5000/post_wean',deletedItem)
+      const response = await axios.delete(`${apiUrl}/${postWean[index]._id}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
       console.log(response.data)
   } catch (error) {
       console.log(error)
@@ -247,7 +263,7 @@ const PostWean = () => {
                           </div>
                           <button
                             type="submit"
-                            className="btn btn-primary w-25 mt-3"
+                            className="btn btn-primary w-auto mt-3"
                           >
                             Submit
                           </button>

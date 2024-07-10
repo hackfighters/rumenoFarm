@@ -2,22 +2,28 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 
-const FarmerDetails = ({showFarmModal,closeFarmModal}) => {
-    const { register, handleSubmit,reset} = useForm();
-
-    const onSubmit =  async(data) => {
+const FarmerDetails = ({ showFarmModal, closeFarmModal }) => {
+  const { register, handleSubmit, reset } = useForm();
+  const apiUrl = `${process.env.REACT_APP_API}/farmer_detail`;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const onSubmit = async (data) => {
+    const payload = {...data,...{uid:getMidCookies.uID}}
     try {
-      const response = await axios.post('http://192.168.1.6:5000/farmdetail',data)
-      console.log(response.data)
-  } catch (error) {
+      const response = await axios.post(`${apiUrl}`, payload,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        })
+    } catch (error) {
       console.log(error)
-  }
-        console.log(data);
-        reset()
+    }
+    reset()
 
-    };
+  };
 
   return (
     <>
@@ -86,7 +92,7 @@ const FarmerDetails = ({showFarmModal,closeFarmModal}) => {
                   {...register("farmtype")}
                 />
               </div>
-              
+
               <div className="col-lg-5 my-2">
                 <label className="form-label" for="address">
                   Address
@@ -114,7 +120,7 @@ const FarmerDetails = ({showFarmModal,closeFarmModal}) => {
                   {...register("noofanimal")}
                 />
               </div>
-              
+
               <div className="text-center">
                 <button type="submit" className="btn btn-primary w-auto mt-3" onClick={closeFarmModal}>
                   Submit

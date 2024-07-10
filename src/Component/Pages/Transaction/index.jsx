@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { UserContext } from "../../../Component/Common/Modal/logusecont";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import ReactWhatsapp from "react-whatsapp";
+import Cookies from "js-cookie";
 
 // Third party Fortawesome
 import {
@@ -26,18 +27,21 @@ import { Link, useNavigate } from "react-router-dom";
 // {/* Rumeno */}
 // {/* Veterinary */}
 const Transaction = () => {
-  const { amountData, UidData } = useContext(UserContext);
+  const { amountData, UidData ,setCart} = useContext(UserContext);
   const {
     register: register,
     handleSubmit: handleSubmit,
     formState: { errors: errors }
   } = useForm();
-
   const {
     register: registerPayIssue,
     handleSubmit: handlePayIssueSubmit,
     formState: { errors: errorspayissue }
   } = useForm();
+
+  const apiUrl = `${process.env.REACT_APP_API}/transaction`;
+  const getUserCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getCartDataCookies = JSON.parse(Cookies.get("cart") ?? "[]");
 
 
   // Upload Start
@@ -203,74 +207,77 @@ const Transaction = () => {
   };
 
   // upload End
-
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const formData = new FormData();
-    formData.append("file", image);
-    console.log(image);
+    formData.append("image", image);
+    try {
+      const uploadImgResponse = await axios.post("https://api.imgbb.com/1/upload?key=273ab24b40be59dc593d96c50976ae42", formData);
+      console.log('response: ', uploadImgResponse.data.status);
+      if (uploadImgResponse.data.status == 200) {
+        
+        if (data.paymode == "COD") {
+         let payload = {
+            name: data.name,
+            mobileNumber: data.mobileNumber,
+            address: data.address,
+            amount: amountData,
+            transactionID: data.transactionID,
+            cod_payment: Finalamt,
+            paymode: data.paymode,
+            uid: UidData,
+            image: uploadImgResponse.data.data.url,
+            cart:getCartDataCookies
+          };
 
-    let paydata;
-    if (data.paymode == "COD") {
-      paydata = {
-        name: data.name,
-        mobileNumber: data.mobileNumber,
-        address: data.address,
-        amount: amountData,
-        transactionID: "NA",
-        cod_payment: "NA",
-        paymode: data.paymode,
-        uID: UidData
-      };
+          
+          try {
+            const response = await axios.post(`${apiUrl}`,payload,
+              {
+                headers: {
+                  'Authorization': `${getUserCookies.token}`
+                }
+              });
+            console.log('response: ', response);
+            Cookies.remove("cart");
+          } catch (error) {
+            console.error('transaction working', error);
+          }
+        }
+        else {
+      let  payload = {
+            name: data.name,
+            mobileNumber: data.mobileNumber,
+            address: data.address,
+            amount: amountData,
+            transactionID: data.transactionID,
+            paymode: data.paymode,
+            cod_payment: "NA",
+            uid: UidData,
+            image: uploadImgResponse.data.data.url,
+            cart:getCartDataCookies
+          };
+          
+          try {
+            const response = await axios.post(`${apiUrl}`,payload,
+              {
+                headers: {
+                  'Authorization': `${getUserCookies.token}`
+                }
+              });
+            console.log('response: ', response);
+            Cookies.remove("cart");
+            setCart([])
+          } catch (error) {
+            console.error('transaction  not working', error);
+          }
 
-      console.warn(paydata)
-      axios
-        .post(
-          "http://192.168.1.8:5000/transaction_details",
-          paydata
-        )
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err, "err");
-        });
-    }
-    else {
-      paydata = {
-        name: data.name,
-        mobileNumber: data.mobileNumber,
-        address: data.address,
-        amount: amountData,
-        transactionID: data.transactionID,
-        paymode: data.paymode,
-        cod_payment: "NA",
-        uID: UidData
-      };
-      console.warn(paydata)
-      axios
-        .post(
-          "http://192.168.1.8:5000/transaction_details",
-          formData
-        )
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err, "err");
-        });
-
-
-      axios
-        .post(
-          "http://192.168.1.8:5000/transaction_details",
-          paydata
-        )
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => {
-          console.log(err, "err");
-        });
+        }
+      }
+      else {
+        alert("error please try again")
+      }
+    } catch (error) {
+      console.error(' Transaction error', error);
     }
     // Navigate to Thankyou page
     navigate("/thankyoupage");
@@ -830,7 +837,7 @@ const Transaction = () => {
                         />
                       </ReactWhatsapp>
 
-                      <a className="" href="/#" rel="noreferrer" target="_blank">
+                      <a className="" href="https://www.tradeindia.com/rumeno-36048586/product-services.html" rel="noreferrer" target="_blank">
                         <svg version="1.0" className="rounded mx-2"
                           width="30px" height="28px" viewBox="0 0 225.000000 225.000000"
                           preserveAspectRatio="xMidYMid meet">
@@ -851,7 +858,7 @@ m846 -144 c8 -20 8 -948 0 -968 -5 -14 -30 -16 -175 -16 l-169 0 0 500 0 500
                         </svg>
                       </a>
 
-                      <a className="" href="/#" rel="noreferrer" target="_blank">
+                      <a className="" href="https://www.indiamart.com/rumeno-lucknow/?pid=2854059774012&c_id=62&mid=&pn=Pro%20Lac%20Power%20Calf%20Milk%20Replacer" rel="noreferrer" target="_blank">
                         <svg version="1.0" className=" mx-2"
                           width="30px" height="30px" viewBox="0 0 364.000000 369.000000"
                           preserveAspectRatio="xMidYMid meet">

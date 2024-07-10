@@ -1,5 +1,6 @@
 import React from 'react'
 import { Accordion } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 const HomeFaq = () => {
     return (
         <>
@@ -19,9 +20,9 @@ const HomeFaq = () => {
                             </li>
                         </ul>
                         <h4>Veterinary Feed Supplements: Nurturing Animal Health with Precision Nutrition</h4>
-                        <p>It is everyone's duty to ensure the production and well-being of cattle in the large field of animal husbandry. In order to accomplish these objectives, proper diet is crucial, and veterinary feed additives become vital friends. Rumeno Farmotech is a prominent Indian manufacturer that is dedicated to improving animal health with high-quality feed.</p>
+                        <p>In the vast field of animal husbandry, ensuring cattle production and well-being is everyone's responsibility. Proper diet plays a pivotal role in achieving these goals, making veterinary feed additives essential allies. Rumeno Farmotech, a leading Indian manufacturer, is dedicated to enhancing animal health through high-quality feed solutions and comprehensive <Link to="/veterinary-services" className="d-inline text-dark text-decoration-none">veterinary services</Link> , ensuring cattle receive the best possible care.</p>
                         <h5>The Role of Animal Feed Supplements</h5>
-                        <ul className='mx-3'>
+                        <ul className='px-4 mx-2'>
                             <li>
                                 <strong>Nutritional Gaps:</strong> Animals may still have nutritional gaps even with the best feeding procedures. By supplying vital vitamins, minerals, amino acids, and other elements that may be absent from their regular diet, feed supplements fill up these nutritional gaps.
                             </li>

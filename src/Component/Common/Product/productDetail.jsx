@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-
+import { useForm } from "react-hook-form";
 // 
 import ReactStars from "react-rating-stars-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightArrowLeft, faCircleMinus, faCirclePlus, faTags, } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightArrowLeft, faCircleMinus, faCirclePlus, faTags, faUser, } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from '../Modal/logusecont';
 import { useTranslation } from 'react-i18next';
 import Navbar from '../Navbar';
@@ -26,6 +26,7 @@ import goatsheepnipple from "../../../assets/img/OurProduct/goatSheepNipple.png"
 import Neonato from "../../../assets/img/OurProduct/neonatobottle.png";
 import prolackgoat from "../../../assets/img/OurProduct/pro-lack-goat-powder.png";
 import prolackcalf from "../../../assets/img/OurProduct/pro-lack-calf-powder.png";
+import prolackcalf2 from "../../../assets/img/OurProduct/pro-lack-calf-powder2.png";
 import selenniumGC from "../../../assets/img/OurProduct/Selennium-GC.png";
 import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg";
 import Microfloratane from "../../../assets/img/OurProduct/microfloratane.jpg";
@@ -38,17 +39,20 @@ import RumenoMicroflorapre from "../../../assets/img/OurProduct/Rumeno-Micro-flo
 import LactoPupMilkReplacer from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import ImageGallery from '../../Pages/Products/imgGallery';
 
 const ProductDetail = () => {
-  const { UidData, cart, setCart, setiteamdata, setSizevalue, LoginUserData ,loggedInUser} = useContext(UserContext);
+  const { UidData, cart, setCart, setiteamdata, setSizevalue, LoginUserData, loggedInUser } = useContext(UserContext);
   const [amountdata, setAmountData] = useState(1)
+  const { register, handleSubmit } = useForm();
+  const apiUrl = process.env.REACT_APP_API;
   // console.log(amountdata, 122)
   const Data = [
     {
       id: 1,
       name: "Tanav Mukti Anti Stress Animal Feed Supplement | Stress relief supplements for animals",
       priceText: 700,
-      img: tanavmukti,
+      img: [tanavmukti],
       metaDesc: "Discover Tanav Mukti, the breakthrough anti-stress feed supplement designed to keep your beloved animals calm, healthy, and resilient.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -124,7 +128,7 @@ const ProductDetail = () => {
       ,
       name: "Neonato Veterinary products for Goat ,Cow, and Buffalo kids | Natural supplement for newborn animals",
       priceText: 245,
-      img: Neonato,
+      img: [Neonato],
       metaDesc: "Unlock the natural potential of your newborn animals with Neonato Veterinary Products. Specifically formulated for goat, cow, and buffalo kids",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -142,7 +146,7 @@ const ProductDetail = () => {
       id: 3,
       name: "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
       priceText: 235,
-      img: Energico,
+      img: [Energico],
       metaDesc: "Revitalize your livestock with Energico! Specially formulated for cattle, goats, poultry, horses, pigs, sheep, and pigeons",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -188,7 +192,7 @@ const ProductDetail = () => {
       id: 4,
       name: "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
       priceText: 390,
-      img: Energico,
+      img: [Energico],
       metaDesc: "Revitalize your livestock with Energico! Specially formulated for cattle, goats, poultry, horses, pigs, sheep, and pigeons",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -234,7 +238,7 @@ const ProductDetail = () => {
       id: 5,
       name: "Micro Floratone | Digestive supplements for dogs ",
       priceText: 245,
-      img: Microfloratane,
+      img: [Microfloratane],
       metaDesc: "Specially formulated for dogs, it combines probiotics, prebiotics, digestive enzymes, and herbs to ensure optimal gastrointestinal function.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -280,7 +284,7 @@ const ProductDetail = () => {
       id: 6,
       name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
       priceText: 285,
-      img: Minromix,
+      img: [Minromix],
       metaDesc: "This balanced mineral blend supports bone strength, immunity, and overall vitality. Whether you’re raising livestock or caring for beloved pets",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -326,7 +330,7 @@ const ProductDetail = () => {
       id: 7,
       name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
       priceText: 1400,
-      img: Minromix,
+      img: [Minromix],
       metaDesc: "This balanced mineral blend supports bone strength, immunity, and overall vitality. Whether you’re raising livestock or caring for beloved pets",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -372,7 +376,7 @@ const ProductDetail = () => {
       id: 8,
       name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
       priceText: 4600,
-      img: Minromix,
+      img: [Minromix],
       metaDesc: "This balanced mineral blend supports bone strength, immunity, and overall vitality. Whether you’re raising livestock or caring for beloved pets",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -418,7 +422,7 @@ const ProductDetail = () => {
       id: 9,
       name: "Rumenovita | Growth booster for animals | Animal feed supplement",
       priceText: 700,
-      img: Rumenovita,
+      img: [Rumenovita],
       metaDesc: "Enhance livestock growth with Rumenovita! Our premium feed supplement supports healthy development, improved weight gain, and overall well-being.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -464,7 +468,7 @@ const ProductDetail = () => {
       id: 10,
       name: "Rumenovita | Growth booster for animals | Animal feed supplement",
       priceText: 3250,
-      img: Rumenovita,
+      img: [Rumenovita],
       metaDesc: "Enhance livestock growth with Rumenovita! Our premium feed supplement supports healthy development, improved weight gain, and overall well-being.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -510,7 +514,7 @@ const ProductDetail = () => {
       id: 11,
       name: "Digesto Plus | digestive supplements for animals",
       priceText: 190,
-      img: DigestoPlus,
+      img: [DigestoPlus],
       metaDesc: "Optimize digestion with Digesto Plus! This synergistic blend of natural ingredients promotes efficient nutrient breakdown, absorption, and balanced gut flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -556,7 +560,7 @@ const ProductDetail = () => {
       id: 12,
       name: "Digesto Plus | digestive supplements for animals",
       priceText: 875,
-      img: DigestoPlus,
+      img: [DigestoPlus],
       metaDesc: "Optimize digestion with Digesto Plus! This synergistic blend of natural ingredients promotes efficient nutrient breakdown, absorption, and balanced gut flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -602,7 +606,7 @@ const ProductDetail = () => {
       id: 13,
       name: "Liverofine | veterinary liver tonic",
       priceText: 125,
-      img: Liverofine,
+      img: [Liverofine],
       metaDesc: "This veterinary liver tonic is designed to help promote healthy liver function in cattle, goat, dogs and cats. Learn more about Liverofine and how it can benefit your pet.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -648,7 +652,7 @@ const ProductDetail = () => {
       id: 14,
       name: "Liverofine | veterinary liver tonic",
       priceText: 600,
-      img: Liverofine,
+      img: [Liverofine],
       metaDesc: "This veterinary liver tonic is designed to help promote healthy liver function in cattle, goat, dogs and cats. Learn more about Liverofine and how it can benefit your pet.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -694,7 +698,7 @@ const ProductDetail = () => {
       id: 15,
       name: "D-Cox | Weaning goat supplement",
       priceText: 250,
-      img: DCox,
+      img: [DCox],
       metaDesc: "Make Weaning Easier for Your Kids with D-Cox. This weaning goat supplement provides essential nutrients for a smooth transition from milk to solid feed. Shop D-Cox today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -740,7 +744,7 @@ const ProductDetail = () => {
       id: 16,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 90,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
       metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -786,7 +790,7 @@ const ProductDetail = () => {
       id: 17,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 350,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
       metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -832,7 +836,7 @@ const ProductDetail = () => {
       id: 18,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 650,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
       metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -878,7 +882,7 @@ const ProductDetail = () => {
       id: 19,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 1300,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
       metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -924,7 +928,7 @@ const ProductDetail = () => {
       id: 20,
       name: "Lacto-Pup Milk Replacer | Milk Replacer for Puppies",
       priceText: 600,
-      img: LactoPupMilkReplacer,
+      img: [LactoPupMilkReplacer],
       metaDesc: "Give orphaned or weaning puppies the nutrition they need with Lacto-Pup Milk Replacer. This complete food provides essential vitamins, minerals, and DHA for healthy development. Shop Lacto-Pup Milk Replacer for your puppies.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -970,7 +974,7 @@ const ProductDetail = () => {
       id: 21,
       name: "Poultryfine | Anti bacterial poultry feed supplement",
       priceText: 1600,
-      img: poultryfine,
+      img: [poultryfine],
       metaDesc: "Protect Your Flock with Poultryfine. This antibacterial poultry feed supplement helps prevent and manage common infections, promoting healthier birds and improved flock performance. Learn more about Poultryfine today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1016,7 +1020,7 @@ const ProductDetail = () => {
       id: 22,
       name: "Florovita-12 | Broiler weight gainer | Probiotic supplement for poultry",
       priceText: 1300,
-      img: Florovita,
+      img: [Florovita],
       metaDesc: "Boost Broiler Growth & Wellbeing with Florovita-12. This probiotic supplement promotes healthy digestion, improves weight gain, and supports overall broiler health. Learn more about Florovita-12!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1062,7 +1066,7 @@ const ProductDetail = () => {
       id: 23,
       name: "Bull Goat | Goat weight gain supplement",
       priceText: 1175,
-      img: bullgoat,
+      img: [bullgoat],
       metaDesc: "Supercharge Your Bull Goat's Growth with Bull Goat Supplement. This targeted formula provides essential nutrients to help your male goat reach his full weight potential. Shop Bull Goat today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1108,7 +1112,7 @@ const ProductDetail = () => {
       id: 24,
       name: "Selennium-E | Selenium supplement for poultry | Poultry feed supplement",
       priceText: 260,
-      img: Selennium,
+      img: [Selennium],
       metaDesc: "Support Flock Health & Performance with Selenium-E. This essential poultry feed supplement provides organic selenium and Vitamin E for stronger immunity, improved egg production, and healthier birds. Learn more about Selenium-E!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1153,7 +1157,7 @@ const ProductDetail = () => {
       id: 25,
       name: "Farm house floor burner",
       priceText: 3000,
-      img: farmbuner,
+      img: [farmbuner],
       metaDesc: "High-Powered Weeding & More: Four Burner Flame Gun.  Eliminate weeds, clear brush, and tackle other tasks efficiently with this powerful 4-burner flame thrower. Shop flame guns today!",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -1195,7 +1199,7 @@ const ProductDetail = () => {
     {
       id: 26,
       name: "Slatted Floor ",
-      img: farmflour,
+      img: [farmflour],
       metaDesc: "Improve Drainage & Airflow: Slatted Floors for Homes & Businesses. Durable and easy to clean, slatted floors offer superior drainage and airflow for various applications. Learn more about slatted floors!",
       priceText: 135,
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1239,7 +1243,7 @@ const ProductDetail = () => {
       id: 27,
       name: "Pet nipple | Goat and sheep nipples",
       priceText: 55,
-      img: goatsheepnipple,
+      img: [goatsheepnipple],
       metaDesc: "Raise Healthy Kids & Lambs: Goat & Sheep Nipples for Bottle Feeding. Durable and easy to clean, our nipples provide a natural feeding experience for orphaned or bottle-fed baby goats and sheep. Shop goat & sheep nipples!",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -1283,7 +1287,7 @@ const ProductDetail = () => {
       id: 28,
       name: "Selennium-GC | Selenium supplement for cattle and goats | Animal feed supplement",
       priceText: 190,
-      img: selenniumGC,
+      img: [selenniumGC],
       metaDesc: "Support Herd Health & Performance with Selenium-GC. This essential cattle & goat feed supplement provides organic selenium for improved immunity, fertility, and muscle development. Learn more about Selenium-GC!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1329,7 +1333,7 @@ const ProductDetail = () => {
       id: 29,
       name: "Pro-lac power calf milk replacer",
       priceText: 3000,
-      img: prolackcalf,
+      img: [prolackcalf, prolackcalf2],
       metaDesc: "Give Calves a Powerful Start with Pro-lac Power. This complete calf milk replacer provides essential nutrients for healthy growth and development.  Shop Pro-lac Power today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1375,7 +1379,7 @@ const ProductDetail = () => {
       id: 30,
       name: "Pro-lac power goat milk replacer",
       priceText: 600,
-      img: prolackgoat,
+      img: [prolackgoat],
       metaDesc: "Nurture Healthy Goat Kids with Pro-lac Power. This complete goat milk replacer provides essential nutrients for proper growth and development in orphaned or weaned kids. Shop Pro-lac Power today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
@@ -1418,6 +1422,17 @@ const ProductDetail = () => {
               }`,
     }
   ]
+
+  const onSubmit = async (data) => {
+    console.log('data: ', data);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API}/riview`, data);
+      console.log("API Response:", response.data);
+    } catch (error) {
+      console.error("Error sending form data:", error);
+    }
+
+  }
 
   var Value = '';
   const [cookies, setCookie] = useCookies(["cart"]);
@@ -1478,60 +1493,60 @@ const ProductDetail = () => {
 
   const AddToCarts = async (item) => {
     if (loggedInUser) {
-    // Check if the item already exists in the cart
-    const itemExists = cart.some(cartItem => cartItem.id === item.id);
-    if (!itemExists) {
-      toast.success("Item is added to your cart", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      console.log("Item added to cart:", item);
-      // Add logic to handle adding item to cart
-      setCart([...cart, { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
-      const itemData = { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData };
-      setiteamdata(itemData);
-      console.warn(itemData);
+      // Check if the item already exists in the cart
+      const itemExists = cart.some(cartItem => cartItem.id === item.id);
+      if (!itemExists) {
+        toast.success("Item is added to your cart", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        console.log("Item added to cart:", item);
+        // Add logic to handle adding item to cart
+        setCart([...cart, { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        const itemData = { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData };
+        setiteamdata(itemData);
+        console.warn(itemData);
 
-      try {
-        const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
-        console.log('Add to cart is Successfull', response.data);
-        if (response.data.msg == 'success') {
+        try {
+          const response = await axios.post(`${apiUrl}/carts`, itemData);
+          console.log('Add to cart is Successfull', response.data);
+          if (response.data.msg == 'success') {
+          }
+        } catch (error) {
+          console.error('Add to cart is not working', error);
         }
-      } catch (error) {
-        console.error('Add to cart is not working', error);
       }
-    }
-    else {
-      toast.warn("Item is already added to your cart", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
+      else {
+        toast.warn("Item is already added to your cart", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
 
     } else {
-        setShowLoginModal(!showLoginModal);
-        toast.warn("Please Login", {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-        });
+      setShowLoginModal(!showLoginModal);
+      toast.warn("Please Login", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
@@ -1638,7 +1653,8 @@ const ProductDetail = () => {
           <>
             <div className='row justify-content-center bg-white  lg:mx-5 mx-0 py-2'>
               <div className="col-lg-4">
-                <img className='w-100' src={item.img} height={500} alt={item.imgText} />
+                {/* <img className='w-100' src={item.img} height={500} alt={item.imgText} /> */}
+                <ImageGallery img={item.img} />
 
 
               </div>
@@ -1713,7 +1729,7 @@ const ProductDetail = () => {
                   ))}
                 </div>
                 <div className='d-flex justify-content-between align-items-center'>
-                  <FontAwesomeIcon
+                  {/* <FontAwesomeIcon
                     icon={faCirclePlus}
                     type="button"
                     className="text-primary h3  mx-2 my-0"
@@ -1725,7 +1741,7 @@ const ProductDetail = () => {
                     type="button"
                     className="text-primary h3  mx-2 my-0"
                     onClick={() => handleChange(item, -1)}
-                  />
+                  /> */}
                   <button
                     className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
                     onClick={() => AddToCarts(item)}
@@ -1743,6 +1759,82 @@ const ProductDetail = () => {
               <hr />
               <p className='px-4'>{item.description}</p>
 
+            </div>
+            <form className=" mt-5  justify-content-center bg-white" onSubmit={handleSubmit(onSubmit)}>
+              <div className="row py-5 px-4">
+                <h4 className="mb-3">Reviews</h4>
+                <hr />
+                <div className="col-lg-6">
+                  <div className="col-lg-8 my-3">
+                    <div>
+                      <label className="form-label px-2" htmlFor="name">
+                        Name
+                      </label>
+                    </div>
+                    <input
+                      placeholder="Name"
+                      type="text"
+                      id="name"
+                      className="form-control"
+                      {...register("name")}
+                    />
+                  </div>
+                  <div className="col-lg-8 my-3">
+                    <div>
+                      <label className="form-label px-2" htmlFor="email">
+                        Email
+                      </label>
+                    </div>
+                    <input
+                      placeholder="Email"
+                      type="email"
+                      id="email"
+                      className="form-control"
+                      {...register("email")}
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="col-lg-10 my-3">
+                    <label htmlFor="comment" className="form-label">
+                      Your Review
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="comment"
+                      {...register("comment")}
+                      rows="4"
+                    ></textarea>
+                  </div>
+                  <button type="submit" className="btn btn-primary w-auto mt-3">
+                    Submit
+                  </button>
+                </div>
+              </div>
+
+            </form>
+            <div className=" bg-white p-3 my-5">
+              <div className="col-lg-6 d-flex align-items-center my-3">
+                <FontAwesomeIcon className='border rounded-circle text-danger p-2' icon={faUser} />
+                <h4 className='my-0 mx-2'>Admin Panel</h4>
+              </div>
+              
+              <div className="col-lg-12 ">
+                <p className='mx-2'>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, obcaecati natus laudantium minima placeat doloribus perferendis accusantium, corporis voluptatem vel a. Labore eius quis maxime dolorum corrupti fuga amet explicabo?
+                </p>
+                {/* <h6 className='mx-2 fw-bold'>22 Aug 2022</h6> */}
+              </div>
+              <hr />
+              <div className="col-lg-6 d-flex align-items-center my-3">
+                <FontAwesomeIcon className='border rounded-circle text-danger p-2' icon={faUser} />
+                <h4 className='my-0 mx-2'>Admin Panel</h4>
+              </div>
+              <div className="col-lg-12">
+                <p className='mx-2'>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, obcaecati natus laudantium minima placeat doloribus perferendis accusantium, corporis voluptatem vel a. Labore eius quis maxime dolorum corrupti fuga amet explicabo?
+                </p>
+              </div>
             </div>
           </>
         ))}

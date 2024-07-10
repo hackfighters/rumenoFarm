@@ -2330,10 +2330,14 @@ button.contact_form_submit {
   }
   .header-carousel img{
     height: 100vh;
+    object-fit: cover !important;
   }
   .socil_item_inner svg{
     width: 20px;
     height: 20px;
+  }
+  .service-images img{
+    width: 100% !important;
   }
 }
 @media only screen and (min-width: 450px) and (max-width: 768px) {
@@ -2763,6 +2767,7 @@ img.card-img:hover {
 .carousel-control-next {
   height: 0;
   margin: auto;
+  z-index: 999 !important;
 }
 
 .VIpgJd-ZVi9od-ORHb,

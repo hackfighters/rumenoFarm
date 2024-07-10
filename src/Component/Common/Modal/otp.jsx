@@ -13,6 +13,7 @@ import SetNewPassword from "./newpassword";
 import { toast } from "react-toastify";
 const SendOtp = ({ showModal, closeModal }) => {
   const { t } = useTranslation();
+  const apiUrl = process.env.REACT_APP_API;
   const [active, setActive] = useState(false);
   const [count, setCount] = useState(30);
   const [isCounting, setIsCounting] = useState(false);
@@ -29,92 +30,95 @@ const SendOtp = ({ showModal, closeModal }) => {
   const {UidData, setUidData } = useContext(UserContext);
 
   const onSubmit = async (data) => {
+    console.log('data: ', data);
     setNumerate(data, 12222);
     const mobiledata = { phoneNumber: data.num };
-    try {
-      const response = await axios.post(
-        // "http://192.168.1.14:5000/pwdreset",mobiledata
-    );
-    console.log(response.data)
-      const datasets = response.data.msg;
-      if (datasets === "success") {
-        setActive(true);
-        startCounting();
-        toast.info("Please Enter the Otp", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        reset();
-       Cookies.set("loginUserData", JSON.stringify({
-          uID: response.data.uID,
-        }));
-        setUidData(response.data.uID);
-      }
-    } catch (error) {
-      toast.error("Otp messages in not send", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      reset();
-    }
+    Cookies.set("Number",data.num)
+    setShowNewPasswordModal(true);
+    // try {
+    //   const response = await axios.post(
+    //     // `{apiUrl}/pwdreset`,mobiledata
+    // );
+    // console.log(response.data)
+    //   const datasets = response.data.msg;
+    //   if (datasets === "success") {
+    //     setActive(true);
+    //     startCounting();
+    //     toast.info("Please Enter the Otp", {
+    //       position: "top-center",
+    //       autoClose: 2000,
+    //       hideProgressBar: false,
+    //       closeOnClick: true,
+    //       pauseOnHover: true,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "light",
+    //     });
+    //     reset();
+    //    Cookies.set("loginUserData", JSON.stringify({
+    //       uID: response.data.uID,
+    //     }));
+    //     setUidData(response.data.uID);
+    //   }
+    // } catch (error) {
+    //   toast.error("Otp messages in not send", {
+    //     position: "top-center",
+    //     autoClose: 2000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   reset();
+    // }
   };
   const ondata = async (data) => {
     const FinalData = { code: data.otp, num: `+91${numerate.num}`  };
-    try {
-      const response = await axios.post(
-        // "http://192.168.1.14:5000/code_recheck",FinalData
-      );
-      console.log(response.data,UidData)
-      const msg = response.data.msg;
-      const Status = response.data.status;
-      if (msg === "Success" && Status === "True") {
-        const datasets = response.data.uid;
-        console.log(datasets)
-        toast.success("Login Successful", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        reset();
-        closeModal();
-        setShowNewPasswordModal(true);
-        setActive(false); // Reset active state
-      }
-      else{
-        setOtpError("Invalid OTP. Please try again.");
-      }
-    }
-     catch (error) {
-      toast.error("Wrong OTP" , {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      setActive(false); // Reset active state
-      reset();
-    }
+    // try {
+    //   const response = await axios.post(
+    //     // "http://192.168.1.14:5000/code_recheck",FinalData
+    //   );
+    //   console.log(response.data,UidData)
+    //   const msg = response.data.msg;
+    //   const Status = response.data.status;
+    //   if (msg === "Success" && Status === "True") {
+    //     const datasets = response.data.uid;
+    //     console.log(datasets)
+    //     toast.success("Login Successful", {
+    //       position: "top-center",
+    //       autoClose: 2000,
+    //       hideProgressBar: false,
+    //       closeOnClick: true,
+    //       pauseOnHover: true,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "light",
+    //     });
+    //     reset();
+    //     closeModal();
+    //     setShowNewPasswordModal(true);
+    //     setActive(false); // Reset active state
+    //   }
+    //   else{
+    //     setOtpError("Invalid OTP. Please try again.");
+    //   }
+    // }
+    //  catch (error) {
+    //   toast.error("Wrong OTP" , {
+    //     position: "top-center",
+    //     autoClose: 2000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   setActive(false); // Reset active state
+    //   reset();
+    // }
   };
   const startCounting = () => {
     setIsCounting(true);

@@ -8,6 +8,7 @@ import caroimg2 from "../../../assets/img/achievement-img/achmt2.png";
 import caroimg3 from "../../../assets/img/achmtvideo.mp4";
 import caroimg4 from "../../../assets/img/achievement-img/achmt44.jpg";
 import caroimg5 from "../../../assets/img/achievement-img/achmt5.png";
+import { NavLink } from 'react-router-dom';
 
 
 const Achievment = () => {
@@ -27,14 +28,14 @@ const Achievment = () => {
         <img
 
             className="d-block achievment-img"
-
+        alt="Rumeno-Veterinary-Product"
             src={caroimg1}
 
         />,
         <img
 
             className="d-block achievment-img"
-
+        alt="Rumeno-Veterinary-Product"
             src={caroimg2}
 
         />,
@@ -53,14 +54,14 @@ const Achievment = () => {
         <img
 
             className="d-block achievment-img"
-
+            alt="Rumeno-Veterinary-Product"
             src={caroimg4}
 
         />,
         <img
 
             className="d-block achievment-img"
-
+            alt="Rumeno-Veterinary-Product"
             src={caroimg5}
 
         />,
@@ -131,18 +132,19 @@ const Achievment = () => {
 
                     <div className="col-lg-12">
                         <hr />
-                        <h4>Animal Feed Supplements: Improving Livestock Health through High-Quality Diet</h4>
+                        <h1>Animal Feed Supplements: Improving Livestock Health through High-Quality Diet</h1>
                         <p>In the field of animal husbandry, it is critical to guarantee the health and output of animals. In order to accomplish these objectives, proper diet is essential. Animal feed supplements are necessary to satisfy the dietary requirements of animals, promote healthy growth, and fend against illness. A number of manufacturers in India are committed to creating feed supplements of the highest caliber; Rumeno Farmotech is one such producer that is both dependable and creative.
                         </p>
                         <h4>Rumeno Farmotech: A Trusted Name in Animal Feed Supplements</h4>
                         <p>One of India's top producers of animal feed supplements is Rumeno Farmotech. The company, which was founded in 2016, has advanced veterinary research significantly. Let's examine the reasons behind farmers' and livestock owners' preference for Rumeno Farmotech:</p>
                         <p><strong>Broad Selection of Products:</strong> A wide variety of feed supplements are available from Rumeno Farmotech to suit different types of animals.</p>
-                        <p><strong>Goat feed supplement:</strong> Rumeno Farmotech provides a premium goat feed supplement that is intended to improve your goats' well-being and output. Our supplement is full of vital vitamins, minerals, and nutrients that support healthy growth, milk production, and general wellbeing. Our feed supplement guarantees that your goats, whether dairy or meat, get the nutrition they need to thrive as a herd.</p>
-                        <p><strong>Cow feed Supplement:</strong> These goods help cattle grow and develop. Your cows and buffaloes will be well-nourished thanks to Rumeno Farmotech's mineral combinations and calcium supplements.
+                        <p><NavLink to="/veterinary-products/goat-feed-supplements" className="text-decoration-none text-dark"><strong>Goat feed supplement:</strong></NavLink> Rumeno Farmotech provides a premium goat feed supplement that is intended to improve your goats' well-being and output. Our supplement is full of vital vitamins, minerals, and nutrients that support healthy growth, milk production, and general wellbeing. Our feed supplement guarantees that your goats, whether dairy or meat, get the nutrition they need to thrive as a herd.</p>
+                        <p><NavLink to="/veterinary-products/cattle-feed-supplements" className="text-decoration-none text-dark"><strong>Cattle feed Supplement:</strong></NavLink> These goods help cattle grow and develop. Your cows and buffaloes will be well-nourished thanks to Rumeno Farmotech's mineral combinations and calcium supplements.
                         </p>
+                        <p><NavLink to="/veterinary-products/dog-feed-supplements" className="text-decoration-none text-dark"><strong>Dog feed supplement:</strong></NavLink> Rumeno, an Indian veterinary company, offers dog feed supplements designed to improve digestion, immunity, and overall health. These supplements come in powder form and can be easily mixed with your dog's regular food.</p>
                     </div>
                     <div className="col-lg-12">
-                        <p><strong>Poultry feed Supplement:</strong> Rumeno Farmotech is a reliable source of high-quality supplements that improve the general health and well-being of chickens, ducks, and other fowl.
+                        <p><NavLink to="/veterinary-products/poultry-feed-supplements" className="text-decoration-none text-dark"><strong>Poultry feed Supplement:</strong></NavLink> Rumeno Farmotech is a reliable source of high-quality supplements that improve the general health and well-being of chickens, ducks, and other fowl.
                         </p>
                         <p><strong>Aqua Feed Supplements:</strong> Specialized nutrition is required for aquaculture. Fish and other aquatic creatures can benefit from high-quality supplements from Rumeno Farmotech.</p>
                         <p><strong>Pigeon Feed Supplements:</strong> Avian enthusiasts can rely on Rumeno Farmotech to provide their feathered companions with the proper nourishment.

@@ -19,6 +19,7 @@ import { UserContext } from "../../Common/Modal/logusecont";
 import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
 import { Accordion } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const { t } = useTranslation();
@@ -145,10 +146,10 @@ const Services = () => {
           </div>
         </div>
         <div className="col-lg-12 mb-2 mt-5">
-          <h2 className=" py-2 px-4 service-head shadow">Veterinary Services by Rumeno Farmotech: Enhancing Animal Health through Expert Care</h2>
+          <h1 className=" py-2 px-4 service-head shadow">Veterinary Services by Rumeno Farmotech: Enhancing Animal Health through Expert Care</h1>
         </div>
         <div className="p-3">
-      <p>In the dynamic world of animal husbandry, ensuring the well-being and productivity of our beloved creatures is of utmost importance. Proper nutrition and specialized care play pivotal roles in achieving these goals. Enter Rumeno Farmotech, a name synonymous with excellence in animal feed supplements and veterinary services.
+      <p>In the dynamic world of animal husbandry, ensuring the well-being and productivity of our beloved creatures is of utmost importance. Proper nutrition and specialized care play pivotal roles in achieving these goals. Enter Rumeno Farmotech, a name synonymous with excellence in <Link to="/home" className="d-inline text-dark text-decoration-none">animal feed supplements</Link> and veterinary services.
       </p>
       <hr />
       <h3 className="my-3 fw-bold">Why Choose Rumeno Farmotech?</h3>

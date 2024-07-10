@@ -644,8 +644,8 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
         const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         console.log(itemData);
-        try {
-          const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
+          try {
+            const response = await axios.post(`${process.env.REACT_APP_API}/cart`, itemData);
           console.log('Add to cart is Successfull', response.data);
           if (response.data.msg == 'success') {
           }
@@ -855,7 +855,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
               moving, whether you're an experienced farmer or just getting
               started. When you need dependable, scientifically supported
               solutions to increase your poultry output to new levels, turn to
-              Rumeno Farmotech.
+              <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link>.
             </p>
             <p>
               Recall that happy birds translate into successful businesses. With

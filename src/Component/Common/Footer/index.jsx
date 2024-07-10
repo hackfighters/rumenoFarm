@@ -35,7 +35,7 @@ const Footer = () => {
             data-aos="zoom-in-down"
             data-aos-duration="2000"
           >
-            <img className="footer-img" src={logo} alt="Loading" />
+            <img className="footer-img" src={logo} alt="Rumeno-Veterinary-Product" />
 
           </div>
 
@@ -175,7 +175,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li className="lh-1">
-                  <a href="/#" rel="noreferrer" target="_blank">
+                  <a href="https://www.tradeindia.com/rumeno-36048586/product-services.html" rel="noreferrer" target="_blank">
                     <svg version="1.0" className="rounded mx-1"
                       width="30px" height="28px" viewBox="0 0 225.000000 225.000000"
                       preserveAspectRatio="xMidYMid meet">
@@ -197,7 +197,7 @@ m846 -144 c8 -20 8 -948 0 -968 -5 -14 -30 -16 -175 -16 l-169 0 0 500 0 500
                   </a>
                 </li>
                 <li className="lh-1">
-                  <a href="/#" rel="noreferrer" target="_blank">
+                  <a href="https://www.indiamart.com/rumeno-lucknow/?pid=2854059774012&c_id=62&mid=&pn=Pro%20Lac%20Power%20Calf%20Milk%20Replacer" rel="noreferrer" target="_blank">
                     <svg version="1.0" className=" mx-2"
                       width="30px" height="30px" viewBox="0 0 364.000000 369.000000"
                       preserveAspectRatio="xMidYMid meet">

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
@@ -27,7 +27,7 @@ import CattleCategoryPage from "./Component/Pages/Category/cattleCategory";
 import PoultryCategoryPage from "./Component/Pages/Category/poultryCategory";
 import ProductDetail from "./Component/Common/Product/productDetail";
 import ThankYouPage from "./Component/Common/thankyou";
-
+import Cookies from "js-cookie";
 
 const App = () => {
     const location = useLocation();
@@ -64,6 +64,8 @@ const App = () => {
     };
   }, []);
 
+  
+
   useEffect(() => {
     const navbarlinksActive = () => {
       const position = window.scrollY + 200;
@@ -89,6 +91,8 @@ const App = () => {
     navbarlinksActive();
   }, [location]);
 
+  const checkIfLogin = JSON.parse(Cookies.get("loginUserData") ?? "null");
+
   return (
     <>
       <ToastContainer />
@@ -103,10 +107,16 @@ const App = () => {
           <Route path="/veterinary-products/:name" Component={ProductPage} />
           <Route path="/veterinary-products/:name/:id" Component={ProductDetail} />
           <Route path="/contact-us" Component={ContactUs} />
+          {checkIfLogin ? (
+          <>
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
           <Route path="/frmaftlog" Component={FrmAftLog}/>
           <Route path="/AnimalDetailTab" Component={AnimalDetailTab}/>
+          </>
+          ):(
+            <Route path="*" element={<Navigate to="/home" />} />
+          )}
           <Route path="/privacypolicy" Component={PrivacyPolicy}/>
           <Route path="/blog" Component={Blog}/>
           <Route path="/blog/:id" Component={BlogContent}/>

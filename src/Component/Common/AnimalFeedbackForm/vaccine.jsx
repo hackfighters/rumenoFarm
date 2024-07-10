@@ -11,6 +11,8 @@ const VaccineRecord = () => {
   const [vaccine, setVacine] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const apiUrl = `${process.env.REACT_APP_API}/farm_data/vaccine`;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const handleOpenDialog = (item = {}) => {
     setOpenDialog(true);
@@ -26,46 +28,58 @@ const VaccineRecord = () => {
     setSelectedItem(null);
   };
 
-  const onsubmit = async(data) => {
-    let VVid;
-    if (selectedItem !== null) {
-      // Edit existing data
-      const updatedData = [...vaccine];
-      updatedData[selectedItem] = { v_id: selectedItem + 1, ...data };
-      setVacine(updatedData);
-      console.log(updatedData[selectedItem]);
-      let Vaccine = updatedData[selectedItem];
-      let getcokidata = JSON.parse(Cookies.get("AnimalCookiesData") ?? "{}");
-      let Mrgcokifrm = { ...getcokidata, Vaccine };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-      try {
-        const response = await axios.put('http://192.168.1.6:5000/vaccine_details',updatedData[selectedItem])
-        console.log(response.data)
-    } catch (error) {
-        console.log(error)
-    }
-      setSelectedItem(null);
-    } else {
-      // Add new data
-      const v_id = vaccine.length > 0 ? vaccine[vaccine.length - 1].v_id + 1 : 1;
-      setVacine([...vaccine, { v_id: v_id, ...data }]);
-      VVid = { v_id, ...data };
-      console.log(VVid);
-      let Vaccine = VVid;
-      let getcokidata = JSON.parse(Cookies.get("AnimalCookiesData") ?? "{}");
-      let Mrgcokifrm = { ...getcokidata, Vaccine };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-    }
-    console.log(data, vaccine);
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async (id) => {
     try {
-      const response = await axios.post('http://192.168.1.6:5000/vaccine_details',VVid)
-      console.log(response.data)
-  } catch (error) {
-      console.log(error)
-  }
-    setOpenDialog(false);
+      const response = await axios.get(`${apiUrl}/${getMidCookies.mid}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+      setVacine(response.data);
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
+
+
+  const onsubmit = async (data) => {
+    if (selectedItem !== null) {
+      // Edit existing item
+      try {
+        const response = await axios.put(`${apiUrl}/${vaccine[selectedItem]._id}`, data,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        const updatedVaccine = [...vaccine];
+        updatedVaccine[selectedItem] = response.data;
+        fetchItems();
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    } else {
+      // Add new item
+      try {
+    const payload = {...data,...{parentid:getMidCookies.mid}}
+    console.log('payload: ', payload);
+        const response = await axios.post(apiUrl, payload,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        fetchItems();
+      } catch (error) {
+        console.error("Error adding item:", error);
+      }
+    }
+    handleCloseDialog();
   };
 
   const handleEdit = (index) => {
@@ -82,7 +96,12 @@ const VaccineRecord = () => {
     setVacine(updatedData);
     console.log(deletedItem); 
     try {
-      const response = await axios.delete('http://192.168.1.6:5000/vaccine_details',deletedItem)
+      const response = await axios.delete(`${apiUrl}/${vaccine[index]._id}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
       console.log(response.data)
   } catch (error) {
       console.log(error)
@@ -198,7 +217,7 @@ const VaccineRecord = () => {
 
                           <button
                             type="submit"
-                            className="btn btn-primary w-25 mt-3"
+                            className="btn btn-primary w-auto mt-3"
                           >
                             Submit
                           </button>

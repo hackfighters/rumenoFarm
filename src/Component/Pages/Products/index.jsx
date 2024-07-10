@@ -18,7 +18,7 @@ import KeysWords from "../../Common/apiData/keyWords";
 const Products = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue, cartdata, UidData, cart, setCart, setiteamdata, iteamdata } = useContext(UserContext);
-
+  const apiUrl = process.env.REACT_APP_API;
   console.log(iteamdata, 333333333333)
   var Value = '';
 
@@ -45,7 +45,7 @@ const Products = () => {
     // console.log(iteamdata,12222222222222)
 
     try {
-      const response = await axios.post('http://192.168.1.7:5000/cart', iteamdata);
+      const response = await axios.post(`${apiUrl}/cart`, iteamdata);
       console.log('Add to cart is Successfull', response.data);
           if(response.data.msg == 'success'){
       handleClick()

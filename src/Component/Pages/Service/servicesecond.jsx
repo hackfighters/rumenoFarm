@@ -12,9 +12,10 @@ import GoatServiceJson from '../../../assets/js/goatServiceJson.json'
 // Import images
 import service1 from "../../../assets/img/service-img/service1.jpg";
 import service2 from "../../../assets/img/service-img/service2.jpg";
-import service3 from "../../../assets/img/service-img/service3.jpg";
+import service3 from "../../../assets/img/service-img/service33.jpg";
 import service4 from "../../../assets/img/service-img/service4.jpg";
 import KeysWords from "../../Common/apiData/keyWords";
+import { Link } from "react-router-dom";
 
 const ServicesSecond = () => {
   const { cart } = useContext(UserContext);
@@ -85,10 +86,10 @@ const ServicesSecond = () => {
           </div>
         </div>
         <div className="col-lg-12">
-          <h2 className="py-2 px-4 service-head shadow">
+          <h1 className="py-2 px-4 service-head shadow">
             Rumeno's Goat Farming Consultant : Rumeno Farmotech's Expertise
-          </h2>
-          <p className="mx-5 my-4">
+          </h1>
+          <p className="mx-2 my-4">
             Rumeno Farmotech, a prominent goat farming consultant in the field of animal husbandry, offers specialized services to enhance the productivity and well-being of goat herds. Their comprehensive services include:
             <ul>
               <li>Nutritional Guidance: Rumeno provides tailored dietary plans, ensuring optimal nutrition for goats at different life stages.</li>
@@ -99,7 +100,7 @@ const ServicesSecond = () => {
           </p>
           <div className="row">
             <div className="col-lg-6">
-              <p className="mx-5 my-4">
+              <p className="mx-2 my-4">
                 Goat farming is a profitable endeavor that has a plethora of
                 chances for farmers looking for sustainable lives in the
                 ever-evolving field of agriculture. But managing the challenges
@@ -109,10 +110,10 @@ const ServicesSecond = () => {
                 complete livestock management solutions, ruminant nutrition, and
                 goat farming.
               </p>
-              <p className="mx-5 my-4">
-                In the field of goat farming consultancy, Rumeno Farmotech is a reputable name, providing farmers hoping to succeed in this rapidly growing business with customized solutions. As a goat farming consultant, Rumeno Farmotech offers priceless knowledge.
+              <p className="mx-2 my-4">
+                In the field of goat farming consultancy, <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link> is a reputable name, providing farmers hoping to succeed in this rapidly growing business with customized solutions. As a goat farming consultant, Rumeno Farmotech offers priceless knowledge.
               </p>
-              <p className="mx-5 my-4">
+              <p className="mx-2 my-4">
                 On the choice of breed, maximizing nutrition, controlling
                 diseases, and general farm management. With a thorough awareness
                 of the particular difficulties and possibilities associated with
@@ -133,14 +134,14 @@ const ServicesSecond = () => {
           <h2 className="py-2 px-4 service-head shadow">
             Goat Farming Advisor: Your Success Associated Partner
           </h2>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">
             Rumeno Farmotech is a consultant for goat farming with many years of
             expertise and a vast amount of knowledge. Our team of professionals
             can assist you whether you're a new farmer starting your goat
             farming business or an experienced breeder trying to streamline your
             processes.
           </p>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">
             Rumeno Farmotech provides extensive consulting services that are
             specifically designed to address the demands of goat farmers,
             ranging from breed selection and housing design to disease
@@ -153,16 +154,16 @@ const ServicesSecond = () => {
           <h2 className="py-2 px-4 service-head shadow">
             Nutritionist for Ruminants: Optimising Feed for Strong Herds
           </h2>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">
             For goats and other ruminant animals, proper nutrition is essential
             to their performance and general health. With years of experience as
             ruminant nutritionists, Rumeno Farmotech is an expert in creating
             personalized feed plans that address the unique dietary needs of
             sheep and goats.
           </p>
-          <p className="mx-5 my-4">
-            Our nutritionists assist farmers in improving digestion, optimizing
-            feed efficiency, and advancing the general health of their herds
+          <p className="mx-2 my-4">
+            Our nutritionists assist farmers in improving digestion,<Link to="/veterinary-products/goat-feed-supplements" className="d-inline text-dark text-decoration-none">optimizing
+            feed efficiency</Link> , and advancing the general health of their herds
             through meticulous analysis and knowledgeable advice. In order to
             make sure that your goats and sheep receive the nourishment they
             require to flourish, Rumeno Farmotech is dedicated to providing
@@ -174,7 +175,7 @@ const ServicesSecond = () => {
             Consultant for Goats and Sheep: Promoting Excellence in Livestock
             Management
           </h2>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">
             Rumeno Farmotech provides a broad range of consulting services
             beyond goat husbandry and nutrition with the goal of improving
             overall livestock management techniques. Our consultants are
@@ -182,7 +183,7 @@ const ServicesSecond = () => {
             of their operations, from pasture management and reproductive health
             to herd health monitoring and parasite control.
           </p>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">
             Rumeno Farmotech gives farmers the tools they need to take advantage
             of opportunities, overcome obstacles, and realize the full potential
             of their sheep and goat businesses. It does this by utilizing the
@@ -191,22 +192,22 @@ const ServicesSecond = () => {
             partner for goat farmers due to our demonstrated proficiency and
             unshakable dedication to success.
           </p>
-          <p className="mx-5 my-4">In summary, collaborating for prosperity</p>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">In summary, collaborating for prosperity</p>
+          <p className="mx-2 my-4">
             Having the proper partner at your side can make all the difference
             in the fast-paced world of agriculture. You may feel secure in the
             knowledge that Rumeno Farmotech is your reliable consulting partner,
             providing you with the knowledge and assistance you require to
             thrive in goat farming and beyond.
           </p>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">
             Get in touch with Rumeno Farmotech right now to find out more about
             our advisory services and how we can support you in accomplishing
             your objectives for sheep and goat farming. By working together, we
             can open the door to a more successful future for your cattle and
             farm.
           </p>
-          <p className="mx-5 my-4">
+          <p className="mx-2 my-4">
             As a leader in goat and sheep consultant, Rumeno Farmotech shines
             brightly, providing farmers with critical direction as they navigate
             the complexities of small ruminant management. Rumeno Farmotech is a
@@ -222,25 +223,19 @@ const ServicesSecond = () => {
           </p>
         </div>
 
-        <div className="col-lg-12 d-flex justify-content-evenly">
-          <img
-            className=""
-            width={400}
-            height={400}
+        <div className="row justify-content-evenly service-images">
+            <img
+            className="w-25 m-1 p-0"
             src={service2}
             alt="loading"
           />
-          <img
-            className=""
-            width={400}
-            height={400}
+            <img
+            className="w-25 m-1 p-0"
             src={service3}
             alt="loading"
           />
-          <img
-            className=""
-            width={400}
-            height={400}
+            <img
+            className="w-25 m-1 p-0"
             src={service4}
             alt="loading"
           />

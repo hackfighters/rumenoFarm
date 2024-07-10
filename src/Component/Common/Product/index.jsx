@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import ProudctFeedbackModal from "../Modal/productFeedback";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const ProductItem = ({ item, handleClick }) => {
   const {
@@ -36,6 +37,7 @@ const ProductItem = ({ item, handleClick }) => {
   // const [quantity, setQuantity] = useState(1);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const ratingChanged = (newRating) => {
     // console.log(newRating);
@@ -78,34 +80,38 @@ const ProductItem = ({ item, handleClick }) => {
   const AddToCart = async () => {
     if (loggedInUser) {
       handleClick(item);
-      console.warn(item)
-      
-      // try {
-      //   const response = await axios.post('http://192.168.1.11:5000/cartss',item);
-      //   console.warn("cart add successfully :", response.data);
-      //   toast.success("cart add successfully", {
-      //     position: "top-center",
-      //     autoClose: 2000,
-      //     hideProgressBar: false,
-      //     closeOnClick: true,
-      //     pauseOnHover: true,
-      //     draggable: true,
-      //     progress: undefined,
-      //     theme: "light",
-      //   });
-      // } catch (error) {
-      //     console.warn(error)
-      //     toast.error(error, {
-      //       position: "top-center",
-      //       autoClose: 2000,
-      //       hideProgressBar: false,
-      //       closeOnClick: true,
-      //       pauseOnHover: true,
-      //       draggable: true,
-      //       progress: undefined,
-      //       theme: "light",
-      //     });
-      //   }
+      try {
+        let payload = {...item,...{amount:1,uid:getMidCookies.uID}}
+        const response = await axios.post(`${process.env.REACT_APP_API}/cart`,payload,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        console.warn("cart add successfully :", response.data);
+        toast.success("cart add successfully", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } catch (error) {
+          console.warn(error)
+          toast.error(error, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
     } else {
       // console.log("login first");
       setShowLoginModal(!showLoginModal);

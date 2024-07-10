@@ -21,22 +21,18 @@ import {
 import { faClock, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 
 // Third party i18next
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 // Common Component
 import Login from "../../Common/Modal/Login";
 import Registration from "../../Common/Modal/Registion";
-import Select from "../../Common/Select/index";
 
 // Image
 import logo from "../../../assets/img/Logo/lv-bgr.png";
 import SendOtp from "../Modal/otp";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
-import e from "cors";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
 import TranslateButton from "../translate/translate";
 import SearchBar from "./navsearch";
@@ -58,6 +54,7 @@ const Navbar = ({ size }) => {
     setSelectedAnimal,
     farmDtl,
   } = useContext(UserContext);
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const [lgShow, setLgShow] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
@@ -81,6 +78,10 @@ const Navbar = ({ size }) => {
 
   useEffect(() => {
     setCartdata(cart);
+
+    return() => {
+      console.log("check if cart remove ")
+    }
   }, []);
 
   const toggleSelect = () => {
@@ -88,11 +89,7 @@ const Navbar = ({ size }) => {
   };
 
 
-  const handleChangen = (e) => {
-    i18next.changeLanguage(e.target.value);
-    setSelectedOption(e.target.value);
-    setShowSelect(false);
-  };
+
 
   const openModal = () => {
     setShowModal(true);
@@ -129,31 +126,20 @@ const Navbar = ({ size }) => {
     setShowOpt(false);
   };
 
-  // const handleAddtoCartApi = async (getUidata) => {
-  //   console.log("Hello");
-  //   try {
-  //     const response = await axios.post(
-  //       "https://7e94-2401-4900-1ca3-f9e5-4d3f-f6b7-3825-7f58.ngrok-free.app/cartuser",
-  //       { uID: getUidata }
-  //     );
-  //     console.log("Add to cart is Successfull", response.data);
-  //     const getapicart = response.data.data;
-  //     setCart(getapicart);
-  //   } catch (error) {
-  //     console.error("Add to cart is not working", error);
-  //   }
-  // };
+
 
   const handleRemoves = async (id) => {
-    const RemoveCartData = { id: id, uID: UidData };
-    // console.log(RemoveCartData,'ghgjhjjjj')
     try {
-      const response = await axios.post(
-        "http://192.168.1.7:5000/deleteCart",
-        RemoveCartData
-      );
+      const RemoveCartData = { id: id, uID: UidData };
+      console.log('RemoveCartData: ', RemoveCartData);
+      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
       console.log("Add to cart", response.data);
-      if (response.data.msg === "success") {
+      if (response.data === "success") {
         toast.success("Add to cart is Remove Successfull", {
           position: "top-center",
           autoClose: 2000,
@@ -193,12 +179,14 @@ const Navbar = ({ size }) => {
     }
     // handleRemoveCart(id)
   };
+
   const navigate = useNavigate();
 
 
   const handleLogout = () => {
     Cookies.remove("loggedInUser");
     Cookies.remove("cart");
+    Cookies.remove("loginUserData");
     setLoggedInUser(null);
     setCart(0);
     navigate("/home");
@@ -237,38 +225,41 @@ const Navbar = ({ size }) => {
     cart.forEach((data, index) => {
       if (data.id === item.id) ind = index;
     });
-  
+
     const tempArr = [...cart];
-  
+
     var latestamount = parseInt(tempArr[ind].amount);
     latestamount += d;
-  
+
     // Ensure the amount does not go below 1
     if (latestamount < 1) {
       latestamount = 1;
     }
-  
+
     tempArr[ind].amount = latestamount;
     setCart(tempArr);
     var amountdataupdata = tempArr[ind];
     console.log(amountdataupdata, 7777);
-  
+
     // Api ------------
     try {
       const response = await axios.post(
-        "http://192.168.1.7:5000/cart",
-        amountdataupdata
-      );
+        `${process.env.REACT_APP_API}/cart`, amountdataupdata, {
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+
+      });
       console.log(iteamdata, 4444);
       console.log("quantity increase Successful", response.data);
     } catch (error) {
       console.error("quantity increase not working", error);
     }
   };
-  
+
 
   const handleAnmlValue = (value) => {
-    setSelectedAnimal(value);
+    Cookies.set("SelectedAnimal", JSON.stringify(value));
   };
 
   return (
@@ -290,14 +281,14 @@ const Navbar = ({ size }) => {
                 </div>
 
                 <div className="col-sm-3 px-3  d-flex cnt justify-content-center align-items-center">
-                <a className="text-decoration-none text-white" rel="noreferrer" href="https://mail.google.com" target="_blank">
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="me-2"
-                  style={{ color: "white" }}
-                />
-                rumeno.farmotech@gmail.com
-                </a>
+                  <a className="text-decoration-none text-white" rel="noreferrer" href="https://mail.google.com" target="_blank">
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      className="me-2"
+                      style={{ color: "white" }}
+                    />
+                    rumeno.farmotech@gmail.com
+                  </a>
                 </div>
                 <div className="col-sm-2 px-sm-5 px-lg-2 d-flex cnt justify-content-end align-items-center">
 
@@ -313,13 +304,13 @@ const Navbar = ({ size }) => {
                 </div>
                 <div className="col-lg-2 col-sm-1 px-2 d-flex cnt align-items-center justify-content-center">
                   <a className="text-decoration-none text-white" rel="noreferrer" href="tel:+91 7355043892">
-                <FontAwesomeIcon
-                  icon={faPhone}
-                  className="me-2"
-                  style={{ color: "white" }}
-                />
-                +91 7355043892
-                </a>
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      className="me-2"
+                      style={{ color: "white" }}
+                    />
+                    +91 7355043892
+                  </a>
                 </div>
                 <div className="col-sm-2  px-2   align-items-center  nav-lang-switch h-100 my-auto  justify-content-lg-start  justify-content-sm-center">
                   <FontAwesomeIcon
@@ -329,7 +320,7 @@ const Navbar = ({ size }) => {
                     icon={faLanguage}
                   />
                   {showSelect && (
-                    <TranslateButton/> 
+                    <TranslateButton />
                   )}
                 </div>
               </div>
@@ -340,9 +331,9 @@ const Navbar = ({ size }) => {
             id="header"
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
           >
-              <NavLink className="logo" to="/home">
+            <NavLink className="logo" to="/home">
               <img className="ps-4 logo" src={logo} alt="" />
-              </NavLink>
+            </NavLink>
             <button
               className="navbar-toggler bg-secondary"
               type="button"
@@ -382,14 +373,14 @@ const Navbar = ({ size }) => {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
-                    <li className="">
+                      <li className="">
                         <NavLink
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
                           to="/veterinary-products"
-                    >
-                      Veterinary-Products
-                    </NavLink>
+                        >
+                          Veterinary-Products
+                        </NavLink>
                       </li>
                       <li className="">
                         <NavLink
@@ -400,7 +391,7 @@ const Navbar = ({ size }) => {
                           Goat Feed Supplements
                         </NavLink>
                       </li>
-                      
+
 
                       <li className="text-center">
                         <NavLink
@@ -448,9 +439,9 @@ const Navbar = ({ size }) => {
                           className="nav-link px-0 justify-content-center"
                           activeclassname="active"
                           to="/veterinary-services"
-                    >
-                      Veterinary-Services
-                    </NavLink>
+                        >
+                          Veterinary-Services
+                        </NavLink>
                       </li>
                       <li className="">
                         <NavLink
@@ -515,9 +506,9 @@ const Navbar = ({ size }) => {
                   </Link>
                 </li>
                 <li>
-                 {loggedInUser ? (
+                  {loggedInUser ? (
                     <>
-                       {farmDtl ? (
+                      {farmDtl ? (
                         <>
                           <button
                             typeof="button"
@@ -588,8 +579,8 @@ const Navbar = ({ size }) => {
                             </Modal.Footer>
                           </Modal>
                         </>
-                      ) : ( 
-                         <>
+                      ) : (
+                        <>
                           <button
                             typeof="button"
                             onClick={openFarmModal}
@@ -601,8 +592,8 @@ const Navbar = ({ size }) => {
                             showFarmModal={showFarmModal}
                             closeFarmModal={closeFarmModal}
                           />
-                        </> 
-                      )} 
+                        </>
+                      )}
                       <Modal
                         show={isModalOpen}
                         onHide={closeSltAnmlModal}
@@ -665,9 +656,9 @@ const Navbar = ({ size }) => {
                         </Modal.Footer>
                       </Modal>
                     </>
-                   ) : ( 
-                     null 
-                   )} 
+                  ) : (
+                    null
+                  )}
                 </li>
                 <li className="nav-item logo-width logo-width" id="cart">
                   <div className="d-flex justify-content-center">
@@ -704,7 +695,7 @@ const Navbar = ({ size }) => {
                               className="dropdown-item justify-content-center"
                               to="/veterinary-products"
                             >
-                             Veterinary Products
+                              Veterinary Products
                             </Link>
                           </li>
                           <li>
@@ -741,7 +732,7 @@ const Navbar = ({ size }) => {
                     closeModal={closeModal}
                     openRegistrationModal={openRegistration}
                     OpenSendOtpModal={OpenSendOtp}
-                    // handleAddtoCartApi={handleAddtoCartApi}
+                  // handleAddtoCartApi={handleAddtoCartApi}
                   />
                   <Registration
                     showModal={showRegistrationModal}

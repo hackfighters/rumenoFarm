@@ -21,6 +21,8 @@ const Deworm = () => {
     ecto_type: "",
     bath_date: "",
   });
+  const apiUrl = `${process.env.REACT_APP_API}/farm_data/deworm`;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -51,49 +53,58 @@ const Deworm = () => {
   };
 
   
-  const onsubmit = async(data) => {
-    let DDid;
-    if (selectedItem !== null) {
-      // Edit existing data
-      const updatedData = [...deworm];
-      updatedData[selectedItem] = { did: selectedItem + 1, ...data };
-      setDeworm(updatedData);
-      console.log(updatedData[selectedItem])
-      let Deworm = updatedData[selectedItem];
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, Deworm };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-      try {
-        const response = await axios.post('http://192.168.1.6:5000/de_worm',updatedData[selectedItem])
-        console.log(response.data)
-    } catch (error) {
-        console.log(error)
-    }
-    setSelectedItem(null);
+  useEffect(() => {
+    fetchItems();
+  }, []);
 
-    } else {
-      // Add new data
-      const d_id = deworm.length > 0 ? deworm[deworm.length - 1].d_id + 1 : 1;
-            setDeworm([...deworm, { d_id: d_id, ...data }]);
-      DDid = {d_id,...data}
-      console.log(DDid)
-      let Deworm = DDid;
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, Deworm };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-      try {
-        const response = await axios.post('http://192.168.1.6:5000/de_worm',DDid)
-        console.log(response.data)
+  const fetchItems = async (id) => {
+    try {
+      const response = await axios.get(`${apiUrl}/${getMidCookies.mid}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+      setDeworm(response.data);
     } catch (error) {
-        console.log(error)
+      console.error('Error fetching items:', error);
     }
-    }
-    // console.log(data ,vaccine);
-    setOpenDialog(false);
   };
 
+  const onsubmit = async (data) => {
+    if (selectedItem !== null) {
+      // Edit existing item
+      try {
+        const response = await axios.put(`${apiUrl}/${deworm[selectedItem]._id}`, data,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        const updatedMilkrec = [...deworm];
+        updatedMilkrec[selectedItem] = response.data;
+        fetchItems();
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    } else {
+      // Add new item
+      try {
+    const payload = {...data,...{parentid:getMidCookies.mid}}
+    console.log('payload: ', payload);
+        const response = await axios.post(apiUrl, payload,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        fetchItems();
+      } catch (error) {
+        console.error("Error adding item:", error);
+      }
+    }
+    handleCloseDialog();
+  };
   const handleEdit = (index) => {
     setValue("worm_date", deworm[index].wormdate);
     setValue("worm_report", deworm[index].wormreport);
@@ -115,7 +126,12 @@ const Deworm = () => {
     setDeworm(updatedData);
     console.log(deletedItem)
       try {
-        const response = await axios.post('http://192.168.1.6:5000/de_worm',deletedItem)
+        const response = await axios.delete(`${apiUrl}/${deworm[index]._id}`,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
         console.log(response.data)
     } catch (error) {
         console.log(error)
@@ -367,6 +383,7 @@ const Deworm = () => {
                             </label>
                             <select
                               className="form-select"
+                              placeholder="Open this and select endo type"
                               aria-label="Default select example"
                               {...register("endo_type")}
                               onChange={(e) =>
@@ -376,7 +393,7 @@ const Deworm = () => {
                                 })
                               }
                             >
-                              <option defaultValue>
+                              <option disabled>
                                 Open this and select endo type
                               </option>
                               <option value="1">1</option>
@@ -403,7 +420,7 @@ const Deworm = () => {
                                 })
                               }
                             >
-                              <option defaultValue>
+                              <option disabled>
                                 Open this and select ecto type
                               </option>
                               <option value="1">1</option>
@@ -442,7 +459,7 @@ const Deworm = () => {
                           <div className="text-center">
                             <button
                               type="submit"
-                              className="btn btn-primary w-25 mt-3"
+                              className="btn btn-primary w-auto mt-3"
                             >
                               Submit
                             </button>

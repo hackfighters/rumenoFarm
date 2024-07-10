@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import Login from "./Login";
 import { UserContext } from "./logusecont";
+import { toast } from "react-toastify";
 
 const SetNewPassword = ({ showModal, closeModal }) => {
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -18,46 +19,43 @@ const SetNewPassword = ({ showModal, closeModal }) => {
     watch,
   } = useForm();
   const { t } = useTranslation();
-  const { UidData,setUidData } = useContext(UserContext);
-  // useEffect(() => {
-  //   const getuidfromcookies = JSON.parse(Cookies.get("loginUserData") ?? "{}");
-  // setUidData(getuidfromcookies.uID)
-  // console.log(UidData)
-  // }, [])
+  const apiUrl = process.env.REACT_APP_API;
+  const { UidData, setUidData } = useContext(UserContext);
+  const getNumber = Cookies.get("Number")
+  useEffect(() => {
+    //   const getuidfromcookies = JSON.parse(Cookies.get("loginUserData") ?? "{}");
+    // setUidData(getuidfromcookies.uID)
+    console.log("getNumber", getNumber)
+  }, [])
 
   const password = watch("newpassword");
 
   const onSubmit = async (data) => {
+
     console.log(data);
-    let NewPassword;
     try {
-      if (data.newpassword !== data.confirmpassword) {
+      if (data?.newpassword !== data?.confirmpassword) {
         alert("Passwords do not match");
         return;
-      }else{
-         NewPassword = {
-          pwd:data.newpassword,
-          uID:UidData,
-        }
-        console.log(NewPassword)
-      }
+      } 
+        // Send data to API using Axios
+        const payload = {mobile:getNumber,newpassword:data?.newpassword}
+        const response = await axios.post(`${apiUrl}/forgot_password`, payload);
+        console.log(response.data); // Handle the response as needed
+        toast.success(response.data.message);
 
+        // Show the Login modal and close the current modal
+        // setShowLoginModal(true);
+        closeModal();
       
-      // Send data to API using Axios
-      const response = await axios.post(
-        // "http://192.168.1.14:5000/updatepwd", NewPassword
-      );
-      console.log(response.data); // Handle the response as needed
 
-      // Show the Login modal and close the current modal
-      setShowLoginModal(true);
-      closeModal();
     } catch (error) {
       console.error("Error submitting form:", error);
       // Handle error, show a message to the user, etc.
-      setShowLoginModal(true);// remove after adding api
+      // setShowLoginModal(true);// remove after adding api
       closeModal();// remove after adding api
     }
+
   };
 
   return (
@@ -146,7 +144,7 @@ const SetNewPassword = ({ showModal, closeModal }) => {
           </div>
         </Modal.Body>
       </Modal>
-      <Login showModal={showLoginModal} closeModal={setShowLoginModal}/>
+      <Login showModal={showLoginModal} closeModal={setShowLoginModal} />
     </>
   );
 };

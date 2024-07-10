@@ -23,6 +23,7 @@ const Registration = ({ showModal, closeModal }) => {
     reset,
     formState: { errors },
   } = useForm();
+  const apiUrl = process.env.REACT_APP_API;
   const countrydata = selectedCountry?.name
   const countrystate = selectedState?.name
   const countrycity = selectedCity?.name
@@ -43,24 +44,34 @@ const Registration = ({ showModal, closeModal }) => {
         address: data.address
         
       }
-    // console.log(Registrationdata)
-    // try {
-    //   const response = await axios.post('http://192.168.1.14:5000/rumeno_register', Registrationdata);
-    //   // console.log('Registration successful:', response.data);
+    console.log(Registrationdata)
+    try {
+      const response = await axios.post(`${apiUrl}/register`, Registrationdata);
+      // console.log('Registration successful:', response.data);
 
-    //   if (response.data.status === 200) {
-    //     toast.success('Registration successful');
-    //     reset()
-    //     setShowLoginModal(true);
-    //     closeModal();
-    //   } else {
-    //     toast.error('Registration failedvvcv');
-    //   }
+      if (response.data.status === 201) {
+        toast.success('Registration successful');
+        reset()
+        setShowLoginModal(true);
+        closeModal();
+      } else {
+        toast.error('Registration failed');
+      }
 
-    // } catch (error) {
-    //   console.error('Error:', error);
-    //   // closeModal()
-    // }
+    } catch (error) {
+      console.error('Error:', error.response.data.message);
+      toast.error(error.response.data.message, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      // closeModal()
+    }
   };
 
   

@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import Cookies from "js-cookie";
+
 
 const FeedBackForm = () => {
   const { t } = useTranslation();
@@ -12,12 +14,32 @@ const FeedBackForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const getUserId = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const onSubmit = async (data) => {
-    console.log(data)
     try {
+    let serviceForm = {
+      name:data.name,
+      address:data.address,
+      phoneNumber:Number(data.phoneNumber),
+      bestTimeToContact:data.bestTimeToContact,
+      experience:Number(data.experience),
+      budget:Number(data.budget),
+      landSize:Number(data.landSize),
+      category:data.category,
+      other:data.other,
+      need:data.need,
+    }
+    
+    console.log(serviceForm)
       // Make an HTTP POST request using Axios
-      const response = await axios.post("http://127.0.0.1:5000/api/post_data", data);
+      const response = await axios.post(`${process.env.REACT_APP_API}/service_form`, serviceForm,
+        {
+          headers: {
+            'Authorization': `${getUserId.token}`
+          }
+        }
+      );
 
       // Handle the response as needed
       console.log("API Response:", response.data);

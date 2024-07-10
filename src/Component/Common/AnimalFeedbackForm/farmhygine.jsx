@@ -11,6 +11,8 @@ const FarmHygine = () => {
   const [farmHygine, setFarmhygine] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const apiUrl = `${process.env.REACT_APP_API}/farm_data/sanitation`;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
 
   const handleOpenDialog = () => {
@@ -31,58 +33,59 @@ const FarmHygine = () => {
     setSelectedItem(null);
   };
 
-
   useEffect(() => {
-    let b = Cookies.get("AnimalCookiesData")
-    // setFarmhygine((prev)=>)
-  }, []); 
+    fetchItems();
+  }, []);
 
- 
-    // ... (your existing functions and JSX)
-
-  const onsubmit = async(data) => {
-    let FFid;
-    if (selectedItem !== null) {
-      // Edit existing data
-      const updatedData = [...farmHygine];
-      updatedData[selectedItem] = { f_id: selectedItem + 1, ...data };
-      setFarmhygine(updatedData);
-      console.log(updatedData[selectedItem])
-      let FarmHygine = updatedData[selectedItem];
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, FarmHygine };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-      try {
-        const response = await axios.post('http://192.168.1.6:5000/farmsanitation',updatedData[selectedItem])
-        console.log(response.data)
+  const fetchItems = async (id) => {
+    try {
+      const response = await axios.get(`${apiUrl}/${getMidCookies.mid}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+      setFarmhygine(response.data);
     } catch (error) {
-        console.log(error)
+      console.error('Error fetching items:', error);
     }
-    
-    setSelectedItem(null);
-
-    } else {
-      // Add new data
-      const f_id = farmHygine.length > 0 ? farmHygine[farmHygine.length - 1].f_id + 1 : 1;
-            setFarmhygine([...farmHygine, { f_id: f_id, ...data }]);
-      FFid = {f_id,...data}
-      console.log(FFid)
-      let FarmHygine = FFid;
-      let getcokidata = JSON.parse(Cookies.get('AnimalCookiesData') ?? '{}');
-      let Mrgcokifrm = { ...getcokidata, FarmHygine };
-      Cookies.set("AnimalCookiesData", JSON.stringify(Mrgcokifrm));
-      console.log(Cookies.get("AnimalCookiesData"));
-      try {
-        const response = await axios.post('http://192.168.1.6:5000/farmsanitation',FFid)
-        console.log(response.data)
-    } catch (error) {
-        console.log(error)
-    }
-    }
-    // console.log(data ,vaccine);
-    setOpenDialog(false);
   };
+
+  const onsubmit = async (data) => {
+    if (selectedItem !== null) {
+      // Edit existing item
+      try {
+        const response = await axios.put(`${apiUrl}/${farmHygine[selectedItem]._id}`, data,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        const updatedfarmHygine = [...farmHygine];
+        updatedfarmHygine[selectedItem] = response.data;
+        fetchItems();
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    } else {
+      // Add new item
+      try {
+    const payload = {...data,...{parentid:getMidCookies.mid}}
+    console.log('payload: ', payload);
+        const response = await axios.post(apiUrl, payload,
+          {
+            headers: {
+              'Authorization': `${getMidCookies.token}`
+            }
+          });
+        fetchItems();
+      } catch (error) {
+        console.error("Error adding item:", error);
+      }
+    }
+    handleCloseDialog();
+  };
+
 
   const handleEdit = (index) => {
     setValue('soil_date',farmHygine[index].soil_date);
@@ -100,7 +103,12 @@ const FarmHygine = () => {
     setFarmhygine(updatedData);
     console.log(deletedItem); 
     try {
-      const response = await axios.post('http://192.168.1.6:5000/farmsanitation',deletedItem)
+      const response = await axios.delete(`${apiUrl}/${farmHygine[index]._id}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
       console.log(response.data)
   } catch (error) {
       console.log(error)
@@ -276,7 +284,7 @@ const FarmHygine = () => {
                           
                           <button
                             type="submit"
-                            className="btn btn-primary w-25 mt-3"
+                            className="btn btn-primary w-auto mt-3"
                           >
                             Submit
                           </button>

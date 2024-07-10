@@ -32,7 +32,9 @@ const MultiStepForm = () => {
 
   const handleOpenFarmTableModal = () => setShowFarmTableModal(true);
   const handleCloseFarmTableModal = () => setShowFarmTableModal(false);
-  const apiUrl = process.env.REACT_APP_API;
+  const apiUrl = `${process.env.REACT_APP_API}/farm_data/parent`;
+  const getUserIdCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getSelectdAnimal = JSON.parse(Cookies.get("SelectedAnimal") ?? "[]");
 
   const filteredData = maindata.filter((item) =>
     (item.uniquename?.includes(searchInput.toLowerCase()) || false) ||
@@ -85,8 +87,16 @@ const MultiStepForm = () => {
   }, []);
 
   const fetchItems = async () => {
+    console.log('getSelectdAnimal: ', getSelectdAnimal);
     try {
-      const response = await axios.get(apiUrl);
+      const response = await axios.get(`${apiUrl}/${getUserIdCookies.uID}?name=${getSelectdAnimal}`,
+        {
+          headers: {
+            'Authorization': `${getUserIdCookies.token}`
+          }
+        }
+      );
+      console.log('response: ', response);
       setMainData(response.data);
     } catch (error) {
       console.error('Error fetching items:', error);
@@ -99,7 +109,12 @@ const MultiStepForm = () => {
     if (selectedItem !== null) {
       // Edit existing item
       try {
-        const response = await axios.put(`${apiUrl}/${maindata[selectedItem].id}`, data);
+        const response = await axios.put(`${apiUrl}/${maindata[selectedItem]._id}`, data,
+          {
+            headers: {
+              'Authorization': `${getUserIdCookies.token}`
+            }
+          });
         const updatedMilkrec = [...maindata];
         updatedMilkrec[selectedItem] = response.data;
         fetchItems();
@@ -108,8 +123,16 @@ const MultiStepForm = () => {
       }
     } else {
       // Add new item
+      const payload = {...data,...{uid:getUserIdCookies.uID,animal:getSelectdAnimal}}
+      console.log('payload: ', payload);
       try {
-        const response = await axios.post(apiUrl, data);
+        const response = await axios.post(apiUrl, payload,
+          {
+            headers: {
+              'Authorization': `${getUserIdCookies.token}`
+            }
+          });
+        console.log('response: ', response);
         fetchItems();
       } catch (error) {
         console.error("Error adding item:", error);
@@ -121,15 +144,14 @@ const MultiStepForm = () => {
 
 
   const AddMoreDtl = (index) => {
-    const basicDtl = { mid: maindata[index].id };
+    const basicDtl = { mid: maindata[index]._id };
+    console.log('basicDtl: ', maindata);
 
     const getLoginData = JSON.parse(Cookies.get("loginUserData") ?? "[]");
     let sendMid = { ...getLoginData, ...basicDtl };
     Cookies.set('loginUserData',JSON.stringify(sendMid));
 
     setFarmDataUMKid((prev) => ({ ...prev, ...basicDtl }));
-    let setDataCookies = { selectedAnimal, Uid: maindata[index].Uid }
-    Cookies.set("AnimalCookiesDatas", JSON.stringify(setDataCookies));
   }
 
   const handleEdit = (index) => {
@@ -150,7 +172,12 @@ const MultiStepForm = () => {
 
   const handleDelete = async (index) => {
     try {
-      const response = await axios.delete(`${apiUrl}/${maindata[index].id}`);
+      const response = await axios.delete(`${apiUrl}/${maindata[index]._id}`,
+        {
+          headers: {
+            'Authorization': `${getUserIdCookies.token}`
+          }
+        });
       console.log(response.data);
       setMainData(maindata.filter((_, i) => i !== index));
     } catch (error) {
@@ -185,7 +212,7 @@ const MultiStepForm = () => {
             {/* <div className="row"> */}
 
             {filteredData.map((item, index) => (
-              <section className="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect" key={index}>
+              <section className="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect" key={item._id}>
                 <ul className="list-unstyled" >
                   <li className="mx-2 mb-3 fs-2 d-flex justify-content-between align-items-center">
                     <span className="text-uppercase">{item.uniquename}</span>
@@ -255,7 +282,7 @@ const MultiStepForm = () => {
                             {" "}
                             <strong> MId : </strong>
                           </span>{" "}
-                          <span> {selectedItemData.id}</span>{" "}
+                          <span> {selectedItemData._id}</span>{" "}
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
@@ -515,7 +542,7 @@ const MultiStepForm = () => {
                         value={maindata.pregnancy_detail}
                         {...register("pregnancy_detail")}
                       >
-                        <option selected disabled>
+                        <option  disabled>
                           select pregnancy Detail
                         </option>
                         <option value="1">1</option>
@@ -537,7 +564,7 @@ const MultiStepForm = () => {
                         value={maindata.maledetail}
                         {...register("male_detail")}
                       >
-                        <option selected disabled>
+                        <option  disabled>
                           select if male
                         </option>
                         <option value="wheather">wheather</option>
@@ -554,7 +581,7 @@ const MultiStepForm = () => {
                         value={maindata.body_score}
                         {...register("body_score")}
                       >
-                        <option defaultValue>
+                        <option disabled>
                           Open this and select body score
                         </option>
                         <option value="1">1</option>

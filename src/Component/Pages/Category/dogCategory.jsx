@@ -617,8 +617,8 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
         const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         console.log(itemData);
-        try {
-          const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
+          try {
+            const response = await axios.post(`${process.env.REACT_APP_API}/cart`, itemData);
           console.log('Add to cart is Successfull', response.data);
           if (response.data.msg == 'success') {
           }
@@ -747,7 +747,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
             <div className="col-lg-11 my-4">
               <h1 className="my-4 text-center">Dogs Supplements to Promote Optimal Health</h1>
               <p>
-                Here at Rumeno Farmotech, we put your dog's health first. We make
+                Here at <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link>, we put your dog's health first. We make
                 sure that your pet gets the assistance they require with our
                 carefully chosen collection of dog vitamins. We offer the ideal
                 remedies for any dog suffering from allergies, joint problems,

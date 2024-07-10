@@ -3,7 +3,7 @@ import Navbar from "../../Common/Navbar";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import Footer from "../../Common/Footer";
 import { UserContext } from "../../Common/Modal/logusecont";
-import { Accordion } from "react-bootstrap";
+import { Accordion, NavLink } from "react-bootstrap";
 import { useCookies } from "react-cookie";
 
 // import images
@@ -627,8 +627,8 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
         const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         console.log(itemData);
-        try {
-          const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
+          try {
+            const response = await axios.post(`${process.env.REACT_APP_API}/cart`, itemData);
           console.log('Add to cart is Successfull', response.data);
           if (response.data.msg == 'success') {
           }
@@ -761,7 +761,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
               is to your pets' health and wellbeing. Giving your goats the
               correct vitamins can have a big impact on how well they perform
               overall, whether you raise them for meat, milk, or as pets. This
-              post will introduce you to Rumeno Farmotech, a reputable brand in
+              post will introduce you to <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link>, a reputable brand in
               the business, and discuss the advantages of goat feed supplements.
             </p>
             <h2 className="my-4">The Significance of Goat Feed Supplements</h2>

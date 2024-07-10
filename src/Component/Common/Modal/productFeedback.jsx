@@ -2,17 +2,30 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
+import axios from "axios";
 
-const ProudctFeedbackModal = ({ showfeedModal, closefeedModal, title,pid }) => {
+const ProudctFeedbackModal = ({ showfeedModal, closefeedModal, title, pid }) => {
   const { register, handleSubmit, reset } = useForm();
+  const apiUrl = process.env.REACT_APP_API;
   const getUserId = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     let feedbackdata = {
-      product_id:pid,
-      feedback:data.feedback,
-      user_id:getUserId.uID,
-      time:new Date().toLocaleDateString("en-GB"),
+      product_id: pid,
+      feedback: data.feedback,
+      uid:getUserId.uID,
+    }
+    try {
+      const response = await axios.post(`${apiUrl}/feedback`, feedbackdata,
+        {
+          headers: {
+            'Authorization': `${getUserId.token}`
+          }
+        }
+      )
+      console.log('response: ', response);
+    }
+    catch (error) {
     }
     console.log(feedbackdata);
     reset();
@@ -29,9 +42,9 @@ const ProudctFeedbackModal = ({ showfeedModal, closefeedModal, title,pid }) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
-            
-              {title}
-            
+
+            {title}
+
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -55,7 +68,7 @@ const ProudctFeedbackModal = ({ showfeedModal, closefeedModal, title,pid }) => {
                 ></textarea>
               </div>
               <div className="text-center">
-                <button type="submit" className="btn btn-primary w-25 mt-3">
+                <button type="submit" className="btn btn-primary w-auto mt-3">
                   Submit
                 </button>
               </div>

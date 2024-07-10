@@ -14,6 +14,7 @@ import {
 // Third party i18next
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 // Common Component
 import Login from "../../Common/Modal/Login";
@@ -43,7 +44,7 @@ const ResponsiveNavbar = ({ size }) => {
   const { t } = useTranslation();
   const { search } = useParams();
 
-  const { loggedInUser, cart, setCart, farmDtl, setSelectedAnimal, } = useContext(UserContext);
+  const { loggedInUser, cart, setCart, farmDtl, setSelectedAnimal, UidData, iteamdata,} = useContext(UserContext);
   // State
   // const [showlogin, setshowlogin] = useState(false);
   const [lgShow, setLgShow] = useState(false);
@@ -54,6 +55,7 @@ const ResponsiveNavbar = ({ size }) => {
   const [showOtp, setShowOpt] = useState(false);
   const [showFarmModal, setshowFarmModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   const openSltAnmlModal = () => {
     setIsModalOpen(true);
@@ -80,11 +82,6 @@ const ResponsiveNavbar = ({ size }) => {
     setShowSelect(!showSelect);
   };
 
-  const handleChangen = (e) => {
-    i18next.changeLanguage(e.target.value);
-    setSelectedOption(e.target.value);
-    setShowSelect(false);
-  };
 
   const openModal = () => {
     setShowModal(true);
@@ -111,18 +108,6 @@ const ResponsiveNavbar = ({ size }) => {
     setShowOpt(false);
   };
 
-  // const handleAddtoCartApi = async (getUidata) => {
-  //   console.log(datatest, 3455)
-
-  //   setCart(datatest)
-
-  //   // try {
-  //   //   const response = await axios.get('https://d002-171-61-11-131.ngrok-free.app/cart',);
-  //   //   console.log('Add to cart is Successfull', response.data);
-  //   // } catch (error) {
-  //   //   console.error('Add to cart is not working', error);
-  //   // }
-  // }
 
   const handleChange = async (item, d) => {
     let ind = -1;
@@ -134,38 +119,98 @@ const ResponsiveNavbar = ({ size }) => {
 
     var latestamount = parseInt(tempArr[ind].amount);
     latestamount += d;
+
+    // Ensure the amount does not go below 1
+    if (latestamount < 1) {
+      latestamount = 1;
+    }
+
     tempArr[ind].amount = latestamount;
     setCart(tempArr);
     var amountdataupdata = tempArr[ind];
     console.log(amountdataupdata, 7777);
+
     // Api ------------
     try {
       const response = await axios.post(
-        "http://192.168.1.7:5000/cart",
-        amountdataupdata
-      );
-      console.log("quantity increase Successfull", response.data);
+        `${process.env.REACT_APP_API}/cart`, amountdataupdata, {
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+
+      });
+      console.log(iteamdata, 4444);
+      console.log("quantity increase Successful", response.data);
     } catch (error) {
       console.error("quantity increase not working", error);
     }
   };
 
-  const handleRemove = (id) => {
-    const arr = cart.filter((item) => item.id !== id);
-    setCart(arr);
-    // handlePrice();
+  const handleRemoves = async (id) => {
+    try {
+      const RemoveCartData = { id: id, uID: UidData };
+      console.log('RemoveCartData: ', RemoveCartData);
+      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+      console.log("Add to cart", response.data);
+      if (response.data === "success") {
+        toast.success("Add to cart is Remove Successfull", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        const arr = cart.filter((item) => item.id !== id);
+        setCart(arr);
+      } else {
+        toast.error("Add to cart is Remove Failed", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    } catch (error) {
+      console.error("Add to cart is not Remove", error);
+      toast.error("Add to cart is not Remove", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    // handleRemoveCart(id)
   };
 
   const { setLoggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("loggedInUser");
+    Cookies.remove("cart");
+    Cookies.remove("loginUserData");
     setLoggedInUser(null);
+    setCart(0);
     navigate("/home");
   };
 
   const handleAnmlValue = (value) => {
-    setSelectedAnimal(value);
+    Cookies.set("SelectedAnimal", JSON.stringify(value));
   };
 
   return (
@@ -645,7 +690,7 @@ const ResponsiveNavbar = ({ size }) => {
                         type="button"
                         className="text-danger"
                         icon={faTrash}
-                        onClick={() => handleRemove(item.id)}
+                        onClick={() => handleRemoves(item.id)}
                       />
                     </div>
                     {/* <div className="col-sm-3 d-flex align-items-center justify-content-center ">

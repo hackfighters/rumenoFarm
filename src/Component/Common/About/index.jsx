@@ -47,7 +47,7 @@ const About = () => {
                     <img
                       className="img-fluid w-100"
                       src={abtimg1}
-                      alt="Loading"
+                      alt="Rumeno-Veterinary-Product"
                     />
                   </span>
                 </div>
@@ -61,7 +61,7 @@ const About = () => {
                     <img
                       className="img-fluid w-100"
                       src={abtimg2}
-                      alt="Loading"
+                      alt="Rumeno-Veterinary-Product"
                     />
                     <span className="hover-effect-container">
                       <span className="hover-effect-icon">
@@ -86,7 +86,7 @@ const About = () => {
                     <img
                       className="img-fluid w-100"
                       src={abtimg3}
-                      alt="Loading"
+                      alt="Rumeno-Veterinary-Product"
                     />
                     <span className="hover-effect-container">
                       <span className="hover-effect-icon">
@@ -102,7 +102,7 @@ const About = () => {
                   data-aos="fade-left"
                 >
                   <span className="hover-effect  popup-image">
-                    <img className="img-fluid w-100" src={abtimg4} alt="" />
+                    <img className="img-fluid w-100" src={abtimg4} alt="Rumeno-Veterinary-Product" />
                     <span className="hover-effect-container">
                       <span className="hover-effect-icon">
                         <span className="fa fa-plus hover-effect-icon-inner"></span>

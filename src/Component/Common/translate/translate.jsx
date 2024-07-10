@@ -23,7 +23,7 @@ function TranslateButton() {
     return () => {
       document.body.removeChild(addScript);
     };
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     const interval = setInterval(() => {

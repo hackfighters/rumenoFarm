@@ -34,12 +34,12 @@ const ContactUs = () => {
     register,
     formState: { errors },
   } = useForm();
-
+  const apiUrl = process.env.REACT_APP_API;
   const onSubmit = async (data) => {
     try {
       // Make a POST request to your API endpoint
       const response = await axios.post(
-        "http://localhost:7000/items",
+        `${apiUrl}/contact_us`,
         data
       );
       // console.log(response.data); // Handle the response as needed
@@ -55,7 +55,7 @@ const ContactUs = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Contact-Rumeno</title>
-        <link rel="canonical" href="https://www.rumeno.in/contactus" />
+        <link rel="canonical" href="https://www.rumeno.in/contact-us" />
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (
@@ -184,7 +184,7 @@ const ContactUs = () => {
                         />
                       </ReactWhatsapp>
 
-                      <a className="" href="/#" rel="noreferrer" target="_blank">
+                      <a className="" href="https://www.tradeindia.com/rumeno-36048586/product-services.html" rel="noreferrer" target="_blank">
                         <svg version="1.0" className="rounded mx-2"
                           width="30px" height="28px" viewBox="0 0 225.000000 225.000000"
                           preserveAspectRatio="xMidYMid meet">
@@ -205,7 +205,7 @@ m846 -144 c8 -20 8 -948 0 -968 -5 -14 -30 -16 -175 -16 l-169 0 0 500 0 500
                         </svg>
                       </a>
 
-                      <a className="" href="/#" rel="noreferrer" target="_blank">
+                      <a className="" href="https://www.indiamart.com/rumeno-lucknow/?pid=2854059774012&c_id=62&mid=&pn=Pro%20Lac%20Power%20Calf%20Milk%20Replacer" rel="noreferrer" target="_blank">
                         <svg version="1.0" className=" mx-2"
                           width="30px" height="30px" viewBox="0 0 364.000000 369.000000"
                           preserveAspectRatio="xMidYMid meet">

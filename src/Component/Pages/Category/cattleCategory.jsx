@@ -649,7 +649,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
           setiteamdata(itemData);
           console.log(itemData);
           try {
-            const response = await axios.post('http://192.168.1.11:5000/carts', itemData);
+            const response = await axios.post(`${process.env.REACT_APP_API}/cart`, itemData);
             console.log('Add to cart is Successfull', response.data);
             if (response.data.msg == 'success') {
             }
@@ -832,7 +832,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
               3. RumenO Farmotech: A Reputable Brand in Supplements for Cattle
             </h3>
             <p>
-              In the cattle business, RumenO Farmotech is a well-known brand
+              In the cattle business, <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link> is a well-known brand
               that provides a selection of premium supplements. This is why
               their products are unique:
             </p>

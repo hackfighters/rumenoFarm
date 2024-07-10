@@ -9,6 +9,7 @@ import Footer from "../../Common/Footer";
 import ResponsiveNavbar from "../../Common/Navbar/navMob";
 import KeysWords from "../../Common/apiData/keyWords";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 const BlogContent = () => {
   const { cart } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
@@ -44,15 +45,24 @@ const BlogContent = () => {
   const { id } = useParams();
   const blog = blogdata.find((blog) => blog.id === parseInt(id));
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
+    try{
     let comntsendtoapi = {
-      id: blog.id,
+      blog_id: blog.id,
       name: data.blogname,
       email: data.blogemail,
       comment: data.blogcomment,
     }
-    console.log(comntsendtoapi);
+    const response = await axios.post(`${process.env.REACT_APP_API}/blog`, comntsendtoapi);
 
+    // Handle the response as needed
+    console.log("API Response:", response.data);
+
+    // Add additional logic or redirect the user if needed
+  } catch (error) {
+    // Handle errors
+    console.error("Error sending form data:", error);
+  }
 
   }
   return (

@@ -1,37 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import Cookies from "js-cookie";
+import axios from 'axios';
 
 const TableFarmData = ({ showFarmTableModal, handleCloseFarmTableModal }) => {
+    const apiUrl = `${process.env.REACT_APP_API}/farm_data/parent`;
+    const getUserIdCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+    const getSelectdAnimal = JSON.parse(Cookies.get("SelectedAnimal") ?? "[]");
 
-    const data = [
-        {
-            parent: 'Parent 1',
-            col1: 'Mark',
-            col2: 'Otto',
-            col3: '@mdo',
-            col4: '@mdo',
-            col5: '@mdo',
-            col6: '@mdo'
-        },
-        {
-            parent: 'Parent 2',
-            col1: 'Jacob',
-            col2: 'Thornton',
-            col3: '@fat',
-            col4: '@fat',
-            col5: '@fat',
-            col6: '@fat'
-        },
-        // Add more objects as needed
-    ];
+    
+    useEffect(() => {
+        fetchItems();
+      }, []);
+    
+      const fetchItems = async () => {
+        try {
+          const response = await axios.get(`${apiUrl}/${getUserIdCookies.uID}?name=${getSelectdAnimal}`,
+            {
+              headers: {
+                'Authorization': `${getUserIdCookies.token}`
+              }
+            }
+          );
+          console.log('response: ', response);
+          setapiData(response.data);
+        } catch (error) {
+          console.error('Error fetching items:', error);
+        }
+      };
 
     const [showModal, setShowModal] = useState(false);
     const [selectedRow, setSelectedRow] = useState(null);
+    const [apiData, setapiData] = useState();
 
     // Function to handle row click
     const handleRowClick = (item) => {
         setSelectedRow(item);
         setShowModal(true);
+        fetchItems();
     };
 
     // Function to handle modal close
@@ -51,24 +57,20 @@ const TableFarmData = ({ showFarmTableModal, handleCloseFarmTableModal }) => {
                             <thead>
                                 <tr className=''>
                                     <th className='text-danger text-center' scope="col">NAME</th>
-                                    <th className='text-danger text-center' scope="col">MILK</th>
-                                    <th className='text-danger text-center' scope="col">POST-WEAN</th>
-                                    <th className='text-danger text-center' scope="col">VACCINE</th>
-                                    <th className='text-danger text-center' scope="col">DEWORM</th>
-                                    <th className='text-danger text-center' scope="col">ESTRUS-HEAT</th>
-                                    <th className='text-danger text-center' scope="col">FARM-SANITATION</th>
+                                    <th className='text-danger text-center' scope="col">AGE</th>
+                                    <th className='text-danger text-center' scope="col">GENDER</th>
+                                    <th className='text-danger text-center' scope="col">HEIGHT</th>
+                                    <th className='text-danger text-center' scope="col">WEIGHT</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map((item, index) => (
+                                {apiData?.map((item, index) => (
                                     <tr key={index} className='pe-auto' onClick={() => handleRowClick(item)}>
-                                        <th className="text-center user-select-none">{item.parent}</th>
-                                        <td className="text-center user-select-none">{item.col1}</td>
-                                        <td className="text-center user-select-none">{item.col2}</td>
-                                        <td className="text-center user-select-none">{item.col3}</td>
-                                        <td className="text-center user-select-none">{item.col4}</td>
-                                        <td className="text-center user-select-none">{item.col5}</td>
-                                        <td className="text-center user-select-none">{item.col6}</td>
+                                        <th className="text-center user-select-none">{item.uniquename}</th>
+                                        <td className="text-center user-select-none">{item.age}</td>
+                                        <td className="text-center user-select-none">{item.gender}</td>
+                                        <td className="text-center user-select-none">{item.height} Feet</td>
+                                        <td className="text-center user-select-none">{item.weight} KG</td>
                                     </tr>
                                 ))}
                             </tbody>
