@@ -11,6 +11,7 @@ import KeysWords from "../../Common/apiData/keyWords";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { toast } from "react-toastify";
 const BlogContent = () => {
   const { cart } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
@@ -65,11 +66,13 @@ const BlogContent = () => {
 
     // Handle the response as needed
     console.log("API Response:", response.data);
+    toast.success("Form Submited Successfully")
 
     // Add additional logic or redirect the user if needed
   } catch (error) {
     // Handle errors
     console.error("Error sending form data:", error);
+    toast.error("Please Fill Correct Details")
   }
 
   }

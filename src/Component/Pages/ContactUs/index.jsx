@@ -26,6 +26,7 @@ import { Helmet } from "react-helmet";
 import ReactWhatsapp from "react-whatsapp";
 import KeysWords from "../../Common/apiData/keyWords";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 const ContactUs = () => {
   const { t } = useTranslation();
   const { cart } = useContext(UserContext);
@@ -50,8 +51,10 @@ const ContactUs = () => {
         }
       );
       // console.log(response.data); // Handle the response as needed
+      toast.success("Form Submited Successfully")
     } catch (error) {
       console.error("Error submitting contact details:", error);
+      toast.error("Please Fill Correct Details")
 
       // Handle error, show a message to the user, etc.
     }

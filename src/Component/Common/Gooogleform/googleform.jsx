@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 
 const FeedBackForm = () => {
@@ -45,9 +46,11 @@ const FeedBackForm = () => {
       console.log("API Response:", response.data);
 
       // Add additional logic or redirect the user if needed
+      toast.success("Form Submited Successfully")
     } catch (error) {
       // Handle errors
       console.error("Error sending form data:", error);
+      toast.error("Please Fill Correct Details")
     }
   };
   return (
