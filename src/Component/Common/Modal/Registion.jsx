@@ -58,6 +58,7 @@ const Registration = ({ showModal, closeModal }) => {
 
     } catch (error) {
       console.error('Error:', error.response.data.message);
+      console.error('Error:', error.response.data.message);
       toast.error(error.response.data.message, {
         position: "top-center",
         autoClose: 2000,
