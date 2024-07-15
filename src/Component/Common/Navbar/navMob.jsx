@@ -128,7 +128,6 @@ const ResponsiveNavbar = ({ size }) => {
     tempArr[ind].amount = latestamount;
     setCart(tempArr);
     var amountdataupdata = tempArr[ind];
-    console.log(amountdataupdata, 7777);
 
     // Api ------------
     try {
@@ -137,10 +136,8 @@ const ResponsiveNavbar = ({ size }) => {
         headers: {
           'Authorization': `${getMidCookies.token}`
         }
-
       });
-      console.log(iteamdata, 4444);
-      console.log("quantity increase Successful", response.data);
+      toast.success("Quantity Update successfully")
     } catch (error) {
       console.error("quantity increase not working", error);
     }
@@ -148,15 +145,14 @@ const ResponsiveNavbar = ({ size }) => {
 
   const handleRemoves = async (id) => {
     try {
-      const RemoveCartData = { id: id, uID: UidData };
+      const RemoveCartData = { id: id, uid: UidData };
       console.log('RemoveCartData: ', RemoveCartData);
-      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}`,
+      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${UidData}`,
         {
           headers: {
             'Authorization': `${getMidCookies.token}`
           }
         });
-      console.log("Add to cart", response.data);
       if (response.data === "success") {
         toast.success("Add to cart is Remove Successfull", {
           position: "top-center",
@@ -183,7 +179,6 @@ const ResponsiveNavbar = ({ size }) => {
         });
       }
     } catch (error) {
-      console.error("Add to cart is not Remove", error);
       toast.error("Add to cart is not Remove", {
         position: "top-center",
         autoClose: 2000,
@@ -197,7 +192,6 @@ const ResponsiveNavbar = ({ size }) => {
     }
     // handleRemoveCart(id)
   };
-
   const { setLoggedInUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleLogout = () => {

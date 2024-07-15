@@ -132,7 +132,6 @@ const Navbar = ({ size }) => {
   const handleRemoves = async (id) => {
     try {
       const RemoveCartData = { id: id, uid: UidData };
-      console.log('RemoveCartData: ', RemoveCartData);
       const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${UidData}`,
         {
           headers: {
@@ -239,7 +238,6 @@ const Navbar = ({ size }) => {
     tempArr[ind].amount = latestamount;
     setCart(tempArr);
     var amountdataupdata = tempArr[ind];
-    console.log(amountdataupdata, 7777);
 
     // Api ------------
     try {
@@ -248,10 +246,8 @@ const Navbar = ({ size }) => {
         headers: {
           'Authorization': `${getMidCookies.token}`
         }
-
       });
-      console.log(iteamdata, 4444);
-      console.log("quantity increase Successful", response.data);
+      toast.success("Quantity increase successfully")
     } catch (error) {
       console.error("quantity increase not working", error);
     }
@@ -354,7 +350,7 @@ const Navbar = ({ size }) => {
 
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link px-0"
+                    className="nav-link px-2"
                     activeclassname="active"
                     exact="true"
                     to="/home"
@@ -365,7 +361,7 @@ const Navbar = ({ size }) => {
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-head px-0"
+                      className="nav-head px-2"
                     >
                       Veterinary-Products
                     </NavLink>
@@ -426,7 +422,7 @@ const Navbar = ({ size }) => {
                 <li className="nav-item">
                   <div className="dropdown">
                     <NavLink
-                      className="nav-head px-0"
+                      className="nav-head px-2"
                     >
                       Veterinary-Services
                     </NavLink>
@@ -470,7 +466,7 @@ const Navbar = ({ size }) => {
 
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link px-0"
+                    className="nav-link px-2"
                     activeclassname="active"
                     to="/blog"
                   >
@@ -479,7 +475,7 @@ const Navbar = ({ size }) => {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    className="nav-link px-0"
+                    className="nav-link px-2"
                     activeclassname="active"
                     to="/contact-us"
                   >

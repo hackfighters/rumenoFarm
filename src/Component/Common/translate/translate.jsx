@@ -77,10 +77,10 @@ function TranslateButton() {
   useEffect(() => {
     const googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
-        {
-          pageLanguage: 'en',
-          includedLanguages: 'en,hi,mr,gu,pa,bn,ur,te,ta,kn,or,ml,as',
-        },
+        // {
+        //   pageLanguage: 'en',
+        //   includedLanguages: 'en,hi,mr,gu,pa,bn,ur,te,ta,kn,or,ml,as',
+        // },
         'google_translate_element'
       );
     };
@@ -116,7 +116,6 @@ function TranslateButton() {
         <select className='form-select border border-dark' onChange={handleLanguageChange} value={lang}>
           <option value="en">English</option>
           <option value="hi">Hindi</option>
-          <option value="mr">Marathi</option>
           <option value="mr">Marathi</option>
          <option value="gu">Gujarati</option>
          <option value="pa">Punjabi</option>

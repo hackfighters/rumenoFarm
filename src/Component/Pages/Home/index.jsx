@@ -24,7 +24,7 @@ import Prdimg5 from "../../../assets/img/OurProduct/prdaml5.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
 import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
-import mobcaroimg1 from "../../../assets/img/home-img/homecaromob1.png";
+import mobcaroimg1 from "../../../assets/img/home-img/homecaromob1.jpg";
 import mobcaroimg2 from "../../../assets/img/home-img/homecaromob2.png";
 import mobcaroimg3 from "../../../assets/img/home-img/homecaromob3.png";
 import mobcaroimg4 from "../../../assets/img/home-img/homecaromob4.png";
@@ -145,7 +145,7 @@ const Home = () => {
                   <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
-              <Carousel className="header-carousel" fade interval={2000000} pause={false}>
+              <Carousel className="header-carousel" fade interval={3000} pause={false}>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg1} />

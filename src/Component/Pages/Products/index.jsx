@@ -19,7 +19,6 @@ const Products = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue, cartdata, UidData, cart, setCart, setiteamdata, iteamdata } = useContext(UserContext);
   const apiUrl = process.env.REACT_APP_API;
-  console.log(iteamdata, 333333333333)
   var Value = '';
 
   // useEffect(() => {
@@ -87,7 +86,6 @@ const Products = () => {
     setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
     const itemdatra = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }
     setiteamdata(itemdatra)
-    console.log(itemdatra)
     
 
     toast.success("Item is added to your cart", {

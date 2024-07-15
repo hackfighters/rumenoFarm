@@ -736,16 +736,16 @@ const Login = ({
                       Email
                     </label>
                     <input
-                      type="email"
+                      type="username"
                       className="form-control"
-                      placeholder="email"
+                      placeholder="username"
                       {...register("username", {
                         required: "email is required",
                       })}
                     />
-                    {errors.email && (
+                    {errors.username && (
                       <div className="text-danger">
-                        {errors.email.message}
+                        {errors.username.message}
                       </div>
                     )}
                   </div>

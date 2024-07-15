@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 
 const FarmerDetails = ({ showFarmModal, closeFarmModal }) => {
@@ -18,8 +19,10 @@ const FarmerDetails = ({ showFarmModal, closeFarmModal }) => {
             'Authorization': `${getMidCookies.token}`
           }
         })
+        toast.success("Farmer Details Submitted Successfully")
     } catch (error) {
       console.log(error)
+      toast.error("Something went wrong Please try again")
     }
     reset()
 
