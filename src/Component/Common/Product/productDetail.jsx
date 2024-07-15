@@ -40,12 +40,15 @@ import LactoPupMilkReplacer from "../../../assets/img/OurProduct/Lacto-Pup-Milk-
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import ImageGallery from '../../Pages/Products/imgGallery';
+import Cookies from "js-cookie";
 
 const ProductDetail = () => {
   const { UidData, cart, setCart, setiteamdata, setSizevalue, LoginUserData, loggedInUser } = useContext(UserContext);
   const [amountdata, setAmountData] = useState(1)
-  const { register, handleSubmit } = useForm();
+  const { register,reset, handleSubmit } = useForm();
   const apiUrl = process.env.REACT_APP_API;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+
   // console.log(amountdata, 122)
   const Data = [
     {
@@ -1424,12 +1427,12 @@ const ProductDetail = () => {
   ]
 
   const onSubmit = async (data) => {
-    console.log('data: ', data);
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API}/riview`, data);
-      console.log("API Response:", response.data);
+      const response = await axios.post(`${process.env.REACT_APP_API}/review`, data);
+      toast.success("Your Review Submited Successfully")
+      reset()
     } catch (error) {
-      console.error("Error sending form data:", error);
+      toast.error("something wrong please try again")
     }
 
   }
@@ -1438,11 +1441,12 @@ const ProductDetail = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
 
   useEffect(() => {
-
-    if (cookies.cart) {
+    if (Array.isArray(cookies.cart)) {
       setCart(cookies.cart);
+    } else {
+      setCart([]);
     }
-  }, []);
+  }, [ setCart]);
   useEffect(() => {
     setCookie("cart", cart, { path: "/" });
     Value = cart.length;
@@ -1489,40 +1493,38 @@ const ProductDetail = () => {
 
 
   const { name, id } = useParams();
-  console.log(id);
 
   const AddToCarts = async (item) => {
+    let payload = {...item,...{amount:1,uid:getMidCookies.uID}}
     if (loggedInUser) {
+      if (!Array.isArray(cart)) {
+        setCart([]);
+      }
       // Check if the item already exists in the cart
-      const itemExists = cart.some(cartItem => cartItem.id === item.id);
-      if (!itemExists) {
-        toast.success("Item is added to your cart", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        console.log("Item added to cart:", item);
-        // Add logic to handle adding item to cart
-        setCart([...cart, { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
-        const itemData = { id: item.id, amount: amountdata, price: item.priceText, img: item.img, name: item.name, uID: UidData };
-        setiteamdata(itemData);
-        console.warn(itemData);
+      const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
 
+      if (!itemExists) {
+        
+        // Add logic to handle adding item to cart
+        setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
+        setiteamdata(itemData);
+        
         try {
-          const response = await axios.post(`${apiUrl}/carts`, itemData);
-          console.log('Add to cart is Successfull', response.data);
+          const response = await axios.post(`${process.env.REACT_APP_API}/cart`, payload,
+            {
+              headers: {
+                'Authorization': `${getMidCookies.token}`
+              }
+            });
+          
           if (response.data.msg == 'success') {
           }
         } catch (error) {
           console.error('Add to cart is not working', error);
         }
-      }
-      else {
+      } else {
+        // Optionally, show a message that the item is already in the cart
         toast.warn("Item is already added to your cart", {
           position: "top-center",
           autoClose: 2000,
@@ -1534,7 +1536,6 @@ const ProductDetail = () => {
           theme: "light",
         });
       }
-
     } else {
       setShowLoginModal(!showLoginModal);
       toast.warn("Please Login", {
@@ -1554,7 +1555,6 @@ const ProductDetail = () => {
   // filter process
   const items = Data;
   const ScriptById = items.filter((item) => item.id == id);
-  console.warn('ScriptById: ', ScriptById);
 
 
 
@@ -1570,9 +1570,7 @@ const ProductDetail = () => {
   const filterbynames = sameitemfilter[0].name
   const filterProduct = items.filter((item) => item.name.includes(filterbynames))
   if (filterProduct.some(item => item.id == id)) {
-    console.warn(true);
   } else {
-    console.warn(false);
   }
   if (sameitemfilter.length > 0) {
     // console.warn(sameitemfilter[0],id);

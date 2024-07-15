@@ -16,6 +16,7 @@ const Registration = ({ showModal, closeModal }) => {
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
   const {
     register,
@@ -30,6 +31,7 @@ const Registration = ({ showModal, closeModal }) => {
 
 
   const onSubmit = async (data) => {
+    setLoading(true);
     const Registrationdata = 
       {
         country : countrydata,
@@ -51,9 +53,11 @@ const Registration = ({ showModal, closeModal }) => {
         toast.success('Registration successful');
         reset()
         setShowLoginModal(true);
+        setLoading(false);
         closeModal();
       } else {
         toast.error('Registration failed');
+        setLoading(false);
       }
 
     } catch (error) {
@@ -70,6 +74,7 @@ const Registration = ({ showModal, closeModal }) => {
         theme: "light",
       });
       // closeModal()
+      setLoading(false);
     }
   };
 
@@ -277,11 +282,18 @@ const Registration = ({ showModal, closeModal }) => {
                   </div>
                   <div className="d-flex justify-content-center">
                     <button
-                      type="submit"
+                      type="submit" disabled={loading}
                       className="btn text-white border-0 gradient-custom-2 my-3 w-75"
                     >
-                      {t("v318")}
-                    </button>
+                    Submit{" "}
+                        {loading ? (
+                          <>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </button>
                   </div>
                 </form>
               </div>

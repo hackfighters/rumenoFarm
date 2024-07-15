@@ -13,6 +13,7 @@ const FeedBackForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const getUserId = JSON.parse(Cookies.get("loginUserData") ?? "[]");
@@ -32,7 +33,6 @@ const FeedBackForm = () => {
       need:data.need,
     }
     
-    console.log(serviceForm)
       // Make an HTTP POST request using Axios
       const response = await axios.post(`${process.env.REACT_APP_API}/service_form`, serviceForm,
         {
@@ -43,10 +43,10 @@ const FeedBackForm = () => {
       );
 
       // Handle the response as needed
-      console.log("API Response:", response.data);
 
       // Add additional logic or redirect the user if needed
       toast.success("Form Submited Successfully")
+      reset()
     } catch (error) {
       // Handle errors
       console.error("Error sending form data:", error);
@@ -231,14 +231,14 @@ const FeedBackForm = () => {
               </div>
 
               <div className="my-2">
-                <label htmlFor="formGroupExampleInput2">{t("v131")}</label>
+                <label htmlFor="formGroupExampleInput2">Other Animal</label>
                 <input
                   {...register("other")}
                   type="text"
                   className="form-control w-50"
                   id="formGroupExampleInput2"
                   name="other"
-                  placeholder={t("v131")}
+                  placeholder="Other Animal"
                 />
               </div>
 

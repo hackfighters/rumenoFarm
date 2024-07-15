@@ -148,37 +148,37 @@ const Home = () => {
               <Carousel className="header-carousel" fade interval={2000000} pause={false}>
                 <Carousel.Item>
                   <picture>
-                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg1} />
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg1} />
                     <img className="d-block mx-auto w-100 " src={caroimg1} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
-                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg2} />
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg2} />
                     <img className="d-block mx-auto w-100 " src={caroimg2} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
-                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg3} />
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg3} />
                     <img className="d-block mx-auto w-100 " src={caroimg3} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
-                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg4} />
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg4} />
                     <img className="d-block mx-auto w-100 " src={caroimg4} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
-                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg5} />
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg5} />
                     <img className="d-block mx-auto w-100 " src={caroimg5} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
                   <picture>
-                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:400px)" srcSet={mobcaroimg6} />
+                    <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg6} />
                     <img className="d-block mx-auto w-100 " src={caroimg6} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>

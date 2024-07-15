@@ -28,28 +28,29 @@ const Achievment = () => {
         <img
 
             className="d-block achievment-img"
-        alt="Rumeno-Veterinary-Product"
+            alt="Rumeno-Veterinary-Product"
             src={caroimg1}
 
         />,
         <img
 
             className="d-block achievment-img"
-        alt="Rumeno-Veterinary-Product"
+            alt="Rumeno-Veterinary-Product"
             src={caroimg2}
 
         />,
-        <div className="video-container" onClick={togglePlay}>
-            <video
+        <div className="video-container">
+            {/* <video
                 muted
                 controls={isPlaying}
                 ref={videoRef}
                 className="video"
                 src={caroimg3}
-            ></video>
-            {!isPlaying && (
+            ></video> */}
+            <iframe width="560" height="315" className='vide achievment-img ' src="https://www.youtube.com/embed/MgA56V6PdBI?si=uWExyXzXTHePBggP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            {/* {!isPlaying && (
                 <div className="play-icon btn--shockwave is-active">&#9658;</div>
-            )}
+            )} */}
         </div>,
         <img
 

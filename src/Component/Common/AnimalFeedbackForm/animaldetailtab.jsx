@@ -56,7 +56,7 @@ const AnimalDetailTab = () => {
                   >
                     Help
                   </button>
-                  <div className="dropdown-menu">
+                  <div className="dropdown-menu farm-data-help">
                     {/* <a className="dropdown-item letter-spacing" href="#">
                   <FontAwesomeIcon
                   icon={faPhone}

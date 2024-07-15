@@ -88,17 +88,7 @@ const ProductItem = ({ item, handleClick }) => {
               'Authorization': `${getMidCookies.token}`
             }
           });
-        console.warn("cart add successfully :", response.data);
-        toast.success("cart add successfully", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        
       } catch (error) {
           console.warn(error)
           toast.error(error, {
@@ -177,12 +167,13 @@ const ProductItem = ({ item, handleClick }) => {
               />
             </div>
             
-
+              <a className="" target="_blank" href="https://www.youtube.com/@RumenoFarmotech-bg5y">
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-danger"
               type="button"
               icon={faYoutube}
             />
+              </a>
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-success"
               type="button"

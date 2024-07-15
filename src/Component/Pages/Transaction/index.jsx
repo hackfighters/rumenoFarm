@@ -27,7 +27,7 @@ import { Link, useNavigate } from "react-router-dom";
 // {/* Rumeno */}
 // {/* Veterinary */}
 const Transaction = () => {
-  const { amountData, UidData ,setCart} = useContext(UserContext);
+  const { amountData, UidData, setCart } = useContext(UserContext);
   const {
     register: register,
     handleSubmit: handleSubmit,
@@ -36,6 +36,7 @@ const Transaction = () => {
   const {
     register: registerPayIssue,
     handleSubmit: handlePayIssueSubmit,
+    reset: reset,
     formState: { errors: errorspayissue }
   } = useForm();
 
@@ -206,17 +207,21 @@ const Transaction = () => {
     }
   };
 
+  // ------------
+  const [loading, setLoading] = useState(false);
+  // -------------
+
   // upload End
   const onSubmit = async (data) => {
+    setLoading(true);
     const formData = new FormData();
     formData.append("image", image);
     try {
       const uploadImgResponse = await axios.post("https://api.imgbb.com/1/upload?key=273ab24b40be59dc593d96c50976ae42", formData);
       console.log('response: ', uploadImgResponse.data.status);
       if (uploadImgResponse.data.status == 200) {
-        
         if (data.paymode == "COD") {
-         let payload = {
+          let payload = {
             name: data.name,
             mobileNumber: data.mobileNumber,
             address: data.address,
@@ -226,12 +231,12 @@ const Transaction = () => {
             paymode: data.paymode,
             uid: UidData,
             image: uploadImgResponse.data.data.url,
-            cart:getCartDataCookies
+            cart: getCartDataCookies
           };
 
-          
+
           try {
-            const response = await axios.post(`${apiUrl}`,payload,
+            const response = await axios.post(`${apiUrl}`, payload,
               {
                 headers: {
                   'Authorization': `${getUserCookies.token}`
@@ -239,12 +244,14 @@ const Transaction = () => {
               });
             console.log('response: ', response);
             Cookies.remove("cart");
+            setLoading(false);
           } catch (error) {
             console.error('transaction working', error);
+            setLoading(false);
           }
         }
         else {
-      let  payload = {
+          let payload = {
             name: data.name,
             mobileNumber: data.mobileNumber,
             address: data.address,
@@ -254,11 +261,11 @@ const Transaction = () => {
             cod_payment: "NA",
             uid: UidData,
             image: uploadImgResponse.data.data.url,
-            cart:getCartDataCookies
+            cart: getCartDataCookies
           };
-          
+
           try {
-            const response = await axios.post(`${apiUrl}`,payload,
+            const response = await axios.post(`${apiUrl}`, payload,
               {
                 headers: {
                   'Authorization': `${getUserCookies.token}`
@@ -267,24 +274,43 @@ const Transaction = () => {
             console.log('response: ', response);
             Cookies.remove("cart");
             setCart([])
+            setLoading(false);
           } catch (error) {
             console.error('transaction  not working', error);
+            setLoading(false);
           }
 
         }
+
       }
       else {
         alert("error please try again")
       }
     } catch (error) {
       console.error(' Transaction error', error);
+      setLoading(false);
     }
+    setLoading(false);
     // Navigate to Thankyou page
     navigate("/thankyoupage");
   };
 
-  const onPayIssueSubmit = (data) => {
-    console.warn(data)
+  const onPayIssueSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API}/transaction_issue`,
+        data,
+        {
+          headers: {
+            'Authorization': `${getUserCookies.token}`
+          }
+        }
+      );
+      toast.success("Form Submited Successfully")
+      reset()
+    } catch (error) {
+      toast.error("something wrong please try again")
+    }
     handlePayIssueClose()
   }
 
@@ -737,10 +763,17 @@ const Transaction = () => {
 
                       <button
                         className="contact_form_submit mt-5"
-                        type="submit"
+                        type="submit" disabled={loading}
                         onClick={handleSubmit(onSubmit)}
                       >
-                        Submit
+                        Submit{" "}
+                        {loading ? (
+                          <>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </button>
                       <div className="mt-4 text-center">
                         <Link className="text-danger" onClick={handlePayIssueShow}>Transaction Issue ? Click her</Link>
@@ -760,19 +793,32 @@ const Transaction = () => {
                               placeholder="Enter Name"
                               type="text"
                               className="form-control"
-                              {...registerPayIssue("name")}
+                              {...registerPayIssue("name", { required: "Name is required" })}
                             />
+                            {errors.name && <span className="text-danger">{errors.name.message}</span>}
                           </div>
                           <div className="col-lg-11 my-2">
                             <label className="form-label">
                               Mobile Number
                             </label>
                             <input
-                              placeholder="Enter Number"
-                              type="number"
-                              className="form-control"
-                              {...registerPayIssue("number")}
-                            />
+                        type="text"
+                        className="form-control form-group"
+                        placeholder="Mobile Number"
+                        {...registerPayIssue("number", {
+                          required: true,
+                          pattern: /^[0-9]{10}$/, // Regex pattern for only numbers
+                        })}
+                      />
+                      {errors.number && (
+                        <span className="text-danger">
+                          {
+                            errors.number.type === "required"
+                              ? "Please enter your mobile number"
+                              : "Please enter a valid mobile number" // Custom error message for pattern validation
+                          }
+                        </span>
+                      )}
                           </div>
                           <div className="col-lg-11 my-2">
                             <label className="form-label">
@@ -782,8 +828,9 @@ const Transaction = () => {
                               placeholder="Enter Transaction ID"
                               type="text"
                               className="form-control"
-                              {...registerPayIssue("transaction_id")}
+                              {...registerPayIssue("transaction_id", { required: "Transaction ID is required" })}
                             />
+                            {errors.transaction_id && <span className="text-danger">{errors.transaction_id.message}</span>}
                           </div>
                           <div className="col-lg-11 my-3">
                             <label className="form-label">
@@ -792,9 +839,10 @@ const Transaction = () => {
                             <textarea
                               className="form-control"
                               placeholder="Enter Transaction Issue..."
-                              {...registerPayIssue("transaction_issue")}
+                              {...registerPayIssue("transaction_issue", { required: "Transaction Issue is required" })}
                               rows="3"
                             ></textarea>
+                            {errors.transaction_issue && <span className="text-danger">{errors.transaction_issue.message}</span>}
                           </div>
                           <button type="submit" className="btn btn-primary w-auto">Submit</button>
                         </form>

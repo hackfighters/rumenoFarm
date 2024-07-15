@@ -30,6 +30,7 @@ import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg";
 import DCox from "../../../assets/img/OurProduct/D-Cox.jpg";
 import RumenoMicroflorapre from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg";
 import LactoPupMilkReplacer from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
+import { navDropdown } from "../navCloseResp/navDropdown";
 
 const Login = ({
   showModal,
@@ -633,17 +634,12 @@ const Login = ({
       email: data?.username,
       password: data?.password
     }
-
-
-    // e.preventDefault(e);
     try {
       const response = await axios.post(
         `${apiUrl}/login`, payload
       );
       // Handle the login success, e.g., store token i n state or localStorage
       setviewProduct(true)
-      console.warn("Login successful:", response.data);
-      const datastatus = response.data.status;
       if (response.data.status == 200) {
         const { userName, FarmName, date, uID, pID, rId, sessionId, token } = response.data;
         console.warn(userName, FarmName, date)
@@ -659,7 +655,6 @@ const Login = ({
         setLoggedInUser(firstWord);
         setfarmDtl(FarmerDtl)
         // handleAddtoCartApi(getUidata);
-        // console.warn(userName, FarmName, date)
 
         Cookies.set("loggedInUser", firstWord);
         Cookies.set("loginUserData", JSON.stringify({
@@ -689,30 +684,19 @@ const Login = ({
         });
         closeModal(); // Close the login modal
         reset();
+        navDropdown()
+      }
+      else if(response.data.status == 404){
+        toast.error(response.data.message)
+        setviewProduct(true)
+      }else if(response.data.status == 401){
+        toast.error(response.data.message)
+        setviewProduct(true)
       }
       const GetUidFromCookies = JSON.parse(Cookies.get("loginUserData") ?? "{}");
       console.log(GetUidFromCookies)
-      if (response.data.uID == GetUidFromCookies.uID) {
-        closeModal();
-        console.log('true')
-      }
-
-      else {
-        toast.error(datastatus, {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-        closeModal(); // Close the login modal
-      }
+ 
     } catch (error) {
-      // Handle login failure
-      // console.error("Login failed:", error.message);
       toast.error(error, {
         position: "top-center",
         autoClose: 2000,
@@ -798,17 +782,17 @@ const Login = ({
                       {t("v308")}
                     </a>
                   </div>
+                </form>
                   <div className="d-flex align-items-center justify-content-center pb-4">
                     <p className="mb-0 me-2">{t("v309")}</p>
                     <button
-                      type="submit"
+                      type=""
                       className="btn btn-outline-danger"
                       onClick={openRegistrationModal}
                     >
                       {t("v310")}
                     </button>
                   </div>
-                </form>
                 {/* <LoginForm/> */}
               </div>
               <div className="col-lg-6 d-flex align-items-center gradient-custom-2">

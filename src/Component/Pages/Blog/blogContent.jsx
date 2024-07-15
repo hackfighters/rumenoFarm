@@ -14,7 +14,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 const BlogContent = () => {
   const { cart } = useContext(UserContext);
-  const { register, handleSubmit } = useForm();
+  const { register,reset, handleSubmit } = useForm();
   const apiUrl = `${process.env.REACT_APP_API}/blog`;
   const getparentidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
   const blogdata = [
@@ -65,8 +65,8 @@ const BlogContent = () => {
       });
 
     // Handle the response as needed
-    console.log("API Response:", response.data);
     toast.success("Form Submited Successfully")
+    reset()
 
     // Add additional logic or redirect the user if needed
   } catch (error) {

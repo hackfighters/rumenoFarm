@@ -22,11 +22,18 @@ const Products = () => {
   console.log(iteamdata, 333333333333)
   var Value = '';
 
+  // useEffect(() => {
+  //   if (cookies.cart) {
+  //     setCart(cookies.cart);
+  //   }
+  // }, []);
   useEffect(() => {
-    if (cookies.cart) {
+    if (Array.isArray(cookies.cart)) {
       setCart(cookies.cart);
+    } else {
+      setCart([]);
     }
-  }, []);
+  }, [ setCart]);
 
   useEffect(() => {
 
@@ -46,7 +53,7 @@ const Products = () => {
 
     try {
       const response = await axios.post(`${apiUrl}/cart`, iteamdata);
-      console.log('Add to cart is Successfull', response.data);
+      
           if(response.data.msg == 'success'){
       handleClick()
           }
@@ -58,7 +65,6 @@ const Products = () => {
 
     let isPresent = false;
     cart.forEach((product) => {
-
       if (item.id === parseInt(product.id)) {
         isPresent = true;
       }

@@ -36,6 +36,7 @@ import logstatus from "../../../assets/img/Logo/navstatus - Copy.png";
 import FarmerDetails from "../Modal/FarmerFarmDtl";
 import TranslateButton from "../translate/translate";
 import SearchBar from "./navsearch";
+import { navDropdown } from "../navCloseResp/navDropdown";
 
 const Navbar = ({ size }) => {
   const { search } = useParams();
@@ -130,15 +131,14 @@ const Navbar = ({ size }) => {
 
   const handleRemoves = async (id) => {
     try {
-      const RemoveCartData = { id: id, uID: UidData };
+      const RemoveCartData = { id: id, uid: UidData };
       console.log('RemoveCartData: ', RemoveCartData);
-      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}`,
+      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${UidData}`,
         {
           headers: {
             'Authorization': `${getMidCookies.token}`
           }
         });
-      console.log("Add to cart", response.data);
       if (response.data === "success") {
         toast.success("Add to cart is Remove Successfull", {
           position: "top-center",
@@ -165,7 +165,6 @@ const Navbar = ({ size }) => {
         });
       }
     } catch (error) {
-      console.error("Add to cart is not Remove", error);
       toast.error("Add to cart is not Remove", {
         position: "top-center",
         autoClose: 2000,
@@ -190,6 +189,7 @@ const Navbar = ({ size }) => {
     setLoggedInUser(null);
     setCart(0);
     navigate("/home");
+    navDropdown()
   };
 
   // const handleChange = async (item, d) => {
@@ -502,7 +502,7 @@ const Navbar = ({ size }) => {
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
                     />
-                    <span className="badge-cart">{size}</span>
+                    <span className="badge-cart">{size?size:0}</span>
                   </Link>
                 </li>
                 <li>

@@ -5,6 +5,7 @@ import Footer from "../../Common/Footer";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Accordion, NavLink } from "react-bootstrap";
 import { useCookies } from "react-cookie";
+import Cookies from "js-cookie";
 
 // import images
 import poultryfine from "../../../assets/img/OurProduct/Poultryfine.png";
@@ -44,6 +45,8 @@ const GoatCategoryPage = ({ }) => {
   const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+
 
 
 
@@ -557,11 +560,18 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
   var Value = '';
   const AllData = [...MainJson];
   const [cookies, setCookie] = useCookies(["cart"]);
+
+
+
   useEffect(() => {
-    if (cookies.cart) {
+    if (Array.isArray(cookies.cart)) {
       setCart(cookies.cart);
+    } else {
+      setCart([]);
     }
-  }, []);
+  }, [ setCart]);
+
+  
   useEffect(() => {
     setCookie("cart", cart, { path: "/" });
     Value = cart.length;
@@ -584,7 +594,6 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       product.name?.toLowerCase().includes(keyword.toLowerCase())
     )
   );
-  console.log(filteredProducts)
   const uniqueNames = new Set(filteredProducts.map(item => item.name.toLowerCase()));
   const uniqueItemsArray = Array.from(uniqueNames, name =>
     filteredProducts.find(item => item.name.toLowerCase() === name)
@@ -615,21 +624,30 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
 
 
   const AddToCarts = async (item) => {
+    let payload = {...item,...{amount:1,uid:getMidCookies.uID}}
     if (loggedInUser) {
+      if (!Array.isArray(cart)) {
+        setCart([]);
+      }
       // Check if the item already exists in the cart
       const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
-      console.log(cart)
+      
 
       if (!itemExists) {
-        console.log("Item added to cart:", item);
+        
         // Add logic to handle adding item to cart
         setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
         const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
-        console.log(itemData);
-          try {
-            const response = await axios.post(`${process.env.REACT_APP_API}/cart`, itemData);
-          console.log('Add to cart is Successfull', response.data);
+        
+        try {
+          const response = await axios.post(`${process.env.REACT_APP_API}/cart`, payload,
+            {
+              headers: {
+                'Authorization': `${getMidCookies.token}`
+              }
+            });
+          
           if (response.data.msg == 'success') {
           }
         } catch (error) {
@@ -637,7 +655,16 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
         }
       } else {
         // Optionally, show a message that the item is already in the cart
-        console.log("Item already in cart", item);
+        toast.warn("Item is already added to your cart", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } else {
       setShowLoginModal(!showLoginModal);
@@ -692,7 +719,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
           </div>
         </div>
         <div className="container-fluid category-section">
-          <div className="row category-menu justify-content-end mx-1">
+          <div className="row category-menu justify-content-end mx-1 mt-3">
             <div className="col-lg-9 bg-white shadow ">
               <h4 className="mt-2 text-center mb-0 fw-bold">CATEGORY MENU</h4>
               <hr className="my-2" />

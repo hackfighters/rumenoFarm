@@ -32,7 +32,7 @@ const ContactUs = () => {
   const { cart } = useContext(UserContext);
   const {
     handleSubmit,
-    register,
+    register,reset,
     formState: { errors },
   } = useForm();
   const apiUrl = process.env.REACT_APP_API;
@@ -52,8 +52,8 @@ const ContactUs = () => {
       );
       // console.log(response.data); // Handle the response as needed
       toast.success("Form Submited Successfully")
+        reset()
     } catch (error) {
-      console.error("Error submitting contact details:", error);
       toast.error("Please Fill Correct Details")
 
       // Handle error, show a message to the user, etc.
