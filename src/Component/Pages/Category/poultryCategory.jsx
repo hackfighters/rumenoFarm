@@ -662,6 +662,16 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
           
           if (response.data.msg == 'success') {
           }
+          toast.success("Item is added to your cart", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         } catch (error) {
           console.error('Add to cart is not working', error);
         }
