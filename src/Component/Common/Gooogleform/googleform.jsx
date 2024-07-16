@@ -56,7 +56,7 @@ const FeedBackForm = () => {
   return (
     <section className=" container-fluid ">
       <div className="row py-5 justify-content-center">
-        <h2 className="py-2 px-4 service-head">Form</h2>
+        <h2 className="py-2 px-4 service-head text-center fw-bold">Basic Form</h2>
         <p className="px-2 text-center">{t("v120")}</p>
 
         <div className="col-sm-8">
@@ -264,7 +264,7 @@ const FeedBackForm = () => {
 
             <div className="d-flex justify-content-center">
               <button
-                className="btn btn-primary border-0 gradient-custom-2 mb-3 w-25"
+                className="btn btn-primary border-0 gradient-custom-2 mb-3 w-auto"
                 type="submit"
               >
                 submit

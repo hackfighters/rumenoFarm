@@ -61,9 +61,7 @@ const Registration = ({ showModal, closeModal }) => {
       }
 
     } catch (error) {
-      console.error('Error:', error.response.data.message);
-      console.error('Error:', error.response.data.message);
-      toast.error(error.response.data.message, {
+      toast.error(error?.response?.data?.message  || "Something went wrong please try again", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,

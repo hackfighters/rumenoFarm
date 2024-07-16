@@ -30,7 +30,7 @@ const MilkRecord = () => {
     fetchItems();
   }, []);
 
-  const fetchItems = async (id) => {
+  const fetchItems = async () => {
     try {
       const response = await axios.get(`${apiUrl}/${getMidCookies.mid}`,
         {

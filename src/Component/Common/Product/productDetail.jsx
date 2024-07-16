@@ -45,9 +45,13 @@ import Cookies from "js-cookie";
 const ProductDetail = () => {
   const { UidData, cart, setCart, setiteamdata, setSizevalue, LoginUserData, loggedInUser } = useContext(UserContext);
   const [amountdata, setAmountData] = useState(1)
-  const { register,reset, handleSubmit } = useForm();
+  const [productReview, setProductReview] = useState([])
+  const { register,reset,formState: { errors }, handleSubmit } = useForm();
   const apiUrl = process.env.REACT_APP_API;
   const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+
+  const { name, id } = useParams();
+
 
   // console.log(amountdata, 122)
   const Data = [
@@ -1425,11 +1429,43 @@ const ProductDetail = () => {
               }`,
     }
   ]
-
-  const onSubmit = async (data) => {
+  
+  useEffect(() => {
+    fetchReviewData();
+  }, []);
+  const fetchReviewData = async()=>{
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API}/review`, data);
+      const response = await axios.get(`${apiUrl}/review/${id}`,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+        console.warn('response: ', response.data);
+        setProductReview(response?.data)
+    } catch (error) {
+      console.warn('Error fetching items:', error);
+    }
+  }
+  const onSubmit = async (data) => {
+    let payload = {
+      name: data.name,
+      email: data.email,
+      review: data.review,
+      uid:getMidCookies.uID,
+      productid:id,
+    }
+    console.log('payload: ', payload);
+    try {
+      const response = await axios.post(`${apiUrl}/review`, payload,
+        {
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+        console.log('response: ', response);
       toast.success("Your Review Submited Successfully")
+      fetchReviewData();
       reset()
     } catch (error) {
       toast.error("something wrong please try again")
@@ -1492,7 +1528,6 @@ const ProductDetail = () => {
   };
 
 
-  const { name, id } = useParams();
 
   const AddToCarts = async (item) => {
     let payload = {...item,...{amount:1,uid:getMidCookies.uID}}
@@ -1758,81 +1793,93 @@ const ProductDetail = () => {
               <p className='px-4'>{item.description}</p>
 
             </div>
-            <form className=" mt-5  justify-content-center bg-white" onSubmit={handleSubmit(onSubmit)}>
-              <div className="row py-5 px-4">
-                <h4 className="mb-3">Reviews</h4>
-                <hr />
-                <div className="col-lg-6">
-                  <div className="col-lg-8 my-3">
-                    <div>
-                      <label className="form-label px-2" htmlFor="name">
-                        Name
-                      </label>
-                    </div>
-                    <input
-                      placeholder="Name"
-                      type="text"
-                      id="name"
-                      className="form-control"
-                      {...register("name")}
-                    />
-                  </div>
-                  <div className="col-lg-8 my-3">
-                    <div>
-                      <label className="form-label px-2" htmlFor="email">
-                        Email
-                      </label>
-                    </div>
-                    <input
-                      placeholder="Email"
-                      type="email"
-                      id="email"
-                      className="form-control"
-                      {...register("email")}
-                    />
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="col-lg-10 my-3">
-                    <label htmlFor="comment" className="form-label">
-                      Your Review
-                    </label>
-                    <textarea
-                      className="form-control"
-                      id="comment"
-                      {...register("comment")}
-                      rows="4"
-                    ></textarea>
-                  </div>
-                  <button type="submit" className="btn btn-primary w-auto mt-3">
-                    Submit
-                  </button>
-                </div>
-              </div>
-
-            </form>
+            <form
+      className="mt-5 justify-content-center bg-white"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <div className="row py-5 px-4">
+        <h4 className="mb-3">Reviews</h4>
+        <hr />
+        <div className="col-lg-6">
+          <div className="col-lg-8 my-3">
+            <div>
+              <label className="form-label px-2" htmlFor="name">
+                Name
+              </label>
+            </div>
+            <input
+              placeholder="Name"
+              type="text"
+              id="name"
+              className="form-control"
+              {...register("name", { required: "Name is required" })}
+            />
+            {errors.name && (
+              <p className="text-danger px-2">{errors.name.message}</p>
+            )}
+          </div>
+          <div className="col-lg-8 my-3">
+            <div>
+              <label className="form-label px-2" htmlFor="email">
+                Email
+              </label>
+            </div>
+            <input
+              placeholder="Email"
+              type="email"
+              id="email"
+              className="form-control"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                  message: "Invalid email address",
+                },
+              })}
+            />
+            {errors.email && (
+              <p className="text-danger px-2">{errors.email.message}</p>
+            )}
+          </div>
+        </div>
+        <div className="col-lg-6">
+          <div className="col-lg-10 my-3">
+            <label htmlFor="review" className="form-label">
+              Your Review
+            </label>
+            <textarea
+              className="form-control"
+              id="review"
+              {...register("review", { required: "Review is required" })}
+              rows="4"
+            ></textarea>
+            {errors.review && (
+              <p className="text-danger px-2">{errors.review.message}</p>
+            )}
+          </div>
+          <button type="submit" className="btn btn-primary w-auto mt-3">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
             <div className=" bg-white p-3 my-5">
+            {productReview?.map((item, index) => (
+              <>
               <div className="col-lg-6 d-flex align-items-center my-3">
                 <FontAwesomeIcon className='border rounded-circle text-danger p-2' icon={faUser} />
-                <h4 className='my-0 mx-2'>Admin Panel</h4>
+                <h4 className='my-0 mx-2'>{item.name}</h4>
               </div>
               
               <div className="col-lg-12 ">
                 <p className='mx-2'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, obcaecati natus laudantium minima placeat doloribus perferendis accusantium, corporis voluptatem vel a. Labore eius quis maxime dolorum corrupti fuga amet explicabo?
+                  {item.review}
                 </p>
                 {/* <h6 className='mx-2 fw-bold'>22 Aug 2022</h6> */}
               </div>
               <hr />
-              <div className="col-lg-6 d-flex align-items-center my-3">
-                <FontAwesomeIcon className='border rounded-circle text-danger p-2' icon={faUser} />
-                <h4 className='my-0 mx-2'>Admin Panel</h4>
-              </div>
-              <div className="col-lg-12">
-                <p className='mx-2'>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, obcaecati natus laudantium minima placeat doloribus perferendis accusantium, corporis voluptatem vel a. Labore eius quis maxime dolorum corrupti fuga amet explicabo?
-                </p>
-              </div>
+              </>
+            ))}
             </div>
           </>
         ))}
