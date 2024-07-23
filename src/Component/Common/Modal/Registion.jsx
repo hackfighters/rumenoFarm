@@ -22,6 +22,7 @@ const Registration = ({ showModal, closeModal }) => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
   const apiUrl = process.env.REACT_APP_API;
@@ -29,6 +30,7 @@ const Registration = ({ showModal, closeModal }) => {
   const countrystate = selectedState?.name
   const countrycity = selectedCity?.name
 
+  const password = watch("password");
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -37,7 +39,8 @@ const Registration = ({ showModal, closeModal }) => {
         country : countrydata,
         state: countrystate,
         city: countrycity,
-        fullName : data.fullName,
+        firstName : data.firstName,
+        lastName : data.lastName,
         mobile : data.mobile,
         email : data.email,
         password : data.password,
@@ -101,30 +104,42 @@ const Registration = ({ showModal, closeModal }) => {
                 <form className="container" onSubmit={handleSubmit(onSubmit)}>
                   <div className="form-row row d-flex">
                     <div className="form-group col-lg-12 my-2">
-                      <label className="my-2">{t("v311")}</label>
+                      <label className="my-2">First Name</label>
                       <input
-                        {...register("fullName", {
-                          required: "Full Name is required",
+                        {...register("firstName", {
+                          required: "Name is required",
                         })}
                         type="text"
                         className={`form-control ${
-                          errors.fullName ? "is-invalid" : ""
+                          errors.firstName ? "is-invalid" : ""
                         }`}
-                        name="fullName"
+                        name="firstName"
                      
-                        placeholder="Enter Name"
+                        placeholder="Enter First Name"
                       />
-                      {errors.fullName && (
+                      {errors.firstName && (
                         <>
                         <span className="text-danger">
-                          {errors.fullName.message}
+                          {errors.firstName.message}
                         </span>
                           <span className="d-none">
-                            {toast.error(errors.fullName.message)}
+                            {toast.error(errors.firstName.message)}
                             </span>
                             </>
-                            
                       )}
+                    </div>
+                    <div className="form-group col-lg-12 my-2">
+                      <label className="my-2">Last Name</label>
+                      <input
+                        {...register("LastName")}
+                        type="text"
+                        className={`form-control ${
+                          errors.LastName ? "is-invalid" : ""
+                        }`}
+                        name="LastName"
+                     
+                        placeholder="Enter Last Name"
+                      />
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-2">{t("v312")}</label>
@@ -163,8 +178,9 @@ const Registration = ({ showModal, closeModal }) => {
                         }`}
                         name="email"
                  
-                        placeholder="Email"
+                        placeholder="Email  (optional)"
                       />
+                      <small>(optional but recommended to recover lost password)</small>
                       {errors.email && (
                         <span className="text-danger">
                           {errors.email.message}
@@ -202,6 +218,26 @@ const Registration = ({ showModal, closeModal }) => {
                         </span>
                       )}
                     </div>
+                    <div className="form-outline mb-3">
+                    <label className="form-label mx-2" htmlFor="form2Example22">
+                      Confirm Password
+                    </label>
+                    <input
+                      {...register("confirmpassword", {
+                        required: "Password confirmation is required",
+                        validate: value => value === password || "Passwords do not match",
+                      })}
+                      type="password"
+                      name="confirmpassword"
+                      className={`form-control ${errors.confirmpassword ? 'is-invalid' : ''}`}
+                      placeholder="Confirm Password"
+                    />
+                    {errors.confirmpassword && (
+                      <span className="text-danger">
+                        {errors.confirmpassword.message}
+                      </span>
+                    )}
+                  </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">Country</label>
                       {/* <Select

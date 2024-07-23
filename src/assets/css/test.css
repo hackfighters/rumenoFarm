@@ -42,3 +42,12 @@
       left: -85px;
     }
   }
+
+
+  /* Change Color on Scroll */
+
+.scroll-text {
+  color: white;
+  mix-blend-mode: difference;
+}
+

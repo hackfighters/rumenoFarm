@@ -1558,17 +1558,17 @@ body {
   .video-content {
     position: absolute;
     left: 5%;
-    top: 10rem;
+    top: 30rem;
     filter: drop-shadow(2px 4px 6px black);
     z-index: 999;
     color: white !important;
   }
   .video-content h1 {
-    font-size: xxx-large !important;
+    font-size: xx-large !important;
     color: white !important;
   }
   .video-content p {
-    font-size: x-large !important;
+    font-size: large !important;
     color: white !important;
   }
 }
@@ -1953,11 +1953,23 @@ html {
   z-index: 999;
   margin-top: 13px;
   width: auto;
-  border-radius: 55px;
+  border-radius: 12px;
   border: 0;
-  bottom: 20px;
+  bottom: 25px;
   background-color: #4bed2f;
   padding: 1px 4px;
+}
+.whatsapp-sects {
+  position: fixed;
+  right: 4%;
+  z-index: 999;
+  margin-top: 13px;
+  width: auto;
+  border-radius: 12px;
+  border: 0;
+  bottom: 5px;
+  padding: 1px 4px;
+  font-weight: bold;
 }
 .whatsapp-sect svg {
   font-size: 3.5rem;
@@ -2338,6 +2350,10 @@ button.contact_form_submit {
   }
   .service-images img{
     width: 100% !important;
+  }
+  .whatsapp-sects {
+    right: 1.5%;
+
   }
 }
 @media only screen and (min-width: 450px) and (max-width: 768px) {
@@ -2846,4 +2862,11 @@ img.card-img:hover {
 }
 .selected-bg-color {
   background-color: antiquewhite;
+}
+
+.home-bg{
+  background-image: url(../src/assets/img/home-img/homecaromob1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

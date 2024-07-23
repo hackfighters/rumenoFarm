@@ -631,7 +631,7 @@ const Login = ({
   const onSubmit = async (data) => {
     console.log('data: ', data);
     const payload = {
-      email: data?.username,
+      mobile: data?.username,
       password: data?.password
     }
     try {
@@ -640,6 +640,7 @@ const Login = ({
       );
       // Handle the login success, e.g., store token i n state or localStorage
       setviewProduct(true)
+      console.log('response.data: ', response.data);
       if (response.data.status == 200) {
         const { userName, FarmName, date, uID, pID, rId, sessionId, token } = response.data;
         console.warn(userName, FarmName, date)
@@ -733,14 +734,14 @@ const Login = ({
                   <p className="mb-3">{t("v304")}</p>
                   <div className="form-outline  mb-3">
                     <label className="form-label mx-2" htmlFor="form2Example11">
-                      Email
+                      Mobile Number
                     </label>
                     <input
-                      type="username"
+                      type="number"
                       className="form-control"
                       placeholder="username"
                       {...register("username", {
-                        required: "email is required",
+                        required: "mobile number is required",
                       })}
                     />
                     {errors.username && (

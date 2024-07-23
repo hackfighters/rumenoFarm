@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
@@ -24,19 +24,18 @@ import Prdimg5 from "../../../assets/img/OurProduct/prdaml5.png";
 import Prdimg6 from "../../../assets/img/OurProduct/prdaml6.png";
 import Prdimg7 from "../../../assets/img/OurProduct/prdaml7.png";
 import Prdimg8 from "../../../assets/img/OurProduct/prdaml8.png";
-import mobcaroimg1 from "../../../assets/img/home-img/homecaromob1.jpg";
-import mobcaroimg2 from "../../../assets/img/home-img/homecaromob2.png";
-import mobcaroimg3 from "../../../assets/img/home-img/homecaromob3.png";
-import mobcaroimg4 from "../../../assets/img/home-img/homecaromob4.png";
-import mobcaroimg5 from "../../../assets/img/home-img/homecaromob5.png";
-import mobcaroimg6 from "../../../assets/img/home-img/homecaromob6.png";
+import mobcaroimg1 from "../../../assets/img/home-img/dog.png";
+import mobcaroimg2 from "../../../assets/img/home-img/cat.png";
+import mobcaroimg3 from "../../../assets/img/home-img/goat.png";
+import mobcaroimg4 from "../../../assets/img/home-img/homecaromob2.png";
+import mobcaroimg5 from "../../../assets/img/home-img/homecaromob3.png";
+import mobcaroimg6 from "../../../assets/img/home-img/hen.png";
 import caroimg1 from "../../../assets/img/home-img/homecaro1.jpg";
 import caroimg2 from "../../../assets/img/home-img/homecaro2.jpg";
 import caroimg3 from "../../../assets/img/home-img/homecaro3.jpg";
 import caroimg4 from "../../../assets/img/home-img/homecaro4.jpg";
 import caroimg5 from "../../../assets/img/home-img/homecaro5.jpg";
 import caroimg6 from "../../../assets/img/home-img/homecaro6.jpg";
-import homevideo from "../../../assets/img/home-video.mp4";
 import ReactWhatsapp from "react-whatsapp";
 import { useContext } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
@@ -62,6 +61,12 @@ const Home = () => {
     { id: 'pigeon', imgSrc: Prdimg7 },
     { id: 'pig', imgSrc: Prdimg8 },
   ];
+
+  const [isDarkBackground, setIsDarkBackground] = useState(false);
+
+  const toggleBackground = () => {
+    setIsDarkBackground(!isDarkBackground);
+  };
   return (
     <>
       <Helmet>
@@ -145,11 +150,11 @@ const Home = () => {
                   <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
-              <Carousel className="header-carousel" fade interval={3000} pause={false}>
+              <Carousel className="header-carousel bg-block black" fade interval={3000000} pause={false}>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg1} />
-                    <img className="d-block mx-auto w-100 " src={caroimg1} alt="Rumeno-Veterinary-Product" />
+                    <img className="d-block mx-auto w-100 " src={caroimg5} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -173,7 +178,7 @@ const Home = () => {
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg5} />
-                    <img className="d-block mx-auto w-100 " src={caroimg5} alt="Rumeno-Veterinary-Product" />
+                    <img className="d-block mx-auto w-100 " src={caroimg1} alt="Rumeno-Veterinary-Product" />
                   </picture>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -200,6 +205,7 @@ const Home = () => {
                   className="text-white btn--shockwave is-active"
                 />
               </ReactWhatsapp>
+              <small className="whatsapp-sects w-auto scroll-text">chat here</small>
             </div>
           </div>
         </div>

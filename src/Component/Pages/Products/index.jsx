@@ -14,11 +14,15 @@ import { UserContext } from "../../Common/Modal/logusecont";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import KeysWords from "../../Common/apiData/keyWords";
+import Cookies from "js-cookie";
+
 
 const Products = () => {
   const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue, cartdata, UidData, cart, setCart, setiteamdata, iteamdata } = useContext(UserContext);
   const apiUrl = process.env.REACT_APP_API;
+  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+
   var Value = '';
 
   // useEffect(() => {
@@ -51,7 +55,11 @@ const Products = () => {
     // console.log(iteamdata,12222222222222)
 
     try {
-      const response = await axios.post(`${apiUrl}/cart`, iteamdata);
+      const response = await axios.post(`${apiUrl}/cart`, iteamdata, {
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
       
           if(response.data.msg == 'success'){
       handleClick()

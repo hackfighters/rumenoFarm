@@ -243,10 +243,11 @@ const Navbar = ({ size }) => {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API}/cart`, amountdataupdata, {
-        headers: {
-          'Authorization': `${getMidCookies.token}`
-        }
-      });
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+        console.log('response: ', response);
       toast.success("Quantity increase successfully")
     } catch (error) {
       console.error("quantity increase not working", error);

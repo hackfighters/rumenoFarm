@@ -27,7 +27,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="container-fluid footer pt-5">
+      <div className="container-fluid footer pt-5 bg-block">
 
         <div className="row py-4 text-light">
           <div
