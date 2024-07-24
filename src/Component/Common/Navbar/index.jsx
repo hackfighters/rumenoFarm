@@ -328,8 +328,8 @@ const Navbar = ({ size }) => {
             id="header"
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
           >
-            <NavLink className="logo" to="/home">
-              <img className="ps-4 logo" src={logo} alt="" />
+            <NavLink className="logo navbar-brand" to="/home">
+              <img className="ps-4 logo img-fluid" src={logo} alt="Loading"  width="100" height="24"/>
             </NavLink>
             <button
               className="navbar-toggler bg-secondary"
@@ -492,7 +492,7 @@ const Navbar = ({ size }) => {
                 <li className="nav-item">
                   <Link
                     id="login"
-                    className="px-0"
+                    className="px-2"
                     onClick={() => setLgShow(true)}
                   >
                     <FontAwesomeIcon
