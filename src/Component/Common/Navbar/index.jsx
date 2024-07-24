@@ -248,9 +248,9 @@ const Navbar = ({ size }) => {
           }
         });
         console.log('response: ', response);
-      toast.success("Quantity increase successfully")
+      toast.success("Quantity update successfully")
     } catch (error) {
-      console.error("quantity increase not working", error);
+      console.error("quantity update not is working", error);
     }
   };
 
@@ -771,7 +771,6 @@ const Navbar = ({ size }) => {
                     <div className="row mb-4 cart-model" key={item.id}>
                       <div className="col-sm-3 cart-model-img text-center">
                         <img className="mx-3" src={item.img} alt="Loading" />
-                        {/* <img className="mx-3" src={cookies.img} alt="Loading" /> */}
                       </div>
                       <div className="col-sm-3 d-flex align-items-center justify-content-center">
                         <h4 className="text-trun">{item.name}</h4>

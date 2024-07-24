@@ -25,11 +25,6 @@ const Products = () => {
 
   var Value = '';
 
-  // useEffect(() => {
-  //   if (cookies.cart) {
-  //     setCart(cookies.cart);
-  //   }
-  // }, []);
   useEffect(() => {
     if (Array.isArray(cookies.cart)) {
       setCart(cookies.cart);
@@ -44,30 +39,11 @@ const Products = () => {
     Value = cart.length;
     if (Value !== 0) {
       setSizevalue(Value)
-      handleAddtoCart()
     }
 
-    // console.log(Value,'BHNJMK,L.;/')
   }, [cart, setCookie]);
 
 
-  const handleAddtoCart = async () => {
-    // console.log(iteamdata,12222222222222)
-
-    try {
-      const response = await axios.post(`${apiUrl}/cart`, iteamdata, {
-        headers: {
-          'Authorization': `${getMidCookies.token}`
-        }
-      });
-      
-          if(response.data.msg == 'success'){
-      handleClick()
-          }
-    } catch (error) {
-      console.error('Add to cart is not working', error);
-    }
-  };
   const handleClick = (item) => {
 
     let isPresent = false;

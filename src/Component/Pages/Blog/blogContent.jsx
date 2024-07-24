@@ -44,6 +44,7 @@ const BlogContent = () => {
       title4: "Farmer",
       bottomcontent: "Rumeno Animal Care",
     },
+    
   ];
 
   const { id } = useParams();
