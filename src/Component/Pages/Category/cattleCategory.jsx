@@ -640,7 +640,8 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
   
   
     const AddToCarts = async (item) => {
-      let payload = {...item,...{amount:1,uid:getMidCookies.uID}}
+      let payload = {...{ id: item.id, price: item.priceText, img: item.img, name: item.name },...{amount:1,uid:getMidCookies.uID}}
+      console.log('payload: ', payload);
       if (loggedInUser) {
         if (!Array.isArray(cart)) {
           setCart([]);

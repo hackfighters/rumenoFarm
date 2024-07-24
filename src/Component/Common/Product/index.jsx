@@ -81,7 +81,8 @@ const ProductItem = ({ item, handleClick }) => {
     if (loggedInUser) {
       handleClick(item);
       try {
-        let payload = {...item,...{amount:1,uid:getMidCookies.uID}}
+        let payload = {...{ id: item.id, price: item.priceText, img: item.img, name: item.name },...{amount:1,uid:getMidCookies.uID}}
+        console.log('payload: ', payload);
         const response = await axios.post(`${process.env.REACT_APP_API}/cart`,payload,
           {
             headers: {

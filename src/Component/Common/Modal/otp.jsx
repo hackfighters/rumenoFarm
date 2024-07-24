@@ -20,6 +20,7 @@ const SendOtp = ({ showModal, closeModal }) => {
   const [saveNum, setsaveNum] = useState([]);
   const [showNewPasswordModal, setShowNewPasswordModal] = useState(false);
   const [otpError, setOtpError] = useState("");
+  const [loading, setLoading] = useState(false);
   //   const { setLoggedInUser } = useCartContext();
   const {
     register,
@@ -30,10 +31,11 @@ const SendOtp = ({ showModal, closeModal }) => {
   const { UidData, setUidData } = useContext(UserContext);
 
   const onSubmit = async (data) => {
+    setLoading(true);
     console.log('data: ', data);
     // setNumerate(data, 12222);
     // const mobiledata = { phoneNumber: data.num };
-    // Cookies.set("Number",data.num)
+    Cookies.set("Number",data.num)
     // setShowNewPasswordModal(true);
     try {
       let payload = {
@@ -63,6 +65,7 @@ const SendOtp = ({ showModal, closeModal }) => {
           uID: response.data.uID,
         }));
         setUidData(response.data.uID);
+        setLoading(false);
       }
     } catch (error) {
       toast.error("Otp messages in not send", {
@@ -76,6 +79,7 @@ const SendOtp = ({ showModal, closeModal }) => {
         theme: "light",
       });
       reset();
+      setLoading(false);
     }
   };
   const ondata = async (data) => {
@@ -191,13 +195,21 @@ const SendOtp = ({ showModal, closeModal }) => {
                       {errors.num && (
                         <div className="text-danger">Please enter a valid 10-digit phone number</div>
                       )}
+                      <small>(OTP send to your register mobile number and email)</small>
                     </div>
                     <div className="text-center py-1">
                       <button
                         className="btn btn-primary text-white border-0 gradient-custom-2 mb-3 w-75 "
-                        type="submit"
+                        type="submit" disabled={loading}
                       >
-                        Submit
+                        Submit{" "}
+                        {loading ? (
+                          <>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </button>
                     </div>
                   </form>
@@ -232,6 +244,7 @@ const SendOtp = ({ showModal, closeModal }) => {
                       {otpError && ( // Display OTP error message if exists
                         <div className="text-danger">{otpError}</div>
                       )}
+                      <small>(enter OTP send to your register mobile number and email)</small>
                     </div>
                     <div className="text-center pt-1 pb-1">
 

@@ -1530,7 +1530,8 @@ const ProductDetail = () => {
 
 
   const AddToCarts = async (item) => {
-    let payload = {...item,...{amount:1,uid:getMidCookies.uID}}
+    let payload = {...{ id: item.id, price: item.priceText, img: item.img, name: item.name },...{amount:1,uid:getMidCookies.uID}}
+    console.log('payload: ', payload);
     if (loggedInUser) {
       if (!Array.isArray(cart)) {
         setCart([]);
@@ -1551,7 +1552,8 @@ const ProductDetail = () => {
               headers: {
                 'Authorization': `${getMidCookies.token}`
               }
-            });
+            }
+          );
           
           if (response.data.msg == 'success') {
           }
