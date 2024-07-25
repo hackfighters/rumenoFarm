@@ -248,7 +248,16 @@ const Navbar = ({ size }) => {
           }
         });
         console.log('response: ', response);
-      toast.success("Quantity update successfully")
+      toast.success("Quantity update successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     } catch (error) {
       console.error("quantity update not is working", error);
     }

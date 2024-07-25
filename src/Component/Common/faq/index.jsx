@@ -5,8 +5,8 @@ const HomeFaq = () => {
     return (
         <>
             <section className="py-4 ">
-                <div className="container">
-                    <div className="row">
+                <div className="container-fluid">
+                    <div className="row px-5">
                         <h4>Rumeno Farmotech is trusted by Indian farmers for a number of reasons:</h4>
                         <ul className='mx-4'>
                             <li className=''>

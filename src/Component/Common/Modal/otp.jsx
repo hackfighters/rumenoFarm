@@ -33,23 +33,20 @@ const SendOtp = ({ showModal, closeModal }) => {
   const onSubmit = async (data) => {
     setLoading(true);
     console.log('data: ', data);
-    // setNumerate(data, 12222);
-    // const mobiledata = { phoneNumber: data.num };
-    Cookies.set("Number",data.num)
-    // setShowNewPasswordModal(true);
+  
     try {
-      let payload = {
+      const payload = {
         countryCode: "91",
-        phoneNumber: data.num
-      }
-      const response = await axios.post(
-        `${apiUrl}/send_otp`, payload
-      );
-      console.log(response.data)
-      if (response?.data?.status == 200) {
+        phoneNumber: data.num,
+      };
+  
+      const response = await axios.post(`${apiUrl}/send_otp`, payload);
+      console.log(response.data);
+  
+      if (response.data.status === 200) {
         setActive(true);
         startCounting();
-        toast.info("Please Enter the Otp", {
+        toast.info("Please Enter the OTP", {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,
@@ -60,15 +57,26 @@ const SendOtp = ({ showModal, closeModal }) => {
           theme: "light",
         });
         reset();
-        setsaveNum(payload)
+        setsaveNum(payload);
         Cookies.set("loginUserData", JSON.stringify({
           uID: response.data.uID,
         }));
         setUidData(response.data.uID);
-        setLoading(false);
+      } else if (response.data.status === 400) {
+        toast.warning(response.data.message, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       }
     } catch (error) {
-      toast.error("Otp messages in not send", {
+      console.error(error);
+      toast.error("Failed to send OTP", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -78,7 +86,7 @@ const SendOtp = ({ showModal, closeModal }) => {
         progress: undefined,
         theme: "light",
       });
-      reset();
+    } finally {
       setLoading(false);
     }
   };

@@ -51,10 +51,28 @@ const ContactUs = () => {
         }
       );
       // console.log(response.data); // Handle the response as needed
-      toast.success("Form Submited Successfully")
+      toast.success("Form Submited Successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
         reset()
     } catch (error) {
-      toast.error("Please Fill Correct Details")
+      toast.error("Please Fill Correct Details", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
 
       // Handle error, show a message to the user, etc.
     }

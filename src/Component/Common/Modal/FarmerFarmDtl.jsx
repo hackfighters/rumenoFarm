@@ -26,10 +26,28 @@ const FarmerDetails = ({ showFarmModal, closeFarmModal }) => {
           Authorization: `${getMidCookies.token}`,
         },
       });
-      toast.success("Farmer Details Submitted Successfully");
+      toast.success("Farmer Details Submitted Successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong. Please try again");
+      toast.error("Something went wrong. Please try again", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     reset();
   };

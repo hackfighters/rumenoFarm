@@ -57,8 +57,8 @@ const Footer = () => {
                 </li>
 
                 <li>
-                  <NavLink to="/home" className="footer-page">
-                    About
+                  <NavLink to="/blog" className="footer-page">
+                    Blog
                   </NavLink>
                 </li>
                 <li>
@@ -72,8 +72,8 @@ const Footer = () => {
                 </li>
 
                 <li>
-                  <NavLink to="/home" className="footer-page">
-                    Training
+                  <NavLink to="/contact-us" className="footer-page">
+                    Contact Us
                   </NavLink>
                 </li>
                 <li>
