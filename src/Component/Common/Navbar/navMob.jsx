@@ -137,7 +137,16 @@ const ResponsiveNavbar = ({ size }) => {
           'Authorization': `${getMidCookies.token}`
         }
       });
-      toast.success("Quantity Update successfully")
+      toast.success("Quantity Update successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     } catch (error) {
       console.error("quantity increase not working", error);
     }

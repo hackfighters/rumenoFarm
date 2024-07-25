@@ -31,7 +31,7 @@ const Products = () => {
     } else {
       setCart([]);
     }
-  }, [ setCart]);
+  }, [setCart]);
 
   useEffect(() => {
 
@@ -70,7 +70,7 @@ const Products = () => {
     setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
     const itemdatra = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }
     setiteamdata(itemdatra)
-    
+
 
     toast.success("Item is added to your cart", {
       position: "top-center",
@@ -92,8 +92,27 @@ const Products = () => {
         <meta charSet="utf-8" name="description" content="Support animal health naturally! Explore Rumeno's innovative veterinary products for all your pet's needs. Shop Now
 " />
         <title>Rumeno Veterinary Products: Trusted by Vets, Loved by Pets
-</title>
+        </title>
         <link rel="canonical" href="https://www.rumeno.in/veterinary-products" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org/",
+              "@type": "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.rumeno.in/home"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Veterinary products",
+                "item": "https://www.rumeno.in/veterinary-products"
+              }]
+            }
+          `}
+        </script>
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (

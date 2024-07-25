@@ -42,7 +42,16 @@ const SetNewPassword = ({ showModal, closeModal }) => {
         const payload = {mobile:getNumber,newpassword:data?.newpassword}
         const response = await axios.post(`${apiUrl}/forgot_password`, payload);
         console.log(response.data); // Handle the response as needed
-        toast.success(response.data.message);
+        toast.success(response.data.message, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
 
         // Show the Login modal and close the current modal
         // setShowLoginModal(true);

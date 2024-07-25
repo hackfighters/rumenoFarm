@@ -45,12 +45,30 @@ const FeedBackForm = () => {
       // Handle the response as needed
 
       // Add additional logic or redirect the user if needed
-      toast.success("Form Submited Successfully")
+      toast.success("Form Submited Successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
       reset()
     } catch (error) {
       // Handle errors
       console.error("Error sending form data:", error);
-      toast.error("Please Fill Correct Details")
+      toast.error("Please Fill Correct Details", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     }
   };
   return (

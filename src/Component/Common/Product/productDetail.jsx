@@ -1464,11 +1464,29 @@ const ProductDetail = () => {
           }
         });
         console.log('response: ', response);
-      toast.success("Your Review Submited Successfully")
+      toast.success("Your Review Submited Successfully", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
       fetchReviewData();
       reset()
     } catch (error) {
-      toast.error("something wrong please try again")
+      toast.error("something wrong please try again", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
     }
 
   }
@@ -1530,7 +1548,7 @@ const ProductDetail = () => {
 
 
   const AddToCarts = async (item) => {
-    let payload = {...{ id: item.id, price: item.priceText, img: item.img, name: item.name },...{amount:1,uid:getMidCookies.uID}}
+    let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
     console.log('payload: ', payload);
     if (loggedInUser) {
       if (!Array.isArray(cart)) {

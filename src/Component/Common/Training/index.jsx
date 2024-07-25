@@ -10,9 +10,9 @@ const Training = () => {
     <>
       <section id="training" className="py-4 sect-training header border-0">
         
-        <div className="container">
+        <div className="container-fluid">
           <div
-            className="d-flex"
+            className="d-flex px-5"
             data-aos="fade-right"
             data-aos-offset="300"
             data-aos-easing="ease-in-sine"
@@ -24,7 +24,7 @@ const Training = () => {
               <div className="about-line-small"></div>
             </div>
           </div>
-          <div className="row  py-4">
+          <div className="row px-5 py-4">
             <div className="col-md-3">
               
               <div

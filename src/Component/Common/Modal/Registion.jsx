@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { Country, State, City } from "country-state-city";
-import Select from "react-select";
+// import { Country, State, City } from "country-state-city";
+// import Select from "react-select";
 
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import Login from "./Login";
@@ -53,13 +53,31 @@ const Registration = ({ showModal, closeModal }) => {
       // console.log('Registration successful:', response.data);
 
       if (response.data.status === 201) {
-        toast.success('Registration successful');
+        toast.success('Registration successful', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         reset()
         setShowLoginModal(true);
         setLoading(false);
         closeModal();
       } else {
-        toast.error('Registration failed');
+        toast.error('Registration failed', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         setLoading(false);
       }
 
@@ -123,7 +141,6 @@ const Registration = ({ showModal, closeModal }) => {
                           {errors.firstName.message}
                         </span>
                           <span className="d-none">
-                            {toast.error(errors.firstName.message)}
                             </span>
                             </>
                       )}
@@ -145,7 +162,7 @@ const Registration = ({ showModal, closeModal }) => {
                       <label className="my-2">{t("v312")}</label>
                       <input
                         {...register("mobile", {
-                          required: "Mobile Number is required",
+                          required: "Mobile Number is required", minLength: 10, maxLength: 10
                         })}
                         type="text"
                         className={`form-control ${
@@ -156,10 +173,7 @@ const Registration = ({ showModal, closeModal }) => {
                         placeholder="Mobile Number"
                       />
                       {errors.mobile && (
-                        <span className="text-danger">
-                          {errors.mobile.message}
-                          <span className="d-none">{toast.error(errors.mobile.message)}</span>
-                        </span>
+                        <div className="text-danger">Please enter a valid 10-digit phone number</div>
                       )}
                     </div>
                     <div className="form-group col-lg-12 my-2">
@@ -184,7 +198,6 @@ const Registration = ({ showModal, closeModal }) => {
                       {errors.email && (
                         <span className="text-danger">
                           {errors.email.message}
-                          <span className="d-none">{toast.error(errors.email.message)}</span>
                         </span>
                       )}
                     </div>
@@ -214,7 +227,6 @@ const Registration = ({ showModal, closeModal }) => {
                       {errors.password && (
                         <span className="text-danger">
                           {errors.password.message}
-                          <span className="d-none">{toast.error(errors.password.message)}</span>
                         </span>
                       )}
                     </div>
@@ -240,7 +252,7 @@ const Registration = ({ showModal, closeModal }) => {
                   </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">Country</label>
-                      <Select
+                      {/* <Select
                         options={Country.getAllCountries()}
                         getOptionLabel={(options) => {
                           return options["name"];
@@ -252,11 +264,11 @@ const Registration = ({ showModal, closeModal }) => {
                           setSelectedCountry(item);
                         }}
                         name="country"
-                      />
+                      /> */}
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">State</label>
-                      <Select
+                      {/* <Select
                         options={State?.getStatesOfCountry(
                           selectedCountry?.isoCode
                         )}
@@ -270,12 +282,12 @@ const Registration = ({ showModal, closeModal }) => {
                         onChange={(item) => {
                           setSelectedState(item);
                         }}
-                      />
+                      /> */}
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">City</label>
 
-                      <Select
+                      {/* <Select
                         options={City.getCitiesOfState(
                           selectedState?.countryCode,
                           selectedState?.isoCode
@@ -290,7 +302,7 @@ const Registration = ({ showModal, closeModal }) => {
                           setSelectedCity(item);
                         }}
                         name="city"
-                      />
+                      /> */}
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-2">{t("v317")}</label>
@@ -309,7 +321,6 @@ const Registration = ({ showModal, closeModal }) => {
                       {errors.address && (
                         <span className="text-danger">
                           {errors.address.message}
-                          <span className="d-none">{toast.error(errors.address.message)}</span>
                         </span>
                       )}
                     </div>

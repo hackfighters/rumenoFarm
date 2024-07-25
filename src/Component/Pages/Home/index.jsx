@@ -150,7 +150,7 @@ const Home = () => {
                   <p className=" h4">{t("v2")}</p>
                 </div>
               </div>
-              <Carousel className="header-carousel bg-block black" fade interval={3000000} pause={false}>
+              <Carousel className="header-carousel bg-block black" fade interval={3000} pause={false}>
                 <Carousel.Item>
                   <picture>
                     <source className="d-block mx-auto w-100" media="(min-width:320px) and (max-width:645px)" srcSet={mobcaroimg1} />
@@ -198,7 +198,7 @@ const Home = () => {
               <ReactWhatsapp
                 className="whatsapp-sect w-auto px-1"
                 number="+91 7355043892"
-                message="Hello World"
+                message="Hello Rumeno"
               >
                 <FontAwesomeIcon
                   icon={faWhatsapp}
@@ -211,8 +211,8 @@ const Home = () => {
         </div>
         <About />
         <Achievment />
-        <div className="container">
-          <div className="text-center">
+        <div className="container-fluid">
+          <div className="text-center px-5">
             <div
               className="d-flex my-3"
               data-aos="fade-right"
@@ -227,14 +227,14 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="row g-0 gx-5 align-items-end">
+          <div className="row px-5 align-items-end">
             <div className="col-lg-6">
               <div className="section-header text-start mb-3">
                 <p>{t("v6")}</p>
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row px-5">
             {products.map(product => (
               <div
                 key={product.id}

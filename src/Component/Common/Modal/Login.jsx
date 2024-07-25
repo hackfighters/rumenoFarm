@@ -82,6 +82,7 @@ const Login = ({
         setCart(response?.data?.pID)
         Cookies.set("cart", JSON.stringify(response?.data?.pID));
 
+
         toast.success("Login Successful", {
           position: "top-center",
           autoClose: 2000,
@@ -97,9 +98,27 @@ const Login = ({
         navDropdown()
       }
       else if (response?.data?.status == 404) {
-        toast.error(response?.data?.message)
+        toast.error(response?.data?.message, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
       } else if (response.data.status == 401) {
-        toast.error(response?.data?.message)
+        toast.error(response?.data?.message, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
       }
 
     } catch (error) {
