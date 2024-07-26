@@ -156,7 +156,7 @@ const SendOtp = ({ showModal, closeModal }) => {
   };
 
   useEffect(() => {
-    const getuidfromcookies = JSON.parse(Cookies.get("loginUserData") ?? "{}");
+    const getuidfromcookies = JSON.parse(localStorage.getItem("loginDetails") ?? "{}");
     setUidData(getuidfromcookies.uID)
     console.log(UidData)
   }, [])

@@ -48,7 +48,7 @@ const ProductDetail = () => {
   const [productReview, setProductReview] = useState([])
   const { register,reset,formState: { errors }, handleSubmit } = useForm();
   const apiUrl = process.env.REACT_APP_API;
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const { name, id } = useParams();
 

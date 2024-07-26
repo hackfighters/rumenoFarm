@@ -33,8 +33,8 @@ const MultiStepForm = () => {
   const handleOpenFarmTableModal = () => setShowFarmTableModal(true);
   const handleCloseFarmTableModal = () => setShowFarmTableModal(false);
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/parent`;
-  const getUserIdCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
-  const getSelectdAnimal = JSON.parse(Cookies.get("SelectedAnimal") ?? "[]");
+  const getUserIdCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
+  const getSelectdAnimal = JSON.parse(localStorage.getItem("SelectedAnimal") ?? "[]");
 
   const filteredData = maindata.filter((item) =>
     (item.uniquename?.includes(searchInput.toLowerCase()) || false) ||
@@ -87,7 +87,6 @@ const MultiStepForm = () => {
   }, []);
 
   const fetchItems = async () => {
-    console.log('getSelectdAnimal: ', getSelectdAnimal);
     try {
       const response = await axios.get(`${apiUrl}/${getUserIdCookies.uID}?name=${getSelectdAnimal}`,
         {
@@ -147,9 +146,9 @@ const MultiStepForm = () => {
     const basicDtl = { mid: maindata[index]._id };
     console.log('basicDtl: ', maindata);
 
-    const getLoginData = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+    const getLoginData = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
     let sendMid = { ...getLoginData, ...basicDtl };
-    Cookies.set('loginUserData',JSON.stringify(sendMid));
+    localStorage.setItem('loginDetails',JSON.stringify(sendMid));
 
     setFarmDataUMKid((prev) => ({ ...prev, ...basicDtl }));
   }

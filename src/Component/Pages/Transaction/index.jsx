@@ -41,7 +41,7 @@ const Transaction = () => {
   } = useForm();
 
   const apiUrl = `${process.env.REACT_APP_API}/transaction`;
-  const getUserCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getUserCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
   const getCartDataCookies = JSON.parse(Cookies.get("cart") ?? "[]");
 
 
@@ -298,7 +298,8 @@ const Transaction = () => {
     }
     setLoading(false);
     // Navigate to Thankyou page
-    // navigate("/thankyoupage");
+    navigate("/thankyoupage");
+    localStorage.removeItem("cart");
   };
 
   const onPayIssueSubmit = async (data) => {

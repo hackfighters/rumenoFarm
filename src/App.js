@@ -91,7 +91,7 @@ const App = () => {
     navbarlinksActive();
   }, [location]);
 
-  const checkIfLogin = JSON.parse(Cookies.get("loginUserData") ?? "null");
+  const checkIfLogin = JSON.parse(localStorage.getItem("loginDetails") ?? "null");
 
   return (
     <>
@@ -107,16 +107,16 @@ const App = () => {
           <Route path="/veterinary-products/:name" Component={ProductPage} />
           <Route path="/veterinary-products/:name/:id" Component={ProductDetail} />
           <Route path="/contact-us" Component={ContactUs} />
-          {/* {checkIfLogin ? ( */}
-          {/* <> */}
+          {checkIfLogin ? (
+          <>
           <Route path="/transaction" Component={Transaction} />
           <Route path="/transdetail" Component={TransactionDetail} />
           <Route path="/frmaftlog" Component={FrmAftLog}/>
           <Route path="/AnimalDetailTab" Component={AnimalDetailTab}/>
-          {/* </> */}
-          {/* ):( */}
-            {/* <Route path="*" element={<Navigate to="/home" />} /> */}
-          {/* )} */}
+          </>
+          ):(
+             <Route path="*" element={<Navigate to="/home" />} /> 
+           )} 
           <Route path="/privacypolicy" Component={PrivacyPolicy}/>
           <Route path="/blog" Component={Blog}/>
           <Route path="/blog/:id" Component={BlogContent}/>

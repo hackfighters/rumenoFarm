@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // Third party i18next
 import { useTranslation } from "react-i18next";
@@ -23,7 +23,16 @@ import { Link } from "react-router-dom";
 
 const Services = () => {
   const { t } = useTranslation();
-  const { cart } = useContext(UserContext);
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  const { setCart,cart,setSizevalue } = useContext(UserContext);
+  var Value ;
+  useEffect(() => {
+    setCart(getLocalPrevCarts);
+    Value = cart?.length;
+    if (Value !== 0) {
+      setSizevalue(Value)
+    }
+  }, []);
 
   const FAQ = [
     {

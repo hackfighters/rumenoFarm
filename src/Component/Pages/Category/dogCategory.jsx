@@ -46,7 +46,7 @@ const DogCategoryPage = () => {
   const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
 
   const MainJson = [

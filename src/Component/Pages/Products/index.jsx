@@ -21,7 +21,7 @@ const Products = () => {
   const { setSizevalue, cartdata, UidData, cart, setCart, setiteamdata, iteamdata } = useContext(UserContext);
   const apiUrl = process.env.REACT_APP_API;
   const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   var Value = '';
 

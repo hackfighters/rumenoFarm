@@ -37,7 +37,7 @@ const ProductItem = ({ item, handleClick }) => {
   // const [quantity, setQuantity] = useState(1);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const ratingChanged = (newRating) => {
     // console.log(newRating);

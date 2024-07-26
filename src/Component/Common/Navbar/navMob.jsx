@@ -55,7 +55,7 @@ const ResponsiveNavbar = ({ size }) => {
   const [showOtp, setShowOpt] = useState(false);
   const [showFarmModal, setshowFarmModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const openSltAnmlModal = () => {
     setIsModalOpen(true);
@@ -216,7 +216,7 @@ const ResponsiveNavbar = ({ size }) => {
   };
 
   const handleAnmlValue = (value) => {
-    Cookies.set("SelectedAnimal", JSON.stringify(value));
+    localStorage.setItem("SelectedAnimal", JSON.stringify(value));
   };
 
   return (

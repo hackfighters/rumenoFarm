@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../Common/Modal/logusecont";
 import { Accordion } from "react-bootstrap";
 import { Helmet } from "react-helmet";
@@ -18,7 +18,16 @@ import KeysWords from "../../Common/apiData/keyWords";
 import { Link } from "react-router-dom";
 
 const ServicesSecond = () => {
-  const { cart } = useContext(UserContext);
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  const { setCart,cart,setSizevalue } = useContext(UserContext);
+  var Value ;
+  useEffect(() => {
+    setCart(getLocalPrevCarts);
+    Value = cart?.length;
+    if (Value !== 0) {
+      setSizevalue(Value)
+    }
+  }, []);
   return (
     <>
       <Helmet>

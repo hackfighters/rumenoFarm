@@ -7,7 +7,7 @@ import axios from "axios";
 const ProudctFeedbackModal = ({ showfeedModal, closefeedModal, title, pid }) => {
   const { register, handleSubmit, reset } = useForm();
   const apiUrl = process.env.REACT_APP_API;
-  const getUserId = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getUserId = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const onSubmit = async (data) => {
     let feedbackdata = {

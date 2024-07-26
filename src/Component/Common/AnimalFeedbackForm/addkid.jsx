@@ -14,8 +14,8 @@ const KidAddForm = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/child`;
-  const getparentidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
-  const getSelectdAnimal = JSON.parse(Cookies.get("SelectedAnimal") ?? "[]");
+  const getparentidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
+  const getSelectdAnimal = JSON.parse(localStorage.getItem("SelectedAnimal") ?? "[]");
 
   const handleOpenDialog = () => {
     fetchItems();

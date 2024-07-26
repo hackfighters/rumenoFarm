@@ -91,9 +91,14 @@ const SetNewPassword = ({ showModal, closeModal }) => {
                       {...register("newpassword", {
                         required: "Password is required",
                         minLength: {
-                          value: 8,
-                          message: "Password must be at least 8 characters long",
-                        },
+                          value: 6,
+                          message:
+                            "Password must be at least 8 characters long",
+                        }
+                        ,pattern:{
+                          value: /^(?=.*[A-Z])(?=.*[@#$%^&*(),.?":{}|<>]).+$/, 
+                          message: "Password must contain at least one uppercase letter and one special character."
+                        }
                       })}
                       type="password"
                       name="newpassword"

@@ -22,7 +22,7 @@ const Deworm = () => {
     bath_date: "",
   });
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/deworm`;
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const handleOpenDialog = () => {
     setOpenDialog(true);

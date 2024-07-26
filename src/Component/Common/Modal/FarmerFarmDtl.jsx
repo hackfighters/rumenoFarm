@@ -16,7 +16,7 @@ const FarmerDetails = ({ showFarmModal, closeFarmModal }) => {
   } = useForm();
 
   const apiUrl = `${process.env.REACT_APP_API}/farmer_detail`;
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const onSubmit = async (data) => {
     const payload = { ...data, ...{ uid: getMidCookies.uID } };

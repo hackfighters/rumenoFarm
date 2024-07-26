@@ -16,7 +16,7 @@ const BlogContent = () => {
   const { setCart,cart,setSizevalue } = useContext(UserContext);
   const { register,reset, handleSubmit } = useForm();
   const apiUrl = `${process.env.REACT_APP_API}/blog`;
-  const getparentidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getparentidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
   const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
 
   const blogdata = [
