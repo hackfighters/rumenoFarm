@@ -61,6 +61,8 @@ const Transaction = () => {
   const [AdvancePaymnt, setAdvancePaymnt] = useState(0);
   const [shipingCharge, setshipingCharge] = useState(0);
   const [PayIssue, setPayIssue] = useState(false);
+  const [error, setError] = useState('');
+
 
   const handlePayIssueClose = () => setPayIssue(false);
   const handlePayIssueShow = () => setPayIssue(true);
@@ -109,12 +111,13 @@ const Transaction = () => {
   const handleClick = () => {
     fileInputRef.current.click();
   };
-
   const handleFileChange = (event) => {
+    setError("")
     const file = event.target.files[0];
     uploadFile(file);
     setImage(file);
   };
+
 
   const uploadFile = (file) => {
     const fileType = file.type;
@@ -213,6 +216,9 @@ const Transaction = () => {
 
   // upload End
   const onSubmit = async (data) => {
+    if (!image) {
+      setError('Please upload Transaction Screenshot');
+    }
     setLoading(true);
     const formData = new FormData();
     formData.append("image", image);
@@ -292,7 +298,7 @@ const Transaction = () => {
     }
     setLoading(false);
     // Navigate to Thankyou page
-    navigate("/thankyoupage");
+    // navigate("/thankyoupage");
   };
 
   const onPayIssueSubmit = async (data) => {
@@ -439,9 +445,10 @@ const Transaction = () => {
                       {/* <TransImgUpload/> */}
                       {selectedPaymentMethod === "UPI" && (
                         <>
-                          <ul className="d-flex list-unstyled justify-content-center">
+                          <ul className="d-flex list-unstyled justify-content-center" >
                             <li className="mx-2">UPI NO:-<span className="fw-bold"> 7355043892</span></li>
-                            <li className="mx-2">UPI ID:-<span className="fw-bold"> 7355043892m@pnb</span></li>
+                            <li className="mx-2">UPI ID:-<span className="fw-bold"> 7355043892m@pnb</span>
+                            </li>
                           </ul>
                           <input
                             type="text"
@@ -450,13 +457,18 @@ const Transaction = () => {
                             {...register("transactionID", { required: true })}
                           />
                           {errors.transactionID && (
-                            <span className="text-danger">Transaction ID is required</span>
+                            <span className="text-danger">
+                              Transaction ID is required
+                            </span>
                           )}
                           <div
                             id="uploadArea"
-                            className={`upload-area ${uploadAreaOpen ? "upload-area--open" : ""}`}
+                            className={`upload-area ${uploadAreaOpen ? "upload-area--open" : ""
+                              }`}
                           >
-                            <h6 className="my-3 text-secondary">Upload Transaction Screenshot</h6>
+                            <h6 className="my-3 text-secondary">
+                              Upload Transaction Screenshot
+                            </h6>
                             <div
                               className="upload-area__drop-zoon drop-zoon"
                               ref={dropZoneRef}
@@ -468,7 +480,9 @@ const Transaction = () => {
                               <span className="drop-zoon__icon">
                                 <FontAwesomeIcon icon={faImage} />
                               </span>
-                              <p className="drop-zoon__paragraph">Drop your Payment screenshot here</p>
+                              <p className="drop-zoon__paragraph">
+                                Drop your Payment screenshot here
+                              </p>
                               <span
                                 id="loadingText"
                                 className="drop-zoon__loading-text"
@@ -496,35 +510,38 @@ const Transaction = () => {
                                 accept="image/*"
                                 onChange={handleFileChange}
                                 ref={fileInputRef}
-                                {...register("transactionScreenshot", {
-                                  required: "Transaction Screenshot is required",
-                                  validate: {
-                                    acceptedFormats: (file) => ["image/jpeg", "image/png"].includes(file?.type) || "Only JPEG and PNG are allowed",
-                                  },
-                                })}
-                              />
+                                />
                             </div>
-                            {errors.transactionScreenshot && (
-                              <span className="text-danger">{errors.transactionScreenshot.message}</span>
-                            )}
+                                {error && <span className="text-danger">{error}</span>}
                             <div
                               id="fileDetails"
-                              className={`upload-area__file-details file-details ${fileDetailsOpen ? "file-details--open" : ""}`}
+                              className={`upload-area__file-details file-details ${fileDetailsOpen ? "file-details--open" : ""
+                                }`}
                             >
                               <h5 className="my-3">Uploaded File</h5>
+
                               <div
                                 id="uploadedFile"
-                                className={`uploaded-file ${uploadedFileOpen ? "uploaded-file--open" : ""}`}
+                                className={`uploaded-file ${uploadedFileOpen ? "uploaded-file--open" : ""
+                                  }`}
                               >
                                 <div className="uploaded-file__icon-container">
                                   <i className="bx bxs-file-blank uploaded-file__icon"></i>
-                                  <span className="uploaded-file__icon-text">{uploadedFileType}</span>
+                                  <span className="uploaded-file__icon-text">
+                                    {uploadedFileType}
+                                  </span>
                                 </div>
+
                                 <div
                                   id="uploadedFileInfo"
-                                  className={`uploaded-file__info ${uploadedFileInfoActive ? "uploaded-file__info--active" : ""}`}
+                                  className={`uploaded-file__info ${uploadedFileInfoActive
+                                    ? "uploaded-file__info--active"
+                                    : ""
+                                    }`}
                                 >
-                                  <span className="uploaded-file__name">{uploadedFileName}</span>
+                                  <span className="uploaded-file__name">
+                                    {uploadedFileName}
+                                  </span>
                                   <span className="uploaded-file__counter">{`${uploadedFileCounter}%`}</span>
                                 </div>
                               </div>
@@ -602,17 +619,10 @@ const Transaction = () => {
                                 accept="image/*"
                                 onChange={handleFileChange}
                                 ref={fileInputRef}
-                                {...register("transactionScreenshot", {
-                                  required: "Transaction Screenshot is required",
-                                  validate: {
-                                    acceptedFormats: (file) => ["image/jpeg", "image/png"].includes(file?.type) || "Only JPEG and PNG are allowed",
-                                  },
-                                })}
+
                               />
                             </div>
-                            {errors.transactionScreenshot && (
-                              <span className="text-danger">{errors.transactionScreenshot.message}</span>
-                            )}
+                              {error && <span className="text-danger">{error}</span>}
 
                             <div
                               id="fileDetails"
@@ -729,17 +739,10 @@ const Transaction = () => {
                                 accept="image/*"
                                 onChange={handleFileChange}
                                 ref={fileInputRef}
-                                {...register("transactionScreenshot", {
-                                  required: "Transaction Screenshot is required",
-                                  validate: {
-                                    acceptedFormats: (file) => ["image/jpeg", "image/png"].includes(file?.type) || "Only JPEG and PNG are allowed",
-                                  },
-                                })}
+
                               />
                             </div>
-                            {errors.transactionScreenshot && (
-                              <span className="text-danger">{errors.transactionScreenshot.message}</span>
-                            )}
+                            {error && <span className="text-danger">{error}</span>}
 
                             <div
                               id="fileDetails"

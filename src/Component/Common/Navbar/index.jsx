@@ -183,6 +183,9 @@ const Navbar = ({ size }) => {
 
   const handleLogout = () => {
     Cookies.remove("loggedInUser");
+    localStorage.removeItem("localPreviousCart");
+    localStorage.removeItem("loginDetails");
+    localStorage.removeItem("cart");
     Cookies.remove("cart");
     Cookies.remove("loginUserData");
     setLoggedInUser(null);

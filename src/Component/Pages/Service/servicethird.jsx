@@ -42,10 +42,10 @@ const ServicesThird = () => {
       <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <div className="desk-nav">
-        <Navbar size={cart.length} />
+        <Navbar size={cart?.length} />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar size={cart.length} />
+        <ResponsiveNavbar size={cart?.length} />
       </div>
       <section className="container-fluid service-bg overflow-hidden">
         <div

@@ -49,7 +49,8 @@ import HomeFaq from "../../Common/faq";
 const Home = () => {
 
   const { t } = useTranslation();
-  const { cart } = useContext(UserContext);
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  const { setCart,cart,setSizevalue } = useContext(UserContext);
 
   const products = [
     { id: 'cow', imgSrc: Prdimg1 },
@@ -61,6 +62,15 @@ const Home = () => {
     { id: 'pigeon', imgSrc: Prdimg7 },
     { id: 'pig', imgSrc: Prdimg8 },
   ];
+
+  var Value ;
+  useEffect(() => {
+    setCart(getLocalPrevCarts);
+    Value = cart?.length;
+    if (Value !== 0) {
+      setSizevalue(Value)
+    }
+  }, []);
 
   const [isDarkBackground, setIsDarkBackground] = useState(false);
 
@@ -139,7 +149,7 @@ const Home = () => {
         ></a>
 
         <div className=" overflow-hidden">
-          <Navbar size={cart.length} />
+          <Navbar size={cart?.length} />
           <div className="container-fluid header-sect px-0 mx-0">
             <div className="row header-txt ">
               <div className=" video-section">

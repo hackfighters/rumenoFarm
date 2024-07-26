@@ -75,7 +75,7 @@ const CattleCategoryPage = () => {
     const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
     const [showOtp, setShowOpt] = useState(false);
     const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
-  
+    const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
   
   
   
@@ -585,23 +585,22 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       }
     ]
   
-    var Value = '';
     const AllData = [...MainJson];
-    const [cookies, setCookie] = useCookies(["cart"]);
+    
+    var Value = '';
     useEffect(() => {
-      if (Array.isArray(cookies.cart)) {
-        setCart(cookies.cart);
+      if (Array.isArray(getLocalPrevCarts)) {
+        setCart(getLocalPrevCarts);
       } else {
         setCart([]);
       }
     }, [ setCart]);
     useEffect(() => {
-      setCookie("cart", cart, { path: "/" });
-      Value = cart.length;
+      Value = cart?.length;
       if (Value !== 0) {
         setSizevalue(Value)
       }
-    }, [cart, setCookie]);
+    }, [cart]);
   
   
     const filteredProducts = MainJson.filter(product =>
@@ -641,7 +640,6 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
   
     const AddToCarts = async (item) => {
       let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
-      console.log('payload: ', payload);
       if (loggedInUser) {
         if (!Array.isArray(cart)) {
           setCart([]);
@@ -665,7 +663,8 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
                 }
               });
             
-            if (response.data.msg == 'success') {
+            if (response?.status == 201) {
+              localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
             }
             toast.success("Item is added to your cart", {
               position: "top-center",
@@ -721,10 +720,10 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
     </Helmet>
     
       <div className="desk-nav">
-        <Navbar size={cart.length} />
+        <Navbar size={cart?.length} />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar size={cart.length} />
+        <ResponsiveNavbar size={cart?.length} />
       </div>
       <section className="container-fluid service-bg overflow-hidden">
         <div

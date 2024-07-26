@@ -2870,8 +2870,7 @@ img.card-img:hover {
   background-repeat: no-repeat;
   background-position: center;
 }
-/* .form-check-input:focus {
-  border-color: #ff0101;
-  outline: 0;
-  box-shadow: 0 0 0 .25rem rgb(255 0 0 / 25%);
-} */
+
+.pointer{
+  cursor: pointer;
+}

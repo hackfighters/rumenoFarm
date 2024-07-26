@@ -18,30 +18,26 @@ import Cookies from "js-cookie";
 
 
 const Products = () => {
-  const [cookies, setCookie] = useCookies(["cart"]);
   const { setSizevalue, cartdata, UidData, cart, setCart, setiteamdata, iteamdata } = useContext(UserContext);
   const apiUrl = process.env.REACT_APP_API;
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
   const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
 
   var Value = '';
 
   useEffect(() => {
-    if (Array.isArray(cookies.cart)) {
-      setCart(cookies.cart);
+    if (Array.isArray(getLocalPrevCarts)) {
+      setCart(getLocalPrevCarts);
     } else {
       setCart([]);
     }
   }, [setCart]);
-
   useEffect(() => {
-
-    setCookie("cart", cart, { path: "/" });
-    Value = cart.length;
+    Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
     }
-
-  }, [cart, setCookie]);
+  }, [cart]);
 
 
   const handleClick = (item) => {
@@ -65,7 +61,7 @@ const Products = () => {
       });
       return;
     }
-
+      localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
 
     setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
     const itemdatra = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }
@@ -131,7 +127,7 @@ const Products = () => {
       <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <div className="desk-nav">
         <Navbar
-          size={cart.length}
+          size={cart?.length}
         // carts={cart}
         // setCarts={setCart}
         // handleChange={handleChange}
@@ -142,7 +138,7 @@ const Products = () => {
       </div>
       <div className="mob-nav">
         <ResponsiveNavbar
-          size={cart.length}
+          size={cart?.length}
         // cart={cart}
         // setCart={setCart}
         // handleChange={handleChange}

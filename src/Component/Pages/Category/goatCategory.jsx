@@ -559,13 +559,13 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
 
   var Value = '';
   const AllData = [...MainJson];
-  const [cookies, setCookie] = useCookies(["cart"]);
-
-
-
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  
+  
+  
   useEffect(() => {
-    if (Array.isArray(cookies.cart)) {
-      setCart(cookies.cart);
+    if (Array.isArray(getLocalPrevCarts)) {
+      setCart(getLocalPrevCarts);
     } else {
       setCart([]);
     }
@@ -573,12 +573,11 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
 
   
   useEffect(() => {
-    setCookie("cart", cart, { path: "/" });
-    Value = cart.length;
+    Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
     }
-  }, [cart, setCookie]);
+  }, [cart]);
 
 
   // const filteredProducts = MainJson.filter(product => 
@@ -648,7 +647,8 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
               }
             });
           
-          if (response.data.msg == 'success') {
+          if (response?.status == 201) {
+            localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -675,6 +675,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
           progress: undefined,
           theme: "light",
         });
+        
       }
     } else {
       setShowLoginModal(!showLoginModal);
@@ -701,10 +702,10 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
         <link rel="canonical" href="https://www.rumeno.in/veterinary-products/goat-feed-supplements" />
       </Helmet>
       <div className="desk-nav">
-        <Navbar size={cart.length} />
+        <Navbar size={cart?.length} />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar size={cart.length} />
+        <ResponsiveNavbar size={cart?.length} />
       </div>
       <section className="container-fluid service-bg overflow-hidden">
         <div

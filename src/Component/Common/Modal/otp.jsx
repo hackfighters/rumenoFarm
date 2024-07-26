@@ -61,6 +61,7 @@ const SendOtp = ({ showModal, closeModal }) => {
         Cookies.set("loginUserData", JSON.stringify({
           uID: response.data.uID,
         }));
+        localStorage.setItem("setMobileNum",payload?.phoneNumber)
         setUidData(response.data.uID);
       } else if (response.data.status === 400) {
         toast.warning(response.data.message, {

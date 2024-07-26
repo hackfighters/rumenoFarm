@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import blgimg1 from "../../../assets/img/OurProduct/GreenHouseMat2.jpg";
 import blgimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
@@ -13,10 +13,12 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
 const BlogContent = () => {
-  const { cart } = useContext(UserContext);
+  const { setCart,cart,setSizevalue } = useContext(UserContext);
   const { register,reset, handleSubmit } = useForm();
   const apiUrl = `${process.env.REACT_APP_API}/blog`;
   const getparentidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+
   const blogdata = [
     {
       id: 1,
@@ -46,6 +48,14 @@ const BlogContent = () => {
     },
     
   ];
+  var Value ;
+  useEffect(() => {
+    setCart(getLocalPrevCarts);
+    Value = cart?.length;
+    if (Value !== 0) {
+      setSizevalue(Value)
+    }
+  }, []);
 
   const { id } = useParams();
   const blog = blogdata.find((blog) => blog.id === parseInt(id));
@@ -148,10 +158,10 @@ const BlogContent = () => {
         href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"
       ></a>
       <div className="desk-nav">
-        <Navbar size={cart.length} />
+        <Navbar size={cart?.length} />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar size={cart.length} />
+        <ResponsiveNavbar size={cart?.length} />
       </div>
       <section className="container-fluid service-bg overflow-hidden">
         <div
