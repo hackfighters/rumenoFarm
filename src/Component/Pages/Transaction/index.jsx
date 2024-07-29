@@ -222,6 +222,7 @@ const Transaction = () => {
     setLoading(true);
     const formData = new FormData();
     formData.append("image", image);
+    console.log('image: ', image);
     try {
       const uploadImgResponse = await axios.post("https://api.imgbb.com/1/upload?key=273ab24b40be59dc593d96c50976ae42", formData);
       console.log('response: ', uploadImgResponse.data.status);
