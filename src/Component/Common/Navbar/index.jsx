@@ -55,7 +55,7 @@ const Navbar = ({ size }) => {
     setSelectedAnimal,
     farmDtl,
   } = useContext(UserContext);
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const [lgShow, setLgShow] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
@@ -183,6 +183,9 @@ const Navbar = ({ size }) => {
 
   const handleLogout = () => {
     Cookies.remove("loggedInUser");
+    localStorage.removeItem("localPreviousCart");
+    localStorage.removeItem("loginDetails");
+    localStorage.removeItem("cart");
     Cookies.remove("cart");
     Cookies.remove("loginUserData");
     setLoggedInUser(null);
@@ -265,7 +268,7 @@ const Navbar = ({ size }) => {
 
 
   const handleAnmlValue = (value) => {
-    Cookies.set("SelectedAnimal", JSON.stringify(value));
+    localStorage.setItem("SelectedAnimal", JSON.stringify(value));
   };
 
   return (

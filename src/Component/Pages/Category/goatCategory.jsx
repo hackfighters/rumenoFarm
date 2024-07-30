@@ -29,6 +29,7 @@ import Liverofine from "../../../assets/img/OurProduct/Liverofine.jpg";
 import DCox from "../../../assets/img/OurProduct/D-Cox.jpg";
 import RumenoMicroflorapre from "../../../assets/img/OurProduct/Rumeno-Micro-flora.jpg";
 import LactoPupMilkReplacer from "../../../assets/img/OurProduct/Lacto-Pup-Milk-Replacer.jpg";
+import prolackcalf2 from "../../../assets/img/OurProduct/pro-lack-calf-powder2.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faEye } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
@@ -45,7 +46,7 @@ const GoatCategoryPage = ({ }) => {
   const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
 
 
@@ -56,8 +57,8 @@ const GoatCategoryPage = ({ }) => {
       id: 1,
       name: "Tanav Mukti Anti Stress Animal Feed Supplement | Stress relief supplements for animals",
       priceText: 700,
-      img: tanavmukti,
-imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
+      img: [tanavmukti],
+      metaDesc: "Discover Tanav Mukti, the breakthrough anti-stress feed supplement designed to keep your beloved animals calm, healthy, and resilient.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -68,13 +69,72 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Tanav Mukti Powder: A specialized blend of natural adaptogenic herbs designed to alleviate stress in animals.\nDosage: Mix the recommended amount of Tanav Mukti Powder with your pet’s food or water.\nFrequency: Administer twice daily for optimal results.\nConsult a Veterinarian: Always consult a veterinarian before introducing any new product to your pet’s routine.",
       Category: "cow,goat",
       Type: "Medicine",
-      
+      imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
+      script: `{
+                  "@context": "https://schema.org/", 
+                  "@type": "Product", 
+                  "name": "Tanav Mukti Anti Stress Animal Feed Supplement | Stress relief supplements for animals",
+                  "image": "https://www.rumeno.in/static/media/Tanaav.f892208d5402ec8a78de.jpg",
+                  "description": "Tanav Mukti Powder: A specialized blend of natural adaptogenic herbs designed to alleviate stress in animals. Dosage: Mix the recommended amount of Tanav Mukti Powder with your pet’s food or water. Frequency: Administer twice daily for optimal results",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "TNMKT",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "700",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "58"
+                  }
+                }`,
+
     },
     {
       id: 2,
+      script: `{
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                "name": "Neonato Veterinary products for Goat ,Cow, and Buffalo kids | Natural supplement for newborn animals",
+                "image": "https://www.rumeno.in/static/media/neonatobottle.bb753c31ea8a292f28a7.png",
+                "description": "Neonato: The Organic Option for Promoting the Health of Newborn Animals Searching for natural vitamins to give your new furry (or feathered) buddy a healthy start, or for veterinary treatments specifically meant for children? Neonato is the only place to look! Neonato is an all-Neonato Natural supplement for newborn animals created by expert veterinarians.",
+                "brand": {
+                  "@type": "Brand",
+                  "name": "Rumeno"
+                },
+                "sku": "NNT",
+                "offers": {
+                  "@type": "Offer",
+                  "url": "",
+                  "priceCurrency": "INR",
+                  "price": "245",
+                  "priceValidUntil": "2024-12-31",
+                  "availability": "https://schema.org/InStock",
+                  "itemCondition": "https://schema.org/NewCondition"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.2",
+                  "bestRating": "5",
+                  "worstRating": "1",
+                  "ratingCount": "78"
+                }
+              }`
+      ,
       name: "Neonato Veterinary products for Goat ,Cow, and Buffalo kids | Natural supplement for newborn animals",
       priceText: 245,
-      img: Neonato,
+      img: [Neonato],
+      metaDesc: "Unlock the natural potential of your newborn animals with Neonato Veterinary Products. Specifically formulated for goat, cow, and buffalo kids",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -86,13 +146,13 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Category: "For All Kids",
       Type: "Medicine",
       imgText: "Neonato Natural supplement for newborn animals"
-            ,
     },
     {
       id: 3,
       name: "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
       priceText: 235,
-      img: Energico,
+      img: [Energico],
+      metaDesc: "Revitalize your livestock with Energico! Specially formulated for cattle, goats, poultry, horses, pigs, sheep, and pigeons",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -103,13 +163,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\nDosage:\nMix 1 scoop (provided) of Energico Powder with 1 liter of clean water.\nAdjust the quantity based on the animal’s size and condition. Consult a veterinarian for precise dosing.\nAdministration:\nOffer the prepared solution to the animal using a clean water bowl or syringe.\nRepeat as needed during periods of stress, illness, or hot weather.\nStorage:\nStore Energico in a cool, dry place away from direct sunlight.\nKeep the container tightly sealed to maintain freshness.",
       Category: "cow,goat,poultry",
       Type: "Medicine",
-      imgText: "Energico Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon"
+      imgText: "Energico Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
+    "image": "https://www.rumeno.in/static/media/Energico-Animal.99c24705a20ebcdc16a8.jpg",
+    "description": "Energico: Restoring Electrolytes for Optimal Animal Function in Goats, Chickens, Cattle, and Other Animals! Use Energico to protect your cattle, goats, poultry, and other livestock from electrolyte imbalance and dehydration! This fast-acting combination of vital electrolytes, especially prepared to meet the demands of cattle, is offered by this veterinarian-recommended solution, which is an excellent option for electrolytes for cattle.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "ENRGC",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "235",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "68"
+    }
+  }`,
     },
     {
       id: 4,
       name: "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
       priceText: 390,
-      img: Energico,
+      img: [Energico],
+      metaDesc: "Revitalize your livestock with Energico! Specially formulated for cattle, goats, poultry, horses, pigs, sheep, and pigeons",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -120,13 +209,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Energico Powder: A specialized blend of essential electrolytes designed to maintain proper hydration and support overall well-being in animals.\nDosage:\nMix 1 scoop (provided) of Energico Powder with 1 liter of clean water.\nAdjust the quantity based on the animal’s size and condition. Consult a veterinarian for precise dosing.\nAdministration:\nOffer the prepared solution to the animal using a clean water bowl or syringe.\nRepeat as needed during periods of stress, illness, or hot weather.\nStorage:\nStore Energico in a cool, dry place away from direct sunlight.\nKeep the container tightly sealed to maintain freshness.",
       Category: "cow,goat,poultry",
       Type: "Medicine",
-      imgText: "Energico Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon"
+      imgText: "Energico Electrolytes for Cattle Goat Poultry Horses Pigs Sheep Pigeon",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Energico | Electrolytes for Cattle, Goat, Poultry, Horses, Pigs, Sheep, Pigeons",
+    "image": "https://www.rumeno.in/static/media/Energico-Animal.99c24705a20ebcdc16a8.jpg",
+    "description": "Energico: Restoring Electrolytes for Optimal Animal Function in Goats, Chickens, Cattle, and Other Animals! Use Energico to protect your cattle, goats, poultry, and other livestock from electrolyte imbalance and dehydration! This fast-acting combination of vital electrolytes, especially prepared to meet the demands of cattle, is offered by this veterinarian-recommended solution, which is an excellent option for electrolytes for cattle.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "ENRGC",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "235",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "68"
+    }
+  }`,
     },
     {
       id: 5,
       name: "Micro Floratone | Digestive supplements for dogs ",
       priceText: 245,
-      img: Microfloratane,
+      img: [Microfloratane],
+      metaDesc: "Specially formulated for dogs, it combines probiotics, prebiotics, digestive enzymes, and herbs to ensure optimal gastrointestinal function.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -137,13 +255,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Micro Floratone Powder: A premium quality blend of prebiotics, probiotics, vitamins, and minerals designed to support your pet’s overall health and well-being1.\nDosage:\nMix the recommended amount of Micro Floratone Powder with your pet’s food.\nAdjust the quantity based on your pet’s size and age. Consult a veterinarian for precise dosing.\nDaily Use:\nAdminister once daily for optimal results.\nMicro Floratone provides a full spectrum of quality ingredients to promote digestive health and immunity.\nStorage:\nStore in a cool, dry place away from direct sunlight.\nSeal the container tightly to maintain freshness.",
       Category: "Dog and cat",
       Type: "Medicine",
-      imgText: "Micro Floratone digestive supplements for dogs"
+      imgText: "Micro Floratone digestive supplements for dogs",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Micro Floratone | Digestive supplements for dogs",
+                  "image": "https://www.rumeno.in/static/media/microfloratane.5f9b45158503745d7101.jpg",
+                  "description": "Micro Floratone: Make your puppies happy with the best digestive supplements for dogs Does your pet occasionally have digestive issues? Searching for a natural way to improve the health of their digestive system? Look no further than Micro Floratone, the all-in-one digestive care food for dogs! Veterinarian-recommended Micro Floratone is a tasty formula full of potent nutrients that will help your dog's digestion function at its best",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "MCRFLTN",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "245",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.3",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "67"
+                  }
+                }`,
     },
     {
       id: 6,
       name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
       priceText: 285,
-      img: Minromix,
+      img: [Minromix],
+      metaDesc: "This balanced mineral blend supports bone strength, immunity, and overall vitality. Whether you’re raising livestock or caring for beloved pets",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -154,13 +301,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
       Category: "cow,goat,poultry",
       Type: "Medicine",
-      imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers"
+      imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
+    "image": "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+    "description": "The All-in-One Mineral Superstar for Goats, Cattle, Dogs, and Cats is Minromix! Pets and livestock both benefit from a well-balanced diet that includes all the necessary vitamins and minerals.Minromix is a veterinarian-recommended mineral mixture for cattle and other animals, Minromix is designed to meet the dietary requirements of different species.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "MNRMX",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "285",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "82"
+    }
+  }`,
     },
     {
       id: 7,
       name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
       priceText: 1400,
-      img: Minromix,
+      img: [Minromix],
+      metaDesc: "This balanced mineral blend supports bone strength, immunity, and overall vitality. Whether you’re raising livestock or caring for beloved pets",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -171,13 +347,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
       Category: "cow,goat,poultry",
       Type: "Medicine",
-      imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers"
+      imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
+    "image": "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+    "description": "The All-in-One Mineral Superstar for Goats, Cattle, Dogs, and Cats is Minromix! Pets and livestock both benefit from a well-balanced diet that includes all the necessary vitamins and minerals.Minromix is a veterinarian-recommended mineral mixture for cattle and other animals, Minromix is designed to meet the dietary requirements of different species.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "MNRMX",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "285",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "82"
+    }
+  }`,
     },
     {
       id: 8,
       name: "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
       priceText: 4600,
-      img: Minromix,
+      img: [Minromix],
+      metaDesc: "This balanced mineral blend supports bone strength, immunity, and overall vitality. Whether you’re raising livestock or caring for beloved pets",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -188,13 +393,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Minromix Powder: A blend of macro and micro minerals, essential vitamins, and other vital nutrients to support overall health in animals.\nDosage:\nMass Feeding: Mix 1-2% of Minromix Powder with the animal’s regular feed.\nIndividual Feeding:\nCows/Buffaloes: Administer 30 grams daily.\nCalves/Sheep/Goats: Provide 5-10 grams per day.\nPackaging: Available in 1 kg and 25 kg containers1.",
       Category: "cow,goat,poultry",
       Type: "Medicine",
-      imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers"
+      imgText: "Minromix Mineral mixture for cattle goat sheep horse and broilers",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Minromix | Mineral mixture for cattle, goat ,poultry,dog,and cat",
+    "image": "https://www.rumeno.in/static/media/minromix.0fbc134a1c446a054159.jpg",
+    "description": "The All-in-One Mineral Superstar for Goats, Cattle, Dogs, and Cats is Minromix! Pets and livestock both benefit from a well-balanced diet that includes all the necessary vitamins and minerals.Minromix is a veterinarian-recommended mineral mixture for cattle and other animals, Minromix is designed to meet the dietary requirements of different species.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "MNRMX",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "285",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "82"
+    }
+  }`,
     },
     {
       id: 9,
       name: "Rumenovita | Growth booster for animals | Animal feed supplement",
       priceText: 700,
-      img: Rumenovita,
+      img: [Rumenovita],
+      metaDesc: "Enhance livestock growth with Rumenovita! Our premium feed supplement supports healthy development, improved weight gain, and overall well-being.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -205,13 +439,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Consultation with a Professional:\nBefore starting any supplementation, consult a veterinarian or a livestock nutritionist.\nDiscuss the specific needs of your animals and any existing health conditions.\nDosage and Administration:\nAdminister Rumenovita orally to the animals.\nMix the recommended dosage with their regular feed or water.\nThe appropriate dosage may vary based on factors such as the animal’s age, weight, and overall health.\nFollow the manufacturer’s guidelines closely for accurate dosing.\nFrequency:\nProvide Rumenovita daily or as advised by an expert.\nFor young animals, consider administering it during critical growth phases.\nBenefits and Expected Outcomes:\nImproved Digestion: Rumenovita enhances rumen function, aiding in better nutrient breakdown and absorption.\nWeight Gain: The supplement supports healthy weight gain by optimizing nutrient utilization.\nGrowth Promotion: It contributes to overall growth and development.\nImmune Support: Rumenovita boosts the immune system, reducing the risk of diseases.\nCoat Condition: Some users report shinier and healthier coats in animals.\nStorage:\nStore Rumenovita in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nBalanced Nutrition: Remember that Rumenovita is not a substitute for a well-rounded diet. Ensure your animals receive proper nutrition.\nMonitoring: Observe your animals closely for any adverse reactions.\nDiscontinue if Necessary: If unusual symptoms occur, discontinue use and seek professional advice.\nCompatibility with Other Supplements or Medications:\nRumenovita can be used alongside other feed supplements or medications. However, consult a professional to avoid interactions.\nRecord Keeping:\nMaintain accurate records of Rumenovita administration.\nNote down dates, dosages, and details of the animals receiving the supplement.\nRegularly assess their progress to evaluate the effectiveness of the product.",
       Category: "cow,goat",
       Type: "Medicine",
-      imgText: "Rumenovita Growth booster for animals"
+      imgText: "Rumenovita Growth booster for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Rumenovita | Growth booster for animals | Animal feed supplement",
+    "image": "https://www.rumeno.in/static/media/Rumenovita.309f164bb1e0f66284e2.jpg",
+    "description": "Rumenovita: Supercharge Your Animal's Growth with Complete Nutrition & Growth-Boosting Power Rumenovita is a revolutionary animal nutrition formula designed to be the ultimate growth booster for animals.It goes beyond just basic sustenance, providing everything your animals need to thrive and reach their full size potential.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "RMNVT",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "700",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.2",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "76"
+    }
+  }`,
     },
     {
       id: 10,
       name: "Rumenovita | Growth booster for animals | Animal feed supplement",
       priceText: 3250,
-      img: Rumenovita,
+      img: [Rumenovita],
+      metaDesc: "Enhance livestock growth with Rumenovita! Our premium feed supplement supports healthy development, improved weight gain, and overall well-being.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -222,13 +485,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Consultation with a Professional:\nBefore starting any supplementation, consult a veterinarian or a livestock nutritionist.\nDiscuss the specific needs of your animals and any existing health conditions.\nDosage and Administration:\nAdminister Rumenovita orally to the animals.\nMix the recommended dosage with their regular feed or water.\nThe appropriate dosage may vary based on factors such as the animal’s age, weight, and overall health.\nFollow the manufacturer’s guidelines closely for accurate dosing.\nFrequency:\nProvide Rumenovita daily or as advised by an expert.\nFor young animals, consider administering it during critical growth phases.\nBenefits and Expected Outcomes:\nImproved Digestion: Rumenovita enhances rumen function, aiding in better nutrient breakdown and absorption.\nWeight Gain: The supplement supports healthy weight gain by optimizing nutrient utilization.\nGrowth Promotion: It contributes to overall growth and development.\nImmune Support: Rumenovita boosts the immune system, reducing the risk of diseases.\nCoat Condition: Some users report shinier and healthier coats in animals.\nStorage:\nStore Rumenovita in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nBalanced Nutrition: Remember that Rumenovita is not a substitute for a well-rounded diet. Ensure your animals receive proper nutrition.\nMonitoring: Observe your animals closely for any adverse reactions.\nDiscontinue if Necessary: If unusual symptoms occur, discontinue use and seek professional advice.\nCompatibility with Other Supplements or Medications:\nRumenovita can be used alongside other feed supplements or medications. However, consult a professional to avoid interactions.\nRecord Keeping:\nMaintain accurate records of Rumenovita administration.\nNote down dates, dosages, and details of the animals receiving the supplement.\nRegularly assess their progress to evaluate the effectiveness of the product.",
       Category: "cow,goat",
       Type: "Medicine",
-      imgText: "Rumenovita Growth booster for animals"
+      imgText: "Rumenovita Growth booster for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Rumenovita | Growth booster for animals | Animal feed supplement",
+    "image": "https://www.rumeno.in/static/media/Rumenovita.309f164bb1e0f66284e2.jpg",
+    "description": "Rumenovita: Supercharge Your Animal's Growth with Complete Nutrition & Growth-Boosting Power Rumenovita is a revolutionary animal nutrition formula designed to be the ultimate growth booster for animals.It goes beyond just basic sustenance, providing everything your animals need to thrive and reach their full size potential.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "RMNVT",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "700",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.2",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "76"
+    }
+  }`,
     },
     {
       id: 11,
       name: "Digesto Plus | digestive supplements for animals",
       priceText: 190,
-      img: DigestoPlus,
+      img: [DigestoPlus],
+      metaDesc: "Optimize digestion with Digesto Plus! This synergistic blend of natural ingredients promotes efficient nutrient breakdown, absorption, and balanced gut flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -239,13 +531,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nDigesto Plus contains a unique combination of buffer agents and toxin binders.\nIt supports a healthy digestive system in ruminants by regulating rumen pH and neutralizing harmful substances.\nTarget Animals:\nSuitable for:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian before use.\nAdminister orally, mixed with feed or water.\nRecommended dosage: 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nBenefits:\npH Regulation: Prevents acidosis, common in ruminants fed high-grain diets.\nFeed Efficiency: Improves feed utilization.\nToxin Neutralization: Contains binders to counter mycotoxins and other harmful substances.\nStorage:\nStore in a cool, dry place away from sunlight.\nPrecautions:\nMonitor for adverse reactions.\nSeek professional advice if needed.",
       Category: "cow, goat ",
       Type: "Medicine",
-      imgText: "Digesto Plus digestive supplements for animals"
+      imgText: "Digesto Plus digestive supplements for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Digesto Plus | digestive supplements for animals",
+    "image": "https://www.rumeno.in/static/media/Digesto-Plus.58b7849606e0ed51a509.jpg",
+    "description": "Digesto Plus Digesto Plus is a specialized product designed to help maintain the optimal digestive health of ruminants such as cattle, sheep, and goats. The unique formulation of this product contains a combination of buffer agents and toxin binders that work together to support a healthy digestive system in animals",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "DGST",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "190",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "62"
+    }
+  }`,
     },
     {
       id: 12,
       name: "Digesto Plus | digestive supplements for animals",
       priceText: 875,
-      img: DigestoPlus,
+      img: [DigestoPlus],
+      metaDesc: "Optimize digestion with Digesto Plus! This synergistic blend of natural ingredients promotes efficient nutrient breakdown, absorption, and balanced gut flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -256,13 +577,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nDigesto Plus contains a unique combination of buffer agents and toxin binders.\nIt supports a healthy digestive system in ruminants by regulating rumen pH and neutralizing harmful substances.\nTarget Animals:\nSuitable for:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian before use.\nAdminister orally, mixed with feed or water.\nRecommended dosage: 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nBenefits:\npH Regulation: Prevents acidosis, common in ruminants fed high-grain diets.\nFeed Efficiency: Improves feed utilization.\nToxin Neutralization: Contains binders to counter mycotoxins and other harmful substances.\nStorage:\nStore in a cool, dry place away from sunlight.\nPrecautions:\nMonitor for adverse reactions.\nSeek professional advice if needed.",
       Category: "cow, goat ",
       Type: "Medicine",
-      imgText: "Digesto Plus digestive supplements for animals"
+      imgText: "Digesto Plus digestive supplements for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Digesto Plus | digestive supplements for animals",
+    "image": "https://www.rumeno.in/static/media/Digesto-Plus.58b7849606e0ed51a509.jpg",
+    "description": "Digesto Plus Digesto Plus is a specialized product designed to help maintain the optimal digestive health of ruminants such as cattle, sheep, and goats. The unique formulation of this product contains a combination of buffer agents and toxin binders that work together to support a healthy digestive system in animals",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "DGST",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "190",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "62"
+    }
+  }`,
     },
     {
       id: 13,
       name: "Liverofine | veterinary liver tonic",
       priceText: 125,
-      img: Liverofine,
+      img: [Liverofine],
+      metaDesc: "This veterinary liver tonic is designed to help promote healthy liver function in cattle, goat, dogs and cats. Learn more about Liverofine and how it can benefit your pet.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -273,13 +623,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nLiverofine is a specialized liver tonic formulated to enhance liver function and overall well-being in animals.\nIt contains essential nutrients and herbal extracts that promote liver health and aid in detoxification.\nTarget Animals:\nLiverofine is suitable for various animals, including:\nCattle\nSheep\nGoats\nPoultry\nSwine\nHorses\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Liverofine.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific liver health needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nFrequency:\nProvide Liverofine daily or as advised by a professional.\nFor animals with liver issues, consider prolonged use or as part of a maintenance regimen.\nBenefits:\nLiver Support: Liverofine aids in liver detoxification and supports optimal liver function.\nAntioxidant Properties: Contains antioxidants that protect liver cells from damage.\nMetabolic Balance: Helps maintain metabolic processes related to liver health.\nImproved Digestion: A healthy liver contributes to better nutrient absorption and digestion.\nStorage:\nStore Liverofine in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nCompatibility:\nLiverofine can be used alongside other supplements or medications. Consult a professional to avoid interactions.\nRecord Keeping:\nMaintain records of Liverofine administration, including dates, dosages, and animal details.\nRegularly assess the animals’ liver health to evaluate the effectiveness of the tonic.",
       Category: "poultry, goat, cow",
       Type: "Medicine",
-      imgText: "Liverofine veterinary liver tonic"
+      imgText: "Liverofine veterinary liver tonic",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Liverofine | veterinary liver tonic",
+    "image": "https://www.rumeno.in/static/media/Liverofine.e956615d5fe6c67bac95.jpg",
+    "description": "Liverofine is a premium veterinary liver tonic that promotes optimal animal health. Use Liverofine to help your pet's liver function. Veterinarians prescribe Liverofine, a liver tonic designed specifically to support and protect your pet's liver function.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "LIVRFN",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "125",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "76"
+    }
+  }`,
     },
     {
       id: 14,
       name: "Liverofine | veterinary liver tonic",
       priceText: 600,
-      img: Liverofine,
+      img: [Liverofine],
+      metaDesc: "This veterinary liver tonic is designed to help promote healthy liver function in cattle, goat, dogs and cats. Learn more about Liverofine and how it can benefit your pet.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -290,13 +669,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nLiverofine is a specialized liver tonic formulated to enhance liver function and overall well-being in animals.\nIt contains essential nutrients and herbal extracts that promote liver health and aid in detoxification.\nTarget Animals:\nLiverofine is suitable for various animals, including:\nCattle\nSheep\nGoats\nPoultry\nSwine\nHorses\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Liverofine.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific liver health needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nFrequency:\nProvide Liverofine daily or as advised by a professional.\nFor animals with liver issues, consider prolonged use or as part of a maintenance regimen.\nBenefits:\nLiver Support: Liverofine aids in liver detoxification and supports optimal liver function.\nAntioxidant Properties: Contains antioxidants that protect liver cells from damage.\nMetabolic Balance: Helps maintain metabolic processes related to liver health.\nImproved Digestion: A healthy liver contributes to better nutrient absorption and digestion.\nStorage:\nStore Liverofine in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nCompatibility:\nLiverofine can be used alongside other supplements or medications. Consult a professional to avoid interactions.\nRecord Keeping:\nMaintain records of Liverofine administration, including dates, dosages, and animal details.\nRegularly assess the animals’ liver health to evaluate the effectiveness of the tonic.",
       Category: "poultry, goat, cow",
       Type: "Medicine",
-      imgText: "Liverofine veterinary liver tonic"
+      imgText: "Liverofine veterinary liver tonic",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Liverofine | veterinary liver tonic",
+    "image": "https://www.rumeno.in/static/media/Liverofine.e956615d5fe6c67bac95.jpg",
+    "description": "Liverofine is a premium veterinary liver tonic that promotes optimal animal health. Use Liverofine to help your pet's liver function. Veterinarians prescribe Liverofine, a liver tonic designed specifically to support and protect your pet's liver function.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "LIVRFN",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "125",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.4",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "76"
+    }
+  }`,
     },
     {
       id: 15,
       name: "D-Cox | Weaning goat supplement",
       priceText: 250,
-      img: DCox,
+      img: [DCox],
+      metaDesc: "Make Weaning Easier for Your Kids with D-Cox. This weaning goat supplement provides essential nutrients for a smooth transition from milk to solid feed. Shop D-Cox today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -307,13 +715,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nD-Cox is a coccidiostat formulated to prevent coccidiosis in young goats during the critical weaning phase.\nIt contains the active drug ingredient Decoquinate (6%) to combat Eimeria christenseni and E. ninakohlyakimovae, the common coccidia species affecting goats.\nTarget Animals:\nD-Cox is specifically intended for young goats during the weaning period.\nDosage and Administration:\nConsult a veterinarian or livestock expert before using D-Cox.\nAdminister the product orally, preferably mixed with feed or water.\nThe recommended dosage is to provide 22.7 mg decoquinate per 100 lbs (0.5 mg per kg) body weight per day.\nMix D-Cox thoroughly into the goat’s ration.\nDuration:\nFeed D-Cox for at least 28 days during periods of coccidiosis exposure or when experience indicates coccidiosis is likely to be a hazard.\nTypes of Medicated Feed:\nType C Medicated Feed (Complete Ration):\nMix D-Cox into the complete feed to provide the proper decoquinate levels daily.\nExample dosages:\n0.5 lbs per ton of feed (13.6 g/ton) for 20 lbs body weight\n0.7 lbs per ton of feed (19.0 g/ton) for 14.3 lbs body weight\n1.0 lb per ton of feed (27.2 g/ton) for 10 lbs body weight\nStorage:\nStore D-Cox in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor goats closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.",
       Category: "goat",
       Type: "Medicine",
-      imgText: "D Cox Weaning goat supplement"
+      imgText: "D Cox Weaning goat supplement",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "D-Cox | Weaning goat supplement",
+                  "image": "https://www.rumeno.in/static/media/D-Cox.a94b558940bc0e2ddaeb.jpg",
+                  "description": "D-Cox is a natural feed supplement designed specifically for weaning goat and sheep kids. It is formulated to help support healthy growth and development while also providing protection against common diseases such as coccidia. Weaning is a critical period in the life of young animals, as it marks the transition from milk to solid food. During this time, the digestive system undergoes significant changes, and the animals may be more susceptible to digestive upsets and other health problems. D-Cox is designed to provide the essential nutrients and support needed to help young animals thrive during this period.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "DCX",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "250",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.2",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "55"
+                  }
+                }`,
     },
     {
       id: 16,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 90,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
+      metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -324,13 +761,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
       Category: "goat ,cow",
       Type: "Medicine",
-      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
+      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Rumeno Micro Flora | Pre + Probiotic Supplement for animals",
+    "image": "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+    "description": "Rumeno Micro-Flora, a powerful pre+probiotic supplement for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals. Our carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "MCRFL",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "1300",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "54"
+    }
+  }`,
     },
     {
       id: 17,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 350,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
+      metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -341,13 +807,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
       Category: "goat ,cow",
       Type: "Medicine",
-      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
+      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Rumeno Micro Flora | Pre + Probiotic Supplement for animals",
+    "image": "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+    "description": "Rumeno Micro-Flora, a powerful pre+probiotic supplement for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals. Our carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "MCRFL",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "1300",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "54"
+    }
+  }`,
     },
     {
       id: 18,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 650,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
+      metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -358,13 +853,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
       Category: "goat ,cow",
       Type: "Medicine",
-      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
+      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Rumeno Micro Flora | Pre + Probiotic Supplement for animals",
+    "image": "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+    "description": "Rumeno Micro-Flora, a powerful pre+probiotic supplement for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals. Our carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "MCRFL",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "1300",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "54"
+    }
+  }`,
     },
     {
       id: 19,
       name: "Rumeno Micro Flora | Pre + Probiotic Supplement for animals ",
       priceText: 1300,
-      img: RumenoMicroflorapre,
+      img: [RumenoMicroflorapre],
+      metaDesc: "Support Digestive Health in Animals with Rumeno Micro Flora. This prebiotic and probiotic supplement promotes gut health and may improve digestion in ruminant animals.  Learn more about Rumeno Micro Flora.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -375,13 +899,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nRumeno Micro Flora is a specialized blend of prebiotics and probiotics formulated to enhance the microbial balance in the rumen of ruminant animals.\nIt promotes efficient digestion, nutrient absorption, and overall gut health.\nTarget Animals:\nSuitable for various ruminants, including:\nCattle\nSheep\nGoats\nDosage and Administration:\nConsult a veterinarian or livestock expert before using Rumeno Micro Flora.\nAdminister the supplement orally, preferably mixed with feed or water.\nThe recommended dosage may vary based on the animal’s weight, age, and specific digestive needs.\nFollow the manufacturer’s guidelines for accurate dosing.\nBenefits:\nPrebiotics: Nourish beneficial gut bacteria, creating an optimal environment for their growth.\nProbiotics: Introduce live beneficial microbes (such as Lactobacillus and Bifidobacterium) to the rumen.\nImproved Digestion: Enhances fiber breakdown and nutrient utilization.\nImmune Support: A healthy gut contributes to overall immune function.\nStorage:\nStore Rumeno Micro Flora in a cool, dry place away from direct sunlight.\nFollow any specific storage instructions provided on the packaging.\nPrecautions:\nMonitor animals closely for any adverse reactions.\nDiscontinue use if unusual symptoms occur and seek professional advice.\nRecord Keeping:\nMaintain records of Rumeno Micro Flora administration, including dates, dosages, and animal details.\nRegularly assess the animals’ gut health to evaluate the effectiveness of the supplement.",
       Category: "goat ,cow",
       Type: "Medicine",
-      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals"
+      imgText: "Rumeno Mico Flora Pre + Probiotic supplement for animals",
+      script: `{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Rumeno Micro Flora | Pre + Probiotic Supplement for animals",
+    "image": "https://www.rumeno.in/static/media/Rumeno-Micro-flora.8fbf39e80d47c16a054a.jpg",
+    "description": "Rumeno Micro-Flora, a powerful pre+probiotic supplement for animals. With a unique blend of multi beneficial bacteria, Rumeno Micro-Flora is formulated to support the digestive health of your beloved pets and farm animals. Our carefully crafted blend of pre+probiotics contains a diverse range of live microorganisms that work together to promote a healthy gut microbiome. By supporting the growth of good bacteria and suppressing harmful pathogens, Rumeno Micro-Flora helps to improve nutrient absorption, boost immunity, and reduce digestive issues such as bloating, gas, and diarrhea.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Rumeno"
+    },
+    "sku": "MCRFL",
+    "offers": {
+      "@type": "Offer",
+      "url": "",
+      "priceCurrency": "INR",
+      "price": "1300",
+      "priceValidUntil": "2024-12-31",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "54"
+    }
+  }`,
     },
     {
       id: 20,
       name: "Lacto-Pup Milk Replacer | Milk Replacer for Puppies",
       priceText: 600,
-      img: LactoPupMilkReplacer,
+      img: [LactoPupMilkReplacer],
+      metaDesc: "Give orphaned or weaning puppies the nutrition they need with Lacto-Pup Milk Replacer. This complete food provides essential vitamins, minerals, and DHA for healthy development. Shop Lacto-Pup Milk Replacer for your puppies.",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -392,13 +945,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Product Description:\nLacto-Pup Milk Replacer is designed to provide essential nutrition for puppies during their early stages of life.\nIt closely resembles natural mother’s milk, ensuring optimal growth and development.\nTarget Animals:\nSuitable for:\nNewborn puppies\nOrphaned puppies\nUnderweight puppies\nPreparation:\nUsing the scoop provided, add Lacto-Pup Milk Replacer to warm water (allow boiled water to cool before use).\nStir until completely dissolved.\nAllow the mixture to cool until lukewarm (around 38°C or blood temperature).\nFeeding Equipment:\nUse proper feeding equipment, such as the Beaphar Feeding Set or Beaphar Feeding Syringes.\nEnsure the equipment is clean and sterile.\nRecommended Dilution:\nThe recommended dilution for different puppy weights:\nFor 250g (0.25kg) puppies: Add 7 level scoops to 100ml warm water.\nFor 500g (0.5kg) puppies: Add 160ml per day.\nFor 1000g (1kg) puppies: Add 250ml per day.\nFor 2000g (2kg) puppies: Add 400ml per day.\nFor 5000g (5kg) puppies: Add 900ml per day.\nFeeding Frequency:\nAdjust the volume per day based on the puppy’s weight and age.\nSplit the daily volume across the recommended number of feeds per day.\nGradually transition to solid food after the 28th day.\nStorage:\nPrepared Lacto-Pup Milk Replacer can be refrigerated for up to 24 hours.\nReheat to 38°C or blood temperature before feeding.",
       Category: "dog",
       Type: "Medicine",
-      imgText: "Lacto Pup Milk Replacer For Puppies"
+      imgText: "Lacto Pup Milk Replacer For Puppies",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Lacto-Pup Milk Replacer | Milk Replacer for Puppies",
+                  "image": "https://www.rumeno.in/static/media/Lacto-Pup-Milk-Replacer.0683b2701f8fe6234860.jpg",
+                  "description": "The Caring Option for Orphaned or Underweight Puppies: Lacto Pup Milk Replacer Give Your Adorable Dogs the Start in Life They Merit A full milk substitute that has been scientifically developed, Lacto Pup Milk Replacer is intended especially for the sensitive requirements of underweight or orphaned puppies. The vital nutrients your pet needs to flourish are provided by Lacto Pup Milk Replacer, whether they are missing their mother or just need a nutritious boost. More Than Just Milk Replacer for Puppies, It's Nurturing Care",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "LPMR",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "600",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.4",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "61"
+                  }
+                }`,
     },
     {
       id: 21,
       name: "Poultryfine | Anti bacterial poultry feed supplement",
       priceText: 1600,
-      img: poultryfine,
+      img: [poultryfine],
+      metaDesc: "Protect Your Flock with Poultryfine. This antibacterial poultry feed supplement helps prevent and manage common infections, promoting healthier birds and improved flock performance. Learn more about Poultryfine today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -409,30 +991,88 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Dosage and Administration:\nMix Poultryfine with the regular feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\nAdminister the supplemented feed to your poultry flock consistently.\nFrequency:\nProvide Poultryfine daily as part of the birds’ regular diet.\nFor optimal results, maintain a consistent feeding schedule.\nStorage:\nStore Poultryfine in a cool, dry place away from direct sunlight.\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\nHygiene and Cleanliness:\nRegularly clean and disinfect feeding equipment, waterers, and the feeding area.\nAvoid cross-contamination by handling the supplement with clean hands and utensils.\nMonitoring:\nObserve your poultry flock for any signs of improved health, reduced bacterial infections, or enhanced productivity.\nAdjust the dosage if necessary based on flock size and specific health conditions.",
       Category: "poultry",
       Type: "Medicine",
-      imgText: "Poultryfine Anti bacterial Poulry Feed Supplement"
+      imgText: "Poultryfine Anti bacterial Poulry Feed Supplement",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Poultryfine | Anti bacterial poultry feed supplement",
+                  "image": "https://www.rumeno.in/static/media/Poultryfine.72a530f3de321acd531c.png",
+                  "description": "Poultryfine: Your Trusted Solution for Poultry Health and Growth Are you looking for top-quality antibacterial products to enhance the health and productivity of your poultry? Look no further! Poultryfine offers a comprehensive range of poultry feed supplements designed to promote growth, boost immunity, and maintain overall well-being.Poultryfine’s antibacterial growth promoters stimulate optimal growth rates",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "PTRYFN",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "1600",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.2",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "64"
+                  }
+                }`,
     },
     {
       id: 22,
       name: "Florovita-12 | Broiler weight gainer | Probiotic supplement for poultry",
       priceText: 1300,
-      img: Florovita,
+      img: [Florovita],
+      metaDesc: "Boost Broiler Growth & Wellbeing with Florovita-12. This probiotic supplement promotes healthy digestion, improves weight gain, and supports overall broiler health. Learn more about Florovita-12!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
       Refundable: "Refundable for any manufacturing defect within 1 week",
       Weight: "1kg",
-      Shortdescription:"Mix 50 gm Florovita-12 powder in 100 litre of water.",
+      Shortdescription: "Mix 50 gm Florovita-12 powder in 100 litre of water.",
       description: "Florovita-12: Probiotic Supplement for Poultry and Broiler Weight Gainer\nOverview:\nFlorovita-12 is a powerful probiotic supplement for poultry, meticulously designed to enhance the health and weight gain of poultry, especially broilers. Whether you’re a commercial poultry farmer or a backyard enthusiast, Florovita-12 provides essential nutrients for optimal growth.\n\nKey Features:\nProbiotic Power: Florovita-12 is a poultry feed supplements that contains a blend of beneficial probiotics that support gut health. A balanced gut microbiome improves nutrient absorption, digestion, and overall well-being.\nWeight Gain Formula: Broilers need efficient weight gain for optimal meat production. Florovita-12 also acts as a broiler weight gainer, promoting healthy muscle development and robust growth.\nVitamins and Minerals: Beyond probiotics, this supplement includes essential vitamins (such as vitamin B12) and minerals (like zinc and manganese). These micronutrients contribute to overall health and vitality.\nDigestive Comfort: A well-functioning digestive system reduces stress and ensures efficient feed utilization. Florovita-12 supports digestive comfort, leading to better feed conversion.\nBenefits:\nImproved Feed Efficiency: Florovita-12 helps broilers convert feed into weight gain more effectively.\nEnhanced Muscle Mass: Healthy weight gain translates to better meat yield and quality.\nStress Reduction: Probiotics support stress tolerance, especially during environmental changes or disease challenges.\nFlorovita-12: Boost your poultry’s growth with our premium poultry weight gain supplement. Specifically designed for poultry, Florovita-12 supports muscle development and efficient feed conversion. Watch your birds thrive! \nDirections for Use:\nMix: Blend the recommended amount of Florovita-12 with your poultry feed.\nAdminister: Offer daily according to weight and species guidelines.\nObserve: Monitor your poultry’s weight gain and adjust dosage if needed.\nQuality Assurance:\nScientifically Formulated: Florovita-12 is developed by poultry nutrition experts.\nThird-Party Tested: Rigorous quality checks ensure purity, potency, and safety.\nNo Artificial Additives: Free from artificial colors, flavors, and preservatives.\nChoose Florovita-12:\nInvest in your poultry’s health and weight gain with Florovita-12. Watch your broilers thrive!",
       Instruction: "Dosage and Administration:\r\nMix Florovita-12 with the regular feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your poultry flock consistently.\r\nFrequency:\r\nProvide Florovita-12 daily as part of the birds’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Florovita-12 in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nHygiene and Cleanliness:\r\nRegularly clean and disinfect feeding equipment, waterers, and the feeding area.\r\nAvoid cross-contamination by handling the supplement with clean hands and utensils.\r\nMonitoring:\r\nObserve your poultry flock for any signs of improved health, reduced bacterial infections, or enhanced productivity.\r\nAdjust the dosage if necessary based on flock size and specific health conditions.",
       Category: "poultry",
       Type: "Medicine",
-      imgText: "Florovita-12 Broiler Weight Gainer"
+      imgText: "Florovita-12 Broiler Weight Gainer",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Florovita-12 | Broiler weight gainer | Probiotic supplement for poultry",
+                  "image": "https://www.rumeno.in/static/media/florovita-12.a41251e04c6a475d0836.png",
+                  "description": "Florovita-12: Probiotic Supplement for Poultry and Broiler Weight Gainer Overview: Florovita-12 is a powerful probiotic supplement for poultry, meticulously designed to enhance the health and weight gain of poultry, especially broilers. Whether you’re a commercial poultry farmer or a backyard enthusiast, Florovita-12 provides essential nutrients for optimal growth. Key Features: Probiotic Power: Florovita-12 is a poultry feed supplements that contains a blend of beneficial probiotics that support gut health.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "FLRV",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "1300",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.3",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "64"
+                  }
+                }`,
     },
     {
       id: 23,
-      name: "Pro-lac power goat milk replacer",
-      priceText: 600,
-      img: prolackgoat,
+      name: "Bull Goat | Goat weight gain supplement",
+      priceText: 1175,
+      img: [bullgoat],
+      metaDesc: "Supercharge Your Bull Goat's Growth with Bull Goat Supplement. This targeted formula provides essential nutrients to help your male goat reach his full weight potential. Shop Bull Goat today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -443,13 +1083,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Daily diet: Milk should be fed 10% of total body weight. It should be divided equally two or three times a day. Make fresh milk every time. Do not make and store extra liquid milk. Prepare the required amount to drink at once. For the first three days after birth, the kid should be given mother's colostrum. \nOn the very first day of milk replacer consumption just give only 100-200 ml of milk to adjust the digestive system with the milk replacer and gradually increase 100 ml on the daily basis till it goes to 10% fo the body weight\nAfter opening the packet, place the milk powder in a clean and dry place in an air tight container. Protect it from direct sunlight.\nFeeding bottles and nipples should be cleaned with disinfectant or lukewarm water after each intake.\nThe feeding bottle and nipple should always be kept clean.\nPreparation:\nPrepare the milk in lukewarm (39° C) water.\nPrepare 1 liter of milk by mixing 100 g of milk powder in 900 ml of lukewarm water.\nReady milk should be given immediately after preparation when the milk temperature is slightly warm (37° C) ",
       Category: "goat",
       Type: "Medicine",
-      imgText: "Pro-lac power goat milk replacer"
+      imgText: "Bull Goat Goat weight gain supplement",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Bull Goat | Goat weight gain supplement",
+                  "image": "https://www.rumeno.in/static/media/Bull-Goat.ec068f108419e5ad356b.png",
+                  "description": "Bull Goat: Your Ultimate Solution for Goat Health and Weight Gain Are you seeking top-notch goat weight gain supplements to ensure your goats thrive? Look no further! Bull Goat offers a comprehensive range of products designed to enhance goat health, promote weight gain, and boost overall well-being.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "BGT",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "1175",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.2",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "62"
+                  }
+                }`,
     },
     {
       id: 24,
       name: "Selennium-E | Selenium supplement for poultry | Poultry feed supplement",
       priceText: 260,
-      img: Selennium,
+      img: [Selennium],
+      metaDesc: "Support Flock Health & Performance with Selenium-E. This essential poultry feed supplement provides organic selenium and Vitamin E for stronger immunity, improved egg production, and healthier birds. Learn more about Selenium-E!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -459,13 +1128,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       description: "Selenium-E: Your Poultry’s Essential Nutrient Boost\n\nIntroducing Selenium-E is a premium poultry feed supplement meticulously crafted to enhance the health and productivity of your feathered friends. Packed with vital vitamins and minerals, this specialized formula ensures your poultry flock thrives in every aspect.\n\nSelennium-E is a premium selenium supplement for poultry, meticulously crafted to meet the specific needs of poultry (chickens, ducks, turkeys, etc.). Whether you raise chickens, ducks, turkeys, or other poultry, selenium-E provides essential nutrients for optimal health.\n\nKey Features:\nSelenium Boost: Selennium-E is a high-quality feed supplement for poultry that contains a concentrated dose of selenium, supporting antioxidant defenses, immune function, and overall vitality in poultry. This essential trace mineral plays a crucial role in maintaining their well-being.\nVitamins and Minerals: Beyond selenium, this supplement includes a balanced blend of vitamins (such as vitamin E) and minerals (including zinc and copper). These micronutrients contribute to feather quality, egg production, and bone strength.\nFeed Efficiency: Selennium-E enhances feed utilization, ensuring that your poultry get the most out of their diet. Improved nutrient absorption translates to better growth and performance.\nImmune Support: A robust immune system is essential for disease resistance. The selenium in Selennium-E bolsters immune responses, helping your poultry stay healthy.\nBenefits:\nHealthy Egg Production: Selennium-E positively influences egg quality and production rates.\nStrong Bones and Feathers: The combination of selenium and other nutrients supports skeletal health and feather integrity.\nReduced Stress: Antioxidant properties help combat oxidative stress, especially during challenging conditions.\nDirections for Use:\nMix: Blend the recommended amount of selenium-E with your poultry feed.\nAdminister: Offer daily according to weight and species guidelines.\nObserve: Monitor your poultry’s well-being and adjust dosage if needed.\nQuality Assurance:\nScientifically Formulated: Selennium-E is developed by poultry nutrition experts.\nThird-Party Tested: Rigorous quality checks ensure purity, potency, and safety.\nNo Artificial Additives: Free from artificial colors, flavors, and preservatives.\nChoose Selennium-E:\nInvest in your poultry’s health with selenium-E. Provide the essential nutrients they need to thrive!",
       Instruction: "Dosage and Administration:\r\nMix Selenium-E with the regular poultry feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your poultry flock consistently.\r\nFrequency:\r\nProvide Selenium-E daily as part of the birds’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Selenium-E in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nMonitoring:\r\nObserve your poultry flock for any signs of improved health, especially related to selenium deficiency.\r\nAdjust the dosage if necessary based on flock size and specific health conditions.",
       Type: "Medicine",
-      imgText: "Selennium-E Selenium supplement for poultry"
+      imgText: "Selennium-E Selenium supplement for poultry",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Selennium-E | Selenium supplement for poultry | Poultry feed supplement",
+                  "image": "https://www.rumeno.in/static/media/selennium-E.b6a025d4d3b6ab1524c0.png",
+                  "description": "Selenium-E is a premium poultry feed supplement meticulously crafted to enhance the health and productivity of your feathered friends. Packed with vital vitamins and minerals, this specialized formula ensures your poultry flock thrives in every aspect. Selennium-E is a premium selenium supplement for poultry, meticulously crafted to meet the specific needs of poultry (chickens, ducks, turkeys, etc.). Whether you raise chickens, ducks, turkeys, or other poultry, selenium-E provides essential nutrients for optimal health. Key Features: Selenium Boost: Selennium-E is a high-quality feed supplement for poultry that contains a concentrated dose of selenium, supporting antioxidant defenses, immune function, and overall vitality in poultry.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "SELE",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "260",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "56"
+                  }
+                }`,
     },
     {
       id: 25,
       name: "Farm house floor burner",
       priceText: 3000,
-      img: farmbuner,
+      img: [farmbuner],
+      metaDesc: "High-Powered Weeding & More: Four Burner Flame Gun.  Eliminate weeds, clear brush, and tackle other tasks efficiently with this powerful 4-burner flame thrower. Shop flame guns today!",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
       Refundable: "Refundable for any manufacturing defect within 1 week",
@@ -473,12 +1171,41 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       description: "Farmhouse Floor Burner: Enhancing Warmth and Rustic Charm\n\nA farmhouse floor burner is more than just a functional heating appliance—it’s a captivating centerpiece that infuses warmth and character into your living space. Whether you’re nestled in the countryside or embracing farmhouse aesthetics in an urban setting, this versatile burner adds rustic allure to any room.\n\nKey Features:\n\nNatural Materials: Crafted from timeless materials like wood or stone, the farmhouse floor burner pays homage to traditional architecture. The use of reclaimed wood imparts a rich patina, while stone veneer creates a low-profile yet eye-catching design.\nVersatility: From modest hearth surrounds to dramatic floor-to-ceiling accent walls, the farmhouse floor burner adapts seamlessly to various spaces. Its rugged appeal complements both minimalist and cozy interiors.\nBudget-Friendly Options:\nTimber Beam Mantelpiece: An affordable solution, a simple timber beam serves as a rustic mantel. Consider sourcing reclaimed wood for added character.\nPainted Brick Fireplace: Transform a brick fireplace with a coat of heat-resistant paint. Opt for earthy tones or neutrals to evoke a welcoming ambiance.\nModern Farmhouse Inspiration:\nMalm Gas Fire: For a retro-futuristic touch, install a Malm gas fire. Interior designer Leanne Ford used one in her rustic LA bolthole.\nConcrete Block Chimney: Architects in Maine created an industrial-style chimney using concrete blocks, blending contemporary design with utilitarian aesthetics.\nCreate a Cozy Haven: Whether you’re curling up with a book or hosting friends, the farmhouse floor burner radiates comfort and nostalgia. Let its flames dance and transform your space into a charming retreat.",
       Instruction: "Here are the instructions for using a floor burner effectively:\n\nPlacement and Safety:\nSelect a Suitable Location: Place the floor burner in an area with proper ventilation and away from flammable materials.\nStable Surface: Ensure the floor is stable and level to prevent accidents.\nClearance: Maintain adequate clearance around the burner to prevent overheating nearby objects.\nIgnition and Operation:\nFuel Type: Identify the type of fuel your floor burner uses (e.g., wood, gas, pellets).\nIgnition: Follow the manufacturer’s instructions to ignite the burner safely.\nAdjust Flames: Adjust the flame intensity using controls provided (if applicable).\nMaintenance and Cleaning:\nRegular Cleaning: Remove ashes and debris from the burner regularly.\nInspect Components: Check for any damaged parts, leaks, or blockages.\nChimney Maintenance: If your floor burner has a chimney, ensure it’s clean and free of creosote buildup.\nSafety Precautions:\nCarbon Monoxide (CO) Monitoring: Install a CO detector near the burner to detect any leaks.\nFire Extinguisher: Keep a fire extinguisher nearby.\nChildproofing: If you have children or pets, take precautions to prevent accidental contact with the burner.\nExtinguishing the Flame:\nSafe Cooling: Allow the burner to cool down before handling or cleaning.\nClose Vents: If applicable, close vents to extinguish the flame.\nRemember to consult the specific user manual provided by the manufacturer for detailed instructions tailored to your floor burner model. Stay safe and enjoy the warmth!",
       Type: "Tool",
-      imgText: "Farmhouse floor burner"
+      imgText: "Farmhouse floor burner",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Farm house floor burner",
+                  "image": "https://www.rumeno.in/static/media/FarmHouse.5e7a82246e1d49a66bab.jpg",
+                  "description": "Farmhouse Floor Burner: Enhancing Warmth and Rustic Charm A farmhouse floor burner is more than just a functional heating appliance—it’s a captivating centerpiece that infuses warmth and character into your living space. Whether you’re nestled in the countryside or embracing farmhouse aesthetics in an urban setting, this versatile burner adds rustic allure to any room.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "FRMBRN",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "3000",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.4",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "55"
+                  }
+                }`,
     },
     {
       id: 26,
       name: "Slatted Floor ",
-      img: farmflour,
+      img: [farmflour],
+      metaDesc: "Improve Drainage & Airflow: Slatted Floors for Homes & Businesses. Durable and easy to clean, slatted floors offer superior drainage and airflow for various applications. Learn more about slatted floors!",
       priceText: 135,
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -487,13 +1214,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       description: "The Rumeno Slatted Floor is a high-quality flooring solution designed specifically for livestock housing, including goat farms, pig pens, and poultry enclosures. Let’s explore its features:\n\nMaterial and Construction:\nPremium Plastic: The Rumeno Slatted Floor is crafted from durable, UV-coated plastic material.\nSlatted Design: It features evenly spaced slats that allow for efficient waste management.\nAdvantages:\nHygienic: The slatted design ensures that animal droppings fall through the gaps, maintaining cleanliness and minimizing odor.\nComfort: Animals can move freely on the textured surface, promoting better mobility and well-being.\nLongevity: The Rumeno Slatted Floor is built to withstand harsh farm conditions, offering a long product life.\nDimensions and Installation:\nAvailable in various sizes (e.g., 2 feet x 2 feet, 600 mm x 600 mm).\nEasy to install and compatible with different livestock housing setups.\nWhether you’re managing a goat farm or a poultry facility, the Rumeno Slatted Floor provides a reliable and efficient flooring solution for your animals.",
       Instruction: "Placement and Safety:\r\nSelect a Suitable Location: Place the slatted floor in the designated livestock area.\r\nStable Base: Ensure that the supporting structure (beams or framework) is stable and level.\r\nSafety Measures: Consider safety precautions such as non-slip coatings or textured surfaces to prevent animals from slipping.\r\nAnimal Introduction:\r\nGradual Transition: Introduce animals to the slatted floor gradually. Allow them to explore and adapt.\r\nComfort Zone: Provide additional bedding or soft areas nearby initially to ease the transition.\r\nWaste Management:\r\nDroppings Removal: The slatted design allows droppings to fall through. Regularly remove accumulated waste.\r\nCleaning Schedule: Establish a cleaning routine to maintain hygiene.\r\nHealth Monitoring:\r\nFoot Health: Monitor animals’ feet for any signs of abrasions or discomfort.\r\nLeg Health: Ensure that animals move comfortably and without strain.\r\nMaintenance:\r\nInspect Regularly: Check for damaged slats, loose connections, or wear.\r\nRepair or Replace: Promptly repair or replace any damaged sections.",
       Type: "Tool",
-      imgText: "Slatted Floor"
+      imgText: "Slatted Floor",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Slatted Floor",
+                  "image": "https://www.rumeno.in/static/media/farm-floor.9b28a5a41be8a9899b74.jpg",
+                  "description": "The Rumeno Slatted Floor is a high-quality flooring solution designed specifically for livestock housing, including goat farms, pig pens, and poultry enclosures. Let’s explore its features: Material and Construction: Premium Plastic: The Rumeno Slatted Floor is crafted from durable, UV-coated plastic material. Slatted Design: It features evenly spaced slats that allow for efficient waste management. Advantages: Hygienic: The slatted design ensures that animal droppings fall through the gaps, maintaining cleanliness and minimizing odor.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "SLFLR",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "135",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "56"
+                  }
+                }`,
     },
     {
       id: 27,
       name: "Pet nipple | Goat and sheep nipples",
       priceText: 55,
-      img: goatsheepnipple,
+      img: [goatsheepnipple],
+      metaDesc: "Raise Healthy Kids & Lambs: Goat & Sheep Nipples for Bottle Feeding. Durable and easy to clean, our nipples provide a natural feeding experience for orphaned or bottle-fed baby goats and sheep. Shop goat & sheep nipples!",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
       Refundable: "Refundable for any manufacturing defect within 1 week",
@@ -502,13 +1258,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       description: "The Rumeno Pet Animals Bottle Nipple is a versatile and convenient solution for feeding young animals, especially goats and sheep. These specially designed nipples fit standard Pepsi or Cola size bottles, allowing you to create a makeshift feeding bottle with readily available materials. Here are the key features:\n\nEasy Attachment:\nThe bottle cap design allows the nipple to be easily screwed onto the top of the bottle, creating a secure and leak-proof seal.\nTransport and use the feeding bottle without worrying about spills or leaks.\nHigh-Quality Materials:\nMade from safe materials, these nipples mimic the natural teats of a mother goat or sheep.\nFacilitate a smooth transition from nursing to bottle feeding.\nCost-Effective and Digestion-Friendly:\nEliminate the need for expensive bottles and specialized equipment.\nPromote healthy digestion by allowing young animals to feed at their own pace and in a natural position.\nWhether you’re a backyard farmer or managing a large commercial operation, the Rumeno Pet Animals Bottle Nipple ensures convenient and safe feeding for your animals.",
       Instruction: "Preparation and Compatibility:\nSelect a Suitable Bottle: Choose a standard Pepsi or Cola size bottle.\nInspect the Nipple: Ensure that the Rumeno Pet Animals Bottle Nipple is clean and free from any debris.\nAttachment:\nScrew-On Design: Place the nipple on the top of the bottle.\nSecure Seal: Screw the nipple onto the bottle cap until it creates a secure and leak-proof seal.\nFeeding Process:\nComfortable Position: Hold the bottle at an angle that allows the young animal to feed comfortably.\nNatural Teat Position: Position the nipple so that it mimics the natural teats of a mother goat or sheep.\nAllow Self-Feeding: Let the young animal suckle at its own pace.\nMonitoring and Cleaning:\nObserve Feeding: Monitor the animal during feeding to ensure it is comfortable and latching properly.\nRegular Cleaning: After each use, disassemble the nipple and clean it thoroughly. Use warm water and mild soap.\nStorage and Reuse:\nStore Properly: Keep the nipple in a clean, dry place.\nReuse: The Rumeno Pet Animals Bottle Nipple is reusable. Inspect it before each use to ensure it’s in good condition.",
       Type: "Tool",
-      imgText: "Pet Nipple"
+      imgText: "Pet Nipple",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Pet nipple | Goat and sheep nipples",
+                  "image": "https://www.rumeno.in/static/media/goatSheepNipple.492f7df9c8d2488d4557.png",
+                  "description": "The Rumeno Pet Animals Bottle Nipple is a versatile and convenient solution for feeding young animals, especially goats and sheep. These specially designed nipples fit standard Pepsi or Cola size bottles, allowing you to create a makeshift feeding bottle with readily available materials. Here are the key features: Easy Attachment: The bottle cap design allows the nipple to be easily screwed onto the top of the bottle, creating a secure and leak-proof seal. Transport and use the feeding bottle without worrying about spills or leaks.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "PTNP",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "55",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.4",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "68"
+                  }
+                }`,
     },
     {
       id: 28,
       name: "Selennium-GC | Selenium supplement for cattle and goats | Animal feed supplement",
       priceText: 190,
-      img: selenniumGC,
+      img: [selenniumGC],
+      metaDesc: "Support Herd Health & Performance with Selenium-GC. This essential cattle & goat feed supplement provides organic selenium for improved immunity, fertility, and muscle development. Learn more about Selenium-GC!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -519,13 +1304,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Water Soluble Dose\n3-gm / 10-KG Body Weight\n3-5 days as required ",
       Category: "cow,goat",
       Type: "Medicine",
-      imgText: "Selennium-GC Selenium supplement for cattle"
+      imgText: "Selennium-GC Selenium supplement for cattle",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Selennium-GC | Selenium supplement for cattle and goats | Animal feed supplement",
+                  "image": "https://www.rumeno.in/static/media/Selennium-GC.50cb3af46106598afa35.png",
+                  "description": "A Potent Selenium Supplement for cattle Is Selenium GC For both cattle and goats, a veterinarian recommends selenium GC. This all-inclusive selenium supplement addresses a common dietary shortfall that may affect the well-being and productivity of animals.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "SLGC",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "190",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.2",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "64"
+                  }
+                }`,
     },
     {
       id: 29,
       name: "Pro-lac power calf milk replacer",
       priceText: 3000,
-      img: prolackcalf,
+      img: [prolackcalf, prolackcalf2],
+      metaDesc: "Give Calves a Powerful Start with Pro-lac Power. This complete calf milk replacer provides essential nutrients for healthy growth and development.  Shop Pro-lac Power today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -536,14 +1350,42 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Daily diet: Milk should be fed 10% of total body weight. It should be divided equally two or three times a day. Make fresh milk every time. Do not make and store extra liquid milk. Prepare the required amount to drink at once. For the first three days after birth, the kid should be given mother's colostrum. \nOn the very first day of milk replacer consumption just give only 100-200 ml of milk to adjust the digestive system with the milk replacer and gradually increase 100 ml on the daily basis till it goes to 10% fo the body weight\nAfter opening the packet, place the milk powder in a clean and dry place in an air tight container. Protect it from direct sunlight.\nFeeding bottles and nipples should be cleaned with disinfectant or lukewarm water after each intake.\nThe feeding bottle and nipple should always be kept clean.\nPreparation:\nPrepare the milk in lukewarm (39° C) water.\nPrepare 1 liter of milk by mixing 100 g of milk powder in 900 ml of lukewarm water.\nReady milk should be given immediately after preparation when the milk temperature is slightly warm (37° C) ",
       Category: "cattle",
       Type: "Medicine",
-      imgText: "Pro-lac power calf milk replacer"
+      imgText: "Pro-lac power calf milk replacer",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Pro-lac power calf milk replacer",
+                  "image": "https://www.rumeno.in/static/media/pro-lack-calf-powder.3b8d3a16f8bc2174fb03.png",
+                  "description": "Pro Lac Power: A Potent Calf Milk Replacer That Will Power Your Herd's Future Giving a calf the proper nourishment throughout its formative years is essential for laying the groundwork for future success. Pro Lac Power, a calf milk replacer that is suggested by veterinarians, provides orphaned or colostrum-deprived calves with a comprehensive and scientifically developed solution to support healthy growth and development. More Than Just Replacement: Pro Lac Power isn't content to just swap out cow's milk for another. The precise formula of this cutting-edge calf milk replacer is designed to closely resemble the nutritional makeup of genuine mother's milk.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "PRLCMR",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "300",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.4",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "65"
+                  }
+                }`,
     },
     {
       id: 30,
-      
-      name: "Bull Goat | Goat weight gain supplement",
-      priceText: 1175,
-      img: bullgoat,
+      name: "Pro-lac power goat milk replacer",
+      priceText: 600,
+      img: [prolackgoat],
+      metaDesc: "Nurture Healthy Goat Kids with Pro-lac Power. This complete goat milk replacer provides essential nutrients for proper growth and development in orphaned or weaned kids. Shop Pro-lac Power today!",
       Veg: "Veg",
       Offer: "Get 5% discount on susbscribing youtube channel & get extra 5% discount on next order by sharing 2 min video product feedback it is for the benefit of yourself in learning innovative ideas of livestock farming by watching youtube channel and your feedback will help new customers to gain the confidence in using products .Your feedback video will also help you to gain more discounts in future orders. If your feedback video gets 100 likes you will earn one loyality point which will equal to Rupees 25 per point. Your points will be counted and redeemed after 60 days. ",
       Delivery: "within 5 -7 days",
@@ -554,19 +1396,47 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
       Instruction: "Dosage and Administration:\r\nMix Bull Goat with the regular goat feed at the recommended dosage. The typical dosage is X grams per Y kilograms of feed (specific values should be provided on the product label).\r\nAdminister the supplemented feed to your goats consistently.\r\nFrequency:\r\nProvide Bull Goat daily as part of the goats’ regular diet.\r\nFor optimal results, maintain a consistent feeding schedule.\r\nStorage:\r\nStore Bull Goat in a cool, dry place away from direct sunlight.\r\nEnsure the packaging is tightly sealed to prevent moisture or contamination.\r\nMonitoring:\r\nObserve your goats for any signs of improved weight gain, enhanced appetite, and overall health.\r\nAdjust the dosage if necessary based on individual goat needs and specific health conditions.",
       Category: "goat",
       Type: "Medicine",
-      imgText: "Bull Goat Goat weight gain supplement"
+      imgText: "Pro-lac power goat milk replacer",
+      script: `{
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Pro-lac power goat milk replacer",
+                  "image": "https://www.rumeno.in/static/media/pro-lack-goat-powder.bb0b07d4bcc8549414c2.png",
+                  "description": "Pro Lac Power: A Potent Goat Milk Replacer That Will Power Your Herd's Future Giving a goat the proper nourishment throughout its formative years is essential for laying the groundwork for future success. Pro Lac Power, a goat milk replacer that is suggested by veterinarians, provides orphaned or colostrum-deprived goats with a comprehensive and scientifically developed solution to support healthy growth and development. More Than Just Replacement: Pro Lac Power isn't content to just swap out goat's milk for another. The precise formula of this cutting-edge goat milk replacer is designed to closely resemble the nutritional makeup of genuine mother's milk.",
+                  "brand": {
+                    "@type": "Brand",
+                    "name": "Rumeno"
+                  },
+                  "sku": "PRLGMR",
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "",
+                    "priceCurrency": "INR",
+                    "price": "600",
+                    "priceValidUntil": "2024-12-31",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "5",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "52"
+                  }
+                }`,
     }
   ]
 
   var Value = '';
   const AllData = [...MainJson];
-  const [cookies, setCookie] = useCookies(["cart"]);
-
-
-
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  
+  
+  
   useEffect(() => {
-    if (Array.isArray(cookies.cart)) {
-      setCart(cookies.cart);
+    if (Array.isArray(getLocalPrevCarts)) {
+      setCart(getLocalPrevCarts);
     } else {
       setCart([]);
     }
@@ -574,12 +1444,11 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
 
   
   useEffect(() => {
-    setCookie("cart", cart, { path: "/" });
-    Value = cart.length;
+    Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
     }
-  }, [cart, setCookie]);
+  }, [cart]);
 
 
   // const filteredProducts = MainJson.filter(product => 
@@ -649,7 +1518,8 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
               }
             });
           
-          if (response.data.msg == 'success') {
+          if (response?.status == 201) {
+            localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -676,6 +1546,7 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
           progress: undefined,
           theme: "light",
         });
+        
       }
     } else {
       setShowLoginModal(!showLoginModal);
@@ -702,10 +1573,10 @@ imgText: "Tanav Mukti Anti Stress Animal Feed Supplement",
         <link rel="canonical" href="https://www.rumeno.in/veterinary-products/goat-feed-supplements" />
       </Helmet>
       <div className="desk-nav">
-        <Navbar size={cart.length} />
+        <Navbar size={cart?.length} />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar size={cart.length} />
+        <ResponsiveNavbar size={cart?.length} />
       </div>
       <section className="container-fluid service-bg overflow-hidden">
         <div

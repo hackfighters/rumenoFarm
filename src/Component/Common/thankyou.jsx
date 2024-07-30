@@ -11,10 +11,10 @@ const ThankYouPage = () => {
     return (
         <>
             <div className="desk-nav">
-                <Navbar size={cart.length} />
+                <Navbar size={cart?.length} />
             </div>
             <div className="mob-nav">
-                <ResponsiveNavbar size={cart.length} />
+                <ResponsiveNavbar size={cart?.length} />
             </div>
             <section className='pt-5'>
                 <div className="mt-4  pt-5 text-center">

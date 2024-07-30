@@ -20,13 +20,7 @@ const SetNewPassword = ({ showModal, closeModal }) => {
   } = useForm();
   const { t } = useTranslation();
   const apiUrl = process.env.REACT_APP_API;
-  const { UidData, setUidData } = useContext(UserContext);
-  const getNumber = Cookies.get("Number")
-  useEffect(() => {
-    //   const getuidfromcookies = JSON.parse(Cookies.get("loginUserData") ?? "{}");
-    // setUidData(getuidfromcookies.uID)
-    console.log("getNumber", getNumber)
-  }, [])
+
 
   const password = watch("newpassword");
 
@@ -39,10 +33,10 @@ const SetNewPassword = ({ showModal, closeModal }) => {
         return;
       } 
         // Send data to API using Axios
-        const payload = {mobile:getNumber,newpassword:data?.newpassword}
+        const payload = {mobile:localStorage.getItem("setMobileNum"),newpassword:data?.newpassword}
         const response = await axios.post(`${apiUrl}/forgot_password`, payload);
         console.log(response.data); // Handle the response as needed
-        toast.success(response.data.message, {
+        toast.success(response?.message, {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,
@@ -97,9 +91,14 @@ const SetNewPassword = ({ showModal, closeModal }) => {
                       {...register("newpassword", {
                         required: "Password is required",
                         minLength: {
-                          value: 8,
-                          message: "Password must be at least 8 characters long",
-                        },
+                          value: 6,
+                          message:
+                            "Password must be at least 8 characters long",
+                        }
+                        ,pattern:{
+                          value: /^(?=.*[A-Z])(?=.*[@#$%^&*(),.?":{}|<>]).+$/, 
+                          message: "Password must contain at least one uppercase letter and one special character."
+                        }
                       })}
                       type="password"
                       name="newpassword"

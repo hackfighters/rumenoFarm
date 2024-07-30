@@ -48,7 +48,7 @@ const ProductDetail = () => {
   const [productReview, setProductReview] = useState([])
   const { register,reset,formState: { errors }, handleSubmit } = useForm();
   const apiUrl = process.env.REACT_APP_API;
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const { name, id } = useParams();
 
@@ -1492,22 +1492,21 @@ const ProductDetail = () => {
   }
 
   var Value = '';
-  const [cookies, setCookie] = useCookies(["cart"]);
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
 
-  useEffect(() => {
-    if (Array.isArray(cookies.cart)) {
-      setCart(cookies.cart);
-    } else {
-      setCart([]);
-    }
-  }, [ setCart]);
-  useEffect(() => {
-    setCookie("cart", cart, { path: "/" });
-    Value = cart.length;
-    if (Value !== 0) {
-      setSizevalue(Value)
-    }
-  }, [cart, setCookie]);
+     useEffect(() => {
+      if (Array.isArray(getLocalPrevCarts)) {
+        setCart(getLocalPrevCarts);
+      } else {
+        setCart([]);
+      }
+    }, [ setCart]);
+    useEffect(() => {
+      Value = cart?.length;
+      if (Value !== 0) {
+        setSizevalue(Value)
+      }
+    }, [cart]);
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
@@ -1549,13 +1548,13 @@ const ProductDetail = () => {
 
   const AddToCarts = async (item) => {
     let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
-    console.log('payload: ', payload);
     if (loggedInUser) {
       if (!Array.isArray(cart)) {
         setCart([]);
       }
       // Check if the item already exists in the cart
       const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
+      
 
       if (!itemExists) {
         
@@ -1570,10 +1569,10 @@ const ProductDetail = () => {
               headers: {
                 'Authorization': `${getMidCookies.token}`
               }
-            }
-          );
+            });
           
-          if (response.data.msg == 'success') {
+          if (response?.status == 201) {
+            localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -1600,6 +1599,7 @@ const ProductDetail = () => {
           progress: undefined,
           theme: "light",
         });
+        
       }
     } else {
       setShowLoginModal(!showLoginModal);
@@ -1682,15 +1682,15 @@ const ProductDetail = () => {
         </script>
       </Helmet>
       <div className="desk-nav">
-        <Navbar size={cart.length} />
+        <Navbar size={cart?.length} />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar size={cart.length} />
+        <ResponsiveNavbar size={cart?.length} />
       </div>
       <section className="container-fluid service-bg overflow-hidden">
 
         <div
-          className="section-header text-center mx-auto mb-3 pt-5"
+          className="section-header text-center mx-auto mb-3 mt-3 pt-5"
           data-wow-delay="0.1s"
         >
           <div
@@ -1704,7 +1704,7 @@ const ProductDetail = () => {
               <div className="services-line-smallleft"></div>
             </div>
             {sameitemfilter.map((item) => (
-              <span className="label-title text-trun">{item.name}</span>
+              <span className="label-title text-trun ">{item.name}</span>
             ))}
             <div className="mx-2 prd-head-dtl">
               <div className="services-line-largeright"></div>

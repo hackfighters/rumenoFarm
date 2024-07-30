@@ -1,6 +1,6 @@
 
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
 import {
@@ -29,14 +29,25 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 const ContactUs = () => {
   const { t } = useTranslation();
-  const { cart } = useContext(UserContext);
+  const { setCart,cart,setSizevalue } = useContext(UserContext);
+
   const {
     handleSubmit,
     register,reset,
     formState: { errors },
   } = useForm();
   const apiUrl = process.env.REACT_APP_API;
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
+
+  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  var Value ;
+  useEffect(() => {
+    setCart(getLocalPrevCarts);
+    Value = cart?.length;
+    if (Value !== 0) {
+      setSizevalue(Value)
+    }
+  }, []);
 
   const onSubmit = async (data) => {
     try {
@@ -101,10 +112,10 @@ const ContactUs = () => {
       <a className="d-none" href="https://www.flipkart.com/search?q=goat%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <a className="d-none" href="https://www.flipkart.com/search?q=cow%20equipment&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off"></a>
       <div className="desk-nav">
-        <Navbar size={cart.length} />
+        <Navbar size={cart?.length} />
       </div>
       <div className="mob-nav">
-        <ResponsiveNavbar size={cart.length} />
+        <ResponsiveNavbar size={cart?.length} />
       </div>
       <section className="contact-sect container-fluid">
         <div className="row justify-content-center py-5">

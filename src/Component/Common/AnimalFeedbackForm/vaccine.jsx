@@ -12,7 +12,7 @@ const VaccineRecord = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/vaccine`;
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const handleOpenDialog = (item = {}) => {
     setOpenDialog(true);

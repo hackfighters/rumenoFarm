@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const TableFarmData = ({ showFarmTableModal, handleCloseFarmTableModal }) => {
     const apiUrl = `${process.env.REACT_APP_API}`;
-    const getUserIdCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
-    const getSelectdAnimal = JSON.parse(Cookies.get("SelectedAnimal") ?? "[]");
+    const getUserIdCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
+    const getSelectdAnimal = JSON.parse(localStorage.getItem("SelectedAnimal") ?? "[]");
     const [milkrec, setMilkrec] = useState([]);
     const [addkiddata, setaddkiddata] = useState([]);
     const [breeddata, setBreeddata] = useState([]);

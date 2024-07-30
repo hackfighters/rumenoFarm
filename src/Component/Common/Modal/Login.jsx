@@ -27,10 +27,10 @@ const Login = ({
 
 
   useEffect(() => {
-    const storedUser = JSON.parse(Cookies.get("loginUserData") ?? "{}");
+    const storedUser = JSON.parse(localStorage.getItem("loginDetails") ?? "{}");
     if (storedUser) {
-      setLoggedInUser(storedUser.name);
-      setfarmDtl(storedUser.FarmName)
+      setLoggedInUser(storedUser?.name);
+      setfarmDtl(storedUser?.FarmName)
     }
 
   }, []);
@@ -77,11 +77,19 @@ const Login = ({
           sessionId: sessionId,
           token: token,
         }));
-
+        localStorage.setItem("loginDetails", JSON.stringify({
+          name: firstWord,
+          date: date,
+          FarmName: FarmName,
+          uID: uID,
+          rId: rId,
+          sessionId: sessionId,
+          token: token,
+        }));
         // upload previous cart data
         setCart(response?.data?.pID)
-        Cookies.set("cart", JSON.stringify(response?.data?.pID));
-
+        // Cookies.set("cart", JSON.stringify(response?.data?.pID));
+        localStorage.setItem("cart", JSON.stringify(response?.data?.pID));
 
         toast.success("Login Successful", {
           position: "top-center",
@@ -200,8 +208,7 @@ const Login = ({
                       {t("v307")}
                     </button>
                     <a
-                      className="text-muted d-block mb-4"
-                      href="#!"
+                      className="text-muted d-block pointer mb-4"
                       onClick={OpenSendOtpModal}
                     >
                       {t("v308")}

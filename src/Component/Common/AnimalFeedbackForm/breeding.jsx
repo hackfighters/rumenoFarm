@@ -14,7 +14,7 @@ const BreedHeat = () => {
   const [date, setDate] = useState(new Date());
   const [inputValue, setInputValue] = useState(date.toISOString().split('T')[0]);
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/heat`;
-  const getMidCookies = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const addDays = (date, days) => {
     const result = new Date(date);

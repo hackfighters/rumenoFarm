@@ -16,7 +16,7 @@ const FeedBackForm = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const getUserId = JSON.parse(Cookies.get("loginUserData") ?? "[]");
+  const getUserId = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const onSubmit = async (data) => {
     try {
