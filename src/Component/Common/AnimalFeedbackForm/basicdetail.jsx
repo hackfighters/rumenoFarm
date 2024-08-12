@@ -150,7 +150,7 @@ const MultiStepForm = () => {
     let sendMid = { ...getLoginData, ...basicDtl };
     localStorage.setItem('loginDetails',JSON.stringify(sendMid));
 
-    setFarmDataUMKid((prev) => ({ ...prev, ...basicDtl }));
+    setFarmDataUMKid((prev) => ({ prev, ...basicDtl }));
   }
 
   const handleEdit = (index) => {

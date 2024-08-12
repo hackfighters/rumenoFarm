@@ -32,18 +32,16 @@ const SendOtp = ({ showModal, closeModal }) => {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    console.log('data: ', data);
-  
     try {
       const payload = {
         countryCode: "91",
-        phoneNumber: data.num,
+        phoneNumber: data?.num,
       };
-  
+
       const response = await axios.post(`${apiUrl}/send_otp`, payload);
       console.log(response.data);
-  
-      if (response.data.status === 200) {
+
+      if (response?.data?.status == 200) {
         setActive(true);
         startCounting();
         toast.info("Please Enter the OTP", {
@@ -59,25 +57,14 @@ const SendOtp = ({ showModal, closeModal }) => {
         reset();
         setsaveNum(payload);
         Cookies.set("loginUserData", JSON.stringify({
-          uID: response.data.uID,
+          uID: response?.data?.uID,
         }));
-        localStorage.setItem("setMobileNum",payload?.phoneNumber)
-        setUidData(response.data.uID);
-      } else if (response.data.status === 400) {
-        toast.warning(response.data.message, {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        localStorage.setItem("setMobileNum", payload?.phoneNumber)
+        setUidData(response?.data?.uID);
       }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to send OTP", {
+      toast.error(error?.response?.data?.message || "Failed to send OTP", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -102,11 +89,11 @@ const SendOtp = ({ showModal, closeModal }) => {
       const response = await axios.post(
         `${apiUrl}/verify_otp`, payload
       );
-      console.log(response.data, UidData)
-      const msg = response.data.msg;
-      const Status = response.data.status;
+      console.log(response?.data, UidData)
+      const msg = response?.data?.msg;
+      const Status = response?.data?.status;
       if (response?.data?.status == 200) {
-        const datasets = response.data.uid;
+        const datasets = response?.data?.uid;
         console.log(datasets)
         toast.success(response?.data?.message, {
           position: "top-center",
@@ -138,10 +125,11 @@ const SendOtp = ({ showModal, closeModal }) => {
         progress: undefined,
         theme: "light",
       });
-      setActive(false); // Reset active state
+      // setActive(false); // Reset active state
       reset();
     }
   };
+
   const startCounting = () => {
     setIsCounting(true);
     setCount(60);
@@ -158,7 +146,6 @@ const SendOtp = ({ showModal, closeModal }) => {
   useEffect(() => {
     const getuidfromcookies = JSON.parse(localStorage.getItem("loginDetails") ?? "{}");
     setUidData(getuidfromcookies.uID)
-    console.log(UidData)
   }, [])
 
 

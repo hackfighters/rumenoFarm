@@ -1430,17 +1430,17 @@ const GoatCategoryPage = ({ }) => {
 
   var Value = '';
   const AllData = [...MainJson];
-  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  // //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
   
   
   
-  useEffect(() => {
-    if (Array.isArray(getLocalPrevCarts)) {
-      setCart(getLocalPrevCarts);
-    } else {
-      setCart([]);
-    }
-  }, [ setCart]);
+  // useEffect(() => {
+  //   if (Array.isArray(getLocalPrevCarts)) {
+  //     //setCart(getLocalPrevCarts);
+  //   } else {
+  //     setCart([]);
+  //   }
+  // }, [ setCart]);
 
   
   useEffect(() => {
@@ -1449,6 +1449,21 @@ const GoatCategoryPage = ({ }) => {
       setSizevalue(Value)
     }
   }, [cart]);
+
+  // -----fetch cart data from api
+  useEffect(() => {
+        fetchItems()
+  }, [])
+  
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      setCart(response.data)
+      
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
 
 
   // const filteredProducts = MainJson.filter(product => 
@@ -1496,9 +1511,9 @@ const GoatCategoryPage = ({ }) => {
   const AddToCarts = async (item) => {
     let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
     if (loggedInUser) {
-      if (!Array.isArray(cart)) {
-        setCart([]);
-      }
+      // if (!Array.isArray(cart)) {
+        // setCart([]);
+      // }
       // Check if the item already exists in the cart
       const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
       
@@ -1506,7 +1521,7 @@ const GoatCategoryPage = ({ }) => {
       if (!itemExists) {
         
         // Add logic to handle adding item to cart
-        setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        // setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
         const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         
@@ -1519,7 +1534,8 @@ const GoatCategoryPage = ({ }) => {
             });
           
           if (response?.status == 201) {
-            localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
+            fetchItems()
+            // localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",

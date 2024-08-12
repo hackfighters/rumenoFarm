@@ -78,12 +78,24 @@ const Navbar = ({ size }) => {
   var totalPrice = 0;
 
   useEffect(() => {
+    fetchItems()
     setCartdata(cart);
 
     return() => {
       console.log("check if cart remove ")
     }
   }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      setCart(response.data)
+      
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
+
 
   const toggleSelect = () => {
     setShowSelect(!showSelect);
@@ -138,7 +150,8 @@ const Navbar = ({ size }) => {
             'Authorization': `${getMidCookies.token}`
           }
         });
-      if (response.data === "success") {
+      if (response.data == "success") {
+        fetchItems()
         toast.success("Add to cart is Remove Successfull", {
           position: "top-center",
           autoClose: 2000,
@@ -150,7 +163,7 @@ const Navbar = ({ size }) => {
           theme: "light",
         });
         const arr = cart.filter((item) => item.id !== id);
-        setCart(arr);
+        // setCart(arr);
       } else {
         toast.error("Add to cart is Remove Failed", {
           position: "top-center",
@@ -194,34 +207,6 @@ const Navbar = ({ size }) => {
     navDropdown()
   };
 
-  // const handleChange = async (item, d) => {
-
-  //   let ind = -1;
-  //   cart.forEach((data, index) => {
-  //     if (data.id === item.id) ind = index;
-  //   });
-
-  //   const tempArr = [...cart];
-
-  //   var latestamount = parseInt(tempArr[ind].amount);
-  //   latestamount += d;
-  //   tempArr[ind].amount = latestamount;
-  //   setCart(tempArr);
-  //   var amountdataupdata = tempArr[ind];
-  //   console.log(amountdataupdata, 7777);
-  //   // Api ------------
-  //   try {
-  //     const response = await axios.post(
-  //       "http://192.168.1.7:5000/cart",
-  //       amountdataupdata
-  //     );
-  //     console.log(iteamdata, 4444);
-  //     console.log("quantity increase Successfull", response.data);
-  //   } catch (error) {
-  //     console.error("quantity increase not working", error);
-  //   }
-  // };
-
   const handleChange = async (item, d) => {
     let ind = -1;
     cart.forEach((data, index) => {
@@ -239,7 +224,7 @@ const Navbar = ({ size }) => {
     }
 
     tempArr[ind].amount = latestamount;
-    setCart(tempArr);
+    // setCart(tempArr);
     var amountdataupdata = tempArr[ind];
 
     // Api ------------
@@ -251,6 +236,7 @@ const Navbar = ({ size }) => {
           }
         });
         console.log('response: ', response);
+        fetchItems()
       toast.success("Quantity update successfully", {
         position: "top-center",
         autoClose: 2000,

@@ -10,6 +10,11 @@
     height: 500px;
     /* object-fit: cover; */
   }
+  .big-image iframe {
+    width: 500px;
+    height: 500px;
+    /* object-fit: cover; */
+  }
 
 
   
@@ -37,6 +42,11 @@
       height: 100%;
       object-fit: cover;
     }
+    .big-image iframe {
+      width: 20rem;
+      height: 28.5rem;
+    }
+    
     .farm-data-help{
       position: absolute;
       left: -85px;

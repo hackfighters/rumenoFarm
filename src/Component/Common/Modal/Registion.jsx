@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
@@ -10,6 +10,8 @@ import axios from "axios";
 
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import Login from "./Login";
+import { GoogleLogin } from "@react-oauth/google";
+import { UserContext } from "./logusecont";
 
 const Registration = ({ showModal, closeModal }) => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -25,10 +27,26 @@ const Registration = ({ showModal, closeModal }) => {
     watch,
     formState: { errors },
   } = useForm();
+
+  const { setLoggedInUser, setCart, setUidData, setfarmDtl, setFarmDataUMKid } = useContext(UserContext);
+
   const apiUrl = process.env.REACT_APP_API;
   const countrydata = selectedCountry?.name
   const countrystate = selectedState?.name
   const countrycity = selectedCity?.name
+
+    // -----fetch cart data from api
+    const fetchItems = async (id) => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API}/cart/${id}`);
+        setCart(response.data)
+        console.log('response.data: ', response.data);
+  
+      } catch (error) {
+        console.error('Error fetching items:', error);
+      }
+    };
+  
 
   const password = watch("password");
 
@@ -39,12 +57,12 @@ const Registration = ({ showModal, closeModal }) => {
         country : countrydata,
         state: countrystate,
         city: countrycity,
-        firstName : data.firstName,
-        lastName : data.lastName,
-        mobile : data.mobile,
-        email : data.email,
-        password : data.password,
-        address: data.address
+        firstName : data?.firstName,
+        lastName : data?.lastName,
+        mobile : data?.mobile,
+        email : data?.email,
+        password : data?.password,
+        address: data?.address
         
       }
     console.log(Registrationdata)
@@ -95,6 +113,66 @@ const Registration = ({ showModal, closeModal }) => {
       // closeModal()
       setLoading(false);
     }
+  };
+
+  const responseMessage = async (response) => {
+    try {
+      const getGoogleData = JSON.parse?.(atob(response?.credential.split('.')?.[1]))
+      const payload = {
+        email: getGoogleData?.email,
+        firstName: getGoogleData?.name,
+      }
+      const apiResponse = await axios.post(`${apiUrl}/google_login`, payload);
+      {
+        const { userName, FarmName, date, uID, rId, sessionId, token } = apiResponse?.data;
+        const FarmerDtl = response?.data?.FarmName;
+        const getUidata = response?.data?.uID;
+
+        setUidData(getUidata);
+        setFarmDataUMKid({ uID: getUidata })
+        setLoggedInUser(userName?.split(' ')[0]);
+        setfarmDtl(FarmerDtl)
+
+        localStorage.setItem("loginDetails", JSON.stringify({
+          name: userName?.split(' ')[0],
+          date: date,
+          FarmName: FarmName,
+          uID: uID,
+          rId: rId,
+          sessionId: sessionId,
+          token: token,
+        }));
+        localStorage.setItem("cart", JSON.stringify(response?.data?.pID));
+        fetchItems(uID)
+
+        toast.success("Login Successful", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        closeModal();
+        reset();
+      }
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+  const errorMessage = (error) => {
+    toast.error(error, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
   };
 
   
@@ -148,7 +226,7 @@ const Registration = ({ showModal, closeModal }) => {
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-2">Last Name</label>
                       <input
-                        {...register("LastName")}
+                        {...register("lastName")}
                         type="text"
                         className={`form-control ${
                           errors.LastName ? "is-invalid" : ""
@@ -341,6 +419,7 @@ const Registration = ({ showModal, closeModal }) => {
                       </button>
                   </div>
                 </form>
+                <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
               </div>
               <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                 <div className="text-white text-center p-2">

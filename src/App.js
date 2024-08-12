@@ -28,9 +28,10 @@ import PoultryCategoryPage from "./Component/Pages/Category/poultryCategory";
 import ProductDetail from "./Component/Common/Product/productDetail";
 import ThankYouPage from "./Component/Common/thankyou";
 import Cookies from "js-cookie";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const App = () => {
-    const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     AOS.init();
@@ -57,14 +58,12 @@ const App = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  
 
   useEffect(() => {
     const navbarlinksActive = () => {
@@ -91,43 +90,63 @@ const App = () => {
     navbarlinksActive();
   }, [location]);
 
-  const checkIfLogin = JSON.parse(localStorage.getItem("loginDetails") ?? "null");
+  const checkIfLogin = JSON.parse(
+    localStorage.getItem("loginDetails") ?? "null"
+  );
 
   return (
     <>
-      <ToastContainer />
-      <UserProvider>
-        <Routes>
-          <Route path="/" Component={language} />
-          <Route path="/home" Component={Home} />
-          <Route path="/veterinary-services" Component={Services} />
-          <Route path="/goat-farming-consultant" Component={ServicesSecond} />
-          <Route path="/dairy-consultant" Component={ServicesThird} />
-          <Route path="/veterinary-products" Component={ProductPage} />
-          <Route path="/veterinary-products/:name" Component={ProductPage} />
-          <Route path="/veterinary-products/:name/:id" Component={ProductDetail} />
-          <Route path="/contact-us" Component={ContactUs} />
-          {checkIfLogin ? (
-          <>
-          <Route path="/transaction" Component={Transaction} />
-          <Route path="/transdetail" Component={TransactionDetail} />
-          <Route path="/frmaftlog" Component={FrmAftLog}/>
-          <Route path="/AnimalDetailTab" Component={AnimalDetailTab}/>
-          </>
-          ):(
-             <Route path="*" element={<Navigate to="/home" />} /> 
-           )} 
-          <Route path="/privacypolicy" Component={PrivacyPolicy}/>
-          <Route path="/blog" Component={Blog}/>
-          <Route path="/blog/:id" Component={BlogContent}/>
-          <Route path="/veterinary-products/goat-feed-supplements" Component={GoatCategoryPage}/>
-          <Route path="/veterinary-products/dog-feed-supplements" Component={DogCategoryPage}/>
-          <Route path="/veterinary-products/cattle-feed-supplements" Component={CattleCategoryPage}/>
-          <Route path="/veterinary-products/poultry-feed-supplements" Component={PoultryCategoryPage}/>
-          <Route path="/thankyoupage" Component={ThankYouPage}/>
-          <Route path="*" Component={Error} />
-        </Routes>
-      </UserProvider>
+      <GoogleOAuthProvider clientId="195022670454-9mbfabatk139n9o0hcqcuej3ifv43p3n.apps.googleusercontent.com">
+        <ToastContainer />
+
+        <UserProvider>
+          <Routes>
+            <Route path="/" Component={language} />
+            <Route path="/home" Component={Home} />
+            <Route path="/veterinary-services" Component={Services} />
+            <Route path="/goat-farming-consultant" Component={ServicesSecond} />
+            <Route path="/dairy-consultant" Component={ServicesThird} />
+            <Route path="/veterinary-products" Component={ProductPage} />
+            <Route path="/veterinary-products/:name" Component={ProductPage} />
+            <Route
+              path="/veterinary-products/:name/:id"
+              Component={ProductDetail}
+            />
+            <Route path="/contact-us" Component={ContactUs} />
+            {checkIfLogin ? (
+              <>
+                <Route path="/transaction" Component={Transaction} />
+                <Route path="/transdetail" Component={TransactionDetail} />
+                <Route path="/frmaftlog" Component={FrmAftLog} />
+                <Route path="/AnimalDetailTab" Component={AnimalDetailTab} />
+              </>
+            ) : (
+              <Route path="*" element={<Navigate to="/home" />} />
+            )}
+            <Route path="/privacypolicy" Component={PrivacyPolicy} />
+            <Route path="/blog" Component={Blog} />
+            <Route path="/blog/:id" Component={BlogContent} />
+            <Route
+              path="/veterinary-products/goat-feed-supplements"
+              Component={GoatCategoryPage}
+            />
+            <Route
+              path="/veterinary-products/dog-feed-supplements"
+              Component={DogCategoryPage}
+            />
+            <Route
+              path="/veterinary-products/cattle-feed-supplements"
+              Component={CattleCategoryPage}
+            />
+            <Route
+              path="/veterinary-products/poultry-feed-supplements"
+              Component={PoultryCategoryPage}
+            />
+            <Route path="/thankyoupage" Component={ThankYouPage} />
+            <Route path="*" Component={Error} />
+          </Routes>
+        </UserProvider>
+      </GoogleOAuthProvider>
     </>
   );
 };

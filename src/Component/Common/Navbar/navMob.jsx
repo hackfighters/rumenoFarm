@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 
@@ -108,6 +108,22 @@ const ResponsiveNavbar = ({ size }) => {
     setShowOpt(false);
   };
 
+  useEffect(() => {
+    fetchItems()
+  }, [])
+  
+//---------get cart data from api
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      setCart(response.data)
+      
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
+
+
 
   const handleChange = async (item, d) => {
     let ind = -1;
@@ -126,7 +142,7 @@ const ResponsiveNavbar = ({ size }) => {
     }
 
     tempArr[ind].amount = latestamount;
-    setCart(tempArr);
+    // setCart(tempArr);
     var amountdataupdata = tempArr[ind];
 
     // Api ------------
@@ -174,7 +190,7 @@ const ResponsiveNavbar = ({ size }) => {
           theme: "light",
         });
         const arr = cart.filter((item) => item.id !== id);
-        setCart(arr);
+        // setCart(arr);
       } else {
         toast.error("Add to cart is Remove Failed", {
           position: "top-center",

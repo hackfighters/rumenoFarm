@@ -49,7 +49,7 @@ import HomeFaq from "../../Common/faq";
 const Home = () => {
 
   const { t } = useTranslation();
-  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  // //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
   const { setCart,cart,setSizevalue } = useContext(UserContext);
 
   const products = [
@@ -65,7 +65,7 @@ const Home = () => {
 
   var Value ;
   useEffect(() => {
-    setCart(getLocalPrevCarts);
+    // //setCart(getLocalPrevCarts);
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)

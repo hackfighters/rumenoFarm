@@ -76,7 +76,7 @@ const CattleCategoryPage = () => {
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
-  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
 
 
 
@@ -1459,19 +1459,37 @@ const CattleCategoryPage = () => {
   const AllData = [...MainJson];
 
   var Value = '';
-  useEffect(() => {
-    if (Array.isArray(getLocalPrevCarts)) {
-      setCart(getLocalPrevCarts);
-    } else {
-      setCart([]);
-    }
-  }, [setCart]);
+  // useEffect(async() => {
+  //   if (Array.isArray(getLocalPrevCarts)) {
+  //     //setCart(getLocalPrevCarts);
+  //   } else {
+  //     setCart([]);
+  //   }
+  //   const responses = await axios.post(`${process.env.REACT_APP_API}/login`, payloads)
+  //   console.log('responses: ', responses.data);
+  // }, [setCart]);
+
   useEffect(() => {
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
     }
   }, [cart]);
+
+  useEffect(() => {
+    fetchItems()
+}, [])
+
+ // -----fetch cart data from api
+const fetchItems = async () => {
+try {
+  const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+  setCart(response.data)
+  
+} catch (error) {
+  console.error('Error fetching items:', error);
+}
+};
 
 
   const filteredProducts = MainJson.filter(product =>
@@ -1511,10 +1529,11 @@ const CattleCategoryPage = () => {
 
   const AddToCarts = async (item) => {
     let payload = { ...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name }, ...{ amount: 1, uid: getMidCookies?.uID } }
+    console.log('payload: ', payload);
     if (loggedInUser) {
-      if (!Array.isArray(cart)) {
-        setCart([]);
-      }
+      // if (!Array.isArray(cart)) {
+      //   setCart([]);
+      // }
       // Check if the item already exists in the cart
       const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
 
@@ -1522,7 +1541,7 @@ const CattleCategoryPage = () => {
       if (!itemExists) {
 
         // Add logic to handle adding item to cart
-        setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        // setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
         const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
 
@@ -1535,7 +1554,8 @@ const CattleCategoryPage = () => {
             });
 
           if (response?.status == 201) {
-            localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
+            fetchItems()
+            // localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -1547,6 +1567,12 @@ const CattleCategoryPage = () => {
             progress: undefined,
             theme: "light",
           });
+          const payloads = {
+            mobile: 8770529849,
+            password: "Admin@123"
+          }
+          const responses = await axios.post(`${process.env.REACT_APP_API}/login`, payloads)
+          console.log('responses: ', responses.data);
         } catch (error) {
           console.error('Add to cart is not working', error);
         }
@@ -1636,7 +1662,7 @@ const CattleCategoryPage = () => {
 
             {uniqueItemsArray.map((item, index) => (
               <div key={index} className="col-lg-3 text-center border bg-white mx-2  my-3  shadow">
-                <img src={item.img} className="w-100 mt-2" height={250} alt="loading" />
+                <img src={item.img[0]} className="w-100 mt-2" height={250} alt="loading" />
                 <h5 className="my-3  fw-bold m-auto text-center text-trun-head">{item.name}</h5>
                 <p className="mt-2 text-trun">{item.Shortdescription}</p>
                 <hr className="my-0" />
