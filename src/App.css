@@ -1085,6 +1085,10 @@ body {
   .prd-head-dtl{
     display: none;
   }
+  .blog-card img {
+    max-width: unset !important;
+    object-fit: unset !important;
+}
 }
 .service-ul {
   display: flex;
@@ -2874,3 +2878,20 @@ img.card-img:hover {
 .pointer{
   cursor: pointer;
 }
+.blog-card img {
+  max-width: 35%;
+  object-fit: cover;
+}
+.blog-keywords{
+  word-spacing: 1rem;
+}
+
+/* ---------google sign css ------------- */
+.S9gUrf-YoZ4jf{
+  margin: 0 auto !important;
+  width: 100% !important;
+  position: unset !important;
+  display: flex;
+  justify-content: center;
+}
+/* ---------end google sign css ------------- */

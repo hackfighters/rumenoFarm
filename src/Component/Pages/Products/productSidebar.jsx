@@ -1638,11 +1638,10 @@ const ProductSidebar = ({ handleClick }) => {
           <Link className="" to={`/veterinary-products/${""}`}>
             <button
               type="button"
-              className={`btn my-2 ${
-                animalType === ""
-                  ? "gradient-custom-2 btn-light text-white border-0"
-                  : "btn-outline-danger"
-              } w-auto mx-2`}
+              className={`btn my-2 ${animalType === ""
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+                } w-auto mx-2`}
               onClick={() => setAnimalType("")}
             >
               All
@@ -1651,11 +1650,10 @@ const ProductSidebar = ({ handleClick }) => {
           <Link className=" " to={`/veterinary-products/${"goat"}`}>
             <button
               type="button"
-              className={`btn my-2 ${
-                animalType === "goat"
-                  ? "gradient-custom-2 btn-light text-white border-0"
-                  : "btn-outline-danger"
-              } w-auto mx-2`}
+              className={`btn my-2 ${animalType === "goat"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+                } w-auto mx-2`}
               onClick={() => setAnimalType("goat")}
             >
               Goat
@@ -1664,11 +1662,10 @@ const ProductSidebar = ({ handleClick }) => {
           <Link className=" " to={`/veterinary-products/${"sheep"}`}>
             <button
               type="button"
-              className={`btn my-2 ${
-                animalType === "sheep"
-                  ? "gradient-custom-2 btn-light text-white border-0"
-                  : "btn-outline-danger"
-              } w-auto mx-2`}
+              className={`btn my-2 ${animalType === "sheep"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+                } w-auto mx-2`}
               onClick={() => setAnimalType("sheep")}
             >
               Sheep
@@ -1677,11 +1674,10 @@ const ProductSidebar = ({ handleClick }) => {
           <Link className=" " to={`/veterinary-products/${"cow"}`}>
             <button
               type="button"
-              className={`btn my-2 ${
-                animalType === "cow"
-                  ? "gradient-custom-2 btn-light text-white border-0"
-                  : "btn-outline-danger"
-              } w-auto mx-2`}
+              className={`btn my-2 ${animalType === "cow"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+                } w-auto mx-2`}
               onClick={() => setAnimalType("cow")}
             >
               Cow
@@ -1690,11 +1686,10 @@ const ProductSidebar = ({ handleClick }) => {
           <Link className=" " to={`/veterinary-products/${"buffalo"}`}>
             <button
               type="button"
-              className={`btn my-2 ${
-                animalType === "buffalo"
-                  ? "gradient-custom-2 btn-light text-white border-0"
-                  : "btn-outline-danger"
-              } w-auto mx-2`}
+              className={`btn my-2 ${animalType === "buffalo"
+                ? "gradient-custom-2 btn-light text-white border-0"
+                : "btn-outline-danger"
+                } w-auto mx-2`}
               onClick={() => setAnimalType("buffalo")}
             >
               Buffalo
@@ -1704,14 +1699,13 @@ const ProductSidebar = ({ handleClick }) => {
         <div className="col-lg-12 px-0  h-auto ">
           <div
             id="menu-container"
-            className={`d-flex flex-column align-items-center align-items-sm-start pt-2 text-white bg- w-100 ${
-              isScrolled ? "fixed" : ""
-            }`}
+            className={`d-flex flex-column align-items-center align-items-sm-start pt-2 text-white bg- w-100 ${isScrolled ? "fixed" : ""
+              }`}
           >
             <ul className="nav nav-pills " id="menu">
               <li
                 className={`nav-item sildar h-100    w-auto bg-white m-1`}
-                // onClick={() => handleCategoryChange("animal")}
+              // onClick={() => handleCategoryChange("animal")}
               >
                 <div className="py-2 d-flex  text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-2" icon={faHouse} />
@@ -1722,7 +1716,7 @@ const ProductSidebar = ({ handleClick }) => {
               </li>
               <li
                 className={`sildar h-100   w-auto bg-white m-1`}
-                // onClick={() => handleCategoryChange("farmhouseequip")}
+              // onClick={() => handleCategoryChange("farmhouseequip")}
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-2" icon={faTractor} />
@@ -1733,7 +1727,7 @@ const ProductSidebar = ({ handleClick }) => {
               </li>
               <li
                 className={`sildar h-100   w-auto bg-white m-1`}
-                // onClick={() => handleCategoryChange("rumenoamazon")}
+              // onClick={() => handleCategoryChange("rumenoamazon")}
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-2" icon={faAmazon} />
@@ -1744,7 +1738,7 @@ const ProductSidebar = ({ handleClick }) => {
               </li>
               <li
                 className={`sildar h-100   w-auto bg-white m-1`}
-                // onClick={() => handleCategoryChange("humanconsumable")}
+              // onClick={() => handleCategoryChange("humanconsumable")}
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-2" icon={faPerson} />
@@ -1755,7 +1749,7 @@ const ProductSidebar = ({ handleClick }) => {
               </li>
               <li
                 className={`sildar h-100   w-auto bg-white m-1 `}
-                // onClick={() => handleCategoryChange("goatforsale")}
+              // onClick={() => handleCategoryChange("goatforsale")}
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon className="h5 m-0 px-2" icon={faWheatAwn} />
@@ -1766,7 +1760,7 @@ const ProductSidebar = ({ handleClick }) => {
               </li>
               <li
                 className={`sildar h-100   w-auto bg-white m-1 `}
-                // onClick={() => handleCategoryChange("goatforsale")}
+              // onClick={() => handleCategoryChange("goatforsale")}
               >
                 <div className="py-2 d-flex text-start align-items-center">
                   <FontAwesomeIcon
@@ -1818,7 +1812,7 @@ const ProductSidebar = ({ handleClick }) => {
           productivity of our beloved creatures is of utmost importance. Proper
           nutrition and specialized care play pivotal roles in achieving these
           goals. Enter Rumeno Farmotech, a name synonymous with excellence in
-          animal feed supplements and veterinary services.
+          veterinary products and veterinary services.
         </p>
         <hr />
         <h4 className="my-3 fw-bold">Product Categories</h4>
@@ -1833,7 +1827,7 @@ const ProductSidebar = ({ handleClick }) => {
           <li className="my-2">
             <strong> Supplemental Nutrition : </strong>
             Give your pets the finest with our nutrients made just for them.
-            Their whole vitality is improved by our products, which address
+            Their whole vitality is improved by our veterinary products, which address
             everything from joint health to skin and coat care. Examine our
             selection of probiotics, minerals, and vitamins.
           </li>
@@ -1852,6 +1846,24 @@ const ProductSidebar = ({ handleClick }) => {
             included in our kits.
           </li>
         </ul>
+        <p className="px-4">A wide selection of veterinary equipment from Rumeno are available to improve the care of animals.
+
+          Their goods are made with great care and attention to detail, from the strength of surgical tools for delicate procedures to the precision of microscopes for thorough examinations. Among their offerings are:
+
+          Instruments for diagnosis: X-ray machines, ultrasound scanners, and microscopes.
+
+          Surgical instruments: a broad range of implements for diverse operations.
+
+          Vital signs and anesthetic devices are examples of patient monitoring equipment.
+
+          Dental supplies: for hygienic and oral care. Rumeno's dedication to excellence guarantees that veterinarians have the resources needed to give their patients the best care possible.
+        </p>
+        <hr />
+        <h4 className="my-3 fw-bold">Rumeno : A Premier Veterinary Products Manufacturer</h4>
+        <p className="px-4">We're Rumeno, and we're passionate about making life better for animals. As a leading veterinary product manufacturer, we're proud to be recognized as one of the top 10 animal wellness startups by Industry Outlook. That's a big deal, but it's really just the beginning.
+        </p>
+        <p className="px-4">Our aim is to make all animals healthier and happier and increase your profits through our excellent veterinary products, which are made from high-quality vitamins and minerals. Take Rumeno's veterinary products and grow your livestock. </p>
+
         <hr />
         <h4 className="my-3 fw-bold"> Why Opt for Our Veterinary Products?</h4>
         <ul>

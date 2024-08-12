@@ -27,7 +27,7 @@ import { Link, useNavigate } from "react-router-dom";
 // {/* Rumeno */}
 // {/* Veterinary */}
 const Transaction = () => {
-  const { amountData, UidData, setCart } = useContext(UserContext);
+  const { amountData, UidData, setCart ,cart} = useContext(UserContext);
   const {
     register: register,
     handleSubmit: handleSubmit,
@@ -42,9 +42,7 @@ const Transaction = () => {
 
   const apiUrl = `${process.env.REACT_APP_API}/transaction`;
   const getUserCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
-  const getCartDataCookies = JSON.parse(Cookies.get("cart") ?? "[]");
-
-
+  
   // Upload Start
   const [loadingTextVisible, setLoadingTextVisible] = useState(false);
   const [previewImageVisible, setPreviewImageVisible] = useState(false);
@@ -216,13 +214,12 @@ const Transaction = () => {
 
   // upload End
   const onSubmit = async (data) => {
-    if (!image) {
-      setError('Please upload Transaction Screenshot');
-    }
+    // fetchItems(UidData)
+    console.log(cart)
+    if (!image) return setError('Please upload Transaction Screenshot');
     setLoading(true);
     const formData = new FormData();
     formData.append("image", image);
-    console.log('image: ', image);
     try {
       const uploadImgResponse = await axios.post("https://api.imgbb.com/1/upload?key=273ab24b40be59dc593d96c50976ae42", formData);
       console.log('response: ', uploadImgResponse.data.status);
@@ -238,7 +235,7 @@ const Transaction = () => {
             paymode: data.paymode,
             uid: UidData,
             image: uploadImgResponse.data.data.url,
-            cart: getCartDataCookies
+            cart: cart
           };
 
 
@@ -268,7 +265,7 @@ const Transaction = () => {
             cod_payment: "NA",
             uid: UidData,
             image: uploadImgResponse.data.data.url,
-            cart: getCartDataCookies
+            cart: cart
           };
 
           try {
@@ -288,19 +285,19 @@ const Transaction = () => {
           }
 
         }
-
+        navigate("/thankyoupage");
+        localStorage.removeItem("cart");
       }
       else {
         alert("error please try again")
       }
+
     } catch (error) {
       console.error(' Transaction error', error);
       setLoading(false);
     }
     setLoading(false);
-    // Navigate to Thankyou page
-    navigate("/thankyoupage");
-    localStorage.removeItem("cart");
+
   };
 
   const onPayIssueSubmit = async (data) => {

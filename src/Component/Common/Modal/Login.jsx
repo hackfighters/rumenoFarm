@@ -10,6 +10,7 @@ import axios from "axios";
 
 
 import { navDropdown } from "../navCloseResp/navDropdown";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = ({
   showModal,
@@ -22,12 +23,24 @@ const Login = ({
   const apiUrl = process.env.REACT_APP_API;
   const { setLoggedInUser, setCart, setUidData, setfarmDtl, setFarmDataUMKid } = useContext(UserContext);
 
+  // -----fetch cart data from api
+  const fetchItems = async (id) => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${id}`);
+      setCart(response.data)
+      console.log('response.data: ', response.data);
+
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
 
 
 
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("loginDetails") ?? "{}");
+
     if (storedUser) {
       setLoggedInUser(storedUser?.name);
       setfarmDtl(storedUser?.FarmName)
@@ -53,13 +66,15 @@ const Login = ({
         `${apiUrl}/login`, payload
       );
       // Handle the login success, e.g., store token i n state or localStorage
+      console.log('response.data: ', response.data);
       if (response.data.status == 200) {
-        const { userName, FarmName, date, uID, pID, rId, sessionId, token } = response.data;
-        const firstTwoChars = response.data.userName;
-        const FarmerDtl = response.data.FarmName;
-        const userNameWords = firstTwoChars.split(" ");
+
+        const { userName, FarmName, date, uID, pID, rId, sessionId, token } = response?.data;
+        const firstTwoChars = response?.data?.userName;
+        const FarmerDtl = response?.data?.FarmName;
+        const userNameWords = firstTwoChars?.split(" ");
         const firstWord = userNameWords[0];
-        const getUidata = response.data.uID;
+        const getUidata = response?.data?.uID;
 
         setUidData(getUidata);
         setFarmDataUMKid({ uID: getUidata })
@@ -87,9 +102,10 @@ const Login = ({
           token: token,
         }));
         // upload previous cart data
-        setCart(response?.data?.pID)
+        // setCart(response?.data?.pID)
         // Cookies.set("cart", JSON.stringify(response?.data?.pID));
         localStorage.setItem("cart", JSON.stringify(response?.data?.pID));
+        fetchItems(uID)
 
         toast.success("Login Successful", {
           position: "top-center",
@@ -116,7 +132,7 @@ const Login = ({
           progress: undefined,
           theme: "light",
         })
-      } else if (response.data.status == 401) {
+      } else if (response.data.status == 400) {
         toast.error(response?.data?.message, {
           position: "top-center",
           autoClose: 2000,
@@ -141,6 +157,67 @@ const Login = ({
         theme: "light",
       });
     }
+  };
+
+  const responseMessage = async (response) => {
+    try {
+      const getGoogleData = JSON.parse?.(atob(response?.credential.split('.')?.[1]))
+      const payload = {
+        email: getGoogleData?.email,
+        firstName: getGoogleData?.name,
+      }
+      const apiResponse = await axios.post(`${apiUrl}/google_login`, payload);
+      {
+        const { userName, FarmName, date, uID, rId, sessionId, token } = apiResponse?.data;
+        const FarmerDtl = response?.data?.FarmName;
+        const getUidata = response?.data?.uID;
+
+        setUidData(getUidata);
+        setFarmDataUMKid({ uID: getUidata })
+        setLoggedInUser(userName?.split(' ')[0]);
+        setfarmDtl(FarmerDtl)
+
+        localStorage.setItem("loginDetails", JSON.stringify({
+          name: userName?.split(' ')[0],
+          date: date,
+          FarmName: FarmName,
+          uID: uID,
+          rId: rId,
+          sessionId: sessionId,
+          token: token,
+        }));
+        localStorage.setItem("cart", JSON.stringify(response?.data?.pID));
+        fetchItems(uID)
+
+        toast.success("Login Successful", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        closeModal();
+        reset();
+        navDropdown()
+      }
+    } catch (error) {
+      console.log('error: ', error);
+    }
+  };
+  const errorMessage = (error) => {
+    toast.error(error, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    })
   };
   return (
     <>
@@ -169,17 +246,23 @@ const Login = ({
                       Mobile Number
                     </label>
                     <input
-                      type="number"
+                      type="text"
                       className="form-control"
-                      placeholder="username"
+                      placeholder="mobile number"
                       {...register("username", {
                         required: "mobile number is required",
+                        required: true,
+                        pattern: /^[0-9]{10}$/,
                       })}
                     />
                     {errors.username && (
-                      <div className="text-danger">
-                        {errors.username.message}
-                      </div>
+                      <span className="text-danger">
+                        {
+                          errors.username.type === "required"
+                            ? "Please enter your mobile number"
+                            : "Please enter a valid mobile number" // Custom error message for pattern validation
+                        }
+                      </span>
                     )}
                   </div>
                   <div className="form-outline mb-3">
@@ -208,14 +291,15 @@ const Login = ({
                       {t("v307")}
                     </button>
                     <a
-                      className="text-muted d-block pointer mb-4"
+                      className="text-muted d-block pointer mb-3"
                       onClick={OpenSendOtpModal}
                     >
                       {t("v308")}
                     </a>
+                    <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
                   </div>
                 </form>
-                <div className="d-flex align-items-center justify-content-center pb-4">
+                <div className="d-flex align-items-center justify-content-center mt-2 pb-4">
                   <p className="mb-0 me-2">{t("v309")}</p>
                   <button
                     type=""

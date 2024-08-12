@@ -16,11 +16,11 @@ import { Link } from "react-router-dom";
 
 
 const ServicesThird = () => {
-  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
+  //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
   const { setCart,cart,setSizevalue } = useContext(UserContext);
   var Value ;
   useEffect(() => {
-    setCart(getLocalPrevCarts);
+    //setCart(getLocalPrevCarts);
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)

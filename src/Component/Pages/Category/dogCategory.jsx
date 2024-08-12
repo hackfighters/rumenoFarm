@@ -1429,20 +1429,35 @@ const DogCategoryPage = () => {
 
   var Value = '';
   const AllData = [...MainJson];
-  const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart"))
-     useEffect(() => {
-      if (Array.isArray(getLocalPrevCarts)) {
-        setCart(getLocalPrevCarts);
-      } else {
-        setCart([]);
-      }
-    }, [ setCart]);
+  //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
+    //  useEffect(() => {
+    //   if (Array.isArray(getLocalPrevCarts)) {
+    //     //setCart(getLocalPrevCarts);
+    //   } else {
+    //     setCart([]);
+    //   }
+    // }, [ setCart]);
     useEffect(() => {
       Value = cart?.length;
       if (Value !== 0) {
         setSizevalue(Value)
       }
     }, [cart]);
+
+    useEffect(() => {
+      fetchItems()
+  }, [])
+  
+   // -----fetch cart data from api
+  const fetchItems = async () => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+    setCart(response.data)
+    
+  } catch (error) {
+    console.error('Error fetching items:', error);
+  }
+  };
 
 
   const filteredProducts = MainJson.filter(product =>
@@ -1483,9 +1498,9 @@ const DogCategoryPage = () => {
   const AddToCarts = async (item) => {
     let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
     if (loggedInUser) {
-      if (!Array.isArray(cart)) {
-        setCart([]);
-      }
+      // if (!Array.isArray(cart)) {
+      //   setCart([]);
+      // }
       // Check if the item already exists in the cart
       const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
       
@@ -1493,7 +1508,7 @@ const DogCategoryPage = () => {
       if (!itemExists) {
         
         // Add logic to handle adding item to cart
-        setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        // setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
         const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         
@@ -1506,7 +1521,8 @@ const DogCategoryPage = () => {
             });
           
           if (response?.status == 201) {
-            localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
+            fetchItems()
+            // localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -1651,7 +1667,7 @@ const DogCategoryPage = () => {
 
           <div className="row bg-white shadow mx-3 my-4 justify-content-center">
             <div className="col-lg-11 my-4">
-              <h1 className="my-4 text-center">Dogs Supplements to Promote Optimal Health</h1>
+              <h1 className="my-4 text-center">Dog Feed Supplements to Promote Optimal Health</h1>
               <p>
                 Here at <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link>, we put your dog's health first. We make
                 sure that your pet gets the assistance they require with our

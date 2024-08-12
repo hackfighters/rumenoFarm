@@ -47,7 +47,7 @@ const Achievment = () => {
                 className="video"
                 src={caroimg3}
             ></video> */}
-            <iframe width="560" height="315" className='vide achievment-img ' src="https://www.youtube.com/embed/MgA56V6PdBI?si=uWExyXzXTHePBggP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" className='vide achievment-img ' src="https://www.youtube.com/embed/MgA56V6PdBI?si=uWExyXzXTHePBggP" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             {/* {!isPlaying && (
                 <div className="play-icon btn--shockwave is-active">&#9658;</div>
             )} */}
