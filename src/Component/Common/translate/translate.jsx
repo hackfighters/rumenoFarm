@@ -145,7 +145,7 @@ function TranslateButton() {
     const googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
         {
-          pageLanguage: 'en',
+          pageLanguage: 'en,hi',
           includedLanguages: 'en,hi,mr,gu,pa,bn,ur,te,ta,kn,or,ml,as', 
         },
         'google_translate_element'
