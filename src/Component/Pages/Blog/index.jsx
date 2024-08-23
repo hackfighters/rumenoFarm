@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import { UserContext } from "../../Common/Modal/logusecont";
 import blgimg1 from "../../../assets/img/OurProduct/GreenHouseMat2.jpg";
 import blgimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
+import blgimg3 from "../../../assets/img/OurProduct/kadenath.jpg";
 import KeysWords from "../../Common/apiData/keyWords";
 import axios from "axios";
 
@@ -37,6 +38,18 @@ const Blog = () => {
       title2: "Animal",
       title3: "blog",
       title4: "Farmer",
+      bottomcontent: "Rumeno Animal Care",
+    },
+    {
+      id: 3,
+      img: blgimg3,
+      heading:
+        "The Rise of the Black Chicken: Unveiling the Secrets of Kadaknath Poultry Farming",
+      content:"Have you ever heard of a chicken with meat so black it seems almost otherworldly? Enter the Kadaknath, a unique Kadaknath chicken breed, native to the Jhabua and Dhar districts of Madhya Pradesh, India. Renowned for its distinctive appearance, exceptional health benefits, and delicious flavor, Kadaknath poultry farming is rapidly gaining popularity.",
+      title1: "Black Beauty",
+      title2: "Melanin Magic",
+      title3: "Rumeno Poultryfine",
+      title4: "Rumeno florovita",
       bottomcontent: "Rumeno Animal Care",
     },
   ];
@@ -122,7 +135,7 @@ const Blog = () => {
                 height={300}
               />
               <div className="flex-grow-1 my-2">
-                <Link className="text-decoration-none" to={`/blog/${item._id}`}>
+                <Link className="text-decoration-none" to={`/blog/${item.id}`}>
                   <h3 className="mb-3 ">{item.heading}</h3>
                 </Link>
 

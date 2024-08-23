@@ -35,8 +35,7 @@ const SetNewPassword = ({ showModal, closeModal }) => {
         // Send data to API using Axios
         const payload = {mobile:localStorage.getItem("setMobileNum"),newpassword:data?.newpassword}
         const response = await axios.post(`${apiUrl}/forgot_password`, payload);
-        console.log(response.data); // Handle the response as needed
-        toast.success(response?.message, {
+        toast.success(response?.data, {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,

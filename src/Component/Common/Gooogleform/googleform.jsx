@@ -13,62 +13,73 @@ const FeedBackForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    reset, watch, setError, clearErrors,
     formState: { errors },
   } = useForm();
   const getUserId = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
+  const category = watch('category');
+  const other = watch('other');
+
+
   const onSubmit = async (data) => {
-    try {
-    let serviceForm = {
-      name:data.name,
-      address:data.address,
-      phoneNumber:Number(data.phoneNumber),
-      bestTimeToContact:data.bestTimeToContact,
-      experience:Number(data.experience),
-      budget:Number(data.budget),
-      landSize:Number(data.landSize),
-      category:data.category,
-      other:data.other,
-      need:data.need,
+    if (!category && !other) {
+      setError('category', { type: 'manual', message: '' });
+      setError('other', { type: 'manual', message: 'Please select an option or fill the input field.' });
     }
-    
-      // Make an HTTP POST request using Axios
-      const response = await axios.post(`${process.env.REACT_APP_API}/service_form`, serviceForm,
-        {
-          headers: {
-            'Authorization': `${getUserId.token}`
-          }
+    else {
+      try {
+        clearErrors();
+        let serviceForm = {
+          name:data?.name,
+          address:data?.address,
+          phoneNumber:Number(data?.phoneNumber),
+          bestTimeToContact:data?.bestTimeToContact,
+          experience:Number(data?.experience),
+          budget:Number(data?.budget),
+          landSize:Number(data?.landSize),
+          category: data?.category,
+          other: data?.other,
+          need: data?.need,
         }
-      );
 
-      // Handle the response as needed
+        // Make an HTTP POST request using Axios
+        const response = await axios.post(`${process.env.REACT_APP_API}/service_form`, serviceForm,
+          {
+            headers: {
+              'Authorization': `${getUserId.token}`
+            }
+          }
+        );
 
-      // Add additional logic or redirect the user if needed
-      toast.success("Form Submited Successfully", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      })
-      reset()
-    } catch (error) {
-      // Handle errors
-      console.error("Error sending form data:", error);
-      toast.error("Please Fill Correct Details", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      })
+        // Handle the response as needed
+
+        // Add additional logic or redirect the user if needed
+        toast.success("Form Submited Successfully", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
+        reset()
+      } catch (error) {
+        // Handle errors
+        console.error("Error sending form data:", error);
+        toast.error("Please Fill Correct Details", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
+      }
     }
   };
   return (
@@ -186,7 +197,7 @@ const FeedBackForm = () => {
                   id="categoryGoat"
                   name="category"
                   value="goat"
-                  {...register("category", { required: t("v127") + " required" })}
+                  {...register("category")}
                 />
                 <Form.Label
                   className="custom-control-label"
@@ -204,7 +215,7 @@ const FeedBackForm = () => {
                   id="categorySheep"
                   name="category"
                   value="sheep"
-                  {...register("category", { required: t("v128") + " required" })}
+                  {...register("category")}
                 />
                 <Form.Label
                   className="custom-control-label"
@@ -221,7 +232,7 @@ const FeedBackForm = () => {
                   id="categoryCow"
                   name="category"
                   value="cow"
-                  {...register("category", { required: t("v129") + " required" })}
+                  {...register("category")}
                 />
                 <Form.Label
                   className="custom-control-label"
@@ -238,7 +249,7 @@ const FeedBackForm = () => {
                   id="categoryBuffalo"
                   name="category"
                   value="buffalo"
-                  {...register("category", { required: t("v130") + " required" })}
+                  {...register("category")}
                 />
                 <Form.Label
                   className="custom-control-label"
@@ -260,11 +271,8 @@ const FeedBackForm = () => {
                 />
               </div>
 
-              {errors.category && (
-                <Form.Text className="text-danger">
-                  {errors.category.message}
-                </Form.Text>
-              )}
+              {errors.category && <p style={{ color: 'red' }}>{errors.category.message}</p>}
+              {errors.other && <p style={{ color: 'red' }}>{errors.other.message}</p>}
             </Form.Group>
             <Form.Group className="mb-3" htmlFor="formBasicNeed">
               <Form.Label>{t("v132")}</Form.Label>
@@ -296,3 +304,4 @@ const FeedBackForm = () => {
 };
 
 export default FeedBackForm;
+
