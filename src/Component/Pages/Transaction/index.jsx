@@ -223,18 +223,19 @@ const Transaction = () => {
     try {
       const uploadImgResponse = await axios.post("https://api.imgbb.com/1/upload?key=273ab24b40be59dc593d96c50976ae42", formData);
       console.log('response: ', uploadImgResponse.data.status);
-      if (uploadImgResponse.data.status == 200) {
-        if (data.paymode == "COD") {
+      if (uploadImgResponse?.data?.status == 200) {
+        if (data?.paymode == "COD") {
           let payload = {
-            name: data.name,
-            mobileNumber: data.mobileNumber,
-            address: data.address,
+            name: data?.name,
+            email: data?.email,
+            mobileNumber: data?.mobileNumber,
+            address: data?.address,
             amount: amountData,
-            transactionID: data.transactionID,
+            transactionID: data?.transactionID,
             cod_payment: Finalamt,
-            paymode: data.paymode,
+            paymode: data?.paymode,
             uid: UidData,
-            image: uploadImgResponse.data.data.url,
+            image: uploadImgResponse.data?.data?.url,
             cart: cart
           };
 
@@ -247,16 +248,19 @@ const Transaction = () => {
                 }
               });
             console.log('response: ', response);
+            navigate("/thankyoupage");
+            localStorage.removeItem("cart");
             Cookies.remove("cart");
             setLoading(false);
           } catch (error) {
-            console.error('transaction working', error);
+            console.error('transaction not working', error);
             setLoading(false);
           }
         }
         else {
           let payload = {
             name: data.name,
+            email: data.email,
             mobileNumber: data.mobileNumber,
             address: data.address,
             amount: amountData,
@@ -276,17 +280,18 @@ const Transaction = () => {
                 }
               });
             console.log('response: ', response);
+            navigate("/thankyoupage");
+            localStorage.removeItem("cart");
             Cookies.remove("cart");
             setCart([])
             setLoading(false);
           } catch (error) {
-            console.error('transaction  not working', error);
+            console.error('transaction not working', error);
             setLoading(false);
           }
 
         }
-        navigate("/thankyoupage");
-        localStorage.removeItem("cart");
+
       }
       else {
         alert("error please try again")
@@ -381,6 +386,15 @@ const Transaction = () => {
                       />
                       {errors.name && (
                         <span className="text-danger">Name is required</span>
+                      )}
+                      <input
+                        type="email"
+                        className="form-control form-group py-3"
+                        placeholder="Email"
+                        {...register("email", { required: true })}
+                      />
+                      {errors.email && (
+                        <span className="text-danger">Email is required</span>
                       )}
                       <input
                         type="text"

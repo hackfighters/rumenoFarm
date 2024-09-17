@@ -13,77 +13,78 @@ import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
+import BlogApi from "../../Common/AdminApi/blogApi";
 const BlogContent = () => {
-  const { setCart, cart, setSizevalue } = useContext(UserContext);
+  const { setCart, cart, setSizevalue ,BlogData, setBlogData} = useContext(UserContext);
   const { register, reset, handleSubmit } = useForm();
   const apiUrl = `${process.env.REACT_APP_API_ADMIN}`;
   const getparentidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
   //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
   const [blogContent, setblogContent] = useState([]);
 
-  const blogdata = [
-    {
-      id: 1,
-      img: blgimg1,
-      heading:
-        "Know All About Mycotoxicosis Disease and its Management inPoultry",
-      content: "Mycotoxicosis in poultry is a disease caused by toxins frommold-infected feed. Effective management is crucial for poultryhealth. mold-infected feed. Effective management is crucial forpoultry health. mold-infected feed. Effective management iscrucial for poultry health. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea non voluptate ipsa laudantium consectetur, sapiente adipisci? Id, earum cumque amet saepe perferendis eveniet quisquam atque nulla voluptatem reiciendis architecto quaerat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae minima numquam quidem blanditiis cupiditate mollitia aliquam deleniti autem optio alias reiciendis, quia corporis eaque earum consequuntur nostrum veritatis possimus sunt.Sequi aspernatur amet placeat? Odio doloremque sapiente modi impedit voluptatibus laborum, totam consequatur deserunt dolore aliquam, eum odit saepe itaque unde ducimus ullam. Eius aperiam at magni impedit, atque a.",
-      title1: "Animal",
-      title2: "Animal",
-      title3: "blog",
-      title4: "Farmer",
-      bottomcontent: "Rumeno Animal Care",
-    },
-    {
-      id: 2,
-      img: blgimg2,
-      heading:
-        " Management inPoultry Know All About Mycotoxicosis Disease and its",
-      content:
-        "n Mycotoxicosis in poultry is a disease caused by toxins frommold-infected feed. Effective management is crucial for poultryhealth. mold-infected feed. Effective management is crucial forpoultry health. mold-infected feed. Effective management iscrucial for poultry health.",
-      title1: "Animal",
-      title2: "Animal",
-      title3: "blog",
-      title4: "Farmer",
-      bottomcontent: "Rumeno Animal Care",
-    },
-    {
-      id: 3,
-      img: blgimg3,
-      heading:
-        "The Rise of the Black Chicken: Unveiling the Secrets of Kadaknath Poultry Farming",
-      content:"Have you ever heard of a chicken with meat so black it seems almost otherworldly? Enter the Kadaknath, a unique Kadaknath chicken breed, native to the Jhabua and Dhar districts of Madhya Pradesh, India. Renowned for its distinctive appearance, exceptional health benefits, and delicious flavor, Kadaknath poultry farming is rapidly gaining popularity.",
-      title1: "Black Beauty",
-      title2: "Melanin Magic",
-      title3: "Rumeno Poultryfine",
-      title4: "Rumeno florovita",
-      bottomcontent: "Rumeno Animal Care",
-    },
+  // const blogdata = [
+  //   {
+  //     id: 1,
+  //     img: blgimg1,
+  //     heading:
+  //       "Know All About Mycotoxicosis Disease and its Management inPoultry",
+  //     content: "Mycotoxicosis in poultry is a disease caused by toxins frommold-infected feed. Effective management is crucial for poultryhealth. mold-infected feed. Effective management is crucial forpoultry health. mold-infected feed. Effective management iscrucial for poultry health. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea non voluptate ipsa laudantium consectetur, sapiente adipisci? Id, earum cumque amet saepe perferendis eveniet quisquam atque nulla voluptatem reiciendis architecto quaerat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae minima numquam quidem blanditiis cupiditate mollitia aliquam deleniti autem optio alias reiciendis, quia corporis eaque earum consequuntur nostrum veritatis possimus sunt.Sequi aspernatur amet placeat? Odio doloremque sapiente modi impedit voluptatibus laborum, totam consequatur deserunt dolore aliquam, eum odit saepe itaque unde ducimus ullam. Eius aperiam at magni impedit, atque a.",
+  //     title1: "Animal",
+  //     title2: "Animal",
+  //     title3: "blog",
+  //     title4: "Farmer",
+  //     bottomcontent: "Rumeno Animal Care",
+  //   },
+  //   {
+  //     id: 2,
+  //     img: blgimg2,
+  //     heading:
+  //       " Management inPoultry Know All About Mycotoxicosis Disease and its",
+  //     content:
+  //       "n Mycotoxicosis in poultry is a disease caused by toxins frommold-infected feed. Effective management is crucial for poultryhealth. mold-infected feed. Effective management is crucial forpoultry health. mold-infected feed. Effective management iscrucial for poultry health.",
+  //     title1: "Animal",
+  //     title2: "Animal",
+  //     title3: "blog",
+  //     title4: "Farmer",
+  //     bottomcontent: "Rumeno Animal Care",
+  //   },
+  //   {
+  //     id: 3,
+  //     img: blgimg3,
+  //     heading:
+  //       "The Rise of the Black Chicken: Unveiling the Secrets of Kadaknath Poultry Farming",
+  //     content:"Have you ever heard of a chicken with meat so black it seems almost otherworldly? Enter the Kadaknath, a unique Kadaknath chicken breed, native to the Jhabua and Dhar districts of Madhya Pradesh, India. Renowned for its distinctive appearance, exceptional health benefits, and delicious flavor, Kadaknath poultry farming is rapidly gaining popularity.",
+  //     title1: "Black Beauty",
+  //     title2: "Melanin Magic",
+  //     title3: "Rumeno Poultryfine",
+  //     title4: "Rumeno florovita",
+  //     bottomcontent: "Rumeno Animal Care",
+  //   },
 
-  ];
+  // ];
   var Value;
   useEffect(() => {
+  let get =  BlogApi(setBlogData)
+  console.log('get: ', get);
     //setCart(getLocalPrevCarts);
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
     }
-    fetchItems()
   }, []);
 
-  const fetchItems = async () => {
-    try {
-      const response = await axios.get(`${apiUrl}/get_all_blog`);
-      setblogContent(response?.data?.blog);
-      console.log('response.data.blog: ', response.data.blog);
-    } catch (error) {
-      console.error('Error fetching items:', error);
-    }
-  };
+  // const fetchItems = async () => {
+  //   try {
+  //     const response = await axios.get(`${apiUrl}/get_all_blog`);
+  //     setblogContent(response?.data?.blog);
+  //     console.log('response.data.blog: ', response.data.blog);
+  //   } catch (error) {
+  //     console.error('Error fetching items:', error);
+  //   }
+  // };
 
   const { id } = useParams();
-  const showBlog = blogdata?.find((blog) => blog?.id == id);
-  console.log('blogData: ', showBlog);
+  const showBlog = BlogData?.find((blog) => blog?._id == id);
 
   const onSubmit = async (data) => {
     try {
@@ -214,29 +215,28 @@ const BlogContent = () => {
           <div className="row px-2 justify-content-around">
             {/* <div className="col-lg-9 bg-white shadow">
               <hr className="m-4 text-dark" />
-              <div className='text-trun-blog' dangerouslySetInnerHTML={{ __html: blogData?.content }} />
               <p className="">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias quo ab, iure animi fugiat tenetur debitis unde aliquam commodi quibusdam laboriosam, harum et nisi hic ad explicabo minus voluptatibus dolor.
-                Cum laudantium quo consequuntur explicabo inventore, corrupti asperiores corporis debitis reiciendis nemo ipsum, ipsa rem repudiandae, amet est qui quod adipisci. Culpa harum suscipit officia fuga enim facilis qui? Sed?
-                Quas nobis voluptate aliquid, nemo laboriosam ullam. Dicta nobis eos eum in unde. Recusandae eligendi sapiente omnis corrupti quaerat veritatis eos officiis, doloremque et minima corporis alias. Amet, expedita! Doloremque.
-                Quis consequatur fugit quod repellendus nemo illum sequi ducimus, fugiat eligendi ipsum nulla blanditiis earum minus deleniti mollitia harum aliquid accusantium. Modi aliquam libero pariatur? Iure nihil odit voluptatum laborum.
-                Aliquam sed, in eos necessitatibus nihil dolore, veritatis excepturi, eveniet asperiores iure facilis possimus blanditiis corporis quo! Blanditiis, deserunt, nemo tempora aperiam reiciendis quis exercitationem eum beatae, consequatur adipisci culpa.
-                Adipisci, quasi in. Reiciendis cum dignissimos enim maxime ipsa culpa dolorum officia exercitationem deserunt quas, molestias obcaecati omnis, aspernatur libero consequatur molestiae asperiores quis quo nemo vitae facilis similique iure?
-                Omnis voluptatum quo saepe in illum esse voluptatem necessitatibus dolores, quasi error perferendis unde quod facere. Cupiditate, est? Eius officiis voluptatibus illo consequatur similique numquam veniam architecto animi, nam dolores!
-                Exercitationem, impedit? Animi maiores delectus optio rerum iusto. Eius et aliquam quo ea ullam totam quae quos assumenda dolores enim similique error dolorem, quam nam expedita beatae dolore culpa pariatur?
-                Deserunt aperiam error sapiente. Ullam repudiandae, accusamus animi excepturi neque omnis molestiae natus voluptates, exercitationem quibusdam culpa non nostrum deserunt veniam sequi labore consectetur quas. Sit aliquid ad optio excepturi.
-                Incidunt harum praesentium aliquid, alias optio rem id, neque officia a eum commodi totam ratione suscipit mollitia molestias? Animi aperiam minus velit esse dolorum corrupti saepe impedit pariatur, quia sunt.</p>
-            </div> */}
+              Cum laudantium quo consequuntur explicabo inventore, corrupti asperiores corporis debitis reiciendis nemo ipsum, ipsa rem repudiandae, amet est qui quod adipisci. Culpa harum suscipit officia fuga enim facilis qui? Sed?
+              Quas nobis voluptate aliquid, nemo laboriosam ullam. Dicta nobis eos eum in unde. Recusandae eligendi sapiente omnis corrupti quaerat veritatis eos officiis, doloremque et minima corporis alias. Amet, expedita! Doloremque.
+              Quis consequatur fugit quod repellendus nemo illum sequi ducimus, fugiat eligendi ipsum nulla blanditiis earum minus deleniti mollitia harum aliquid accusantium. Modi aliquam libero pariatur? Iure nihil odit voluptatum laborum.
+              Aliquam sed, in eos necessitatibus nihil dolore, veritatis excepturi, eveniet asperiores iure facilis possimus blanditiis corporis quo! Blanditiis, deserunt, nemo tempora aperiam reiciendis quis exercitationem eum beatae, consequatur adipisci culpa.
+              Adipisci, quasi in. Reiciendis cum dignissimos enim maxime ipsa culpa dolorum officia exercitationem deserunt quas, molestias obcaecati omnis, aspernatur libero consequatur molestiae asperiores quis quo nemo vitae facilis similique iure?
+              Omnis voluptatum quo saepe in illum esse voluptatem necessitatibus dolores, quasi error perferendis unde quod facere. Cupiditate, est? Eius officiis voluptatibus illo consequatur similique numquam veniam architecto animi, nam dolores!
+              Exercitationem, impedit? Animi maiores delectus optio rerum iusto. Eius et aliquam quo ea ullam totam quae quos assumenda dolores enim similique error dolorem, quam nam expedita beatae dolore culpa pariatur?
+              Deserunt aperiam error sapiente. Ullam repudiandae, accusamus animi excepturi neque omnis molestiae natus voluptates, exercitationem quibusdam culpa non nostrum deserunt veniam sequi labore consectetur quas. Sit aliquid ad optio excepturi.
+              Incidunt harum praesentium aliquid, alias optio rem id, neque officia a eum commodi totam ratione suscipit mollitia molestias? Animi aperiam minus velit esse dolorum corrupti saepe impedit pariatur, quia sunt.</p>
+              </div> */}
             <div class="col-lg-9 bg-white shadow">
               <div class="">
-                <h1 class="my-3">
-                  {showBlog.heading}
+                <h1 class="my-3 text-trun">
+                  {showBlog?.heading}
                 </h1>
               </div>
               <hr class="mb-4" />
               <div class="col-lg-12 px-5">
                 <img
-                  class="rounded w-100"
-                  src={showBlog.img}
+                  class="rounded w-100 object-fit-cover"
+                  src={showBlog?.image}
                   alt="loading"
                   height="400"
                 />
@@ -245,19 +245,20 @@ const BlogContent = () => {
               <div class="d-flex  py-2 align-items-center ">
                 <div class="flex-grow-1 my-2">
                   <h3 class="mb-3 mx-2">
-                    {showBlog.heading}
+                    {showBlog?.heading}
                   </h3>
                   <div class="text-muted mb-3 mx-2">
-                    {showBlog.content}
+                    {/* {showBlog?.content} */}
+              <div className='text-trun-blog' dangerouslySetInnerHTML={{ __html: showBlog?.content }} />
                   </div>
-                  <ul class="list-unstyled d-flex mb-0 mx-2">
-                    <li class="me-3 fw-bold text-primary">{showBlog.title1}</li>
-                    <li class="me-3 fw-bold text-primary">{showBlog.title2}</li>
-                    <li class="me-3 fw-bold text-primary">{showBlog.title3}</li>
-                    <li class="me-3 fw-bold text-primary">{showBlog.title4}</li>
-                  </ul>
+                  {showBlog?.keywords.map((keyword,index) =>(
+                <ul key={index} className="list-unstyled d-flex mb-0">
+                  <li class="me-3 fw-bold text-primary">{keyword}</li>
+                </ul>
+                  ))}
+                 
                   <ul class="list-unstyled d-flex justify-content-between mt-3 mx-2">
-                    <li class="me-3"><span>{showBlog.bottomcontent}</span></li>
+                    <li class="me-3"><span>{showBlog?.bottomcontent}</span></li>
                     <li><span class="text-danger">{new Date().toLocaleDateString()}</span></li>
                   </ul>
                 </div>
@@ -265,7 +266,7 @@ const BlogContent = () => {
             </div>
             <div className="col-lg-2 bg-white border shadow h-100  p-2">
               <ul className="list-unstyled my-2">
-                {blogdata?.map((item, index) => (
+                {BlogData?.map((item, index) => (
                   <>
                     <li key={index} className="fw-bold fs-6 text-trun-head">
                       {item.heading}

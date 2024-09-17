@@ -39,6 +39,7 @@ import SendOtp from "../../Common/Modal/otp";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import ProductData from "../../Common/AdminApi/productApi";
 
 const CattleCategoryPage = () => {
   const FAQ = [
@@ -72,11 +73,10 @@ const CattleCategoryPage = () => {
     }
   ]
 
-  const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
+  const { UidData, cart, setCart, setiteamdata, setSizevalue, PrdData, setPrdData } = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
-  //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
 
 
 
@@ -1459,17 +1459,9 @@ const CattleCategoryPage = () => {
   const AllData = [...MainJson];
 
   var Value = '';
-  // useEffect(async() => {
-  //   if (Array.isArray(getLocalPrevCarts)) {
-  //     //setCart(getLocalPrevCarts);
-  //   } else {
-  //     setCart([]);
-  //   }
-  //   const responses = await axios.post(`${process.env.REACT_APP_API}/login`, payloads)
-  //   console.log('responses: ', responses.data);
-  // }, [setCart]);
 
   useEffect(() => {
+    ProductData(setPrdData)
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
@@ -1478,24 +1470,31 @@ const CattleCategoryPage = () => {
 
   useEffect(() => {
     fetchItems()
-}, [])
+  }, [])
 
- // -----fetch cart data from api
-const fetchItems = async () => {
-try {
-  const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
-  setCart(response.data)
-  
-} catch (error) {
-  console.error('Error fetching items:', error);
-}
-};
+  // -----fetch cart data from api
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`, {
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
+      setCart(response.data)
+
+    } catch (error) {
+      console.error('Error fetching items:', error);
+    }
+  };
 
 
-  const filteredProducts = MainJson.filter(product =>
-    ["kid", "cattle"].some(keyword =>
-      product.Category?.toLowerCase().includes(keyword.toLowerCase()) ||
-      product.name?.toLowerCase().includes(keyword.toLowerCase())
+
+
+  const filteredProducts = PrdData.filter(product =>
+    ["kid", "cattle"].some(keyword => {
+      return String(product.Category)?.toLowerCase().includes(keyword.toLowerCase()) ||
+        product.name?.toLowerCase().includes(keyword.toLowerCase())
+    }
     )
   );
   const uniqueNames = new Set(filteredProducts.map(item => item.name.toLowerCase()));
@@ -1535,7 +1534,7 @@ try {
       //   setCart([]);
       // }
       // Check if the item already exists in the cart
-      const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
+      const itemExists = cart?.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
 
 
       if (!itemExists) {
@@ -1673,7 +1672,7 @@ try {
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`} >
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`} >
                     <span
                       className=""
                     >

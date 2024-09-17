@@ -115,7 +115,11 @@ const ResponsiveNavbar = ({ size }) => {
 //---------get cart data from api
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`,{
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
       setCart(response.data)
       
     } catch (error) {

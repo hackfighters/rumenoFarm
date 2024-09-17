@@ -81,18 +81,32 @@ const Navbar = ({ size }) => {
     fetchItems()
     setCartdata(cart);
 
-    return() => {
-      console.log("check if cart remove ")
+    return () => {
+      // console.log("check if cart remove ")
     }
   }, []);
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`, {
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
       setCart(response.data)
-      
+
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error('Error fetching items:', error?.response?.statusText);
+      if (error?.response?.statusText == "Unauthorized")
+        console.log("Unauthorized")
+      Cookies.remove("loggedInUser");
+      localStorage.removeItem("localPreviousCart");
+      localStorage.removeItem("loginDetails");
+      localStorage.removeItem("cart");
+      Cookies.remove("cart");
+      Cookies.remove("loginUserData");
+      setLoggedInUser(null);
+      setCart(0);
     }
   };
 
@@ -142,6 +156,7 @@ const Navbar = ({ size }) => {
 
 
   const handleRemoves = async (id) => {
+    console.log('id: ', id);
     try {
       const RemoveCartData = { id: id, uid: UidData };
       const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${UidData}`,
@@ -231,12 +246,12 @@ const Navbar = ({ size }) => {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API}/cart`, amountdataupdata, {
-          headers: {
-            'Authorization': `${getMidCookies.token}`
-          }
-        });
-        console.log('response: ', response);
-        fetchItems()
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
+      console.log('response: ', response);
+      fetchItems()
       toast.success("Quantity update successfully", {
         position: "top-center",
         autoClose: 2000,
@@ -327,7 +342,7 @@ const Navbar = ({ size }) => {
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
           >
             <NavLink className="logo navbar-brand" to="/home">
-              <img className="ps-4 logo img-fluid" src={logo} alt="Loading"  width="100" height="24"/>
+              <img className="ps-4 logo img-fluid" src={logo} alt="Loading" width="100" height="24" />
             </NavLink>
             <button
               className="navbar-toggler bg-secondary"
@@ -497,7 +512,7 @@ const Navbar = ({ size }) => {
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
                     />
-                    <span className="badge-cart">{size?size:0}</span>
+                    <span className="badge-cart">{size ? size : 0}</span>
                   </Link>
                 </li>
                 <li>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -43,8 +43,12 @@ import LactoPupMilkReplacer from "../../../assets/img/OurProduct/Lacto-Pup-Milk-
 import prolackcalf2 from "../../../assets/img/OurProduct/pro-lack-calf-powder2.png";
 import { Link, useParams } from "react-router-dom";
 import { Accordion } from "react-bootstrap";
+import ProductData from "../../Common/AdminApi/productApi";
+import { UserContext } from "../../Common/Modal/logusecont";
 
 const ProductSidebar = ({ handleClick }) => {
+    const {setPrdData,PrdData} = useContext(UserContext);
+
   const { t } = useTranslation();
 
   const Data = [
@@ -1554,35 +1558,29 @@ const ProductSidebar = ({ handleClick }) => {
   const [filteredItems, setfilteredItems] = useState([]);
   const [uniqueItems, setUniqueItems] = useState([]);
 
-  // useEffect(() => {
-  //   const items = categoryItems[category];
-  //    // Deduplicate items
-  //    const uniqueNames = new Set(items.map(item => item.name.toLowerCase()));
-  //    const uniqueItemsArray = Array.from(uniqueNames, name =>
-  //      items.find(item => item.name.toLowerCase() === name)
-  //    );
-  //    setUniqueItems(uniqueItemsArray);
-  //    console.warn(uniqueItemsArray)
-  //   if (name) {
-  //     const filtered = uniqueItemsArray.filter((item) => item.name.toLowerCase().includes(name.toLowerCase()));
 
-  //     setFilteredItems(filtered);
-  //     console.warn(filtered)
-
-  //   } else {
-  //     setFilteredItems(uniqueItemsArray);
-  //     console.warn(filteredItems)
-
-  //   }
-
-  // }, [category, name]);
 
   useEffect(() => {
-    const items = Data;
+    const fetchData = async () => {
+      try {
+        await ProductData(setPrdData);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
 
-    if (!items) return; // Ensure items exist
+    fetchData();
+  }, []); 
 
-    let filteredItems = items;
+  useEffect(() => {
+      let items = PrdData
+
+      
+        if (!items) return; // Ensure items exist
+  
+      let filteredItems = items;
+      
+      // const items = JSON.parse(localStorage.getItem('productData') ?? "[]");
 
     // If name is provided, filter items based on name
     if (name) {
@@ -1611,7 +1609,7 @@ const ProductSidebar = ({ handleClick }) => {
     );
 
     setUniqueItems(uniqueItemsArray);
-  }, [name]);
+  }, [name,PrdData]);
 
   const [isScrolled, setIsScrolled] = useState(false);
 

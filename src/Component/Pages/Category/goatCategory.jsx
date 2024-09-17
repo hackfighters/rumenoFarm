@@ -39,11 +39,12 @@ import SendOtp from "../../Common/Modal/otp";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import ProductData from "../../Common/AdminApi/productApi";
 
 
 const GoatCategoryPage = ({ }) => {
 
-  const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
+  const { UidData, cart, setCart, setiteamdata, setSizevalue ,PrdData, setPrdData} = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
@@ -1444,6 +1445,7 @@ const GoatCategoryPage = ({ }) => {
 
   
   useEffect(() => {
+    ProductData(setPrdData)
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
@@ -1457,7 +1459,11 @@ const GoatCategoryPage = ({ }) => {
   
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`,{
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
       setCart(response.data)
       
     } catch (error) {
@@ -1473,10 +1479,12 @@ const GoatCategoryPage = ({ }) => {
   //   product.name && product.name.includes("goat") 
   // );
   // console.log(filteredProducts)
-  const   filteredProducts = MainJson.filter(product =>
-    ["kid", "goat"].some(keyword =>
-      product.Category?.toLowerCase().includes(keyword.toLowerCase()) ||
-      product.name?.toLowerCase().includes(keyword.toLowerCase())
+
+  const filteredProducts = PrdData.filter(product =>
+    ["kid", "goat"].some(keyword => {
+      return String(product.Category)?.toLowerCase().includes(keyword.toLowerCase()) ||
+        product.name?.toLowerCase().includes(keyword.toLowerCase())
+    }
     )
   );
   const uniqueNames = new Set(filteredProducts.map(item => item.name.toLowerCase()));
@@ -1645,7 +1653,7 @@ const GoatCategoryPage = ({ }) => {
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`} >
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`} >
                     <span
                       className=""
                     >

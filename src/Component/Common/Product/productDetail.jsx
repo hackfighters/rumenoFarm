@@ -41,9 +41,10 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import ImageGallery from '../../Pages/Products/imgGallery';
 import Cookies from "js-cookie";
+import ProductData from "../../Common/AdminApi/productApi";
 
 const ProductDetail = () => {
-  const { UidData, cart, setCart, setiteamdata, setSizevalue, LoginUserData, loggedInUser } = useContext(UserContext);
+  const { UidData, cart, setCart, setiteamdata, setSizevalue,  loggedInUser,PrdData,setPrdData } = useContext(UserContext);
   const [amountdata, setAmountData] = useState(1)
   const [productReview, setProductReview] = useState([])
   const { register,reset,formState: { errors }, handleSubmit } = useForm();
@@ -2816,6 +2817,8 @@ const ProductDetail = () => {
 //     }
 //   ]
   
+
+
   useEffect(() => {
     fetchReviewData();
   }, []);
@@ -2888,6 +2891,8 @@ const ProductDetail = () => {
     //   }
     // }, [ setCart]);
     useEffect(() => {
+        ProductData(setPrdData)
+
       Value = cart?.length;
       if (Value !== 0) {
         setSizevalue(Value)
@@ -2917,7 +2922,7 @@ const ProductDetail = () => {
 
   const handleChange = (item, change, dataamount) => {
     const updatedCart = cart.map(cartItem => {
-      if (cartItem.id === item.id) {
+      if (cartItem.id === item._id) {
         let ItemQuantity = cartItem.amount + change;
         setAmountData(ItemQuantity)
         if (ItemQuantity < 1) return cartItem; // Prevent quantity from going below 1
@@ -2939,14 +2944,14 @@ const ProductDetail = () => {
         setCart([]);
       }
       // Check if the item already exists in the cart
-      const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
+      const itemExists = cart.some(cartItem => cartItem.id === item._id && cartItem.name === item.name);
       
 
       if (!itemExists) {
         
         // Add logic to handle adding item to cart
-        setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
-        const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
+        setCart([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        const itemData = { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         
         try {
@@ -2958,7 +2963,7 @@ const ProductDetail = () => {
             });
           
           if (response?.status == 201) {
-            localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
+            localStorage.setItem("cart", JSON.stringify([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -3004,8 +3009,9 @@ const ProductDetail = () => {
 
 
   // filter process
-  const items = Data;
-  const ScriptById = items.filter((item) => item.id == id);
+  const items = PrdData
+  console.log('items: ', items);
+  const ScriptById = items.filter((item) => item._id == id);
 
 
 
@@ -3016,11 +3022,11 @@ const ProductDetail = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   // const title = "Poultryfine";
 
-  // const sameitemfilter = items.filter((item) => item.id);
-  const sameitemfilter = items.filter((item) => item.id == id)
-  const filterbynames = sameitemfilter[0].name
+  // const sameitemfilter = items.filter((item) => item._id);
+  const sameitemfilter = items.filter((item) => item._id == id)
+  const filterbynames = sameitemfilter[0]?.name
   const filterProduct = items.filter((item) => item.name.includes(filterbynames))
-  if (filterProduct.some(item => item.id == id)) {
+  if (filterProduct.some(item => item._id == id)) {
   } else {
   }
   if (sameitemfilter.length > 0) {
@@ -3040,7 +3046,7 @@ const ProductDetail = () => {
   //  useEffect(() => {
   //     if (id) {
   //         // Filter items based on the id parameter
-  //         const filtered = items.filter((item) => item.id.includes(id));
+  //         const filtered = items.filter((item) => item._id.includes(id));
   //         console.warn(filtered,id,filteredItems)
   //         setFilteredItems(filtered);
   //     } else {
@@ -3052,10 +3058,10 @@ const ProductDetail = () => {
   return (
     <>
       <Helmet>
-        {sameitemfilter.map((item) => (
+        {sameitemfilter?.map((item) => (
           <title>{item.name}</title>
         ))}
-        {sameitemfilter.map((item) => {
+        {sameitemfilter?.map((item) => {
           const metaDesc = typeof item.metaDesc === 'symbol' ? item.metaDesc.toString() : item.metaDesc;
           return (
             <meta charSet="utf-8" name="description" content={metaDesc} />
@@ -3063,8 +3069,9 @@ const ProductDetail = () => {
         })}
 
         <link rel="canonical" href={`https://www.rumeno.in/veterinary-products/${name}/${id}`} />
-        <script type="application/ld+json">
-          {ScriptById[0].script}
+        <script className='testing' type="application/ld+json">
+          {JSON.stringify(ScriptById[0]?.script)}
+          {/* {checking[0].script[0]} */}
         </script>
       </Helmet>
       <div className="desk-nav">
@@ -3089,7 +3096,7 @@ const ProductDetail = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            {sameitemfilter.map((item) => (
+            {sameitemfilter?.map((item) => (
               <span className="label-title text-trun ">{item.name}</span>
             ))}
             <div className="mx-2 prd-head-dtl">
@@ -3098,7 +3105,7 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
-        {sameitemfilter.map((item, index) => (
+        {sameitemfilter?.map((item, index) => (
           <>
             <div className='row justify-content-center bg-white  lg:mx-5 mx-0 py-2'>
               <div className="col-lg-4">
@@ -3166,9 +3173,9 @@ const ProductDetail = () => {
                 <div className='row  my-3 ' >
                   {filterProduct.map((item) => (
                     <Link
-                      key={item.id}
-                      className={`col-lg-2 m-2 py-1 border border-danger border-2 d-grid rounded px-3 w-auto text-center text-decoration-none ${parseInt(item.id) === parseInt(id) ? "selected-bg-color" : "bg-none"}`}
-                      to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`}
+                      key={item._id}
+                      className={`col-lg-2 m-2 py-1 border border-danger border-2 d-grid rounded px-3 w-auto text-center text-decoration-none ${item._id == id ? "selected-bg-color" : "bg-none"}`}
+                      to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`}
                     >
                       <div className=''>
                         <h6 className='fw-bold my-1 text-dark'>₹ {item.priceText}/-</h6>

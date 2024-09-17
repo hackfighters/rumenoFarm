@@ -81,7 +81,7 @@ const ProductItem = ({ item, handleClick }) => {
     if (loggedInUser) {
       handleClick(item);
       try {
-        let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
+        let payload = {...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
         console.log('payload: ', payload);
         const response = await axios.post(`${process.env.REACT_APP_API}/cart`,payload,
           {
@@ -89,6 +89,7 @@ const ProductItem = ({ item, handleClick }) => {
               'Authorization': `${getMidCookies.token}`
             }
           });
+          console.log('response: ', response.data);
         
       } catch (error) {
           console.warn(error)
@@ -128,13 +129,13 @@ const ProductItem = ({ item, handleClick }) => {
         <div className="row">
           
           <div className="col-sm-4 p-4 product">
-          <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`}>
+          <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`}>
             <img src={img[0]} width={200} height={400} alt={item.imgText} className="w-100" />
           </Link>
           </div>
           <div className="col-sm-8 px-3 lg:px-5 text-center text-lg-start">
             
-            <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`}>
+            <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`}>
               <div className="fs-3">{name}</div>
               </Link>
             <div className="fs-4 mt-2 text-danger">₹ {priceText} /-</div>
@@ -206,7 +207,7 @@ const ProductItem = ({ item, handleClick }) => {
 
               <ProudctFeedbackModal
               title={name}
-              pid={item.id}
+              pid={item._id}
               showfeedModal={showfeedback}
               closefeedModal={closefeedbackModal}
             />

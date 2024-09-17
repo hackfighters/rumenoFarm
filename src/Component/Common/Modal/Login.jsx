@@ -22,11 +22,15 @@ const Login = ({
   const { t } = useTranslation();
   const apiUrl = process.env.REACT_APP_API;
   const { setLoggedInUser, setCart, setUidData, setfarmDtl, setFarmDataUMKid } = useContext(UserContext);
-
+  const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
   // -----fetch cart data from api
   const fetchItems = async (id) => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${id}`,{
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
       setCart(response.data)
       console.log('response.data: ', response.data);
 
