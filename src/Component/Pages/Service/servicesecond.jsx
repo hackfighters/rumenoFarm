@@ -22,7 +22,6 @@ const ServicesSecond = () => {
   const { setCart,cart,setSizevalue } = useContext(UserContext);
   var Value ;
   useEffect(() => {
-    //setCart(getLocalPrevCarts);
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)

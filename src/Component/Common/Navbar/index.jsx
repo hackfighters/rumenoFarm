@@ -80,10 +80,6 @@ const Navbar = ({ size }) => {
   useEffect(() => {
     fetchItems()
     setCartdata(cart);
-
-    return () => {
-      // console.log("check if cart remove ")
-    }
   }, []);
 
   const fetchItems = async () => {
@@ -156,7 +152,6 @@ const Navbar = ({ size }) => {
 
 
   const handleRemoves = async (id) => {
-    console.log('id: ', id);
     try {
       const RemoveCartData = { id: id, uid: UidData };
       const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${UidData}`,
@@ -237,6 +232,10 @@ const Navbar = ({ size }) => {
     if (latestamount < 1) {
       latestamount = 1;
     }
+    if (latestamount >= tempArr[ind].stock) {
+      latestamount = tempArr[ind].stock;
+       
+    }
 
     tempArr[ind].amount = latestamount;
     // setCart(tempArr);
@@ -252,6 +251,18 @@ const Navbar = ({ size }) => {
       });
       console.log('response: ', response);
       fetchItems()
+      if(latestamount >= tempArr[ind].stock){
+       return toast.info(`${tempArr[ind].stock} Quantity left`, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
+      }
       toast.success("Quantity update successfully", {
         position: "top-center",
         autoClose: 2000,

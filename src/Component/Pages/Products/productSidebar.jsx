@@ -47,7 +47,7 @@ import ProductData from "../../Common/AdminApi/productApi";
 import { UserContext } from "../../Common/Modal/logusecont";
 
 const ProductSidebar = ({ handleClick }) => {
-    const {setPrdData,PrdData} = useContext(UserContext);
+  const { setPrdData, PrdData } = useContext(UserContext);
 
   const { t } = useTranslation();
 
@@ -1563,40 +1563,39 @@ const ProductSidebar = ({ handleClick }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await ProductData(setPrdData);
+        let getval = await ProductData(setPrdData);
+        console.log('getval: ', getval[5].stock);
       } catch (error) {
         console.error("Error fetching product data:", error);
       }
     };
 
     fetchData();
-  }, []); 
+  }, []);
 
   useEffect(() => {
-      let items = PrdData
+    let items = PrdData
 
-      
-        if (!items) return; // Ensure items exist
-  
-      let filteredItems = items;
-      
-      // const items = JSON.parse(localStorage.getItem('productData') ?? "[]");
+
+    if (!items) return; // Ensure items exist
+
+    let filteredItems = items;
+
+    // const items = JSON.parse(localStorage.getItem('productData') ?? "[]");
 
     // If name is provided, filter items based on name
     if (name) {
       const lowerCaseName = name.toLowerCase();
       filteredItems = items.filter(
         (item) =>
-          (item.name && item.name.toLowerCase().includes(lowerCaseName)) ||
-          (item.Category &&
-            item.Category.toLowerCase().includes(lowerCaseName)) ||
-          (item.Shortdescription &&
-            item.Shortdescription.toLowerCase().includes(lowerCaseName)) ||
-          (item.description &&
-            item.description.toLowerCase().includes(lowerCaseName)) ||
-          (item.Type && item.Type.toLowerCase().includes(lowerCaseName))
+          (item.name.toLowerCase().includes(lowerCaseName)) ||
+          (String(item.Category).toLowerCase().includes(lowerCaseName)) ||
+          (item.Shortdescription.toLowerCase().includes(lowerCaseName)) ||
+          (item.description.toLowerCase().includes(lowerCaseName)) ||
+          (item.Type.toLowerCase().includes(lowerCaseName))
+
       );
-      console.warn(filteredItems);
+      console.log(filteredItems);
       setfilteredItems(filteredItems);
     }
 
@@ -1609,7 +1608,7 @@ const ProductSidebar = ({ handleClick }) => {
     );
 
     setUniqueItems(uniqueItemsArray);
-  }, [name,PrdData]);
+  }, [name, PrdData]);
 
   const [isScrolled, setIsScrolled] = useState(false);
 

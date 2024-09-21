@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { UserContext } from "../../../Component/Common/Modal/logusecont";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
@@ -212,8 +212,14 @@ const Transaction = () => {
   const [loading, setLoading] = useState(false);
   // -------------
 
+  useEffect(() => {
+    console.log("cart",cart)
+  }, [])
+  
+
   // upload End
   const onSubmit = async (data) => {
+    console.log('data: ', data,cart);
     // fetchItems(UidData)
     console.log(cart)
     if (!image) return setError('Please upload Transaction Screenshot');
@@ -253,8 +259,19 @@ const Transaction = () => {
             Cookies.remove("cart");
             setLoading(false);
           } catch (error) {
-            console.error('transaction not working', error);
             setLoading(false);
+            console.error('transaction not working', error);
+            navigate("/home");
+            return toast.error(`${error?.response?.data?.name?.split(' ').slice(0,2)} ${error?.response?.data?.message} `, {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            })
           }
         }
         else {
@@ -288,6 +305,17 @@ const Transaction = () => {
           } catch (error) {
             console.error('transaction not working', error);
             setLoading(false);
+            navigate("/home");
+            return toast.error(`${error?.response?.data?.name?.split(' ').slice(0,2)} ${error?.response?.data?.message} `, {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            })
           }
 
         }

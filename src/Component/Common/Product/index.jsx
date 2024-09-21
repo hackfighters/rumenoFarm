@@ -31,6 +31,7 @@ const ProductItem = ({ item, handleClick }) => {
     efficacy1,
     imgText,
     efficacy2,
+    stock,
   } = item;
   const [showModal, setShowModal] = useState(false);
   const [showfeedback, setshowfeedback] = useState(false);
@@ -81,29 +82,29 @@ const ProductItem = ({ item, handleClick }) => {
     if (loggedInUser) {
       handleClick(item);
       try {
-        let payload = {...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
+        let payload = { ...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name ,stock:item?.stock }, ...{ amount: 1, uid: getMidCookies?.uID } }
         console.log('payload: ', payload);
-        const response = await axios.post(`${process.env.REACT_APP_API}/cart`,payload,
+        const response = await axios.post(`${process.env.REACT_APP_API}/cart`, payload,
           {
             headers: {
               'Authorization': `${getMidCookies.token}`
             }
           });
-          console.log('response: ', response.data);
-        
+        console.log('response: ', response.data);
+
       } catch (error) {
-          console.warn(error)
-          toast.error(error, {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        }
+        console.warn(error)
+        toast.error(error, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     } else {
       // console.log("login first");
       setShowLoginModal(!showLoginModal);
@@ -124,39 +125,39 @@ const ProductItem = ({ item, handleClick }) => {
 
   return (
     <div className=" py-1">
-      
+
       <div className="bg-light h-50 rounded text-dark bg-opacity-50 p-2 shadow">
         <div className="row">
-          
+
           <div className="col-sm-4 p-4 product">
-          <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`}>
-            <img src={img[0]} width={200} height={400} alt={item.imgText} className="w-100" />
-          </Link>
+            <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.name.replace(/ /g, '-')}/${item._id}`}>
+              <img src={img[0]} width={200} height={400} alt={item.imgText} className="w-100" />
+            </Link>
           </div>
           <div className="col-sm-8 px-3 lg:px-5 text-center text-lg-start">
-            
-            <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`}>
+
+            <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.name.replace(/ /g, '-')}/${item._id}`}>
               <div className="fs-3">{name}</div>
-              </Link>
+            </Link>
             <div className="fs-4 mt-2 text-danger">₹ {priceText} /-</div>
-            <div className="fs-4 mt-2 "> { Weight } </div>
+            <div className="fs-4 mt-2 "> {Weight} </div>
             <div className="mt-2">{Instruction}</div>
             <div className="lg:d-flex d-block justify-content-between mt-2">
-              
+
               <div>
                 <span className="fw-bold my-2 ">Suitable for </span>
                 <span>{Category}</span>
-                
+
               </div>
               <div>
                 <span className="fw-bold">{efficacy}</span>
                 <span>{efficacy1}</span>
                 <span>{efficacy2}</span>
-                
+
               </div>
             </div>
             <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
-              
+
               <ReactStars
                 count={5}
                 onChange={ratingChanged}
@@ -168,14 +169,14 @@ const ProductItem = ({ item, handleClick }) => {
                 activeColor="#ffd700"
               />
             </div>
-            
-              <a className="" target="_blank" href="https://www.youtube.com/@RumenoFarmotech-bg5y">
-            <FontAwesomeIcon
-              className="mx-2 my-3 h3 text-danger"
-              type="button"
-              icon={faYoutube}
-            />
-              </a>
+
+            <a className="" target="_blank" href="https://www.youtube.com/@RumenoFarmotech-bg5y">
+              <FontAwesomeIcon
+                className="mx-2 my-3 h3 text-danger"
+                type="button"
+                icon={faYoutube}
+              />
+            </a>
             <FontAwesomeIcon
               className="mx-2 my-3 h3 text-success"
               type="button"
@@ -190,14 +191,22 @@ const ProductItem = ({ item, handleClick }) => {
               closeModal={closeModal}
             />
 
-            
+
             <div className="d-flex justify-content-between">
-              <button
-                className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
-                onClick={AddToCart}
-              >
-                Add to Cart
-              </button>
+              {(!stock > 0) ?
+                <button
+                  className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
+                >
+                  Out of Stock
+                </button>
+                :
+                <button
+                  className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
+                  onClick={AddToCart}
+                >
+                  Add to Cart
+                </button>
+              }
               <button
                 className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
                 onClick={openfeedbackModal}
@@ -206,13 +215,13 @@ const ProductItem = ({ item, handleClick }) => {
               </button>
 
               <ProudctFeedbackModal
-              title={name}
-              pid={item._id}
-              showfeedModal={showfeedback}
-              closefeedModal={closefeedbackModal}
-            />
+                title={name}
+                pid={item._id}
+                showfeedModal={showfeedback}
+                closefeedModal={closefeedbackModal}
+              />
 
-            
+
               <Login
                 showModal={showLoginModal}
                 closeModal={setShowLoginModal}

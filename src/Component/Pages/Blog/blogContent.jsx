@@ -14,6 +14,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
 import BlogApi from "../../Common/AdminApi/blogApi";
+import moment from "moment";
 const BlogContent = () => {
   const { setCart, cart, setSizevalue ,BlogData, setBlogData} = useContext(UserContext);
   const { register, reset, handleSubmit } = useForm();
@@ -66,7 +67,6 @@ const BlogContent = () => {
   useEffect(() => {
   let get =  BlogApi(setBlogData)
   console.log('get: ', get);
-    //setCart(getLocalPrevCarts);
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
@@ -83,7 +83,8 @@ const BlogContent = () => {
   //   }
   // };
 
-  const { id } = useParams();
+  const {heading, id } = useParams();
+  console.log('heading: ', heading);
   const showBlog = BlogData?.find((blog) => blog?._id == id);
 
   const onSubmit = async (data) => {
@@ -137,6 +138,10 @@ const BlogContent = () => {
         <meta charSet="utf-8" />
         <title>Blog-Rumeno</title>
         <link rel="canonical" href="https://www.rumeno.in/blog" />
+        <meta charSet="utf-8" name="description" content={showBlog?.metadescription} />
+        <script className='' type="application/ld+json">
+          {showBlog?.script}
+        </script>
       </Helmet>
       <ul className="d-none">
         {KeysWords.map((item, index) => (
@@ -259,7 +264,7 @@ const BlogContent = () => {
                  
                   <ul class="list-unstyled d-flex justify-content-between mt-3 mx-2">
                     <li class="me-3"><span>{showBlog?.bottomcontent}</span></li>
-                    <li><span class="text-danger">{new Date().toLocaleDateString()}</span></li>
+                    <li><span class="text-danger">{moment(showBlog.createdAt).format('DD/MM/YYYY')}</span></li>
                   </ul>
                 </div>
               </div>

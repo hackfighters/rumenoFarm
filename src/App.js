@@ -125,7 +125,7 @@ const App = () => {
             )}
             <Route path="/privacypolicy" Component={PrivacyPolicy} />
             <Route path="/blog" Component={Blog} />
-            <Route path="/blog/:id" Component={BlogContent} />
+            <Route path="/blog/:heading/:id" Component={BlogContent} />
             <Route
               path="/veterinary-products/goat-feed-supplements"
               Component={GoatCategoryPage}

@@ -109,7 +109,7 @@ const Blog = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Blog</span>
+            <h1 className="fw-bold">Blog</h1>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
@@ -129,7 +129,7 @@ const Blog = () => {
                 height={300}
               />
               <div className="flex-grow-1 my-2">
-                <Link className="text-decoration-none" to={`/blog/${item._id}`}>
+                <Link className="text-decoration-none" to={`/blog/${item.heading.replace(/ /g, '-')}/${item._id}`}>
                   <h3 className="mb-3 text-trun">{item.heading}</h3>
                 </Link>
 
