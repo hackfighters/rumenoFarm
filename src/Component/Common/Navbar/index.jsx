@@ -84,11 +84,13 @@ const Navbar = ({ size }) => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`, {
+      let uid =  {uid:getMidCookies?.uID}
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${uid?.uid}`, {
         headers: {
           'Authorization': `${getMidCookies.token}`
         }
-      });
+      });                             
+        
       setCart(response.data)
 
     } catch (error) {
@@ -154,7 +156,8 @@ const Navbar = ({ size }) => {
   const handleRemoves = async (id) => {
     try {
       const RemoveCartData = { id: id, uid: UidData };
-      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${UidData}`,
+      let uid =  {uid:UidData}
+      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${uid?.uid}`,
         {
           headers: {
             'Authorization': `${getMidCookies.token}`
@@ -249,7 +252,6 @@ const Navbar = ({ size }) => {
           'Authorization': `${getMidCookies.token}`
         }
       });
-      console.log('response: ', response);
       fetchItems()
       if(latestamount >= tempArr[ind].stock){
        return toast.info(`${tempArr[ind].stock} Quantity left`, {

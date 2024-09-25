@@ -2881,15 +2881,7 @@ const ProductDetail = () => {
   }
 
   var Value = '';
-  //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
-
-  //  useEffect(() => {
-  //   if (Array.isArray(getLocalPrevCarts)) {
-  //     //setCart(getLocalPrevCarts);
-  //   } else {
-  //     setCart([]);
-  //   }
-  // }, [ setCart]);
+  
   useEffect(() => {
     ProductData(setPrdData)
 
@@ -2979,7 +2971,6 @@ const ProductDetail = () => {
 
   // filter process
   const items = PrdData
-  console.log('items: ', items);
   const ScriptById = items.filter((item) => item._id == id);
 
 
@@ -3003,25 +2994,7 @@ const ProductDetail = () => {
   } else {
     // console.warn(sameitemfilter[0],"not",id);
   }
-  // useEffect(() => {
-  //     if (name) {
-  //         // Filter items based on the name parameter
-  //         const filtered = items.filter((item) => item.name.includes(name));
-  //         setFilteredItems(filtered);
-  //     } else {
-  //         setFilteredItems(items);
-  //     }
-  // }, [name]);
-  //  useEffect(() => {
-  //     if (id) {
-  //         // Filter items based on the id parameter
-  //         const filtered = items.filter((item) => item._id.includes(id));
-  //         console.warn(filtered,id,filteredItems)
-  //         setFilteredItems(filtered);
-  //     } else {
-  //         setFilteredItems(items);
-  //     }
-  // }, [id]);
+  
 
 
   return (
