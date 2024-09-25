@@ -39,11 +39,12 @@ import SendOtp from "../../Common/Modal/otp";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import ProductData from "../../Common/AdminApi/productApi";
 
 
 const GoatCategoryPage = ({ }) => {
 
-  const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
+  const { UidData, cart, setCart, setiteamdata, setSizevalue ,PrdData, setPrdData} = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
@@ -1444,6 +1445,7 @@ const GoatCategoryPage = ({ }) => {
 
   
   useEffect(() => {
+    ProductData(setPrdData)
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)
@@ -1457,7 +1459,11 @@ const GoatCategoryPage = ({ }) => {
   
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`,{
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
       setCart(response.data)
       
     } catch (error) {
@@ -1473,10 +1479,12 @@ const GoatCategoryPage = ({ }) => {
   //   product.name && product.name.includes("goat") 
   // );
   // console.log(filteredProducts)
-  const   filteredProducts = MainJson.filter(product =>
-    ["kid", "goat"].some(keyword =>
-      product.Category?.toLowerCase().includes(keyword.toLowerCase()) ||
-      product.name?.toLowerCase().includes(keyword.toLowerCase())
+
+  const filteredProducts = PrdData.filter(product =>
+    ["kid", "goat"].some(keyword => {
+      return String(product.Category)?.toLowerCase().includes(keyword.toLowerCase()) ||
+        product.name?.toLowerCase().includes(keyword.toLowerCase())
+    }
     )
   );
   const uniqueNames = new Set(filteredProducts.map(item => item.name.toLowerCase()));
@@ -1509,20 +1517,21 @@ const GoatCategoryPage = ({ }) => {
 
 
   const AddToCarts = async (item) => {
-    let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
+    let payload = {...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name  ,stock:item?.stock},...{amount:1,uid:getMidCookies?.uID}}
+    console.log('payload: ', payload);
     if (loggedInUser) {
       // if (!Array.isArray(cart)) {
         // setCart([]);
       // }
       // Check if the item already exists in the cart
-      const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
+      const itemExists = cart.some(cartItem => cartItem.id === item._id && cartItem.name === item.name);
       
 
       if (!itemExists) {
         
         // Add logic to handle adding item to cart
-        // setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
-        const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
+        // setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData ,stock:item?.stock }]);
+        const itemData = { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData ,stock:item?.stock };
         setiteamdata(itemData);
         
         try {
@@ -1639,13 +1648,21 @@ const GoatCategoryPage = ({ }) => {
                 <p className="mt-2 text-trun">{item.Shortdescription}</p>
                 <hr className="my-0" />
                 <div className="d-flex justify-content-between mx-2 align-item-center">
-                  <button
+                {/* {(!item?.stock) > 0 ?
+                    <button
+                      className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
+                    >
+                      Out of Stock
+                    </button>
+                    : */}
+                    <button
                     className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
                     onClick={() => AddToCarts(item)}
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`} >
+                  {/* // } */}
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`} >
                     <span
                       className=""
                     >

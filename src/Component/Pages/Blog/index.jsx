@@ -11,9 +11,10 @@ import blgimg2 from "../../../assets/img/OurProduct/farm-floor.jpg";
 import blgimg3 from "../../../assets/img/OurProduct/kadenath.jpg";
 import KeysWords from "../../Common/apiData/keyWords";
 import axios from "axios";
+import BlogApi from "../../Common/AdminApi/blogApi.jsx";
 
 const Blog = () => {
-  const blogdata = [
+  const blogdt = [
     {
       id: 1,
       img: blgimg1,
@@ -56,21 +57,14 @@ const Blog = () => {
 
   const apiUrl = process.env.REACT_APP_API_ADMIN;
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
-  const { setCart, cart, setSizevalue } = useContext(UserContext);
+  const { setCart, cart, setSizevalue ,BlogData, setBlogData} = useContext(UserContext);
   const [blogs, setBlogs] = useState([]);
   var Value;
   useEffect(() => {
-    fetchItems()
+    BlogApi(setBlogData)
+    console.log('getvalue: ', BlogData);
   }, []);
-  const fetchItems = async () => {
-    try {
-      const response = await axios.get(`${apiUrl}/get_all_blog`);
-      setBlogs(response.data.blog);
-      console.log('response.data.blog: ', response.data.blog);
-    } catch (error) {
-      console.error('Error fetching items:', error);
-    }
-  };
+ 
 
   return (
     <>
@@ -115,37 +109,36 @@ const Blog = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            <span className="label-title">Blog</span>
+            <h1 className="fw-bold">Blog</h1>
             <div className="mx-2">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
             </div>
           </div>
         </div>
-        {blogdata?.map((item, index) => (
+        {BlogData?.map((item, index) => (
           <div className="row justify-content-center my-3" key={index}>
             <div
               className=" blog-card col-lg-10 py-2 align-items-center shadow bg-white"
             >
               <img
-                className=" me-3 rounded w-100 "
-                src={item.img}
+                className=" me-3 rounded object-fit-cover w-100 "
+                src={item.image}
                 alt="loading"
                 // width={150}
                 height={300}
               />
               <div className="flex-grow-1 my-2">
-                <Link className="text-decoration-none" to={`/blog/${item.id}`}>
-                  <h3 className="mb-3 ">{item.heading}</h3>
+                <Link className="text-decoration-none" to={`/blog/${item.heading.replace(/ /g, '-')}/${item._id}`}>
+                  <h3 className="mb-3 text-trun">{item.heading}</h3>
                 </Link>
 
-                <div className="text-muted mb-3">{item.content}</div>
-                <ul className="list-unstyled d-flex mb-0">
-                  <li className="me-3 fw-bold text-primary blog-keywords">{item?.title1} </li>
-                  <li className="me-3 fw-bold text-primary ">{item?.title2} </li>
-                  <li className="me-3 fw-bold text-primary ">{item?.title3}</li>
-                  <li className="me-3 fw-bold text-primary ">{item?.title4} </li>
+                <div className="text-muted mb-3">{item.description}</div>
+                  {item.keywords.map((keyword,index) =>(
+                <ul key={index} className="list-unstyled d-flex mb-0">
+                  <li className="me-3 fw-bold text-primary blog-keywords">{keyword} </li>
                 </ul>
+                  ))}
                 <ul className="list-unstyled d-flex mt-3">
                   <li>
                     <span className="text-danger">

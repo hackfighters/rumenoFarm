@@ -39,6 +39,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import Cookies from "js-cookie";
+import ProductData from "../../Common/AdminApi/productApi";
 
 const PoultryCategoryPage = () => {
   const FAQ = [
@@ -67,7 +68,7 @@ const PoultryCategoryPage = () => {
       answer: "When it comes to promoting eggshell strength in poultry, several supplements play a crucial role. One notable product is “Selennium-E” by Rumeno Farmotech. This supplement combines the power of selenium and vitamin E to enhance eggshell quality. Selenium supports antioxidant function, while vitamin E contributes to overall reproductive health. Including Selennium-E in your poultry feed can lead to stronger, more resilient eggshells."
     }
   ]
-  const { UidData, cart, setCart, setiteamdata, setSizevalue } = useContext(UserContext);
+  const { UidData, cart, setCart, setiteamdata, setSizevalue,PrdData, setPrdData } = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
@@ -1461,6 +1462,7 @@ const PoultryCategoryPage = () => {
     //   }
     // }, [ setCart]);
     useEffect(() => {
+      ProductData(setPrdData)
       Value = cart?.length;
       if (Value !== 0) {
         setSizevalue(Value)
@@ -1474,7 +1476,11 @@ const PoultryCategoryPage = () => {
 
 const fetchItems = async () => {
 try {
-  const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+  const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`,{
+    headers: {
+      'Authorization': `${getMidCookies.token}`
+    }
+  });
   setCart(response.data)
   
 } catch (error) {
@@ -1484,10 +1490,12 @@ try {
 
 
 
-  const filteredProducts = MainJson.filter(product =>
-    ["kid", "poultry"].some(keyword =>
-      product.Category?.toLowerCase().includes(keyword.toLowerCase()) ||
-      product.name?.toLowerCase().includes(keyword.toLowerCase())
+
+  const filteredProducts = PrdData.filter(product =>
+    ["kid", "poultry"].some(keyword => {
+      return String(product.Category)?.toLowerCase().includes(keyword.toLowerCase()) ||
+        product.name?.toLowerCase().includes(keyword.toLowerCase())
+    }
     )
   );
   const uniqueNames = new Set(filteredProducts.map(item => item.name.toLowerCase()));
@@ -1520,20 +1528,20 @@ try {
 
 
   const AddToCarts = async (item) => {
-    let payload = {...{ id: item?.id, price: item?.priceText, img: item?.img[0], name: item?.name },...{amount:1,uid:getMidCookies?.uID}}
+    let payload = {...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name,stock:item?.stock },...{amount:1,uid:getMidCookies?.uID}}
     if (loggedInUser) {
       // if (!Array.isArray(cart)) {
       //   setCart([]);
       // }
       // Check if the item already exists in the cart
-      const itemExists = cart.some(cartItem => cartItem.id === item.id && cartItem.name === item.name);
+      const itemExists = cart.some(cartItem => cartItem.id === item._id && cartItem.name === item.name);
       
 
       if (!itemExists) {
         
         // Add logic to handle adding item to cart
-        // setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
-        const itemData = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
+        // setCart([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+        const itemData = { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
         
         try {
@@ -1546,7 +1554,7 @@ try {
           
           if (response?.status == 201) {
             fetchItems()
-            // localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
+            // localStorage.setItem("cart", JSON.stringify([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -1651,13 +1659,21 @@ try {
                 <p className="mt-2 text-trun">{item.Shortdescription}</p>
                 <hr className="my-0" />
                 <div className="d-flex justify-content-between mx-2 align-item-center">
-                  <button
+                {(!item?.stock) > 0 ?
+                    <button
+                      className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
+                    >
+                      Out of Stock
+                    </button>
+                    :
+                    <button
                     className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
                     onClick={() => AddToCarts(item)}
                   >
                     Add to Cart
                   </button>
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item.id}`} >
+                  }
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`} >
                     <span
                       className=""
                     >

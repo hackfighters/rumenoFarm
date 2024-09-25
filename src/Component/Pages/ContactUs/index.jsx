@@ -42,7 +42,6 @@ const ContactUs = () => {
   // //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
   var Value ;
   useEffect(() => {
-    // //setCart(getLocalPrevCarts);
     Value = cart?.length;
     if (Value !== 0) {
       setSizevalue(Value)

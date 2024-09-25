@@ -80,19 +80,31 @@ const Navbar = ({ size }) => {
   useEffect(() => {
     fetchItems()
     setCartdata(cart);
-
-    return() => {
-      console.log("check if cart remove ")
-    }
   }, []);
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      let uid =  {uid:getMidCookies?.uID}
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${uid?.uid}`, {
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });                             
+        
       setCart(response.data)
-      
+
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error('Error fetching items:', error?.response?.statusText);
+      if (error?.response?.statusText == "Unauthorized")
+        console.log("Unauthorized")
+      Cookies.remove("loggedInUser");
+      localStorage.removeItem("localPreviousCart");
+      localStorage.removeItem("loginDetails");
+      localStorage.removeItem("cart");
+      Cookies.remove("cart");
+      Cookies.remove("loginUserData");
+      setLoggedInUser(null);
+      setCart(0);
     }
   };
 
@@ -144,7 +156,8 @@ const Navbar = ({ size }) => {
   const handleRemoves = async (id) => {
     try {
       const RemoveCartData = { id: id, uid: UidData };
-      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${UidData}`,
+      let uid =  {uid:UidData}
+      const response = await axios.delete(`${process.env.REACT_APP_API}/cart/${id}?uid=${uid?.uid}`,
         {
           headers: {
             'Authorization': `${getMidCookies.token}`
@@ -222,6 +235,10 @@ const Navbar = ({ size }) => {
     if (latestamount < 1) {
       latestamount = 1;
     }
+    if (latestamount >= tempArr[ind].stock) {
+      latestamount = tempArr[ind].stock;
+       
+    }
 
     tempArr[ind].amount = latestamount;
     // setCart(tempArr);
@@ -231,12 +248,23 @@ const Navbar = ({ size }) => {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API}/cart`, amountdataupdata, {
-          headers: {
-            'Authorization': `${getMidCookies.token}`
-          }
-        });
-        console.log('response: ', response);
-        fetchItems()
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
+      fetchItems()
+      if(latestamount >= tempArr[ind].stock){
+       return toast.info(`${tempArr[ind].stock} Quantity left`, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
+      }
       toast.success("Quantity update successfully", {
         position: "top-center",
         autoClose: 2000,
@@ -327,7 +355,7 @@ const Navbar = ({ size }) => {
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
           >
             <NavLink className="logo navbar-brand" to="/home">
-              <img className="ps-4 logo img-fluid" src={logo} alt="Loading"  width="100" height="24"/>
+              <img className="ps-4 logo img-fluid" src={logo} alt="Loading" width="100" height="24" />
             </NavLink>
             <button
               className="navbar-toggler bg-secondary"
@@ -497,7 +525,7 @@ const Navbar = ({ size }) => {
                       icon={faCartShopping}
                       style={{ color: "#f0f2f5" }}
                     />
-                    <span className="badge-cart">{size?size:0}</span>
+                    <span className="badge-cart">{size ? size : 0}</span>
                   </Link>
                 </li>
                 <li>

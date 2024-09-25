@@ -25,13 +25,7 @@ const Products = () => {
 
   var Value = '';
 
-  // useEffect(() => {
-  //   if (Array.isArray(getLocalPrevCarts)) {
-  //     //setCart(getLocalPrevCarts);
-  //   } else {
-  //     setCart([]);
-  //   }
-  // }, [setCart]);
+
   useEffect(() => {
     Value = cart?.length;
     if (Value !== 0) {
@@ -44,7 +38,7 @@ const Products = () => {
 
     let isPresent = false;
     cart.forEach((product) => {
-      if (item.id === parseInt(product.id)) {
+      if (item?._id == product?.id) {
         isPresent = true;
       }
     });
@@ -61,10 +55,10 @@ const Products = () => {
       });
       return;
     }
-      localStorage.setItem("cart", JSON.stringify([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
+      localStorage.setItem("cart", JSON.stringify([...cart, { id: item?._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
 
-    setCart([...cart, { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
-    const itemdatra = { id: item.id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }
+    setCart([...cart, { id: item?._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
+    const itemdatra = { id: item?._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }
     setiteamdata(itemdatra)
 
 
@@ -164,7 +158,7 @@ const Products = () => {
             <div className="services-line-largeleft"></div>
             <div className="services-line-smallleft"></div>
           </div>
-          <span className="label-title pt-5 text-center">Veterinary Products</span>
+          <h1 className="pt-5 fw-bold text-center">Veterinary Products</h1>
           <div className="mx-2 pt-5">
             <div className="services-line-largeright"></div>
             <div className="services-line-smallright"></div>

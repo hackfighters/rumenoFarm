@@ -115,7 +115,12 @@ const ResponsiveNavbar = ({ size }) => {
 //---------get cart data from api
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`);
+      let uid =  {uid:getMidCookies?.uID}
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${uid?.uid}`,{
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
       setCart(response.data)
       
     } catch (error) {
@@ -140,6 +145,10 @@ const ResponsiveNavbar = ({ size }) => {
     if (latestamount < 1) {
       latestamount = 1;
     }
+    if (latestamount >= tempArr[ind].stock) {
+      latestamount = tempArr[ind].stock;
+       
+    }
 
     tempArr[ind].amount = latestamount;
     // setCart(tempArr);
@@ -153,7 +162,20 @@ const ResponsiveNavbar = ({ size }) => {
           'Authorization': `${getMidCookies.token}`
         }
       });
-      toast.success("Quantity Update successfully", {
+      fetchItems()
+      if(latestamount >= tempArr[ind].stock){
+       return toast.info(`${tempArr[ind].stock} Quantity left`, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
+      }
+      toast.success("Quantity update successfully", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -164,10 +186,9 @@ const ResponsiveNavbar = ({ size }) => {
         theme: "light",
       })
     } catch (error) {
-      console.error("quantity increase not working", error);
+      console.error("quantity update not is working", error);
     }
   };
-
   const handleRemoves = async (id) => {
     try {
       const RemoveCartData = { id: id, uid: UidData };
