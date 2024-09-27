@@ -149,7 +149,7 @@ const Services = () => {
               data-aos-offset="300"
               data-aos-easing="ease-in-sine"
             >
-              <img className="w-75" src={srvcimg1} alt="Loading" />
+              <img className="w-75" src={srvcimg1} alt="Rumeno-Veterinary-Product" />
             </div>
           </div>
         </div>
@@ -200,7 +200,7 @@ const Services = () => {
               data-aos-offset="300"
               data-aos-easing="ease-in-sine"
             >
-              <img className="img-fluid w-100" src={srvcimg1} alt="Loading" />
+              <img className="img-fluid w-100" src={srvcimg1} alt="Rumeno-Veterinary-Product" />
               <div className="bg-light p-4 text-center">
                 <h3 className="text-danger">{t("v78")}</h3>
                 <p className="d-block h5 lh-base mb-4">{t("v79")}</p>
@@ -212,7 +212,7 @@ const Services = () => {
               data-aos-offset="300"
               data-aos-easing="ease-in-sine"
             >
-              <img className="img-fluid w-100" src={srvcimg3} alt="Loading" />
+              <img className="img-fluid w-100" src={srvcimg3} alt="Rumeno-Veterinary-Product" />
               <div className="bg-light p-4 text-center">
                 <h3 className="text-danger">{t("v80")}</h3>
                 <p className="d-block h5 lh-base mb-4">{t("v81")}</p>

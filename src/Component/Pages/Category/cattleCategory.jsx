@@ -1661,7 +1661,7 @@ const CattleCategoryPage = () => {
 
             {uniqueItemsArray.map((item, index) => (
               <div key={index} className="col-lg-3 text-center border bg-white mx-2  my-3  shadow">
-                <img src={item.img[0]} className="w-100 mt-2" height={250} alt="loading" />
+                <img src={item.img[0]} className="w-100 mt-2" height={250} alt="Rumeno-Veterinary-Product" />
                 <h5 className="my-3  fw-bold m-auto text-center text-trun-head">{item.name}</h5>
                 <p className="mt-2 text-trun">{item.Shortdescription}</p>
                 <hr className="my-0" />

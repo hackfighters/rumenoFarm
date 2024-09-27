@@ -18,7 +18,7 @@ function ViewModal({ showModal, closeModal, img, text, title }) {
           <div className="container bd-example-modal-lg">
             <div className="row">
               <div className="col-lg-6">
-                <img className="w-100 rounded" src={img} alt="loading" />
+                <img className="w-100 rounded" src={img} alt="Rumeno-Veterinary-Product" />
               </div>
               <div className="col-lg-6">
                 <span className="text-dark">{text}</span>

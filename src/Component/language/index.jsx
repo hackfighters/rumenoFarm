@@ -66,7 +66,7 @@ const Language = () => {
             <div className="row">
               <div className="col-lg-6">
                 <div className="lang-img lang-box1">
-                  <img className="" src={lgimg} alt="" />
+                  <img className="" src={lgimg} alt="Rumeno-Veterinary-Product" />
                 </div>
               </div>
               <div className="col-lg-6">

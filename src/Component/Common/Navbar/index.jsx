@@ -355,7 +355,7 @@ const Navbar = ({ size }) => {
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top"
           >
             <NavLink className="logo navbar-brand" to="/home">
-              <img className="ps-4 logo img-fluid" src={logo} alt="Loading" width="100" height="24" />
+              <img className="ps-4 logo img-fluid" src={logo} alt="Rumeno-Veterinary-Product" width="100" height="24" />
             </NavLink>
             <button
               className="navbar-toggler bg-secondary"
@@ -694,7 +694,7 @@ const Navbar = ({ size }) => {
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          <img src={logstatus} className="w-75" alt="" />
+                          <img src={logstatus} className="w-75" alt="Rumeno-Veterinary-Product" />
                         </a>
                         <ul
                           className="dropdown-menu login-dropdown"
@@ -704,7 +704,7 @@ const Navbar = ({ size }) => {
                             <img
                               src={logstatus}
                               className="nav-log-status mx-2"
-                              alt=""
+                              alt="Rumeno-Veterinary-Product"
                             />
                             <h5
                               typeof="button"
@@ -796,7 +796,7 @@ const Navbar = ({ size }) => {
                   return (
                     <div className="row mb-4 cart-model" key={item.id}>
                       <div className="col-sm-3 cart-model-img text-center">
-                        <img className="mx-3" src={item.img} alt="Loading" />
+                        <img className="mx-3" src={item.img} alt="Rumeno-Veterinary-Product" />
                       </div>
                       <div className="col-sm-3 d-flex align-items-center justify-content-center">
                         <h4 className="text-trun">{item.name}</h4>

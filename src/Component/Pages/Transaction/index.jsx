@@ -535,7 +535,7 @@ const Transaction = () => {
                               </span>
                               <img
                                 src=""
-                                alt="loading"
+                                alt="Rumeno-Veterinary-Product"
                                 id="previewImage"
                                 className="drop-zoon__preview-image"
                                 ref={previewImageRef}
@@ -644,7 +644,7 @@ const Transaction = () => {
                               </span>
                               <img
                                 src=""
-                                alt="loading"
+                                alt="Rumeno-Veterinary-Product"
                                 id="previewImage"
                                 className="drop-zoon__preview-image"
                                 ref={previewImageRef}
@@ -764,7 +764,7 @@ const Transaction = () => {
                               </span>
                               <img
                                 src=""
-                                alt="loading"
+                                alt="Rumeno-Veterinary-Product"
                                 id="previewImage"
                                 className="drop-zoon__preview-image"
                                 ref={previewImageRef}
@@ -1014,7 +1014,7 @@ m846 -144 c8 -20 8 -948 0 -968 -5 -14 -30 -16 -175 -16 l-169 0 0 500 0 500
               <div className="contact_info_sec py-4">
                 <h4 className="text-white text-center">SCANNER</h4>
                 <div>
-                  <img className="w-100 mb-3" src={scanner} alt="" />
+                  <img className="w-100 mb-3" src={scanner} alt="Rumeno-Veterinary-Product" />
                 </div>
               </div>
             </div>
