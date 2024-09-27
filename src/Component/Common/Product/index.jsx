@@ -146,7 +146,7 @@ const ProductItem = ({ item, handleClick }) => {
 
               <div>
                 <span className="fw-bold my-2 ">Suitable for </span>
-                <span>{Category}</span>
+                <span>{` ${Category}`}</span>
 
               </div>
               <div>

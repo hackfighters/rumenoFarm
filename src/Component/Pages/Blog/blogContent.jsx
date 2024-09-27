@@ -242,7 +242,7 @@ const BlogContent = () => {
                 <img
                   class="rounded w-100 object-fit-cover"
                   src={showBlog?.image}
-                  alt="loading"
+                  alt="Rumeno-Veterinary-Product"
                   height="400"
                 />
               </div>

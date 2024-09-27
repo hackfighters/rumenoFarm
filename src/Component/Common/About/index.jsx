@@ -112,11 +112,6 @@ const About = () => {
                 </div>
                 <div className="col-sm-6 mb-2">
                   <span className="hover-effect  popup-image">
-                    <img
-                      className="img-fluid w-100"
-                      src="/assets/img/2.jpeg"
-                      alt=""
-                    />
                     {/* Rumeno farm  */}
                     {/* Rumeno */}
                     {/* Veterinary */}

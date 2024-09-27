@@ -97,7 +97,7 @@ const ServicesThird = () => {
               </p>
             </div>
             <div className="col-lg-6 d-flex align-items-center justify-content-center">
-              <img  src={service7}  alt="loading" />
+              <img  src={service7}  alt="Rumeno-Veterinary-Product" />
             </div>
           </div>
         </div>
@@ -184,17 +184,17 @@ const ServicesThird = () => {
             <img
             className="w-25 m-1 p-0"
             src={service6}
-            alt="loading"
+            alt="Rumeno-Veterinary-Product"
           />
             <img
             className="w-25 m-1 p-0"
             src={service5}
-            alt="loading"
+            alt="Rumeno-Veterinary-Product"
           />
             <img
             className="w-25 m-1 p-0"
             src={service8}
-            alt="loading"
+            alt="Rumeno-Veterinary-Product"
           />
         </div>
 

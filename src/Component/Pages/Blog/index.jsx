@@ -124,7 +124,7 @@ const Blog = () => {
               <img
                 className=" me-3 rounded object-fit-cover w-100 "
                 src={item.image}
-                alt="loading"
+                alt="Rumeno-Veterinary-Product"
                 // width={150}
                 height={300}
               />

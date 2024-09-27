@@ -266,7 +266,7 @@ const ResponsiveNavbar = ({ size }) => {
             className="col-sm-12 navbar navbar-expand-lg navbar-light fixed-top header"
           >
             <NavLink className="logo" to="/home">
-              <img className="ps-4 logo" src={logo} alt="" />
+              <img className="ps-4 logo" src={logo} alt="Rumeno-Veterinary-Product" />
               </NavLink>
 
             <button
@@ -612,7 +612,7 @@ const ResponsiveNavbar = ({ size }) => {
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          <img src={logstatus} className="w-75" alt="" />
+                          <img src={logstatus} className="w-75" alt="Rumeno-Veterinary-Product" />
                         </a>
                         <ul
                           className="dropdown-menu"
@@ -622,7 +622,7 @@ const ResponsiveNavbar = ({ size }) => {
                             <img
                               src={logstatus}
                               className="nav-log-status mx-2"
-                              alt=""
+                              alt="Rumeno-Veterinary-Product"
                             />
                             <h5
                               typeof="button"
@@ -709,7 +709,7 @@ const ResponsiveNavbar = ({ size }) => {
                 return (
                   <div className="row mb-4 cart-model" key={cartindex}>
                     <div className="col-sm-3 cart-model-img text-center">
-                      <img className="mx-3" src={item.img} alt="Loading" />
+                      <img className="mx-3" src={item.img} alt="Rumeno-Veterinary-Product" />
                     </div>
                     <div className="col-sm-3 d-flex align-items-center justify-content-center">
                       <h4 className="my-2">{item.name}</h4>

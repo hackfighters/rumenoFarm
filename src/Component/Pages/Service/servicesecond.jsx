@@ -134,7 +134,7 @@ const ServicesSecond = () => {
               </p>
             </div>
             <div className="col-lg-6 d-flex align-items-center justify-content-center">
-              <img src={service1} alt="loading" />
+              <img src={service1} alt="Rumeno-Veterinary-Product" />
             </div>
           </div>
         </div>
@@ -235,17 +235,17 @@ const ServicesSecond = () => {
             <img
             className="w-25 m-1 p-0"
             src={service2}
-            alt="loading"
+            alt="Rumeno-Veterinary-Product"
           />
             <img
             className="w-25 m-1 p-0"
             src={service3}
-            alt="loading"
+            alt="Rumeno-Veterinary-Product"
           />
             <img
             className="w-25 m-1 p-0"
             src={service4}
-            alt="loading"
+            alt="Rumeno-Veterinary-Product"
           />
         </div>
 
