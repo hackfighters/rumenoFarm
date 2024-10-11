@@ -158,7 +158,7 @@ const Products = () => {
             <div className="services-line-largeleft"></div>
             <div className="services-line-smallleft"></div>
           </div>
-          <h1 className="pt-5 fw-bold text-center">Veterinary Products</h1>
+          <span className="pt-5 fw-bold label-title text-center">Veterinary Products</span>
           <div className="mx-2 pt-5">
             <div className="services-line-largeright"></div>
             <div className="services-line-smallright"></div>

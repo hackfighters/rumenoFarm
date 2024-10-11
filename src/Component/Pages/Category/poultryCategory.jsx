@@ -19,7 +19,7 @@ import Neonato from "../../../assets/img/OurProduct/neonatobottle.png";
 import prolackgoat from "../../../assets/img/OurProduct/pro-lack-goat-powder.png";
 import prolackcalf from "../../../assets/img/OurProduct/pro-lack-calf-powder.png";
 import selenniumGC from "../../../assets/img/OurProduct/Selennium-GC.png";
-import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg"; 
+import Energico from "../../../assets/img/OurProduct/Energico-Animal.jpg";
 import Microfloratane from "../../../assets/img/OurProduct/microfloratane.jpg";
 import Minromix from "../../../assets/img/OurProduct/minromix.jpg";
 import Rumenovita from "../../../assets/img/OurProduct/Rumenovita.jpg";
@@ -68,7 +68,7 @@ const PoultryCategoryPage = () => {
       answer: "When it comes to promoting eggshell strength in poultry, several supplements play a crucial role. One notable product is “Selennium-E” by Rumeno Farmotech. This supplement combines the power of selenium and vitamin E to enhance eggshell quality. Selenium supports antioxidant function, while vitamin E contributes to overall reproductive health. Including Selennium-E in your poultry feed can lead to stronger, more resilient eggshells."
     }
   ]
-  const { UidData, cart, setCart, setiteamdata, setSizevalue,PrdData, setPrdData } = useContext(UserContext);
+  const { UidData, cart, setCart, setiteamdata, setSizevalue, PrdData, setPrdData } = useContext(UserContext);
   const [showRegistrationModal, setShowRegistrtionModal] = useState(false);
   const [showOtp, setShowOpt] = useState(false);
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
@@ -1454,39 +1454,39 @@ const PoultryCategoryPage = () => {
   var Value = '';
   const AllData = [...MainJson];
   // //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
-    //  useEffect(() => {
-    //   if (Array.isArray(getLocalPrevCarts)) {
-    //     //setCart(getLocalPrevCarts);
-    //   } else {
-    //     setCart([]);
-    //   }
-    // }, [ setCart]);
-    useEffect(() => {
-      ProductData(setPrdData)
-      Value = cart?.length;
-      if (Value !== 0) {
-        setSizevalue(Value)
-      }
-    }, [cart]);
+  //  useEffect(() => {
+  //   if (Array.isArray(getLocalPrevCarts)) {
+  //     //setCart(getLocalPrevCarts);
+  //   } else {
+  //     setCart([]);
+  //   }
+  // }, [ setCart]);
+  useEffect(() => {
+    ProductData(setPrdData)
+    Value = cart?.length;
+    if (Value !== 0) {
+      setSizevalue(Value)
+    }
+  }, [cart]);
 
-      // -----fetch cart data from api
+  // -----fetch cart data from api
   useEffect(() => {
     fetchItems()
-}, [])
+  }, [])
 
-const fetchItems = async () => {
-try {
-  const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`,{
-    headers: {
-      'Authorization': `${getMidCookies.token}`
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API}/cart/${getMidCookies?.uID}`, {
+        headers: {
+          'Authorization': `${getMidCookies.token}`
+        }
+      });
+      setCart(response.data)
+
+    } catch (error) {
+      console.error('Error fetching items:', error);
     }
-  });
-  setCart(response.data)
-  
-} catch (error) {
-  console.error('Error fetching items:', error);
-}
-};
+  };
 
 
 
@@ -1528,22 +1528,22 @@ try {
 
 
   const AddToCarts = async (item) => {
-    let payload = {...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name,stock:item?.stock },...{amount:1,uid:getMidCookies?.uID}}
+    let payload = { ...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name, stock: item?.stock }, ...{ amount: 1, uid: getMidCookies?.uID } }
     if (loggedInUser) {
       // if (!Array.isArray(cart)) {
       //   setCart([]);
       // }
       // Check if the item already exists in the cart
       const itemExists = cart.some(cartItem => cartItem.id === item._id && cartItem.name === item.name);
-      
+
 
       if (!itemExists) {
-        
+
         // Add logic to handle adding item to cart
         // setCart([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]);
         const itemData = { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData };
         setiteamdata(itemData);
-        
+
         try {
           const response = await axios.post(`${process.env.REACT_APP_API}/cart`, payload,
             {
@@ -1551,7 +1551,7 @@ try {
                 'Authorization': `${getMidCookies.token}`
               }
             });
-          
+
           if (response?.status == 201) {
             fetchItems()
             // localStorage.setItem("cart", JSON.stringify([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData }]));
@@ -1581,7 +1581,7 @@ try {
           progress: undefined,
           theme: "light",
         });
-        
+
       }
     } else {
       setShowLoginModal(!showLoginModal);
@@ -1597,17 +1597,17 @@ try {
       });
     }
   };
- 
+
   return (
     <>
-    <Helmet>
-      <meta charSet="utf-8" name="description" content="Improve your flock's health, growth, and egg production with high-quality poultry feed supplements and poultry supplements. Discover essential vitamins, minerals, probiotics, and more to optimize your chicken's well-being.
+      <Helmet>
+        <meta charSet="utf-8" name="description" content="Improve your flock's health, growth, and egg production with high-quality poultry feed supplements and poultry supplements. Discover essential vitamins, minerals, probiotics, and more to optimize your chicken's well-being.
 "/>
-      <title>Poultry Feed Supplements by Rumeno: Improve Growth & Immunity | Poultry supplements
-</title>
-<link rel="canonical" href="https://www.rumeno.in/veterinary-products/poultry-feed-supplements" />
-    </Helmet>
-   
+        <title>Poultry Feed Supplements by Rumeno: Improve Growth & Immunity | Poultry supplements
+        </title>
+        <link rel="canonical" href="https://www.rumeno.in/veterinary-products/poultry-feed-supplements" />
+      </Helmet>
+
       <div className="desk-nav">
         <Navbar size={cart?.length} />
       </div>
@@ -1659,7 +1659,7 @@ try {
                 <p className="mt-2 text-trun">{item.Shortdescription}</p>
                 <hr className="my-0" />
                 <div className="d-flex justify-content-between mx-2 align-item-center">
-                {(!item?.stock) > 0 ?
+                  {(!item?.stock) > 0 ?
                     <button
                       className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
                     >
@@ -1667,11 +1667,11 @@ try {
                     </button>
                     :
                     <button
-                    className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
-                    onClick={() => AddToCarts(item)}
-                  >
-                    Add to Cart
-                  </button>
+                      className="btn text-white border-0 w-auto gradient-custom-2 my-4 p-2"
+                      onClick={() => AddToCarts(item)}
+                    >
+                      Add to Cart
+                    </button>
                   }
                   <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`} >
                     <span
@@ -1705,20 +1705,27 @@ try {
         <div className="row bg-white shadow mx-3 my-4 justify-content-center">
           <div className="col-lg-11 my-4">
             <h1 className="my-4 text-center">
-            Enhancing Poultry Health An All-Inclusive Handbook on Poultry Feed Supplements
+              Enhancing Poultry Health An All-Inclusive Handbook on Poultry Feed Supplements
             </h1>
-            <h3 className="my-3">Overview</h3>
-            <p>
-              The dynamic field of poultry husbandry necessitates accuracy,
-              tenderness, and a thorough comprehension of avian health. As a
-              poultry farmer, you are well aware that the key to productive
-              chicken production is a well-balanced diet. But occasionally, your
-              flock doesn't get all the nutrition it needs from normal feed
-              alone.Thats why poultry feed Supplements are used in this
-              situation. We'll dive into the world of poultry supplements in
-              this blog, highlighting their advantages and illuminating how
-              they're changing the way that chicken nutrition is provided.
-            </p>
+            <div className="row my-5">
+              <div className="col-lg-4">
+                <iframe className="w-100 h-100" src="https://www.youtube.com/embed/UG8qLO2fq6w?si=99yg5vurZi9eEQz-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div className="col-lg-8">
+                <h3 className="my-3">Overview</h3>
+                <p>
+                  The dynamic field of poultry husbandry necessitates accuracy,
+                  tenderness, and a thorough comprehension of avian health. As a
+                  poultry farmer, you are well aware that the key to productive
+                  chicken production is a well-balanced diet. But occasionally, your
+                  flock doesn't get all the nutrition it needs from normal feed
+                  alone.Thats why poultry feed Supplements are used in this
+                  situation. We'll dive into the world of poultry supplements in
+                  this blog, highlighting their advantages and illuminating how
+                  they're changing the way that chicken nutrition is provided.
+                </p>
+              </div>
+            </div>
             <h3 className="fw-bold my-4">
               Why Poultry Feed Supplements Are Important:
             </h3>
@@ -1783,7 +1790,7 @@ try {
 
             <h4>Let me present Rumeno Farmotech.</h4>
             <p>
-            Rumeno Farmotech, a trusted name in animal feed supplements, offers high-quality poultry vitamin supplements. These supplements enhance the general health and well-being of chickens, ducks, and other fowl. With a commitment to research-driven solutions, Rumeno Farmotech ensures that its products reach farmers and livestock owners across India.
+              Rumeno Farmotech, a trusted name in animal feed supplements, offers high-quality poultry vitamin supplements. These supplements enhance the general health and well-being of chickens, ducks, and other fowl. With a commitment to research-driven solutions, Rumeno Farmotech ensures that its products reach farmers and livestock owners across India.
             </p>
             <p>
               Our quick-start poultry supplements are made to get your flock

@@ -1800,9 +1800,9 @@ const ProductSidebar = ({ handleClick }) => {
           />
         </div>
       </div>
-      <h2 className="py-2 mt-5 px-4 service-head">
+      <h1 className="py-2 mt-5 px-4 service-head">
         Veterinary Products: Keeping Your Animals Happy and Healthy
-      </h2>
+      </h1>
       <div className="bg-white p-3">
         <p>
           In the dynamic world of animal husbandry, ensuring the well-being and
@@ -1856,30 +1856,17 @@ const ProductSidebar = ({ handleClick }) => {
           Dental supplies: for hygienic and oral care. Rumeno's dedication to excellence guarantees that veterinarians have the resources needed to give their patients the best care possible.
         </p>
         <hr />
-        <h4 className="my-3 fw-bold">Rumeno : A Premier Veterinary Products Manufacturer</h4>
+        <h2 className="my-3 fw-bold">Rumeno : A Premier Veterinary Products Manufacturer</h2>
         <p className="px-4">We're Rumeno, and we're passionate about making life better for animals. As a leading veterinary product manufacturer, we're proud to be recognized as one of the top 10 animal wellness startups by Industry Outlook. That's a big deal, but it's really just the beginning.
         </p>
         <p className="px-4">Our aim is to make all animals healthier and happier and increase your profits through our excellent veterinary products, which are made from high-quality vitamins and minerals. Take Rumeno's veterinary products and grow your livestock. </p>
 
         <hr />
-        <h4 className="my-3 fw-bold"> Why Opt for Our Veterinary Products?</h4>
-        <ul>
-          <li className="my-2">
-            <strong> Quality Control : </strong>
-            All of our animal products come from reliable suppliers and have
-            undergone safety and effectiveness testing.
-          </li>
-          <li className="my-2">
-            <strong> Expert Suggestions : </strong>
-            Our group of skilled vets makes sure that every animal product
-            satisfies the highest requirements.
-          </li>
-          <li className="my-2">
-            <strong> Client Testimonials : </strong>
-            View the reviews left by other pet owners regarding our animal
-            goods. Their contentment says it all.
-          </li>
-        </ul>
+        <h2 className="my-3 fw-bold">Why People Choose Veterinary Services by Rumeno ?
+        </h2>
+        <p>
+        Highly trusted by the pet owners and farmers, Rumeno's veterinary services deliver excellent animal care.Our staff consists of professional veterinarians who can cater to all the needs of your animals, with complete services such as routine check-ups, vaccinations, advanced diagnostics, and even plans for the treatment of each, as each requires.We shall at all times offer your animals the best health and life while utilizing state-of-the-art technology and the highest veterinary medical standards ever.Our expertise, gentle care, and quality orientation are what attract our clients to our veterinary care. Whether maintaining healthy livestock or nursing companion animals, Rumeno will stand by your side to ensure healthy thriving animals. Count on Rumeno for all veterinary needs.
+        </p>
         <hr />
         <h4 className="my-3 fw-bold"> Highlighted Items</h4>
         <ul className="list-unstyled">

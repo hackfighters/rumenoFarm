@@ -17,8 +17,8 @@ import { Link } from "react-router-dom";
 
 const ServicesThird = () => {
   //const getLocalPrevCarts = JSON.parse(localStorage.getItem("cart") ?? "[]");
-  const { setCart,cart,setSizevalue } = useContext(UserContext);
-  var Value ;
+  const { setCart, cart, setSizevalue } = useContext(UserContext);
+  var Value;
   useEffect(() => {
     Value = cart?.length;
     if (Value !== 0) {
@@ -97,7 +97,7 @@ const ServicesThird = () => {
               </p>
             </div>
             <div className="col-lg-6 d-flex align-items-center justify-content-center">
-              <img  src={service7}  alt="Rumeno-Veterinary-Product" />
+              <img src={service7} alt="Rumeno-Veterinary-Product" />
             </div>
           </div>
         </div>
@@ -122,28 +122,28 @@ const ServicesThird = () => {
         </div>
         <div className="col-lg-12">
           <h2 className="py-2 px-4 service-head shadow">
-            Navigating Livestock Challenges with Expert Consulting
+            Resolve dairy problems with our dairy consulting services
           </h2>
           <p className="mx-2 my-4">
-            Services for livestock consulting are essential for tackling the
-            various problems dairy farmers have. The team of seasoned advisors
-            at Rumeno Farmotech provides unmatched perspectives and creative
-            solutions, enabling farmers to overcome challenges and prosper in a
-            cutthroat environment.
+            Dairy consulting services are extremely important because dairy farmers encounter a broad variety of problems. The advisors at Rumeno Farmotech, comprising experienced professionals, are unmatched in competence and innovation and create strategies to breach the barrier against their competitors in the dairy market.
+
           </p>
           <p className="mx-2 my-4">
-            To maximize cattle health and performance, our advisors use
-            data-driven approaches in everything from disease control to
-            breeding plans. Rumeno Farmotech keeps dairy farmers ahead of the
-            curve by carrying out in-depth assessments and putting customized
-            solutions in place, protecting the welfare of their herds while
-            optimizing profitability.
+            Dairy farming is approached with fact-based techniques in every segment - controlling diseases or strategic breeding plans under our consultants to improve the health and performance of cattle. Holistic assessments and individual solutions guarantee that dairy farmers are not one step behind anybody.
+          </p>
+          <p className="mx-2
+          my-4">
+            We care about the welfare of the dairy herd and aim to reach maximum profitability by equipping the tool and knowledge to the farmer for survival in the long run.
           </p>
         </div>
         <div className="col-lg-12">
           <h2 className="py-2 px-4 service-head shadow">
-            Empowering Dairy Farmers with Rumeno Farmotech
+            Empowering Dairy Farmers With Our Dairy Farming Consultancy
           </h2>
+          <p className="mx-2 my-4">
+            The mission is to equip dairy producers with the skill and equipment required for success in business operations As the nation's leading dairy consultants, we offer all the dairy farm management and livestock consulting services. We are consults and more; we look forward to being dependable partners in your journey to excellence in agriculture.
+          </p>
+
           <p className="mx-2 my-4">
             The primary goal of Rumeno Farmotech is to provide dairy producers
             with the skills and tools they need to be successful. We aspire to
@@ -167,31 +167,25 @@ const ServicesThird = () => {
             industry.
           </p>
           <p className="mx-2 my-4">
-            Rumeno Farmotech and dairy farmers alike can handle obstacles,
-            capture opportunities, and pave the path towards a brighter future
-            for the dairy business by working together, being innovative, and
-            having a strong dedication to excellence.
+          With collaboration, innovation, and the very strong commitment to excellence for Rumeno Farmotech and dairy farmers, real challenges can be overcome, opportunities identified, and room paved toward a brighter future for dairy farming.
           </p>
           <p className="mx-2 my-4">
-            Get in touch with Rumeno Farmotech right now to find out more about
-            our offerings and to start your path to successful and revolutionary
-            dairy farming growth. One farm at a time, we can reshape
-            agriculture's future by working together.
+          Contact Rumeno Farmotech now for more information about its Dairy Farming Consultancy and embark on a trip along the roadmap of sustainable and transformative development in dairy farming. Let's create a new future for agriculture, one farm at a time.
           </p>
         </div>
 
         <div className="row justify-content-evenly service-images">
-            <img
+          <img
             className="w-25 m-1 p-0"
             src={service6}
             alt="Rumeno-Veterinary-Product"
           />
-            <img
+          <img
             className="w-25 m-1 p-0"
             src={service5}
             alt="Rumeno-Veterinary-Product"
           />
-            <img
+          <img
             className="w-25 m-1 p-0"
             src={service8}
             alt="Rumeno-Veterinary-Product"
