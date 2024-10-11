@@ -222,13 +222,14 @@ const Navbar = ({ size }) => {
 
   const handleChange = async (item, d) => {
     let ind = -1;
-    cart.forEach((data, index) => {
+    cart?.forEach((data, index) => {
       if (data.id === item.id) ind = index;
     });
 
     const tempArr = [...cart];
+    console.log('tempArr: ', tempArr);
 
-    var latestamount = parseInt(tempArr[ind].amount);
+    let latestamount = parseInt(tempArr[ind].amount);
     latestamount += d;
 
     // Ensure the amount does not go below 1
@@ -242,16 +243,20 @@ const Navbar = ({ size }) => {
 
     tempArr[ind].amount = latestamount;
     // setCart(tempArr);
-    var amountdataupdata = tempArr[ind];
+    let amountdataupdata = tempArr[ind];
+    console.log('amountdataupdata: ', amountdataupdata);
+
+    
 
     // Api ------------
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API}/cart`, amountdataupdata, {
-        headers: {
-          'Authorization': `${getMidCookies.token}`
-        }
-      });
+          headers: {
+            'Authorization': `${getMidCookies.token}`
+          }
+        });
+        console.log('response  cheeee: ', response);
       fetchItems()
       if(latestamount >= tempArr[ind].stock){
        return toast.info(`${tempArr[ind].stock} Quantity left`, {
