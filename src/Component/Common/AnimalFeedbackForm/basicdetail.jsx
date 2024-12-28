@@ -38,6 +38,7 @@ const MultiStepForm = () => {
   const getSelectdAnimal = JSON.parse(
     localStorage.getItem("SelectedAnimal") ?? "[]"
   );
+  console.log('getSelectdAnimal: ', getSelectdAnimal);
 
   const filteredData = maindata.filter(
     (item) =>
@@ -152,7 +153,7 @@ const MultiStepForm = () => {
   };
 
   const AddMoreDtl = (index) => {
-    const basicDtl = { mid: maindata[index]._id };
+    const basicDtl = { mid: maindata[index]._id, parentName: maindata[index].uniquename};
     console.log("basicDtl: ", maindata);
 
     const getLoginData = JSON.parse(
@@ -165,6 +166,7 @@ const MultiStepForm = () => {
   };
 
   const handleEdit = (index) => {
+    console.log('maindata[index]: ', maindata[index]);
     setValue("uniquename", maindata[index].uniquename);
     setValue("age", maindata[index].age);
     setValue("gender", maindata[index].gender);
@@ -222,7 +224,7 @@ const MultiStepForm = () => {
             </button>
 
             <input
-              className="form-control mr-sm-2 w-25"
+              className="form-control farmData-search mr-sm-2 w-25"
               type="search"
               placeholder="Search by Name or Age"
               aria-label="Search"
@@ -582,11 +584,21 @@ const MultiStepForm = () => {
                         {...register("pregnancy_detail")}
                       >
                         <option disabled>select pregnancy Detail</option>
-                        <option value="1">1</option>
-                        <option value="1">2</option>
-                        <option value="1">3</option>
-                        <option value="1">4</option>
-                        <option value="1">5</option>
+                        <option value="1 Month">1 Month</option>
+                        <option value="2 Month">2 Month</option>
+                        <option value="3 Month">3 Month</option>
+                        <option value="4 Month">4 Month</option>
+                        <option value="5 Month">5 Month</option>
+                        {getSelectdAnimal == "cow" || getSelectdAnimal == "buffalo" ? (
+                          <>
+                          <option value="6 Month">6 Month</option>
+                          <option value="7 Month">7 Month</option>
+                          <option value="8 Month">8 Month</option>
+                          <option value="9 Month">9 Month</option>
+                          <option value="10 Month">10 Month</option>
+                          <option value="11 Month">11 Month</option>
+                          </>
+                        ) : null }
                         <option value="notpregnent">not pregnent</option>
                         <option value="notconfirm">not confirm</option>
                       </select>
@@ -619,11 +631,11 @@ const MultiStepForm = () => {
                         <option disabled>
                           Open this and select body score
                         </option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        <option value="Very slim Skinned body with entire skeleton appearing on skins">Very slim Skinned body with entire skeleton appearing on skins</option>
+                        <option value="Skinned body with appearing sharp bones of chest on skin ">Skinned body with appearing sharp bones of chest on skin </option>
+                        <option value="Slimmed body but chest bone does not appear with having a little muscles on body">Slimmed body but chest bone does not appear with having a little muscles on body</option>
+                        <option value="Mild fat with having good muscles on body and less fat">Mild fat with having good muscles on body and less fat</option>
+                        <option value="Fatty bulky Body. Without appearing any bones on body">Fatty bulky Body. Without appearing any bones on body</option>
                       </select>
                     </div>
                     <div className="col-lg-5 my-2">
