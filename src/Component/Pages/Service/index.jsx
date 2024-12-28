@@ -179,15 +179,12 @@ const Services = () => {
       </ul>
       <p className=""> Rumeno Farmotech’s commitment to excellence extends beyond feed supplements. Their veterinary services, backed by research and expertise, contribute to healthier and happier animals. As you optimize your veterinary practice online, remember that every click could lead to a wagging tail or a grateful purr</p>
       <hr />
-      <h4 className="my-3 fw-bold"> Why Opt for Our Veterinary Products?</h4>
-      <ul>
-        <li className="my-2"><strong> Quality Control : </strong>
-          All of our animal products come from reliable suppliers and have undergone safety and effectiveness testing.</li>
-        <li className="my-2"><strong> Expert Suggestions : </strong>
-          Our group of skilled vets makes sure that every animal product satisfies the highest requirements.</li>
-        <li className="my-2"><strong> Client Testimonials : </strong>
-          View the reviews left by other pet owners regarding our animal goods. Their contentment says it all.</li>
-      </ul>
+  
+        <h2 className="my-3 fw-bold">Why People Choose Veterinary Services by Rumeno ?
+        </h2>
+        <p>
+        Highly trusted by the pet owners and farmers, Rumeno's veterinary services deliver excellent animal care.Our staff consists of professional veterinarians who can cater to all the needs of your animals, with complete services such as routine check-ups, vaccinations, advanced diagnostics, and even plans for the treatment of each, as each requires.We shall at all times offer your animals the best health and life while utilizing state-of-the-art technology and the highest veterinary medical standards ever.Our expertise, gentle care, and quality orientation are what attract our clients to our veterinary care. Whether maintaining healthy livestock or nursing companion animals, Rumeno will stand by your side to ensure healthy thriving animals. Count on Rumeno for all veterinary needs.
+        </p>
       </div>
         <div className="col-lg-12 my-5">
           <h2 className=" py-2 px-4 service-head shadow">{t("v268")}</h2>

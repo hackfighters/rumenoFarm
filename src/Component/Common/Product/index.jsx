@@ -13,10 +13,12 @@ import ProudctFeedbackModal from "../Modal/productFeedback";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import RatingStar from "../RatingStar/ratingStar";
 
 const ProductItem = ({ item, handleClick }) => {
   const {
     img,
+    _id,
     name,
     priceText,
     description,
@@ -41,7 +43,7 @@ const ProductItem = ({ item, handleClick }) => {
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
   const ratingChanged = (newRating) => {
-    // console.log(newRating);
+    // 
   };
 
   const openModal = () => {
@@ -82,18 +84,18 @@ const ProductItem = ({ item, handleClick }) => {
     if (loggedInUser) {
       handleClick(item);
       try {
-        let payload = { ...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name ,stock:item?.stock }, ...{ amount: 1, uid: getMidCookies?.uID } }
-        console.log('payload: ', payload);
+        let payload = { ...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name, stock: item?.stock }, ...{ amount: 1, uid: getMidCookies?.uID } }
+        
         const response = await axios.post(`${process.env.REACT_APP_API}/cart`, payload,
           {
             headers: {
               'Authorization': `${getMidCookies.token}`
             }
           });
-        console.log('response: ', response.data);
+        
 
       } catch (error) {
-        console.warn(error)
+        
         toast.error(error, {
           position: "top-center",
           autoClose: 2000,
@@ -106,7 +108,7 @@ const ProductItem = ({ item, handleClick }) => {
         });
       }
     } else {
-      // console.log("login first");
+      // 
       setShowLoginModal(!showLoginModal);
       toast.warn("Please Login", {
         position: "top-center",
@@ -121,6 +123,9 @@ const ProductItem = ({ item, handleClick }) => {
     }
   };
 
+  const SetPrdIdToLocal = (PrdId) => {
+    localStorage.setItem("PrdId", PrdId)
+  }
 
 
   return (
@@ -130,13 +135,13 @@ const ProductItem = ({ item, handleClick }) => {
         <div className="row">
 
           <div className="col-sm-4 p-4 product">
-            <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.name.replace(/ /g, '-')}/${item._id}`}>
-              <img src={img[0]} width={200} height={400} alt={item.imgText} className="w-100" />
+            <Link className="text-decoration-none text-dark" onClick={() => SetPrdIdToLocal(item?._id)} to={`/veterinary-products/${item?.imgText?.replace(/ /g, '-')}`}>
+              <img src={img[0]} alt={item?.imgText} className="product-image w-100 object-fit-cover" />
             </Link>
           </div>
           <div className="col-sm-8 px-3 lg:px-5 text-center text-lg-start">
 
-            <Link className="text-decoration-none text-dark" to={`/veterinary-products/${item.name.replace(/ /g, '-')}/${item._id}`}>
+            <Link className="text-decoration-none text-dark" onClick={() => SetPrdIdToLocal(item?._id)} to={`/veterinary-products/${item?.imgText?.replace(/ /g, '-')}`}>
               <div className="fs-3">{name}</div>
             </Link>
             <div className="fs-4 mt-2 text-danger">₹ {priceText} /-</div>
@@ -157,17 +162,7 @@ const ProductItem = ({ item, handleClick }) => {
               </div>
             </div>
             <div className="mt-2 d-flex justify-content-center justify-content-lg-start">
-
-              <ReactStars
-                count={5}
-                onChange={ratingChanged}
-                size={24}
-                isHalf={true}
-                emptyIcon={<i className="far fa-star"></i>}
-                halfIcon={<i className="fa fa-star-half-alt"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
-                activeColor="#ffd700"
-              />
+              <RatingStar productId={item?._id} ratingValue={item} />
             </div>
 
             <a className="" target="_blank" href="https://www.youtube.com/@RumenoFarmotech-bg5y">

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 // 
-import ReactStars from "react-rating-stars-component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightArrowLeft, faCircleMinus, faCirclePlus, faTags, faUser, } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from '../Modal/logusecont';
@@ -42,6 +41,7 @@ import { Helmet } from 'react-helmet';
 import ImageGallery from '../../Pages/Products/imgGallery';
 import Cookies from "js-cookie";
 import ProductData from "../../Common/AdminApi/productApi";
+import RatingStar from '../RatingStar/ratingStar';
 
 const ProductDetail = () => {
   const { UidData, cart, setCart, setiteamdata, setSizevalue, loggedInUser, PrdData, setPrdData } = useContext(UserContext);
@@ -51,7 +51,8 @@ const ProductDetail = () => {
   const apiUrl = process.env.REACT_APP_API;
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
 
-  const { name, id } = useParams();
+  const { name } = useParams();
+
 
 
   // console.log(amountdata, 122)
@@ -2820,29 +2821,29 @@ const ProductDetail = () => {
 
 
   useEffect(() => {
-    fetchReviewData();
+    // fetchReviewData();
   }, []);
-  const fetchReviewData = async () => {
-    try {
-      const response = await axios.get(`${apiUrl}/review/${id}`,
-        {
-          headers: {
-            'Authorization': `${getMidCookies.token}`
-          }
-        });
-      console.warn('response: ', response.data);
-      setProductReview(response?.data)
-    } catch (error) {
-      console.warn('Error fetching items:', error);
-    }
-  }
+  // const fetchReviewData = async () => {
+  //   try {
+  //     const response = await axios.get(`${apiUrl}/review/${id}`,
+  //       {
+  //         headers: {
+  //           'Authorization': `${getMidCookies.token}`
+  //         }
+  //       });
+  //     console.warn('response: ', response.data);
+  //     setProductReview(response?.data)
+  //   } catch (error) {
+  //     console.warn('Error fetching items:', error);
+  //   }
+  // }
   const onSubmit = async (data) => {
     let payload = {
       name: data.name,
       email: data.email,
       review: data.review,
       uid: getMidCookies.uID,
-      productid: id,
+      // productid: id,
     }
     console.log('payload: ', payload);
     try {
@@ -2863,7 +2864,7 @@ const ProductDetail = () => {
         progress: undefined,
         theme: "light",
       })
-      fetchReviewData();
+      // fetchReviewData();
       reset()
     } catch (error) {
       toast.error("something wrong please try again", {
@@ -2881,7 +2882,7 @@ const ProductDetail = () => {
   }
 
   var Value = '';
-  
+
   useEffect(() => {
     ProductData(setPrdData)
 
@@ -2899,7 +2900,7 @@ const ProductDetail = () => {
 
 
   const AddToCarts = async (item) => {
-    let payload = { ...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name , stock:item?.stock }, ...{ amount: 1, uid: getMidCookies?.uID } }
+    let payload = { ...{ id: item?._id, price: item?.priceText, img: item?.img[0], name: item?.name, stock: item?.stock }, ...{ amount: 1, uid: getMidCookies?.uID } }
     if (loggedInUser) {
       if (!Array.isArray(cart)) {
         setCart([]);
@@ -2911,8 +2912,8 @@ const ProductDetail = () => {
       if (!itemExists) {
 
         // Add logic to handle adding item to cart
-        setCart([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData , stock:item?.stock }]);
-        const itemData = { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData , stock:item?.stock };
+        setCart([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData, stock: item?.stock }]);
+        const itemData = { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData, stock: item?.stock };
         setiteamdata(itemData);
 
         try {
@@ -2924,7 +2925,7 @@ const ProductDetail = () => {
             });
 
           if (response?.status == 201) {
-            localStorage.setItem("cart", JSON.stringify([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData , stock:item?.stock }]));
+            localStorage.setItem("cart", JSON.stringify([...cart, { id: item._id, amount: 1, price: item.priceText, img: item.img, name: item.name, uID: UidData, stock: item?.stock }]));
           }
           toast.success("Item is added to your cart", {
             position: "top-center",
@@ -2971,7 +2972,7 @@ const ProductDetail = () => {
 
   // filter process
   const items = PrdData
-  const ScriptById = items.filter((item) => item._id == id);
+  // const ScriptById = items.filter((item) => item._id == id);
 
 
 
@@ -2982,37 +2983,49 @@ const ProductDetail = () => {
   const [filteredItems, setFilteredItems] = useState([]);
   // const title = "Poultryfine";
 
-  // const sameitemfilter = items.filter((item) => item._id);
-  const sameitemfilter = items.filter((item) => item._id == id)
-  const filterbynames = sameitemfilter[0]?.name
+  // testing
+  const PrdId = localStorage.getItem('PrdId');
+  const checkSamePrd = items.filter((item) =>
+    item._id == PrdId ||
+    item.imgText == name.replace(/-/g, ' ')
+  )
+  /**
+   * check quantity with id
+   * */
+  const filterbynames = checkSamePrd[0]?.name
   const filterProduct = items.filter((item) => item.name.includes(filterbynames))
-  if (filterProduct.some(item => item._id == id)) {
-  } else {
-  }
-  if (sameitemfilter.length > 0) {
-    // console.warn(sameitemfilter[0],id);
-  } else {
-    // console.warn(sameitemfilter[0],"not",id);
-  }
-  
+  console.log('filterProduct: ', filterProduct);
+
+  useEffect(() => {
+    if (filterProduct.length > 0)
+      localStorage.setItem("PrdId", filterProduct[0]._id);
+
+  }, [filterProduct]);
+
+
+  const CheckID = (e) => localStorage.setItem('PrdId', e);
+
+
+
+
 
 
   return (
     <>
       <Helmet>
-        {sameitemfilter?.map((item) => (
-          <title>{item.name}</title>
-        ))}
-        {sameitemfilter?.map((item) => {
+        {/* {sameitemfilter?.map((item) => ( */}
+        <title>{checkSamePrd.name}</title>
+        {/* ))} */}
+        {/* {sameitemfilter?.map((item) => {
           const metaDesc = typeof item.metaDesc === 'symbol' ? item.metaDesc.toString() : item.metaDesc;
           return (
             <meta charSet="utf-8" name="description" content={metaDesc} />
           );
-        })}
+        })} */}
 
-        <link rel="canonical" href={`https://www.rumeno.in/veterinary-products/${name}/${id}`} />
+        {/* <link rel="canonical" href={`https://www.rumeno.in/veterinary-products/${name}/${id}`} /> */}
         <script className='' type="application/ld+json">
-          {ScriptById[0]?.script[0]}
+          {/* {ScriptById[0]?.script[0]} */}
         </script>
       </Helmet>
       <div className="desk-nav">
@@ -3037,45 +3050,45 @@ const ProductDetail = () => {
               <div className="services-line-largeleft"></div>
               <div className="services-line-smallleft"></div>
             </div>
-            {sameitemfilter?.map((item) => (
-              <span className="label-title text-trun ">{item.name}</span>
-            ))}
+            {/* {sameitemfilter?.map((item) => ( */}
+            <span className="label-title text-trun ">{checkSamePrd[0]?.name}</span>
+            {/* ))} */}
             <div className="mx-2 prd-head-dtl">
               <div className="services-line-largeright"></div>
               <div className="services-line-smallright"></div>
             </div>
           </div>
         </div>
-        {sameitemfilter?.map((item, index) => (
-          <>
-            <div className='row justify-content-center bg-white  lg:mx-5 mx-0 py-2'>
-              <div className="col-lg-4">
-                {/* <img className='w-100' src={item.img} height={500} alt={item.imgText} /> */}
-                <ImageGallery img={item.img} alt={item.imgText} video={item.video} />
+        {/* {checkSamePrd?.map((item, index) => ( */}
+        <>
+          <div className='row justify-content-center bg-white  lg:mx-5 mx-0 py-2'>
+            <div className="col-lg-4">
+              {/* <img className='w-100' src={checkSamePrd[0]?.img} height={500} alt={checkSamePrd[0]?.imgText} /> */}
+              <ImageGallery img={checkSamePrd[0]?.img} alt={checkSamePrd[0]?.imgText} video={checkSamePrd[0]?.video} />
 
 
-              </div>
-              <div className="col-lg-5 offset-lg-1">
-                <h1 className='mt-3'>{item.name}</h1>
-                <h1 className='my-3 text-danger fw-bold'>₹ {item.priceText} /-</h1>
-                <Accordion className='' defaultActiveKey="0" flush>
-                  <Accordion.Item className="my-3" eventKey="0">
-                    <Accordion.Header className='border bg-none'>
-                      <FontAwesomeIcon className='text-danger' icon={faTags} /><strong className='mx-2 text-primary'>Save Extra</strong>get 5% Discount and more...
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <p className='text-justify'>
-                        {item.Offer}
-                      </p>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
+            </div>
+            <div className="col-lg-5 offset-lg-1">
+              <h1 className='mt-3'>{checkSamePrd[0]?.name}</h1>
+              <h1 className='my-3 text-danger fw-bold'>₹ {checkSamePrd[0]?.priceText} /-</h1>
+              <Accordion className='' defaultActiveKey="0" flush>
+                <Accordion.Item className="my-3" eventKey="0">
+                  <Accordion.Header className='border bg-none'>
+                    <FontAwesomeIcon className='text-danger' icon={faTags} /><strong className='mx-2 text-primary'>Save Extra</strong>get 5% Discount and more...
+                  </Accordion.Header>
+                  <Accordion.Body>
+                    <p className='text-justify'>
+                      {checkSamePrd[0]?.Offer}
+                    </p>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
 
-                <h5><FontAwesomeIcon className='text-success mx-1' icon={faCircleDot} /> This is a <strong>{item.Veg}</strong> product</h5>
-                <hr />
-                <div className="my-3 d justify-content-center">
-                  <h6 className='my-0'>Please Rate Us Our Product</h6>
-                  <ReactStars
+              <h5><FontAwesomeIcon className='text-success mx-1' icon={faCircleDot} /> This is a <strong>{checkSamePrd[0]?.Veg}</strong> product</h5>
+              <hr />
+              <div className="my-3 d justify-content-center">
+                <h6 className='my-0'>Please Rate Us Our Product</h6>
+                {/* <ReactStars
                     count={5}
                     // onChange={ratingChanged}
                     size={24}
@@ -3084,164 +3097,165 @@ const ProductDetail = () => {
                     halfIcon={<i className="fa fa-star-half-alt"></i>}
                     fullIcon={<i className="fa fa-star"></i>}
                     activeColor="#ffd700"
-                  />
-                </div>
-                <div className='my-3'>
-                  <span className="fw-bold">{item.suitable}</span>
-                  <span>{item.tipe}</span>
+                  /> */}
+                {/* <RatingStar productId={id} ratingValue={checkSamePrd[0]} /> */}
+              </div>
+              <div className='my-3'>
+                <span className="fw-bold">{checkSamePrd[0]?.suitable}</span>
+                <span>{checkSamePrd[0]?.tipe}</span>
 
-                </div>
-                <div className='my-3'>
-                  <span className="fw-bold">{item.efficacy}</span>
-                  <span>{item.efficacy1}</span>
-                  <span>{item.efficacy2}</span>
-                </div>
-                <div className='my-3'>
-                  <a href='https://www.youtube.com/@RumenoFarmotech-bg5y' target='_blank' className='text-danger text-decoration-none fs-5 d-flex align-items-center'>For Videos<FontAwesomeIcon
-                    className="mx-2 my-0 h3 text-danger"
-                    type="button"
-                    icon={faYoutube}
-                  /></a>
-                  <hr />
-                  <h4 className='fw-bold'>Delivery</h4>
-                  <p className='my-1'>{item.Delivery}</p>
-                  <p className='text-primary'><FontAwesomeIcon className='mx-1' icon={faArrowRightArrowLeft} /> {item.Refundable}
-                  </p>
-                </div>
+              </div>
+              <div className='my-3'>
+                <span className="fw-bold">{checkSamePrd[0]?.efficacy}</span>
+                <span>{checkSamePrd[0]?.efficacy1}</span>
+                <span>{checkSamePrd[0]?.efficacy2}</span>
+              </div>
+              <div className='my-3'>
+                <a href='https://www.youtube.com/@RumenoFarmotech-bg5y' target='_blank' className='text-danger text-decoration-none fs-5 d-flex align-items-center'>For Videos<FontAwesomeIcon
+                  className="mx-2 my-0 h3 text-danger"
+                  type="button"
+                  icon={faYoutube}
+                /></a>
                 <hr />
-                <h5><strong>Weight :</strong> <span className='text-danger mx-1 fw-bold'>{item.Weight}</span></h5>
-                <hr />
-                <div className='row  my-3 ' >
-                  {filterProduct.map((item) => (
-                    <Link
-                      key={item._id}
-                      className={`col-lg-2 m-2 py-1 border border-danger border-2 d-grid rounded px-3 w-auto text-center text-decoration-none ${item._id == id ? "selected-bg-color" : "bg-none"}`}
-                      to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`}
-                    >
-                      <div className=''>
-                        <h6 className='fw-bold my-1 text-dark'>₹ {item.priceText}/-</h6>
-                        <h6 className=' text-danger my-1'>{item.Weight}</h6>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-                <div className='d-flex justify-content-between align-items-center'>
-                  {(!item?.stock) > 0 ?
-                    <button
-                      className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
-                    >
-                      Out of Stock
-                    </button>
-                    :
-                    <button
-                      className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
-                      onClick={() => AddToCarts(item)}
-                    >
-                      Add to Cart
-                    </button>
-                  }
-                </div>
+                <h4 className='fw-bold'>Delivery</h4>
+                <p className='my-1'>{checkSamePrd[0]?.Delivery}</p>
+                <p className='text-primary'><FontAwesomeIcon className='mx-1' icon={faArrowRightArrowLeft} /> {checkSamePrd[0]?.Refundable}
+                </p>
               </div>
               <hr />
-              <p className='px-4'>{item.Instruction}</p>
-
-            </div>
-            <div className="row my-4 lg:mx-5 mx-0 py-4 bg-white">
-              <h4 className='fw-bold mb-2'>* Description</h4>
+              <h5><strong>Weight :</strong> <span className='text-danger mx-1 fw-bold'>{checkSamePrd[0]?.Weight}</span></h5>
               <hr />
-              <p className='px-4'>{item.description}</p>
-
-            </div>
-            <form
-              className="mt-5 justify-content-center bg-white"
-              onSubmit={handleSubmit(onSubmit)}
-            >
-              <div className="row py-5 px-4">
-                <h4 className="mb-3">Reviews</h4>
-                <hr />
-                <div className="col-lg-6">
-                  <div className="col-lg-8 my-3">
-                    <div>
-                      <label className="form-label px-2" htmlFor="name">
-                        Name
-                      </label>
+              <div className='row  my-3 ' >
+                {filterProduct.map((item) =>
+                  <Link
+                    key={item?._id}
+                    className={`col-lg-2 m-2 py-1 border border-danger border-2 d-grid rounded px-3 w-auto text-center text-decoration-none ${item?._id == PrdId ? "selected-bg-color" : "bg-none"}`}
+                    to={`/veterinary-products/${item?.imgText.replace(/ /g, '-')}`}
+                    onClick={() => CheckID(item?._id)}
+                  >
+                    <div className=''>
+                      <h6 className='fw-bold my-1 text-dark'>₹ {item?.priceText}/-</h6>
+                      <h6 className=' text-danger my-1'>{item?.Weight}</h6>
                     </div>
-                    <input
-                      placeholder="Name"
-                      type="text"
-                      id="name"
-                      className="form-control"
-                      {...register("name", { required: "Name is required" })}
-                    />
-                    {errors.name && (
-                      <p className="text-danger px-2">{errors.name.message}</p>
-                    )}
-                  </div>
-                  <div className="col-lg-8 my-3">
-                    <div>
-                      <label className="form-label px-2" htmlFor="email">
-                        Email
-                      </label>
-                    </div>
-                    <input
-                      placeholder="Email"
-                      type="email"
-                      id="email"
-                      className="form-control"
-                      {...register("email", {
-                        required: "Email is required",
-                        pattern: {
-                          value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-                          message: "Invalid email address",
-                        },
-                      })}
-                    />
-                    {errors.email && (
-                      <p className="text-danger px-2">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="col-lg-10 my-3">
-                    <label htmlFor="review" className="form-label">
-                      Your Review
-                    </label>
-                    <textarea
-                      className="form-control"
-                      id="review"
-                      {...register("review", { required: "Review is required" })}
-                      rows="4"
-                    ></textarea>
-                    {errors.review && (
-                      <p className="text-danger px-2">{errors.review.message}</p>
-                    )}
-                  </div>
-                  <button type="submit" className="btn btn-primary w-auto mt-3">
-                    Submit
+                  </Link>
+                )}
+              </div>
+              <div className='d-flex justify-content-between align-items-center'>
+                {(!checkSamePrd[0]?.stock) > 0 ?
+                  <button
+                    className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
+                  >
+                    Out of Stock
                   </button>
+                  :
+                  <button
+                    className="btn text-white border-0 w-75 gradient-custom-2 my-4 p-2"
+                    onClick={() => AddToCarts(checkSamePrd[0])}
+                  >
+                    Add to Cart
+                  </button>
+                }
+              </div>
+            </div>
+            <hr />
+            <p className='px-4'>{checkSamePrd[0]?.Instruction}</p>
+
+          </div>
+          <div className="row my-4 lg:mx-5 mx-0 py-4 bg-white">
+            <h4 className='fw-bold mb-2'>* Description</h4>
+            <hr />
+            <p className='px-4 prd-dtl-descp-fmt'>{checkSamePrd[0]?.description}</p>
+
+          </div>
+          <form
+            className="mt-5 justify-content-center bg-white"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="row py-5 px-4">
+              <h4 className="mb-3">Reviews</h4>
+              <hr />
+              <div className="col-lg-6">
+                <div className="col-lg-8 my-3">
+                  <div>
+                    <label className="form-label px-2" htmlFor="name">
+                      Name
+                    </label>
+                  </div>
+                  <input
+                    placeholder="Name"
+                    type="text"
+                    id="name"
+                    className="form-control"
+                    {...register("name", { required: "Name is required" })}
+                  />
+                  {errors.name && (
+                    <p className="text-danger px-2">{errors.name.message}</p>
+                  )}
+                </div>
+                <div className="col-lg-8 my-3">
+                  <div>
+                    <label className="form-label px-2" htmlFor="email">
+                      Email
+                    </label>
+                  </div>
+                  <input
+                    placeholder="Email"
+                    type="email"
+                    id="email"
+                    className="form-control"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                        message: "Invalid email address",
+                      },
+                    })}
+                  />
+                  {errors.email && (
+                    <p className="text-danger px-2">{errors.email.message}</p>
+                  )}
                 </div>
               </div>
-            </form>
-            <div className=" bg-white p-3 my-5">
-              {productReview?.map((item, index) => (
+              <div className="col-lg-6">
+                <div className="col-lg-10 my-3">
+                  <label htmlFor="review" className="form-label">
+                    Your Review
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="review"
+                    {...register("review", { required: "Review is required" })}
+                    rows="4"
+                  ></textarea>
+                  {errors.review && (
+                    <p className="text-danger px-2">{errors.review.message}</p>
+                  )}
+                </div>
+                <button type="submit" className="btn btn-primary w-auto mt-3">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+          <div className=" bg-white p-3 my-5">
+            {/* {productReview?.map((item, index) => (
                 <>
                   <div className="col-lg-6 d-flex align-items-center my-3">
                     <FontAwesomeIcon className='border rounded-circle text-danger p-2' icon={faUser} />
-                    <h4 className='my-0 mx-2'>{item.name}</h4>
+                    <h4 className='my-0 mx-2'>{checkSamePrd[0]?.name}</h4>
                   </div>
 
                   <div className="col-lg-12 ">
                     <p className='mx-2'>
-                      {item.review}
+                      {checkSamePrd[0]?.review}
                     </p>
-                    {/* <h6 className='mx-2 fw-bold'>22 Aug 2022</h6> */}
                   </div>
                   <hr />
                 </>
-              ))}
-            </div>
-          </>
-        ))}
+              ))} */}
+          </div>
+        </>
+        {/* ))} */}
 
       </section>
       <Footer />

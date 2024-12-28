@@ -1698,7 +1698,13 @@ const GoatCategoryPage = ({ }) => {
             <h1 className="my-4 text-center">
               Goat Feed Supplements Improving Performance and Health
             </h1>
-            <p>
+            <div className="row my-5">
+              <div className="col-lg-4">
+                <iframe className="w-100 h-100" src="https://www.youtube.com/embed/fLJLo86ZGnI?si=utNAXTp5GRaujItU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div className="col-lg-8">
+                <h3 className="my-3 pb-3">Overview</h3>
+                <p className="pt-2">
               If you own goats, you are aware of how important good nourishment
               is to your pets' health and wellbeing. Giving your goats the
               correct vitamins can have a big impact on how well they perform
@@ -1706,6 +1712,16 @@ const GoatCategoryPage = ({ }) => {
               post will introduce you to <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link>, a reputable brand in
               the business, and discuss the advantages of goat feed supplements.
             </p>
+              </div>
+            </div>
+            {/* <p>
+              If you own goats, you are aware of how important good nourishment
+              is to your pets' health and wellbeing. Giving your goats the
+              correct vitamins can have a big impact on how well they perform
+              overall, whether you raise them for meat, milk, or as pets. This
+              post will introduce you to <Link to="/home" className="d-inline text-dark text-decoration-none">Rumeno Farmotech</Link>, a reputable brand in
+              the business, and discuss the advantages of goat feed supplements.
+            </p> */}
             <h2 className="my-4">The Significance of Goat Feed Supplements</h2>
             <p>
               Goats have special dietary requirements, and depending on age,
@@ -1749,7 +1765,7 @@ const GoatCategoryPage = ({ }) => {
             </p>
             <p className="my-4">
               <strong>Variety of Options:</strong>Rumeno Farmotech offers a
-              selection of weight gain supplements, mineral blends, and general
+              selection of goat weight gain supplements, mineral blends, and general
               health enhancers. Goats of various ages and purposes are catered
               to by their goods. Rumeno Farmotech is aware of the significance
               of trace minerals in the diets of goats. To ensure optimum health,
