@@ -8,7 +8,7 @@ import { prettyFormat } from "@testing-library/react";
 import Cookies from "js-cookie";
 
 const KidAddForm = () => {
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue ,watch } = useForm();
   const { FarmDataUMKid } = useContext(UserContext);
   const [addkiddata, setaddkiddata] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -22,10 +22,10 @@ const KidAddForm = () => {
   );
 
   const handleOpenDialog = () => {
-    console.log('getparentidCookies: ', getparentidCookies);
     fetchItems();
     setModalIsOpen(true);
-    setValue("age", "");
+    setValue("age_year", "");
+    setValue("age_month", "");
     setValue("uniquename", "");
     setValue("date", "");
     setValue("gender", "");
@@ -33,10 +33,13 @@ const KidAddForm = () => {
     setValue("kid_code", "");
     setValue("kid_score", "");
     setValue("birth_type", "");
-    setValue("weight", "");
+    setValue("weight_kg", "");
+    setValue("weight_gm", "");
     setValue("wean_date", "");
-    setValue("wean_weight", "");
-    setValue("mother_wean_weight", "");
+    setValue("wean_weight_kg", "");
+    setValue("wean_weight_gm", "");
+    setValue("mother_wean_weight_kg", "");
+    setValue("mother_wean_weight_gm", "");
     setValue("mother_wean_date", "");
     setValue("castration", "");
     setValue("kid_comment", "");
@@ -44,7 +47,8 @@ const KidAddForm = () => {
 
   const handleCloseDialog = () => {
     setModalIsOpen(false);
-    setValue("age", "");
+    setValue("age_year", "");
+    setValue("age_month", "");
     setValue("uniquename", "");
     setValue("date", "");
     setValue("gender", "");
@@ -52,10 +56,13 @@ const KidAddForm = () => {
     setValue("kid_code", "");
     setValue("kid_score", "");
     setValue("birth_type", "");
-    setValue("weight", "");
+    setValue("weight_kg", "");
+    setValue("weight_gm", "");
     setValue("wean_date", "");
-    setValue("wean_weight", "");
-    setValue("mother_wean_weight", "");
+    setValue("wean_weight_kg", "");
+    setValue("wean_weight_gm", "");
+    setValue("mother_wean_weight_kg", "");
+    setValue("mother_wean_weight_gm", "");
     setValue("mother_wean_date", "");
     setValue("castration", "");
     setValue("kid_comment", "");
@@ -75,13 +82,13 @@ const KidAddForm = () => {
         },
       });
       setaddkiddata(response.data);
+      console.log("response.data: ", response.data);
     } catch (error) {
       console.error("Error fetching items:", error);
     }
   };
 
   const onsubmit = async (data) => {
-    console.log("data: ", data, FarmDataUMKid);
     fetchItems();
     if (selectedItem !== null) {
       // Edit existing data
@@ -95,7 +102,6 @@ const KidAddForm = () => {
             },
           }
         );
-        console.log(response.data);
         fetchItems();
       } catch (error) {
         console.log(error);
@@ -107,19 +113,19 @@ const KidAddForm = () => {
         ...data,
         ...{
           parentid: getparentidCookies.mid,
-          parentName: getparentidCookies.uniquename,
+          parentName: getparentidCookies?.parentName,
           uid: getparentidCookies.uID,
           animal: getSelectdAnimal,
+          breed:data?.selectField ? data?.selectField : data?.inputField
         },
       };
-      console.log("payload: ", payload);
+      // return console.log('payload: ', payload);
       try {
         const response = await axios.post(`${apiUrl}`, payload, {
           headers: {
             Authorization: `${getparentidCookies.token}`,
           },
         });
-        console.log(response.data);
         fetchItems();
       } catch (error) {
         console.log(error);
@@ -129,7 +135,8 @@ const KidAddForm = () => {
   };
 
   const handleEdit = (index) => {
-    setValue("age", addkiddata[index].age);
+    setValue("age_year", addkiddata[index].age_year);
+    setValue("age_month", addkiddata[index].age_month);
     setValue("uniquename", addkiddata[index].uniquename);
     setValue("date", addkiddata[index].date);
     setValue("gender", addkiddata[index].gender);
@@ -137,11 +144,15 @@ const KidAddForm = () => {
     setValue("kid_code", addkiddata[index].kid_code);
     setValue("kid_score", addkiddata[index].kid_score);
     setValue("birth_type", addkiddata[index].birth_type);
-    setValue("weight", addkiddata[index].weight);
+    setValue("weight_kg", addkiddata[index].weight_kg);
+    setValue("weight_gm", addkiddata[index].weight_gm);
     setValue("wean_date", addkiddata[index].wean_date);
-    setValue("wean_weight", addkiddata[index].wean_weight);
-    setValue("mother_wean_weight", addkiddata[index].mother_wean_weight);
+    setValue("wean_weight_kg", addkiddata[index].wean_weight_kg);
+    setValue("wean_weight_gm", addkiddata[index].wean_weight_gm);
+    setValue("mother_wean_weight_kg", addkiddata[index].mother_wean_weight_kg);
+    setValue("mother_wean_weight_gm", addkiddata[index].mother_wean_weight_gm);
     setValue("mother_wean_date", addkiddata[index].mother_wean_date);
+
     setValue("castration", addkiddata[index].castration);
     setValue("kid_comment", addkiddata[index].kid_comment);
     setSelectedItem(index);
@@ -153,7 +164,6 @@ const KidAddForm = () => {
     const updatedData = [...addkiddata];
     updatedData.splice(index, 1);
     setaddkiddata(updatedData);
-    console.log(deletedItem);
     try {
       const response = await axios.delete(
         `${apiUrl}/${addkiddata[index]._id}`,
@@ -163,11 +173,26 @@ const KidAddForm = () => {
           },
         }
       );
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+
+  const [isSelectDisabled, setIsSelectDisabled] = useState(false);
+  const [isInputDisabled, setIsInputDisabled] = useState(false);
+
+
+
+  // Watch for changes in select and input field
+  const selectedOption = watch("selectField");
+  const inputValue = watch("inputField");
+
+  // Update the disabled state
+  useEffect(() => {
+    setIsInputDisabled(!!selectedOption);
+    setIsSelectDisabled(!!inputValue);
+  }, [selectedOption, inputValue]);
 
   return (
     <>
@@ -184,12 +209,18 @@ const KidAddForm = () => {
                     Add Kid
                   </button>
                   <div className="">
-                    {addkiddata.map((item, index) => (
+                    {addkiddata?.map((item, index) => (
                       <>
                         <div
                           className="row bg-light p-3 shadow row justify-content-evenly my-4"
                           key={item.id}
                         >
+                      <span className="text-center d-flex gap-2 pb-2 bg-light ">
+                            <div className=""><span className="animal-bg2 p-1">Parent Name :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentName}</span></div>
+                            <div className=""><span className="animal-bg2 p-1">Parent ID :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentid}</span></div>
+                          </span>
+                          <hr />
+                          
                           <span className="text-center px-0 py-2 fs-2 col-lg-3 ">
                             <strong className="d-block text-uppercase">
                               {item.uniquename}
@@ -200,7 +231,8 @@ const KidAddForm = () => {
                               Age :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.age}
+                              {item.age_year}Year{" "}
+                              {item.age_month ? `${item.age_month}Month` : ""}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -248,7 +280,8 @@ const KidAddForm = () => {
                               Kid Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.weight}
+                              {item.weight_kg}Kg{" "}
+                              {item.weight_gm ? `${item.weight_gm}Gm` : ""}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -266,7 +299,10 @@ const KidAddForm = () => {
                               Wean Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.wean_weight}
+                              {item.wean_weight_kg}Kg{" "}
+                              {item.wean_weight_gm
+                                ? `${item.wean_weight_gm}Gm`
+                                : ""}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -274,7 +310,10 @@ const KidAddForm = () => {
                               Mother Wean Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.mother_wean_weight}
+                              {item.mother_wean_weight_kg}Kg{" "}
+                              {item.mother_wean_weight_gm
+                                ? `${item.mother_wean_weight_gm}Gm`
+                                : ""}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -300,7 +339,10 @@ const KidAddForm = () => {
                               Birth Weight :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.birth_weight}
+                              {item.birth_weight_kg}Kg{" "}
+                              {item.birth_weight_gm
+                                ? `${item.birth_weight_gm}Gm`
+                                : ""}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -317,7 +359,10 @@ const KidAddForm = () => {
                               Mother Age :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {item.mother_age}
+                              {item.mother_age_year}Year{" "}
+                              {item.mother_age_month
+                                ? `${item.mother_age_month}Month`
+                                : ""}
                             </span>
                           </span>
 
@@ -380,46 +425,91 @@ const KidAddForm = () => {
                             <label className="form-label" for="kidage">
                               Age
                             </label>
-                            <input
-                              name="kidage"
-                              placeholder="Kid Age"
-                              type="textt"
-                              id="kidage"
-                              className="form-control"
-                              value={addkiddata.age}
-                              {...register("age")}
-                            />
+                            <div className="d-flex">
+                              <div>
+                                <input
+                                  name="kidage"
+                                  placeholder="Year"
+                                  type="textt"
+                                  id="kidage"
+                                  className="form-control"
+                                  value={addkiddata.age_year}
+                                  {...register("age_year")}
+                                />
+                              </div>
+                              <div>
+                                <input
+                                  name="kidage"
+                                  placeholder="Month"
+                                  type="textt"
+                                  id="kidage"
+                                  className="form-control"
+                                  value={addkiddata.age_month}
+                                  {...register("age_month")}
+                                />
+                              </div>
+                            </div>
                           </div>
                           <div className="col-lg-5 my-2">
                             <label className="form-label" for="kidweight">
                               Kid Weight
                             </label>
-                            <input
-                              name="kidweight"
-                              placeholder="Kid Weight"
-                              type="textt"
-                              id="kidweight"
-                              className="form-control"
-                              value={addkiddata.kidw_eight}
-                              {...register("weight")}
-                            />
+                            <div className="d-flex">
+                              <div>
+                                <input
+                                  name="kidweight"
+                                  placeholder="Kg"
+                                  type="textt"
+                                  id="kidweight"
+                                  className="form-control"
+                                  value={addkiddata.kidw_eight_kg}
+                                  {...register("weight_kg")}
+                                />
+                              </div>
+                              <div>
+                                <input
+                                  name="kidweight"
+                                  placeholder="Gm"
+                                  type="textt"
+                                  id="kidweight"
+                                  className="form-control"
+                                  value={addkiddata.kidw_eight_gm}
+                                  {...register("weight_gm")}
+                                />
+                              </div>
+                            </div>
                           </div>
                           <div className="col-lg-5 my-2">
                             <label className="form-label" for="motherage">
                               Age of Mother
                             </label>
-                            <input
-                              name="motherage"
-                              placeholder="Mother Age"
-                              type="number"
-                              id="motherage"
-                              className="form-control"
-                              value={addkiddata.mother_age}
-                              {...register("mother_age")}
-                            />
+                            <div className="d-flex">
+                              <div>
+                                <input
+                                  name="motherage"
+                                  placeholder="Year"
+                                  type="number"
+                                  id="motherage"
+                                  className="form-control"
+                                  value={addkiddata.mother_age_year}
+                                  {...register("mother_age_year")}
+                                />
+                              </div>
+                              <div>
+                                <input
+                                  name="motherage"
+                                  placeholder="Month"
+                                  type="number"
+                                  id="motherage"
+                                  className="form-control"
+                                  value={addkiddata.mother_age_month}
+                                  {...register("mother_age_month")}
+                                />
+                              </div>
+                            </div>
                           </div>
 
-                          <div className="col-lg-5 my-2">
+                          {/* <div className="col-lg-5 my-2">
                             <label className="form-label" for="selectbreed">
                               Select Breed
                             </label>
@@ -438,8 +528,44 @@ const KidAddForm = () => {
                               <option value="jamunapari">jamunapari</option>
                               <option value="Beetal">Beetal</option>
                               <option value="Unidentified">Unidentified</option>
+                              <option value="">
+                              <input type="text" value="inpt" name="" id="" />
+                              </option>
                             </datalist>
-                          </div>
+                          </div> */}
+
+<div className="col-lg-5 mb-3">
+          <label htmlFor="selectField" className="form-label">
+            Select an Option
+          </label>
+          <select
+            id="selectField"
+            className="form-select"
+            {...register("selectField")}
+            disabled={isSelectDisabled}
+          >
+            <option value="">Select an Breed</option>
+            <option value="Barbari">Barbari</option>
+                              <option value="Jakhrana">Jakhrana</option>
+                              <option value="jamunapari">jamunapari</option>
+                              <option value="Beetal">Beetal</option>
+          </select>
+        </div>
+
+        <div className="col-lg-5 mb-3">
+          <label htmlFor="inputField" className="form-label">
+            Enter If diffrent Breed
+          </label>
+          <input
+            id="inputField"
+            type="text"
+            className="form-control"
+            {...register("inputField")}
+            disabled={isInputDisabled}
+            placeholder="Type something..."
+          />
+        </div>
+
                           <div className="col-lg-5 my-2">
                             <label className="form-label" for="birthdate">
                               Birth Date
@@ -537,7 +663,6 @@ const KidAddForm = () => {
                               </option>
                             </select>
                           </div>
-                          
 
                           <div className="col-lg-5 my-2">
                             <label className="form-label" htmlFor="birthtype">
@@ -558,15 +683,30 @@ const KidAddForm = () => {
                             <label className="form-label" htmlFor="birthweight">
                               Birth Weight
                             </label>
-                            <input
-                              name="birthweight"
-                              placeholder="Birth Weight"
-                              type="number"
-                              id="birthweight"
-                              className="form-control"
-                              value={addkiddata.birth_weight}
-                              {...register("birth_weight")}
-                            />
+                            <div className="d-flex">
+                              <div>
+                                <input
+                                  name="birthweight"
+                                  placeholder="Kg"
+                                  type="number"
+                                  id="birthweight"
+                                  className="form-control"
+                                  value={addkiddata.birth_weight_kg}
+                                  {...register("birth_weight_kg")}
+                                />
+                              </div>
+                              <div>
+                                <input
+                                  name="birthweight"
+                                  placeholder="Gm"
+                                  type="number"
+                                  id="birthweight"
+                                  className="form-control"
+                                  value={addkiddata.birth_weight_gm}
+                                  {...register("birth_weight_gm")}
+                                />
+                              </div>
+                            </div>
                           </div>
                           <div className="col-lg-5 my-2">
                             <div>
@@ -597,14 +737,28 @@ const KidAddForm = () => {
                             >
                               Wean Weight
                             </label>
-                            <input
-                              {...register("wean_weight")}
-                              placeholder="Wean Weight"
-                              type="number"
-                              id="weanweight"
-                              value={addkiddata.wean_weight}
-                              className="form-control"
-                            />
+                            <div className="d-flex">
+                              <div>
+                                <input
+                                  {...register("wean_weight_kg")}
+                                  placeholder="Wean Kg"
+                                  type="number"
+                                  id="weanweight"
+                                  value={addkiddata.wean_weight_kg}
+                                  className="form-control"
+                                />
+                              </div>
+                              <div>
+                                <input
+                                  {...register("wean_weight_gm")}
+                                  placeholder="Wean Gm"
+                                  type="number"
+                                  id="weanweight"
+                                  value={addkiddata.wean_weight_gm}
+                                  className="form-control"
+                                />
+                              </div>
+                            </div>
                           </div>
 
                           <div className="col-lg-5 my-2">
@@ -620,14 +774,28 @@ const KidAddForm = () => {
                                 food)
                               </span>
                             </div>
-                            <input
-                              {...register("mother_wean_weight")}
-                              placeholder="Mother Weight at Wean"
-                              type="number"
-                              id="motherweanweight"
-                              value={addkiddata.mother_wean_weight}
-                              className="form-control"
-                            />
+                            <div className="d-flex">
+                              <div>
+                                <input
+                                  {...register("mother_wean_weight_kg")}
+                                  placeholder="Mother Weight in Kg at Wean"
+                                  type="number"
+                                  id="motherweanweight"
+                                  value={addkiddata.mother_wean_weight_kg}
+                                  className="form-control"
+                                />
+                              </div>
+                              <div>
+                                <input
+                                  {...register("mother_wean_weight_gm")}
+                                  placeholder="Mother Weight in Gm at Wean"
+                                  type="number"
+                                  id="motherweanweight"
+                                  value={addkiddata.mother_wean_weight_gm}
+                                  className="form-control"
+                                />
+                              </div>
+                            </div>
                           </div>
                           <div className="col-lg-5 my-2">
                             <div>

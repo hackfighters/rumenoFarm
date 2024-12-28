@@ -18,7 +18,8 @@ const PostWean = () => {
   const handleOpenDialog = () => {
     setOpenDialog(true);
       setValue('post_wean_date', "");
-      setValue('post_wean_weight', "");
+      setValue('post_wean_weight_kg', "");
+      setValue('post_wean_weight_gm', "");
       setValue('post_body_score', "");
       setValue('post_wean_comment', "");
   };
@@ -26,7 +27,8 @@ const PostWean = () => {
   const handleCloseDialog = () => {
     setOpenDialog(false);
     setValue('post_wean_date', "");
-    setValue('post_wean_weight', "");
+    setValue('post_wean_weight_kg', "");
+    setValue('post_wean_weight_gm', "");
     setValue('post_body_score', "");
     setValue('post_wean_comment', "");
     setSelectedItem(null);
@@ -70,7 +72,7 @@ const PostWean = () => {
     } else {
       // Add new item
       try {
-    const payload = {...data,...{parentid:getMidCookies.mid}}
+    const payload = {...data,...{parentid:getMidCookies.mid,parentName: getMidCookies?.parentName}}
     console.log('payload: ', payload);
         const response = await axios.post(apiUrl, payload,
           {
@@ -88,7 +90,8 @@ const PostWean = () => {
 
   const handleEdit = (index) => {
     setValue('post_wean_date', postWean[index].post_wean_date);
-    setValue('post_wean_weight', postWean[index].post_wean_weight);
+    setValue('post_wean_weight_kg', postWean[index].post_wean_weight_kg);
+    setValue('post_wean_weight_gm', postWean[index].post_wean_weight_gm);
     setValue('post_body_score', postWean[index].post_body_score);
     setValue('post_wean_comment', postWean[index].post_wean_comment);
     setSelectedItem(index);
@@ -131,6 +134,11 @@ const PostWean = () => {
                   </button>
                     {postWean.map((item, index) => (
                       <div className="row bg-light p-3 shadow row justify-content-evenly my-4" key={item.id}>
+                        <span className="text-center d-flex gap-2 pb-2 bg-light ">
+                            <div className=""><span className="animal-bg2 p-1">Parent Name :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentName}</span></div>
+                            <div className=""><span className="animal-bg2 p-1">Parent ID :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentid}</span></div>
+                          </span>
+                          <hr />
                         <span className="text-center px-5 py-4 col-lg-3 ">
                           <strong className="d-block animal-bg2">
                             Post Wean Date :
@@ -144,7 +152,8 @@ const PostWean = () => {
                             Post Wean Weight :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
-                            {item.post_wean_weight}
+                            {item.post_wean_weight_kg}Kg {" "}
+                            {item.post_wean_weight_gm ?`${item.post_wean_weight_gm}Gm`:''}
                           </span>
                         </span>
                         <span className="text-center px-5 py-4 col-lg-3 ">
@@ -190,16 +199,32 @@ const PostWean = () => {
                             <label className="form-label" for="postweanweight">
                               Kid Weight
                             </label>
+                          <div className="d-flex">
+                            <div>
                             <input
                               name="postweanweight"
-                              placeholder="Kid Weight"
+                              placeholder="Kg"
                               type="number"
                               id="postweanweight"
                               className="form-control"
-                              value={postWean.post_wean_weight}
-                              {...register("post_wean_weight")}
+                              value={postWean.post_wean_weight_kg}
+                              {...register("post_wean_weight_kg")}
                              
                             />
+                            </div>
+                            <div>
+                            <input
+                              name="postweanweight"
+                              placeholder="Gm"
+                              type="number"
+                              id="postweanweight"
+                              className="form-control"
+                              value={postWean.post_wean_weight_gm}
+                              {...register("post_wean_weight_gm")}
+                             
+                            />
+                            </div>
+                          </div>
                           </div>
 
                           <div className="col-lg-5 my-2">

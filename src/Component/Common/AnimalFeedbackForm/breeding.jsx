@@ -105,6 +105,7 @@ const BreedHeat = () => {
       try {
         const payload = {
           parentid: getMidCookies.mid,
+          parentName: getMidCookies?.parentName,
           heat: data.heat,
           heat_date: data.heat_date,
           heat_result: data.heat_result,
@@ -181,6 +182,11 @@ const BreedHeat = () => {
                         className="row bg-light p-3 shadow row justify-content-evenly my-4"
                         key={item.id}
                       >
+                        <span className="text-center d-flex gap-2 pb-2 bg-light ">
+                            <div className=""><span className="animal-bg2 p-1">Parent Name :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentName}</span></div>
+                            <div className=""><span className="animal-bg2 p-1">Parent ID :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentid}</span></div>
+                          </span>
+                          <hr />
                         <span className="text-center px-5 py-4 col-lg-3 ">
                           <strong className="d-block animal-bg2">
                             Heat :
