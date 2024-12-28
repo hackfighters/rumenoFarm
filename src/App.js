@@ -96,7 +96,7 @@ const App = () => {
 
   return (
     <>
-      <GoogleOAuthProvider clientId="195022670454-9mbfabatk139n9o0hcqcuej3ifv43p3n.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId="153130455119-h5v17qbrked3qqvtlli2j7u8j7gs445e.apps.googleusercontent.com">
         <ToastContainer />
 
         <UserProvider>
@@ -107,9 +107,9 @@ const App = () => {
             <Route path="/goat-farming-consultant" Component={ServicesSecond} />
             <Route path="/dairy-consultant" Component={ServicesThird} />
             <Route path="/veterinary-products" Component={ProductPage} />
-            <Route path="/veterinary-products/:name" Component={ProductPage} />
+            {/* <Route path="/veterinary-products/:name" Component={ProductPage} /> */}
             <Route
-              path="/veterinary-products/:name/:id"
+              path="/veterinary-products/:name"
               Component={ProductDetail}
             />
             <Route path="/contact-us" Component={ContactUs} />

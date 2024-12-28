@@ -2291,6 +2291,9 @@ button.contact_form_submit {
 .blog-card {
   display: flex !important;
 }
+.products-layout{
+  padding: 1rem !important;
+}
 @keyframes shiny-btn1 {
   0% {
     -webkit-transform: scale(0) rotate(45deg);
@@ -2324,7 +2327,9 @@ button.contact_form_submit {
     height: 25rem;
   }
   .product img {
-    height: 350px !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   #menu-container.fixed {
     position: fixed;
@@ -2358,6 +2363,9 @@ button.contact_form_submit {
   .whatsapp-sects {
     right: 1.5%;
 
+  }
+  .products-layout{
+    padding: 0 !important;
   }
 }
 @media only screen and (min-width: 450px) and (max-width: 768px) {
@@ -2414,6 +2422,11 @@ button.contact_form_submit {
 .shopping-empt-icon {
   display: flex;
   justify-content: center;
+}
+
+
+.prd-dtl-descp-fmt{
+  white-space: pre-wrap;
 }
 
 /*  ---------------transcation detail page------------- */
@@ -2895,3 +2908,4 @@ img.card-img:hover {
   justify-content: center;
 }
 /* ---------end google sign css ------------- */
+

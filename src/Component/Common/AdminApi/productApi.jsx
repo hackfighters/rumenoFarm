@@ -6,6 +6,7 @@ const ProductData = async (setPrdData) => {
     try {
         const response = await axios.get(`${apiUrl}/get_all_product`);
         setPrdData(response?.data?.products)
+        console.log('response?.data: ', response?.data);
         return response?.data?.products
     } catch (error) {
         console.error('Error fetching items:', error);

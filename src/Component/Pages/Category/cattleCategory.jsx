@@ -1680,7 +1680,7 @@ const CattleCategoryPage = () => {
                     Add to Cart
                   </button>
                   }
-                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item.imgText.replace(/ /g, '-')}/${item._id}`} >
+                  <Link className="text-decoration-none fs-6 text-success d-flex align-items-center  px-1 rounded" to={`/veterinary-products/${item?.imgText?.replace(/ /g, '-')}/${item?._id}`} >
                     <span
                       className=""
                     >

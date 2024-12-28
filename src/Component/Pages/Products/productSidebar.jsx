@@ -1629,7 +1629,7 @@ const ProductSidebar = ({ handleClick }) => {
   }, []);
 
   return (
-    <div className="container-fluid mt-4">
+    <div className="container-fluid mt-4 ps-0">
       <div className="row justify-content-end">
         <div className="col-lg-4 my-3 text-end">
           <Link className="" to={`/veterinary-products/${""}`}>
@@ -1775,7 +1775,7 @@ const ProductSidebar = ({ handleClick }) => {
         </div>
       </div>
       <div className="row flex-nowrap justify-content-center ms-0 mx-md-4 mx-lg-0">
-        <div className="col-md-12 p-3">
+        <div className="col-md-12 products-layout">
           {uniqueItems.map((item, index) => (
             <ProductItem key={index} item={item} handleClick={handleClick} />
           ))}
@@ -1860,13 +1860,6 @@ const ProductSidebar = ({ handleClick }) => {
         <p className="px-4">We're Rumeno, and we're passionate about making life better for animals. As a leading veterinary product manufacturer, we're proud to be recognized as one of the top 10 animal wellness startups by Industry Outlook. That's a big deal, but it's really just the beginning.
         </p>
         <p className="px-4">Our aim is to make all animals healthier and happier and increase your profits through our excellent veterinary products, which are made from high-quality vitamins and minerals. Take Rumeno's veterinary products and grow your livestock. </p>
-
-        <hr />
-        <h2 className="my-3 fw-bold">Why People Choose Veterinary Services by Rumeno ?
-        </h2>
-        <p>
-        Highly trusted by the pet owners and farmers, Rumeno's veterinary services deliver excellent animal care.Our staff consists of professional veterinarians who can cater to all the needs of your animals, with complete services such as routine check-ups, vaccinations, advanced diagnostics, and even plans for the treatment of each, as each requires.We shall at all times offer your animals the best health and life while utilizing state-of-the-art technology and the highest veterinary medical standards ever.Our expertise, gentle care, and quality orientation are what attract our clients to our veterinary care. Whether maintaining healthy livestock or nursing companion animals, Rumeno will stand by your side to ensure healthy thriving animals. Count on Rumeno for all veterinary needs.
-        </p>
         <hr />
         <h4 className="my-3 fw-bold"> Highlighted Items</h4>
         <ul className="list-unstyled">

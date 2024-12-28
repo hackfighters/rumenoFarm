@@ -20,8 +20,7 @@ import TableFarmData from "./tableFarmdata";
 
 const MultiStepForm = () => {
   const { register, handleSubmit, setValue } = useForm();
-  const { selectedAnimal, setFarmDataUMKid } =
-    useContext(UserContext);
+  const { selectedAnimal, setFarmDataUMKid } = useContext(UserContext);
   const [maindata, setMainData] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -33,12 +32,19 @@ const MultiStepForm = () => {
   const handleOpenFarmTableModal = () => setShowFarmTableModal(true);
   const handleCloseFarmTableModal = () => setShowFarmTableModal(false);
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/parent`;
-  const getUserIdCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
-  const getSelectdAnimal = JSON.parse(localStorage.getItem("SelectedAnimal") ?? "[]");
+  const getUserIdCookies = JSON.parse(
+    localStorage.getItem("loginDetails") ?? "[]"
+  );
+  const getSelectdAnimal = JSON.parse(
+    localStorage.getItem("SelectedAnimal") ?? "[]"
+  );
 
-  const filteredData = maindata.filter((item) =>
-    (item.uniquename?.includes(searchInput.toLowerCase()) || false) ||
-    (item.age?.includes(searchInput.toLowerCase()) || false)
+  const filteredData = maindata.filter(
+    (item) =>
+      item.uniquename?.includes(searchInput.toLowerCase()) ||
+      false ||
+      item.age?.includes(searchInput.toLowerCase()) ||
+      false
   );
 
   const openModal = () => {
@@ -88,32 +94,34 @@ const MultiStepForm = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${apiUrl}/${getUserIdCookies.uID}?name=${getSelectdAnimal}`,
+      const response = await axios.get(
+        `${apiUrl}/${getUserIdCookies.uID}?name=${getSelectdAnimal}`,
         {
           headers: {
-            'Authorization': `${getUserIdCookies.token}`
-          }
+            Authorization: `${getUserIdCookies.token}`,
+          },
         }
       );
-      console.log('response: ', response);
+      console.log("response: ", response);
       setMainData(response.data);
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error("Error fetching items:", error);
     }
   };
-
-  
 
   const onSubmit = async (data) => {
     if (selectedItem !== null) {
       // Edit existing item
       try {
-        const response = await axios.put(`${apiUrl}/${maindata[selectedItem]._id}`, data,
+        const response = await axios.put(
+          `${apiUrl}/${maindata[selectedItem]._id}`,
+          data,
           {
             headers: {
-              'Authorization': `${getUserIdCookies.token}`
-            }
-          });
+              Authorization: `${getUserIdCookies.token}`,
+            },
+          }
+        );
         const updatedMilkrec = [...maindata];
         updatedMilkrec[selectedItem] = response.data;
         fetchItems();
@@ -122,36 +130,39 @@ const MultiStepForm = () => {
       }
     } else {
       // Add new item
-      const payload = {...data,...{uid:getUserIdCookies.uID,animal:getSelectdAnimal}}
-      console.log('payload: ', payload);
+      const payload = {
+        ...data,
+        ...{ uid: getUserIdCookies.uID, animal: getSelectdAnimal },
+      };
+      console.log("payload: ", payload);
       try {
-        const response = await axios.post(apiUrl, payload,
-          {
-            headers: {
-              'Authorization': `${getUserIdCookies.token}`
-            }
-          });
-        console.log('response: ', response);
+        const response = await axios.post(apiUrl, payload, {
+          headers: {
+            Authorization: `${getUserIdCookies.token}`,
+          },
+        });
+        console.log("response: ", response);
         fetchItems();
       } catch (error) {
         console.error("Error adding item:", error);
       }
     }
-    console.log('data: ', data,maindata);
+    console.log("data: ", data, maindata);
     setModalIsOpen(false);
   };
 
-
   const AddMoreDtl = (index) => {
     const basicDtl = { mid: maindata[index]._id };
-    console.log('basicDtl: ', maindata);
+    console.log("basicDtl: ", maindata);
 
-    const getLoginData = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
+    const getLoginData = JSON.parse(
+      localStorage.getItem("loginDetails") ?? "[]"
+    );
     let sendMid = { ...getLoginData, ...basicDtl };
-    localStorage.setItem('loginDetails',JSON.stringify(sendMid));
+    localStorage.setItem("loginDetails", JSON.stringify(sendMid));
 
     setFarmDataUMKid((prev) => ({ prev, ...basicDtl }));
-  }
+  };
 
   const handleEdit = (index) => {
     setValue("uniquename", maindata[index].uniquename);
@@ -168,19 +179,17 @@ const MultiStepForm = () => {
     setModalIsOpen(true);
   };
 
-
   const handleDelete = async (index) => {
     try {
-      const response = await axios.delete(`${apiUrl}/${maindata[index]._id}`,
-        {
-          headers: {
-            'Authorization': `${getUserIdCookies.token}`
-          }
-        });
+      const response = await axios.delete(`${apiUrl}/${maindata[index]._id}`, {
+        headers: {
+          Authorization: `${getUserIdCookies.token}`,
+        },
+      });
       console.log(response.data);
       setMainData(maindata.filter((_, i) => i !== index));
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error("Error deleting item:", error);
     }
   };
 
@@ -188,10 +197,20 @@ const MultiStepForm = () => {
     <section className="home-backgroundColor animal-bg-size">
       <div className="container-fluid ">
         <div className="d-flex justify-content-between p-3">
-          <Link className="btn btn-secondary w-auto" to='/home' >home</Link>
-          <button className="btn btn-info w-auto text-white" onClick={handleOpenFarmTableModal}>Farm Table</button>
+          <Link className="btn btn-secondary w-auto" to="/home">
+            home
+          </Link>
+          <button
+            className="btn btn-info w-auto text-white"
+            onClick={handleOpenFarmTableModal}
+          >
+            Farm Table
+          </button>
         </div>
-        <TableFarmData showFarmTableModal={showFarmTableModal} handleCloseFarmTableModal={handleCloseFarmTableModal} />
+        <TableFarmData
+          showFarmTableModal={showFarmTableModal}
+          handleCloseFarmTableModal={handleCloseFarmTableModal}
+        />
         <div className="container m-0-auto  px-0">
           <div className="py-5 w-75 d-flex align-items-center justify-content-between m-auto">
             <button
@@ -202,17 +221,24 @@ const MultiStepForm = () => {
               Create New
             </button>
 
-
-
-            <input className="form-control mr-sm-2 w-25" type="search" placeholder="Search by Name or Age" aria-label="Search" value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)} />
+            <input
+              className="form-control mr-sm-2 w-25"
+              type="search"
+              placeholder="Search by Name or Age"
+              aria-label="Search"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
           </div>
           <div className="row justify-content-center">
             {/* <div className="row"> */}
 
             {filteredData.map((item, index) => (
-              <section className="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect" key={item._id}>
-                <ul className="list-unstyled" >
+              <section
+                className="detail-body m-3 p-3 col-lg-3 shadow rounded abt-sect"
+                key={item._id}
+              >
+                <ul className="list-unstyled">
                   <li className="mx-2 mb-3 fs-2 d-flex justify-content-between align-items-center">
                     <span className="text-uppercase">{item.uniquename}</span>
                     <span
@@ -362,7 +388,7 @@ const MultiStepForm = () => {
                   >
                     <FontAwesomeIcon className="text-white" icon={faTrash} />
                   </div>
-                  <NavLink to="/AnimalDetailTab" >
+                  <NavLink to="/AnimalDetailTab">
                     <button
                       type="submit"
                       onClick={() => AddMoreDtl(index)}
@@ -382,12 +408,13 @@ const MultiStepForm = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="row justify-content-center">
                     <h2 className="text-center">
-                      {selectedItem !== null ? "Edit" : "Fill"} Basic Details of {selectedAnimal}
+                      {selectedItem !== null ? "Edit" : "Fill"} Basic Details of{" "}
+                      {selectedAnimal}
                     </h2>
 
                     <div className="col-lg-5 my-2">
                       <label className="form-label" for="uniquename">
-                        Unique Name
+                        Animal Unique ID
                       </label>
                       <input
                         name="uniquename"
@@ -401,22 +428,35 @@ const MultiStepForm = () => {
                     </div>
 
                     <div className="col-lg-5 my-2">
-                      <label className="form-label" for="age">
-                        Age
-                      </label>
-                      <input
-                        name="age"
-                        placeholder="Age"
-                        type="number"
-                        id="age"
-                        className="form-control"
-                        value={maindata.age}
-                        {...register("age")}
-                      />
+                      <h4>Age</h4>
+                      <div className="d-flex">
+                      <div>
+                        <input
+                          name="age"
+                          placeholder="Year"
+                          type="number"
+                          id="age"
+                          className="form-control"
+                          value={maindata.age}
+                          {...register("age")}
+                        />
+                      </div>
+                      <div>
+                        <input
+                          name="age"
+                          placeholder="Month"
+                          type="number"
+                          id="age"
+                          className="form-control"
+                          value={maindata.age}
+                          {...register("age")}
+                        />
+                      </div>
+                      </div>
                     </div>
                     <div className="col-lg-5 my-2">
                       <label className="form-label" for="height">
-                        height
+                        height (In Inches)
                       </label>
                       <input
                         name="height"
@@ -541,9 +581,7 @@ const MultiStepForm = () => {
                         value={maindata.pregnancy_detail}
                         {...register("pregnancy_detail")}
                       >
-                        <option  disabled>
-                          select pregnancy Detail
-                        </option>
+                        <option disabled>select pregnancy Detail</option>
                         <option value="1">1</option>
                         <option value="1">2</option>
                         <option value="1">3</option>
@@ -563,9 +601,7 @@ const MultiStepForm = () => {
                         value={maindata.maledetail}
                         {...register("male_detail")}
                       >
-                        <option  disabled>
-                          select if male
-                        </option>
+                        <option disabled>select if male</option>
                         <option value="wheather">wheather</option>
                         <option value="breeder">breeder</option>
                       </select>

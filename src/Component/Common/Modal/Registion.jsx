@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-// import { Country, State, City } from "country-state-city";
-// import Select from "react-select";
+import { Country, State, City } from "country-state-city";
+import Select from "react-select";
 
 import logo from "../../../../src/assets/img/Logo/lv-bgr.png";
 import Login from "./Login";
@@ -335,7 +335,7 @@ const Registration = ({ showModal, closeModal }) => {
                   </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">Country</label>
-                      {/* <Select
+                      <Select
                         options={Country.getAllCountries()}
                         getOptionLabel={(options) => {
                           return options["name"];
@@ -347,11 +347,11 @@ const Registration = ({ showModal, closeModal }) => {
                           setSelectedCountry(item);
                         }}
                         name="country"
-                      /> */}
+                      />
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">State</label>
-                      {/* <Select
+                      <Select
                         options={State?.getStatesOfCountry(
                           selectedCountry?.isoCode
                         )}
@@ -365,12 +365,12 @@ const Registration = ({ showModal, closeModal }) => {
                         onChange={(item) => {
                           setSelectedState(item);
                         }}
-                      /> */}
+                      />
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-1">City</label>
 
-                      {/* <Select
+                      <Select
                         options={City.getCitiesOfState(
                           selectedState?.countryCode,
                           selectedState?.isoCode
@@ -385,7 +385,7 @@ const Registration = ({ showModal, closeModal }) => {
                           setSelectedCity(item);
                         }}
                         name="city"
-                      /> */}
+                      />
                     </div>
                     <div className="form-group col-lg-12 my-2">
                       <label className="my-2">{t("v317")}</label>
