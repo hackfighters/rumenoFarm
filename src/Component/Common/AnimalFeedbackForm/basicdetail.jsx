@@ -38,7 +38,7 @@ const MultiStepForm = () => {
   const getSelectdAnimal = JSON.parse(
     localStorage.getItem("SelectedAnimal") ?? "[]"
   );
-  console.log('getSelectdAnimal: ', getSelectdAnimal);
+  console.log("getSelectdAnimal: ", getSelectdAnimal);
 
   const filteredData = maindata.filter(
     (item) =>
@@ -51,10 +51,12 @@ const MultiStepForm = () => {
   const openModal = () => {
     setModalIsOpen(true);
     setValue("uniquename", "");
-    setValue("age", "");
+    setValue("age_year", "");
+    setValue("age_month", "");
     setValue("gender", "");
     setValue("height", "");
-    setValue("weight", "");
+    setValue("weight_kg", "");
+    setValue("weight_gm", "");
     setValue("date_of_purchesing", "");
     setValue("pregnancy_detail", "");
     setValue("male_detail", "");
@@ -66,16 +68,18 @@ const MultiStepForm = () => {
   const closeModal = () => {
     setModalIsOpen(false);
     setValue("uniquename", "");
-    setValue("age", "");
+    setValue("age_year", "");
+    setValue("age_month", "");
     setValue("gender", "");
     setValue("height", "");
-    setValue("weight", "");
+    setValue("weight_kg", "");
+    setValue("weight_gm", "");
     setValue("date_of_purchesing", "");
     setValue("pregnancy_detail", "");
     setValue("male_detail", "");
     setValue("body_score", "");
     setValue("basic_comment", "");
-
+    setSelectedGender(null)
     setSelectedItem(null);
   };
   const [showprntdetl, setshowprntdetl] = useState(false);
@@ -133,7 +137,11 @@ const MultiStepForm = () => {
       // Add new item
       const payload = {
         ...data,
-        ...{ uid: getUserIdCookies.uID, animal: getSelectdAnimal },
+        ...{
+          uid: getUserIdCookies.uID,
+          animal: getSelectdAnimal,
+          parentName: data?.uniquename,
+        },
       };
       console.log("payload: ", payload);
       try {
@@ -153,7 +161,10 @@ const MultiStepForm = () => {
   };
 
   const AddMoreDtl = (index) => {
-    const basicDtl = { mid: maindata[index]._id, parentName: maindata[index].uniquename};
+    const basicDtl = {
+      mid: maindata[index]._id,
+      parentName: maindata[index].uniquename,
+    };
     console.log("basicDtl: ", maindata);
 
     const getLoginData = JSON.parse(
@@ -166,12 +177,14 @@ const MultiStepForm = () => {
   };
 
   const handleEdit = (index) => {
-    console.log('maindata[index]: ', maindata[index]);
+    console.log("maindata[index]: ", maindata[index]);
     setValue("uniquename", maindata[index].uniquename);
-    setValue("age", maindata[index].age);
+    setValue("age_year", maindata[index].age_year);
+    setValue("age_month", maindata[index].age_month);
     setValue("gender", maindata[index].gender);
     setValue("height", maindata[index].height);
-    setValue("weight", maindata[index].weight);
+    setValue("weight_kg", maindata[index].weight_kg);
+    setValue("weight_gm", maindata[index].weight_gm);
     setValue("date_of_purchesing", maindata[index].date_of_purchesing);
     setValue("pregnancy_detail", maindata[index].pregnancy_detail);
     setValue("male_detail", maindata[index].male_detail);
@@ -195,6 +208,20 @@ const MultiStepForm = () => {
     }
   };
 
+  const [selectedGender, setSelectedGender] = useState(""); // Track selected gender
+
+  const handleMaleChange = (event) => {
+    console.log('event:male ', event);
+    setSelectedGender("male");
+    maindata.maledetail = event.target.value; 
+  };
+
+  const handleFemaleChange = (event) => {
+    console.log('event:female ', event);
+    setSelectedGender("female");
+    maindata.pregnancy_detail = event.target.value; 
+  };
+  console.log("selectedGender: ", selectedGender);
   return (
     <section className="home-backgroundColor animal-bg-size">
       <div className="container-fluid ">
@@ -241,7 +268,7 @@ const MultiStepForm = () => {
                 key={item._id}
               >
                 <ul className="list-unstyled">
-                  <li className="mx-2 mb-3 fs-2 d-flex justify-content-between align-items-center">
+                  <li className="mx-2 mb-3 fs-4 d-flex justify-content-between align-items-center">
                     <span className="text-uppercase">{item.uniquename}</span>
                     <span
                       onClick={() => openshowprntdetl(item)}
@@ -252,7 +279,7 @@ const MultiStepForm = () => {
                     </span>
                   </li>
                   <hr />
-                  <div className="row justify-content-evenly w-75">
+                  <div className="row justify-content-evenly w-100">
                     <span className="col-lg-12 d-flex align-items-center  my-2">
                       <FontAwesomeIcon
                         className="bg-secondary p-2 rounded mx-2 text-white"
@@ -268,7 +295,11 @@ const MultiStepForm = () => {
                         icon={faWeightScale}
                       />
                       <strong className="d-block">Weight</strong>{" "}
-                      <span className="mx-3"> {item.weight} Kg </span>
+                      <span className="mx-3">
+                        {" "}
+                        {item.weight_kg} Kg{" "}
+                        {item.weight_gm ? `${item.weight_gm}Gm` : ""}
+                      </span>
                     </span>
                     <span className="col-lg-12 d-flex align-items-center  text-center my-2">
                       <FontAwesomeIcon
@@ -284,7 +315,11 @@ const MultiStepForm = () => {
                         icon={faCalendar}
                       />
                       <strong className="d-block">Age</strong>{" "}
-                      <span className="mx-3"> {item.age} </span>
+                      <span className="mx-3">
+                        {" "}
+                        {item.age_year}Year{" "}
+                        {item.age_month ? `${item.age_month}Month` : ""}{" "}
+                      </span>
                     </span>
                   </div>
                 </ul>
@@ -321,7 +356,10 @@ const MultiStepForm = () => {
                           <span>
                             <strong> Age : </strong>
                           </span>{" "}
-                          <span>{selectedItemData.age}</span>
+                          <span>
+                            {selectedItemData.age_year}{" "}
+                            {selectedItemData.age_month}{" "}
+                          </span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg1 px-2">
                           <span>
@@ -339,7 +377,10 @@ const MultiStepForm = () => {
                           <span>
                             <strong> Weight : </strong>
                           </span>{" "}
-                          <span>{selectedItemData.weight}</span>
+                          <span>
+                            {selectedItemData.weight_kg}{" "}
+                            {selectedItemData.weight_gm}
+                          </span>
                         </li>
                         <li className="mx-4 my-2 d-flex justify-content-between rounded animal-bg2 px-2">
                           <span>
@@ -432,28 +473,28 @@ const MultiStepForm = () => {
                     <div className="col-lg-5 my-2">
                       <h4>Age</h4>
                       <div className="d-flex">
-                      <div>
-                        <input
-                          name="age"
-                          placeholder="Year"
-                          type="number"
-                          id="age"
-                          className="form-control"
-                          value={maindata.age}
-                          {...register("age")}
-                        />
-                      </div>
-                      <div>
-                        <input
-                          name="age"
-                          placeholder="Month"
-                          type="number"
-                          id="age"
-                          className="form-control"
-                          value={maindata.age}
-                          {...register("age")}
-                        />
-                      </div>
+                        <div>
+                          <input
+                            name="age"
+                            placeholder="Year"
+                            type="number"
+                            id="age"
+                            className="form-control"
+                            value={maindata.age_year}
+                            {...register("age_year")}
+                          />
+                        </div>
+                        <div>
+                          <input
+                            name="age"
+                            placeholder="Month"
+                            type="number"
+                            id="age"
+                            className="form-control"
+                            value={maindata.age_month}
+                            {...register("age_month")}
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="col-lg-5 my-2">
@@ -543,15 +584,30 @@ const MultiStepForm = () => {
                       <label className="form-label" htmlFor="weight">
                         Weight
                       </label>
-                      <input
-                        name="weight"
-                        placeholder="Weight"
-                        type="number"
-                        id="weight"
-                        className="form-control"
-                        value={maindata.weight}
-                        {...register("weight")}
-                      />
+                      <div className="d-flex">
+                        <div>
+                          <input
+                            name="weight"
+                            placeholder="Kg"
+                            type="number"
+                            id="weight"
+                            className="form-control"
+                            value={maindata.weight_kg}
+                            {...register("weight_kg")}
+                          />
+                        </div>
+                        <div>
+                          <input
+                            name="weight"
+                            placeholder="Gm"
+                            type="number"
+                            id="weight"
+                            className="form-control"
+                            value={maindata.weight_gm}
+                            {...register("weight_gm")}
+                          />
+                        </div>
+                      </div>
                     </div>
                     {/* <div className="col-lg-5 my-2">
                     <div>
@@ -573,7 +629,67 @@ const MultiStepForm = () => {
                       }}
                     />
                   </div> */}
+
+                    {/* usman */}
+                    {/* Female Dropdown */}
                     <div className="col-lg-5 my-2">
+  <label className="form-label" htmlFor="selectfemale">
+    If Female Pregnancy Details
+  </label>
+  <select
+    className="form-select"
+    id="selectfemale"
+    aria-label="Default select example"
+    disabled={selectedGender === "male"} // Disable if male is selected
+    {...register("pregnancy_detail", {
+      onChange: (e) => handleFemaleChange(e), // Use this for React Hook Form
+    })}
+  >
+    <option disabled value="">
+      select pregnancy Detail
+    </option>
+    <option value="1 Month">1 Month</option>
+    <option value="2 Month">2 Month</option>
+    <option value="3 Month">3 Month</option>
+    <option value="4 Month">4 Month</option>
+    <option value="5 Month">5 Month</option>
+    {["cow", "buffalo"].includes(getSelectdAnimal) && (
+      <>
+        <option value="6 Month">6 Month</option>
+        <option value="7 Month">7 Month</option>
+        <option value="8 Month">8 Month</option>
+        <option value="9 Month">9 Month</option>
+        <option value="10 Month">10 Month</option>
+        <option value="11 Month">11 Month</option>
+      </>
+    )}
+    <option value="notpregnant">not pregnant</option>
+    <option value="notconfirm">not confirm</option>
+  </select>
+</div>
+
+<div className="col-lg-5 my-2">
+  <label className="form-label" htmlFor="selectmale">
+    Select Male Detail
+  </label>
+  <select
+    className="form-select"
+    id="selectmale"
+    aria-label="Default select example"
+    disabled={selectedGender === "female"} // Disable if female is selected
+    {...register("male_detail", {
+      onChange: (e) => handleMaleChange(e), // Use this for React Hook Form
+    })}
+  >
+    <option disabled value="">
+      select if male
+    </option>
+    <option value="wheather">wheather</option>
+    <option value="breeder">breeder</option>
+  </select>
+</div>
+
+                    {/* <div className="col-lg-5 my-2">
                       <label className="form-label" for="selectfemale">
                         If Female Pregnancy Details
                       </label>
@@ -581,6 +697,7 @@ const MultiStepForm = () => {
                         className="form-select"
                         aria-label="Default select example"
                         value={maindata.pregnancy_detail}
+                        
                         {...register("pregnancy_detail")}
                       >
                         <option disabled>select pregnancy Detail</option>
@@ -617,7 +734,7 @@ const MultiStepForm = () => {
                         <option value="wheather">wheather</option>
                         <option value="breeder">breeder</option>
                       </select>
-                    </div>
+                    </div> */}
                     <div className="col-lg-5 my-2">
                       <label className="form-label" htmlFor="bodyscore">
                         Body Score
@@ -631,11 +748,24 @@ const MultiStepForm = () => {
                         <option disabled>
                           Open this and select body score
                         </option>
-                        <option value="Very slim Skinned body with entire skeleton appearing on skins">Very slim Skinned body with entire skeleton appearing on skins</option>
-                        <option value="Skinned body with appearing sharp bones of chest on skin ">Skinned body with appearing sharp bones of chest on skin </option>
-                        <option value="Slimmed body but chest bone does not appear with having a little muscles on body">Slimmed body but chest bone does not appear with having a little muscles on body</option>
-                        <option value="Mild fat with having good muscles on body and less fat">Mild fat with having good muscles on body and less fat</option>
-                        <option value="Fatty bulky Body. Without appearing any bones on body">Fatty bulky Body. Without appearing any bones on body</option>
+                        <option value="Very slim Skinned body with entire skeleton appearing on skins">
+                          Very slim Skinned body with entire skeleton appearing
+                          on skins
+                        </option>
+                        <option value="Skinned body with appearing sharp bones of chest on skin ">
+                          Skinned body with appearing sharp bones of chest on
+                          skin{" "}
+                        </option>
+                        <option value="Slimmed body but chest bone does not appear with having a little muscles on body">
+                          Slimmed body but chest bone does not appear with
+                          having a little muscles on body
+                        </option>
+                        <option value="Mild fat with having good muscles on body and less fat">
+                          Mild fat with having good muscles on body and less fat
+                        </option>
+                        <option value="Fatty bulky Body. Without appearing any bones on body">
+                          Fatty bulky Body. Without appearing any bones on body
+                        </option>
                       </select>
                     </div>
                     <div className="col-lg-5 my-2">

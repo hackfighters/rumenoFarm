@@ -70,7 +70,7 @@ const FarmHygine = () => {
     } else {
       // Add new item
       try {
-    const payload = {...data,...{parentid:getMidCookies.mid}}
+    const payload = {...data,...{parentid:getMidCookies.mid,parentName: getMidCookies?.parentName}}
     console.log('payload: ', payload);
         const response = await axios.post(apiUrl, payload,
           {
@@ -136,7 +136,11 @@ const FarmHygine = () => {
                   </button>
                     {farmHygine.map((item, index) => (
                       <div className="row bg-light p-3 shadow row justify-content-evenly my-4" key={item.id}>
-                        
+                        <span className="text-center d-flex gap-2 pb-2 bg-light ">
+                            <div className=""><span className="animal-bg2 p-1">Parent Name :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentName}</span></div>
+                            <div className=""><span className="animal-bg2 p-1">Parent ID :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentid}</span></div>
+                          </span>
+                          <hr />
 
 
                         <span className="text-center px-5 py-4 col-lg-3 ">

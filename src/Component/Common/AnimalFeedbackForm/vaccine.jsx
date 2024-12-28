@@ -66,7 +66,7 @@ const VaccineRecord = () => {
     } else {
       // Add new item
       try {
-    const payload = {...data,...{parentid:getMidCookies.mid}}
+    const payload = {...data,...{parentid:getMidCookies.mid,parentName: getMidCookies?.parentName}}
     console.log('payload: ', payload);
         const response = await axios.post(apiUrl, payload,
           {
@@ -128,6 +128,11 @@ const VaccineRecord = () => {
                         className="row bg-light p-3 shadow row justify-content-evenly my-4"
                         key={item.id}
                       >
+                         <span className="text-center d-flex gap-2 pb-2 bg-light ">
+                            <div className=""><span className="animal-bg2 p-1">Parent Name :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentName}</span></div>
+                            <div className=""><span className="animal-bg2 p-1">Parent ID :</span> <span className="animal-bg1 fw-bold p-1">{item?.parentid}</span></div>
+                          </span>
+                          <hr />
                         <span className="text-center px-4 py-4 col-lg-3 ">
                           <strong className="d-block animal-bg2">
                             Vaccine Name :
