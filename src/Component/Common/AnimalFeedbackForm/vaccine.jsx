@@ -185,7 +185,7 @@ const VaccineRecord = () => {
                               {...register("vaccine")}
                             />
                             <datalist id="vaccineOptions">
-                              <option value="PPP">PPP</option>
+                              <option value="PPR">PPR</option>
                               <option value="FMD">FMD</option>
                               <option value="Booster">Booster</option>
                               <option value="Haemorrhagic Septicaemia">

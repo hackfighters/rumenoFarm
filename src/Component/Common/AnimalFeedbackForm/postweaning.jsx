@@ -214,13 +214,13 @@ const PostWean = () => {
                              
                             >
                               <option defaultValue>
-                                Open this and select kidding score
+                                Open this and select Body score
                               </option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
+                              <option value="Very slim Skinned body with entire skeleton appearing on skins">Very slim Skinned body with entire skeleton appearing on skins</option>
+                        <option value="Skinned body with appearing sharp bones of chest on skin ">Skinned body with appearing sharp bones of chest on skin </option>
+                        <option value="Slimmed body but chest bone does not appear with having a little muscles on body">Slimmed body but chest bone does not appear with having a little muscles on body</option>
+                        <option value="Mild fat with having good muscles on body and less fat">Mild fat with having good muscles on body and less fat</option>
+                        <option value="Fatty bulky Body. Without appearing any bones on body">Fatty bulky Body. Without appearing any bones on body</option>
                             </select>
                           </div>
 

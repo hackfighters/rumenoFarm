@@ -2909,3 +2909,7 @@ img.card-img:hover {
 }
 /* ---------end google sign css ------------- */
 
+
+.farmData-search::placeholder{
+  font-size: 13px;
+}

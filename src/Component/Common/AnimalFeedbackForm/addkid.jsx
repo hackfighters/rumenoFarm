@@ -14,10 +14,15 @@ const KidAddForm = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/child`;
-  const getparentidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
-  const getSelectdAnimal = JSON.parse(localStorage.getItem("SelectedAnimal") ?? "[]");
+  const getparentidCookies = JSON.parse(
+    localStorage.getItem("loginDetails") ?? "[]"
+  );
+  const getSelectdAnimal = JSON.parse(
+    localStorage.getItem("SelectedAnimal") ?? "[]"
+  );
 
   const handleOpenDialog = () => {
+    console.log('getparentidCookies: ', getparentidCookies);
     fetchItems();
     setModalIsOpen(true);
     setValue("age", "");
@@ -35,7 +40,6 @@ const KidAddForm = () => {
     setValue("mother_wean_date", "");
     setValue("castration", "");
     setValue("kid_comment", "");
-    
   };
 
   const handleCloseDialog = () => {
@@ -55,11 +59,9 @@ const KidAddForm = () => {
     setValue("mother_wean_date", "");
     setValue("castration", "");
     setValue("kid_comment", "");
-    
+
     setSelectedItem(null);
   };
-
-
 
   useEffect(() => {
     fetchItems();
@@ -67,56 +69,64 @@ const KidAddForm = () => {
 
   const fetchItems = async (id) => {
     try {
-      const response = await axios.get(`${apiUrl}/${getparentidCookies.mid}`,
-        {
-          headers: {
-            'Authorization': `${getparentidCookies.token}`
-          }
-        });
+      const response = await axios.get(`${apiUrl}/${getparentidCookies.mid}`, {
+        headers: {
+          Authorization: `${getparentidCookies.token}`,
+        },
+      });
       setaddkiddata(response.data);
     } catch (error) {
-      console.error('Error fetching items:', error);
+      console.error("Error fetching items:", error);
     }
   };
 
   const onsubmit = async (data) => {
-    console.log('data: ', data,FarmDataUMKid);
+    console.log("data: ", data, FarmDataUMKid);
     fetchItems();
     if (selectedItem !== null) {
       // Edit existing data
       try {
-        const response = await axios.put(`${apiUrl}/${addkiddata[selectedItem]._id}`, data,
+        const response = await axios.put(
+          `${apiUrl}/${addkiddata[selectedItem]._id}`,
+          data,
           {
             headers: {
-              'Authorization': `${getparentidCookies.token}`
-            }
-          })
-        console.log(response.data)
+              Authorization: `${getparentidCookies.token}`,
+            },
+          }
+        );
+        console.log(response.data);
         fetchItems();
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
       setSelectedItem(null);
     } else {
       // Add new data
-    const payload = {...data,...{parentid:getparentidCookies.mid,uid:getparentidCookies.uID,animal:getSelectdAnimal}}
-    console.log('payload: ', payload);
+      const payload = {
+        ...data,
+        ...{
+          parentid: getparentidCookies.mid,
+          parentName: getparentidCookies.uniquename,
+          uid: getparentidCookies.uID,
+          animal: getSelectdAnimal,
+        },
+      };
+      console.log("payload: ", payload);
       try {
-        const response = await axios.post( `${apiUrl}`, payload,
-          {
-            headers: {
-              'Authorization': `${getparentidCookies.token}`
-            }
-          })
-        console.log(response.data)
+        const response = await axios.post(`${apiUrl}`, payload, {
+          headers: {
+            Authorization: `${getparentidCookies.token}`,
+          },
+        });
+        console.log(response.data);
         fetchItems();
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
     setModalIsOpen(false);
   };
-
 
   const handleEdit = (index) => {
     setValue("age", addkiddata[index].age);
@@ -138,24 +148,26 @@ const KidAddForm = () => {
     setModalIsOpen(true);
   };
 
-  const handleDelete = async(index) => {
-    const deletedItem = addkiddata[index]; 
+  const handleDelete = async (index) => {
+    const deletedItem = addkiddata[index];
     const updatedData = [...addkiddata];
     updatedData.splice(index, 1);
     setaddkiddata(updatedData);
-    console.log(deletedItem); 
+    console.log(deletedItem);
     try {
-      const response = await axios.delete(`${apiUrl}/${addkiddata[index]._id}`,
+      const response = await axios.delete(
+        `${apiUrl}/${addkiddata[index]._id}`,
         {
           headers: {
-            'Authorization': `${getparentidCookies.token}`
-          }
-        })
-      console.log(response.data)
-  } catch (error) {
-      console.log(error)
-  }
-  }
+            Authorization: `${getparentidCookies.token}`,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -196,7 +208,7 @@ const KidAddForm = () => {
                               Birth Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                          {new Date(item.date).toLocaleDateString('en-IN')}
+                              {new Date(item.date).toLocaleDateString("en-IN")}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -244,7 +256,9 @@ const KidAddForm = () => {
                               Wean Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {new Date(item.wean_date).toLocaleDateString('en-IN')}
+                              {new Date(item.wean_date).toLocaleDateString(
+                                "en-IN"
+                              )}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -268,7 +282,9 @@ const KidAddForm = () => {
                               Mother Wean Date :
                             </strong>{" "}
                             <span className="animal-bg1 d-block px-2">
-                              {new Date(item.mother_wean_date).toLocaleDateString('en-IN')}
+                              {new Date(
+                                item.mother_wean_date
+                              ).toLocaleDateString("en-IN")}
                             </span>
                           </span>
                           <span className="text-center px-5 py-4 col-lg-3 ">
@@ -498,15 +514,15 @@ const KidAddForm = () => {
 
                           <div className="col-lg-5 my-2">
                             <label className="form-label" htmlFor="kidcode">
-                              Kidding Code
+                              Kidding Delivery Ease Score
                             </label>
                             <select
                               className="form-select"
                               aria-label="Default select example"
                               {...register("kid_code")}
                             >
-                              <option  disabled>
-                                Open this and select kidding code
+                              <option disabled>
+                                Open this and select Kidding Delivery Ease Score
                               </option>
                               <option value="NO ASSISTANCE">
                                 NO ASSISTANCE
@@ -514,32 +530,14 @@ const KidAddForm = () => {
                               <option value="SLIGHT ASSISTANCE">
                                 SLIGHT ASSISTANCE
                               </option>
-                              <option value="jamunapari">jamunapari</option>
+                              <option value="CESARIAN">CESARIAN</option>
                               <option value="HARD PULL">HARD PULL</option>
                               <option value="ABNORMAL PRESENTATION">
                                 ABNORMAL PRESENTATION
                               </option>
                             </select>
                           </div>
-                          <div className="col-lg-5 my-2">
-                            <label className="form-label" htmlFor="kidscore">
-                              Kidding Score
-                            </label>
-                            <select
-                              className="form-select"
-                              aria-label="Default select example"
-                              {...register("kid_score")}
-                            >
-                              <option defaultValue>
-                                Open this and select kidding score
-                              </option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
-                          </div>
+                          
 
                           <div className="col-lg-5 my-2">
                             <label className="form-label" htmlFor="birthtype">
