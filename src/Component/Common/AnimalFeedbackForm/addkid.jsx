@@ -409,7 +409,7 @@ const KidAddForm = () => {
                           {/* <h2 className="text-center">KID DATA</h2> */}
                           <div className="col-lg-5 my-2">
                             <label className="form-label" for="uniquename">
-                              Unique Name
+                              Kid Unique Id
                             </label>
                             <input
                               name="uniquename"
@@ -648,18 +648,18 @@ const KidAddForm = () => {
                               {...register("kid_code")}
                             >
                               <option disabled>
-                                Open this and select Kidding Delivery Ease Score
+                               Open this and select Kidding Delivery Ease Score
                               </option>
                               <option value="NO ASSISTANCE">
-                                NO ASSISTANCE
+                                1: NO ASSISTANCE
                               </option>
                               <option value="SLIGHT ASSISTANCE">
-                                SLIGHT ASSISTANCE
+                               2: SLIGHT ASSISTANCE
                               </option>
-                              <option value="CESARIAN">CESARIAN</option>
-                              <option value="HARD PULL">HARD PULL</option>
+                              <option value="CESARIAN">3: CESARIAN</option>
+                              <option value="HARD PULL">4: HARD PULL</option>
                               <option value="ABNORMAL PRESENTATION">
-                                ABNORMAL PRESENTATION
+                               5: ABNORMAL PRESENTATION
                               </option>
                             </select>
                           </div>

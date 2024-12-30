@@ -191,6 +191,9 @@ const VaccineRecord = () => {
                             />
                             <datalist id="vaccineOptions">
                               <option value="PPR">PPR</option>
+                              <option value="ET">ET</option>
+                              <option value="TT">TT</option>
+                              <option value="Goat Pox">Goat Pox</option>
                               <option value="FMD">FMD</option>
                               <option value="Booster">Booster</option>
                               <option value="Haemorrhagic Septicaemia">
@@ -219,6 +222,7 @@ const VaccineRecord = () => {
                               {...register("vaccine_date")}
                             />
                           </div>
+                          
 
                           <button
                             type="submit"
