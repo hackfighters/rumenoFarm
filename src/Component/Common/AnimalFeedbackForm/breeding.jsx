@@ -15,16 +15,18 @@ const BreedHeat = () => {
   const [inputValue, setInputValue] = useState(date.toISOString().split('T')[0]);
   const apiUrl = `${process.env.REACT_APP_API}/farm_data/heat`;
   const getMidCookies = JSON.parse(localStorage.getItem("loginDetails") ?? "[]");
-
+  
   const addDays = (date, days) => {
     const result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
   };
 
+
   const handleDateChange = (event) => {
     const inputDate = new Date(event.target.value);
     if (!isNaN(inputDate.getTime())) {
+      inputDate.setMonth(inputDate.getMonth() + 5); // Add 5 months to the inputDate
       setDate(inputDate);
       setInputValue(event.target.value); // Update the inputValue state as well
     }
@@ -312,10 +314,12 @@ const BreedHeat = () => {
                             <option defaultValue>
                               Open this and select heat Result
                             </option>
-                            <option value="heat1">Meeted</option>
-                            <option value="heat5">Left for Next Cycle</option>
+                            <option value="Meet">Meet</option>
+                            <option value="Left for Next Cycle">Left for Next Cycle</option>
                           </select>
                         </div>
+
+                        
 
                         <div className="col-lg-5 my-2">
                           <div>

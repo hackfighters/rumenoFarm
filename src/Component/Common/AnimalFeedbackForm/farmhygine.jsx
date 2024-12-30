@@ -145,7 +145,7 @@ const FarmHygine = () => {
 
                         <span className="text-center px-5 py-4 col-lg-3 ">
                           <strong className="d-block animal-bg2">
-                            Solid Date :
+                            Solid Change Date :
                           </strong>{" "}
                           <span className="animal-bg1 d-block px-2">
                           {new Date(item.soil_date).toLocaleDateString('en-IN')}
@@ -209,7 +209,7 @@ const FarmHygine = () => {
                                 className="form-label px-2"
                                 htmlFor="soildate"
                               >
-                                Soil Date
+                                Soil Change Date
                               </label>
                               
                             </div>

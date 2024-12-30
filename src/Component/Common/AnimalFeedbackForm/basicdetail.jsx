@@ -749,22 +749,22 @@ const MultiStepForm = () => {
                           Open this and select body score
                         </option>
                         <option value="Very slim Skinned body with entire skeleton appearing on skins">
-                          Very slim Skinned body with entire skeleton appearing
+                          1: Very slim Skinned body with entire skeleton appearing
                           on skins
                         </option>
                         <option value="Skinned body with appearing sharp bones of chest on skin ">
-                          Skinned body with appearing sharp bones of chest on
+                         2: Skinned body with appearing sharp bones of chest on
                           skin{" "}
                         </option>
                         <option value="Slimmed body but chest bone does not appear with having a little muscles on body">
-                          Slimmed body but chest bone does not appear with
+                          3: Slimmed body but chest bone does not appear with
                           having a little muscles on body
                         </option>
                         <option value="Mild fat with having good muscles on body and less fat">
-                          Mild fat with having good muscles on body and less fat
+                        4:  Mild fat with having good muscles on body and less fat
                         </option>
                         <option value="Fatty bulky Body. Without appearing any bones on body">
-                          Fatty bulky Body. Without appearing any bones on body
+                        5:  Fatty bulky Body. Without appearing any bones on body
                         </option>
                       </select>
                     </div>
